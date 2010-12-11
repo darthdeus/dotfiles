@@ -1,4 +1,4 @@
-# vim: set ft=sh
+#!/bin/bash
 
 PATH="$PATH:~/bin"
 export EDITOR="vim"
