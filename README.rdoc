@@ -1,0 +1,5 @@
+= Dot Files
+
+My config files for bash, git, ruby and other useful scripts.
+
+== Instalation & Usage
