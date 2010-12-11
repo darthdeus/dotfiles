@@ -1,5 +1,6 @@
 # vim: set ft=sh
 
+PATH="$PATH:~/bin"
 export EDITOR="vim"
 
 # don't put duplicate lines in the history. See bash(1) for more options
