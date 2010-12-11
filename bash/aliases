@@ -14,9 +14,26 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+function take {
+  mkdir $1
+  cd $1
+}
+
+function usage {
+  history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
+}
+
 alias s="apt-cache search"
 alias i="sudo apt-get install"
 alias r="rails"
+
+
+# Git
+
+function gg() {
+  git commit -v -a -m "$*"
+}
+
 alias ga="git add"
 alias gc="git commit"
 alias gp="git push"
