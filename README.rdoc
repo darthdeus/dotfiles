@@ -3,3 +3,26 @@
 My config files for bash, git, ruby and other useful scripts.
 
 == Instalation & Usage
+
+=== Installing everything at once
+
+    ./install.sh
+
+=== Installing one by one
+
+Build essentials, git and mercurial
+
+    ./required.sh
+
+Install vcprompt for bash
+
+    ./script/vcprompt-install
+
+Link all rc files
+
+    ./link.sh
+
+Install rvm
+
+    ./rvm.sh
+

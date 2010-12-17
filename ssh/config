@@ -1,3 +1,7 @@
 Host deploy
 HostName smallzoom.com
 User deploy
+
+Host testzor
+HostName 80.79.23.62
+User deploy
