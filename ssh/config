@@ -5,3 +5,6 @@ User deploy
 Host testzor
 HostName 80.79.23.62
 User deploy
+
+Host 4
+HostName 10.0.0.4
