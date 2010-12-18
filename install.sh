@@ -1,5 +1,5 @@
 #!/bin/bash
-./required.sh
-./link.sh
-./script/vcprompt-install
-./rvm.sh
+./script/install/required.sh
+./script/install/link.sh
+./script/install/vcprompt.sh
+./script/install/rvm.sh

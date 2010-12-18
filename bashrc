@@ -14,8 +14,6 @@ if [[ -n "$PS1" ]]; then
   # make less more friendly for non-text input files, see lesspipe(1)
   [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-
-
   # enable programmable completion features (you don't need to enable
   # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
   # sources /etc/bash.bashrc).
@@ -26,7 +24,5 @@ if [[ -n "$PS1" ]]; then
   . ~/bin/dotfiles/bash/config
   . ~/bin/dotfiles/bash/aliases
 fi
-
-
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
