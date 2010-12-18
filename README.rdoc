@@ -10,19 +10,26 @@ My config files for bash, git, ruby and other useful scripts.
 
 === Installing one by one
 
-Build essentials, git and mercurial
+Go to the script/install directory
+
+    cd script/install
+
+And run the files one by one.
+
+All required Ubuntu packages - build essentials, git, mercurial and some libraries
 
     ./required.sh
 
 Install vcprompt for bash
 
-    ./script/vcprompt-install
+    ./vcprompt.sh
 
 Link all rc files
 
     ./link.sh
 
-Install rvm
+Install RVM
 
     ./rvm.sh
 
+We don't need to configure RVM in ~/.bashrc, since it's already done.
