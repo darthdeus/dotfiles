@@ -11,7 +11,6 @@ cat <<'message'
       linking dotfiles
 --------------------------------
 message
-echo "Linking dotfiles"
 ./script/install/link.sh
 
 cat <<'message'

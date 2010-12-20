@@ -28,6 +28,7 @@ alias r="rails"
 
 
 ### Git ###
+alias git=hub
 
 function gg() {
   git commit -v -a -m "$*"
