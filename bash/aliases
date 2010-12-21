@@ -13,6 +13,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias unexecute="find . -iname '*.js' -or -iname '*.html' -or -iname '*.css' -or -iname '*.jpg' -or -iname '*.png' -or -iname '*.gif' -exec chmod -x {} \;"
+
 function take {
   mkdir $1
   cd $1
