@@ -1,0 +1,14 @@
+[user]
+	name = Jakub Arnold
+	email = darthdeus@gmail.com
+[github]
+	user = darthdeus
+	token = 
+[alias]
+	co = checkout
+[apply]
+	whitespace = nowarn
+[core]
+	excludesfile = /home/darth/.gitignore
+[color]
+	ui = auto
