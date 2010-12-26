@@ -39,6 +39,7 @@ function gg() {
 alias ga="git add"
 alias gc="git commit -v"
 alias gp="git push"
+alias gs="git status"
 alias gst="git status"
 alias gb="git branch"
 alias gba="git branch -a"
