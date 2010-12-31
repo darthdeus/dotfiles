@@ -15,6 +15,10 @@ alias l='ls -CF'
 
 alias unexecute="find . -iname '*.js' -or -iname '*.html' -or -iname '*.css' -or -iname '*.jpg' -or -iname '*.png' -or -iname '*.gif' -exec chmod -x {} \;"
 
+function lsq() {
+  ls -lh $@ | tr -s ' ' | cut -d' ' -f5,8
+}
+
 function take {
   mkdir $1
   cd $1
@@ -27,6 +31,7 @@ function usage {
 alias s="apt-cache search"
 alias i="sudo apt-get install"
 alias r="rails"
+alias j="jruby -S "
 
 
 ### Git ###
