@@ -18,6 +18,6 @@ unless defined?(Rails) || ENV.include?('RAILS_ENV')
 
 
   def clear
-    print "e[He[2j"
+    print "\e[He[2j\e[2J"
   end
 end
