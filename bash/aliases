@@ -24,8 +24,20 @@ function take {
   cd $1
 }
 
+# Show most used commands from bash history
 function usage {
   history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
+}
+
+# Usage .. [n]
+function .. (){
+  local arg=${1:-1};
+  local dir=""
+  while [ $arg -gt 0 ]; do
+    dir="../$dir"
+    arg=$(($arg - 1));
+  done
+  cd $dir #>&/dev/null
 }
 
 alias s="apt-cache search"
