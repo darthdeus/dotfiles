@@ -44,7 +44,7 @@ alias s="apt-cache search"
 alias i="sudo apt-get install"
 alias r="rails"
 alias j="jruby -S "
-
+alias e="redcar"
 
 ### Git ###
 alias git=hub
