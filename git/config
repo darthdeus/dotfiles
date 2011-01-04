@@ -17,7 +17,7 @@
 [apply]
 	whitespace = nowarn
 [core]
-	excludesfile = /home/darth/.gitignore
+	excludesfile = ~/.gitignore
 	autocrlf = false
 [color]
 	ui = auto
