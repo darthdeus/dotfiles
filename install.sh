@@ -4,6 +4,7 @@ cat <<'message'
   installing required packages
 --------------------------------
 message
+# TODO - add condition for OS X
 ./script/install/required.sh
 
 cat <<'message'

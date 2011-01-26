@@ -40,6 +40,6 @@ BMAGENTA='\e[45m'
 BCYAN='\e[46m'
 BWHITE='\e[47m'
 
-PS1='\[\033[01;31m\]\h\[\033[01;34m\] \w $(vcprompt)\n\$\[\033[00m\] '
+PS1='\[\033[01;31m\]macbook\[\033[01;34m\] \w $(vcprompt)\n\$\[\033[00m\] '
 
 

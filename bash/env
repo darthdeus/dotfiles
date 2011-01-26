@@ -1,11 +1,16 @@
 #!/bin/bash
 
-ANT_PATH="/opt/apache-ant/bin"
-ANDROID_PATH="/opt/android-sdk/tools:/opt/android-sdk/platform-tools"
-PATH="$ANT_PATH:$PATH:~/bin:$ANDROID_PATH"
-export JAVA_HOME="/usr/lib/jvm/java-6-sun"
-export EDITOR="vim"
+# TODO - add condition for Ubuntu
 
+# ANT_PATH="/opt/apache-ant/bin"
+# ANDROID_PATH="/opt/android-sdk/tools:/opt/android-sdk/platform-tools"
+# PATH="$ANT_PATH:$PATH:~/bin:$ANDROID_PATH"
+# export JAVA_HOME="/usr/lib/jvm/java-6-sun"
+# export EDITOR="vim"
+
+
+export EDITOR="mate"
+PATH="~/bin:/usr/local/bin:$PATH"
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
@@ -16,3 +21,7 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
+
+# TODO - add condition for OS X
+export MAGICK_HOME="/usr/local/Cellar/imagemagick/6.6.4-5"
+export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib"
