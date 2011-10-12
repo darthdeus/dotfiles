@@ -9,8 +9,8 @@
 # export EDITOR="vim"
 
 
-export EDITOR="mate"
-PATH="~/bin:/usr/local/bin:$PATH"
+export EDITOR="mate -w"
+PATH="~/bin:/usr/local/bin:/usr/local/sbin:~/.cabal/bin:$PATH"
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
@@ -25,3 +25,4 @@ HISTFILESIZE=2000
 # TODO - add condition for OS X
 export MAGICK_HOME="/usr/local/Cellar/imagemagick/6.6.4-5"
 export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib"
+export M2_HOME="~/bin/maven"
