@@ -2,6 +2,8 @@ require 'rubygems'
 
 unless defined?(Rails) || ENV.include?('RAILS_ENV')
   require 'irb/completion'
+  require 'irb/ext/save-history'
+  
   require 'map_by_method'
   require 'what_methods'
   require 'ap'
@@ -10,8 +12,8 @@ unless defined?(Rails) || ENV.include?('RAILS_ENV')
 
   IRB.conf[:AUTO_INDENT] = true
   IRB.conf[:PROMPT_MODE] = :SIMPLE
-  IRB.conf[:SAVE_HISTORY] = 100
-  #IRB.conf[:HISTORY_FALE] = "#{ENV['HOME']}/.irb_history"
+  IRB.conf[:SAVE_HISTORY] = 1000
+  IRB.conf[:HISTORY_FALE] = "#{ENV['HOME']}/.irb_history"
 
   Wirble.init(:skip_prompt => true, :skip_history => true)
   Wirble.colorize
@@ -21,3 +23,5 @@ unless defined?(Rails) || ENV.include?('RAILS_ENV')
     print "\e[He[2j\e[2J"
   end
 end
+
+load File.expand_path("../.railsrc", __FILE__) if defined?(Rails)
