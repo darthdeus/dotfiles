@@ -1,28 +1,16 @@
-  501  defaults write com.apple.finder QLPanelAnimationDuration -int 0;killall Finde
-  502  defaults write com.apple.finder QLPanelAnimationDuration -int 0;killall Finder
-  503  defaults write com.apple.dock expose-animation-duration -int 0;killall Dock
-  504  defaults write -g AppleEdgeResizeExteriorSize 10
-  505  defaults -currentHost write -g AppleFontSmoothing -int 2
-  506  defaults write com.apple.finder PathBarRootAtHome -bool TRUE;killall Finder
-  507  defaults delete com.apple.finder PathBarRootAtHome;killall Finder
-  508  pmset
-  509  man pmset
-  510  pmset noidle
-  511  yes
-  512  yes > /dev/null
-  513  cat /dev/null 
-  514  defaults write com.apple.Finder AppleShowAllFiles FALSE
-  515  killall finder
-  516  killall Finder
-  517  chflags nohidden ~/Library/
-  518  defaults delete com.apple.finder AppleShowAllFiles;killall Finder
-  519  defaults write com.apple.finder _FXShowPosixPathInTitle -bool TRUE;killall Finder
-  520  defaults write com.apple.dock tilesize -int 8;killall Dock
-  521  defaults delete com.apple.dock tilesize;killall Dock
-  522  defaults write com.apple.LaunchServices LSQuarantine -bool FALSE
-  523  ls
-  524  cd Documents/
-  525  ls
-  526  prettify_json.rb 
-  527  sudo pmset -b disksleep 5
+defaults write com.apple.finder QLPanelAnimationDuration -int 0;killall Finde
+defaults write com.apple.finder QLPanelAnimationDuration -int 0;killall Finder
+defaults write com.apple.dock expose-animation-duration -int 0;killall Dock
+defaults write -g AppleEdgeResizeExteriorSize 10
+defaults -currentHost write -g AppleFontSmoothing -int 2
+defaults write com.apple.finder PathBarRootAtHome -bool TRUE;killall Finder
+defaults delete com.apple.finder PathBarRootAtHome;killall Finder
+defaults write com.apple.Finder AppleShowAllFiles FALSE; killall Finder
+chflags nohidden ~/Library/
+defaults delete com.apple.finder AppleShowAllFiles;killall Finder
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool TRUE;killall Finder
+defaults write com.apple.dock tilesize -int 8;killall Dock
+defaults delete com.apple.dock tilesize;killall Dock
+defaults write com.apple.LaunchServices LSQuarantine -bool FALSE
+sudo pmset -b disksleep 5
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
