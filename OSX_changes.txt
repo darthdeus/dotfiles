@@ -14,3 +14,6 @@ defaults delete com.apple.dock tilesize;killall Dock
 defaults write com.apple.LaunchServices LSQuarantine -bool FALSE
 sudo pmset -b disksleep 5
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+
+# prevent textmate from storing state information in meta files with ._
+defaults write com.macromates.textmate OakDocumentDisableFSMetaData 1
