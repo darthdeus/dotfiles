@@ -71,3 +71,12 @@ alias gba="git branch -a"
 alias gl="git pull"
 alias gd="git diff"
 alias gco="git checkout"
+
+
+# IP related stuff
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias flush="dscacheutil -flushcache"
+
+alias gzip="gzip -9n"
+alias ql="qlmanage -p 2>/dev/null" # preview a file using QuickLook
+

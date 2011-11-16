@@ -1,2 +1,2 @@
 #!/bin/bash
-bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
+bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)

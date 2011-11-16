@@ -26,3 +26,4 @@ if [[ -n "$PS1" ]]; then
 fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
