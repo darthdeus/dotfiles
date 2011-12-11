@@ -21,7 +21,8 @@ if [[ -n "$PS1" ]]; then
       . /etc/bash_completion
   fi
 
-  . ~/bin/dotfiles/bash/config
+  # . ~/bin/dotfiles/bash/config
+  . ~/bin/dotfiles/bash/bash_colors.sh
   . ~/bin/dotfiles/bash/aliases
 fi
 
