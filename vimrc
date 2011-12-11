@@ -1,8 +1,8 @@
-" This is Gary Bernhardt's .vimrc file
-"
-" Be warned: this has grown slowly over years and may not be internally
-" consistent.
+" This was originally Gary bernhardt's .vimrc file.
+" I've been slowly trying to understand it's magic
+" and make it even cooler.
 
+" TODO - what is evim?
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish
@@ -198,89 +198,6 @@ function! ClassToFilename(class_name)
     return file_name
 endfunction
 
-function! ModuleTestPath()
-    let file_path = @%
-    let components = split(file_path, '/')
-    let path_without_extension = substitute(file_path, '\.py$', '', '')
-    let test_path = 'tests/unit/' . path_without_extension
-    return test_path
-endfunction
-
-function! NameOfCurrentClass()
-    let save_cursor = getpos(".")
-    normal $<cr>
-    call PythonDec('class', -1)
-    let line = getline('.')
-    call setpos('.', save_cursor)
-    let match_result = matchlist(line, ' *class \+\(\w\+\)')
-    let class_name = ClassToFilename(match_result[1])
-    return class_name
-endfunction
-
-function! TestFileForCurrentClass()
-    let class_name = NameOfCurrentClass()
-    let test_file_name = ModuleTestPath() . '/test_' . class_name . '.py'
-    return test_file_name
-endfunction
-
-function! TestModuleForCurrentFile()
-    let test_path = ModuleTestPath()
-    let test_module = substitute(test_path, '/', '.', 'g')
-    return test_module
-endfunction
-
-function! RunTestsForFile(args)
-    if @% =~ 'test_'
-        call RunTests('%', a:args)
-    else
-        let test_file_name = TestModuleForCurrentFile()
-        call RunTests(test_file_name, a:args)
-    endif
-endfunction
-
-function! RunAllTests(args)
-    silent ! echo
-    silent ! echo -e "\033[1;36mRunning all unit tests\033[0m"
-    silent w
-    exec "make!" . a:args
-endfunction
-
-function! JumpToError()
-    if getqflist() != []
-        for error in getqflist()
-            if error['valid']
-                break
-            endif
-        endfor
-        let error_message = substitute(error['text'], '^ *', '', 'g')
-        silent cc!
-        exec ":sbuffer " . error['bufnr']
-        call RedBar()
-        echo error_message
-    else
-        call GreenBar()
-        echo "All tests passed"
-    endif
-endfunction
-
-function! RedBar()
-    hi RedBar ctermfg=white ctermbg=red guibg=red
-    echohl RedBar
-    echon repeat(" ",&columns - 1)
-    echohl
-endfunction
-
-function! GreenBar()
-    hi GreenBar ctermfg=white ctermbg=green guibg=green
-    echohl GreenBar
-    echon repeat(" ",&columns - 1)
-    echohl
-endfunction
-
-function! JumpToTestsForClass()
-    exec 'e ' . TestFileForCurrentClass()
-endfunction
-
 let mapleader=","
 " nnoremap <leader>m :call RunTestsForFile('--machine-out')<cr>:redraw<cr>:call JumpToError()<cr>
 " nnoremap <leader>M :call RunTestsForFile('')<cr>
@@ -290,10 +207,12 @@ let mapleader=","
 " nnoremap <leader>a :call RunAllTests('')<cr>:redraw<cr>:call JumpToError()<cr>
 " nnoremap <leader>A :call RunAllTests('')<cr>
 
-nnoremap <leader>t :call RunAllTests('')<cr>:redraw<cr>:call JumpToError()<cr>
-nnoremap <leader>T :call RunAllTests('')<cr>
+" nnoremap <leader>t :call RunAllTests('')<cr>:redraw<cr>:call JumpToError()<cr>
+" nnoremap <leader>T :call RunAllTests('')<cr>
 
 " nnoremap <leader>t :call JumpToTestsForClass()<cr>
+
+" TODO - is this switch between active files in a buffer?
 nnoremap <leader><leader> <c-^>
 
 " highlight current line
@@ -306,6 +225,7 @@ set cmdheight=2
 set guioptions-=L
 set guioptions-=r
 
+" TODO - what's <c-h>?
 " Use <c-h> for snippets
 let g:NERDSnippets_key = '<c-h>'
 
@@ -336,14 +256,18 @@ set number
 set numberwidth=5
 
 if has("gui_running")
+    " TODO - what's this?
     " source ~/proj/vim-complexity/repo/complexity.vim
 endif
 
+" TODO - haha!
 " Seriously, guys. It's not like :W is bound to anything anyway.
 command! W :w
 
+" TODO - ok seriously, I have no idea what this does
 map <leader>rm :BikeExtract<cr>
 
+" TODO - try to rewrite this
 function! ExtractVariable()
     let name = input("Variable name: ")
     if name == ''
@@ -361,6 +285,7 @@ function! ExtractVariable()
     normal! $p
 endfunction
 
+" TODO - try to rewrite this
 function! InlineVariable()
     " Copy the variable under the cursor into the 'a' register
     " XXX: How do I copy into a variable so I don't pollute the registers?
@@ -382,8 +307,9 @@ function! InlineVariable()
     exec ':.s/\<' . @a . '\>/' . @b
 endfunction
 
-vnoremap <leader>rv :call ExtractVariable()<cr>
+vnoremap <leader>rv :calv ExtractVariable()<cr>
 nnoremap <leader>ri :call InlineVariable()<cr>
+" TODO - how does this work?
 " Find comment
 map <leader>/# /^ *#<cr>
 " Find function
@@ -393,18 +319,20 @@ map <leader>/c /^ *class\><cr>
 " Find if
 map <leader>/i /^ *if\><cr>
 " Delete function
-" \%$ means 'end of file' in vim-regex-speak
+" \%$ means 'end of file' in vim-regex-speak    TODO - why?
 map <leader>df d/\(^ *def\>\)\\|\%$<cr>
+" TODO - I have no idea what this means
 com! FindLastImport :execute'normal G<CR>' | :execute':normal ?^\(from\|import\)\><CR>'
 map <leader>/m :FindLastImport<cr>
 
+" TODO - remove unnecessary whitespaces?
+" TODO - what is <c-o>?
 map <leader>ws :%s/ *$//g<cr><c-o><cr>
 
 " Always show tab bar
 set showtabline=2
 
 " map <leader>f :CommandT<cr>
-
 augroup mkd
     autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
     autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
@@ -414,6 +342,8 @@ augroup END
 
 map <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
 
+" TODO - does this change only one quote, or both wrapping around something?
+" TODO - maybe rewrite to swap wrapping quotes?
 " Make <leader>' switch between ' and "
 nnoremap <leader>' ""yls<c-r>={'"': "'", "'": '"'}[@"]<cr><esc>
 
