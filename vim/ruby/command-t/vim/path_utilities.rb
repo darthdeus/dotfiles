@@ -1,4 +1,4 @@
-# Copyright 2010 Wincent Colaiuta. All rights reserved.
+# Copyright 2010-2011 Wincent Colaiuta. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -21,20 +21,20 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-module CommandT
-  module Scanner
-    # Common methods to be inherited by concrete subclasses.
-    class Base
-      def flush
-        @paths = nil
-      end
+require 'command-t/vim'
 
-      def path= str
-        if @path != str
-          @path = str
-          flush
-        end
+module CommandT
+  module VIM
+    module PathUtilities
+
+    private
+
+      def relative_path_under_working_directory path
+        # any path under the working directory will be specified as a relative
+        # path to improve the readability of the buffer list etc
+        pwd = File.expand_path(VIM::pwd) + '/'
+        path.index(pwd) == 0 ? path[pwd.length..-1] : path
       end
-    end # class AbstractScanner
-  end # module Scanner
+    end # module PathUtilities
+  end # module VIM
 end # module CommandT

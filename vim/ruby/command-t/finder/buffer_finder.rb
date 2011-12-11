@@ -1,4 +1,4 @@
-# Copyright 2010 Wincent Colaiuta. All rights reserved.
+# Copyright 2010-2011 Wincent Colaiuta. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -21,20 +21,15 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-module VIM
-  class Window
-    def select
-      return true if selected?
-      initial = $curwin
-      while true do
-        VIM::command 'wincmd w'             # cycle through windows
-        return true if $curwin == self      # have selected desired window
-        return false if $curwin == initial  # have already looped through all
-      end
-    end
+require 'command-t/ext' # CommandT::Matcher
+require 'command-t/scanner/buffer_scanner'
+require 'command-t/finder'
 
-    def selected?
-      $curwin == self
+module CommandT
+  class BufferFinder < Finder
+    def initialize
+      @scanner = BufferScanner.new
+      @matcher = Matcher.new @scanner, :always_show_dot_files => true
     end
-  end # class Window
-end # module VIM
+  end # class BufferFinder
+end # CommandT

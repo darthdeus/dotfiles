@@ -178,10 +178,11 @@ function! InsertSnippetWrapper()
 endfunction
 inoremap ; <c-r>=InsertSnippetWrapper()<cr>
 
-if version >= 700
-    autocmd FileType python set omnifunc=pythoncomplete#Complete
-    let Tlist_Ctags_Cmd='~/bin/ctags'
-endif
+" TODO - some python thing? why ctags?
+" if version >= 700
+"     autocmd FileType python set omnifunc=pythoncomplete#Complete
+"     let Tlist_Ctags_Cmd='~/bin/ctags'
+" endif
 
 " TODO - why is here used color literal instead of a variable?
 function! RunTests(target, args)
@@ -242,9 +243,6 @@ set switchbuf=useopen
 autocmd BufRead,BufNewFile *.html source ~/.vim/indent/html_grb.vim
 autocmd FileType htmldjango source ~/.vim/indent/html_grb.vim
 autocmd! BufRead,BufNewFile *.sass setfiletype sass 
-
-" Map ,e to open files in the same directory as the current file
-map <leader>e :e <C-R>=expand("%:h")<cr>/
 
 if has("python")
     source ~/.vim/ropevim/rope.vim
@@ -347,3 +345,39 @@ map <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
 " Make <leader>' switch between ' and "
 nnoremap <leader>' ""yls<c-r>={'"': "'", "'": '"'}[@"]<cr><esc>
 
+" Map ,e to open files in the same directory as the current file
+" TODO - rewriting this to use %%
+" map <leader>e :e <C-R>=expand("%:h")<cr>/
+
+cnoremap %% <C-R>=expand('%:h').'/'<CR>
+map <leader>e :edit %%
+map <leader>v :view %%
+
+" Open files with <leader>f
+map <leader>f :CommandTFlush<CR>\|:CommandT<CR>
+" Opne files, limited to the directory of the current files, with <leader>gf
+map <leader>gf :CommandTFlush<CR>\|:CommandT %%<CR>
+
+" Rails specific keystrokes
+map <leader>gr :topleft :split config/routes.rb<CR>
+map <leader>gg :topleft 50 :split Gemfile<CR>
+
+map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
+map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
+map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
+map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
+map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
+map <leader>gt :CommandTFlush<cr>\|:CommandT spec<cr>
+map <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
+map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
+map <leader>gs :CommandTFlush<cr>\|:CommandT app/assets/stylesheets<cr>
+map <leader>gj :CommandTFlush<cr>\|:CommandT app/assets/javascripts<cr>
+
+
+set winwidth=84
+" We have to have a winheight bigger than we want to set winminheight. But if
+" we set winheight to be huge before winminheight, the winminheight set will
+" fail.
+set winheight=5
+set winminheight=5
+set winheight=999
