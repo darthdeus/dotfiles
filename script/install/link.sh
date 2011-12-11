@@ -5,3 +5,5 @@ ln -nsf ~/bin/dotfiles/irbrc ~/.irbrc
 ln -nsf ~/bin/dotfiles/railsrc ~/.railsrc
 ln -nsf ~/bin/dotfiles/git/config ~/.gitconfig
 ln -nsf ~/bin/dotfiles/git/ignore ~/.gitignore
+ln -nsf ~/bin/dotfiles/vim ~/.vim
+ln -nsf ~/bin/dotfiles/vimrc ~/.vimrc
