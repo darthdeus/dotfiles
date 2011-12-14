@@ -6,10 +6,11 @@
 # ANDROID_PATH="/opt/android-sdk/tools:/opt/android-sdk/platform-tools"
 # PATH="$ANT_PATH:$PATH:~/bin:$ANDROID_PATH"
 # export JAVA_HOME="/usr/lib/jvm/java-6-sun"
-# export EDITOR="vim"
+
+export EDITOR="vim"
 
 
-export EDITOR="mate -w"
+# export EDITOR="mate -w"
 PATH="~/bin:/usr/local/bin:/usr/local/sbin:~/.cabal/bin:$PATH"
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
