@@ -1,33 +1,46 @@
 [user]
-	name = Jakub Arnold
-	email = darthdeus@gmail.com
+  name = Jakub Arnold
+  email = darthdeus@gmail.com
 [github]
-	user = darthdeus
-	token = 
+  user = darthdeus
+  token = 
 [alias]
-	co = checkout
   st = status
   ci = commit
+  co = checkout
   br = branch
   df = diff
+  dc = diff --cached
+  amend = commit --amend
+  head = !git -l -1
+  h = !git head
+  r = !git l -20
+  ra = !git r --all
+  ff = merge --ff-only
+  pullff = pull --ff-only
+  noff = merge --no-ff
+  l = log --graph --abbrev-commit --date=relative
+  la = !git l --all
   lg = log -p
+  b = branch
+  dh1 = diff HEAD~1
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   ls = ls-files
   aa = add --all
 [apply]
-	whitespace = nowarn
+  whitespace = nowarn
 [core]
-	excludesfile = ~/.gitignore
-	autocrlf = false
+  excludesfile = ~/.gitignore
+  autocrlf = false
 [color]
-	ui = auto
+  ui = auto
 [color "branch"]
   current = yellow reverse
   local = yellow
   remote = green
 [color "diff"]
-  meta = yellow 
+  meta = yellow
   frag = magenta
   old = red
   new = green
@@ -35,6 +48,7 @@
   added = yellow
   changed = green
   untracked = cyan
-
+[merge]
+  tool = vimdiff
 [branch]
-	autosetupmerge = true
+  autosetupmerge = true
