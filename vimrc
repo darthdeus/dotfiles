@@ -36,6 +36,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+" TODO - VCS? wut wut?
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
@@ -60,8 +61,8 @@ set showcmd		" display incomplete commands
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-  " set guifont=Monaco:h14
-  set guifont=Inconsolata-dz:h14
+  set guifont=Monaco:h11
+  " set guifont=Inconsolata-dz:h14
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -116,8 +117,9 @@ set hls
 
 if has("gui_running")
   " GRB: set font"
-  ":set nomacatsui anti enc=utf-8 gfn=Monaco:h12
+  " :set nomacatsui anti enc=utf-8 gfn=Monaco:h12
 
+  " TODO - change these to preferred size
   " GRB: set window size"
   :set lines=100
   :set columns=171
@@ -242,7 +244,7 @@ set switchbuf=useopen
 
 autocmd BufRead,BufNewFile *.html source ~/.vim/indent/html_grb.vim
 autocmd FileType htmldjango source ~/.vim/indent/html_grb.vim
-autocmd! BufRead,BufNewFile *.sass setfiletype sass 
+autocmd! BufRead,BufNewFile *.sass setfiletype sass
 
 if has("python")
     source ~/.vim/ropevim/rope.vim
@@ -338,6 +340,7 @@ augroup END
 
 " set makeprg=python\ -m\ nose.core\ --machine-out
 
+" TODO - paste?
 map <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
 
 " TODO - does this change only one quote, or both wrapping around something?
@@ -384,3 +387,45 @@ set winheight=999
 
 " Load pathogen for additional modules
 call pathogen#infect()
+
+
+function! RunTests(filename)
+    " Write the file and run tests for the given filename
+    :w
+    :silent !echo;echo;echo;echo;echo
+    exec ":!bundle exec rspec " . a:filename
+endfunction
+
+function! SetTestFile()
+    " Set the spec file that tests will be run for.
+    let t:grb_test_file=@%
+endfunction
+
+function! RunTestFile(...)
+    if a:0
+        let command_suffix = a:1
+    else
+        let command_suffix = ""
+    endif
+
+    " Run the tests for the previously-marked file.
+    let in_spec_file = match(expand("%"), '_spec.rb$') != -1
+    if in_spec_file
+        call SetTestFile()
+    elseif !exists("t:grb_test_file")
+        return
+    end
+    call RunTests(t:grb_test_file . command_suffix)
+endfunction
+
+function! RunNearestTest()
+    let spec_line_number = line('.')
+    call RunTestFile(":" . spec_line_number)
+endfunction
+
+" Run this file
+map <leader>t :call RunTestFile()<cr>
+" Run only the example under the cursor
+map <leader>T :call RunNearestTest()<cr>
+" Run all test files
+map <leader>a :call RunTests('spec')<cr>
