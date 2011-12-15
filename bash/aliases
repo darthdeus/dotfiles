@@ -61,7 +61,7 @@ function gg() {
   git commit -v -a -m "$*"
 }
 
-alias ga="git add"
+alias ga="git add --all"
 alias gc="git commit -v"
 alias gp="git push"
 alias gs="git status"
