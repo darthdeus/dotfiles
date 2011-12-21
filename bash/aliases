@@ -55,7 +55,8 @@ alias j="jruby -S "
 # alias e="redcar"
 
 ### Git ###
-alias git=hub
+# TODO - check if this hurts performance
+# alias git=hub
 
 function gg() {
   git commit -v -a -m "$*"

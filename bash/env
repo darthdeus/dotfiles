@@ -70,7 +70,7 @@ grb_git_prompt() {
         echo ${GIT_PROMPT}
     fi
 }
-PS1="${YELLOW}macbook${NORMAL}: \w \$(grb_git_prompt) \n\$ "
+PS1="${NORMAL}macbook${NORMAL}: \w \$(grb_git_prompt) \n\$ "
 
 
 function gd() { git diff $* | view -; }
