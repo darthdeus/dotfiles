@@ -69,9 +69,15 @@ alias gs="git status"
 alias gst="git status"
 alias gb="git branch"
 alias gba="git branch -a"
-alias gl="git pull"
+alias gl="git lola"
 alias gd="git diff"
 alias gco="git checkout"
+alias gf="git fetch"
+
+
+alias g="git"
+alias d="git diff"
+alias s="git status --short"
 
 
 # IP related stuff
