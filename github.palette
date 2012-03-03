@@ -20,13 +20,14 @@ vim_colors "github" do
 
   Title        "EF5939"
   WarningMsg   "EF5939"
-  SpecialKey   "FFF",    "F10", :gui => :italic
+  SpecialKey   "000",    "AAA", :gui => :italic
   MatchParen   "000",    "CDCDFD"
   Underlined   "000",    :gui => :underline
   Directory    "900"
   Visual       "FFF",    "3465A4"
   VisualNOS    "FFF",    "204A87"
 
+# TODO
   IncSearch    "000",    "CDCDFD", :gui => :italic
   Search       "000",    "CDCDFD", :gui => :italic
   Ignore       "808080"
@@ -44,7 +45,7 @@ vim_colors "github" do
   rubySymbol   "960B73"
 
   Error        "F8F8FF", "FF1100"
-  Todo         "F8F8FF", "FF1100", :gui => :underline
+  Todo         "991100", "EEE", :gui => :bold
   Label        "000000", :gui => :bold
   StorageClass "000000", :gui => :bold
   Structure    "000000", :gui => :bold
@@ -61,9 +62,9 @@ vim_colors "github" do
   cucumberTags "333333", "FFFF66", :gui => :bold
   htmlTagN :gui => :bold
 
-  Cursor       "F8F8FF", "444454"
-  CursorLine   :bg => "D8D8DD"
-  CursorColumn :bg => "D8D8DD"
+  Cursor       "F8F8FF", "FFF"
+  CursorLine   :bg => "DEDEDE"
+  CursorColumn :bg => "DEDEDE"
 
   link :rubyStringDelimiter, :to => :String
 end

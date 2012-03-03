@@ -33,7 +33,7 @@ hi ModeMsg      guifg=#990000 ctermfg=88   gui=NONE cterm=NONE
 hi MoreMsg      guifg=#990000 ctermfg=88   gui=NONE cterm=NONE
 hi Title        guifg=#EF5939 ctermfg=203  gui=NONE cterm=NONE
 hi WarningMsg   guifg=#EF5939 ctermfg=203  gui=NONE cterm=NONE
-hi SpecialKey   guifg=#FFFFFF ctermfg=231  guibg=#FF1100 ctermbg=196  gui=ITALIC cterm=NONE
+hi SpecialKey   guifg=#000000 ctermfg=16   guibg=#AAAAAA ctermbg=248  gui=ITALIC cterm=NONE
 hi MatchParen   guifg=#000000 ctermfg=16   guibg=#CDCDFD ctermbg=189  gui=NONE cterm=NONE
 hi Underlined   guifg=#000000 ctermfg=16   gui=UNDERLINE cterm=UNDERLINE
 hi Directory    guifg=#990000 ctermfg=88   gui=NONE cterm=NONE
@@ -55,7 +55,7 @@ hi Todo         guifg=#FFFFFF ctermfg=231  guibg=#990000 ctermbg=88   gui=BOLD c
 hi Special      guifg=#159828 ctermfg=28   gui=BOLD cterm=BOLD
 hi rubySymbol   guifg=#960B73 ctermfg=89   gui=NONE cterm=NONE
 hi Error        guifg=#F8F8FF ctermfg=231  guibg=#FF1100 ctermbg=196  gui=NONE cterm=NONE
-hi Todo         guifg=#F8F8FF ctermfg=231  guibg=#FF1100 ctermbg=196  gui=UNDERLINE cterm=UNDERLINE
+hi Todo         guifg=#991100 ctermfg=88   guibg=#EEEEEE ctermbg=255  gui=BOLD cterm=BOLD
 hi Label        guifg=#000000 ctermfg=16   gui=BOLD cterm=BOLD
 hi StorageClass guifg=#000000 ctermfg=16   gui=BOLD cterm=BOLD
 hi Structure    guifg=#000000 ctermfg=16   gui=BOLD cterm=BOLD
@@ -70,8 +70,8 @@ hi TabLineFill  guifg=#404040 ctermfg=238  guibg=#DDDDDD ctermbg=253  gui=NONE c
 hi TabLineSel   guifg=#404040 ctermfg=238  gui=BOLD cterm=BOLD
 hi cucumberTags guifg=#333333 ctermfg=236  guibg=#FFFF66 ctermbg=227  gui=BOLD cterm=BOLD
 hi htmlTagN     gui=BOLD cterm=BOLD
-hi Cursor       guifg=#F8F8FF ctermfg=231  guibg=#444454 ctermbg=238  gui=NONE cterm=NONE
-hi CursorLine   guibg=#D8D8DD ctermbg=253  gui=NONE cterm=NONE
-hi CursorColumn guibg=#D8D8DD ctermbg=253  gui=NONE cterm=NONE
+hi Cursor       guifg=#F8F8FF ctermfg=231  guibg=#FFFFFF ctermbg=231  gui=NONE cterm=NONE
+hi CursorLine   guibg=#DEDEDE ctermbg=253  gui=NONE cterm=NONE
+hi CursorColumn guibg=#DEDEDE ctermbg=253  gui=NONE cterm=NONE
 
 hi link rubyStringDelimiter String
