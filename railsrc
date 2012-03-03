@@ -1,1 +1,1 @@
--d sqlite3 -T --skip-bundle --old-style-hash
+-T --skip-bundle --old-style-hash
