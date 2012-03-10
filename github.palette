@@ -63,7 +63,7 @@ vim_colors "github" do
   htmlTagN :gui => :bold
 
   Cursor       "F8F8FF", "FFF"
-  CursorLine   :bg => "DEDEDE"
+  CursorLine   :bg => "E5E5E5"
   CursorColumn :bg => "DEDEDE"
 
   link :rubyStringDelimiter, :to => :String
