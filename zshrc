@@ -31,15 +31,21 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-# plugins=(git)
+plugins=(bundler)
 
 source $ZSH/oh-my-zsh.sh
 
 # source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
 
-PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:./node_modules/.bin:$PATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+#if [ -d $HOME/.rbenv ]; then
+#  export PATH="$HOME/.rbenv/bin:$PATH"
+#  eval "$(rbenv init -)"
+#fi
+
 
 if [[ -f "$HOME/.amazon_keys" ]]; then
   source "$HOME/.amazon_keys";

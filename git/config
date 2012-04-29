@@ -28,11 +28,14 @@
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   ls = ls-files
   aa = add --all
+  type = cat-file -t
+  dump = cat-file -p
 [apply]
   whitespace = nowarn
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = /Users/darthdeus/.gitignore
   autocrlf = false
+	quotepath = false
 [color]
   ui = auto
 [color "branch"]
@@ -50,7 +53,22 @@
   untracked = cyan
 [merge]
   tool = vimdiff
+  defaultToUpstream = true
 [branch]
   autosetupmerge = true
 [http]
   sslverify = false
+[mergetool]
+	keepBackup = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[diff]
+	tool = Kaleidoscope
