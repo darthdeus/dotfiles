@@ -22,24 +22,30 @@
 (setq inferior-lisp-program "/usr/local/bin/clisp")
 (require 'rainbow-delimiters)
 
-;; PeepOpen
+;;;; PeepOpen
 (add-to-list 'load-path "~/.emacs.d/vendor/textmate.el")
 (require 'textmate)
 (add-to-list 'load-path "~/.emacs.d/vendor/")
 (require 'peepopen)
 (textmate-mode)
 
-;; JavaScript
-;(autoload 'js2-mode "js2-mode" nil t)
-;(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-;(require 'js2-mode)
+;; add newline if at the end of file
+(setq next-line-add-newlines t)
 
+;; show the menu bar
+(menu-bar-mode)
+
+;;;; JavaScript
+(autoload 'js2-mode "js2-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(require 'js2-mode)
+
+(require 'stylus-mode)
 
 ;; For Emacs 23 or Aquamacs, use this to open files in the existing frame:
-;;
 (setq ns-pop-up-frames nil)
 
-;; CoffeeScript
+;;;; CoffeeScript
 (defun coffee-custom ()
   "coffee-mode-hook"
   (set (make-local-variable 'tab-width) 2))
@@ -47,11 +53,10 @@
           '(lambda () (coffee-custom)))
 
 
-;; add newline if at the end of file
-(setq next-line-add-newlines t)
-
-;; show the menu bar
-(menu-bar-mode)
+;;;; SCSS
+(add-hook 'scss-mode-hook
+          '(lambda ()
+             (set (make-local-variable 'tab-width) 2)))
 
 (defun push-mark-no-activate ()
   "Pushes `point' to `mark-ring' and does not activate the region
@@ -287,25 +292,31 @@ instead."
 (global-set-key (kbd "M-n") 'smart-symbol-go-forward)
 (global-set-key (kbd "M-p") 'smart-symbol-go-backward)
 
+;;;; TRAMP mode
 (require 'tramp)
 ;; enable sudo
 (set-default 'tramp-default-proxies-alist (quote ((".*" nil  "/ssh:deploy@%h:"))))
 
 
-
-;; YAML
+;;;; YAML
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (add-hook 'yaml-mode-hook
           '(lambda ()
              (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
+;;;; el-get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (unless (require 'el-get nil t)
   (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
                 (lambda (s)
                   (end-of-buffer)
                   (eval-print-last-sexp))))
+
+(el-get 'sync)
+
+(color-theme-tomorrow-night)
+
 
 ;; Strip all trailing whitespace when a file is saved
 (add-hook 'file-save-hook
@@ -319,17 +330,20 @@ instead."
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
 
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
+;; '(custom-safe-themes (quote ("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
  '(js2-always-indent-assigned-expr-in-decls-p t)
  '(js2-auto-indent-p t)
  '(js2-basic-offset 2)
  '(js2-cleanup-whitespace t)
  '(js2-indent-on-enter-key t)
+; '(rspec-spec-command "rspec")
+; '(rspec-use-rake-flag nil)
  '(scss-compile-at-save nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
