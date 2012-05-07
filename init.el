@@ -35,6 +35,11 @@
 ;; show the menu bar
 (menu-bar-mode)
 
+;;;; Ruby
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
+(add-hook 'ruby-mode-hook 'rspec-mode)
+
+
 ;;;; JavaScript
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
@@ -315,13 +320,18 @@ instead."
 
 (el-get 'sync)
 
-(color-theme-tomorrow-night)
+;;;; yasnippet
+(require 'yasnippet)
+(setq yas/snippet-dirs '("~/.emacs.d/el-get/yasnippet/snippets" "~/.emacs.d/el-get/yasnippet/extras/imported"))
+(yas/global-mode 1)
+
+;;(color-theme-tomorrow-night)
 
 
 ;; Strip all trailing whitespace when a file is saved
 (add-hook 'file-save-hook
           '(lambda ()
-             (delete-trailing-whitespace)))   
+             (delete-trailing-whitespace)))
 
 
 (require 'sws-mode)
@@ -330,20 +340,18 @@ instead."
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-;; '(custom-safe-themes (quote ("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
  '(js2-always-indent-assigned-expr-in-decls-p t)
  '(js2-auto-indent-p t)
  '(js2-basic-offset 2)
  '(js2-cleanup-whitespace t)
  '(js2-indent-on-enter-key t)
-; '(rspec-spec-command "rspec")
-; '(rspec-use-rake-flag nil)
+ '(rspec-use-rake-flag nil)
+ '(rspec-use-rvm nil)
  '(scss-compile-at-save nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
