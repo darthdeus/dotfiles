@@ -1,7 +1,19 @@
-;; package management
+;;;; el-get
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(unless (require 'el-get nil t)
+  (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+                (lambda (s)
+                  (let (el-get-master-branch)
+                    (goto-char (point-max))
+                    (eval-print-last-sexp)))))
+(el-get 'sync)
+
+
 (require 'package)
 (add-to-list 'package-archives
-             '("elpa" . "http://tromey.com/elpa/") t)
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+            '("elpa" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
@@ -9,7 +21,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(starter-kit starter-kit-lisp clojure-mode)
+(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings)
   "A list of packages to ensure are installed at launch")
 
 (dolist (p my-packages)
@@ -22,8 +34,9 @@
 (setq inferior-lisp-program "/usr/local/bin/clisp")
 (require 'rainbow-delimiters)
 
+(setq coffee-command "/usr/local/bin/coffee")
+
 ;;;; PeepOpen
-(add-to-list 'load-path "~/.emacs.d/vendor/textmate.el")
 (require 'textmate)
 (add-to-list 'load-path "~/.emacs.d/vendor/")
 (require 'peepopen)
@@ -36,14 +49,24 @@
 (menu-bar-mode)
 
 ;;;; Ruby
-(add-hook 'ruby-mode-hook 'flymake-ruby-load)
-(add-hook 'ruby-mode-hook 'rspec-mode)
+;; (add-hook 'ruby-mode-hook 'flymake-ruby-load)
+(require 'rspec-mode)
 
+;; TODO - why is the default rspec-mode-verifible-keymap instead of
+;; rspec-mode-keymap ?
+;; https://github.com/pezra/rspec-mode/blob/master/rspec-mode.el#L470
+(add-hook 'ruby-mode-hook
+          (lambda () (local-set-key rspec-key-command-prefix rspec-mode-keymap))
+          'rspec-mode)
 
-;;;; JavaScript
-(autoload 'js2-mode "js2-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(require 'js2-mode)
+;; 1.9 syntax checking
+;; (add-to-list 'load-path "~/.emacs.d/el-get/Enhanced-Ruby-Mode")
+;; (require 'ruby-mode)
+
+;; ;;;; JavaScript
+;; (autoload 'js2-mode "js2-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
+(require 'js3-mode)
 
 (require 'stylus-mode)
 
@@ -310,15 +333,6 @@ instead."
           '(lambda ()
              (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
-;;;; el-get
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(unless (require 'el-get nil t)
-  (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-                (lambda (s)
-                  (end-of-buffer)
-                  (eval-print-last-sexp))))
-
-(el-get 'sync)
 
 ;;;; yasnippet
 (require 'yasnippet)
@@ -345,6 +359,7 @@ instead."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(exec-path (quote ("/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin" "/usr/local/bin")))
  '(js2-always-indent-assigned-expr-in-decls-p t)
  '(js2-auto-indent-p t)
  '(js2-basic-offset 2)
