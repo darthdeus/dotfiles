@@ -9,3 +9,4 @@ ln -nsf ~/bin/dotfiles/git/ignore ~/.gitignore
 ln -nsf ~/bin/dotfiles/vim ~/.vim
 ln -nsf ~/bin/dotfiles/vimrc ~/.vimrc
 ln -nsf ~/bin/dotfiles/tmux.conf ~/.tmux.conf
+ln -nsf ~/bin/dotfiles/init.el ~/.emacs.d/init.el
