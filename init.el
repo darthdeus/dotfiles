@@ -36,6 +36,15 @@
 
 (setq coffee-command "/usr/local/bin/coffee")
 
+(remove-hook 'text-mode-hook 'turn-on-flyspell)
+(remove-hook 'text-mode-hook 'turn-on-auto-fill)
+
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+(global-unset-key (kbd "M-@"))
+(global-set-key (kbd "M-@") 'er/expand-region)
+(global-set-key (kbd "M-#") 'er/contract-region)
+
 ;;;; PeepOpen
 (require 'textmate)
 (add-to-list 'load-path "~/.emacs.d/vendor/")
@@ -338,6 +347,7 @@ instead."
 (require 'yasnippet)
 (setq yas/snippet-dirs '("~/.emacs.d/el-get/yasnippet/snippets" "~/.emacs.d/el-get/yasnippet/extras/imported"))
 (yas/global-mode 1)
+
 
 ;;(color-theme-tomorrow-night)
 
