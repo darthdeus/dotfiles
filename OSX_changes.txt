@@ -1,4 +1,4 @@
-defaults write com.apple.finder QLPanelAnimationDuration -int 0;killall Finde
+defaults write com.apple.finder QLPanelAnimationDuration -int 0;killall Finder
 defaults write com.apple.finder QLPanelAnimationDuration -int 0;killall Finder
 defaults write com.apple.dock expose-animation-duration -int 0;killall Dock
 defaults write -g AppleEdgeResizeExteriorSize 10
