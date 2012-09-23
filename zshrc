@@ -55,6 +55,8 @@ fi
 
 export NODE_PATH="$NODE_PATH:/usr/local/lib/node_modules"
 
+export LANG="en_US.UTF-8"
+
 # TODO - add conditionals
 export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
 export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)"
@@ -63,3 +65,12 @@ export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.3-45758/jars"
 export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.2.3/jars"
 
 export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=1024M"
+
+# For SCV Admin development
+export SCV_DEV=true
+
+export RUBY_HEAP_MIN_SLOTS=1000000
+export RUBY_HEAP_SLOTS_INCREMENT=1000000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=100000000
+export RUBY_HEAP_FREE_MIN=500000
