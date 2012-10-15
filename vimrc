@@ -132,7 +132,7 @@ endif
 if has("gui_running")
     :color grb3
 else
-    :color grb4
+    :color Tomorrow-Night
 endif
 
 " GRB: hide the toolbar in GUI mode
@@ -245,10 +245,6 @@ set switchbuf=useopen
 autocmd BufRead,BufNewFile *.html source ~/.vim/indent/html_grb.vim
 autocmd FileType htmldjango source ~/.vim/indent/html_grb.vim
 autocmd! BufRead,BufNewFile *.sass setfiletype sass
-
-if has("python")
-    source ~/.vim/ropevim/rope.vim
-endif
 
 autocmd BufRead,BufNewFile *.feature set sw=4 sts=4 et
 
