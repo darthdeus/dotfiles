@@ -36,6 +36,7 @@ project/boot
 
 # db
 lift_proto*
+.DS_Store
 
 # other scm
 .svn
@@ -54,3 +55,7 @@ lift_proto*
 
 # Pax Runner (for easy OSGi launching)
 runner
+
+# ctags
+tags
+gems.tags

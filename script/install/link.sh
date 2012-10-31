@@ -6,6 +6,5 @@ ln -nsf ~/bin/dotfiles/irbrc ~/.irbrc
 ln -nsf ~/bin/dotfiles/railsrc ~/.railsrc
 ln -nsf ~/bin/dotfiles/git/config ~/.gitconfig
 ln -nsf ~/bin/dotfiles/git/ignore ~/.gitignore
-ln -nsf ~/bin/dotfiles/vimrc ~/.vimrc.after
 ln -nsf ~/bin/dotfiles/tmux.conf ~/.tmux.conf
 ln -nsf ~/bin/dotfiles/init.el ~/.emacs.d/init.el
