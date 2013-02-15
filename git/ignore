@@ -10,6 +10,9 @@ syntax: glob
 *.off
 *.old
 .DS_Store
+.powrc
+zeus.json
+.rake_tasks
 
 # logs
 derby.log
@@ -59,3 +62,6 @@ runner
 # ctags
 tags
 gems.tags
+
+.powenv
+.rbenv-vars
