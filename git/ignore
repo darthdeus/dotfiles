@@ -9,6 +9,7 @@ syntax: glob
 *.bak
 *.off
 *.old
+*.swp
 .DS_Store
 .powrc
 zeus.json
@@ -65,3 +66,6 @@ gems.tags
 
 .powenv
 .rbenv-vars
+.rbenv-version
+.rvmrc
+vendor/bundle
