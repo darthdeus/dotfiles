@@ -60,12 +60,11 @@ lift_proto*
 # Pax Runner (for easy OSGi launching)
 runner
 
+# node.js
+node_modules/
+
 # ctags
 tags
 gems.tags
 
-.powenv
-.rbenv-vars
-.rbenv-version
-.rvmrc
-vendor/bundle
+zeus.json
