@@ -1,4 +1,10 @@
 ---
+:backtrace: false
+:benchmark: false
+:bulk_treshold: 1000
+:sources:
+- https://rubygems.org
+:update_sources: true
 :verbose: true
-:ssl_verify_mode: 0
-gem: --no-ri --no-rdoc
+install: --no-ri --no-rdoc
+update: --no-ri --no-rdoc
