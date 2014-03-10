@@ -28,7 +28,5 @@ if [[ -n "$PS1" ]]; then
   . ~/bin/dotfiles/bash/aliases
 fi
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
