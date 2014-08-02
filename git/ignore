@@ -68,3 +68,7 @@ tags
 gems.tags
 
 zeus.json
+
+.cabal-sandbox
+.ghc-modi-wrapper.pid
+.ghc-modi-wrapper.sock
