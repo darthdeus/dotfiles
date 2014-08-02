@@ -1,0 +1,178 @@
+-- let ghciEscapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\"'\"'" else [c]) arg ++ "'"
+-- :def! ho return . (":! hoogle --color " ++) . ghciEscapeShellArg
+-- :def! doc return . (":! hoogle --color --info " ++) . ghciEscapeShellArg
+-- :set -XOverloadedStrings
+:set prompt "> "
+import Prelude
+:def te const $ return $ unlines [":reload",":main"]
+:def so const $ return $ unlines [":load Application","devRun"]
+
+
+--:set -Wall -fno-warn-type-defaults
+--:set -fdefer-type-errors
+-- 
+---- :set prompt "λ> "
+--:set prompt "H̢̞̘̻̲̩̑̊ͣ̏ͪ̋ͨͮ͋̆͐ͣ̈̒͛̚͡A̴̡̬̼̳͈̮̞̬̞̯͓̤͎̳̫̘̥͈͕̓̍͂͌̓̄͒̿͌̚͟͠S͊̾̃̎͏̷̧̠̤͎̱̱͖͍̖̯̘͘K̶̸̲̳̗̭̹͔͖͇̩̳̦̫̲̩̫̪̠̜̅̌̈́̃̊̚͢ͅE̡̩͕̣̳͓͈͙̪̰ͤ̊͂ͩL̬̙͖̣̱͎͓̘͉̖̭͇͚̲͖̩̞͖̂͛̉ͬ̓͐ͯ͌͘͠͠L̢̧̤̺̩͚͚̩̬̳͉͍̩̆̍ͮ̐̽̌̌ͪ̓ͥͫ̓͑̃ͥ͊͟͢͡ ̩̯̺̖̳̟͖͓͇̗͇̘̬͕̑ͩ̄ͧͧ̀́͆͊̈́̋ͫͥ̓͒̂̓́Ḥ̵̫̮̟̠͖̝̜̬͔̻͓͋͊́ͫ̓̍̆̇͐ͥ̓͆́̚Ȩ̸̨̢͕͚̻͍̯̪̩̯̲͛̓ͥ̄͊̀̽ͯ͊̄̔̈ ̱͖̫̱̺̲̥̦̯̞̘͖̳̝̰͉̮̖ͧ̋͊̓ͪ́̏͑ͬ̈́ͣ̍͑̐͂̄ͦ̃̀͢͡ͅC̷̙̟̫̘̞̦̅̄̂͒̉̈́͌̂ͫ́̐̃̎̎ͬͯ͞O̢͛̂͒ͪ͐̓̎̊͊̋̚͏̢̤̺̱̯͇͓̤͍̼̪́M̨̠̝̻͇̘̣̫͕̗̎̾̄̽͊ͣ́͋̎̆ͧ̅͗̚Ẽ̜̠̦̺͇̠̭̣͓͎́̈̉̕͞S̛̩͔̥̼̰̯͖͉̭̺̦͔̞̹̼̻̻̈́͋͋ͬͤ̿͒͘͘͘>̨̧͖͖̱̟̩͕͇͇ͨ͛̔̉́ͤ́͗͗̂͜͞ "
+-- 
+--:set -XBangPatterns
+--:set -XDataKinds
+--:set -XDeriveDataTypeable
+--:set -XDeriveFoldable
+--:set -XDeriveFunctor
+--:set -XDeriveGeneric
+--:set -XDeriveTraversable
+--:set -XFlexibleContexts
+--:set -XFlexibleInstances
+--:set -XFunctionalDependencies
+--:set -XGADTs
+--:set -XImplicitParams
+--:set -XLambdaCase
+---- :set -XMonadComprehensions
+--:set -XMultiWayIf
+--:set -XNoMonomorphismRestriction
+--:set -XPatternGuards
+--:set -XPolyKinds
+--:set -XRank2Types
+--:set -XRecordWildCards
+--:set -XScopedTypeVariables
+--:set -XStandaloneDeriving
+--:set -XTupleSections
+--:set -XTypeFamilies
+--:set -XTypeOperators
+--:set -XViewPatterns
+-- 
+--import           Prelude                          hiding (id, (.))
+-- 
+--import           Control.Applicative
+--import           Control.Arrow                    hiding (first, second)
+--import           Control.Category
+--import           Control.Comonad
+--import           Control.Concurrent
+--import           Control.Concurrent.Async
+--import           Control.Concurrent.Spawn
+--import           Control.Concurrent.STM
+--import           Control.DeepSeq
+--import           Control.Exception
+--import           Control.Exception.Lens
+--import           Control.Lens
+--import           Control.Monad
+--import           Control.Monad.Cont
+--import           Control.Monad.Error
+--import           Control.Monad.Error.Lens
+--import           Control.Monad.Fix
+--import           Control.Monad.Identity
+--import           Control.Monad.Loops
+--import           Control.Monad.Reader
+--import           Control.Monad.RWS                hiding ((<>))
+--import           Control.Monad.ST
+--import           Control.Monad.State
+--import           Control.Monad.Writer
+--import           Control.Parallel
+--import           Control.Parallel.Strategies
+--import           Control.Parallel.Strategies.Lens
+--import           Control.Seq.Lens
+--import qualified Data.Array                       as Arr
+--import qualified Data.Array.Lens                  as Arr
+--import           Data.Bifunctor
+--import           Data.Bits
+--import           Data.Bits.Lens
+--import qualified Data.ByteString                  as BS
+--import qualified Data.ByteString.Char8            as BS8
+--import qualified Data.ByteString.Lazy             as BSL
+--import qualified Data.ByteString.Lazy.Char8       as BSL8
+--import           Data.ByteString.Lens             as BS
+--import           Data.Char
+--import           Data.Complex
+--import           Data.Complex.Lens
+--import           Data.Data
+--import           Data.Data.Lens
+--import           Data.Dynamic
+--import           Data.Dynamic.Lens
+--import           Data.Either
+--import qualified Data.Fixed                       as Fixed
+--import qualified Data.Foldable                    as Fol
+--import           Data.Function                    hiding (id, (.))
+--import           Data.Functor.Contravariant
+--import qualified Data.Generics                    as Generics
+--import qualified Data.HashMap.Lazy                as HashMap
+--import qualified Data.HashSet                     as HashSet
+--import qualified Data.HashSet.Lens                as HashSet
+--import           Data.Int
+--import qualified Data.IntMap                      as IntMap
+--import qualified Data.IntSet                      as IntSet
+--import qualified Data.IntSet.Lens                 as IntSet
+--import           Data.IORef
+--import           Data.Ix
+--import           Data.List
+--import           Data.List.Lens
+--import           Data.List.Split
+--import           Data.List.Split.Lens
+--import qualified Data.Map                         as Map
+--import           Data.Maybe
+--import           Data.Monoid
+--import           Data.Number.CReal
+--import           Data.Ord
+--import           Data.Profunctor
+--import           Data.Proxy
+--import           Data.Ratio
+--import qualified Data.Sequence                    as Seq
+--import qualified Data.Sequence.Lens               as Seq
+--import qualified Data.Set                         as Set
+--import qualified Data.Set.Lens                    as Set
+--import           Data.String
+--import           Data.Tagged
+--import qualified Data.Text                        as Text
+--import qualified Data.Text.Encoding               as TextE
+--import qualified Data.Text.Lazy                   as TextL
+--import qualified Data.Text.Lens                   as Text
+--import           Data.Time
+--import           Data.Time.Clock.POSIX
+--import qualified Data.Traversable                 as Tra
+--import           Data.Tree
+--import           Data.Tree.Lens
+--import           Data.Tuple
+--import           Data.Typeable
+--import           Data.Typeable.Lens
+--import qualified Data.Vector                      as Vec
+--import qualified Data.Vector.Lens                 as Vec
+--import           Data.Void
+--import           Data.Word
+--import           Debug.SimpleReflect.Expr
+--import           Debug.Trace
+--import           Foreign
+--import           Foreign.C
+--import           GHC.TypeLits
+--import           Numeric
+--import           Numeric.Lens
+--import           System.Environment
+--import           System.Exit
+--import           System.Exit.Lens
+--import           System.FilePath.Lens
+--import           System.IO
+--import           System.IO.Error.Lens
+--import           System.Process
+--import           System.Random
+--import           System.Timeout
+--import qualified Test.QuickCheck                  as QC
+--import qualified Test.QuickCheck.Function         as QC
+--import qualified Test.QuickCheck.Poly             as QC
+--import qualified Test.SmallCheck                  as SC
+--import           Text.Groom
+--import           Text.Parsec                      (parseTest)
+--import           Text.Parsec.String
+--import           Text.Parser.Char
+--import           Text.Parser.Combinators
+--import           Text.Parser.LookAhead
+--import           Text.Parser.Parsec
+--import           Text.Parser.Token
+--import           Text.Printf
+--import qualified Text.Read                        as Read
+-- 
+--let { asTypeIn :: a -> (a -> b) -> a ; a `asTypeIn` f = a where { _ = f a } ; infixl 0 `asTypeIn` }
+-- 
+--let { asAppliedTo :: (a -> b) -> a -> a -> b ; f `asAppliedTo` x = f `asTypeIn` ($ x) ; infixl 0 `asAppliedTo` }
+-- 
+--let { pr :: Rational -> IO (); pr n = putStrLn (show (fromRational n :: CReal) ++ " | " ++ show n) }
+-- 
+--newtype Fix f = In { out :: f (Fix f) }
+--newtype Rec a = InR { outR :: Rec a -> a }
