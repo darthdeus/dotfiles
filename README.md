@@ -1,14 +1,14 @@
-= Dot Files
+# Dotfiles
 
 My config files for bash, git, ruby and other useful scripts.
 
-== Instalation & Usage
+## Instalation & Usage
 
-=== Installing everything at once
+### Installing everything at once
 
     ./install.sh
 
-=== Installing one by one
+### Installing one by one
 
 Go to the script/install directory
 
