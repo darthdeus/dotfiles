@@ -2,6 +2,10 @@
 
 My config files for bash, git, ruby and other useful scripts.
 
+# TODO
+
+- [ ] add back reasonable `.npmrc`
+
 ## Instalation & Usage
 
 ### Installing everything at once
