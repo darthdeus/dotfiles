@@ -1,3 +1,6 @@
 [submodule "vim"]
 	path = vim
 	url = git@github.com:darthdeus/dotvim.git
+[submodule "zsh"]
+	path = zsh
+	url = git@github.com:darthdeus/zshrc.git
