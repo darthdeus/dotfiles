@@ -8,6 +8,8 @@ ln -nsf "$DOT/vim/vimrc" "$HOME/.vimrc"
 ln -nsf "$DOT/zsh" "$HOME/.zsh"
 ln -nsf "$DOT/zsh/zshrc" "$HOME/.zshrc"
 
+ln -nsf "$DOT/emacs.d" "$HOME/.emacs.d"
+
 mkdir -p ~/.ssh
 ln -nsf "$DOT/ssh/config" "$HOME/.ssh/config"
 
