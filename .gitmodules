@@ -1,9 +1,0 @@
-[submodule "vim"]
-	path = vim
-	url = git@github.com:darthdeus/dotvim.git
-[submodule "zsh"]
-	path = zsh
-	url = git@github.com:darthdeus/zshrc.git
-[submodule "emacs.d"]
-	path = emacs.d
-	url = git@github.com:darthdeus/emacs-rebirth.git
