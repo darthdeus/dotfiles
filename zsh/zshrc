@@ -38,3 +38,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
 
 source $ZSH/custom/aliases.zsh
 source $ZSH/custom/git_aliases.zsh
+
+export GOPATH="$HOME/projects/go"
+export PATH="$PATH:$GOPATH/bin"
