@@ -18,6 +18,7 @@ Plug 'godlygeek/tabular'
 Plug 'pangloss/vim-javascript'
 
 Plug 'wincent/Command-T'
+Plug 'bling/vim-airline'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
