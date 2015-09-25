@@ -10,6 +10,7 @@ Plug 'benmills/vimux'
 Plug 'drmikehenry/vim-headerguard'
 
 Plug 'rking/ag.vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'tomtom/tcomment_vim'
 Plug 'tomtom/tlib_vim'
