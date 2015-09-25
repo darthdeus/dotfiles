@@ -105,3 +105,6 @@ function switch-gcc-osx() {
 if ! type open 2>&1 1>/dev/null; then
   alias open="exo-open"
 fi
+
+alias pa="perf annotate"
+alias pr="perf record"
