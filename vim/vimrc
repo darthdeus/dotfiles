@@ -129,6 +129,7 @@ let g:ycm_show_diagnostics_ui = 1
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gt :YcmCompleter GetType<CR>
 
 let g:syntastic_haskell_checkers = ['']
 
@@ -409,11 +410,11 @@ filetype plugin indent on
 runtime! macros/matchit.vim
 
 " Run this file
-noremap <leader>t :call RunTestFile()<cr>
-" Run only the example under the cursor
-noremap <leader>T :call RunNearestTest()<cr>
-" Run all test files
-noremap <leader>a :!bundle exec rspec spec<cr>
+" noremap <leader>t :call RunTestFile()<cr>
+" " Run only the example under the cursor
+" noremap <leader>T :call RunNearestTest()<cr>
+" " Run all test files
+" noremap <leader>a :!bundle exec rspec spec<cr>
 
 " remove unnecessary whitespaces
 noremap <leader>ws :%s/ *$//g<cr><c-o><cr>
