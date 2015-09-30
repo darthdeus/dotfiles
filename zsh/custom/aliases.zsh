@@ -107,4 +107,5 @@ if ! type open 2>&1 1>/dev/null; then
 fi
 
 alias pa="perf annotate"
-alias pr="perf record"
+alias pr="perf record -g"
+alias pre="perf report -g 'graph,0.5,caller'"
