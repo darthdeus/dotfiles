@@ -195,7 +195,7 @@ set laststatus=0
 " TODO - how does this differ from "longest,list" only?
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,deps,rel,*.a
+set wildignore+=bundle,obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,deps,rel,*.a
 
 " TODO - what is the default behavior?
 " Remap the tab key to do autocompletion or indentation depending on the
@@ -412,13 +412,6 @@ filetype plugin indent on
 " % to bounce from do to end etc.
 runtime! macros/matchit.vim
 
-" Run this file
-" noremap <leader>t :call RunTestFile()<cr>
-" " Run only the example under the cursor
-" noremap <leader>T :call RunNearestTest()<cr>
-" " Run all test files
-" noremap <leader>a :!bundle exec rspec spec<cr>
-
 " remove unnecessary whitespaces
 noremap <leader>ws :%s/ *$//g<cr><c-o><cr>
 
@@ -431,8 +424,7 @@ autocmd FileType h,cc,c,cpp nnoremap <buffer><C-e> :<C-u>ClangFormat<CR>
 autocmd FileType h,cc,c,cpp nnoremap <buffer><leader>ha :HeaderguardAdd<CR>
 autocmd FileType h,cc,c,cpp vnoremap <buffer><C-e> :ClangFormat<CR>
 
-autocmd FileType h,cc,c,cpp nnoremap <leader>e :call VimuxRunCommand("make")<cr>
-nnoremap <Leader>e :call VimuxRunCommand("cargo run")<CR>
+nnoremap <Leader>e :call VimuxRunCommand("make")<cr>
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
