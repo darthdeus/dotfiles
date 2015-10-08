@@ -43,3 +43,4 @@ source $ZSH/custom/git_aliases.zsh
 
 export GOPATH="$HOME/projects/go"
 export PATH="$PATH:$GOPATH/bin"
+export RUST_SRC_PATH="$HOME/projects/rust/src"

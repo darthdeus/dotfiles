@@ -63,6 +63,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'Shougo/vimproc.vim'
 Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe'
+Plug 'racer-rust/vim-racer'
 
 call plug#end()
 
