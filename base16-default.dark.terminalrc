@@ -19,7 +19,7 @@ MiscTabCloseButtons=TRUE
 MiscTabCloseMiddleClick=TRUE
 MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
-FontName=Fantasque Sans Mono 13
+FontName=Fantasque Sans Mono 12
 ShortcutsNoMenukey=TRUE
 ShortcutsNoMnemonics=TRUE
 
