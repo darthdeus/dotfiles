@@ -403,3 +403,18 @@ URxvt*.scrollBar: false
 ! URxvt*iso14755_52: boolean
 
 
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.hintstyle: hintfull
+Xft.dpi: 160
+
+XTerm*faceName: Dejavu Sans Mono:size=10:antialias=true
+XTerm*locale: true
+XTerm*termName: xterm-256color
+XTerm*metaSendsEscape: true
+
+xclock*update: 1
+xclock*analog: false
+xclock*foreground: white
+xclock*background: black

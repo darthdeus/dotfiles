@@ -109,3 +109,4 @@ fi
 alias pa="perf annotate"
 alias pr="perf record -g"
 alias pre="perf report -g 'graph,0.5,caller'"
+alias relx="xrdb $HOME/.Xresources"
