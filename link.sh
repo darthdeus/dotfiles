@@ -22,4 +22,4 @@ mkdir -p "$XFCE_TERMRC_PATH"
 ln -nsf "$HOME/.dotfiles/base16-default.dark.terminalrc" "$XFCE_TERMRC_PATH/terminalrc"
 
 ln -nsf "$HOME/.dotfiles/git/ignore" "$HOME/.gitignore"
-cp "$HOME/.dotfiles/git/config" "$HOME/.gitconfig"
+cp "$HOME/.dotfiles/git/config.example" "$HOME/.gitconfig"
