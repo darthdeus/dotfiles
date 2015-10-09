@@ -1,7 +1,7 @@
 import XMonad
 
 main = xmonad defaultConfig
-        { terminal    = "xterm"
+        { terminal    = "st -e tmux"
         , modMask     = mod4Mask
         , borderWidth = 3
         }

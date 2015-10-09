@@ -14,24 +14,15 @@ UXTerm*locale: true
 UXTerm*termName: xterm-256color
 UXTerm*metaSendsEscape: true
 
-
 xclock*update: 1
 xclock*analog: false
 xclock*foreground: white
 xclock*background: black
 
-! URxvt*termName:                       string
-! URxvt*geometry:                       geometry
-! URxvt*chdir:                          string
-! URxvt*reverseVideo:                   boolean
-! URxvt*loginShell:                     boolean
-! URxvt*multiClickTime:                 number
-! URxvt*jumpScroll:                     boolean
-! URxvt*skipScroll:                     boolean
-! URxvt*pastableTabs:                   boolean
-! URxvt*scrollstyle:                    mode
-! URxvt*scrollBar:                      boolean
 URxvt*.scrollBar: false
+URxvt*font: xft:Fantasque Sans Mono:pixelsize=18:antialias=true
+URxvt*letterSpace: -2
+
 ! URxvt*scrollBar_right:                boolean
 ! URxvt*scrollBar_floating:             boolean
 ! URxvt*scrollBar_align:                mode
@@ -223,7 +214,7 @@ URxvt*.scrollBar: false
 ! URxvt*borderColor: colour
 
 ! Select the fonts to be used. This is a comma separated list of font names that are checked in
-! URxvt*font: fontlist
+! URxvt*font: xft:Fantasque Sans Mono:pixelsize=20
 
 ! URxvt*boldFont: fontlist
 
