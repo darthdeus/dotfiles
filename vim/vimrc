@@ -5,6 +5,7 @@ set shell=sh
 
 call plug#begin('~/.vim/bundle')
 
+Plug 'altercation/vim-solarized'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-scripts/a.vim'
 Plug 'benmills/vimux'
