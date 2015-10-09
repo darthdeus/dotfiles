@@ -22,15 +22,14 @@ compinit
 # color theme
 source $ZSH/themes/darth.zsh-theme
 
-PATH="$HOME/opt/cross/bin:$PATH"
-PATH="$HOME/projects/depot_tools:$PATH"
-PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
-
 export EDITOR="vim"
 
-PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
-PATH="$HOME/opt/cross/bin:$HOME/.rbenv/bin:$PATH"
-PATH="$HOME/.gem/ruby/2.2.0/bin:$PATH"
+RUBY_PATH="$HOME/.gem/ruby/2.2.0/bin:$HOME/.rbenv/bin"
+DEPOT_PATH="$HOME/projects/depot_tools:"
+CABAL_PATH="$HOME/.cabal/bin"
+CROSS_PATH="$HOME/opt/cross/bin"
+
+PATH="$RUBY_PATH:$DEPOT_PATH:$CABAL_PATH:$CROSS_PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
