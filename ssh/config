@@ -6,3 +6,7 @@ HostName 10.0.0.3
 
 Host 4
 HostName 10.0.0.4
+
+Host bogatyr
+  HostName bogatyr.ms.mff.cuni.cz
+  User arnoldj
