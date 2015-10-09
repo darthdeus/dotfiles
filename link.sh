@@ -9,6 +9,7 @@ ln -nsf "$DOT/zsh/zshrc"  "$HOME/.zshrc"
 ln -nsf "$DOT/emacs.d"    "$HOME/.emacs.d"
 ln -nsf "$DOT/xmonad"     "$HOME/.xmonad"
 ln -nsf "$DOT/Xresources" "$HOME/.Xresources"
+ln -nsf "$DOT/xinitrc"    "$HOME/.xinitrc"
 
 mkdir -p "$HOME/.ssh"
 ln -nsf "$DOT/ssh/config" "$HOME/.ssh/config"
