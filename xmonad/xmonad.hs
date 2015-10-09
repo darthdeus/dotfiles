@@ -1,7 +1,7 @@
 import XMonad
 
 main = xmonad defaultConfig
-        { terminal    = "xfce4-terminal"
+        { terminal    = "xterm"
         , modMask     = mod4Mask
         , borderWidth = 3
         }
