@@ -9,7 +9,7 @@
 (set-face-attribute 'default t :font "FAntasque Sans Mono-12")
 (set-face-attribute 'default nil :height 120)
 ;(set-face-attribute 'default nil :height 140)
-;(set-face-attribute 'default nil :height 150)
+; (set-face-attribute 'default nil :height 150)
 ;(set-face-attribute 'default nil :height 170)
 ;(set-face-attribute 'default nil :height 180)
 
@@ -117,8 +117,9 @@
 
 ;; Coq - temporarily disabled to improve startup time
 ; (load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
-; (setq auto-mode-alist (cons '("\\.v$" . coq-mode) auto-mode-alist))
-; (autoload 'coq-mode "coq" "Major mode for editing Coq vernacular." t)
+(load-file "/usr/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
+(setq auto-mode-alist (cons '("\\.v$" . coq-mode) auto-mode-alist))
+(autoload 'coq-mode "coq" "Major mode for editing Coq vernacular." t)
 
 (when window-system (scroll-bar-mode 0))
 (when tool-bar-mode (tool-bar-mode 0))
