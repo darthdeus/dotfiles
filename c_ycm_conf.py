@@ -38,7 +38,7 @@ flags = [
 '-Wall',
 '-Wextra',
 '-Werror',
-'-std=c11',
+'-std=gnu11',
 '-x',
 'c',
 '-isystem',
