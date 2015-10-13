@@ -20,7 +20,7 @@ Plug 'godlygeek/tabular'
 Plug 'pangloss/vim-javascript'
 
 Plug 'wincent/Command-T'
-Plug 'bling/vim-airline'
+" Plug 'bling/vim-airline'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
@@ -30,8 +30,8 @@ Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-markdown'
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'slim-template/vim-slim'
@@ -62,8 +62,8 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'Raimondi/delimitMate'
 
 Plug 'Shougo/vimproc.vim'
-Plug 'scrooloose/syntastic'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'scrooloose/syntastic'
+" Plug 'Valloric/YouCompleteMe'
 
 call plug#end()
 
@@ -115,9 +115,9 @@ let g:haskell_sql           = 0
 let g:haskell_json          = 0
 let g:haskell_xml           = 0
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
@@ -385,25 +385,14 @@ noremap <C-\> :tnext<CR>
 
 noremap <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
 
-" Used for text files which should be wrapped by default
-function s:setupWrapping()
-  set wrap
-  set wrapmargin=2
-  set textwidth=72
-endfunction
-
 aug various_file_types
   au!
   " Rakefile, Vagrantfile and Gemfile are Ruby
   au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Vagrantfile,config.ru} set ft=ruby
   au BufRead,BufNewFile *.asm set ft=nasm
 
-  " md, markdown, and mk are markdown and define buffer-local preview
-  au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupWrapping()
-
   " add json syntax highlighting
   au BufNewFile,BufRead *.json set filetype=javascript
-  au BufNewFile,BufRead *.txt call s:setupWrapping()
 
   au BufNewFile,BufRead *.conf set filetype=conf
 aug END
