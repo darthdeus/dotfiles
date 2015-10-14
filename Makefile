@@ -10,3 +10,7 @@ install-st:
 
 symlink:
 	./link.sh
+
+base16-shell:
+	mkdir -p $(HOME)/.config
+	git clone https://github.com/chriskempson/base16-shell $(HOME)/.config/base16-shell
