@@ -139,3 +139,5 @@ alias chrome="google-chrome --high-dpi-support=1 --force-device-scale-factor=1"
 function malloc_dump() {
   LD_PRELOAD="$HOME/.dotfiles/malloc_dump.so" $@
 }
+
+alias ra="ranger"
