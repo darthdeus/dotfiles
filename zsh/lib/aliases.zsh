@@ -136,6 +136,6 @@ alias pre="perf report -g 'graph,0.5,caller'"
 alias relx="xrdb $HOME/.Xresources"
 alias chrome="google-chrome --high-dpi-support=1 --force-device-scale-factor=1"
 
-function count_malloc() {
+function malloc_dump() {
   LD_PRELOAD="$HOME/.dotfiles/malloc_dump.so" $@
 }
