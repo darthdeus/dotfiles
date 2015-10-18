@@ -141,3 +141,8 @@ function malloc_dump() {
 }
 
 alias ra="ranger"
+alias e="vim"
+
+function hc() {
+    herbstclient "$@"
+}
