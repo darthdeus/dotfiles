@@ -25,3 +25,8 @@ ln -nsf "$HOME/.dotfiles/base16-default.dark.terminalrc" "$XFCE_TERMRC_PATH/term
 
 ln -nsf "$HOME/.dotfiles/git/ignore" "$HOME/.gitignore"
 cp "$HOME/.dotfiles/git/config.example" "$HOME/.gitconfig"
+
+mkdir -p "$HOME/.config/herbstluftwm"
+ln -nsf "$HOME/.dotfiles/herbstluftwm" "$HOME/.config/herbstluftwm/autostart"
+
+ln -nsf "$DOT/Xmodmap" "$HOME/.Xmodmap"

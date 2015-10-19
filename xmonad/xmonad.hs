@@ -28,7 +28,7 @@ import XMonad.Util.WorkspaceCompare
 
 -- TODO - automatically detect which version of st should be run
 main = xmonad defaultConfig
-        { terminal    = "~/.dotfiles/bin/st -e tmux"
+        { terminal    = "~/.dotfiles/bin/st"
         , modMask     = mod4Mask
         , borderWidth = 2
         }
