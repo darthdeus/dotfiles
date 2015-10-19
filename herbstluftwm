@@ -15,13 +15,20 @@ hc keyunbind --all
 
 # keybindings
 # if you have a super key you will be much happier with Mod set to Mod4
-Mod=Mod1    # Use alt as the main modifier
-#Mod=Mod4   # Use the super key as the main modifier
+# Mod=Mod1    # Use alt as the main modifier
+Mod=Mod4   # Use the super key as the main modifier
+
+term_app=xterm
+
+st_path="$HOME/.dotfiles/bin/st"
+if [ -f "$st_path" ]; then
+  term_app="$st_path"
+fi
 
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
-hc keybind $Mod-Return spawn xterm
+hc keybind $Mod-Return spawn "$term_app"
 
 # basic movement
 # focusing clients
@@ -85,7 +92,11 @@ hc keybind $Mod-r remove
 hc keybind $Mod-space cycle_layout 1
 hc keybind $Mod-s floating toggle
 hc keybind $Mod-f fullscreen toggle
-hc keybind $Mod-p pseudotile toggle
+
+# hc keybind $Mod-p pseudotile toggle
+hc keybind $Mod-Shift-p pseudotile toggle
+
+hc keybind $Mod-p spawn dmenu_run
 
 # mouse
 hc mouseunbind --all
@@ -111,7 +122,7 @@ hc set frame_border_width 1
 hc set always_show_frame 1
 hc set frame_bg_transparent 1
 hc set frame_transparent_width 5
-hc set frame_gap 4
+hc set frame_gap 1
 
 hc attr theme.active.color '#9fbc00'
 hc attr theme.normal.color '#454545'
