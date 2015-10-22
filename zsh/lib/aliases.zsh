@@ -134,7 +134,7 @@ alias pa="perf annotate"
 alias pr="perf record -g"
 alias pre="perf report -g 'graph,0.5,caller'"
 alias relx="xrdb $HOME/.Xresources"
-# alias chrome="google-chrome-stable --high-dpi-support=1 --force-device-scale-factor=1"
+ alias chrome="google-chrome-stable --high-dpi-support=1 --force-device-scale-factor=1"
 
 function malloc_dump() {
   LD_PRELOAD="$HOME/.dotfiles/malloc_dump.so" $@
