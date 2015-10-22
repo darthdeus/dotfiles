@@ -6,7 +6,7 @@
 (setq-default indent-tabs-mode nil)
 
 (add-to-list 'default-frame-alist '(font . "Fantasque Sans Mono-12"))
-(set-face-attribute 'default t :font "FAntasque Sans Mono-12")
+(set-face-attribute 'default t :font "Fantasque Sans Mono-12")
 (set-face-attribute 'default nil :height 120)
 ;(set-face-attribute 'default nil :height 140)
 ; (set-face-attribute 'default nil :height 150)
