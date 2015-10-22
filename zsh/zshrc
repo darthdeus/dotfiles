@@ -24,12 +24,13 @@ source $ZSH/themes/darth.zsh-theme
 
 export EDITOR="vim"
 
+PYTHON_PATH="$HOME/.local/bin"
 RUBY_PATH="$HOME/.gem/ruby/2.2.0/bin:$HOME/.rbenv/bin"
 DEPOT_PATH="$HOME/projects/depot_tools:"
 CABAL_PATH="$HOME/.cabal/bin"
 CROSS_PATH="$HOME/opt/cross/bin"
 
-PATH="$HOME/.dotfiles/bin:$RUBY_PATH:$DEPOT_PATH:$CABAL_PATH:$CROSS_PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+PATH="$HOME/.dotfiles/bin:$PYTHON_PATH:$RUBY_PATH:$DEPOT_PATH:$CABAL_PATH:$CROSS_PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -40,3 +41,5 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
 export GOPATH="$HOME/projects/go"
 export PATH="$PATH:$GOPATH/bin"
 export RUST_SRC_PATH="$HOME/projects/rust/src"
+
+eval $(dircolors ~/.dircolors)
