@@ -25,6 +25,10 @@ if [ -f "$st_path" ]; then
   term_app="$st_path"
 fi
 
+if [ -f termite ]; then
+  term_app=termite
+fi
+
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
