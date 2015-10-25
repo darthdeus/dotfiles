@@ -17,7 +17,19 @@ host mff-nix-virtlab
   user arnoldj
   LocalForward 2222 172.16.0.11:22
 
-host mff-nix-virtlab-qemu
+host mff-nix-virtlab-qemu-a
   hostname localhost
   port 2222
+  user root
+  LocalForward 2223 192.168.11.2:22
+  LocalForward 2224 192.168.61.2:22
+
+host mff-nix-virtlab-qemu-b
+  hostname localhost
+  port 2223
+  user root
+
+host mff-nix-virtlab-qemu-c
+  hostname localhost
+  port 2224
   user root
