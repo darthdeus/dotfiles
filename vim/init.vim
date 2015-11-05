@@ -1,1 +1,1 @@
-/home/darth/.vimrc
+vimrc
