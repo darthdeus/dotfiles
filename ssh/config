@@ -27,6 +27,11 @@ host mff-nix-virtlab-qemu-a
   LocalForward 2225 192.168.61.2:22
   LocalForward 2226 192.168.61.61:22
 
+host mff-nix-virtlab-qemu-a-noforward
+  hostname localhost
+  port 2222
+  user root
+
 host mff-nix-virtlab-qemu-b
   hostname localhost
   port 2223
