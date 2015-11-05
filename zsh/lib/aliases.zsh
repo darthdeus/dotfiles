@@ -146,3 +146,5 @@ alias e="vim"
 function hc() {
     herbstclient "$@"
 }
+
+alias tc="tmux-cssh -cs"
