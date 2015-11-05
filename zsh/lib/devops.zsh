@@ -14,3 +14,7 @@ function devops-reload-virtlab() {
     ssh $server "cd .devops; git pull"
   done
 }
+
+function devops-setup-help() {
+  echo 'sh -c "$(curl -fsSL https://raw.github.com/darthdeus/devops/master/install.sh)"'
+}
