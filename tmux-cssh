@@ -1,1 +1,3 @@
-virtlab:-sc mff-nix-virtlab-qemu-b -sc mff-nix-virtlab-qemu-bb -sc mff-nix-virtlab-qemu-c -sc mff-nix-virtlab-qemu-cc
+virtlab-slaves:-sc mff-nix-virtlab-qemu-b -sc mff-nix-virtlab-qemu-bb -sc mff-nix-virtlab-qemu-c -sc mff-nix-virtlab-qemu-cc
+virtlab-master:-sc mff-nix-virtlab-qemu-a-noforward
+virtlab:-cs virtlab-slaves -cs virtlab-master
