@@ -11,7 +11,7 @@ function devops-reload-virtlab() {
 
   for server in $servers; do
     echo "Reloading $server"
-    ssh $server "cd .devops; git pull"
+    ssh $server "cd .devops; git pull; ./install.sh"
   done
 }
 
