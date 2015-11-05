@@ -106,6 +106,8 @@ let g:VimuxOrientation = "h"
 "
 " au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 
+" let g:airline_powerline_fonts = 1
+
 set foldlevelstart=200
 let g:haskell_conceal       = 0
 let g:haskell_quasi         = 1
