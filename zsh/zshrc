@@ -30,7 +30,7 @@ DEPOT_PATH="$HOME/projects/depot_tools:"
 CABAL_PATH="$HOME/.cabal/bin"
 CROSS_PATH="$HOME/opt/cross/bin"
 
-PATH="$HOME/.dotfiles/bin:$PYTHON_PATH:$RUBY_PATH:$DEPOT_PATH:$CABAL_PATH:$CROSS_PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+PATH="$HOME/neovim/bin:$HOME/.dotfiles/bin:$PYTHON_PATH:$RUBY_PATH:$DEPOT_PATH:$CABAL_PATH:$CROSS_PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
