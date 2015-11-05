@@ -5,6 +5,10 @@ function devops-reload-virtlab() {
     servers+=( cat )
   fi
 
+  if [ "$1" = "cat-only" ]; then
+    servers=( cat )
+  fi
+
   for server in $servers; do
     echo "Reloading $server"
     ssh $server "cd .devops; git pull"
