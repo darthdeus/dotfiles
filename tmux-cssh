@@ -1,0 +1,1 @@
+virtlab:-sc mff-nix-virtlab-qemu-b -sc mff-nix-virtlab-qemu-bb -sc mff-nix-virtlab-qemu-c -sc mff-nix-virtlab-qemu-cc
