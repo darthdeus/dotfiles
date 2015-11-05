@@ -1,11 +1,6 @@
-Host 2
-HostName 10.0.0.2
-
-Host 3
-HostName 10.0.0.3
-
-Host 4
-HostName 10.0.0.4
+host cat
+  hostname catsocket.com
+  user deploy
 
 host bogatyr
   hostname bogatyr.ms.mff.cuni.cz
