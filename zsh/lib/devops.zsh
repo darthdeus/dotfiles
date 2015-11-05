@@ -18,3 +18,12 @@ function devops-reload-virtlab() {
 function devops-setup-help() {
   echo 'sh -c "$(curl -fsSL https://raw.github.com/darthdeus/devops/master/install.sh)"'
 }
+
+function devops-run-all() {
+  set -A servers mff-nix-virtlab-qemu-{a-noforward,b,bb,c,cc}
+
+  for server in $servers; do
+    echo "# Running: ssh $server \"$1\""
+    ssh $server "$1"
+  done
+}
