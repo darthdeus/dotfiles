@@ -171,7 +171,7 @@ set number
 set ruler
 
 " Set encoding
-set encoding=utf-8
+" set encoding=utf-8
 
 " Whitespace stuff
 set nowrap
