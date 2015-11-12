@@ -19,7 +19,7 @@ Plug 'godlygeek/tabular'
 Plug 'pangloss/vim-javascript'
 
 Plug 'wincent/Command-T'
-Plug 'bling/vim-airline'
+" Plug 'bling/vim-airline'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
@@ -64,8 +64,8 @@ Plug 'fatih/vim-go'
 
 Plug 'Shougo/vimproc.vim'
 " Plug 'scrooloose/syntastic'
-Plug 'benekastah/neomake'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'benekastah/neomake'
+" Plug 'Valloric/YouCompleteMe'
 
 call plug#end()
 
@@ -119,9 +119,9 @@ let g:haskell_sql           = 0
 let g:haskell_json          = 0
 let g:haskell_xml           = 0
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
