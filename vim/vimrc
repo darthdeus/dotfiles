@@ -76,6 +76,7 @@ call plug#end()
 let mapleader=","
 
 let g:VimuxOrientation = "h"
+let g:airline_powerline_fonts = 1
 
 " " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger="<c-j>"
@@ -173,6 +174,7 @@ set history=1000
 set number
 set ruler
 
+" TODO - check if this is still necessary in vim
 " Set encoding
 " set encoding=utf-8
 
