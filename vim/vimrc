@@ -65,7 +65,7 @@ Plug 'fatih/vim-go'
 Plug 'Shougo/vimproc.vim'
 Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'} 
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 call plug#end()
 
