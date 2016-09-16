@@ -45,3 +45,9 @@ host mff-nix-virtlab-qemu-cc
   hostname localhost
   port 2226
   user root
+
+host parlab
+  hostname parlab.ms.mff.cuni.cz
+  port 42222
+  user s_arnoldj
+

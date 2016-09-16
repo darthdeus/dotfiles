@@ -59,6 +59,8 @@ flags = [
 '-isystem',
 '../BoostParts',
 '-isystem',
+'./include',
+'-isystem',
 # This path will only work on OS X, but extra paths that don't exist are not
 # harmful
 '/System/Library/Frameworks/Python.framework/Headers',

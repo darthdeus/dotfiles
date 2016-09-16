@@ -148,3 +148,6 @@ function hc() {
 }
 
 alias tc="tmux-cssh -cs"
+
+alias st="foreman start -f Procfile.dev"
+alias fst="foreman start -f Procfile.fullDev"
