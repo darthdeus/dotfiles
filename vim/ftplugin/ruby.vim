@@ -7,9 +7,9 @@ set list listchars=tab:\ \ ,trail:·
 
 noremap <buffer> <Leader>gt :CommandTFlush<cr>\|:CommandT ./spec<cr>
 " Run this file
-noremap <buffer> <Leader>t :call RunTestFile()<cr>
+noremap <buffer> <Leader>t :TestFile<cr>
 " " Run only the example under the cursor
-noremap <buffer> <Leader>T :call RunNearestTest()<cr>
+noremap <buffer> <Leader>T :TestNearest<cr>
 " " Run all test files
 noremap <buffer> <Leader>a :!bundle exec rspec spec<cr>
 

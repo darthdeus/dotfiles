@@ -63,9 +63,11 @@ Plug 'Raimondi/delimitMate'
 Plug 'fatih/vim-go'
 
 Plug 'Shougo/vimproc.vim'
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+Plug 'janko-m/vim-test'
 
 call plug#end()
 
@@ -316,6 +318,9 @@ noremap <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
 noremap <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
 noremap <leader>gk :CommandTFlush<cr>\|:CommandT app/assets/stylesheets<cr>
 noremap <leader>gj :CommandTFlush<cr>\|:CommandT app/assets/javascripts<cr>
+noremap <leader>gd :CommandTFlush<cr>\|:CommandT client/app/bundles<cr>
+
+nnoremap <leader>w :!rubocop %<cr>
 
 nnoremap <C-a> ^
 nnoremap <C-e> $
