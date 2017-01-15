@@ -5,9 +5,9 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq-default indent-tabs-mode nil)
 
-;(add-to-list 'default-frame-alist '(font . "Fantasque Sans Mono-12"))
-;(set-face-attribute 'default t :font "Fantasque Sans Mono-12")
-;(set-face-attribute 'default nil :height 120)
+(add-to-list 'default-frame-alist '(font . "Fantasque Sans Mono-12"))
+(set-face-attribute 'default t :font "Fantasque Sans Mono-12")
+;(Set-face-attribute 'default nil :height 120)
 (set-face-attribute 'default nil :height 140)
 ; (set-face-attribute 'default nil :height 150)
 ;(set-face-attribute 'default nil :height 170)
@@ -24,6 +24,8 @@
 
 ;; Default window position
 ; (setq initial-frame-alist '((top . 0) (left . 0) (width . 140) (height . 45)))
+
+(add-to-list 'load-path "~/.emacs.d/use-package")
 
 (setq backup-directory-alist '(("" . "~/.emacs.d/emacs-backup")))
 
@@ -44,10 +46,20 @@
 
 ;; PACKAGE CONFIG
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(setq
+ package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                    ("org" . "http://orgmode.org/elpa/")
+                    ("melpa" . "http://melpa.org/packages/")
+                    ("melpa-stable" . "http://stable.melpa.org/packages/"))
+ package-archive-priorities '(("melpa-stable" . 1)))
 
 (when (not package-archive-contents)
-  (package-refresh-contents))
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(require 'use-package)
 
 (defvar my-packages
   '(clojure-mode cider rainbow-delimiters paredit clj-refactor
@@ -61,6 +73,10 @@
     magit
     yasnippet)
   "A list of packages installed at launch")
+
+(use-package ensime
+             :ensure t
+             :pin melpa-stable)
 
 ;; Automatically install a pre-defined list of packages
 (dolist (p my-packages)
@@ -348,6 +364,9 @@
  '(hindent-style "gibiansky")
  '(linum-format " %5i ")
  '(neo-theme (quote arrow))
+ '(package-selected-packages
+   (quote
+    (vimrc-mode smex sequential-command rainbow-delimiters projectile magit ido-ubiquitous hindent hi2 grizzl gist ghc flx-ido evil-surround evil-paredit dirtree company color-theme-sanityinc-tomorrow clj-refactor base16-theme)))
  '(safe-local-variable-values
    (quote
     ((haskell-indent-spaces . 4)

@@ -5,7 +5,7 @@ set softtabstop=2
 set expandtab
 set list listchars=tab:\ \ ,trail:·
 
-noremap <buffer> <Leader>gt :CommandTFlush<cr>\|:CommandT ./spec<cr>
+noremap <buffer> <Leader>gt :CtrlP ./spec<cr>
 " Run this file
 noremap <buffer> <Leader>t :TestFile<cr>
 " " Run only the example under the cursor
