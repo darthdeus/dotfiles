@@ -48,3 +48,4 @@ fi
 # exec xmonad
 exec "$HOME/.dotfiles/dwm/dwm"
 # exec herbstluftwm --locked
+xrandr --output VGA-1 --auto --right-of HDMI-2

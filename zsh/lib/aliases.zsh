@@ -151,9 +151,11 @@ alias tc="tmux-cssh -cs"
 
 alias st="foreman start -f Procfile.dev"
 alias fst="foreman start -f Procfile.fullDev"
+alias stf="foreman start -f Procfile.fullDev"
 
 alias m="mix"
 alias mps="mix phoenix.server"
 alias is="iex -S mix"
 alias isp="iex -S mix phoenix.server"
 alias mt="mix test"
+alias rdm="rake db:drop db:create db:migrate db:seed"

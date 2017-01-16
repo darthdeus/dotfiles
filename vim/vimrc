@@ -29,8 +29,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-rails'
 
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 Plug 'MarcWeber/vim-addon-mw-utils'

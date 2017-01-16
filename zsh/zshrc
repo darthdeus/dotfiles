@@ -37,7 +37,7 @@ CABAL_PATH="$HOME/.cabal/bin"
 CROSS_PATH="$HOME/opt/cross/bin"
 NODE_PATH="$HOME/.node_modules/bin"
 
-PATH="$HOME/neovim/bin:$HOME/.dotfiles/bin:$PYTHON_PATH:$RUBY_PATH:$DEPOT_PATH:$CABAL_PATH:$CROSS_PATH:$NODE_PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+PATH="$HOME/neovim/bin:$HOME/.npm-packages/bin:$HOME/.dotfiles/bin:$PYTHON_PATH:$RUBY_PATH:$DEPOT_PATH:$CABAL_PATH:$CROSS_PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -52,3 +52,5 @@ export PATH="$PATH:$GOPATH/bin"
 export RUST_SRC_PATH="$HOME/projects/rust/src"
 
 [[ -f $HOME/.dircolors ]] && eval $(dircolors $HOME/.dircolors)
+
+export EAGER_LOADING=true
