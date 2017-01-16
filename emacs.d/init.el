@@ -7,7 +7,8 @@
 
 (add-to-list 'default-frame-alist '(font . "Fantasque Sans Mono-12"))
 (set-face-attribute 'default t :font "Fantasque Sans Mono-12")
-;(Set-face-attribute 'default nil :height 120)
+;(set-face-attribute 'default t :font "Fantasque Sans Mono-12")
+;(set-face-attribute 'default nil :height 120)
 (set-face-attribute 'default nil :height 140)
 ; (set-face-attribute 'default nil :height 150)
 ;(set-face-attribute 'default nil :height 170)
@@ -329,7 +330,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-term-color-vector
-   [unspecified "#181818" "#ab4642" "#a1b56c" "#f7ca88" "#7cafc2" "#ba8baf" "#7cafc2" "#d8d8d8"])
+   [unspecified "#181818" "#ab4642" "#a1b56c" "#f7ca88" "#7cafc2" "#ba8baf" "#7cafc2" "#d8d8d8"] t)
  '(coq-load-path (quote ("src")))
  '(custom-enabled-themes (quote (sanityinc-tomorrow-night)))
  '(custom-safe-themes
@@ -366,7 +367,7 @@
  '(neo-theme (quote arrow))
  '(package-selected-packages
    (quote
-    (vimrc-mode smex sequential-command rainbow-delimiters projectile magit ido-ubiquitous hindent hi2 grizzl gist ghc flx-ido evil-surround evil-paredit dirtree company color-theme-sanityinc-tomorrow clj-refactor base16-theme)))
+    (magit gist hi2 hindent ghc haskell-mode dirtree color-theme-sanityinc-tomorrow smex ido-ubiquitous flx-ido flx sequential-command projectile grizzl company evil-paredit evil-surround evil clj-refactor paredit rainbow-delimiters cider clojure-mode)))
  '(safe-local-variable-values
    (quote
     ((haskell-indent-spaces . 4)
