@@ -12,6 +12,7 @@ ln -nsf "$DOT/Xresources" "$HOME/.Xresources"
 ln -nsf "$DOT/xinitrc"    "$HOME/.xinitrc"
 ln -nsf "$DOT/cpp_ycm_extra_conf.py"    "$HOME/.ycm_extra_conf.py"
 ln -nsf "$DOT/st/st"      "$DOT/bin/st"
+ln -nsf "$DOT/gbrt"       "$DOT/bin/gbrt"
 
 mkdir -p "$HOME/.ssh"
 ln -nsf "$DOT/ssh/config" "$HOME/.ssh/config"
