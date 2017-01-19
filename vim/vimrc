@@ -60,6 +60,8 @@ Plug 'dag/vim2hs'
 
 Plug 'jimenezrick/vimerl'
 Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
+
 Plug 'Raimondi/delimitMate'
 
 Plug 'fatih/vim-go'
