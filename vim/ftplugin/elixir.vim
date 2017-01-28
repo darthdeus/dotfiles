@@ -1,5 +1,5 @@
-nmap <buffer> <leader>e :!mix test<cr>
-nmap <buffer> <leader>t :VimuxRunCommand("mix test")<cr>
+" nmap <buffer> <leader>e :!mix test<cr>
+" nmap <buffer> <leader>t :VimuxRunCommand("mix test")<cr>
 noremap <buffer> <leader>gt :CtrlP ./test<cr>
 
 noremap <buffer> <leader>gv :CtrlP web/templates<cr>
