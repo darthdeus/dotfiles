@@ -159,3 +159,5 @@ alias is="iex -S mix"
 alias isp="iex -S mix phoenix.server"
 alias mt="mix test"
 alias rdm="rake db:drop db:create db:migrate db:seed"
+
+alias we="webpack"
