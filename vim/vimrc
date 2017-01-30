@@ -19,7 +19,7 @@ Plug 'godlygeek/tabular'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
-" Plug 'Quramy/tsuquyomi'
+Plug 'Quramy/tsuquyomi'
 
 " Plug 'Shougo/unite.vim'
 " Plug 'mhartington/vim-typings'
