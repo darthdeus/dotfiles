@@ -18,7 +18,7 @@ Plug 'tomtom/tlib_vim'
 Plug 'godlygeek/tabular'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-
+Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 
 " Plug 'Shougo/unite.vim'
@@ -164,7 +164,12 @@ let g:syntastic_cpp_compiler_options = ' -std=c++1y -stdlib=libc++'
 let g:syntastic_enable_signs=1
 let g:syntastic_cpp_check_header = 0
 
-let g:syntastic_mode_map = { "mode": "passive", "active_filetypes": ["haskell", "go", "c", "cpp", "idris", "rust", "elixir"] }
+let g:tsuquyomi_disable_quickfix = 1
+let g:tsuquyomi_completion_detail = 1
+
+let g:syntastic_typescript_checkers = ['tsuquyomi']
+
+" let g:syntastic_mode_map = { "mode": "passive", "active_filetypes": ["haskell", "go", "c", "cpp", "idris", "rust", "elixir"] }
 
 " gist-vim defaults
 if has("mac")
