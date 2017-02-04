@@ -1264,7 +1264,7 @@ xsetsel(char *str, Time t)
 	if (XGetSelectionOwner(xw.dpy, XA_PRIMARY) != xw.win)
 		selclear(0);
 
-	clipcopy(NULL);
+	/* clipcopy(NULL); */
 }
 
 void
