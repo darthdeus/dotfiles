@@ -4,6 +4,7 @@ DOT="$HOME/.dotfiles"
 
 ln -nsf "$DOT/vim"        "$HOME/.vim"
 ln -nsf "$DOT/vim/vimrc"  "$HOME/.vimrc"
+ln -nsf "$DOT/vim/vim-plug/plug.vim"  "$HOME/.vim/autoload/plug.vim"
 ln -nsf "$DOT/zsh"        "$HOME/.zsh"
 ln -nsf "$DOT/zsh/zshrc"  "$HOME/.zshrc"
 ln -nsf "$DOT/emacs.d"    "$HOME/.emacs.d"
