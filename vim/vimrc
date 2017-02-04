@@ -155,6 +155,9 @@ nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 let g:syntastic_haskell_checkers = ['']
 
 let g:syntastic_cpp_compiler = 'clang++'
@@ -324,24 +327,24 @@ nnoremap <leader>c :call VimuxRunCommand("make clean")<cr>
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
 " Open files with <leader>f
-noremap <leader>f  :CtrlP ./<CR>
+noremap <leader>f  :FZF ./<CR>
 " Open files, limited to the directory of the current files, with <leader>gf
-noremap <leader>F  :CtrlP %%<CR>
-noremap <leader>gf :CtrlP %%<CR>
+noremap <leader>F  :FZF %%<CR>
+noremap <leader>gf :FZF %%<CR>
 
 " Rails specific keystrokes
 noremap <leader>gr :topleft :split config/routes.rb<CR>
 noremap <leader>gg :topleft 50 :split Gemfile<CR>
 
-noremap <leader>gv :CtrlP app/views<cr>
-noremap <leader>gc :CtrlP app/controllers<cr>
-noremap <leader>gm :CtrlP app/models<cr>
-noremap <leader>gs :CtrlP app/services<cr>
-noremap <leader>gh :CtrlP app/helpers<cr>
-noremap <leader>gl :CtrlP lib<cr>
-noremap <leader>gk :CtrlP app/assets/stylesheets<cr>
-noremap <leader>gj :CtrlP app/assets/javascripts<cr>
-noremap <leader>gd :CtrlP client/app/bundles<cr>
+noremap <leader>gv :FZF app/views<cr>
+noremap <leader>gc :FZF app/controllers<cr>
+noremap <leader>gm :FZF app/models<cr>
+noremap <leader>gs :FZF app/services<cr>
+noremap <leader>gh :FZF app/helpers<cr>
+noremap <leader>gl :FZF lib<cr>
+noremap <leader>gk :FZF app/assets/stylesheets<cr>
+noremap <leader>gj :FZF app/assets/javascripts<cr>
+noremap <leader>gd :FZF client/app/bundles<cr>
 
 nnoremap <leader>w :!rubocop %<cr>
 
@@ -351,7 +354,7 @@ noremap <leader>t :TestFile<cr>
 " Run only the example under the cursor
 noremap <leader>T :TestNearest<cr>
 
-nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>b :FZF<cr>
 
 nnoremap <C-a> ^
 nnoremap <C-e> $
