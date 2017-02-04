@@ -302,7 +302,7 @@ endif
 
 " Highlight current line
 set cursorline
-set cursorcolumn
+" set cursorcolumn
 
 " Buffer resizing with arrow keys
 nnoremap <Up> <C-w>5-
