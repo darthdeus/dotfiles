@@ -39,7 +39,6 @@ Plug 'tpope/vim-rails'
 
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'slim-template/vim-slim'
-Plug 'kchmck/vim-coffee-script'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTree' }
 
 Plug 'krisajenkins/vim-projectlocal'
@@ -67,7 +66,7 @@ Plug 'slashmili/alchemist.vim'
 
 let g:alchemist#elixir_erlang_src= "~/src/"
 
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'fatih/vim-go'
 
