@@ -12,6 +12,7 @@ Plug 'drmikehenry/vim-headerguard'
 Plug 'rking/ag.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'rust-lang/rust.vim'
 
 Plug 'tomtom/tcomment_vim'
