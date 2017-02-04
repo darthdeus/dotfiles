@@ -1,0 +1,6 @@
+[submodule "emacs.d/packages/haskell-mode"]
+	path = emacs.d/packages/haskell-mode
+	url = git@github.com:haskell/haskell-mode.git
+[submodule "emacs.d/use-package"]
+	path = emacs.d/use-package
+	url = git@github.com:jwiegley/use-package.git
