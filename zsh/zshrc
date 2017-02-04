@@ -55,3 +55,5 @@ export RUST_SRC_PATH="$HOME/projects/rust/src"
 [[ -f $HOME/.dircolors ]] && eval $(dircolors $HOME/.dircolors)
 
 export EAGER_LOADING=true
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
