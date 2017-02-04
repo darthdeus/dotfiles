@@ -1,6 +1,7 @@
 host cat
   hostname catsocket.com
   user deploy
+  port 42222
 
 host bogatyr
   hostname bogatyr.ms.mff.cuni.cz
