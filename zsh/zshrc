@@ -52,6 +52,11 @@ export GOPATH="$HOME/projects/go"
 export PATH="$PATH:$GOPATH/bin"
 export RUST_SRC_PATH="$HOME/projects/rust/src"
 
+export FZF_DEFAULT_COMMAND='
+  (git ls-tree -r --name-only HEAD ||
+   find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
+      sed s/^..//) 2> /dev/null'
+
 [[ -f $HOME/.dircolors ]] && eval $(dircolors $HOME/.dircolors)
 
 export EAGER_LOADING=true
