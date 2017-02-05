@@ -46,7 +46,18 @@ fi
 # exec xterm -geometry 80x66+0+0 -name login
 
 # exec xmonad
-exec "$HOME/.dotfiles/dwm/dwm"
+
+while :; do
+  "$HOME/.dotfiles/dwm/dwm"
+done
+
+# exec "$HOME/.dotfiles/dwm/dwm"
+
+# "$HOME/.dotfiles/dwm/dwm" &
+# exec "$HOME/.dotfiles/sleeper.sh"
+
 # exec i3
+# exec awesome
+
 # exec herbstluftwm --locked
 # xrandr --output VGA-1 --auto --right-of HDMI-2
