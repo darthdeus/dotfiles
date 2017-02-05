@@ -52,16 +52,10 @@ alias ql="qlmanage -p 2>/dev/null" # preview a file using QuickLook
 
 alias branches='git log --graph --full-history --all --color  --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"'
 
-alias mongod="nocorrect mongod"
-alias subl="nocorrect subl"
-alias vagrant="nocorrect vagrant"
-
 alias tf="tail -F"
-
 alias r="bundle exec rails"
 
 alias scvload="ssh li 'top -bn 1 | head -n 5'"
-alias kapow="touch tmp/restart.txt"
 
 function gdd() {
   git diff $1@{1}..$1
@@ -74,11 +68,8 @@ alias tn="tmux new-session -s"
 
 alias be="bundle exec"
 alias rs="bundle exec rspec spec"
-alias cf="bundle exec cucumber features"
 alias rb="rbenv"
 alias rh="rbenv rehash"
-# alias p="sudo -Hiu postgres psql"
-alias p="powder"
 
 alias b="bundle"
 alias bi="bundle install"
@@ -88,7 +79,6 @@ alias ct='ctags --extra=+f --language-force=Ruby -R $(bundle show --paths | xarg
 
 alias md='kill -s USR1 $(ps -ef | grep main.js | grep node | tr -s " " | cut -f 4 -d " ")'
 alias ni="node-inspector --hidden='node_modules' --hidden='node.js' --no-preload"
-alias im="iex -S mix"
 
 alias c1="clang++ -std=c++11 -stdlib=libc++"
 
@@ -110,8 +100,6 @@ function z() {
   fi
 }
 
-alias nh="node --harmony"
-
 alias pi="sudo pacman -S"
 alias pe="pacman -Ss"
 alias pq="pacman -Ssq"
@@ -132,7 +120,7 @@ alias pa="perf annotate"
 alias pr="perf record -g"
 alias pre="perf report -g 'graph,0.5,caller'"
 alias relx="xrdb $HOME/.Xresources"
- alias chrome="google-chrome-stable --high-dpi-support=1 --force-device-scale-factor=1"
+alias chrome="google-chrome-stable --high-dpi-support=1 --force-device-scale-factor=1"
 
 function malloc_dump() {
   LD_PRELOAD="$HOME/.dotfiles/malloc_dump.so" $@
@@ -153,6 +141,7 @@ alias stf="foreman start -f Procfile.fullDev"
 
 alias m="mix"
 alias mps="mix phoenix.server"
+alias im="iex -S mix"
 alias is="iex -S mix"
 alias isp="iex -S mix phoenix.server"
 alias mt="mix test"
