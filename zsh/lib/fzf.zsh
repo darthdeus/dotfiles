@@ -68,6 +68,9 @@ fdr() {
 # ex: cf word1 word2 ... (even part of a file name)
 # zsh autoload function
 # TODO: figure oiut why this is corrupting zsh autocomplete
+
+
+
 # cf() {
 #   local file
 #
