@@ -160,3 +160,5 @@ alias rdm="rake db:drop db:create db:migrate db:seed"
 
 alias we="webpack"
 alias dh="du -h | sort -h"
+
+alias dof="cd ~/.dotfiles"

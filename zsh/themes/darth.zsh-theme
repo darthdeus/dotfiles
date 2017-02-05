@@ -41,8 +41,50 @@ at_sign() {
   git rev-parse --git-dir > /dev/null 2>&1 && echo "@"
 }
 
-git_commits_behind() {
-  git rev-list --count HEAD..@{upstream}
+function git_current_branch() {
+  local ref
+  ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
+  local ret=$?
+  if [[ $ret != 0 ]]; then
+    [[ $ret == 128 ]] && return  # no git repo.
+    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+  fi
+  echo ${ref#refs/heads/}
+}
+
+
+# Gets the number of commits ahead from remote
+function git_commits_ahead() {
+  if command git rev-parse --git-dir &>/dev/null; then
+    git rev-list --count @{upstream}..HEAD
+  fi
+}
+
+# Gets the number of commits behind remote
+function git_commits_behind() {
+  if command git rev-parse --git-dir &>/dev/null; then
+    git rev-list --count HEAD..@{upstream}
+  fi
+}
+
+
+DOTFILES_DIRTY='!dot!'
+function dotfiles_dirty() {
+	echo $(cd "$HOME/.dotfiles" && if [[ $(git status --porcelain) ]]; then echo "$DOTFILES_DIRTY"; else echo "OK"; fi)
+}
+
+# Outputs if current branch is ahead of remote
+function git_prompt_ahead() {
+  if [[ -n "$(command git rev-list origin/$(git_current_branch)..HEAD 2> /dev/null)" ]]; then
+    echo "$ZSH_THEME_GIT_PROMPT_AHEAD"
+  fi
+}
+
+# Outputs if current branch is behind remote
+function git_prompt_behind() {
+  if [[ -n "$(command git rev-list HEAD..origin/$(git_current_branch) 2> /dev/null)" ]]; then
+    echo "$ZSH_THEME_GIT_PROMPT_BEHIND"
+  fi
 }
 
 local smiley="%(?,%{$fg[green]%}$%{$reset_color%},%{$fg[red]%}$%{$reset_color%})"
@@ -50,7 +92,7 @@ local smiley="%(?,%{$fg[green]%}$%{$reset_color%},%{$fg[red]%}$%{$reset_color%})
 local current_dir="%~"
 
 # PROMPT='${current_dir}
-PROMPT='%{$fg[blue]%}[%M] ${current_dir}
+PROMPT='%{$fg[blue]%}[%M] ${current_dir} $fg[red]$(dotfiles_dirty)
 ${smiley} %{$reset_color%}'
 
 RPROMPT='%{$fg[white]%} %{$fg[blue]%}$(current_branch)$(at_sign)%{$fg[yellow]%}$(current_commit) %{$reset_color%}'
