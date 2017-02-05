@@ -41,6 +41,10 @@ at_sign() {
   git rev-parse --git-dir > /dev/null 2>&1 && echo "@"
 }
 
+git_commits_behind() {
+  git rev-list --count HEAD..@{upstream}
+}
+
 local smiley="%(?,%{$fg[green]%}$%{$reset_color%},%{$fg[red]%}$%{$reset_color%})"
 
 local current_dir="%~"
