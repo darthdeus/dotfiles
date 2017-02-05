@@ -62,3 +62,6 @@ export FZF_DEFAULT_COMMAND='
 export EAGER_LOADING=true
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# TODO: figure out how to make fasd work with my current hotkeys
+# eval "$(fasd --init auto)"
