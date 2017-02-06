@@ -466,7 +466,7 @@ autocmd FileType h,cc,c,cpp nnoremap <buffer><leader>ha :HeaderguardAdd<CR>
 autocmd FileType h,cc,c,cpp vnoremap <buffer><C-e> :ClangFormat<CR>
 
 let g:limelight_paragraph_span = 2
-autocmd BufRead,BufNewFile * Limelight 0.5
+" autocmd BufRead,BufNewFile * Limelight 0.5
 
 
 nnoremap <Leader>e :call VimuxRunCommand("make")<cr>
