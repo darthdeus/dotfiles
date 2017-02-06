@@ -5,6 +5,9 @@ set shell=sh
 
 call plug#begin('~/.vim/bundle')
 
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
 Plug 'vim-scripts/a.vim'
 Plug 'benmills/vimux'
 Plug 'drmikehenry/vim-headerguard'
@@ -186,7 +189,6 @@ let g:gist_post_private = 1
 
 " Turn off jslint errors by default
 let g:JSLintHighlightErrorLine = 0
-
 
 " Allow backgrounding buffers without writing them, and remember marks/undo
 " for backgrounded buffers
@@ -462,6 +464,10 @@ let g:clang_format#code_style = "google"
 autocmd FileType h,cc,c,cpp nnoremap <buffer><C-e> :<C-u>ClangFormat<CR>
 autocmd FileType h,cc,c,cpp nnoremap <buffer><leader>ha :HeaderguardAdd<CR>
 autocmd FileType h,cc,c,cpp vnoremap <buffer><C-e> :ClangFormat<CR>
+
+let g:limelight_paragraph_span = 2
+autocmd BufRead,BufNewFile * Limelight 0.5
+
 
 nnoremap <Leader>e :call VimuxRunCommand("make")<cr>
 
