@@ -68,6 +68,7 @@ alias tn="tmux new-session -s"
 
 alias be="bundle exec"
 alias rs="bundle exec rspec spec"
+alias rsa="bundle exec rspec spec --only-failing"
 alias rb="rbenv"
 alias rh="rbenv rehash"
 
