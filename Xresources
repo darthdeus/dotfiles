@@ -22,6 +22,9 @@ xclock*background: black
 URxvt*.scrollBar: false
 URxvt*font: xft:Fantasque Sans Mono:pixelsize=18:antialias=true
 URxvt*letterSpace: -2
+URxvt*internalBorder: 0px
+URxvt*externalBorder: 0px
+! URxvt*borderLess: true
 
 ! URxvt*scrollBar_right:                boolean
 ! URxvt*scrollBar_floating:             boolean
