@@ -47,6 +47,10 @@ fi
 
 # exec xmonad
 
+if [ -x /usr/bin/numlockx ]; then
+  /usr/bin/numlockx on
+fi
+
 while :; do
   "$HOME/.dotfiles/dwm/dwm"
 done
