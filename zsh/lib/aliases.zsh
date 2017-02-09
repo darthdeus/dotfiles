@@ -90,7 +90,7 @@ alias cu="cabal update"
 alias csi="cabal sandbox init"
 
 function pgdisc() {
-  echo "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname = current_database() AND pid <> pg_backend_pid();" > psql postgres
+  echo "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname = current_database() AND pid <> pg_backend_pid();" | psql $1
 }
 
 function z() {
