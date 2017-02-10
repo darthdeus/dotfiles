@@ -1,6 +1,6 @@
 default: all
 
-all: install-dwm install-st symlink
+all: install-dwm install-st symlink malloc_dump
 
 install-dwm:
 	cd dwm; make; ln -nsf $(HOME)/.dotfiles/dwm/dwm $(HOME)/.dotfiles/bin/dwm
@@ -10,6 +10,9 @@ install-st:
 
 symlink:
 	./link.sh
+
+malloc_dump:
+	gcc -shared -o malloc_dump.so malloc_dump.c -fPIC
 
 base16-shell:
 	mkdir -p $(HOME)/.config

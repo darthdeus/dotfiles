@@ -1,3 +1,4 @@
 git/config
 *.o
 bin/*
+malloc_dump.so
