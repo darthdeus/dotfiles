@@ -153,3 +153,5 @@ alias dh="du -h | sort -h"
 
 alias dof="cd ~/.dotfiles"
 alias n="npm start"
+
+alias ft="ftrace"

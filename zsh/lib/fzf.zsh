@@ -104,6 +104,15 @@ fkill() {
   fi
 }
 
+ftrace() {
+  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+  if [ "x$pid" != "x" ];
+  then
+    sudo strace -f -p $pid
+  fi
+}
+
 # fbr - checkout git branch (including remote branches)
 fbr() {
   local branches branch
