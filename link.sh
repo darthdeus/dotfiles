@@ -32,5 +32,8 @@ cp "$HOME/.dotfiles/git/config.example" "$HOME/.gitconfig"
 mkdir -p "$HOME/.config/herbstluftwm"
 ln -nsf "$HOME/.dotfiles/herbstluftwm" "$HOME/.config/herbstluftwm/autostart"
 
+# TODO: replace with XDGHOME
+ln -nsf "$HOME/.dotfiles/termite" "$HOME/.config/termite"
+
 ln -nsf "$DOT/Xmodmap" "$HOME/.Xmodmap"
 ln -nsf "$DOT/tmux-cssh" "$HOME/.tmux-cssh"
