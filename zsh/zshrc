@@ -36,7 +36,7 @@ RUBY_PATH="$HOME/.gem/ruby/2.2.0/bin:$HOME/.rbenv/bin"
 CABAL_PATH="$HOME/.cabal/bin"
 CROSS_PATH="$HOME/opt/cross/bin"
 # TODO: unify this
-NODE_PATH="$HOME/.node_modules/bin:$HOME/.npm-packages/bin"
+NODE_PATH="$HOME/.node_modules/bin"
 
 PATH="$HOME/neovim/bin:$NODE_PATH:$HOME/.dotfiles/bin:$PYTHON_PATH:$RUBY_PATH:$CABAL_PATH:$CROSS_PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
