@@ -1,1 +1,0 @@
-/home/darth/.dotfiles/vim/vim-plug/plug.vim
