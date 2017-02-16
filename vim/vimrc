@@ -348,7 +348,7 @@ noremap <leader>gk :FZF app/assets/stylesheets<cr>
 noremap <leader>gj :FZF app/assets/javascripts<cr>
 noremap <leader>gd :FZF client/app/bundles<cr>
 
-nnoremap <leader>w :!rubocop %<cr>
+nnoremap <leader>w :VimuxRunCommand("webpack")<cr>
 
 noremap <leader>a :TestSuite<cr>
 " Run this file
