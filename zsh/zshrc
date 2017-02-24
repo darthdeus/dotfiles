@@ -37,8 +37,9 @@ CABAL_PATH="$HOME/.cabal/bin"
 CROSS_PATH="$HOME/opt/cross/bin"
 # TODO: unify this
 NODE_PATH="$HOME/.node_modules/bin"
+CARGO_PATH="$HOME/.cargo/bin"
 
-PATH="$HOME/neovim/bin:$NODE_PATH:$HOME/.dotfiles/bin:$PYTHON_PATH:$RUBY_PATH:$CABAL_PATH:$CROSS_PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+PATH="$HOME/neovim/bin:$NODE_PATH:$CARGO_PATH:$HOME/.dotfiles/bin:$PYTHON_PATH:$RUBY_PATH:$CABAL_PATH:$CROSS_PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 

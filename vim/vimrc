@@ -88,6 +88,21 @@ call plug#end()
 
 " TODO - TComment to use // C++ style comments in C files
 
+
+" Go config
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
+let g:go_list_type = "quickfix"
+
 " Change the leader to ","
 let mapleader=","
 
@@ -140,15 +155,6 @@ let g:haskell_sql           = 0
 let g:haskell_json          = 0
 let g:haskell_xml           = 0
 
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_extra_conf_globlist = ['*']
 let g:ycm_show_diagnostics_ui = 1
@@ -158,8 +164,16 @@ nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+let g:ycm_rust_src_path = '/home/darth/projects/rust/src'
+
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 
 let g:syntastic_haskell_checkers = ['']
 
@@ -176,6 +190,9 @@ let g:tsuquyomi_completion_detail = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi']
 
 " let g:syntastic_mode_map = { "mode": "passive", "active_filetypes": ["haskell", "go", "c", "cpp", "idris", "rust", "elixir"] }
+
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " gist-vim defaults
 if has("mac")
