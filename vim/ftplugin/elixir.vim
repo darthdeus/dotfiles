@@ -1,5 +1,5 @@
 " nmap <buffer> <leader>e :!mix test<cr>
-" nmap <buffer> <leader>t :VimuxRunCommand("mix test")<cr>
+noremap <buffer> <leader>q :VimuxRunCommand("mix dialyzer")<cr>
 noremap <buffer> <leader>gt :FZF ./test<cr>
 
 noremap <buffer> <leader>gr :topleft :split web/router.ex<CR>
