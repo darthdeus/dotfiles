@@ -159,3 +159,5 @@ alias ft="ftrace"
 
 alias rake="bundle exec rake"
 alias rspec="bundle exec rspec"
+alias rw="rakudobrew"
+alias p="perl6"
