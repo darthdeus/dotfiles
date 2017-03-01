@@ -12,10 +12,11 @@ Plug 'vim-scripts/a.vim'
 Plug 'benmills/vimux'
 Plug 'drmikehenry/vim-headerguard'
 
-Plug 'rking/ag.vim'
+" Plug 'rking/ag.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'rust-lang/rust.vim'
 
 Plug 'junegunn/vim-easy-align'
@@ -164,6 +165,7 @@ nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 
+
 let g:ycm_rust_src_path = '/home/darth/projects/rust/src'
 
 " set statusline+=%#warningmsg#
@@ -174,6 +176,21 @@ let g:ycm_rust_src_path = '/home/darth/projects/rust/src'
 " let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+" imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+" imap <c-x><c-l> <plug>(fzf-complete-line)
+
+
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 let g:syntastic_haskell_checkers = ['']
 
@@ -346,10 +363,11 @@ nnoremap <leader>c :call VimuxRunCommand("make clean")<cr>
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
 " Open files with <leader>f
-noremap <leader>f  :FZF ./<CR>
+noremap <leader>f  :GFiles ./<CR>
 " Open files, limited to the directory of the current files, with <leader>gf
 noremap <leader>F  :FZF %%<CR>
-noremap <leader>gf :FZF %%<CR>
+noremap <leader>gf :Files ./<CR>
+noremap <leader>gd :GFiles?<cr>
 
 " Rails specific keystrokes
 noremap <leader>gr :topleft :split config/routes.rb<CR>
@@ -363,7 +381,6 @@ noremap <leader>gh :FZF app/helpers<cr>
 noremap <leader>gl :FZF lib<cr>
 noremap <leader>gk :FZF app/assets/stylesheets<cr>
 noremap <leader>gj :FZF app/assets/javascripts<cr>
-noremap <leader>gd :FZF client/app/bundles<cr>
 
 nnoremap <leader>w :VimuxRunCommand("webpack")<cr>
 
@@ -373,7 +390,8 @@ noremap <leader>t :TestFile<cr>
 " Run only the example under the cursor
 noremap <leader>T :TestNearest<cr>
 
-nnoremap <leader>b :FZF<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>B :BTags<cr>
 
 nnoremap <C-a> ^
 nnoremap <C-e> $

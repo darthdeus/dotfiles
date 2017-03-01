@@ -156,3 +156,6 @@ alias dot="cd ~/.dotfiles"
 alias n="npm start"
 
 alias ft="ftrace"
+
+alias rake="bundle exec rake"
+alias rspec="bundle exec rspec"
