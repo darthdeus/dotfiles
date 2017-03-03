@@ -125,4 +125,5 @@ gupstation() {
 alias graf='git remote add $argv[1] $argv[2] && gf $argv[1]'
 alias gt='git difftool'
 alias gsu='git submodule update'
+alias gw='git show'
 
