@@ -85,13 +85,15 @@ Plug 'janko-m/vim-test'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+Plug 'vim-perl/vim-perl'
+" Plug 'nxadm/syntastic-perl6'
+
 call plug#end()
 
 " TODO - TComment to use // C++ style comments in C files
 
 
 " Go config
-
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
@@ -165,7 +167,7 @@ nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 
-
+" TODO: relative path to home?
 let g:ycm_rust_src_path = '/home/darth/projects/rust/src'
 
 " set statusline+=%#warningmsg#
@@ -176,6 +178,11 @@ let g:ycm_rust_src_path = '/home/darth/projects/rust/src'
 " let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
+" TODO: try this again later to see if it works"
+" let g:syntastic_perl6lib = [ 'lib', '../lib' ]
+" let g:syntastic_perl6_checkers = ['jsonerror']
+" let g:syntastic_enable_perl6_jsonerror_checker = 1
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
