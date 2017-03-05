@@ -30,7 +30,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 
 Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
@@ -92,6 +93,7 @@ call plug#end()
 
 " TODO - TComment to use // C++ style comments in C files
 
+let g:airline_theme='base16'
 
 " Go config
 let g:go_highlight_functions = 1
