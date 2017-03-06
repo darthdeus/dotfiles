@@ -13,3 +13,6 @@
 [submodule "rakudobrew"]
 	path = rakudobrew
 	url = https://github.com/tadzik/rakudobrew
+[submodule "perf-tools"]
+	path = perf-tools
+	url = https://github.com/brendangregg/perf-tools
