@@ -16,3 +16,6 @@
 [submodule "perf-tools"]
 	path = perf-tools
 	url = https://github.com/brendangregg/perf-tools
+[submodule "FlameGraph"]
+	path = FlameGraph
+	url = git@github.com:brendangregg/FlameGraph.git
