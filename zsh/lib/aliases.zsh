@@ -119,7 +119,9 @@ fi
 
 alias pa="perf annotate"
 alias pr="perf record -g"
+alias pra="perf record -F 99 -a -g"
 alias pre="perf report -g 'graph,0.5,caller'"
+alias par="perf stat -ad"
 alias relx="xrdb $HOME/.Xresources"
 alias chrome="google-chrome-stable --high-dpi-support=1 --force-device-scale-factor=1"
 
