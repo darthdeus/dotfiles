@@ -12,6 +12,7 @@ ln -nsf "$DOT/Xresources" "$HOME/.Xresources"
 ln -nsf "$DOT/xinitrc"    "$HOME/.xinitrc"
 ln -nsf "$DOT/rakudobrew" "$HOME/.rakudobrew"
 
+ln -nsf "$DOT/dot-update" "$DOT/bin/dot-update"
 ln -nsf "$DOT/st/st"      "$DOT/bin/st"
 ln -nsf "$DOT/gbrt"       "$DOT/bin/gbrt"
 

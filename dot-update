@@ -1,0 +1,12 @@
+#!/bin/sh
+
+DOT="$HOME/.dotfiles"
+
+cd "$DOT"
+
+git submodule update --init --recursive
+
+./rbenv-install.sh
+
+git smart-pull
+
