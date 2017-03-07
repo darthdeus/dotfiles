@@ -471,7 +471,7 @@ nmap Q <NOP>
 nnoremap <leader><leader> <c-^>
 
 " CTags - TODO - find a good hotkey for this
-noremap <leader>lt :!ctags --extra=+f -R *<CR>
+noremap <leader>lt :!ctags --extra=+f --exclude=public --exclude=node_modules --exclude=.git -R *<CR>
 noremap <C-\> :tnext<CR>
 
 noremap <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
