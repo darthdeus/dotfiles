@@ -19,6 +19,9 @@ ln -nsf "$DOT/gbrt"       "$DOT/bin/gbrt"
 ln -nsf "$DOT/c_ycm_extra_conf.py" "$HOME/.ycm_extra_conf.py"
 ln -nsf "$DOT/vim/vim-plug/plug.vim" "$HOME/.vim/autoload/plug.vim"
 
+mkdir -p "$HOME/.config"
+ln -nsf "$DOT/vim" "$HOME/.config/nvim"
+
 mkdir -p "$HOME/.ssh"
 ln -nsf "$DOT/ssh/config" "$HOME/.ssh/config"
 
