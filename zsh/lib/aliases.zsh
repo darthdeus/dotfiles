@@ -163,3 +163,9 @@ alias rake="bundle exec rake"
 alias rspec="bundle exec rspec"
 alias rw="rakudobrew"
 alias p="perl6"
+
+function backlight() {
+  # TODO: make this resistant to invalid arguments
+  # TODO: rewrite in perl 6? :)
+  echo 'sudo tee /sys/class/backlight/intel_backlight/brightness <<< $1'
+}
