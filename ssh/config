@@ -1,3 +1,7 @@
+host cam
+  hostname camellia.kam.mff.cuni.cz
+  user arnoldj
+
 host cat
   hostname catsocket.com
   user deploy
