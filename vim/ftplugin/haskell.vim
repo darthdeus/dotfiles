@@ -16,3 +16,15 @@ nmap <silent> <leader>q :call VimuxOpenRunner()<cr>:call VimuxSendKeys("C-c :so 
 " set softtabstop=4
 " set shiftwidth=4
 " set tabstop=4
+
+set foldlevelstart=200
+let g:haskell_conceal       = 0
+let g:haskell_quasi         = 1
+let g:haskell_interpolation = 0
+let g:haskell_regex         = 0
+let g:haskell_jmacro        = 0
+let g:haskell_shqq          = 0
+let g:haskell_sql           = 0
+let g:haskell_json          = 0
+let g:haskell_xml           = 0
+

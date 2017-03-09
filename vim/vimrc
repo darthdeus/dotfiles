@@ -77,8 +77,10 @@ Plug 'fatih/vim-go'
 Plug 'Shougo/vimproc.vim'
 Plug 'scrooloose/syntastic'
 
-Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 Plug 'janko-m/vim-test'
 
@@ -87,8 +89,10 @@ Plug 'honza/vim-snippets'
 
 Plug 'vim-perl/vim-perl'
 " Plug 'nxadm/syntastic-perl6'
-
+"
 call plug#end()
+
+let g:deoplete#enable_at_startup = 1
 
 " TODO - TComment to use // C++ style comments in C files
 
@@ -147,17 +151,6 @@ let g:airline_powerline_fonts = 1
 
 let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
-
-set foldlevelstart=200
-let g:haskell_conceal       = 0
-let g:haskell_quasi         = 1
-let g:haskell_interpolation = 0
-let g:haskell_regex         = 0
-let g:haskell_jmacro        = 0
-let g:haskell_shqq          = 0
-let g:haskell_sql           = 0
-let g:haskell_json          = 0
-let g:haskell_xml           = 0
 
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_extra_conf_globlist = ['*']
@@ -255,6 +248,7 @@ set expandtab
 
 set list listchars=tab:\ \ ,trail:.
 
+
 set backupcopy=yes
 
 " Searching
@@ -273,7 +267,9 @@ set laststatus=0
 " TODO - how does this differ from "longest,list" only?
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=bundle,obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,deps,rel,*.a,priv/static
+
+" TODO: fix in neovim
+set wildignore=obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,deps,rel,*.a,priv/static
 
 " TODO - what is the default behavior?
 " Remap the tab key to do autocompletion or indentation depending on the
@@ -487,8 +483,9 @@ aug various_file_types
   au BufNewFile,BufRead *.slime set filetype=slim
 
   au BufNewFile,BufRead *.conf set filetype=conf
-  au BufNewFile,BufRead *vimrc set filetype=vim
 aug END
+
+au BufNewFile,BufRead .vimrc,*vimrc set filetype=vim
 
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
@@ -510,7 +507,6 @@ autocmd FileType h,cc,c,cpp vnoremap <buffer><C-e> :ClangFormat<CR>
 
 let g:limelight_paragraph_span = 2
 " autocmd BufRead,BufNewFile * Limelight 0.5
-
 
 nnoremap <Leader>e :call VimuxRunCommand("make")<cr>
 
