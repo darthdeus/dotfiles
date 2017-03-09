@@ -17,7 +17,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 Plug 'junegunn/vim-easy-align'
 
@@ -29,20 +29,19 @@ Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-rake'
+" Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rails'
 
 Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'slim-template/vim-slim'
+Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTree' }
 
 Plug 'krisajenkins/vim-projectlocal'
@@ -51,6 +50,8 @@ Plug 'eshock/vim-matchit'
 Plug 'skwp/vim-rspec'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
+
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 Plug 'kurko/autocoder.vim'
 Plug 'mattn/zencoding-vim'
@@ -62,17 +63,16 @@ Plug 'rhysd/vim-clang-format'
 Plug 'kana/vim-operator-user'
 
 Plug 'mattn/emmet-vim'
-Plug 'dag/vim2hs'
+Plug 'dag/vim2hs', { 'for': 'haskell' }
 
-Plug 'jimenezrick/vimerl'
-Plug 'elixir-lang/vim-elixir'
-Plug 'slashmili/alchemist.vim'
+Plug 'jimenezrick/vimerl', { 'for': 'erlang' }
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 
 let g:alchemist#elixir_erlang_src= "~/src/"
 
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'for': 'go' }
 
 Plug 'Shougo/vimproc.vim'
 Plug 'scrooloose/syntastic'
@@ -81,9 +81,6 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 Plug 'janko-m/vim-test'
-
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 Plug 'vim-perl/vim-perl'
 " Plug 'nxadm/syntastic-perl6'
