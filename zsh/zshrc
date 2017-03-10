@@ -12,7 +12,7 @@ unsetopt beep
 bindkey -e
 
 # Load all libs under
-for config_file ($ZSH/lib/*.zsh) source $config_file
+for config_file ($ZSH/lib/*.zsh) source "$config_file"
 
 # completion settings
 # zstyle :compinstall filename '/Users/darth/.zshrc'
@@ -70,3 +70,4 @@ eval "$($HOME/.rakudobrew/bin/rakudobrew init -)"
 
 # TODO: figure out how to make fasd work with my current hotkeys
 # eval "$(fasd --init auto)"
+
