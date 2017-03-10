@@ -94,9 +94,16 @@ cdf() {
    file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
+fzf_select_pid() {
+  # TODO: extract fzf process command to a function/script
+  # pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+  # pid=$(ps -ef | sed 1d | awk '{ print $1, $2, $3, $8 }' | fzf --nth=4 -m)
+  ps -ef | sed 1d | fzf -m --nth=8 --preview 'echo {}' --preview-window down:3:wrap | awk '{print $2}'
+}
+
 # fkill - kill process
 fkill() {
-  pid=$(ps -ef | sed 1d | fzf -m --preview 'echo {}' --preview-window down:3:wrap | awk '{print $2}')
+  pid=$(fzf_select_pid)
 
   if [ "x$pid" != "x" ]
   then
@@ -105,10 +112,7 @@ fkill() {
 }
 
 sd() {
-  # TODO: extract fzf process command to a function/script
-  # pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
-  # pid=$(ps -ef | sed 1d | awk '{ print $1, $2, $3, $8 }' | fzf --nth=4 -m)
-  pid=$(ps -ef | sed 1d | awk '{ print $1, $2, $3, $8 }' | fzf -m --nth=4 --preview 'echo {}' --preview-window down:3:wrap | awk '{print $2}')
+  pid=$(fzf_select_pid)
 
   if [ "x$pid" != "x" ];
   then
