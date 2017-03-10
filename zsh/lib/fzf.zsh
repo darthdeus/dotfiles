@@ -105,7 +105,8 @@ fkill() {
 }
 
 ftrace() {
-  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+  # pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+  pid=$(ps -ef | sed 1d | awk '{ print $1, $2, $3, $8 }' | fzf --nth=4 -m)
 
   if [ "x$pid" != "x" ];
   then
