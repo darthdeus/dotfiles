@@ -169,3 +169,5 @@ function backlight() {
   # TODO: rewrite in perl 6? :)
   echo 'sudo tee /sys/class/backlight/intel_backlight/brightness <<< $1'
 }
+
+alias pw="pkgsearch"
