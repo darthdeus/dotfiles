@@ -67,17 +67,12 @@ function git_commits_behind() {
   fi
 }
 
-
-function dotfiles_dirty_priv() {
+function dotfiles_dirty() {
+  DOTFILES_DIRTY='!dot!'
   cd "$HOME/.dotfiles"
   if [[ $(git status --porcelain | wc -l) -ne 0 ]]; then
     echo "$DOTFILES_DIRTY"
   fi
-}
-
-DOTFILES_DIRTY='!dot!'
-function dotfiles_dirty() {
-	echo $(dotfiles_dirty_priv)
 }
 
 # Outputs if current branch is ahead of remote
