@@ -170,4 +170,15 @@ function backlight() {
   echo 'sudo tee /sys/class/backlight/intel_backlight/brightness <<< $1'
 }
 
+DOT="$HOME/.dotfiles"
+
+function dot-update() {
+  cd "$DOT"
+
+  git submodule update --init --recursive
+  ./rbenv-install.sh
+  git smart-pull
+}
+
+
 alias pw="pkgsearch"
