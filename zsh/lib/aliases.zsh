@@ -180,5 +180,17 @@ function dot-update() {
   git smart-pull
 }
 
+function dot-deps() {
+  cd "$DOT"
+
+  # TODO: qutebrowser or AUR qutebrowser-git?
+
+  # pacman-key --init
+  # pacman-key --populate archlinux
+
+  # gpg --recv-key KEY
+
+  cat deps | xargs sudo pacman -S --needed
+}
 
 alias pw="pkgsearch"
