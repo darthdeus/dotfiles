@@ -368,10 +368,10 @@ nnoremap <leader>c :call VimuxRunCommand("make clean")<cr>
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
 " Open files with <leader>f
-noremap <leader>f  :GFiles ./<CR>
+noremap <leader>f  :Files ./<CR>
 " Open files, limited to the directory of the current files, with <leader>gf
 noremap <leader>F  :FZF %%<CR>
-noremap <leader>gf :Files ./<CR>
+noremap <leader>gf :GFiles ./<CR>
 noremap <leader>gd :GFiles?<cr>
 
 " Rails specific keystrokes
