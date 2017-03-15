@@ -12,6 +12,8 @@ Plug 'vim-scripts/a.vim'
 Plug 'benmills/vimux'
 Plug 'drmikehenry/vim-headerguard'
 
+Plug 'chrisbra/vim-zsh'
+
 " Plug 'rking/ag.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
