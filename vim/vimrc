@@ -13,6 +13,7 @@ Plug 'benmills/vimux'
 Plug 'drmikehenry/vim-headerguard'
 
 Plug 'chrisbra/vim-zsh'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Plug 'rking/ag.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -173,6 +174,7 @@ let g:ycm_rust_src_path = '/home/darth/projects/rust/src'
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
+" :set statusline+=%{gutentags#statusline()}
 
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
