@@ -80,6 +80,8 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'Shougo/vimproc.vim'
 Plug 'scrooloose/syntastic'
 
+" Plug 'ajh17/VimCompletesMe'
+" Plug 'Shougo/neocomplete.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
