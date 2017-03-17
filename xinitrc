@@ -51,6 +51,12 @@ if [ -x /usr/bin/numlockx ]; then
   /usr/bin/numlockx on
 fi
 
+# sxhkd &
+# st -e "tmux" &
+# exec bspwm
+
+# exec awesome
+
 while :; do
   "$HOME/.dotfiles/dwm/dwm"
 done
