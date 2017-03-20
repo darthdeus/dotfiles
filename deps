@@ -48,3 +48,5 @@ cloc
 atop
 time
 bc
+go
+go-tools
