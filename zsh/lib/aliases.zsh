@@ -190,7 +190,7 @@ function dot-deps() {
 
   # gpg --recv-key KEY
 
-  cat deps | xargs sudo pacman -S --needed
+  sudo pacman -S --needed $(cat deps)
 }
 
 alias pw="pkgsearch"
