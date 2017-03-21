@@ -178,6 +178,7 @@ function dot-update() {
   git submodule update --init --recursive
   ./rbenv-install.sh
   git smart-pull
+  ./link.sh
 }
 
 function dot-deps() {
