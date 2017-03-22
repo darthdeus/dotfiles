@@ -195,3 +195,8 @@ function dot-deps() {
 }
 
 alias pw="pkgsearch"
+
+function build-ycm() {
+  cd "$HOME/.vim/bundle/YouCompleteMe"
+  ./install.py --system-libclang --clang-completer --gocode-completer
+}
