@@ -16,6 +16,10 @@ zeus.json
 .rake_tasks
 *.o
 
+# vim-gutentags
+tags.lock
+tags.temp
+
 # logs
 derby.log
 
