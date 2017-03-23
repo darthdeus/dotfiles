@@ -200,3 +200,8 @@ function build-ycm() {
   cd "$HOME/.vim/bundle/YouCompleteMe"
   ./install.py --system-libclang --clang-completer --gocode-completer
 }
+
+function fix-max-inotify() {
+  echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-watches.conf
+  sudo sysctl --system
+}
