@@ -1,15 +1,19 @@
 set my_name   = "Jakub Arnold"
 set imap_user = darthdeus@gmail.com
-set folder    = imaps://darthdeus@imap.gmail.com/
+set folder    = imaps://darthdeus@imap.gmail.com:993/
 set spoolfile = +INBOX
 
 mailboxes =INBOX
 
-set sort = "reverse-date"
-set editor = "vim"
+# set sort = "reverse-date"
+set sort         = "threads"
+set sort_browser = "reverse-date"
+set sort_aux     = "reverse-last-date-received"
+
+# set editor = "vim"
 
 set header_cache = ~/.cache/mutt
-set message_cachedir = ~/.cache/mutt
+# set message_cachedir = ~/.cache/mutt
 
 set postponed = +[Gmail]/Drafts
 
