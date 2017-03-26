@@ -1,0 +1,25 @@
+set my_name   = "Jakub Arnold"
+set imap_user = darthdeus@gmail.com
+set folder    = imaps://darthdeus@imap.gmail.com/
+set spoolfile = +INBOX
+
+mailboxes =INBOX
+
+set sort = "reverse-date"
+set editor = "vim"
+
+set header_cache = ~/.cache/mutt
+set message_cachedir = ~/.cache/mutt
+
+set postponed = +[Gmail]/Drafts
+
+unset imap_passive
+
+set imap_keepalive = 300
+set mail_check     = 120
+
+source "gpg -dq $HOME/.mutt_password.gpg |"
+
+set imap_pass = $my_pass
+
+source $HOME/.dotfiles/mutt/colors.muttrc
