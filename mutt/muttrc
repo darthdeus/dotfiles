@@ -27,3 +27,6 @@ source "gpg -dq $HOME/.passwords/mutt.pass.gpg |"
 set imap_pass = $my_pass
 
 source $HOME/.dotfiles/mutt/colors.muttrc
+
+auto_view text/html
+alternative_order text/plain text/enriched text/html
