@@ -1,0 +1,5 @@
+set my_name   = "Jakub Arnold"
+set imap_user = "jakub.arnold@me.com"
+set folder    = imaps://imap.mail.me.com:993/
+set imap_pass = `gpg -dq $HOME/.passwords/icloud.pass.gpg`
+set spoolfile = +INBOX

@@ -1,8 +1,3 @@
-set my_name   = "Jakub Arnold"
-set imap_user = darthdeus@gmail.com
-set folder    = imaps://darthdeus@imap.gmail.com:993/
-set spoolfile = +INBOX
-
 mailboxes =INBOX
 
 # set sort = "reverse-date"
@@ -15,18 +10,22 @@ set sort_aux     = "reverse-last-date-received"
 set header_cache = ~/.cache/mutt
 # set message_cachedir = ~/.cache/mutt
 
-set postponed = +[Gmail]/Drafts
-
 unset imap_passive
 
 set imap_keepalive = 300
 set mail_check     = 120
 
-source "gpg -dq $HOME/.passwords/mutt.pass.gpg |"
-
-set imap_pass = $my_pass
-
 source $HOME/.dotfiles/mutt/colors.muttrc
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html
+
+source $HOME/.mutt/gmail.rc
+
+macro index <f2> '<change-folder>imaps://darthdeus@imap.gmail.com:993<enter>'
+macro index <f3> '<change-folder>imaps://imap.mail.me.com:993<enter>'
+
+folder-hook 'imap.gmail.com' 'source ~/.mutt/gmail.rc'
+folder-hook 'imap.mail.me.com' 'source ~/.mutt/icloud.rc'
+
+source ~/.mutt/gmail.rc

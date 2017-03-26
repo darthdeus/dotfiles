@@ -1,0 +1,9 @@
+set my_name   = "Jakub Arnold"
+set imap_user = darthdeus@gmail.com
+set imap_pass = `gpg -dq $HOME/.passwords/msmtp.pass.gpg`
+set folder    = imaps://darthdeus@imap.gmail.com:993/
+set spoolfile = +INBOX
+
+set postponed = +[Gmail]/Drafts
+
+
