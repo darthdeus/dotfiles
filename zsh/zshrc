@@ -72,3 +72,5 @@ eval "$($HOME/.rakudobrew/bin/rakudobrew init -)"
 # eval "$(fasd --init auto)"
 
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+stty sane
