@@ -13,7 +13,7 @@ Plug 'benmills/vimux'
 Plug 'drmikehenry/vim-headerguard'
 
 Plug 'chrisbra/vim-zsh'
-" Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Plug 'rking/ag.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
