@@ -18,7 +18,7 @@ unset imap_passive
 set imap_keepalive = 300
 set mail_check     = 120
 
-source "gpg -dq $HOME/.mutt_password.gpg |"
+source "gpg -dq $HOME/.passwords/mutt.pass.gpg |"
 
 set imap_pass = $my_pass
 
