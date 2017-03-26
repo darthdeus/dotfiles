@@ -13,6 +13,7 @@ ln -nsf "$DOT/xinitrc"     "$HOME/.xinitrc"
 ln -nsf "$DOT/rakudobrew"  "$HOME/.rakudobrew"
 ln -nsf "$DOT/mutt/muttrc" "$HOME/.muttrc"
 ln -nsf "$DOT/msmtprc"     "$HOME/.msmtprc"
+ln -nsf "$DOT/offlineimaprc"     "$HOME/.offlineimaprc"
 
 ln -nsf "$DOT/dot-update" "$DOT/bin/dot-update"
 ln -nsf "$DOT/pkgsearch"  "$DOT/bin/pkgsearch"

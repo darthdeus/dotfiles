@@ -205,3 +205,17 @@ function fix-max-inotify() {
   echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-watches.conf
   sudo sysctl --system
 }
+
+function ker() {
+  cd ~/git/kernels/staging
+}
+
+function run-kernel() {
+  qemu-system-x86_64 -enable-kvm \
+    -cpu host \
+    -kernel ./arch/x86/boot/bzImage \
+    -append 'console=ttyS0' \
+    -nographic
+    # -hda disk.img \
+    # -initrd /boot/initramfs-linux.img \
+}
