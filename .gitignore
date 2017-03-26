@@ -1,4 +1,5 @@
 git/config
+*.pyc
 *.o
 bin/*
 malloc_dump.so
