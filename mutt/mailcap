@@ -1,1 +1,5 @@
-text/html; w3m -I %{charset} -T text/html; copiousoutput;
+application/octet-stream ; echo %s "can be anything"; copiousoutput
+text/html; elinks -dump %s; nametemplate=%s.html; copiousoutput
+application/pdf; zathura %s; copiousoutput
+image/*; mirage %s; copiousoutput
+audio/*; mplayer %s; copiousoutput

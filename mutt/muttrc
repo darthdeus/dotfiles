@@ -29,3 +29,10 @@ folder-hook 'imap.gmail.com' 'source ~/.mutt/gmail.rc'
 folder-hook 'imap.mail.me.com' 'source ~/.mutt/icloud.rc'
 
 source ~/.mutt/gmail.rc
+
+bind index G imap-fetch-mail
+
+# macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+# macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
+macro index,pager \cb ": unset wait_key; set pipe_decode\n|w3m\n: set wait_key; unset pipe_decode\n" "call w3m to extract URLs out of a message"
