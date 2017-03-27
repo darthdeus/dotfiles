@@ -219,3 +219,5 @@ function run-kernel() {
     # -hda disk.img \
     # -initrd /boot/initramfs-linux.img \
 }
+
+alias doc="docker"
