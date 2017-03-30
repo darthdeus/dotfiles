@@ -1,3 +1,15 @@
+host k1
+  hostname mustang.ms.mff.cuni.cz
+  user darthdeus
+
+host k2
+  hostname mayrau.ms.mff.cuni.cz
+  user darthdeus
+
+host k3
+  hostname chicxulub.ms.mff.cuni.cz
+  user darthdeus
+
 host cam
   hostname camellia.kam.mff.cuni.cz
   user arnoldj
