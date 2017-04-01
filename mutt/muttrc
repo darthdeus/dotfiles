@@ -3,7 +3,7 @@ mailboxes =INBOX
 # set sort = "reverse-date"
 set sort         = "threads"
 set sort_browser = "reverse-date"
-set sort_aux     = "reverse-last-date-received"
+set sort_aux     = "last-date-received"
 
 # set editor = "vim"
 
