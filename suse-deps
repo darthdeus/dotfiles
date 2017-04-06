@@ -11,4 +11,5 @@ elinks
 w3m
 lynx
 valgrind
-
+zsh
+tmux
