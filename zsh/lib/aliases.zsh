@@ -133,7 +133,7 @@ alias ra="ranger"
 alias e="vim"
 
 function hc() {
-    herbstclient "$@"
+  herbstclient "$@"
 }
 
 alias tc="tmux-cssh -cs"
@@ -215,9 +215,13 @@ function run-kernel() {
     -cpu host \
     -kernel ./arch/x86/boot/bzImage \
     -append 'console=ttyS0' \
-    -nographic
     # -hda disk.img \
     # -initrd /boot/initramfs-linux.img \
+    -nographic
+}
+
+function suse-deps() {
+  sudo zypper in $(cat ~/.dotfiles/suse-deps)
 }
 
 alias doc="docker"

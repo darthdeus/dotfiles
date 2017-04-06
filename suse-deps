@@ -13,3 +13,13 @@ lynx
 valgrind
 zsh
 tmux
+htop
+ltrace
+ctags
+ddd
+patch
+nasm
+flex
+bison
+automake
+autoconf
