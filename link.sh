@@ -55,3 +55,5 @@ ln -nsf "$HOME/.dotfiles/termite/config" "$HOME/.config/termite/config"
 
 ln -nsf "$DOT/Xmodmap" "$HOME/.Xmodmap"
 ln -nsf "$DOT/tmux-cssh" "$HOME/.tmux-cssh"
+
+ln -nsf "$DOT/base16-shell" "$HOME/.config/base16-shell"

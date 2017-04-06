@@ -93,13 +93,13 @@ function pgdisc() {
   echo "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname = current_database() AND pid <> pg_backend_pid();" | psql $1
 }
 
-function z() {
-  if [ -S .zeus.sock ]; then
-    echo "Zeus is already running"
-  else
-    zeus start
-  fi
-}
+# function z() {
+#   if [ -S .zeus.sock ]; then
+#     echo "Zeus is already running"
+#   else
+#     zeus start
+#   fi
+# }
 
 alias pi="sudo pacman -S"
 alias pe="pacman -Ss"
@@ -221,3 +221,4 @@ function run-kernel() {
 }
 
 alias doc="docker"
+alias z="sudo zypper"
