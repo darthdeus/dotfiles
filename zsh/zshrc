@@ -85,3 +85,5 @@ if [[ "$platform" == "Darwin" ]]; then
     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
   fi
 fi
+
+wmname LG3D
