@@ -6,6 +6,7 @@ iw
 wpa_supplicant
 dialog
 dmenu
+networkmanager
 firefox
 terminator
 hub
@@ -62,3 +63,5 @@ mirage
 mplayer
 xorg-server
 xorg-xinit
+python-virtualenv
+python2-virtualenv
