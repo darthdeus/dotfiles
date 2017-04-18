@@ -224,5 +224,16 @@ function suse-deps() {
   sudo zypper in $(cat ~/.dotfiles/suse-deps)
 }
 
+function yaourt-install() {
+	git clone https://aur.archlinux.org/package-query.git
+	cd package-query
+	makepkg -si
+	cd ..
+	git clone https://aur.archlinux.org/yaourt.git
+	cd yaourt
+	makepkg -si
+	cd ..
+}
+
 alias doc="docker"
-alias z="sudo zypper"
+alias z="yaourt"

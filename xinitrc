@@ -57,9 +57,11 @@ fi
 
 # exec awesome
 
-while :; do
+# exec twm
+
+# while :; do
   "$HOME/.dotfiles/dwm/dwm"
-done
+# done
 
 # exec "$HOME/.dotfiles/dwm/dwm"
 

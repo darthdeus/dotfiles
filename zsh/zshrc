@@ -86,4 +86,4 @@ if [[ "$platform" == "Darwin" ]]; then
   fi
 fi
 
-wmname LG3D
+# wmname LG3D

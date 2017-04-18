@@ -60,3 +60,5 @@ notmuch
 zathura-pdf-mupdf
 mirage
 mplayer
+xorg-server
+xorg-xinit
