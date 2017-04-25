@@ -65,3 +65,14 @@ xorg-server
 xorg-xinit
 python-virtualenv
 python2-virtualenv
+tk
+python-numpy
+python-scipy
+python-pandas
+python-matplotlib
+python-sympy
+python2-numpy
+python2-scipy
+python2-pandas
+python2-matplotlib
+python2-sympy

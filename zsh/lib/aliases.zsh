@@ -235,5 +235,9 @@ function yaourt-install() {
 	cd ..
 }
 
+function basic-pip() {
+  pip install sklearn future matplotlib numpy scipy pandas
+}
+
 alias doc="docker"
 alias z="yaourt"
