@@ -4,7 +4,7 @@ set from      = "jakub.arnold@me.com"
 set folder    = imaps://jakub.arnold@imap.mail.me.com:993/
 
 set imap_user = "jakub.arnold"
-set imap_pass = `gpg -dq $HOME/.passwords/icloud.pass.gpg`
+set imap_pass = `gpg2 -dq $HOME/.passwords/icloud.pass.gpg`
 
 set postponed = "+DRAFTS"
 set spoolfile = "+INBOX"
