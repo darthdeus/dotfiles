@@ -236,8 +236,10 @@ function yaourt-install() {
 }
 
 function basic-pip() {
-  pip install sklearn future matplotlib numpy scipy pandas
+  conda install scikit-learn future matplotlib numpy scipy pandas
 }
 
 alias doc="docker"
 alias z="yaourt"
+
+alias sa="source activate"
