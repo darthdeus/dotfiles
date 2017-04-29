@@ -236,7 +236,7 @@ function yaourt-install() {
 }
 
 function basic-pip() {
-  conda install scikit-learn future matplotlib numpy scipy pandas
+  conda install scikit-learn future matplotlib numpy scipy pandas pydot graphviz
 }
 
 alias doc="docker"

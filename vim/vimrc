@@ -81,7 +81,7 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'Shougo/vimproc.vim'
 Plug 'scrooloose/syntastic'
 
-Plug 'python-mode/python-mode'
+" Plug 'python-mode/python-mode'
 
 " Plug 'ajh17/VimCompletesMe'
 " Plug 'Shougo/neocomplete.vim'
