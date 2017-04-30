@@ -243,3 +243,4 @@ alias doc="docker"
 alias z="yaourt"
 
 alias sa="source activate"
+alias jb="jupyter notebook"

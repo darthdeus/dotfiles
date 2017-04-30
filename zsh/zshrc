@@ -30,7 +30,7 @@ export EDITOR="vim"
 export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
 
-PYTHON_PATH="$HOME/.miniconda/bin:$HOME/.miniconda/bin:$HOME/.local/bin"
+PYTHON_PATH="$HOME/.anaconda2/bin:$HOME/.local/bin"
 RUBY_PATH="$HOME/.gem/ruby/2.4.0/bin:$HOME/.rbenv/bin"
 DEPOT_PATH="$HOME/projects/depot_tools:"
 CABAL_PATH="$HOME/.cabal/bin"
