@@ -237,6 +237,7 @@ function yaourt-install() {
 
 function basic-pip() {
   conda install scikit-learn future matplotlib numpy scipy pandas pydot graphviz PIL bcolz
+  pip install tqdm
 }
 
 alias doc="docker"
