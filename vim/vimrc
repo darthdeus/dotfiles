@@ -20,17 +20,17 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+" Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 Plug 'junegunn/vim-easy-align'
 
 Plug 'tomtom/tcomment_vim'
 Plug 'tomtom/tlib_vim'
 Plug 'godlygeek/tabular'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
+" Plug 'pangloss/vim-javascript'
+" Plug 'mxw/vim-jsx'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'Quramy/tsuquyomi'
 
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
@@ -50,7 +50,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTree' }
 Plug 'krisajenkins/vim-projectlocal'
 Plug 'AndrewRadev/switch.vim'
 Plug 'eshock/vim-matchit'
-Plug 'skwp/vim-rspec'
+" Plug 'skwp/vim-rspec'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 
@@ -66,17 +66,17 @@ Plug 'othree/html5.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'kana/vim-operator-user'
 
-Plug 'mattn/emmet-vim'
-Plug 'dag/vim2hs', { 'for': 'haskell' }
-
-Plug 'jimenezrick/vimerl', { 'for': 'erlang' }
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+" Plug 'mattn/emmet-vim'
+" Plug 'dag/vim2hs', { 'for': 'haskell' }
+"
+" Plug 'jimenezrick/vimerl', { 'for': 'erlang' }
+" Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 
 let g:alchemist#elixir_erlang_src= "~/src/"
 
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'fatih/vim-go', { 'for': 'go' }
+" Plug 'fatih/vim-go', { 'for': 'go' }
 
 Plug 'Shougo/vimproc.vim'
 Plug 'scrooloose/syntastic'
@@ -90,7 +90,7 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 Plug 'janko-m/vim-test'
 
-Plug 'vim-perl/vim-perl'
+" Plug 'vim-perl/vim-perl'
 " Plug 'nxadm/syntastic-perl6'
 
 call plug#end()
