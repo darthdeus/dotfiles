@@ -79,7 +79,7 @@ Plug 'jiangmiao/auto-pairs'
 " Plug 'fatih/vim-go', { 'for': 'go' }
 
 Plug 'Shougo/vimproc.vim'
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 
 " Plug 'python-mode/python-mode'
 
@@ -92,6 +92,9 @@ Plug 'janko-m/vim-test'
 
 " Plug 'vim-perl/vim-perl'
 " Plug 'nxadm/syntastic-perl6'
+
+Plug 'rust-lang/rust.vim'
+" Plug 'racer-rust/vim-racer'
 
 call plug#end()
 
@@ -174,7 +177,7 @@ nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 
 " TODO: relative path to home?
-let g:ycm_rust_src_path = '/home/darth/projects/rust/src'
+let g:ycm_rust_src_path = '/Users/darth/projects/rust/src'
 
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
@@ -215,10 +218,8 @@ let g:syntastic_cpp_compiler_options = ' -std=c++1y -stdlib=libc++'
 let g:syntastic_enable_signs=1
 let g:syntastic_cpp_check_header = 0
 
-let g:tsuquyomi_disable_quickfix = 1
-let g:tsuquyomi_completion_detail = 1
-
 let g:syntastic_typescript_checkers = ['tsuquyomi']
+let g:syntastic_rust_checkers = ['rustc']
 
 " let g:syntastic_mode_map = { "mode": "passive", "active_filetypes": ["haskell", "go", "c", "cpp", "idris", "rust", "elixir"] }
 

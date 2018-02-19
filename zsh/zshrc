@@ -30,17 +30,17 @@ export EDITOR="vim"
 export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
 
-PYTHON_PATH="$HOME/.anaconda2/bin:$HOME/.local/bin"
+PATH="/usr/local/texlive/2016/bin/x86_64-darwin/:$PATH"
+PYTHON_PATH="$HOME/.miniconda/bin:$HOME/.local/bin"
 RUBY_PATH="$HOME/.gem/ruby/2.4.0/bin:$HOME/.rbenv/bin"
 DEPOT_PATH="$HOME/projects/depot_tools:"
 CABAL_PATH="$HOME/.cabal/bin"
 CROSS_PATH="$HOME/opt/cross/bin"
 # TODO: unify this
 NODE_PATH="$HOME/.node_modules/bin"
-CARGO_PATH="$HOME/.cargo/bin"
 PERF_TOOLS_PATH="$HOME/.dotfiles/perf-tools/bin:$HOME/.dotfiles/FlameGraph"
 
-PATH="$PERF_TOOLS_PATH:$HOME/neovim/bin:$NODE_PATH:$CARGO_PATH:$HOME/.dotfiles/bin:$PYTHON_PATH:$RUBY_PATH:$CABAL_PATH:$CROSS_PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+PATH="$PERF_TOOLS_PATH:$HOME/neovim/bin:$NODE_PATH:$HOME/.dotfiles/bin:$PYTHON_PATH:$RUBY_PATH:$CABAL_PATH:$CROSS_PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -71,7 +71,7 @@ export EAGER_LOADING=true
 # TODO: figure out how to make fasd work with my current hotkeys
 # eval "$(fasd --init auto)"
 
-[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+[ -f "$HOME/.profile" ] && source "$HOME/.profile"
 
 stty sane
 
