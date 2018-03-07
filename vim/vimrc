@@ -20,7 +20,6 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 Plug 'junegunn/vim-easy-align'
 
@@ -56,17 +55,13 @@ Plug 'mattn/webapi-vim'
 
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-" TODO - do I still need this?
-Plug 'kurko/autocoder.vim'
-Plug 'mattn/zencoding-vim'
-
 Plug 'sjl/gundo.vim'
 Plug 'othree/html5.vim'
 
 Plug 'rhysd/vim-clang-format'
 Plug 'kana/vim-operator-user'
 
-" Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 " Plug 'dag/vim2hs', { 'for': 'haskell' }
 "
 " Plug 'jimenezrick/vimerl', { 'for': 'erlang' }
@@ -82,6 +77,7 @@ Plug 'Shougo/vimproc.vim'
 " Plug 'scrooloose/syntastic'
 
 " Plug 'python-mode/python-mode'
+Plug 'davidhalter/jedi-vim'
 
 " Plug 'ajh17/VimCompletesMe'
 " Plug 'Shougo/neocomplete.vim'
@@ -90,15 +86,14 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 Plug 'janko-m/vim-test'
 
-" Plug 'vim-perl/vim-perl'
-" Plug 'nxadm/syntastic-perl6'
-
-Plug 'rust-lang/rust.vim'
+" Plug 'rust-lang/rust.vim'
 " Plug 'racer-rust/vim-racer'
 
 call plug#end()
 
 " TODO - TComment to use // C++ style comments in C files
+let g:ycm_python_binary_path = 'python'
+let g:pymode_python = 'python'
 
 let g:airline_theme='base16_default'
 
@@ -175,6 +170,7 @@ nnoremap <leader>jd :YcmCompleter GoTo<CR>
 nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
+nnoremap <leader>gq :YcmCompleter GetDoc<CR>
 
 " TODO: relative path to home?
 let g:ycm_rust_src_path = '/Users/darth/projects/rust/src'
