@@ -258,4 +258,5 @@ man() {
     man "${@}"
 }
 
-alias ve="vim ~/.vimrc"
+alias vi="vim ~/.vimrc"
+alias ve="virtualenv"
