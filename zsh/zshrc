@@ -90,3 +90,4 @@ export PROJECT_HOME="$HOME/projects"
 # source virtualenvwrapper.sh
 
 # wmname LG3D
+export PYTHONPATH="$HOME/.miniconda/lib/python3.6/site-packages:$PYTHONPATH"
