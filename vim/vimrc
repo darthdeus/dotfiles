@@ -82,8 +82,8 @@ Plug 'Shougo/vimproc.vim'
 " Plug 'ajh17/VimCompletesMe'
 " Plug 'Shougo/neocomplete.vim'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'Valloric/YouCompleteMe'
-" Plug 'maralla/completor.vim'
+" Plug 'Valloric/YouCompleteMe'
+Plug 'maralla/completor.vim'
 
 Plug 'janko-m/vim-test'
 
