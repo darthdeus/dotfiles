@@ -27,7 +27,8 @@ ln -nsf "$DOT/st/st"      "$DOT/bin/st"
 ln -nsf "$DOT/gbrt"       "$DOT/bin/gbrt"
 
 ln -nsf "$DOT/c_ycm_extra_conf.py" "$HOME/.ycm_extra_conf.py"
-ln -nsf "$DOT/vim/vim-plug/plug.vim" "$HOME/.vim/autoload/plug.vim"
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 mkdir -p "$HOME/.config"
 ln -nsf "$DOT/vim" "$HOME/.config/nvim"
@@ -57,3 +58,6 @@ ln -nsf "$DOT/Xmodmap" "$HOME/.Xmodmap"
 ln -nsf "$DOT/tmux-cssh" "$HOME/.tmux-cssh"
 
 ln -nsf "$DOT/base16-shell" "$HOME/.config/base16-shell"
+
+mkdir -p "$HOME/.tmux/plugins"
+ln -nsf "$DOT/third-party/tpm" "$HOME/.tmux/plugins/tpm"
