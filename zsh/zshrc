@@ -86,4 +86,7 @@ if [[ "$platform" == "Darwin" ]]; then
   fi
 fi
 
+export PROJECT_HOME="$HOME/projects"
+# source virtualenvwrapper.sh
+
 # wmname LG3D
