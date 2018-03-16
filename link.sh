@@ -59,9 +59,8 @@ ln -nsf "$HOME/.dotfiles/termite/config" "$HOME/.config/termite/config"
 ln -nsf "$DOT/Xmodmap" "$HOME/.Xmodmap"
 ln -nsf "$DOT/tmux-cssh" "$HOME/.tmux-cssh"
 
-
 mkdir -p "$HOME/.tmux/plugins"
-ln -nsf "$THIRD_PARTY/third-party/tpm" "$HOME/.tmux/plugins/tpm"
-ln -nsf "$THIRD_PARTY/rakudobrew"      "$HOME/.rakudobrew"
-ln -nsf "$THIRD_PARTY/base16-shell"    "$HOME/.config/base16-shell"
+ln -nsf "$THIRD_PARTY/tpm"           "$HOME/.tmux/plugins/tpm"
+ln -nsf "$THIRD_PARTY/rakudobrew"    "$HOME/.rakudobrew"
+ln -nsf "$THIRD_PARTY/base16-shell"  "$HOME/.config/base16-shell"
 
