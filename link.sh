@@ -1,6 +1,9 @@
 #!/bin/sh
 
+git submodule update --init --recursive
+
 DOT="$HOME/.dotfiles"
+THIRD_PARTY="$DOT/third-party"
 
 ln -nsf "$DOT/vim"           "$HOME/.vim"
 ln -nsf "$DOT/vim/vimrc"     "$HOME/.vimrc"
@@ -10,7 +13,6 @@ ln -nsf "$DOT/emacs.d"       "$HOME/.emacs.d"
 ln -nsf "$DOT/xmonad"        "$HOME/.xmonad"
 ln -nsf "$DOT/Xresources"    "$HOME/.Xresources"
 ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
-ln -nsf "$DOT/rakudobrew"    "$HOME/.rakudobrew"
 ln -nsf "$DOT/mutt/mailcap"  "$HOME/.mailcap"
 ln -nsf "$DOT/msmtprc"       "$HOME/.msmtprc"
 ln -nsf "$DOT/offlineimaprc" "$HOME/.offlineimaprc"
@@ -57,7 +59,9 @@ ln -nsf "$HOME/.dotfiles/termite/config" "$HOME/.config/termite/config"
 ln -nsf "$DOT/Xmodmap" "$HOME/.Xmodmap"
 ln -nsf "$DOT/tmux-cssh" "$HOME/.tmux-cssh"
 
-ln -nsf "$DOT/base16-shell" "$HOME/.config/base16-shell"
 
 mkdir -p "$HOME/.tmux/plugins"
-ln -nsf "$DOT/third-party/tpm" "$HOME/.tmux/plugins/tpm"
+ln -nsf "$THIRD_PARTY/third-party/tpm" "$HOME/.tmux/plugins/tpm"
+ln -nsf "$THIRD_PARTY/rakudobrew"      "$HOME/.rakudobrew"
+ln -nsf "$THIRD_PARTY/base16-shell"    "$HOME/.config/base16-shell"
+
