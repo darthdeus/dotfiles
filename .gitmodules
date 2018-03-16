@@ -25,3 +25,6 @@
 [submodule "third-party/tpm"]
 	path = third-party/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "third-party/urlview"]
+	path = third-party/urlview
+	url = https://github.com/sigpipe/urlview
