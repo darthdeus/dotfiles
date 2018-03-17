@@ -1,1 +1,3 @@
-/home/darth/.vimrc
+set runtimepath^=~/.vim
+let &packpath = &runtimepath
+source ~/.vimrc

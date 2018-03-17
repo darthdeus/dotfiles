@@ -33,7 +33,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 mkdir -p "$HOME/.config"
-ln -nsf "$DOT/vim" "$HOME/.config/nvim"
+mkdir -p "$HOME/.config/nvim"
+ln -nsf "$DOT/vim/init.vim" "$HOME/.config/nvim/init.vim"
 
 mkdir -p "$HOME/.ssh"
 ln -nsf "$DOT/ssh/config" "$HOME/.ssh/config"
