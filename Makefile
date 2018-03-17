@@ -17,3 +17,8 @@ malloc_dump:
 base16-shell:
 	mkdir -p $(HOME)/.config
 	git clone https://github.com/chriskempson/base16-shell $(HOME)/.config/base16-shell
+
+install-conda:
+	wget -c https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh
+	bash /tmp/miniconda.sh -b -p $(HOME)/.miniconda -s
+	rm /tmp/miniconda.sh
