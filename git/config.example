@@ -75,3 +75,7 @@
 	tool = Kaleidoscope
 [push]
 	default = simple
+[rebase]
+	autoStash = true
+[pull]
+	rebase = true
