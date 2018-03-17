@@ -244,7 +244,8 @@ alias doc="docker"
 alias z="yaourt"
 
 alias sa="source activate"
-alias jb="jupyter notebook"
+alias jp="jupyter notebook"
+alias vis="python -m visdom.server"
 
 man() {
     env \
