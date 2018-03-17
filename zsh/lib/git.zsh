@@ -117,7 +117,9 @@ alias grv='git remote -v'
 alias gs='git status'
 alias gst='git stash'
 alias gstp='git stash pop'
-alias gup='git smart-pull'
+# alias gup='git smart-pull'
+alias gup="git pull"
+
 gupstation() {
   gup
   gf production
