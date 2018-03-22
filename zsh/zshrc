@@ -66,8 +66,6 @@ export EAGER_LOADING=true
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-[ -f "$HOME/.rakudobrew/bin/rakudobrew" ] && eval "$($HOME/.rakudobrew/bin/rakudobrew init -)"
-
 # TODO: figure out how to make fasd work with my current hotkeys
 # eval "$(fasd --init auto)"
 
@@ -93,4 +91,4 @@ export PROJECT_HOME="$HOME/projects"
 # export PYTHONPATH="$HOME/.miniconda/lib/python3.6/site-packages:$PYTHONPATH"
 
 export CUDA_HOME="/usr/local/cuda"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/extras/CUPTI/lib64:$CUDA_HOME/lib64"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/extras/CUPTI/lib64:$CUDA_HOME/lib64:/usr/local/lib"
