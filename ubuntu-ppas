@@ -1,2 +1,3 @@
 sudo add-apt-repository ppa:staticfloat/juliareleases
 echo "deb [trusted=yes] https://repo.iovisor.org/apt/xenial xenial-nightly main" | sudo tee /etc/apt/sources.list.d/iovisor.list
+sudo add-apt-repository ppa:zeal-developers/ppa
