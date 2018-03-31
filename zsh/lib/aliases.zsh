@@ -261,3 +261,5 @@ man() {
 
 alias vi="vim ~/.vimrc"
 alias ve="virtualenv"
+
+alias pm="python manage.py"
