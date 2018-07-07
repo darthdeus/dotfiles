@@ -44,6 +44,13 @@ PATH="$PERF_TOOLS_PATH:$HOME/neovim/bin:$NODE_PATH:$HOME/.dotfiles/bin:$PYTHON_P
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 # Base16 Shell
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
