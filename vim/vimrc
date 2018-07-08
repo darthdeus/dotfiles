@@ -76,14 +76,14 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'Shougo/vimproc.vim'
 " Plug 'scrooloose/syntastic'
 
-" Plug 'python-mode/python-mode'
+Plug 'python-mode/python-mode'
 " Plug 'davidhalter/jedi-vim'
 
 " Plug 'ajh17/VimCompletesMe'
 " Plug 'Shougo/neocomplete.vim'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-" Plug 'Valloric/YouCompleteMe'
-Plug 'maralla/completor.vim'
+Plug 'Valloric/YouCompleteMe'
+" Plug 'maralla/completor.vim'
 
 Plug 'janko-m/vim-test'
 
@@ -92,8 +92,9 @@ Plug 'janko-m/vim-test'
 
 call plug#end()
 
-let g:completor_python_binary = "/Users/darth/.miniconda/bin/python"
+let g:completor_python_binary = "/Users/darth/.pyenv/shims/python"
 
+let g:pymode_python = 'python3'
 
 " TODO - TComment to use // C++ style comments in C files
 " let g:ycm_python_binary_path = 'python'
