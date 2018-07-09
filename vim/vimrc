@@ -86,7 +86,6 @@ Plug 'Valloric/YouCompleteMe'
 " Plug 'maralla/completor.vim'
 
 Plug 'janko-m/vim-test'
-
 " Plug 'rust-lang/rust.vim'
 " Plug 'racer-rust/vim-racer'
 
@@ -94,7 +93,7 @@ call plug#end()
 
 let g:completor_python_binary = "/Users/darth/.pyenv/shims/python"
 
-let g:pymode_python = 'python3'
+" let g:pymode_python = 'python3'
 
 " TODO - TComment to use // C++ style comments in C files
 " let g:ycm_python_binary_path = 'python'

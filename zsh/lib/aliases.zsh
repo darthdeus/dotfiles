@@ -264,3 +264,6 @@ alias ve="virtualenv"
 
 alias pm="python manage.py"
 alias pis="pipenv shell"
+
+alias mpo="mrk-proxy-on"
+alias mpf="mrk-proxy-off"
