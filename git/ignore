@@ -79,3 +79,5 @@ zeus.json
 .ghc-modi-wrapper.sock
 
 tags
+
+.ropeproject/
