@@ -73,7 +73,8 @@ alias rb="rbenv"
 alias rh="rbenv rehash"
 
 alias b="bundle"
-alias bi="bundle install"
+# alias bi="bundle install"
+alias bi="brew install"
 
 alias wisdom="fortune | cowsay | lolcat"
 alias ct='ctags --extra=+f --language-force=Ruby -R $(bundle show --paths | xargs) app lib'
@@ -241,6 +242,7 @@ function basic-pip() {
 }
 
 alias doc="docker"
+alias dc="docker-compose"
 alias z="yaourt"
 
 alias sa="source activate"

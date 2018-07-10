@@ -101,4 +101,8 @@ export PROJECT_HOME="$HOME/projects"
 export CUDA_HOME="/usr/local/cuda"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/extras/CUPTI/lib64:$CUDA_HOME/lib64:/usr/local/lib"
 
+# MRK_PROXY_AUTODETECT=1
 [ -f ~/mrk-proxy/mrk-proxy ] && . ~/mrk-proxy/mrk-proxy
+mpo
+
+export PRIMER3HOME="$HOME/work/mm-backend/backend/primer3-2.4.0/src"
