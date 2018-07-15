@@ -81,3 +81,5 @@ zeus.json
 tags
 
 .ropeproject/
+.venv/
+__pycache__/
