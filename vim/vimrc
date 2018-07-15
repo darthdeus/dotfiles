@@ -3,6 +3,10 @@ set nocompatible
 
 set shell=sh
 
+if has('python3')
+  silent! python3 1
+endif
+
 call plug#begin('~/.vim/bundle')
 
 Plug 'junegunn/goyo.vim'
