@@ -162,8 +162,8 @@ alias ft="ftrace"
 
 alias rake="bundle exec rake"
 alias rspec="bundle exec rspec"
-alias rw="rakudobrew"
-alias p="perl6"
+# alias rw="rakudobrew"
+# alias p="perl6"
 
 function backlight() {
   # TODO: make this resistant to invalid arguments
@@ -269,3 +269,5 @@ alias pis="pipenv shell"
 
 alias mpo="mrk-proxy-on"
 alias mpf="mrk-proxy-off"
+
+alias mmac="source ~/work/mm-backend/.venv/bin/activate"
