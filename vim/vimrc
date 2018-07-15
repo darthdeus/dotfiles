@@ -79,9 +79,10 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'Shougo/vimproc.vim'
 " Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 
-Plug 'python-mode/python-mode'
-" Plug 'davidhalter/jedi-vim'
+" Plug 'python-mode/python-mode'
+Plug 'davidhalter/jedi-vim'
 
 " Plug 'ajh17/VimCompletesMe'
 " Plug 'Shougo/neocomplete.vim'
@@ -95,6 +96,8 @@ Plug 'janko-m/vim-test'
 
 call plug#end()
 
+set synmaxcol=7000
+
 let g:completor_python_binary = "/Users/darth/.pyenv/shims/python"
 
 " let g:pymode_python = 'python3'
@@ -104,6 +107,17 @@ let g:completor_python_binary = "/Users/darth/.pyenv/shims/python"
 " let g:pymode_python = 'python'
 
 let g:airline_theme='base16_default'
+
+let g:ale_fixers = {
+      \ 'python': [
+      \ 'trim_whitespace',
+      \ ]
+      \ }
+
+let g:ale_linters = {
+      \ 'python': [ 'flake8' ]
+      \ }
+" \ 'autopep8'
 
 " Go config
 let g:go_highlight_functions = 1
@@ -284,7 +298,7 @@ set laststatus=0
 " TODO - how does this differ from "longest,list" only?
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,deps,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc
+set wildignore+=obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,deps,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__
 
 " TODO - what is the default behavior?
 " Remap the tab key to do autocompletion or indentation depending on the
@@ -499,6 +513,8 @@ aug various_file_types
 
   au BufNewFile,BufRead *.conf set filetype=conf
   au BufNewFile,BufRead *vimrc set filetype=vim
+
+  au BufNewFile,BufRead *.md set wrap
 aug END
 
 " load the plugin and indent settings for the detected filetype
