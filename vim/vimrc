@@ -80,16 +80,28 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'Shougo/vimproc.vim'
 " Plug 'scrooloose/syntastic'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 " Plug 'python-mode/python-mode'
-Plug 'davidhalter/jedi-vim'
+" "Plug 'davidhalter/jedi-vim'
 
 " Plug 'ajh17/VimCompletesMe'
 " Plug 'Shougo/neocomplete.vim'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'Valloric/YouCompleteMe'
 " Plug 'maralla/completor.vim'
+
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'zchee/deoplete-jedi'
+  Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+else
+  Plug 'Valloric/YouCompleteMe'
+  " Plug 'Shougo/deoplete.nvim'
+  " Plug 'roxma/nvim-yarp'
+  " Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 
 Plug 'janko-m/vim-test'
 " Plug 'rust-lang/rust.vim'
@@ -171,8 +183,9 @@ au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=
 
 let g:airline_powerline_fonts = 1
 
-let g:python_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python3'
+
+let g:python_host_prog = '/Users/arnoljak/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/arnoljak/.pyenv/versions/neovim3/bin/python'
 
 set foldlevelstart=200
 let g:haskell_conceal       = 0
@@ -331,6 +344,25 @@ set bg=dark
 
 let base16colorspace=256  " Access colors present in 256 colorspace
 color base16-default
+
+function! MySemshiCustomHighlights()
+    hi semshiLocal           ctermfg=209 guifg=#ff875f
+    hi semshiGlobal          ctermfg=214 guifg=#ffaf00
+    hi semshiImported        ctermfg=214 guifg=#ffaf00 cterm=bold gui=bold
+    hi semshiParameter       ctermfg=75  guifg=#5fafff
+    hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
+    hi semshiFree            ctermfg=218 guifg=#ffafd7
+    hi semshiBuiltin         ctermfg=207 guifg=#ff5fff
+    hi semshiAttribute       ctermfg=49  guifg=#00ffaf
+    hi semshiSelf            ctermfg=249 guifg=#b2b2b2
+    hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
+    hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
+
+    hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+    hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+endfunction
+
+autocmd ColorScheme * call MySemshiCustomHighlights()
 
 " Directories for swp files
 set backupdir=~/.vim/backup
