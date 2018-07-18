@@ -1,13 +1,22 @@
 " This must be first, because it changes other options as a side effect.
-set nocompatible
 
-set shell=sh
+call plug#begin('~/.vim/bundle')
 
 if has('python3')
   silent! python3 1
 endif
 
-call plug#begin('~/.vim/bundle')
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-scriptease'
+" Plug 'tpope/vim-rake'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rsi'
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -37,21 +46,11 @@ Plug 'Quramy/tsuquyomi'
 
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-scriptease'
-" Plug 'tpope/vim-rake'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-rails'
-
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTree' }
 
-Plug 'krisajenkins/vim-projectlocal'
+" Plug 'krisajenkins/vim-projectlocal'
 Plug 'AndrewRadev/switch.vim'
 Plug 'eshock/vim-matchit'
 " Plug 'skwp/vim-rspec'
@@ -83,12 +82,13 @@ Plug 'Shougo/vimproc.vim'
 " Plug 'w0rp/ale'
 
 " Plug 'python-mode/python-mode'
-" "Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 
 " Plug 'ajh17/VimCompletesMe'
 " Plug 'Shougo/neocomplete.vim'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 " Plug 'maralla/completor.vim'
+Plug 'tell-k/vim-autopep8'
 
 
 if has('nvim')
@@ -275,11 +275,7 @@ let g:JSLintHighlightErrorLine = 0
 " for backgrounded buffers
 set hidden
 
-" Remember more commands and search history
-set history=1000
-
 set number
-set ruler
 
 " TODO - check if this is still necessary in vim
 " Set encoding
@@ -292,22 +288,14 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
-set list listchars=tab:\ \ ,trail:.
+" set list listchars=tab:\ \ ,trail:.
 
 set backupcopy=yes
 
-" Searching
-set hlsearch
-set incsearch
 " Make searches case-sensitive only if they contain upper-case characters
 set ignorecase
 set smartcase
 nnoremap <CR> :nohlsearch<CR>/<BS>
-
-" Make tab completion for files/buffers act like bash
-set wildmenu
-
-set laststatus=0
 
 " TODO - how does this differ from "longest,list" only?
 " Tab completion
@@ -332,7 +320,6 @@ set wildignore+=obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules
 command! W :w
 
 " Status bar
-set laststatus=2
 set winwidth=75
 
 " Use modeline overrides
@@ -344,25 +331,6 @@ set bg=dark
 
 let base16colorspace=256  " Access colors present in 256 colorspace
 color base16-default
-
-function! MySemshiCustomHighlights()
-    hi semshiLocal           ctermfg=209 guifg=#ff875f
-    hi semshiGlobal          ctermfg=214 guifg=#ffaf00
-    hi semshiImported        ctermfg=214 guifg=#ffaf00 cterm=bold gui=bold
-    hi semshiParameter       ctermfg=75  guifg=#5fafff
-    hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
-    hi semshiFree            ctermfg=218 guifg=#ffafd7
-    hi semshiBuiltin         ctermfg=207 guifg=#ff5fff
-    hi semshiAttribute       ctermfg=49  guifg=#00ffaf
-    hi semshiSelf            ctermfg=249 guifg=#b2b2b2
-    hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
-    hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
-
-    hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
-    hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
-endfunction
-
-autocmd ColorScheme * call MySemshiCustomHighlights()
 
 " Directories for swp files
 set backupdir=~/.vim/backup
@@ -478,48 +446,7 @@ vnoremap <C-Right> <C-w><C-l>
 noremap <F1> <Esc>
 
 inoremap <C-X><C-@> <C-A>
-" Emacs style mappings
-inoremap      <C-A> <C-O>^
-cnoremap      <C-A> <Home>
-cnoremap <C-X><C-A> <C-A>
 
-" If at end of a line of spaces, delete back to the previous line.
-" Otherwise, <Left>
-inoremap <silent> <C-B> <C-R>=getline('.')=~'^\s*$'&&col('.')>strlen(getline('.'))?"0\<Lt>C-D>\<Lt>Esc>kJs":"\<Lt>Left>"<CR>
-cnoremap          <C-B> <Left>
-
-" If at end of line, decrease indent, else <Del>
-inoremap <silent> <C-D> <C-R>=col('.')>strlen(getline('.'))?"\<Lt>C-D>":"\<Lt>Del>"<CR>
-cnoremap          <C-D> <Del>
-
-" If at end of line, fix indent, else <Right>
-inoremap <silent> <C-F> <C-R>=col('.')>strlen(getline('.'))?"\<Lt>C-F>":"\<Lt>Right>"<CR>
-inoremap          <C-E> <End>
-cnoremap          <C-F> <Right>
-noremap!          <M-a> <C-O>(
-map!              <M-b> <S-Left>
-noremap!          <M-d> <C-O>dw
-noremap!          <M-e> <C-O>)
-map!              <M-f> <S-Right>
-noremap!          <M-h> <C-W>
-noremap           <M-l> guiww
-noremap           <M-u> gUiww
-noremap!          <M-l> <Esc>guiw`]a
-noremap!          <M-u> <Esc>gUiw`]a
-noremap!          <M-{> <C-O>{
-noremap!          <M-}> <C-O>}
-
-cnoremap <C-a>  <Home>
-cnoremap <C-b>  <Left>
-cnoremap <C-f>  <Right>
-cnoremap <C-d>  <Delete>
-cnoremap <M-b>  <S-Left>
-cnoremap <M-f>  <S-Right>
-cnoremap <M-d>  <S-right><C-w>
-cnoremap <Esc>b <S-Left>
-cnoremap <Esc>f <S-Right>
-cnoremap <Esc>d <S-right><C-w>
-cnoremap <C-g>  <C-c>
 
 " Disable accidental ex mode
 nmap Q <NOP>
@@ -549,12 +476,6 @@ aug various_file_types
 
   au BufNewFile,BufRead *.md set wrap
 aug END
-
-" load the plugin and indent settings for the detected filetype
-filetype plugin indent on
-
-" % to bounce from do to end etc.
-runtime! macros/matchit.vim
 
 " remove unnecessary whitespaces
 noremap <leader>ws :%s/ *$//g<cr><c-o><cr>
@@ -604,6 +525,12 @@ function! s:profilestart()
 endfunction
 
 command! -nargs=0 StopProfiling call s:profilestop()
+
+" function MyCustomHighlights()
+"     hi semshiGlobal      ctermfg=red guifg=#ff0000
+" endfunction
+" autocmd FileType python call MyCustomHighlights()
+" autocmd ColorScheme * call MyCustomHighlights()
 
 set exrc
 set secure
