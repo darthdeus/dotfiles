@@ -28,3 +28,6 @@
 [submodule "third-party/urlview"]
 	path = third-party/urlview
 	url = https://github.com/sigpipe/urlview
+[submodule "third-party/vim-plug"]
+	path = third-party/vim-plug
+	url = https://github.com/junegunn/vim-plug
