@@ -281,7 +281,7 @@ set number
 
 " TODO - check if this is still necessary in vim
 " Set encoding
-" set encoding=utf-8
+set encoding=utf-8
 
 " Whitespace stuff
 set nowrap
