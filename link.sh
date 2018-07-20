@@ -48,7 +48,8 @@ mkdir -p "$XFCE_TERMRC_PATH"
 ln -nsf "$HOME/.dotfiles/base16-default.dark.terminalrc" "$XFCE_TERMRC_PATH/terminalrc"
 
 ln -nsf "$HOME/.dotfiles/git/ignore" "$HOME/.gitignore"
-ln -nsf "$HOME/.dotfiles/git/config" "$HOME/.gitconfig"
+# ln -nsf "$HOME/.dotfiles/git/config" "$HOME/.gitconfig"
+cp "$HOME/.dotfiles/git/config" "$HOME/.gitconfig"
 
 mkdir -p "$HOME/.config/herbstluftwm"
 ln -nsf "$HOME/.dotfiles/herbstluftwm" "$HOME/.config/herbstluftwm/autostart"
