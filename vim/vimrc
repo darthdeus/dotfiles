@@ -82,7 +82,7 @@ Plug 'Shougo/vimproc.vim'
 " Plug 'w0rp/ale'
 
 " Plug 'python-mode/python-mode'
-" Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 
 " Plug 'ajh17/VimCompletesMe'
 " Plug 'Shougo/neocomplete.vim'
@@ -124,6 +124,8 @@ let g:airline_theme='base16_default'
 let g:ale_fixers = {
       \ 'python': [
       \ 'trim_whitespace',
+      \ 'add_blank_lines_for_python_control_statements',
+      \ 'isort',
       \ ]
       \ }
 
@@ -288,9 +290,12 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
-" set list listchars=tab:\ \ ,trail:.
+set list listchars=tab:\ \ ,trail:.
 
 set backupcopy=yes
+
+set hlsearch
+set incsearch
 
 " Make searches case-sensitive only if they contain upper-case characters
 set ignorecase
