@@ -114,7 +114,7 @@ call plug#end()
 
 set synmaxcol=7000
 
-let g:completor_python_binary = "/Users/darth/.pyenv/shims/python"
+let g:completor_python_binary = resolve(expand("~/.pyenv/shims/python"))
 
 set shell=/bin/sh
 
@@ -191,8 +191,8 @@ au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=
 let g:airline_powerline_fonts = 1
 
 
-let g:python_host_prog = '/Users/arnoljak/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/arnoljak/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = expand('~/.pyenv/versions/neovim2/bin/python')
+let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
 
 set foldlevelstart=200
 let g:haskell_conceal       = 0

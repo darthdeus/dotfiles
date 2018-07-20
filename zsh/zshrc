@@ -31,7 +31,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
 
 PATH="/usr/local/texlive/2016/bin/x86_64-darwin/:$PATH"
-PYTHON_PATH="$HOME/.miniconda/bin" # ":$HOME/.local/bin"
+PYTHON_PATH="" # $HOME/.miniconda/bin" # ":$HOME/.local/bin"
 RUBY_PATH="$HOME/.gem/ruby/2.4.0/bin:$HOME/.rbenv/bin"
 DEPOT_PATH="$HOME/projects/depot_tools:"
 CABAL_PATH="$HOME/.cabal/bin"
@@ -104,6 +104,10 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/extras/CUPTI/lib64:$CUDA_HOM
 
 # MRK_PROXY_AUTODETECT=1
 [ -f ~/mrk-proxy/mrk-proxy ] && . ~/mrk-proxy/mrk-proxy
-mpo
+# mpo
 
 export PRIMER3HOME="$HOME/work/primer3-2.4.0/src"
+
+if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate"  ]]; then
+  source "${VIRTUAL_ENV}/bin/activate"
+fi
