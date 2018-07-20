@@ -1,3 +1,7 @@
+if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
+  zmodload zsh/zprof
+fi
+
 ZSH=$HOME/.zsh
 
 # history config
@@ -40,17 +44,33 @@ CROSS_PATH="$HOME/opt/cross/bin"
 NODE_PATH="$HOME/.node_modules/bin"
 PERF_TOOLS_PATH="$HOME/.dotfiles/perf-tools/bin:$HOME/.dotfiles/FlameGraph"
 
-PATH="$PERF_TOOLS_PATH:$HOME/neovim/bin:$NODE_PATH:$HOME/.dotfiles/bin:$PYTHON_PATH:$RUBY_PATH:$CABAL_PATH:$CROSS_PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+PATH="$PERF_TOOLS_PATH:$NODE_PATH:$HOME/.dotfiles/bin:$PYTHON_PATH:$RUBY_PATH:$CABAL_PATH:$CROSS_PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
 
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
+# Lazy load pyenv
+if type pyenv &> /dev/null; then
+    export PYENV_ROOT="$HOME/.pyenv"
+
+    local PYENV_SHIMS="${PYENV_ROOT:-${HOME}/.pyenv}/shims"
+    export PATH="${PYENV_SHIMS}:${PATH}"
+    function pyenv() {
+        unset pyenv
+        eval "$(command pyenv init -)"
+        pyenv $@
+    }
 fi
+
+# Lazy load pyenv-virtualenv
+if type pyenv-virtualenv &> /dev/null; then
+  function pyenv-virtualenv() {
+    unset -f pyenv-virtualenv > /dev/null 2>&1
+    eval "$(command pyenv virtualenv-init -)"
+    pyenv-virtualenv "$@"
+  }
+fi
+
 
 # Base16 Shell
 BASE16_SHELL=$HOME/.config/base16-shell/
@@ -110,4 +130,8 @@ export PRIMER3HOME="$HOME/work/primer3-2.4.0/src"
 
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate"  ]]; then
   source "${VIRTUAL_ENV}/bin/activate"
+fi
+
+if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
+  zprof
 fi
