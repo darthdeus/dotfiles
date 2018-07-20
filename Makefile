@@ -25,3 +25,6 @@ install-conda:
 
 pyenv:
 	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+
+install-kitty:
+	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n
