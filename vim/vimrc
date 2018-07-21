@@ -79,7 +79,7 @@ Plug 'jiangmiao/auto-pairs'
 
 " Plug 'Shougo/vimproc.vim'
 " Plug 'scrooloose/syntastic'
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " Plug 'python-mode/python-mode'
 Plug 'davidhalter/jedi-vim'
@@ -116,7 +116,7 @@ set synmaxcol=7000
 
 let g:completor_python_binary = resolve(expand("~/.pyenv/shims/python"))
 
-set shell=/bin/sh
+" set shell=/bin/sh
 
 " let g:pymode_python = 'python3'
 
@@ -138,6 +138,11 @@ let g:ale_linters = {
       \ 'python': [ 'flake8' ]
       \ }
 " \ 'autopep8'
+
+" TODO: add back yapf when https://github.com/sbdchd/neoformat/issues/126 is fixed
+" let g:neoformat_enabled_python = ['autopep8', 'docformatter', 'black']
+let g:neoformat_enabled_python = ['autopep8', 'docformatter']
+let g:neoformat_run_all_formatters = 1
 
 " Go config
 let g:go_highlight_functions = 1
@@ -506,6 +511,11 @@ autocmd FileType h,cc,c,cpp vnoremap <buffer><C-e> :ClangFormat<CR>
 let g:limelight_paragraph_span = 2
 " autocmd BufRead,BufNewFile * Limelight 0.5
 
+augroup AutoSaveFolds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent loadview
+augroup END
 
 nnoremap <Leader>e :call VimuxRunCommand("make")<cr>
 
