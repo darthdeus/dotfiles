@@ -5,3 +5,4 @@ malloc_dump.so
 vim/autoload/plug.vim
 test-plugs/
 test.init
+vim/view

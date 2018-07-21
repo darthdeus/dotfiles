@@ -511,11 +511,12 @@ autocmd FileType h,cc,c,cpp vnoremap <buffer><C-e> :ClangFormat<CR>
 let g:limelight_paragraph_span = 2
 " autocmd BufRead,BufNewFile * Limelight 0.5
 
-augroup AutoSaveFolds
-  autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent loadview
-augroup END
+" TODO: fix this
+" augroup AutoSaveFolds
+"   autocmd!
+"   autocmd BufWinLeave * mkview
+"   autocmd BufWinEnter * silent loadview
+" augroup END
 
 nnoremap <Leader>e :call VimuxRunCommand("make")<cr>
 
