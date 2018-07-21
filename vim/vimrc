@@ -57,7 +57,6 @@ Plug 'eshock/vim-matchit'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 Plug 'sjl/gundo.vim'
 Plug 'othree/html5.vim'
@@ -90,20 +89,28 @@ Plug 'davidhalter/jedi-vim'
 " Plug 'maralla/completor.vim'
 Plug 'tell-k/vim-autopep8'
 
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Plug 'Shougo/neosnippet.vim'
+" Plug 'Shougo/neosnippet-snippets'
+" Plug 'honza/vim-snippets'
+
+" Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
+
+" Plug 'Valloric/YouCompleteMe'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neco-vim'
+
+Plug 'zchee/deoplete-jedi'
+Plug 'sebastianmarkow/deoplete-rust'
 
 if has('nvim')
   Plug 'sbdchd/neoformat'
-
-  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  " Plug 'zchee/deoplete-jedi'
+  "
   Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-  Plug 'Valloric/YouCompleteMe'
 else
-  " Plug 'Shougo/deoplete.nvim'
   " Plug 'roxma/nvim-yarp'
   " Plug 'roxma/vim-hug-neovim-rpc'
 endif
-let g:deoplete#enable_at_startup = 1
 
 " TODO - re-enable this
 " Plug 'janko-m/vim-test'
@@ -111,6 +118,15 @@ let g:deoplete#enable_at_startup = 1
 " Plug 'racer-rust/vim-racer'
 
 call plug#end()
+
+let g:deoplete#enable_at_startup = 1
+let g:jedi#completions_enabled = 0
+
+let g:LanguageClient_serverCommands = {
+      \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+      \ 'javascript': ['javascript-typescript-stdio'],
+      \ }
+
 
 set synmaxcol=7000
 
@@ -121,11 +137,10 @@ let g:completor_python_binary = resolve(expand("~/.pyenv/shims/python"))
 " let g:pymode_python = 'python3'
 
 " TODO - TComment to use // C++ style comments in C files
-" let g:ycm_python_binary_path = 'python'
-" let g:pymode_python = 'python'
 
 let g:airline_theme='base16_default'
 
+" let g:ale_completion_enabled = 1
 let g:ale_fixers = {
       \ 'python': [
       \ 'trim_whitespace',
@@ -135,7 +150,8 @@ let g:ale_fixers = {
       \ }
 
 let g:ale_linters = {
-      \ 'python': [ 'flake8' ]
+      \ 'python': [ 'flake8' ],
+			\ 'rust': [ 'rustc', 'rls' ]
       \ }
 " \ 'autopep8'
 
@@ -143,6 +159,11 @@ let g:ale_linters = {
 " let g:neoformat_enabled_python = ['autopep8', 'docformatter', 'black']
 let g:neoformat_enabled_python = ['autopep8', 'docformatter']
 let g:neoformat_run_all_formatters = 1
+
+" TODO: relative path to home?
+let g:ycm_rust_src_path = expand('~/projects/rust/src')
+let g:deoplete#sources#rust#rust_source_path = expand('~/projects/rust/src')
+let g:deoplete#sources#rust#racer_binary = expand('~/.cargo/bin/racer')
 
 " Go config
 let g:go_highlight_functions = 1
@@ -162,6 +183,25 @@ let mapleader=","
 
 let g:VimuxOrientation = "h"
 let g:airline_powerline_fonts = 1
+
+" Deoplete tab behavior
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k>     <Plug>(neosnippet_expand_target)
+"
+" " SuperTab like snippets behavior.
+" " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+" "imap <expr><TAB>
+" " \ pumvisible() ? "\<C-n>" :
+" " \ neosnippet#expandable_or_jumpable() ?
+" " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+"
+" " For conceal markers.
+" if has('conceal')
+"   set conceallevel=2 concealcursor=niv
+" endif
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -219,9 +259,6 @@ nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 nnoremap <leader>gq :YcmCompleter GetDoc<CR>
-
-" TODO: relative path to home?
-let g:ycm_rust_src_path = '/Users/darth/projects/rust/src'
 
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
