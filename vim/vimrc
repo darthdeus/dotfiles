@@ -12,11 +12,12 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-scriptease'
-" Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rsi'
+" Plug 'tpope/vim-rails'
+" Plug 'tpope/vim-rake'
+" Plug 'slim-template/vim-slim', { 'for': 'slim' }
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -47,7 +48,6 @@ Plug 'Quramy/tsuquyomi'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
 Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTree' }
 
 " Plug 'krisajenkins/vim-projectlocal'
@@ -548,12 +548,15 @@ autocmd FileType h,cc,c,cpp vnoremap <buffer><C-e> :ClangFormat<CR>
 let g:limelight_paragraph_span = 2
 " autocmd BufRead,BufNewFile * Limelight 0.5
 
+let &viewdir=expand("~/.vim/viewdir")
+if !isdirectory(expand(&viewdir))|call mkdir(expand(&viewdir), "p", 451)|endif
+
 " TODO: fix this
-" augroup AutoSaveFolds
-"   autocmd!
-"   autocmd BufWinLeave * mkview
-"   autocmd BufWinEnter * silent loadview
-" augroup END
+augroup AutoSaveFolds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
 
 nnoremap <Leader>e :call VimuxRunCommand("make")<cr>
 
