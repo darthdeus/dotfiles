@@ -94,14 +94,14 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Plug 'Shougo/neosnippet-snippets'
 " Plug 'honza/vim-snippets'
 
-" Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
 
 " Plug 'Valloric/YouCompleteMe'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neco-vim'
 
 Plug 'zchee/deoplete-jedi'
-Plug 'sebastianmarkow/deoplete-rust'
+" Plug 'sebastianmarkow/deoplete-rust'
 
 if has('nvim')
   Plug 'sbdchd/neoformat'
@@ -111,6 +111,8 @@ else
   " Plug 'roxma/nvim-yarp'
   " Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
+Plug 'cespare/vim-toml'
 
 " TODO - re-enable this
 " Plug 'janko-m/vim-test'
@@ -122,11 +124,16 @@ call plug#end()
 let g:deoplete#enable_at_startup = 1
 let g:jedi#completions_enabled = 0
 
+" TODO: nightly instead?
 let g:LanguageClient_serverCommands = {
-      \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+      \ 'rust': ['rustup', 'run', 'stable', 'rls'],
       \ 'javascript': ['javascript-typescript-stdio'],
       \ }
 
+nnoremap <C-space> :call LanguageClient_contextMenu()<CR>
+nnoremap K :call LanguageClient#textDocument_hover()<CR>
+nnoremap gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <F2> :call LanguageClient#textDocument_rename()<CR>
 
 set synmaxcol=7000
 
@@ -140,6 +147,8 @@ let g:completor_python_binary = resolve(expand("~/.pyenv/shims/python"))
 
 let g:airline_theme='base16_default'
 
+let g:ale_rust_rls_toolchain = 'stable'
+
 " let g:ale_completion_enabled = 1
 let g:ale_fixers = {
       \ 'python': [
@@ -149,10 +158,11 @@ let g:ale_fixers = {
       \ ]
       \ }
 
+let g:ale_python_mypy_options = "--ignore-missing-imports"
 let g:ale_linters = {
-      \ 'python': [ 'flake8' ],
-			\ 'rust': [ 'rustc', 'rls' ]
+      \ 'python': [ 'flake8', 'mypy' ],
       \ }
+			" \ 'rust': [ 'cargo' ]
 " \ 'autopep8'
 
 " TODO: add back yapf when https://github.com/sbdchd/neoformat/issues/126 is fixed
@@ -548,15 +558,15 @@ autocmd FileType h,cc,c,cpp vnoremap <buffer><C-e> :ClangFormat<CR>
 let g:limelight_paragraph_span = 2
 " autocmd BufRead,BufNewFile * Limelight 0.5
 
-let &viewdir=expand("~/.vim/viewdir")
-if !isdirectory(expand(&viewdir))|call mkdir(expand(&viewdir), "p", 451)|endif
-
-" TODO: fix this
-augroup AutoSaveFolds
-  autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent! loadview
-augroup END
+" let &viewdir=expand("~/.vim/viewdir")
+" if !isdirectory(expand(&viewdir))|call mkdir(expand(&viewdir), "p", 451)|endif
+"
+" " TODO: fix this
+" augroup AutoSaveFolds
+"   autocmd!
+"   autocmd BufWinLeave * mkview
+"   autocmd BufWinEnter * silent! loadview
+" augroup END
 
 nnoremap <Leader>e :call VimuxRunCommand("make")<cr>
 

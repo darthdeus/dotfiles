@@ -83,3 +83,5 @@ tags
 .ropeproject/
 .venv/
 __pycache__/
+# TODO: remove this later
+pypy-vent/
