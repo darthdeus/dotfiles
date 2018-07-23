@@ -131,6 +131,7 @@ function malloc_dump() {
 }
 
 alias ra="ranger"
+alias rah="ranger --cmd='set show_hidden=true'"
 alias e="vim"
 
 function hc() {
