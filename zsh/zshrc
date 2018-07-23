@@ -36,42 +36,31 @@ export EDITOR="vim"
 export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
 
-PATH="/usr/local/texlive/2016/bin/x86_64-darwin/:$PATH"
-PYTHON_PATH="" # $HOME/.miniconda/bin" # ":$HOME/.local/bin"
-RUBY_PATH="$HOME/.gem/ruby/2.4.0/bin:$HOME/.rbenv/bin"
-DEPOT_PATH="$HOME/projects/depot_tools:"
+RUBY_PATH="$HOME/.rbenv/bin"
 CABAL_PATH="$HOME/.cabal/bin"
-CROSS_PATH="$HOME/opt/cross/bin"
-# TODO: unify this
 NODE_PATH="$HOME/.node_modules/bin"
-PERF_TOOLS_PATH="$HOME/.dotfiles/perf-tools/bin:$HOME/.dotfiles/FlameGraph"
+CARGO_PATH="$GOPATH/bin:$HOME/.cargo/bin"
+LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 
-PATH="$PERF_TOOLS_PATH:$NODE_PATH:$HOME/.dotfiles/bin:$PYTHON_PATH:$RUBY_PATH:$CABAL_PATH:$CROSS_PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+# CROSS_PATH="$HOME/opt/cross/bin"
+# PERF_TOOLS_PATH="$HOME/.dotfiles/perf-tools/bin:$HOME/.dotfiles/FlameGraph"
+# TODO: unify this
+
+export GOPATH="$HOME/projects/go"
+export RUST_SRC_PATH="$HOME/projects/rust/src"
+
+
+PATH="$HOME/.dotfiles/bin:$CARGO_PATH:$RUBY_PATH:$CABAL_PATH:$LOCAL_PATHS:$PATH"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+export PYENV_ROOT="$HOME/.pyenv"
 
-# Lazy load pyenv
-if type pyenv &> /dev/null; then
-    export PYENV_ROOT="$HOME/.pyenv"
+local PYENV_SHIMS="${PYENV_ROOT:-${HOME}/.pyenv}/shims"
+export PATH="${PYENV_SHIMS}:${PATH}"
 
-    local PYENV_SHIMS="${PYENV_ROOT:-${HOME}/.pyenv}/shims"
-    export PATH="${PYENV_SHIMS}:${PATH}"
-    function pyenv() {
-        unset pyenv
-        eval "$(command pyenv init -)"
-        pyenv $@
-    }
-fi
-
-# Lazy load pyenv-virtualenv
-if type pyenv-virtualenv &> /dev/null; then
-  function pyenv-virtualenv() {
-    unset -f pyenv-virtualenv > /dev/null 2>&1
-    eval "$(command pyenv virtualenv-init -)"
-    pyenv-virtualenv "$@"
-  }
-fi
+eval "$(command pyenv init -)"
+eval "$(command pyenv virtualenv-init -)"
 
 
 # Base16 Shell
@@ -79,10 +68,6 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 base16_default-dark
-
-export GOPATH="$HOME/projects/go"
-export PATH="$PATH:$GOPATH/bin:$HOME/.cargo/bin"
-export RUST_SRC_PATH="$HOME/projects/rust/src"
 
 export FZF_DEFAULT_COMMAND='ag -g ""'
 # export FZF_DEFAULT_COMMAND='
