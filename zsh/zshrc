@@ -16,7 +16,9 @@ unsetopt beep
 bindkey -e
 
 # Load all libs under
-for config_file ($ZSH/lib/*.zsh) source "$config_file"
+for config_file in "$ZSH"/lib/*.zsh; do
+  source "$config_file"
+done
 
 # completion settings
 # zstyle :compinstall filename '/Users/darth/.zshrc'
@@ -29,7 +31,7 @@ autoload -Uz select-word-style
 select-word-style bash
 
 # color theme
-source $ZSH/themes/darth.zsh-theme
+source "$ZSH"/themes/darth.zsh-theme
 
 export EDITOR="vim"
 
@@ -38,10 +40,10 @@ export LC_ALL=en_US.UTF-8
 
 RUBY_PATH="$HOME/.rbenv/bin"
 CABAL_PATH="$HOME/.cabal/bin"
-NODE_PATH="$HOME/.node_modules/bin"
 CARGO_PATH="$GOPATH/bin:$HOME/.cargo/bin"
 LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 
+# NODE_PATH="$HOME/.node_modules/bin"
 # CROSS_PATH="$HOME/opt/cross/bin"
 # PERF_TOOLS_PATH="$HOME/.dotfiles/perf-tools/bin:$HOME/.dotfiles/FlameGraph"
 # TODO: unify this
@@ -52,11 +54,13 @@ export RUST_SRC_PATH="$HOME/projects/rust/src"
 
 PATH="$HOME/.dotfiles/bin:$CARGO_PATH:$RUBY_PATH:$CABAL_PATH:$LOCAL_PATHS:$PATH"
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if command -v rbenv > /dev/null; then
+  eval "$(rbenv init -)";
+fi
 
 export PYENV_ROOT="$HOME/.pyenv"
 
-local PYENV_SHIMS="${PYENV_ROOT:-${HOME}/.pyenv}/shims"
+PYENV_SHIMS="${PYENV_ROOT:-${HOME}/.pyenv}/shims"
 export PATH="${PYENV_SHIMS}:${PATH}"
 
 eval "$(command pyenv init -)"
@@ -64,8 +68,8 @@ eval "$(command pyenv virtualenv-init -)"
 
 
 # Base16 Shell
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 base16_default-dark
 
@@ -79,7 +83,7 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 
 export EAGER_LOADING=true
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
 # TODO: figure out how to make fasd work with my current hotkeys
 # eval "$(fasd --init auto)"
@@ -88,9 +92,8 @@ export EAGER_LOADING=true
 
 stty sane
 
-platform=`uname`
-
 # TODO: fix the OS X gpg agent
+# platform=`uname`
 # if [[ "$platform" == "Darwin" ]]; then
 #   if [ -f ~/.gnupg/.gpg-agent-info  ] && [ -n "$(pgrep gpg-agent)"  ]; then
 #     source ~/.gnupg/.gpg-agent-info

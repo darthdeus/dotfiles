@@ -21,6 +21,7 @@ Plug 'tpope/vim-rsi'
 " Plug 'tpope/vim-rails'
 " Plug 'tpope/vim-rake'
 " Plug 'slim-template/vim-slim', { 'for': 'slim' }
+" Plug 'skwp/vim-rspec'
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -56,7 +57,6 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTree' }
 " Plug 'krisajenkins/vim-projectlocal'
 Plug 'AndrewRadev/switch.vim'
 Plug 'eshock/vim-matchit'
-" Plug 'skwp/vim-rspec'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 
@@ -68,19 +68,9 @@ Plug 'rhysd/vim-clang-format'
 Plug 'kana/vim-operator-user'
 
 Plug 'mattn/emmet-vim'
-" Plug 'dag/vim2hs', { 'for': 'haskell' }
-"
-" Plug 'jimenezrick/vimerl', { 'for': 'erlang' }
-" Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
-
-let g:alchemist#elixir_erlang_src= "~/src/"
 
 Plug 'jiangmiao/auto-pairs'
 
-" Plug 'fatih/vim-go', { 'for': 'go' }
-
-" Plug 'Shougo/vimproc.vim'
-" Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
 
 " Plug 'python-mode/python-mode'
@@ -149,10 +139,11 @@ let g:ale_fixers = {
       \ ]
       \ }
 
-let g:ale_python_mypy_options = "--ignore-missing-imports"
+let g:ale_python_mypy_options = '--ignore-missing-imports'
 let g:ale_linters = {
       \ 'python': [ 'flake8', 'mypy' ],
       \ 'sh': ['shell', 'shellcheck'],
+      \ 'zsh': ['shell'],
       \ }
       " \ 'rust': [ 'cargo' ]
 " \ 'autopep8'
@@ -199,16 +190,16 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
 
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 " let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
-let g:go_list_type = "quickfix"
+let g:go_list_type = 'quickfix'
 
 " Change the leader to ","
-let mapleader=","
+let mapleader=','
 
-let g:VimuxOrientation = "h"
+let g:VimuxOrientation = 'h'
 let g:airline_powerline_fonts = 1
 
 " Deoplete tab behavior
@@ -231,17 +222,17 @@ let g:airline_powerline_fonts = 1
 " endif
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsExpandTrigger='<c-j>'
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit='vertical'
 
-let g:UltiSnipsExpandTrigger       = "<tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsSnippetDirectories  = ["snips"]
+let g:UltiSnipsExpandTrigger       = '<tab>'
+let g:UltiSnipsJumpForwardTrigger  = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsSnippetDirectories  = ['snips']
 
 function! g:UltiSnips_Complete()
   call UltiSnips#ExpandSnippet()
@@ -255,10 +246,13 @@ function! g:UltiSnips_Complete()
       endif
     endif
   endif
-  return ""
+  return ''
 endfunction
 
-au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+aug ultisnips_insert_enter_expand
+  autocmd!
+  autocmd InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+aug END
 
 set foldlevelstart=200
 let g:haskell_conceal       = 0
@@ -270,16 +264,6 @@ let g:haskell_shqq          = 0
 let g:haskell_sql           = 0
 let g:haskell_json          = 0
 let g:haskell_xml           = 0
-
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" :set statusline+=%{gutentags#statusline()}
-
-" TODO: try this again later to see if it works"
-" let g:syntastic_perl6lib = [ 'lib', '../lib' ]
-" let g:syntastic_perl6_checkers = ['jsonerror']
-" let g:syntastic_enable_perl6_jsonerror_checker = 1
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -296,9 +280,9 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " gist-vim defaults
-if has("mac")
+if has('mac')
   let g:gist_clip_command = 'pbcopy'
-elseif has("unix")
+elseif has('unix')
   let g:gist_clip_command = 'xclip -selection clipboard'
 endif
 let g:gist_detect_filetype = 1
@@ -367,7 +351,7 @@ set modeline
 set modelines=10
 
 set t_Co=256
-set bg=dark
+set background=dark
 
 let base16colorspace=256  " Access colors present in 256 colorspace
 color base16-default
@@ -403,11 +387,14 @@ set guioptions-=L
 set guioptions-=r
 set guioptions-=T
 
-if has("gui_running")
+if has('gui_running')
   " Automatically resize splits when resizing MacVim window
-  autocmd VimResized * wincmd =
+  aug vim_gui_resized
+    autocmd!
+    autocmd VimResized * wincmd =
+  aug END
 
-  set vb
+  set visualbell
   " color Tomorrow-Night
   set lines=40
   set columns=120
@@ -506,20 +493,20 @@ noremap <C-\> :tnext<CR>
 noremap <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
 
 aug various_file_types
-  au!
+  autocmd!
   " Rakefile, Vagrantfile and Gemfile are Ruby
-  au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Vagrantfile,config.ru} set ft=ruby
-  au BufRead,BufNewFile *.asm set ft=nasm
+  autocmd BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Vagrantfile,config.ru} set ft=ruby
+  autocmd BufRead,BufNewFile *.asm set ft=nasm
 
   " add json syntax highlighting
-  au BufNewFile,BufRead *.json set filetype=javascript
+  autocmd BufNewFile,BufRead *.json set filetype=javascript
 
-  au BufNewFile,BufRead *.slime set filetype=slim
+  autocmd BufNewFile,BufRead *.slime set filetype=slim
 
-  au BufNewFile,BufRead *.conf set filetype=conf
-  au BufNewFile,BufRead *vimrc set filetype=vim
+  autocmd BufNewFile,BufRead *.conf set filetype=conf
+  autocmd BufNewFile,BufRead *vimrc set filetype=vim
 
-  au BufNewFile,BufRead *.md set wrap
+  autocmd BufNewFile,BufRead *.md set wrap
 aug END
 
 " remove unnecessary whitespaces
@@ -528,11 +515,14 @@ noremap <leader>ws :%s/ *$//g<cr><c-o><cr>
 set pastetoggle=<F5>
 set mouse=a
 
-let g:clang_format#code_style = "google"
+let g:clang_format#code_style = 'google'
 
-autocmd FileType h,cc,c,cpp nnoremap <buffer><C-e> :<C-u>ClangFormat<CR>
-autocmd FileType h,cc,c,cpp nnoremap <buffer><leader>ha :HeaderguardAdd<CR>
-autocmd FileType h,cc,c,cpp vnoremap <buffer><C-e> :ClangFormat<CR>
+aug cpp_types
+  autocmd!
+  autocmd FileType h,cc,c,cpp nnoremap <buffer><C-e> :<C-u>ClangFormat<CR>
+  autocmd FileType h,cc,c,cpp nnoremap <buffer><leader>ha :HeaderguardAdd<CR>
+  autocmd FileType h,cc,c,cpp vnoremap <buffer><C-e> :ClangFormat<CR>
+aug END
 
 let g:limelight_paragraph_span = 2
 " autocmd BufRead,BufNewFile * Limelight 0.5
@@ -550,11 +540,11 @@ let g:limelight_paragraph_span = 2
 nnoremap <Leader>e :call VimuxRunCommand("make")<cr>
 
 " Include user's local vim config
-if filereadable(expand("~/.vimrc.local"))
+if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
 
-if has("user_commands")
+if has('user_commands')
   command! -bang -nargs=? -complete=file E e<bang> <args>
   command! -bang -nargs=? -complete=file W w<bang> <args>
   command! -bang -nargs=? -complete=file Wq wq<bang> <args>
