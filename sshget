@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 declare -r esc=$'\033'
 declare -r c_reset="${esc}[0m"
