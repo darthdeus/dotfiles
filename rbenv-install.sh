@@ -4,11 +4,11 @@ RBENV="$HOME/.rbenv"
 RUBY_BUILD="$RBENV/plugins/ruby-build"
 
 if [ -d "$RBENV" ]; then
-  cd ~/.rbenv
+  cd ~/.rbenv || exit 1
   git pull
 
   if [ -d "$RUBY_BUILD" ]; then
-    cd "$RUBY_BUILD"
+    cd "$RUBY_BUILD" || exit 1
     git pull
   else
     git clone https://github.com/rbenv/ruby-build.git "$RUBY_BUILD"

@@ -35,7 +35,7 @@ alias ll='ls -lh'
 alias la='ls -a'
 alias lal='ls -lah'
 
-alias s='git status -sb $argv; return 0'
+alias s='git status -sb'
 alias d='gd $argv'
 alias m='mate . $argv'
 

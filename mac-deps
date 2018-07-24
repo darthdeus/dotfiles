@@ -3,8 +3,10 @@ wget
 tmux
 git
 vim
-pyenv
+neovim
 htop
 telnet
 pyenv
 pyenv-virtualenv # TODO: check how this is used compared to dotfiles
+ninja
+cmake
