@@ -272,3 +272,15 @@ alias mpo="mrk-proxy-on"
 alias mpf="mrk-proxy-off"
 
 alias mmac="source ~/work/mm-backend/.venv/bin/activate"
+
+function zman() {
+  PAGER="less -g -s '+/^       "$1"'" man zshall
+}
+
+# TODO: put this where it belongs
+after-first-word() {
+  zle beginning-of-line
+  zle forward-word
+}
+zle -N after-first-word
+bindkey "^X1" after-first-word
