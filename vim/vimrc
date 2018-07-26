@@ -74,7 +74,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
 
 " Plug 'python-mode/python-mode'
-" Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 
 " Plug 'ajh17/VimCompletesMe'
 " Plug 'Shougo/neocomplete.vim'
@@ -429,7 +429,8 @@ noremap <leader>f  :Files ./<CR>
 " Open files, limited to the directory of the current files, with <leader>gf
 noremap <leader>F  :FZF %%<CR>
 noremap <leader>gf :GFiles ./<CR>
-noremap <leader>gd :GFiles?<cr>
+" TODO: find a better hotkey
+" noremap <leader>gd :GFiles?<cr>
 
 " Rails specific keystrokes
 " noremap <leader>gr :topleft :split config/routes.rb<CR>
