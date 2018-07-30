@@ -92,7 +92,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neco-vim'
 
 Plug 'zchee/deoplete-jedi'
-" Plug 'sebastianmarkow/deoplete-rust'
 
 if has('nvim')
   Plug 'sbdchd/neoformat'
@@ -105,6 +104,7 @@ endif
 
 Plug 'cespare/vim-toml'
 
+" Plug 'sebastianmarkow/deoplete-rust'
 " TODO - re-enable this
 " Plug 'janko-m/vim-test'
 " Plug 'rust-lang/rust.vim'
@@ -144,8 +144,8 @@ let g:ale_linters = {
       \ 'python': [ 'flake8', 'mypy' ],
       \ 'sh': ['shell', 'shellcheck'],
       \ 'zsh': ['shell'],
+      \ 'rust': [ 'cargo' ],
       \ }
-      " \ 'rust': [ 'cargo' ]
 " \ 'autopep8'
 
 " TODO: nightly instead?
