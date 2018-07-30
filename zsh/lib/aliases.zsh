@@ -288,6 +288,6 @@ after-first-word() {
 zle -N after-first-word
 bindkey "^X1" after-first-word
 
-function aws-fetch-keys() {
+function aws-refresh-keys() {
   (cd ~/work/generate-aws-config; ./generate-aws-config --account lab)
 }

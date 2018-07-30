@@ -23,9 +23,13 @@ done
 # completion settings
 # zstyle :compinstall filename '/Users/darth/.zshrc'
 # TODO: create ~/.zfunc if not exists
-fpath+=~/.zfunc
+fpath=(~/.zsh/completion "${fpath[@]}")
 autoload -Uz compinit
 compinit
+
+# TODO: do I still need this?
+# zstyle ':completion:*:*:docker:*' option-stacking yes
+# zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 autoload -Uz select-word-style
 select-word-style bash
