@@ -264,7 +264,8 @@ man() {
     man "${@}"
 }
 
-alias vi="vim ~/.vimrc"
+alias vim="nvim"
+alias vi="nvim"
 alias ve="virtualenv"
 
 alias pm="python manage.py"
