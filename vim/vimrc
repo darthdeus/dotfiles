@@ -446,6 +446,8 @@ noremap <leader>gf :GFiles ./<CR>
 
 " nnoremap <leader>w :VimuxRunCommand("webpack")<cr>
 
+nnoremap <leader>gt :Tags<cr>
+nnoremap <leader>ga :Ag<cr>
 nnoremap <leader>ge :Ag <C-r><C-w><cr>
 
 
@@ -500,7 +502,7 @@ aug various_file_types
   autocmd BufRead,BufNewFile *.asm set ft=nasm
 
   " add json syntax highlighting
-  autocmd BufNewFile,BufRead *.json set filetype=javascript
+  autocmd BufNewFile,BufRead *.tsx set filetype=typescript
 
   autocmd BufNewFile,BufRead *.slime set filetype=slim
 
