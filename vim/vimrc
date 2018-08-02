@@ -448,7 +448,7 @@ noremap <leader>gf :GFiles ./<CR>
 
 nnoremap <leader>gt :Tags<cr>
 nnoremap <leader>ga :Ag<cr>
-nnoremap <leader>ge :Ag <C-r><C-w><cr>
+nnoremap <leader>gd :Ag <C-r><C-w><cr>
 
 
 noremap <leader>a :TestSuite<cr>
