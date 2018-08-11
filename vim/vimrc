@@ -81,6 +81,9 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Plug 'Shougo/neosnippet-snippets'
 " Plug 'honza/vim-snippets'
 
+Plug 'jaxbot/semantic-highlight.vim'
+let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
+
 Plug 'w0rp/ale'
 " Plug 'python-mode/python-mode'
 Plug 'davidhalter/jedi-vim'
@@ -104,7 +107,7 @@ endif
 
 Plug 'cespare/vim-toml'
 
-" Plug 'sebastianmarkow/deoplete-rust'
+Plug 'sebastianmarkow/deoplete-rust'
 " TODO - re-enable this
 " Plug 'janko-m/vim-test'
 " Plug 'rust-lang/rust.vim'
