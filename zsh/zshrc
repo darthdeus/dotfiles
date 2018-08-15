@@ -8,6 +8,7 @@ ZSH=$HOME/.zsh
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+setopt HIST_IGNORE_SPACE
 
 # disable the annoying beep
 unsetopt beep
