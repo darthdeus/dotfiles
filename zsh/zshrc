@@ -126,3 +126,5 @@ fi
 if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
