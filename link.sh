@@ -17,6 +17,7 @@ ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
 ln -nsf "$DOT/mutt/mailcap"  "$HOME/.mailcap"
 ln -nsf "$DOT/msmtprc"       "$HOME/.msmtprc"
 ln -nsf "$DOT/offlineimaprc" "$HOME/.offlineimaprc"
+ln -nsf "$DOT/mbsyncrc"      "$HOME/.mbsyncrc"
 
 mkdir -p "$HOME/.mutt"
 ln -nsf "$DOT/mutt/muttrc"   "$HOME/.mutt/muttrc"
@@ -32,6 +33,12 @@ ln -nsf "$DOT/gbrt"       "$DOT/bin/gbrt"
 ln -nsf "$DOT/c_ycm_extra_conf.py" "$HOME/.ycm_extra_conf.py"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+mkdir -p "$HOME/.mail"
+mkdir -p "$HOME/.mail/sent"
+mkdir -p "$HOME/.mail/drafts"
+mkdir -p "$HOME/.mail/icloud"
+mkdir -p "$HOME/.mail/gmail"
 
 mkdir -p "$HOME/.config"
 mkdir -p "$HOME/.config/nvim"
