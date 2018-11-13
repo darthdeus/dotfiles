@@ -7,6 +7,7 @@ THIRD_PARTY="$DOT/third-party"
 
 ln -nsf "$DOT/vim"           "$HOME/.vim"
 ln -nsf "$DOT/vim/vimrc"     "$HOME/.vimrc"
+ln -nsf "$DOT/spacemacs.el"  "$HOME/.spacemacs"
 ln -nsf "$DOT/zsh"           "$HOME/.zsh"
 ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc"
 ln -nsf "$DOT/emacs.d"       "$HOME/.emacs.d"
