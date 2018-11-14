@@ -63,10 +63,23 @@
 (require 'use-package)
 
 (defvar my-packages
-  '(clojure-mode cider rainbow-delimiters paredit clj-refactor
-    evil evil-surround evil-paredit
-    company grizzl projectile undo-tree sequential-command
-    flx flx-ido ido-ubiquitous smex
+  '(clojure-mode
+    cider
+    rainbow-delimiters
+    paredit
+    clj-refactor
+    evil
+    evil-surround
+    evil-paredit
+    company
+    grizzl
+    projectile
+    undo-tree
+    sequential-command
+    flx
+    flx-ido
+    ido-ubiquitous
+    smex
     color-theme-sanityinc-tomorrow
     dirtree
     haskell-mode ghc hindent hi2

@@ -29,6 +29,8 @@ Plug 'junegunn/limelight.vim'
 Plug 'vim-scripts/a.vim'
 Plug 'benmills/vimux'
 Plug 'drmikehenry/vim-headerguard'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-lua-ftplugin'
 
 Plug 'chrisbra/vim-zsh'
 " Plug 'ludovicchabant/vim-gutentags'
@@ -80,6 +82,9 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Plug 'Shougo/neosnippet.vim'
 " Plug 'Shougo/neosnippet-snippets'
 " Plug 'honza/vim-snippets'
+
+Plug 'jaxbot/semantic-highlight.vim'
+let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
 
 Plug 'w0rp/ale'
 " Plug 'python-mode/python-mode'
@@ -179,6 +184,11 @@ let g:neoformat_run_all_formatters = 1
 let g:ycm_rust_src_path = $HOME . '/projects/rust/src'
 let g:deoplete#sources#rust#rust_source_path = $HOME . '/projects/rust/src'
 let g:deoplete#sources#rust#racer_binary = $HOME . '/.cargo/bin/racer'
+
+let g:lua_check_syntax = 0
+let g:lua_complete_omni = 1
+let g:lua_complete_dynamic = 0
+let g:lua_define_completion_mappings = 0
 
 let g:python_host_prog = $HOME . '/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'

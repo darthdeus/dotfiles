@@ -54,7 +54,7 @@ LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 # TODO: unify this
 
 export GOPATH="$HOME/projects/go"
-export RUST_SRC_PATH="$HOME/projects/rust/src"
+export RUST_SRC_PATH="$$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 
 PATH="$HOME/.dotfiles/bin:$CARGO_PATH:$RUBY_PATH:$CABAL_PATH:$LOCAL_PATHS:$PATH"
@@ -116,7 +116,7 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/extras/CUPTI/lib64:$CUDA_HOM
 
 # MRK_PROXY_AUTODETECT=1
 [ -f ~/mrk-proxy/mrk-proxy ] && . ~/mrk-proxy/mrk-proxy
-mpo
+# mpo
 
 export PRIMER3HOME="$HOME/work/primer3-2.4.0/src"
 
@@ -127,3 +127,5 @@ fi
 if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

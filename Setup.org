@@ -1,0 +1,27 @@
+* TODO mu4e
+
+  Follow https://www.ict4g.net/adolfo/notes/2014/12/27/emacs-imap.html
+
+  - Use app specific password for iCloud and GMail
+  - https://myaccount.google.com/apppasswords or alternatively https://support.google.com/a/answer/6260879
+    -
+
+* Packages
+  
+  brew install scrot?
+
+  Copy the certs from ~openssl s_client -connect imap.gmail.com:993 -showcerts~
+  to ~/usr/local/etc/openssl/certs~. Create ~gmail.crt~ from the first and ~google.crt~
+  from the second one.
+  
+  #+BEGIN_SRC bash
+  brew install global --with-pygments --with-ctags
+  brew tap d12frosted/emacs-plus
+  brew install emacs-plus
+  brew install mu --with-emacs
+  brew install isync
+  brew install msmtp
+  brew install w3m
+  brew install openssl
+  brew install global --with-pygments --with-ctags
+  #+END_SRC
