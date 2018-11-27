@@ -1,9 +1,3 @@
-[submodule "emacs.d/packages/haskell-mode"]
-	path = emacs.d/packages/haskell-mode
-	url = https://github.com/haskell/haskell-mode.git
-[submodule "emacs.d/use-package"]
-	path = emacs.d/use-package
-	url = https://github.com/jwiegley/use-package.git
 [submodule "vim/autoload/vim-plug"]
 	path = vim/autoload/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
