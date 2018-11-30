@@ -1,20 +1,48 @@
-mailboxes =INBOX
+set mbox_type=maildir
 
-# set sort = "reverse-date"
-set sort         = "threads"
+# set folder=~/.mail
+# set spoolfile=+gmail/inbox
+# set header_cache=~/.cache/mutt
+
+source ~/.mutt/gmail.rc
+# source ~/.mutt/icloud.rc
+
+# set pager_index_lines=20
+
+set sort         = "reverse-threads"
 set sort_browser = "reverse-date"
 set sort_aux     = "last-date-received"
 
+
+# set sidebar_delim='|'
+# Sorts folders in sidebar alphabetically
+#set sidebar_sort=yes
+
+# set sidebar_shortpath = yes
+
+set sidebar_width=30
+# set sidebar_visible=yes
+set edit_headers=yes
+
+color sidebar_new yellow default
+
+bind index '[' sidebar-prev
+bind index ']' sidebar-next
+bind index '#' sidebar-open
+bind pager '[' sidebar-prev
+bind pager ']' sidebar-next
+bind pager '#' sidebar-open
+
 # set editor = "vim"
 
-set header_cache = ~/.cache/mutt
-# set message_cachedir = ~/.cache/mutt
+set header_cache = ~/.cache/mutt/headers
+set message_cachedir = ~/.cache/mutt/bodies
 
-unset imap_passive
-
-set imap_keepalive = 300
-set mail_check     = 120
-
+# unset imap_passive
+#
+# set imap_keepalive = 300
+# set mail_check     = 120
+#
 source $HOME/.dotfiles/mutt/colors.muttrc
 
 auto_view text/html
@@ -22,13 +50,11 @@ alternative_order text/plain text/enriched text/html
 
 source $HOME/.mutt/gmail.rc
 
-macro index <f2> '<change-folder>imaps://darthdeus@imap.gmail.com:993<enter>'
-macro index <f3> '<change-folder>imaps://imap.mail.me.com:993<enter>'
+# macro index <f2> '<change-folder>imaps://darthdeus@imap.gmail.com:993<enter>'
+# macro index <f3> '<change-folder>imaps://imap.mail.me.com:993<enter>'
 
-folder-hook 'imap.gmail.com' 'source ~/.mutt/gmail.rc'
-folder-hook 'imap.mail.me.com' 'source ~/.mutt/icloud.rc'
-
-source ~/.mutt/gmail.rc
+# folder-hook 'imap.gmail.com' 'source ~/.mutt/gmail.rc'
+# folder-hook 'imap.mail.me.com' 'source ~/.mutt/icloud.rc'
 
 bind index G imap-fetch-mail
 
