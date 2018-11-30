@@ -68,3 +68,6 @@ host parlab
   port 42222
   user s_arnoldj
 
+host geri
+  hostname geri.ms.mff.cuni.cz
+  user arnold
