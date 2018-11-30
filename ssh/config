@@ -68,6 +68,10 @@ host parlab
   port 42222
   user s_arnoldj
 
+host mm-dev
+  hostname 54.40.18.82
+  user ubuntu
+
 host geri
   hostname geri.ms.mff.cuni.cz
   user arnold

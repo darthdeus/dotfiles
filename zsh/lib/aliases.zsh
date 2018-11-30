@@ -291,3 +291,11 @@ bindkey "^X1" after-first-word
 function aws-refresh-keys() {
   (cd ~/work/generate-aws-config; ./generate-aws-config --account lab)
 }
+
+function aws-env() {
+  access_key="export AWS_ACCESS_KEY_ID=\"$(aws configure get default.aws_access_key_id)\""
+  secret_key="export AWS_SECRET_ACCESS_KEY=\"$(aws configure get default.aws_secret_access_key)\""
+  region="export AWS_DEFAULT_REGION=\"$(aws configure get default.region)\""
+
+  printf "%s\n%s\n%s\n" "$access_key" "$secret_key" "$region"
+}
