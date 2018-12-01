@@ -87,16 +87,16 @@ Plug 'jaxbot/semantic-highlight.vim'
 let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
 
 Plug 'w0rp/ale'
-" Plug 'python-mode/python-mode'
+Plug 'python-mode/python-mode'
 Plug 'davidhalter/jedi-vim'
 
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
+" Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
 
-" Plug 'Valloric/YouCompleteMe'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neco-vim'
-
-Plug 'zchee/deoplete-jedi'
+Plug 'Valloric/YouCompleteMe'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/neco-vim'
+"
+" Plug 'zchee/deoplete-jedi'
 
 if has('nvim')
   Plug 'sbdchd/neoformat'
@@ -190,8 +190,8 @@ let g:lua_complete_omni = 1
 let g:lua_complete_dynamic = 0
 let g:lua_define_completion_mappings = 0
 
-let g:python_host_prog = $HOME . '/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = $HOME . '/.venv/neovim2/bin/python'
+let g:python3_host_prog = $HOME . '/.venv/neovim3/bin/python'
 
 " Go config
 let g:go_highlight_functions = 1
@@ -520,6 +520,7 @@ aug various_file_types
   autocmd BufNewFile,BufRead *vimrc set filetype=vim
 
   autocmd BufNewFile,BufRead *.md set wrap
+  autocmd BufNewFile,BufRead *.markdown inoremap <buffer>_ \_
 aug END
 
 " remove unnecessary whitespaces
