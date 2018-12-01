@@ -43,34 +43,14 @@ export EDITOR="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
 
-RUBY_PATH="$HOME/.rbenv/bin"
-CABAL_PATH="$HOME/.cabal/bin"
-CARGO_PATH="$GOPATH/bin:$HOME/.cargo/bin"
 LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 
-# NODE_PATH="$HOME/.node_modules/bin"
 # CROSS_PATH="$HOME/opt/cross/bin"
 # PERF_TOOLS_PATH="$HOME/.dotfiles/perf-tools/bin:$HOME/.dotfiles/FlameGraph"
-# TODO: unify this
 
 export GOPATH="$HOME/projects/go"
-export RUST_SRC_PATH="$$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
-
-PATH="$HOME/.dotfiles/bin:$CARGO_PATH:$RUBY_PATH:$CABAL_PATH:$LOCAL_PATHS:$PATH"
-
-if command -v rbenv > /dev/null; then
-  eval "$(rbenv init -)";
-fi
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-eval "$(pyenv virtualenv-init -)"
+PATH="$HOME/.dotfiles/bin:$LOCAL_PATHS:$PATH"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -111,6 +91,7 @@ export PROJECT_HOME="$HOME/projects"
 
 # wmname LG3D
 
+export PATH="/usr/local/cuda/bin:$PATH"
 export CUDA_HOME="/usr/local/cuda"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/extras/CUPTI/lib64:$CUDA_HOME/lib64:/usr/local/lib"
 
@@ -129,3 +110,5 @@ if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source ~/.venv/tf-gpu/bin/activate
