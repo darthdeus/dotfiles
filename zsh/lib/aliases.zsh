@@ -140,10 +140,6 @@ function hc() {
 
 alias tc="tmux-cssh -cs"
 
-alias st="foreman start -f Procfile.dev"
-alias fst="foreman start -f Procfile.fullDev"
-alias stf="foreman start -f Procfile.fullDev"
-
 alias m="mix"
 alias mps="mix phoenix.server"
 alias im="iex -S mix"

@@ -25,9 +25,7 @@ ln -nsf "$DOT/mutt/gmail.rc" "$HOME/.mutt/gmail.rc"
 ln -nsf "$DOT/mutt/icloud.rc" "$HOME/.mutt/icloud.rc"
 
 ln -nsf "$DOT/dot-update" "$DOT/bin/dot-update"
-ln -nsf "$DOT/pkgsearch"  "$DOT/bin/pkgsearch"
 ln -nsf "$DOT/sshget"     "$DOT/bin/sshget"
-ln -nsf "$DOT/st/st"      "$DOT/bin/st"
 ln -nsf "$DOT/gbrt"       "$DOT/bin/gbrt"
 
 ln -nsf "$DOT/c_ycm_extra_conf.py" "$HOME/.ycm_extra_conf.py"
