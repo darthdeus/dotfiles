@@ -51,3 +51,6 @@ zsh
 urlview
 fonts-fantasque-sans
 python3-tk
+libx11-dev
+libxinerama-dev
+libxft-dev
