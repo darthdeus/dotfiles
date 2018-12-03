@@ -1,3 +1,7 @@
+Host *
+  ControlMaster auto
+  ControlPath ~/.ssh/%r@%h:%p
+
 host k1
   hostname mustang.ms.mff.cuni.cz
   user darthdeus
