@@ -87,7 +87,6 @@ stty sane
 # fi
 
 export PROJECT_HOME="$HOME/projects"
-# source virtualenvwrapper.sh
 
 # wmname LG3D
 
@@ -95,9 +94,11 @@ export PATH="/usr/local/cuda/bin:$PATH"
 export CUDA_HOME="/usr/local/cuda"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/extras/CUPTI/lib64:$CUDA_HOME/lib64:/usr/local/lib"
 
-# MRK_PROXY_AUTODETECT=1
 [ -f ~/mrk-proxy/mrk-proxy ] && . ~/mrk-proxy/mrk-proxy
-# mpo
+
+if [ "$(get-ssid)" = "Wireless1" ]; then
+  mpo
+fi
 
 export PRIMER3HOME="$HOME/work/primer3-2.4.0/src"
 
@@ -105,10 +106,16 @@ if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate"  ]]; then
   source "${VIRTUAL_ENV}/bin/activate"
 fi
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f ~/.venv/tf-gpu/bin/activate ] && source ~/.venv/tf-gpu/bin/activate
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof
 fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-source ~/.venv/tf-gpu/bin/activate
