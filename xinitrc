@@ -60,7 +60,7 @@ fi
 # exec twm
 
 # while :; do
-  "$HOME/.dotfiles/dwm/dwm"
+  "$HOME/.dotfiles/bin/dwm"
 # done
 
 # exec "$HOME/.dotfiles/dwm/dwm"
