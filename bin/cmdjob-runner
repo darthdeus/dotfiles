@@ -1,0 +1,10 @@
+#!/bin/bash
+
+[ "$#" -ge 2 ] || { echo Usage: $0 file_with_commands command_line >&2; exit 1; }
+[ -f "$1" ] || { echo File "$1" does not exist >&2; exit 1; }
+
+cmd=$(sed -n "$2 p" "$1")
+[ -n "$cmd" ] || { echo No command on line "$2" >&2; exit 1; }
+
+echo Running command $cmd from file "$1":"$2" >&2
+exec $cmd
