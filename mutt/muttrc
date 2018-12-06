@@ -4,7 +4,6 @@ set mbox_type=maildir
 # set spoolfile=+gmail/inbox
 # set header_cache=~/.cache/mutt
 
-source ~/.mutt/gmail.rc
 # source ~/.mutt/icloud.rc
 
 # set pager_index_lines=20
@@ -21,7 +20,7 @@ set sort_aux     = "last-date-received"
 # set sidebar_shortpath = yes
 
 set sidebar_width=30
-# set sidebar_visible=yes
+set sidebar_visible=yes
 set edit_headers=yes
 
 color sidebar_new yellow default
@@ -49,9 +48,10 @@ auto_view text/html
 alternative_order text/plain text/enriched text/html
 
 source $HOME/.mutt/gmail.rc
+source $HOME/.mutt/icloud.rc
 
-# macro index <f2> '<change-folder>imaps://darthdeus@imap.gmail.com:993<enter>'
-# macro index <f3> '<change-folder>imaps://imap.mail.me.com:993<enter>'
+macro index <f2> '<change-folder> ~/.mail/gmail/inbox<enter>'
+macro index <f3> '<change-folder> ~/.mail/icloud/inbox<enter>'
 
 # folder-hook 'imap.gmail.com' 'source ~/.mutt/gmail.rc'
 # folder-hook 'imap.mail.me.com' 'source ~/.mutt/icloud.rc'
