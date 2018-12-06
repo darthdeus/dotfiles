@@ -1,5 +1,5 @@
 # set my_name   = "Jakub Arnold"
-# set imap_user = darthdeus@gmail.com
+# set imap_user = "darthdeus@gmail.com"
 # set imap_pass = `gpg2 -dq $HOME/.passwords/msmtp.pass.gpg`
 # set folder    = imaps://darthdeus@imap.gmail.com:993/
 # set spoolfile = +INBOX
@@ -8,7 +8,7 @@
 
 
 set my_name   = "Jakub Arnold"
-set from      = darthdeus@gmail.com
+set from      = "darthdeus@gmail.com"
 set folder    = ~/.mail/gmail
 set spoolfile = ~/.mail/gmail/inbox
 set postponed = ~/.mail/gmail/drafts
