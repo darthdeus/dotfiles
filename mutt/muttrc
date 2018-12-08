@@ -47,8 +47,11 @@ source $HOME/.dotfiles/mutt/colors.muttrc
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
-source $HOME/.mutt/gmail.rc
 source $HOME/.mutt/icloud.rc
+source $HOME/.mutt/gmail.rc
+
+mailboxes ~/.mail/icloud/inbox
+mailboxes ~/.mail/gmail/inbox
 
 macro index <f2> '<change-folder> ~/.mail/gmail/inbox<enter>'
 macro index <f3> '<change-folder> ~/.mail/icloud/inbox<enter>'
@@ -65,7 +68,3 @@ bind index G imap-fetch-mail
 # macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 
 macro index,pager \cb ": unset wait_key; set pipe_decode\n|w3m\n: set wait_key; unset pipe_decode\n" "call w3m to extract URLs out of a message"
-
-mailboxes ~/.mail/icloud/inbox
-mailboxes ~/.mail/gmail/inbox
-
