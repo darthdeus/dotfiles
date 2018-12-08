@@ -21,4 +21,3 @@ set spoolfile = ~/.mail/icloud/inbox
 set postponed = ~/.mail/icloud/drafts
 set trash     = "+/trash"
 # set record = ""
-

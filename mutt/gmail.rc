@@ -16,5 +16,3 @@ set trash     = "+/trash"
 # set record = ""
 
 set postponed = +[Gmail]/Drafts
-
-

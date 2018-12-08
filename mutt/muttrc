@@ -32,7 +32,7 @@ bind pager '[' sidebar-prev
 bind pager ']' sidebar-next
 bind pager '#' sidebar-open
 
-# set editor = "vim"
+set editor = "vim"
 
 set header_cache = ~/.cache/mutt/headers
 set message_cachedir = ~/.cache/mutt/bodies
@@ -53,6 +53,9 @@ source $HOME/.mutt/icloud.rc
 macro index <f2> '<change-folder> ~/.mail/gmail/inbox<enter>'
 macro index <f3> '<change-folder> ~/.mail/icloud/inbox<enter>'
 
+folder-hook 'gmail' 'source ~/.mutt/gmail.rc'
+folder-hook 'icloud' 'source ~/.mutt/icloud.rc'
+
 # folder-hook 'imap.gmail.com' 'source ~/.mutt/gmail.rc'
 # folder-hook 'imap.mail.me.com' 'source ~/.mutt/icloud.rc'
 
@@ -62,3 +65,7 @@ bind index G imap-fetch-mail
 # macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 
 macro index,pager \cb ": unset wait_key; set pipe_decode\n|w3m\n: set wait_key; unset pipe_decode\n" "call w3m to extract URLs out of a message"
+
+mailboxes ~/.mail/icloud/inbox
+mailboxes ~/.mail/gmail/inbox
+
