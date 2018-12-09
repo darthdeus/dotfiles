@@ -54,8 +54,14 @@ python3-tk
 libx11-dev
 libxinerama-dev
 libxft-dev
-automake
 pkg-config
 libpcre3-dev
 zlib1g-dev
 liblzma-dev
+ninja-build
+gettext
+libtool
+libtool-bin
+autoconf
+automake
+g++
