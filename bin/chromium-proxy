@@ -1,0 +1,8 @@
+#!/bin/bash
+
+[ $# -ge 1 ] || { echo Usage: $0 SSH_host >&2; exit 1; }
+host="$1"
+
+port=$(expr $RANDOM % 16384 + 49152)
+google-chrome --user-data-dir=/tmp/chromium-proxy-"$host" --proxy-server=socks://localhost:$port &
+ssh -ND $port "$host"

@@ -5,7 +5,7 @@ User jakub.arnold@me.com
 AuthMechs LOGIN
 SSLType IMAPS
 SSLVersions TLSv1
-PassCmd "security find-generic-password -s mbsync-icloud-password -w"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.passwords/icloud.gpg"
 
 IMAPStore icloud-remote
 Account icloud
@@ -32,14 +32,14 @@ Channel icloud-folders
 IMAPAccount gmail
 Host imap.gmail.com
 User darthdeus@gmail.com
-PassCmd "security find-generic-password -s mbsync-gmail-password -w"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.passwords/gmail.gpg"
 # UseIMAPS yes
 # AuthMechs LOGIN
 AuthMechs PLAIN
 SSLType IMAPS
 # SSLVersions SSLv3
-CertificateFile /usr/local/etc/openssl/certs/gmail.crt
-CertificateFile /usr/local/etc/openssl/certs/google.crt
+CertificateFile ~/.dotfiles/certs/gmail.crt
+CertificateFile ~/.dotfiles/certs/google.crt
 # CertificateFile /usr/local/etc/openssl/certs/Equifax.crt
 
 # THEN WE SPECIFY THE LOCAL AND REMOTE STORAGE

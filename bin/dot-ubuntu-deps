@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo apt-get install $(cat ~/.dotfiles/deps/ubuntu-deps)

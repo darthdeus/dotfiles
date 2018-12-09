@@ -1,15 +1,15 @@
-default: all
+default: symlink
 
 all: install-dwm install-st symlink malloc_dump
 
 install-dwm:
-	cd dwm; make; ln -nsf $(HOME)/.dotfiles/dwm/dwm $(HOME)/.dotfiles/bin/dwm
+	cd third-party/dwm; make; ln -nsf $(HOME)/.dotfiles/third-party/dwm/dwm $(HOME)/.dotfiles/bin/dwm
 
 install-st:
-	cd st; make; ln -nsf $(HOME)/.dotfiles/st/st $(HOME)/.dotfiles/bin/st
+	cd third-party/st; make; ln -nsf $(HOME)/.dotfiles/third-party/st/st $(HOME)/.dotfiles/bin/st
 
 symlink:
-	./link.sh
+	./utils/link.sh
 
 malloc_dump:
 	gcc -shared -o malloc_dump.so malloc_dump.c -fPIC
@@ -30,7 +30,7 @@ pyenv-virtualenv:
 	git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 
 neovim-deps:
-	./neovim-deps.sh
+	./utils/neovim-deps.sh
 
 install-kitty:
 	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n

@@ -140,10 +140,6 @@ function hc() {
 
 alias tc="tmux-cssh -cs"
 
-alias st="foreman start -f Procfile.dev"
-alias fst="foreman start -f Procfile.fullDev"
-alias stf="foreman start -f Procfile.fullDev"
-
 alias m="mix"
 alias mps="mix phoenix.server"
 alias im="iex -S mix"
@@ -252,7 +248,7 @@ alias sa="source activate"
 alias jp="jupyter notebook"
 alias vis="python -m visdom.server"
 
-man() {
+function man() {
     env \
     LESS_TERMCAP_mb="$(printf "\e[1;31m")" \
     LESS_TERMCAP_md="$(printf "\e[1;31m")" \
@@ -266,7 +262,8 @@ man() {
 
 alias vim="nvim"
 alias vi="nvim"
-alias ve="virtualenv"
+alias ve="python3 -m venv"
+alias p="python3"
 
 alias pm="python manage.py"
 alias pis="pipenv shell"

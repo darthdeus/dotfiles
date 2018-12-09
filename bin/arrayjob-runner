@@ -1,0 +1,11 @@
+#!/bin/bash
+
+[ -z "$SGE_TASK_ID" ] && { echo SGE_TASK_ID variable not set >&2; exit 1; }
+
+[ -f "$1" ] || { echo Usage: $0 file_with_commands >&2; exit 1; }
+
+cmd=$(sed -n "$SGE_TASK_ID p" "$1")
+[ -n "$cmd" ] || { echo No command on line "$SGE_TASK_ID" >&2; exit 1; }
+
+echo Running command $cmd from file "$1":"$SGE_TASK_ID" >&2
+exec $cmd

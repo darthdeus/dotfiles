@@ -1,3 +1,7 @@
+Host *
+  ControlMaster auto
+  ControlPath ~/.ssh/%r@%h:%p
+
 host k1
   hostname mustang.ms.mff.cuni.cz
   user darthdeus
@@ -71,3 +75,7 @@ host parlab
 host mm-dev
   hostname 54.40.18.82
   user ubuntu
+
+host geri
+  hostname geri.ms.mff.cuni.cz
+  user arnold

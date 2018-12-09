@@ -1,14 +1,23 @@
+# set my_name   = "Jakub Arnold"
+# set from      = "jakub.arnold@me.com"
+#
+# set folder    = imaps://jakub.arnold@imap.mail.me.com:993/
+#
+# set imap_user = "jakub.arnold"
+# set imap_pass = `gpg2 -dq $HOME/.passwords/icloud.pass.gpg`
+#
+# set postponed = "+DRAFTS"
+# set spoolfile = "+INBOX"
+#
+# # set record = "+Sent"
+#
+# set ssl_force_tls=yes
+
+
 set my_name   = "Jakub Arnold"
 set from      = "jakub.arnold@me.com"
-
-set folder    = imaps://jakub.arnold@imap.mail.me.com:993/
-
-set imap_user = "jakub.arnold"
-set imap_pass = `gpg2 -dq $HOME/.passwords/icloud.pass.gpg`
-
-set postponed = "+DRAFTS"
-set spoolfile = "+INBOX"
-
-# set record = "+Sent"
-
-set ssl_force_tls=yes
+set folder    = ~/.mail/icloud
+set spoolfile = ~/.mail/icloud/inbox
+set postponed = ~/.mail/icloud/drafts
+set trash     = "+/trash"
+# set record = ""
