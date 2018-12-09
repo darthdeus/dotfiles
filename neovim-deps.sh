@@ -1,17 +1,17 @@
 #!/bin/bash
-pyenv install 2.7.11
-pyenv install 3.7.0
+set -euxo pipefail
 
-pyenv virtualenv 2.7.11 neovim2
-pyenv virtualenv 3.7.0 neovim3
+mkdir -p ~/.venv/
 
-pyenv activate neovim2
-pip install neovim
-pyenv which python  # Note the path
+python2 -m pip install virtualenv
+python3 -m pip install virtualenv
 
-pyenv activate neovim3
-pip install neovim
-pyenv which python  # Note the path
+python2 -m virtualenv ~/.venv/neovim2
+~/.venv/neovim2/bin/pip install neovim
+
+python3 -m virtualenv ~/.venv/neovim3
+~/.venv/neovim3/bin/pip install neovim mypy flake8
+
 
 # The following is optional, and the neovim3 env is still active
 # This allows flake8 to be available to linter plugins regardless
