@@ -23,6 +23,8 @@ Plug 'tpope/vim-rsi'
 " Plug 'slim-template/vim-slim', { 'for': 'slim' }
 " Plug 'skwp/vim-rspec'
 
+Plug 'ervandew/supertab'
+
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
@@ -92,8 +94,8 @@ Plug 'davidhalter/jedi-vim'
 
 " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
 
-" Plug 'Valloric/YouCompleteMe'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Valloric/YouCompleteMe'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Shougo/neco-vim'
 "
 " Plug 'zchee/deoplete-jedi'
@@ -129,8 +131,13 @@ nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 nnoremap <leader>gq :YcmCompleter GetDoc<CR>
 
+autocmd FileType python setlocal completeopt-=preview
+
 let g:deoplete#enable_at_startup = 1
 let g:jedi#completions_enabled = 0
+let g:jedi#show_call_signatures = 1
+
+let g:jedi#completions_command = "<C-Space>"
 
 let g:ale_rust_rls_toolchain = 'stable'
 
