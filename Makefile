@@ -1,4 +1,4 @@
-default: symlink
+default: link
 
 all: install-dwm install-st symlink malloc_dump
 
@@ -8,7 +8,7 @@ install-dwm:
 install-st:
 	cd third-party/st; make; ln -nsf $(HOME)/.dotfiles/third-party/st/st $(HOME)/.dotfiles/bin/st
 
-symlink:
+link:
 	./utils/link.sh
 
 malloc_dump:
