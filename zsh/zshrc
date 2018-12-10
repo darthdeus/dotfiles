@@ -101,6 +101,9 @@ fi
 
 export PRIMER3HOME="$HOME/work/primer3-2.4.0/src"
 
+export PYSPARK_PYTHON="python3"
+export PYSPARK_DRIVER_PYTHON="python3"
+
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate"  ]]; then
   source "${VIRTUAL_ENV}/bin/activate"
 fi
