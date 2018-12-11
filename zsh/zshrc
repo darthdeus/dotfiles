@@ -2,6 +2,12 @@ if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zmodload zsh/zprof
 fi
 
+if [[ `uname` == 'Linux' ]]; then
+  export ZSH_OS=linux
+elif [[ `uname` == 'Darwin' ]]; then
+  export ZSH_OS=osx
+fi
+
 ZSH=$HOME/.zsh
 
 # history config
@@ -59,7 +65,7 @@ if [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ]; then
 fi
 base16_default-dark
 
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 # export FZF_DEFAULT_COMMAND='
 #   (git ls-tree -r --name-only HEAD ||
 #    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |

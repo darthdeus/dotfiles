@@ -130,8 +130,9 @@ function malloc_dump() {
   LD_PRELOAD="$HOME/.dotfiles/malloc_dump.so" $@
 }
 
-alias ra="ranger"
-alias rah="ranger --cmd='set show_hidden=true'"
+alias ra="ranger --cmd='set show_hidden=true'"
+alias rah="ranger"
+# alias rah="ranger --cmd='set show_hidden=true'"
 alias e="vim"
 
 function hc() {
