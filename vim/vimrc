@@ -23,6 +23,7 @@ Plug 'tpope/vim-rsi'
 " Plug 'slim-template/vim-slim', { 'for': 'slim' }
 " Plug 'skwp/vim-rspec'
 
+Plug 'qpkorr/vim-bufkill'
 Plug 'ervandew/supertab'
 
 Plug 'junegunn/goyo.vim'
