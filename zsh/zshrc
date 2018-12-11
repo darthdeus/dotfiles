@@ -93,9 +93,8 @@ export PATH="/usr/local/cuda/bin:$PATH"
 export CUDA_HOME="/usr/local/cuda"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/extras/CUPTI/lib64:$CUDA_HOME/lib64:/usr/local/lib"
 
-[ -f ~/mrk-proxy/mrk-proxy ] && . ~/mrk-proxy/mrk-proxy
-
 if [ "$(get-ssid)" = "Wireless1" ]; then
+  [ -f ~/mrk-proxy/mrk-proxy ] && . ~/mrk-proxy/mrk-proxy
   mpo
 fi
 
