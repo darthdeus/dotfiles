@@ -100,6 +100,8 @@ Plug 'Valloric/YouCompleteMe'
 "
 " Plug 'zchee/deoplete-jedi'
 
+Plug 'chrisbra/unicode.vim'
+
 if has('nvim')
   Plug 'sbdchd/neoformat'
 
