@@ -17,6 +17,12 @@ ln -nsf "$DOT/mutt/mailcap"  "$HOME/.mailcap"
 ln -nsf "$DOT/msmtprc"       "$HOME/.msmtprc"
 ln -nsf "$DOT/mbsyncrc"      "$HOME/.mbsyncrc"
 
+if [ -d "$HOME/.ipython/profile_default" ]; then
+  ln -nsf "$DOT/ipython_config.py"  "$HOME/.ipython/profile_default/ipython_config.py"
+else
+  echo "ipython config not generated, run 'ipython profile create'"
+fi
+
 ln -nsf "$DOT/ranger/commands.py" "$HOME/.config/ranger/commands.py"
 ln -nsf "$DOT/ranger/rc.conf"     "$HOME/.config/ranger/rc.conf"
 
