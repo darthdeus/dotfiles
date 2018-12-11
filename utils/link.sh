@@ -17,6 +17,9 @@ ln -nsf "$DOT/mutt/mailcap"  "$HOME/.mailcap"
 ln -nsf "$DOT/msmtprc"       "$HOME/.msmtprc"
 ln -nsf "$DOT/mbsyncrc"      "$HOME/.mbsyncrc"
 
+ln -nsf "$DOT/ranger/commands.py" "$HOME/.config/ranger/commands.py"
+ln -nsf "$DOT/ranger/rc.conf"     "$HOME/.config/ranger/rc.conf"
+
 mkdir -p "$HOME/.mutt"
 ln -nsf "$DOT/mutt/muttrc"   "$HOME/.mutt/muttrc"
 ln -nsf "$DOT/mutt/gmail.rc" "$HOME/.mutt/gmail.rc"
