@@ -127,6 +127,18 @@ function source-nix() {
   source ~/.nix-profile/etc/profile.d/nix.sh
 }
 
+function ranger-cd {
+    tempfile="$(mktemp -t tmp.XXXXXX)"
+    ranger --cmd='set show_hidden=true' --choosedir="$tempfile" "${@:-$(pwd)}"
+    test -f "$tempfile" &&
+    if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+        cd -- "$(cat "$tempfile")"
+    fi
+    rm -f -- "$tempfile"
+}
+
+bindkey -s '^o' 'ranger-cd^m'
+
 if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof
 fi
