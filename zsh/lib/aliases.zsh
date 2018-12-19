@@ -37,11 +37,6 @@ alias lal='ls -lah'
 
 alias s='git status -sb'
 alias d='gd $argv'
-alias m='mate . $argv'
-
-#alias df='df -kh $argv'
-alias reload_webkit="osascript -e \"tell application 'WebKit' to do JavaScript 'window.location.reload()' in front document\""
-#alias tigs='tig status $argv'
 
 # IP related stuff
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -53,9 +48,6 @@ alias ql="qlmanage -p 2>/dev/null" # preview a file using QuickLook
 alias branches='git log --graph --full-history --all --color  --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"'
 
 alias tf="tail -F"
-alias r="bundle exec rails"
-
-alias scvload="ssh li 'top -bn 1 | head -n 5'"
 
 function gdd() {
   git diff $1@{1}..$1
@@ -66,41 +58,12 @@ alias t="tmux"
 alias ta="tmux attach"
 alias tn="tmux new-session -s"
 
-alias be="bundle exec"
-alias rs="bundle exec rspec spec"
-alias rsa="bundle exec rspec spec --only-failures"
-alias rb="rbenv"
-alias rh="rbenv rehash"
-
-alias b="bundle"
-# alias bi="bundle install"
-alias bi="brew install"
-
 alias wisdom="fortune | cowsay | lolcat"
 alias ct='ctags --extra=+f --language-force=Ruby -R $(bundle show --paths | xargs) app lib'
-
-alias md='kill -s USR1 $(ps -ef | grep main.js | grep node | tr -s " " | cut -f 4 -d " ")'
-alias ni="node-inspector --hidden='node_modules' --hidden='node.js' --no-preload"
-
-alias c1="clang++ -std=c++11 -stdlib=libc++"
-
-alias c="cabal"
-alias ci="cabal install"
-alias cid="cabal install --only-dependencies"
-alias cu="cabal update"
-alias csi="cabal sandbox init"
 
 function pgdisc() {
   echo "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname = current_database() AND pid <> pg_backend_pid();" | psql $1
 }
-
-# function z() {
-#   if [ -S .zeus.sock ]; then
-#     echo "Zeus is already running"
-#   else
-#     zeus start
-#   fi
-# }
 
 alias pi="sudo pacman -S"
 alias pe="pacman -Ss"
@@ -132,40 +95,18 @@ function malloc_dump() {
 
 alias ra="ranger --cmd='set show_hidden=true'"
 alias rah="ranger"
-# alias rah="ranger --cmd='set show_hidden=true'"
 alias e="vim"
-
-function hc() {
-  herbstclient "$@"
-}
 
 alias tc="tmux-cssh -cs"
 
-alias m="mix"
-alias mps="mix phoenix.server"
-alias im="iex -S mix"
-alias is="iex -S mix"
-alias isp="iex -S mix phoenix.server"
-alias mt="mix test"
-alias rdm="rake db:drop db:create db:migrate db:seed"
-
-alias we="webpack"
 alias dh="du -h | sort -h"
 
-alias dof="cd ~/.dotfiles"
 alias dot="cd ~/.dotfiles"
-alias n="npm start"
 
 alias ft="ftrace"
 
-alias rake="bundle exec rake"
-alias rspec="bundle exec rspec"
-# alias rw="rakudobrew"
-# alias p="perl6"
-
 function backlight() {
   # TODO: make this resistant to invalid arguments
-  # TODO: rewrite in perl 6? :)
   echo 'sudo tee /sys/class/backlight/intel_backlight/brightness <<< $1'
 }
 
@@ -197,16 +138,12 @@ alias pw="pkgsearch"
 
 function build-ycm() {
   cd "$HOME/.vim/bundle/YouCompleteMe"
-  ./install.py --system-libclang --clang-completer --gocode-completer
+  ./install.py --clang-completer
 }
 
 function fix-max-inotify() {
   echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-watches.conf
   sudo sysctl --system
-}
-
-function ker() {
-  cd ~/git/kernels/staging
 }
 
 function run-kernel() {
@@ -219,19 +156,15 @@ function run-kernel() {
     -nographic
 }
 
-function suse-deps() {
-  sudo zypper in $(cat ~/.dotfiles/suse-deps)
-}
-
 function yaourt-install() {
-	git clone https://aur.archlinux.org/package-query.git
-	cd package-query
-	makepkg -si
-	cd ..
-	git clone https://aur.archlinux.org/yaourt.git
-	cd yaourt
-	makepkg -si
-	cd ..
+  git clone https://aur.archlinux.org/package-query.git
+  cd package-query
+  makepkg -si
+  cd ..
+  git clone https://aur.archlinux.org/yaourt.git
+  cd yaourt
+  makepkg -si
+  cd ..
 }
 
 function basic-pip() {
@@ -262,7 +195,7 @@ function man() {
 
 alias vim="nvim"
 alias vi="nvim"
-alias ve="python3 -m venv"
+alias ve="python3 -m virtualenv"
 alias p="python3"
 
 alias pm="python manage.py"
