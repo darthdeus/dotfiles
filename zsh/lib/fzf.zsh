@@ -98,11 +98,11 @@ fzf_select_pid() {
   # TODO: extract fzf process command to a function/script
   # pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
   # pid=$(ps -ef | sed 1d | awk '{ print $1, $2, $3, $8 }' | fzf --nth=4 -m)
-  ps -ef | sed 1d | fzf -m --nth=8 --preview 'echo {}' --preview-window down:3:wrap | awk '{print $2}'
+  ps -ef | sed 1d | fzf -m --nth=8 --preview 'echo {}' --preview-window down:3:wrap | awk '{print $2}' | paste -sd' ' -
 }
 
-# fkill - kill process
-fkill() {
+# fk - kill process
+fk() {
   pid=$(fzf_select_pid)
 
   if [ "x$pid" != "x" ]
