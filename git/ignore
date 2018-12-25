@@ -62,9 +62,6 @@ lift_proto*
 *.iws
 .idea
 
-# Pax Runner (for easy OSGi launching)
-runner
-
 # node.js
 node_modules/
 
