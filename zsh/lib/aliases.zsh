@@ -260,8 +260,8 @@ function man() {
     man "${@}"
 }
 
-alias vim="nvim"
-alias vi="nvim"
+# alias vim="nvim"
+# alias vi="nvim"
 alias ve="python3 -m virtualenv"
 alias p="python3"
 
