@@ -1,6 +1,3 @@
-.redcar
-nbproject
-tmp
 # use glob syntax.
 syntax: glob
 *.ser
@@ -72,15 +69,8 @@ gems.tags
 zeus.json
 
 .cabal-sandbox
-.ghc-modi-wrapper.pid
-.ghc-modi-wrapper.sock
-
-tags
 
 .ropeproject/
 .venv/
 __pycache__/
 .mypy_cache/
-# TODO: remove this later
-pypy-vent/
-
