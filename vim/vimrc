@@ -27,7 +27,7 @@ Plug 'tpope/vim-rsi'
 Plug 'lervag/vimtex'
 let g:vimtex_view_method = 'zathura'
 
-Plug 'qpkorr/vim-bufkill'
+" Plug 'qpkorr/vim-bufkill'
 Plug 'ervandew/supertab'
 
 Plug 'junegunn/goyo.vim'
@@ -74,8 +74,6 @@ Plug 'rhysd/vim-clang-format'
 Plug 'kana/vim-operator-user'
 
 Plug 'mattn/emmet-vim'
-
-Plug 'jiangmiao/auto-pairs'
 
 " Plug 'ajh17/VimCompletesMe'
 " Plug 'Shougo/neocomplete.vim'
