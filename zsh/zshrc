@@ -95,8 +95,8 @@ export PROJECT_HOME="$HOME/projects"
 
 # wmname LG3D
 
-export PATH="/usr/local/cuda/bin:$PATH"
-export CUDA_HOME="/usr/local/cuda"
+export CUDA_HOME="/usr/local/cuda-10.0"
+export PATH="$CUDA_HOME/bin:$PATH"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/extras/CUPTI/lib64:$CUDA_HOME/lib64:/usr/local/lib"
 
 if [ "$(get-ssid)" = "Wireless1" ]; then
@@ -109,19 +109,20 @@ export PRIMER3HOME="$HOME/work/primer3-2.4.0/src"
 export PYSPARK_PYTHON="python3"
 export PYSPARK_DRIVER_PYTHON="python3"
 
-if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate"  ]]; then
-  source "${VIRTUAL_ENV}/bin/activate"
-fi
+# if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate"  ]]; then
+#   source "${VIRTUAL_ENV}/bin/activate"
+# fi
+
+# [ -f ~/.venv/tf-gpu/bin/activate ] && source ~/.venv/tf-gpu/bin/activate
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-[ -f ~/.venv/tf-gpu/bin/activate ] && source ~/.venv/tf-gpu/bin/activate
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# if command -v pyenv 1>/dev/null 2>&1; then
+#   eval "$(pyenv init -)"
+# fi
 
 function source-nix() {
   source ~/.nix-profile/etc/profile.d/nix.sh

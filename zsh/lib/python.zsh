@@ -17,6 +17,10 @@ function vpip() {
   fi
 }
 
+function ve() {
+  ~/.local/bin/virtualenv $@
+}
+
 # function python() {
 #   if [ -f .venv/bin/pip ]; then
 #     ./.venv/bin/python $@
