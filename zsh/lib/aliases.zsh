@@ -195,7 +195,6 @@ function man() {
 
 alias vim="nvim"
 alias vi="nvim"
-alias ve="python3 -m virtualenv"
 alias p="python3"
 
 alias pm="python manage.py"
