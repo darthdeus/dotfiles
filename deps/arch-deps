@@ -41,7 +41,6 @@ sudo
 strace
 rsync
 mosh
-abs
 unzip
 ctags
 lldb
@@ -56,10 +55,9 @@ sysstat
 zathura
 zathura-djvu
 zathura-ps
+zathura-pdf-poppler
 oprofile
 notmuch
-zathura-pdf-mupdf
-mirage
 mplayer
 xorg-server
 xorg-xinit
@@ -76,3 +74,7 @@ python2-scipy
 python2-pandas
 python2-matplotlib
 python2-sympy
+namcap
+cmake
+gcc-fortran
+the_silver_searcher
