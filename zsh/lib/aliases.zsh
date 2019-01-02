@@ -193,8 +193,7 @@ function man() {
     man "${@}"
 }
 
-alias vim="nvim"
-alias vi="nvim"
+alias vi="vim"
 alias p="python3"
 
 alias pm="python manage.py"

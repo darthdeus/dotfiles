@@ -1,7 +1,10 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" set shell=/bin/sh
+let g:python_host_prog = $HOME . '/.venv/neovim2/bin/python'
+let g:python3_host_prog = $HOME . '/.venv/neovim3/bin/python'
+
+set shell=/bin/sh
 
 if has('python3')
   silent! python3 1
@@ -23,6 +26,7 @@ Plug 'tpope/vim-rsi'
 " Plug 'slim-template/vim-slim', { 'for': 'slim' }
 " Plug 'skwp/vim-rspec'
 
+Plug 'szymonmaszke/vimpyter'
 " Plug 'vim-latex/vim-latex'
 Plug 'lervag/vimtex'
 let g:vimtex_view_method = 'zathura'
@@ -89,35 +93,11 @@ Plug 'jaxbot/semantic-highlight.vim'
 let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
 
 Plug 'w0rp/ale'
-" Plug 'python-mode/python-mode'
-Plug 'davidhalter/jedi-vim'
-
-" Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
 
 Plug 'Valloric/YouCompleteMe'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'Shougo/neco-vim'
-"
-" Plug 'zchee/deoplete-jedi'
-
 Plug 'chrisbra/unicode.vim'
 
-if has('nvim')
-  Plug 'sbdchd/neoformat'
-
-  Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-else
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
 Plug 'cespare/vim-toml'
-
-" Plug 'sebastianmarkow/deoplete-rust'
-" TODO - re-enable this
-" Plug 'janko-m/vim-test'
-" Plug 'rust-lang/rust.vim'
-" Plug 'racer-rust/vim-racer'
 
 call plug#end()
 
@@ -132,24 +112,7 @@ if !exists('g:ycm_semantic_triggers')
 endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
-nnoremap ; :
-" nnoremap : ;
-
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
-nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gt :YcmCompleter GetType<CR>
-nnoremap <leader>gq :YcmCompleter GetDoc<CR>
-
-autocmd FileType python setlocal completeopt-=preview
-
-let g:deoplete#enable_at_startup = 1
-let g:jedi#completions_enabled = 0
-let g:jedi#show_call_signatures = 1
-
-let g:jedi#completions_command = "<C-Space>"
-
-let g:ale_rust_rls_toolchain = 'stable'
+" autocmd FileType python setlocal completeopt-=preview
 
 " let g:ale_completion_enabled = 1
 let g:ale_fixers = {
@@ -165,29 +128,11 @@ let g:ale_python_mypy_options = '--ignore-missing-imports'
 let g:ale_linters = {
       \ 'python': [ 'flake8', 'mypy' ],
       \ 'sh': ['shell', 'shellcheck'],
-      \ 'zsh': ['shell'],
-      \ 'rust': [ 'cargo' ],
+      \ 'zsh': ['shell']
       \ }
 " \ 'autopep8'
 
-" TODO: nightly instead?
-let g:LanguageClient_serverCommands = {
-      \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-      \ }
-      " \ 'python': ['pyls'],
-      " \ 'sh': ['bash-language-server', 'start'],
-      " \ 'typescript': ['tsserver']
-      " \ 'javascript': ['javascript-typescript-stdio'],
-" TODO: try pyls properly?
-
-nnoremap <C-space> :call LanguageClient_contextMenu()<CR>
-nnoremap _ :call LanguageClient#textDocument_hover()<CR>
-nnoremap gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <F2> :call LanguageClient#textDocument_rename()<CR>
-
 set synmaxcol=7000
-
-" TODO - TComment to use // C++ style comments in C files
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme='base16_default'
@@ -197,44 +142,12 @@ let g:airline_theme='base16_default'
 let g:neoformat_enabled_python = ['autopep8', 'docformatter']
 let g:neoformat_run_all_formatters = 1
 
-" TODO: relative path to home?
-let g:ycm_rust_src_path = $HOME . '/projects/rust/src'
-let g:deoplete#sources#rust#rust_source_path = $HOME . '/projects/rust/src'
-let g:deoplete#sources#rust#racer_binary = $HOME . '/.cargo/bin/racer'
-
-let g:lua_check_syntax = 0
-let g:lua_complete_omni = 1
-let g:lua_complete_dynamic = 0
-let g:lua_define_completion_mappings = 0
-
-let g:python_host_prog = $HOME . '/.venv/neovim2/bin/python'
-let g:python3_host_prog = $HOME . '/.venv/neovim3/bin/python'
-
-" Go config
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = 'goimports'
-
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
-let g:go_list_type = 'quickfix'
-
-" Change the leader to ','
 let mapleader=','
 let maplocalleader=','
 
 let g:VimuxOrientation = 'h'
 let g:airline_powerline_fonts = 1
 
-" Deoplete tab behavior
-" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k>     <Plug>(neosnippet_expand_target)
-"
 " " SuperTab like snippets behavior.
 " " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 " "imap <expr><TAB>
@@ -293,20 +206,6 @@ let g:haskell_sql           = 0
 let g:haskell_json          = 0
 let g:haskell_xml           = 0
 
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Insert mode completion
-" imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-" imap <c-x><c-l> <plug>(fzf-complete-line)
-
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
 " gist-vim defaults
 if has('mac')
   let g:gist_clip_command = 'pbcopy'
@@ -316,9 +215,6 @@ endif
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 let g:gist_post_private = 1
-
-" Turn off jslint errors by default
-let g:JSLintHighlightErrorLine = 0
 
 " Allow backgrounding buffers without writing them, and remember marks/undo
 " for backgrounded buffers
@@ -441,15 +337,24 @@ nnoremap <Right> <C-w>5>
 
 nnoremap - :Switch<cr>
 
+nnoremap ; :
+" nnoremap : ;
+
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gt :YcmCompleter GetType<CR>
+nnoremap <leader>gq :YcmCompleter GetDoc<CR>
+nnoremap <leader>ge :e ~/.vimrc<CR>
+
+
 " Expand %% to directory path of current buffer
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
-" nnoremap <leader>e :call VimuxRunCommand("make")<cr>
+nnoremap <Leader>e :call VimuxRunCommand("make")<cr>
 nnoremap <leader>r :call VimuxRunCommand("make ". expand("%h"))<cr>
 nnoremap <leader>c :call VimuxRunCommand("make clean")<cr>
 
-" Inserts the path of the currently edited file into a command
-" Command mode: Ctrl+P
-" TODO - figure out more clever usage for this
+" Inserts the path of the currently edited file in command mode
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
 " Open files with <leader>f
@@ -460,20 +365,6 @@ noremap <leader>gf :GFiles ./<CR>
 " TODO: find a better hotkey
 " noremap <leader>gd :GFiles?<cr>
 
-" Rails specific keystrokes
-" noremap <leader>gr :topleft :split config/routes.rb<CR>
-" noremap <leader>gg :topleft 50 :split Gemfile<CR>
-"
-" noremap <leader>gv :FZF app/views<cr>
-" noremap <leader>gc :FZF app/controllers<cr>
-" noremap <leader>gm :FZF app/models<cr>
-" noremap <leader>gs :FZF app/services<cr>
-" noremap <leader>gh :FZF app/helpers<cr>
-" noremap <leader>gl :FZF lib<cr>
-" noremap <leader>gk :FZF app/assets/stylesheets<cr>
-" noremap <leader>gj :FZF app/assets/javascripts<cr>
-
-" nnoremap <leader>w :VimuxRunCommand("webpack")<cr>
 
 nnoremap <leader>gt :Tags<cr>
 nnoremap <leader>ga :Ag<cr>
@@ -511,6 +402,20 @@ noremap <F1> <Esc>
 
 inoremap <C-X><C-@> <C-A>
 
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+" imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+" imap <c-x><c-l> <plug>(fzf-complete-line)
+
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " Disable accidental ex mode
 nmap Q <NOP>
@@ -574,8 +479,6 @@ let g:limelight_paragraph_span = 2
 "   autocmd BufWinEnter * silent! loadview
 " augroup END
 
-nnoremap <Leader>e :call VimuxRunCommand("make")<cr>
-
 " Include user's local vim config
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
@@ -606,12 +509,6 @@ function! s:profilestart()
 endfunction
 
 command! -nargs=0 StopProfiling call s:profilestop()
-
-" function MyCustomHighlights()
-"     hi semshiGlobal      ctermfg=red guifg=#ff0000
-" endfunction
-" autocmd FileType python call MyCustomHighlights()
-" autocmd ColorScheme * call MyCustomHighlights()
 
 set exrc
 set secure
