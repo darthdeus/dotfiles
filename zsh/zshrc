@@ -34,6 +34,13 @@ fpath=(~/.zsh/completion "${fpath[@]}")
 autoload -Uz compinit
 compinit
 
+# Autoreload all completion commands
+# function au() {
+#   unfunction -m '_*'
+#   autoload -Uz compinit
+#   compinit
+# }
+
 # TODO: do I still need this?
 # zstyle ':completion:*:*:docker:*' option-stacking yes
 # zstyle ':completion:*:*:docker-*:*' option-stacking yes
@@ -119,11 +126,11 @@ export PYSPARK_DRIVER_PYTHON="python3"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# if command -v pyenv 1>/dev/null 2>&1; then
-#   eval "$(pyenv init -)"
-# fi
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 function source-nix() {
   source ~/.nix-profile/etc/profile.d/nix.sh
@@ -140,6 +147,21 @@ function ranger-cd {
 }
 
 bindkey -s '^o' 'ranger-cd^m'
+
+function recompdef() {
+  local line
+
+  unfunction   - $1 2> /dev/null
+  autoload -Uz - $1 || return
+  autoload +X  - $1 || return
+  [[ -n $functions_source[$1] ]] &&
+  line=${${(Af)"$( < $functions_source[$1] )"}[1]}
+
+  [[ $line == '#autoload'* ]] && return 0
+  [[ $line == '#compdef'*  ]] && argv+=( ${${(Az)line}[2,-1]} )
+
+  compdef $@
+}
 
 if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof
