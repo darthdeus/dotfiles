@@ -1,9 +1,6 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-let g:python_host_prog = $HOME . '/.venv/neovim2/bin/python'
-let g:python3_host_prog = $HOME . '/.venv/neovim3/bin/python'
-
 set shell=/bin/sh
 
 if has('python3')
@@ -26,7 +23,7 @@ Plug 'tpope/vim-rsi'
 " Plug 'slim-template/vim-slim', { 'for': 'slim' }
 " Plug 'skwp/vim-rspec'
 
-Plug 'szymonmaszke/vimpyter'
+" Plug 'szymonmaszke/vimpyter'
 " Plug 'vim-latex/vim-latex'
 Plug 'lervag/vimtex'
 let g:vimtex_view_method = 'zathura'
@@ -95,13 +92,31 @@ let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,1
 Plug 'w0rp/ale'
 
 Plug 'Valloric/YouCompleteMe'
+
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+
+Plug 'davidhalter/jedi-vim'
 Plug 'chrisbra/unicode.vim'
 
+let g:ycm_python_binary_path = 'python2'
+
 Plug 'cespare/vim-toml'
+
+Plug 'terryma/vim-multiple-cursors'
 
 call plug#end()
 
 set smartindent
+
+let g:jedi#show_call_signatures = "1"
+let g:jedi#show_call_signatures_delay = "0"
+" let g:jedi#completions_enabled = 0
 
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_extra_conf_globlist = ['*']
@@ -112,7 +127,7 @@ if !exists('g:ycm_semantic_triggers')
 endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
-" autocmd FileType python setlocal completeopt-=preview
+autocmd FileType python setlocal completeopt-=preview
 
 " let g:ale_completion_enabled = 1
 let g:ale_fixers = {

@@ -2,11 +2,7 @@ if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zmodload zsh/zprof
 fi
 
-if [[ `uname` == 'Linux' ]]; then
-  export ZSH_OS=linux
-elif [[ `uname` == 'Darwin' ]]; then
-  export ZSH_OS=osx
-fi
+fpath=(~/.zsh/funcs "${fpath[@]}")
 
 ZSH=$HOME/.zsh
 
@@ -31,8 +27,9 @@ done
 # zstyle :compinstall filename '/Users/darth/.zshrc'
 # TODO: create ~/.zfunc if not exists
 fpath=(~/.zsh/completion "${fpath[@]}")
+
 autoload -Uz compinit
-compinit
+compinit -C
 
 # Autoreload all completion commands
 # function au() {
@@ -81,23 +78,9 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
-# TODO: figure out how to make fasd work with my current hotkeys
-# eval "$(fasd --init auto)"
-
 [ -f "$HOME/.profile" ] && source "$HOME/.profile"
 
 stty sane
-
-# TODO: fix the OS X gpg agent
-# platform=`uname`
-# if [[ "$platform" == "Darwin" ]]; then
-#   if [ -f ~/.gnupg/.gpg-agent-info  ] && [ -n "$(pgrep gpg-agent)"  ]; then
-#     source ~/.gnupg/.gpg-agent-info
-#     export GPG_AGENT_INFO
-#   else
-#     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
-#   fi
-# fi
 
 export PROJECT_HOME="$HOME/projects"
 

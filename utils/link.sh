@@ -11,12 +11,13 @@ ln -nsf "$DOT/vim/vimrc"     "$HOME/.vimrc"
 ln -nsf "$DOT/zsh"           "$HOME/.zsh"
 ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc"
 # ln -nsf "$DOT/xmonad"        "$HOME/.xmonad"
-# ln -nsf "$DOT/Xresources"    "$HOME/.Xresources"
 # ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
 # ln -nsf "$DOT/Xmodmap"       "$HOME/.Xmodmap"
 # ln -nsf "$DOT/mutt/mailcap"  "$HOME/.mailcap"
 # ln -nsf "$DOT/msmtprc"       "$HOME/.msmtprc"
 # ln -nsf "$DOT/mbsyncrc"      "$HOME/.mbsyncrc"
+ln -nsf "$DOT/Xresources"    "$HOME/.Xresources"
+xrdb "$HOME/.Xresources"
 
 # if [ -d "$HOME/.ipython/profile_default" ]; then
 #   ln -nsf "$DOT/ipython_config.py"  "$HOME/.ipython/profile_default/ipython_config.py"
@@ -24,8 +25,8 @@ ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc"
 #   echo "ipython config not generated, run 'ipython profile create'"
 # fi
 
-# ln -nsf "$DOT/ranger/commands.py" "$HOME/.config/ranger/commands.py"
-# ln -nsf "$DOT/ranger/rc.conf"     "$HOME/.config/ranger/rc.conf"
+ln -nsf "$DOT/ranger/commands.py" "$HOME/.config/ranger/commands.py"
+ln -nsf "$DOT/ranger/rc.conf"     "$HOME/.config/ranger/rc.conf"
 # 
 # mkdir -p "$HOME/.mutt"
 # ln -nsf "$DOT/mutt/muttrc"   "$HOME/.mutt/muttrc"
