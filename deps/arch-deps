@@ -17,9 +17,7 @@ lsof
 alsa-utils
 perf
 acpi
-cantarell-fonts
 wicd
-wicd-gtk
 xclip
 xsel
 termite
@@ -78,3 +76,8 @@ namcap
 cmake
 gcc-fortran
 the_silver_searcher
+zsh
+chromium
+ttf-dejavu
+wget
+xfce4-screenshooter

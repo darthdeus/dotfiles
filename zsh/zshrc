@@ -86,7 +86,7 @@ export PROJECT_HOME="$HOME/projects"
 
 # wmname LG3D
 
-export CUDA_HOME="/usr/local/cuda-10.0"
+export CUDA_HOME="/opt/cuda"
 export PATH="$CUDA_HOME/bin:$PATH"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/extras/CUPTI/lib64:$CUDA_HOME/lib64:/usr/local/lib"
 

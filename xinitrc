@@ -59,9 +59,9 @@ fi
 
 # exec twm
 
-# while :; do
+while :; do
   "$HOME/.dotfiles/bin/dwm"
-# done
+done
 
 # exec "$HOME/.dotfiles/dwm/dwm"
 
