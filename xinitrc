@@ -59,9 +59,12 @@ fi
 
 # exec twm
 
-while :; do
-  "$HOME/.dotfiles/bin/dwm"
-done
+# exec startxfce4
+exec i3
+
+# while :; do
+#   "$HOME/.dotfiles/bin/dwm"
+# done
 
 # exec "$HOME/.dotfiles/dwm/dwm"
 
