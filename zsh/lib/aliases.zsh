@@ -135,6 +135,8 @@ function dot-deps() {
 }
 
 alias pw="pkgsearch"
+alias aur="auracle"
+alias aus="auracle search"
 
 function build-ycm() {
   cd "$HOME/.vim/bundle/YouCompleteMe"
