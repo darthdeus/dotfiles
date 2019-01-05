@@ -54,6 +54,8 @@ export VISUAL="vim"
 export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
 
+autoload -Uz $(print ~/.zsh/funcs/*)
+
 LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 
 # CROSS_PATH="$HOME/opt/cross/bin"
