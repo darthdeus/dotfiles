@@ -38,8 +38,8 @@ PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.passwords/gmail.gpg"
 AuthMechs PLAIN
 SSLType IMAPS
 # SSLVersions SSLv3
-CertificateFile ~/.dotfiles/certs/gmail.crt
-CertificateFile ~/.dotfiles/certs/google.crt
+CertificateFile ~/.mutt/certs/gmail.crt
+CertificateFile ~/.mutt/certs/google.crt
 # CertificateFile /usr/local/etc/openssl/certs/Equifax.crt
 
 # THEN WE SPECIFY THE LOCAL AND REMOTE STORAGE

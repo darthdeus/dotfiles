@@ -18,17 +18,10 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rsi'
-" Plug 'tpope/vim-rails'
-" Plug 'tpope/vim-rake'
-" Plug 'slim-template/vim-slim', { 'for': 'slim' }
-" Plug 'skwp/vim-rspec'
 
-" Plug 'szymonmaszke/vimpyter'
-" Plug 'vim-latex/vim-latex'
 Plug 'lervag/vimtex'
 let g:vimtex_view_method = 'zathura'
 
-" Plug 'qpkorr/vim-bufkill'
 Plug 'ervandew/supertab'
 
 Plug 'junegunn/goyo.vim'
@@ -46,11 +39,11 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-
 Plug 'junegunn/vim-easy-align'
 
 Plug 'tomtom/tcomment_vim'
 Plug 'tomtom/tlib_vim'
+
 Plug 'godlygeek/tabular'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -81,17 +74,21 @@ Plug 'mattn/emmet-vim'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'tell-k/vim-autopep8'
 
+Plug 'sbdchd/neoformat'
+
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Plug 'Shougo/neosnippet.vim'
 " Plug 'Shougo/neosnippet-snippets'
 " Plug 'honza/vim-snippets'
 
-Plug 'jaxbot/semantic-highlight.vim'
-let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
+" Plug 'jaxbot/semantic-highlight.vim'
+" let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
 
 Plug 'w0rp/ale'
 
 Plug 'Valloric/YouCompleteMe'
+
+Plug 'numirias/semshi'
 
 " if has('nvim')
 "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -104,11 +101,12 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'davidhalter/jedi-vim'
 Plug 'chrisbra/unicode.vim'
 
+
 let g:ycm_python_binary_path = 'python2'
 
 Plug 'cespare/vim-toml'
 
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 
 call plug#end()
 
@@ -153,8 +151,8 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='base16_default'
 
 " TODO: add back yapf when https://github.com/sbdchd/neoformat/issues/126 is fixed
-" let g:neoformat_enabled_python = ['autopep8', 'docformatter', 'black']
-let g:neoformat_enabled_python = ['autopep8', 'docformatter']
+let g:neoformat_enabled_python = ['autopep8', 'docformatter', 'black']
+" let g:neoformat_enabled_python = ['autopep8', 'docformatter']
 let g:neoformat_run_all_formatters = 1
 
 let mapleader=','
@@ -361,7 +359,8 @@ nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 nnoremap <leader>gq :YcmCompleter GetDoc<CR>
 nnoremap <leader>ge :e ~/.vimrc<CR>
-
+nnoremap <leader>gn :ALENext<CR>
+nnoremap <leader>gp :ALEPrevious<CR>
 
 " Expand %% to directory path of current buffer
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
@@ -439,7 +438,7 @@ nmap Q <NOP>
 nnoremap <leader><leader> <c-^>
 
 " CTags - TODO - find a good hotkey for this
-noremap <leader>lt :!ctags --extra=+f --exclude=public --exclude=node_modules --exclude=.git -R *<CR>
+noremap <leader>lt :!ctags --extras=+f --exclude=public --exclude=.mypy_cache --exclude=node_modules --exclude=.git -R *<CR>
 noremap <C-\> :tnext<CR>
 
 noremap <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>

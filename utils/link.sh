@@ -7,15 +7,15 @@ THIRD_PARTY="$DOT/third-party"
 
 ln -nsf "$DOT/vim"           "$HOME/.vim"
 ln -nsf "$DOT/vim/vimrc"     "$HOME/.vimrc"
-# ln -nsf "$DOT/spacemacs.el"  "$HOME/.spacemacs"
 ln -nsf "$DOT/zsh"           "$HOME/.zsh"
 ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc"
 # ln -nsf "$DOT/xmonad"        "$HOME/.xmonad"
 ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
 # ln -nsf "$DOT/Xmodmap"       "$HOME/.Xmodmap"
-# ln -nsf "$DOT/mutt/mailcap"  "$HOME/.mailcap"
-# ln -nsf "$DOT/msmtprc"       "$HOME/.msmtprc"
-# ln -nsf "$DOT/mbsyncrc"      "$HOME/.mbsyncrc"
+
+mkdir -p "$HOME/.config/i3"
+ln -nsf "$DOT/i3/config"    "$HOME/.config/i3/config"
+
 ln -nsf "$DOT/Xresources"    "$HOME/.Xresources"
 xrdb "$HOME/.Xresources"
 
@@ -28,11 +28,19 @@ xrdb "$HOME/.Xresources"
 mkdir -p ~/.config/ranger/
 ln -nsf "$DOT/ranger/commands.py" "$HOME/.config/ranger/commands.py"
 ln -nsf "$DOT/ranger/rc.conf"     "$HOME/.config/ranger/rc.conf"
-# 
-# mkdir -p "$HOME/.mutt"
-# ln -nsf "$DOT/mutt/muttrc"   "$HOME/.mutt/muttrc"
-# ln -nsf "$DOT/mutt/gmail.rc" "$HOME/.mutt/gmail.rc"
-# ln -nsf "$DOT/mutt/icloud.rc" "$HOME/.mutt/icloud.rc"
+
+mkdir -p "$HOME/.mail/"{gmail,icloud}/{inbox,drafts}
+
+mkdir -p "$HOME/.mutt"
+mkdir -p "$HOME/.mutt/certs/"
+ln -nsf "$DOT/mutt/muttrc"   "$HOME/.mutt/muttrc"
+ln -nsf "$DOT/mutt/mailcap"  "$HOME/.mailcap"
+
+ln -nsf "$DOT/mutt/gmail.rc" "$HOME/.mutt/gmail.rc"
+ln -nsf "$DOT/mutt/icloud.rc" "$HOME/.mutt/icloud.rc"
+
+ln -nsf "$DOT/msmtprc"       "$HOME/.msmtprc"
+ln -nsf "$DOT/mbsyncrc"      "$HOME/.mbsyncrc"
 
 # ln -nsf "$DOT/c_ycm_extra_conf.py" "$HOME/.ycm_extra_conf.py"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

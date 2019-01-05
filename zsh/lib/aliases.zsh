@@ -180,6 +180,8 @@ alias dirt="docker run -it --rm"
 alias dc="docker-compose"
 alias z="yaourt"
 
+alias mutt="neomutt"
+
 alias jp="jupyter notebook"
 alias vis="python -m visdom.server"
 

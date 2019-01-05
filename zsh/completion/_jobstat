@@ -11,5 +11,6 @@ _arguments -s -S \
   "-h[show this help message and exit]:" \
   "--help[show this help message and exit]:" \
   "-p[process]:msg:_pids" \
+  "-j[job id]::_pids" \
   "--recursive[Search subdirectories for job files]::RECURSIVE:_files" \
   "*::args:_values 'jobs' **/job-*.yml"

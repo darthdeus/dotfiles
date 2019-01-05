@@ -20,4 +20,5 @@ set folder    = ~/.mail/icloud
 set spoolfile = ~/.mail/icloud/inbox
 set postponed = ~/.mail/icloud/drafts
 set trash     = "+/trash"
+# set ssl_force_tls=yes
 # set record = ""
