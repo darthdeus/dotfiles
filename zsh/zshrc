@@ -48,8 +48,8 @@ select-word-style bash
 # color theme
 source "$ZSH"/themes/darth.zsh-theme
 
-export EDITOR="vim"
-export VISUAL="vim"
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
