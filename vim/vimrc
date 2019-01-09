@@ -19,6 +19,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rsi'
 
+Plug 'junegunn/gv.vim'
+
 Plug 'lervag/vimtex'
 let g:vimtex_view_method = 'zathura'
 
