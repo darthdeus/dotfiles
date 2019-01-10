@@ -471,9 +471,12 @@ noremap <leader>ws :%s/ *$//g<cr><c-o><cr>
 set pastetoggle=<F5>
 set mouse=a
 
+nnoremap <F9> :NERDTree<CR>
 nnoremap <F12> :e ++enc=iso-8859-2<CR>
 
 let g:clang_format#code_style = 'google'
+
+au BufRead,BufNewFile */funcs/* setfiletype zsh
 
 aug cpp_types
   autocmd!

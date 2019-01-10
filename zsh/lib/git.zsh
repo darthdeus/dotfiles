@@ -91,12 +91,14 @@ git-new() {
   git init &&
   touch .gitignore &&
   git add .gitignore &&
-  git commit -m "Added .gitignore."
+  git commit -m "Initial comit"
 }
 alias glog='git log --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
 alias cl='git clone'
 alias gl='glog --graph'
 alias gla='gl --all'
+alias glk="git-log-viewer"
+
 gls() {
   query="$1"
   shift
