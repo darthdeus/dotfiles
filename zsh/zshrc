@@ -11,8 +11,6 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt HIST_IGNORE_SPACE
-# TODO: do I want to disable this?
-# unsetopt AUTO_CD
 
 # disable the annoying beep
 unsetopt beep
