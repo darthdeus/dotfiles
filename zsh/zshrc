@@ -11,6 +11,8 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt HIST_IGNORE_SPACE
+# TODO: do I want to disable this?
+# unsetopt AUTO_CD
 
 # disable the annoying beep
 unsetopt beep
@@ -48,8 +50,12 @@ select-word-style bash
 # color theme
 source "$ZSH"/themes/darth.zsh-theme
 
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="vim"
+export VISUAL="vim"
+
+alias vi="vim"
+alias vim="vim"
+
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
@@ -70,7 +76,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 if [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ]; then
   eval "$("$BASE16_SHELL/profile_helper.sh")"
 fi
-base16_default-dark
+# base16_default-dark
 
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 # export FZF_DEFAULT_COMMAND='
@@ -88,7 +94,7 @@ export PROJECT_HOME="$HOME/projects"
 
 # wmname LG3D
 
-export CUDA_HOME="/opt/cuda"
+export CUDA_HOME="/usr/local/cuda"
 export PATH="$CUDA_HOME/bin:$PATH"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/extras/CUPTI/lib64:$CUDA_HOME/lib64:/usr/local/lib"
 
