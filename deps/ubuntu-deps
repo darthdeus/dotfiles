@@ -72,3 +72,5 @@ curl
 cmake
 vim-gtk
 git
+xdotool
+latexmk
