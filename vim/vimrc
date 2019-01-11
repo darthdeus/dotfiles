@@ -235,6 +235,8 @@ let g:gist_post_private = 1
 " for backgrounded buffers
 set hidden
 
+set deco
+
 set number
 
 " TODO - check if this is still necessary in vim
