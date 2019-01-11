@@ -7,6 +7,9 @@ if has('python3')
   silent! python3 1
 endif
 
+let g:python_host_prog = $HOME . '/.venvs/neovim2/bin/python'
+let g:python3_host_prog = $HOME . '/.venvs/neovim3/bin/python'
+
 call plug#begin('~/.vim/bundle')
 
 Plug 'tpope/vim-sensible'
@@ -365,6 +368,7 @@ nnoremap <leader>gq :YcmCompleter GetDoc<CR>
 nnoremap <leader>ge :e ~/.vimrc<CR>
 nnoremap <leader>gn :ALENext<CR>
 nnoremap <leader>gp :ALEPrevious<CR>
+nnoremap <leader>gr :Semshi rename<CR>
 
 " Expand %% to directory path of current buffer
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
@@ -442,7 +446,7 @@ nmap Q <NOP>
 nnoremap <leader><leader> <c-^>
 
 " CTags - TODO - find a good hotkey for this
-noremap <leader>lt :!ctags --extras=+f --exclude=public --exclude=.mypy_cache --exclude=node_modules --exclude=.git -R *<CR>
+noremap <leader>lt :!ctags --extra=+f --exclude=public --exclude=.mypy_cache --exclude=node_modules --exclude=.git -R *<CR>
 noremap <C-\> :tnext<CR>
 
 noremap <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
