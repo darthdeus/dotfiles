@@ -75,14 +75,15 @@ xclock*analog: false
 xclock*foreground: white
 xclock*background: black
 
-URxvt*scrollBar: false
-URxvt.internalBorder: 0px
-URxvt.externalBorder: 0px
 ! URxvt.font: xft:Monospace:pixelsize=20
 URxvt.font: xft:Fantasque Sans Mono:pixelsize=22:antialias=true, xft:Symbola:pixelsize=16:antialias=true
 ! URxvt.font: xft:Iosevka Mono:pixelsize=24:antialias=true
-URxvt*borderLess: true
 URxvt.letterSpace: -1
+
+! URxvt*borderLess: true
+URxvt*scrollBar: false
+URxvt.internalBorder: 0px
+URxvt.externalBorder: 0px
 
 ! URxvt*scrollBar_right:                boolean
 ! URxvt*scrollBar_floating:             boolean
