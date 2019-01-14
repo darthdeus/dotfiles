@@ -75,6 +75,7 @@ xclock*analog: false
 xclock*foreground: white
 xclock*background: black
 
+! TODO: antialias breaks images?
 ! URxvt.font: xft:Monospace:pixelsize=20
 URxvt.font: xft:Fantasque Sans Mono:pixelsize=22:antialias=true, xft:Symbola:pixelsize=16:antialias=true
 ! URxvt.font: xft:Iosevka Mono:pixelsize=24:antialias=true

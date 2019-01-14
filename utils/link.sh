@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 git submodule update --init --recursive
 
@@ -19,11 +19,11 @@ ln -nsf "$DOT/i3/config"    "$HOME/.config/i3/config"
 ln -nsf "$DOT/Xresources"    "$HOME/.Xresources"
 xrdb "$HOME/.Xresources"
 
-# if [ -d "$HOME/.ipython/profile_default" ]; then
-#   ln -nsf "$DOT/ipython_config.py"  "$HOME/.ipython/profile_default/ipython_config.py"
-# else
-#   echo "ipython config not generated, run 'ipython profile create'"
-# fi
+if [ -d "$HOME/.ipython/profile_default" ]; then
+  ln -nsf "$DOT/ipython_config.py"  "$HOME/.ipython/profile_default/ipython_config.py"
+else
+  echo "ipython config not generated, run 'ipython profile create'"
+fi
 
 mkdir -p ~/.config/ranger/
 ln -nsf "$DOT/ranger/commands.py" "$HOME/.config/ranger/commands.py"
