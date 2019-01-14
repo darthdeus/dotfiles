@@ -10,7 +10,7 @@ ln -nsf "$DOT/vim/vimrc"     "$HOME/.vimrc"
 ln -nsf "$DOT/zsh"           "$HOME/.zsh"
 ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc"
 # ln -nsf "$DOT/xmonad"        "$HOME/.xmonad"
-ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
+# ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
 # ln -nsf "$DOT/Xmodmap"       "$HOME/.Xmodmap"
 
 mkdir -p "$HOME/.config/i3"
@@ -21,11 +21,11 @@ if [ ! "$(uname)" = "Darwin" ]; then
   xrdb "$HOME/.Xresources"
 fi
 
-# if [ -d "$HOME/.ipython/profile_default" ]; then
-#   ln -nsf "$DOT/ipython_config.py"  "$HOME/.ipython/profile_default/ipython_config.py"
-# else
-#   echo "ipython config not generated, run 'ipython profile create'"
-# fi
+if [ -d "$HOME/.ipython/profile_default" ]; then
+  ln -nsf "$DOT/ipython_config.py"  "$HOME/.ipython/profile_default/ipython_config.py"
+else
+  echo "ipython config not generated, run 'ipython profile create'"
+fi
 
 mkdir -p ~/.config/ranger/
 ln -nsf "$DOT/ranger/commands.py" "$HOME/.config/ranger/commands.py"
@@ -48,12 +48,12 @@ ln -nsf "$DOT/mbsyncrc"      "$HOME/.mbsyncrc"
 # ln -nsf "$DOT/c_ycm_extra_conf.py" "$HOME/.ycm_extra_conf.py"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# 
-# mkdir -p "$HOME/.mail"
-# mkdir -p "$HOME/.mail/sent"
-# mkdir -p "$HOME/.mail/drafts"
-# mkdir -p "$HOME/.mail/icloud"
-# mkdir -p "$HOME/.mail/gmail"
+
+mkdir -p "$HOME/.mail"
+mkdir -p "$HOME/.mail/sent"
+mkdir -p "$HOME/.mail/drafts"
+mkdir -p "$HOME/.mail/icloud"
+mkdir -p "$HOME/.mail/gmail"
 
 mkdir -p "$HOME/.config/nvim"
 ln -nsf "$DOT/vim/init.vim" "$HOME/.config/nvim/init.vim"

@@ -18,7 +18,7 @@ function vpip() {
 }
 
 function ve() {
-  ~/.local/bin/virtualenv $@
+  virtualenv -p python3 $@
 }
 
 # function python() {

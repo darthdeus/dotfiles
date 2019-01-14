@@ -44,7 +44,6 @@ hdf5-tools
 iotop
 gist
 gnupg2
-gnome-tweak-tool
 zeal
 silversearcher-ag
 zsh
@@ -65,3 +64,13 @@ libtool-bin
 autoconf
 automake
 g++
+virtualenv
+python3-virtualenv
+python3-dev
+rxvt-unicode
+curl
+cmake
+vim-gtk
+git
+xdotool
+latexmk
