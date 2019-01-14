@@ -7,10 +7,6 @@ function current_commit() {
   echo $(git rev-parse --short HEAD 2>/dev/null)
 }
 
-ruby_version() {
-  echo " $(ruby -v | awk '{print $2}')"
-}
-
 # ACTUAL CUSTOMIZATION OH NOES!
 function minutes_since_last_commit {
     now=`date +%s`

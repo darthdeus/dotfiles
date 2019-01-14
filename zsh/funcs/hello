@@ -1,2 +1,0 @@
-#autoload
-printf "Hello world.\n"

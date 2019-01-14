@@ -1,0 +1,7 @@
+if [ $# -eq 1 ]; then
+  source "$1"/bin/activate
+elif [ -f .venv/bin/activate ]; then
+  source .venv/bin/activate
+elif [ -f venv/bin/activate ]; then
+  source venv/bin/activate
+fi

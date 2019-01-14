@@ -157,9 +157,6 @@ alias z="yaourt"
 
 alias mutt="neomutt"
 
-alias jp="jupyter notebook"
-alias vis="python -m visdom.server"
-
 function man() {
     env \
     LESS_TERMCAP_mb="$(printf "\e[1;31m")" \
@@ -173,6 +170,10 @@ function man() {
 }
 
 alias p="python3"
+
+alias jp="jupyter notebook"
+alias vis="python -m visdom.server"
+alias de="deactivate"
 
 alias pm="python manage.py"
 alias pis="pipenv shell"

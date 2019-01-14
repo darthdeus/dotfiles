@@ -1,6 +1,3 @@
-# TODO: figure out how to make fasd work with my current hotkeys
-# eval "$(fasd --init auto)"
-
 # TODO: fix the OS X gpg agent
 # platform=`uname`
 # if [[ "$platform" == "Darwin" ]]; then
