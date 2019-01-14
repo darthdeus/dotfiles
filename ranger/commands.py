@@ -15,12 +15,12 @@ class fzf_select(Command):
         import os.path
         if self.quantifier:
             # match only directories
-            command="fd -t d --hidden | fzf +m --preview '$([[ -d {} ]] && echo ls || echo cat) {}'"
+            command="fd -I -t d --hidden | fzf +m --preview '$([[ -d {} ]] && echo ls || echo cat) {}'"
             # command="find -L . \( -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \) -prune \
             # -o -type d -print 2> /dev/null | sed 1d | cut -b3- | fzf +m"
         else:
             # match files and directories
-            command="fd --hidden | fzf +m --preview '$([[ -d {} ]] && echo ls || echo cat) {}'"
+            command="fd -I --hidden | fzf +m --preview '$([[ -d {} ]] && echo ls || echo cat) {}'"
             # command="find -L . \( -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \) -prune \
             # -o -print 2> /dev/null | sed 1d | cut -b3- | fzf +m"
 
