@@ -95,7 +95,6 @@ function malloc_dump() {
 
 alias ra="ranger --cmd='set show_hidden=true'"
 alias rah="ranger"
-alias e="vim"
 
 alias tc="tmux-cssh -cs"
 
@@ -197,7 +196,9 @@ function man() {
     man "${@}"
 }
 
-alias vi="vim"
+alias e="nvim"
+alias vi="nvim"
+alias vim="nvim"
 alias p="python3"
 
 alias pm="python manage.py"
