@@ -53,6 +53,7 @@ VIM_VERSION="nvim"
 export EDITOR="$VIM_VERSION"
 export VISUAL="$VIM_VERSION"
 
+alias e="$VIM_VERSION"
 alias vi="$VIM_VERSION"
 alias vim="$VIM_VERSION"
 
@@ -60,6 +61,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
 
 autoload -Uz $(print ~/.zsh/funcs/*)
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
 
 LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 

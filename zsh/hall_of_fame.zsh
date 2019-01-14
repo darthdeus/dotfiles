@@ -45,3 +45,26 @@ alias ci="cabal install"
 alias cid="cabal install --only-dependencies"
 alias cu="cabal update"
 alias csi="cabal sandbox init"
+
+alias ct="ctags --extra=+f --language-force=Ruby -R $(bundle show --paths | xargs) app lib"
+
+function switch-gcc-osx() {
+  VERSION="${1:-5}"
+  export CC="/usr/local/bin/gcc-$VERSION"
+  export CXX="/usr/local/bin/g++-$VERSION"
+  export CPP="/usr/local/bin/cpp-$VERSION"
+  export LD="/usr/local/bin/gcc-$VERSION"
+}
+
+function dot-deps() {
+  cd "$DOT"
+
+  # TODO: qutebrowser or AUR qutebrowser-git?
+
+  # pacman-key --init
+  # pacman-key --populate archlinux
+
+  # gpg --recv-key KEY
+
+  sudo pacman -S --needed $(cat deps)
+}

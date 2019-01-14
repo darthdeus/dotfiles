@@ -59,7 +59,6 @@ alias ta="tmux attach"
 alias tn="tmux new-session -s"
 
 alias wisdom="fortune | cowsay | lolcat"
-alias ct='ctags --extra=+f --language-force=Ruby -R $(bundle show --paths | xargs) app lib'
 
 function pgdisc() {
   echo "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname = current_database() AND pid <> pg_backend_pid();" | psql $1
@@ -68,14 +67,6 @@ function pgdisc() {
 alias pi="sudo pacman -S"
 alias pe="pacman -Ss"
 alias pq="pacman -Ssq"
-
-function switch-gcc-osx() {
-  VERSION="${1:-5}"
-  export CC="/usr/local/bin/gcc-$VERSION"
-  export CXX="/usr/local/bin/g++-$VERSION"
-  export CPP="/usr/local/bin/cpp-$VERSION"
-  export LD="/usr/local/bin/gcc-$VERSION"
-}
 
 if ! type open 2>&1 1>/dev/null; then
   alias open="exo-open"
@@ -115,22 +106,7 @@ function dot-update() {
   cd "$DOT"
 
   git submodule update --init --recursive
-  ./rbenv-install.sh
-  git smart-pull
   ./link.sh
-}
-
-function dot-deps() {
-  cd "$DOT"
-
-  # TODO: qutebrowser or AUR qutebrowser-git?
-
-  # pacman-key --init
-  # pacman-key --populate archlinux
-
-  # gpg --recv-key KEY
-
-  sudo pacman -S --needed $(cat deps)
 }
 
 alias pw="pkgsearch"
@@ -211,7 +187,7 @@ function zman() {
 }
 
 # TODO: put this where it belongs
-after-first-word() {
+function after-first-word() {
   zle beginning-of-line
   zle forward-word
 }

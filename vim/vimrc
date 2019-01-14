@@ -172,6 +172,7 @@ let g:airline_powerline_fonts = 1
 " endif
 
 
+
 " " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger='<c-j>'
 " let g:UltiSnipsJumpForwardTrigger='<c-j>'
@@ -206,8 +207,7 @@ let g:airline_powerline_fonts = 1
 " aug END
 
 
-
-" Ultisnips YouCompleteMe integration
+" Ultisnips YouCompleteMe integration https://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
 function! g:UltiSnips_Complete()
   call UltiSnips#ExpandSnippet()
   if g:ulti_expand_res == 0

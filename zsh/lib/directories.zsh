@@ -19,12 +19,3 @@ alias 6='cd +6'
 alias 7='cd +7'
 alias 8='cd +8'
 alias 9='cd +9'
-
-alias md='mkdir -p'
-alias rd=rmdir
-alias d='dirs -v'
-
-# mkdir & cd to it
-function mcd() {
-  mkdir -p "$1" && cd "$1";
-}

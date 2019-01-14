@@ -1,9 +1,15 @@
 function sa() {
-  if [ -f .venv/bin/activate ]; then
+  if [ $# -eq 1 ]; then
+    source "$1"/bin/activate
+  elif [ -f .venv/bin/activate ]; then
     source .venv/bin/activate
   elif [ -f venv/bin/activate ]; then
     source venv/bin/activate
   fi
+}
+
+function de() {
+  deactivate
 }
 
 function vpip() {
@@ -18,13 +24,9 @@ function vpip() {
 }
 
 function ve() {
-  virtualenv -p python3 $@
+  if [ $# -eq 1 ]; then
+    virtualenv -p python3 "$1"
+  else
+    virtualenv -p python3 .venv
+  fi
 }
-
-# function python() {
-#   if [ -f .venv/bin/pip ]; then
-#     ./.venv/bin/python $@
-#   else
-#     command python $@
-#   fi
-# }
