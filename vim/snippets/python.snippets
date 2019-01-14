@@ -1,0 +1,2 @@
+snippet scriptdir "Gets the directory of the currently running script" b
+	os.path.dirname(os.path.abspath(inspect.stack()[0][1]))
