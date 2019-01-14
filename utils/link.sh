@@ -30,6 +30,7 @@ fi
 mkdir -p ~/.config/ranger/
 ln -nsf "$DOT/ranger/commands.py" "$HOME/.config/ranger/commands.py"
 ln -nsf "$DOT/ranger/rc.conf"     "$HOME/.config/ranger/rc.conf"
+ln -nsf "$DOT/ranger/scope.sh"    "$HOME/.config/ranger/scope.sh"
 
 mkdir -p "$HOME/.mail/"{gmail,icloud}/{inbox,drafts}
 
@@ -38,7 +39,7 @@ mkdir -p "$HOME/.mutt/certs/"
 ln -nsf "$DOT/mutt/muttrc"   "$HOME/.mutt/muttrc"
 ln -nsf "$DOT/mutt/mailcap"  "$HOME/.mailcap"
 
-ln -nsf "$DOT/mutt/gmail.rc" "$HOME/.mutt/gmail.rc"
+ln -nsf "$DOT/mutt/gmail.rc"  "$HOME/.mutt/gmail.rc"
 ln -nsf "$DOT/mutt/icloud.rc" "$HOME/.mutt/icloud.rc"
 
 ln -nsf "$DOT/msmtprc"       "$HOME/.msmtprc"
@@ -69,7 +70,7 @@ done
 # ln -nsf "$HOME/.dotfiles/base16-default.dark.terminalrc" "$XFCE_TERMRC_PATH/terminalrc"
 
 ln -nsf "$HOME/.dotfiles/git/ignore" "$HOME/.gitignore"
-cp "$HOME/.dotfiles/git/config" "$HOME/.gitconfig"
+cp "$HOME/.dotfiles/git/config"      "$HOME/.gitconfig"
 # ln -nsf "$HOME/.dotfiles/git/config" "$HOME/.gitconfig"
 
 # ln -nsf "$DOT/tmux-cssh" "$HOME/.tmux-cssh"
