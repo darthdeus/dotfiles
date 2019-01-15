@@ -274,6 +274,7 @@ set scrolloff=9
 " set deco
 
 set number
+set relativenumber
 
 " TODO - check if this is still necessary in vim
 " Set encoding
