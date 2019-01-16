@@ -25,3 +25,6 @@
 [submodule "third-party/vim-plug"]
 	path = third-party/vim-plug
 	url = https://github.com/junegunn/vim-plug
+[submodule "third-party/zplug"]
+	path = third-party/zplug
+	url = https://github.com/zplug/zplug
