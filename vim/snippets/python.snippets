@@ -15,3 +15,17 @@ snippet argparse "Parse command line arguments with argparse"
 snippet grad "tf.GradientTape"
 	with tf.GradientTape() as tape:
 		$0
+
+snippet str2bool "string to bool parser for argparse"
+	def str2bool(v):
+			if v.lower() in ('yes', 'true', 't', 'y', '1'):
+					return True
+			elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+					return False
+			else:
+					raise argparse.ArgumentTypeError('Boolean value expected.')
+
+snippet init "Class __init__ template"
+	def __init__(self) -> None:
+		$0
+

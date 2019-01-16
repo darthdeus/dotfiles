@@ -68,3 +68,5 @@ function dot-deps() {
 
   sudo pacman -S --needed $(cat deps)
 }
+
+alias z="yaourt"

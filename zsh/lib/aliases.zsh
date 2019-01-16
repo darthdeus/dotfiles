@@ -153,7 +153,6 @@ alias doc="docker"
 alias dit="docker run -it"
 alias dirt="docker run -it --rm"
 alias dc="docker-compose"
-alias z="yaourt"
 
 alias mutt="neomutt"
 

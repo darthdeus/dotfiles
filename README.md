@@ -4,6 +4,8 @@ My config files for bash, git, ruby and other useful scripts.
 
 ## TODO
 
+- [ ] try https://github.com/sharkdp/bat
+- [ ] zplug/antigen/other/none?
 - [x] ag build in tmp with copy to $HOME
 - [ ] working vim/nvim build in $HOME
 - [ ] create a working and up-to-date install script
