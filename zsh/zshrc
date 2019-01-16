@@ -60,7 +60,7 @@ alias vim="$VIM_VERSION"
 export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
 
-autoload -Uz $(print ~/.zsh/funcs/*)
+autoload -Uz $(print ~/.dotfiles/zsh/funcs/*(:t))
 
 autoload -U edit-command-line
 zle -N edit-command-line
