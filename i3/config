@@ -43,6 +43,8 @@ bindsym $mod+p exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+for_window [class="Zeal"] floating enable
+
 # change focus
 bindsym $mod+j focus down
 bindsym $mod+k focus up
