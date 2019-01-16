@@ -10,3 +10,7 @@ snippet argparse "Parse command line arguments with argparse"
 	parser.add_argument("--baz", type=str, default=None, help="TODO")
 
 	args = parser.parse_args()
+
+snippet grad "tf.GradientTape"
+	with tf.GradientTape() as tape:
+		$0
