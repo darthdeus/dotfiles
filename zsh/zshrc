@@ -2,6 +2,9 @@ if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zmodload zsh/zprof
 fi
 
+export DOT_BASE_DIR="$HOME/.dotfiles"
+export ZPLUG_HOME="$HOME/.dotfiles/third-party/zplug"
+
 fpath=(~/.zsh/funcs "${fpath[@]}")
 
 ZSH=$HOME/.zsh
@@ -17,6 +20,13 @@ unsetopt beep
 
 # emacs style keybindings
 bindkey -e
+
+source "$ZPLUG_HOME/init.zsh"
+
+zplug "ytet5uy4/fzf-widgets"
+zplug "changyuheng/fz", defer:1
+zplug "rupa/z", use:z.sh
+
 
 # Load all libs under
 for config_file in "$ZSH"/lib/*.zsh; do
@@ -157,6 +167,8 @@ function recompdef() {
 
   compdef $@
 }
+
+zplug load
 
 if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof
