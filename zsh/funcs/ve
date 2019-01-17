@@ -1,5 +1,7 @@
 if [ $# -eq 1 ]; then
   virtualenv -p python3 "$1"
+  sa "$1"
 else
   virtualenv -p python3 .venv
+  sa .venv
 fi
