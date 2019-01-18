@@ -16,6 +16,10 @@ snippet grad "tf.GradientTape"
 	with tf.GradientTape() as tape:
 		$0
 
+snippet tape "tf.GradientTape"
+	with tf.GradientTape() as tape:
+		$0
+
 snippet str2bool "string to bool parser for argparse"
 	def str2bool(v):
 			if v.lower() in ('yes', 'true', 't', 'y', '1'):
@@ -28,4 +32,7 @@ snippet str2bool "string to bool parser for argparse"
 snippet init "Class __init__ template"
 	def __init__(self) -> None:
 		$0
+
+snippet global "tf.global_step"
+	global_step = tf.train.get_or_create_global_step()
 
