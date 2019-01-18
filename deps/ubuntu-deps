@@ -49,7 +49,6 @@ silversearcher-ag
 zsh
 urlview
 fonts-fantasque-sans
-python3-tk
 libx11-dev
 libxinerama-dev
 libxft-dev
@@ -65,8 +64,6 @@ autoconf
 automake
 g++
 virtualenv
-python3-virtualenv
-python3-dev
 rxvt-unicode
 curl
 cmake
@@ -74,3 +71,18 @@ vim-gtk
 git
 xdotool
 latexmk
+ffmpegthumbnailer
+python3-pyqt5
+python3-virtualenv
+python3-dev
+python3-tk
+python3-setuptools
+python3-wheel
+python3-keyring
+libc6-dev
+mirage
+gthumb
+zeal
+hugo
+gconf2
+neomutt
