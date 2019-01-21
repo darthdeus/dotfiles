@@ -87,3 +87,8 @@ hugo
 gconf2
 neomutt
 python3-pip
+highlight
+python3-ipython
+ipython3
+python3-numpy
+python3-scipy
