@@ -80,6 +80,8 @@ Plug 'sbdchd/neoformat'
 Plug 'w0rp/ale'
 
 Plug 'Valloric/YouCompleteMe'
+" Plug 'zxqfl/tabnine-vim'
+
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
@@ -121,7 +123,7 @@ if !exists('g:ycm_semantic_triggers')
 endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
-autocmd FileType python setlocal completeopt-=preview
+set completeopt-=preview
 
 " let g:ale_completion_enabled = 1
 let g:ale_fixers = {
