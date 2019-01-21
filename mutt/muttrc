@@ -19,7 +19,7 @@ set sort_aux     = "last-date-received"
 
 # set sidebar_shortpath = yes
 
-set sidebar_width=30
+set sidebar_width=10
 set sidebar_visible=yes
 set edit_headers=yes
 
@@ -47,17 +47,18 @@ source $HOME/.dotfiles/mutt/colors.muttrc
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
+macro index <f2> '<change-folder> ~/.mail/gmail/inbox<enter>'
+macro index <f3> '<change-folder> ~/.mail/icloud/inbox<enter>'
+
+folder-hook 'gmail' 'source ~/.mutt/gmail.rc'
+folder-hook 'icloud' 'source ~/.mutt/icloud.rc'
+
 source $HOME/.mutt/icloud.rc
 source $HOME/.mutt/gmail.rc
 
 mailboxes ~/.mail/icloud/inbox
 mailboxes ~/.mail/gmail/inbox
 
-macro index <f2> '<change-folder> ~/.mail/gmail/inbox<enter>'
-macro index <f3> '<change-folder> ~/.mail/icloud/inbox<enter>'
-
-folder-hook 'gmail' 'source ~/.mutt/gmail.rc'
-folder-hook 'icloud' 'source ~/.mutt/icloud.rc'
 
 # folder-hook 'imap.gmail.com' 'source ~/.mutt/gmail.rc'
 # folder-hook 'imap.mail.me.com' 'source ~/.mutt/icloud.rc'
