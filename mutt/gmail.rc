@@ -14,5 +14,3 @@ set spoolfile = ~/.mail/gmail/inbox
 set postponed = ~/.mail/gmail/drafts
 set trash     = "+/trash"
 # set record = ""
-
-set postponed = +[Gmail]/Drafts
