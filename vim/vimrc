@@ -304,7 +304,7 @@ nnoremap <CR> :nohlsearch<CR>/<BS>
 " TODO - how does this differ from "longest,list" only?
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,deps,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__
+set wildignore+=obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,deps,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build
 let NERDTreeRespectWildIgnore=1
 
 " TODO - what is the default behavior?
@@ -482,7 +482,8 @@ nmap Q <NOP>
 nnoremap <leader><leader> <c-^>
 
 " CTags - TODO - find a good hotkey for this
-noremap <leader>lt :!ctags --extra=+f --exclude=public --exclude=.mypy_cache --exclude=node_modules --exclude=.git -R *<CR>
+" # TODO: ignore from a file?
+noremap <leader>lt :!ctags --extra=+f --exclude=build --exclude=public --exclude=.mypy_cache --exclude=node_modules --exclude=.git -R *<CR>
 noremap <C-\> :tnext<CR>
 
 noremap <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
