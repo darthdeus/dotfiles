@@ -491,6 +491,10 @@ noremap <C-\> :tnext<CR>
 
 noremap <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
 
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-c> <C-\><C-n>
+tnoremap <C-g> <C-c>
+
 aug various_file_types
   autocmd!
   " Rakefile, Vagrantfile and Gemfile are Ruby
