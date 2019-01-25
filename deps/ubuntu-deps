@@ -94,3 +94,5 @@ python3-numpy
 python3-scipy
 mc
 scdaemon
+exfat-fuse
+exfat-utils
