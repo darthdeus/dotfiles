@@ -1,26 +1,40 @@
-set mbox_type=maildir
+# vim: filetype=muttrc
+set my_name = "Jakub Arnold"
+set editor = $EDITOR
 
-# set folder=~/.mail
-# set spoolfile=+gmail/inbox
-# set header_cache=~/.cache/mutt
+set envelope_from=yes
 
-# source ~/.mutt/icloud.rc
+# Paths ----------------------------------------------
+set folder           = ~/.mail               # mailbox location
+# TODO: which one?
+# set alias_file       = ~/.mutt/alias         # where to store aliases
+# set header_cache     = ~/.mutt/cache/headers # where to store headers
+# set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
+# set certificate_file = ~/.mutt/certificates  # where to store certs
+# set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
+# set tmpdir           = ~/.mutt/temp          # where to keep temp files
+# set signature        = ~/.mutt/sig           # my signature file
+set header_cache     = ~/.cache/mutt/headers
+set message_cachedir = ~/.cache/mutt/bodies
 
-# set pager_index_lines=20
+set mbox_type        = Maildir
+
 
 set sort         = "reverse-threads"
 set sort_browser = "reverse-date"
 set sort_aux     = "last-date-received"
 
+# Allow mutt to open a new IMAP connection automatically
+unset imap_passive
 
-# set sidebar_delim='|'
-# Sorts folders in sidebar alphabetically
-#set sidebar_sort=yes
+set imap_keepalive = 300
+set mail_check     = 120 # 0
+set mail_check_stats
 
-# set sidebar_shortpath = yes
+set pager_index_lines = 6
+set pager_context     = 5
+set tilde   # Pad blank lines at the bottom with ~
 
-set sidebar_width=10
-set sidebar_visible=yes
 set edit_headers=yes
 
 color sidebar_new yellow default
@@ -32,32 +46,28 @@ bind pager '[' sidebar-prev
 bind pager ']' sidebar-next
 bind pager '#' sidebar-open
 
-set editor = "vim"
-
-set header_cache = ~/.cache/mutt/headers
-set message_cachedir = ~/.cache/mutt/bodies
-
-# unset imap_passive
-#
-# set imap_keepalive = 300
-# set mail_check     = 120
-#
-source $HOME/.dotfiles/mutt/colors.muttrc
+source ~/.mutt/colors
+# source ~/.mutt/base16-colors
+source ~/.mutt/sidebar
+source ~/.mutt/notmuch
+source ~/.mutt/accounts/icloud
+source ~/.mutt/accounts/gmail
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
-macro index <f2> '<change-folder> ~/.mail/gmail/inbox<enter>'
-macro index <f3> '<change-folder> ~/.mail/icloud/inbox<enter>'
+# macro index <f2> '<change-folder> ~/.mail/gmail<enter>'
+# macro index <f3> '<change-folder> ~/.mail/icloud<enter>'
 
-folder-hook 'gmail' 'source ~/.mutt/gmail.rc'
-folder-hook 'icloud' 'source ~/.mutt/icloud.rc'
+macro index <f2> '<enter-command> source ~/.mutt/accounts/gmail<enter><change-folder>!<enter>'
+macro index <f3> '<enter-command> source ~/.mutt/accounts/icloud<enter><change-folder>!<enter>'
 
-source $HOME/.mutt/icloud.rc
-source $HOME/.mutt/gmail.rc
 
-mailboxes ~/.mail/icloud/inbox
-mailboxes ~/.mail/gmail/inbox
+# folder-hook gmail  "source ~/.mutt/gmail.rc"
+# folder-hook icloud "source ~/.mutt/icloud.rc"
+
+# mailboxes ~/.mail/icloud
+# mailboxes ~/.mail/gmail
 
 
 # folder-hook 'imap.gmail.com' 'source ~/.mutt/gmail.rc'
@@ -70,3 +80,4 @@ bind index G imap-fetch-mail
 
 macro pager \cb 'urlview' 'Follow links with urlview'
 # macro index,pager \cb ": unset wait_key; set pipe_decode\n|w3m\n: set wait_key; unset pipe_decode\n" "call w3m to extract URLs out of a message"
+

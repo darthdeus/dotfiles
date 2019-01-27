@@ -155,6 +155,7 @@ alias dirt="docker run -it --rm"
 alias dc="docker-compose"
 
 alias mutt="neomutt"
+alias m="mutt"
 
 function man() {
     env \

@@ -1,7 +1,11 @@
+# Listing remote folders
+# openssl s_client -crlf -connect [IMAP server]:993
+
+
+#####################################################
 IMAPAccount icloud
 Host p04-imap.mail.me.com
 User jakub.arnold@me.com
-# UseIMAPS yes
 AuthMechs LOGIN
 SSLType IMAPS
 SSLVersions TLSv1
@@ -13,31 +17,60 @@ Account icloud
 MaildirStore icloud-local
 Path ~/.mail/icloud/
 Inbox ~/.mail/icloud/inbox
-Trash trash
 
-Channel icloud-folders
-Master :icloud-remote:
-Slave :icloud-local:
-Patterns "INBOX" "Drafts" "Arch*" "Sent*" "Trash" "Junk" "Deleted*"
-Create Both
-Expunge Both
+# Channel   icloud-folders
+# Master    :icloud-remote:
+# Slave     :icloud-local:
+# Patterns  "INBOX" "Drafts" "Arch*" "Sent*" "Trash" "Junk" "Deleted*"
+# Create    Both
+# Expunge   Both
+# SyncState *
+
+Channel   icloud-inbox
+Master    :icloud-remote:
+Slave     :icloud-local:
+Patterns  "INBOX" "Archive"
+Create    Both
+Expunge   Both
 SyncState *
 
-Group icloud
-Channel icloud-folders
+Channel   icloud-sent
+Master    :icloud-remote:"Sent Messages"
+Slave     :icloud-local:sent
+Create    Slave
+Expunge   Both
+SyncState *
+
+Channel   icloud-drafts
+Master    :icloud-remote:"Drafts"
+Slave     :icloud-local:drafts
+Create    Slave
+Expunge   Both
+SyncState *
+
+Channel   icloud-trash
+Master    :icloud-remote:"Deleted Messages"
+Slave     :icloud-local:trash
+Create    Slave
+Expunge   Both
+SyncState *
+
+
+Group   icloud
+Channel icloud-inbox
+Channel icloud-sent
+Channel icloud-drafts
+Channel icloud-trash
 
 
 
-# ACCOUNT INFORMATION
+#####################################################
 IMAPAccount gmail
 Host imap.gmail.com
 User darthdeus@gmail.com
 PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.passwords/gmail.gpg"
-# UseIMAPS yes
-# AuthMechs LOGIN
 AuthMechs PLAIN
 SSLType IMAPS
-# SSLVersions SSLv3
 CertificateFile ~/.mutt/certs/gmail.crt
 CertificateFile ~/.mutt/certs/google.crt
 # CertificateFile /usr/local/etc/openssl/certs/Equifax.crt
@@ -70,35 +103,53 @@ Inbox ~/.mail/gmail/inbox
 # gmail-inbox gets the folder INBOX, ARCHIVE, and everything under "ARCHIVE*"
 # gmail-trash gets only the "[Gmail]/Trash" folder and stores it to the local "trash" folder
 
+Channel   gmail-inbox
+Master    :gmail-remote:
+Slave     :gmail-local:
+Patterns  "INBOX" "Arch*"
+Create    Both
+Expunge   Both
+SyncState *
+
+Channel   gmail-starred
+Master    :gmail-remote:"[Gmail]/Starred"
+Slave     :gmail-local:starred
+Create    Slave
+Expunge   Both
+SyncState *
+
+Channel   gmail-sent
+Master    :gmail-remote:"[Gmail]/Sent Mail"
+Slave     :gmail-local:sent
+Create    Both
+Expunge   Both
+SyncState *
+
+Channel   gmail-drafts
+Master    :gmail-remote:"[Gmail]/Drafts"
+Slave     :gmail-local:drafts
+Create    Slave
+Expunge   Both
+SyncState *
+
+Channel   gmail-trash
+Master    :gmail-remote:"[Gmail]/Trash"
+Slave     :gmail-local:trash
+Create    Both
+Expunge   Both
+SyncState *
+
+# Channel   gmail-important
+# Master    :gmail-remote:"[Gmail]/Important"
+# Slave     :gmail-local:important
+# Create    Slave
+# Expunge   Both
+# SyncState *
+
+
+Group   gmail
 Channel gmail-inbox
-Master :gmail-remote:
-Slave :gmail-local:
-Patterns "INBOX" "Arch*"
-Create Both
-Expunge Both
-SyncState *
-
-Channel gmail-trash
-Master :gmail-remote:"[Gmail]/Trash"
-Slave :gmail-local:trash
-Create Both
-Expunge Both
-SyncState *
-
 Channel gmail-sent
-Master :gmail-remote:"[Gmail]/Sent Mail"
-Slave :gmail-local:sent
-Create Both
-Expunge Both
-SyncState *
-
-# GROUPS PUT TOGETHER CHANNELS, SO THAT WE CAN INVOKE
-# MBSYNC ON A GROUP TO SYNC ALL CHANNELS
-#
-# FOR INSTANCE: "mbsync gmail" GETS MAIL FROM 
-# "gmail-inbox", "gmail-sent", and "gmail-trash"
-#
-Group gmail
-Channel gmail-inbox
-Channel gmail-sent
+Channel gmail-starred
+Channel gmail-drafts
 Channel gmail-trash

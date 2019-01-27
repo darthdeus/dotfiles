@@ -1,3 +1,5 @@
+# vim: filetype=muttrc
+
 # set my_name   = "Jakub Arnold"
 # set from      = "jakub.arnold@me.com"
 #
@@ -16,9 +18,16 @@
 
 set my_name   = "Jakub Arnold"
 set from      = "jakub.arnold@me.com"
-set folder    = ~/.mail/icloud
-set spoolfile = ~/.mail/icloud/inbox
-set postponed = ~/.mail/icloud/drafts
-set trash     = "+/trash"
+
+set folder    = ~/.mail
+set spoolfile = +icloud/inbox
+set postponed = +icloud/drafts
+set record    = +icloud/sent
+set trash     = +icloud/trash
+
+mailboxes =icloud/inbox =icloud/drafts =icloud/sent =icloud/trash
+
+set sendmail = "msmtp -a icloud"
+
 # set ssl_force_tls=yes
 # set record = ""

@@ -1,0 +1,35 @@
+# vim: filetype=muttrc
+
+# set my_name   = "Jakub Arnold"
+# set imap_user = "darthdeus@gmail.com"
+# set imap_pass = `gpg2 -dq $HOME/.passwords/msmtp.pass.gpg`
+# set folder    = imaps://darthdeus@imap.gmail.com:993/
+# set spoolfile = +INBOX
+#
+# set postponed = +[Gmail]/Drafts
+
+
+set my_name   = "Jakub Arnold"
+set from      = "darthdeus@gmail.com"
+set folder    = ~/.mail
+set spoolfile = +gmail/inbox
+set postponed = +gmail/drafts
+set record    = +gmail/sent
+set trash     = +gmail/trash
+
+mailboxes =gmail/inbox =gmail/drafts =gmail/sent =gmail/starred =gmail/trash
+# set folder    = ~/.mail/gmail
+# set spoolfile = ~/.mail/gmail/inbox
+# set postponed = ~/.mail/gmail/drafts
+# set trash     = "+/trash"
+
+# set folder    = "imaps://imap.gmail.com:993"
+# set imap_user = "darthdeus@gmail.com"
+# set imap_pass = `gpg -dq ~/.passwords/gmail.gpg`
+# set spoolfile = +INBOX
+# mailboxes     = +INBOX
+# set postponed = +[Gmail]/Drafts
+
+set sendmail = "msmtp -a gmail"
+
+# set record = ""

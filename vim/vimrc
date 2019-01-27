@@ -281,6 +281,9 @@ set relativenumber
 " TODO - check if this is still necessary in vim
 " Set encoding
 set encoding=utf-8
+set fileencoding=utf-8
+
+" TODO: global mark
 
 " Whitespace stuff
 set nowrap

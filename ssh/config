@@ -1,6 +1,6 @@
-Host *
-  ControlMaster auto
-  ControlPath ~/.ssh/%r@%h:%p
+# Host *
+#   ControlMaster auto
+#   ControlPath ~/.ssh/%r@%h:%p
 
 host k1
   hostname mustang.ms.mff.cuni.cz
@@ -22,6 +22,8 @@ host cat
   hostname catsocket.com
   user deploy
   port 42222
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/id_rsa_yubikey.pub
 
 host bogatyr
   hostname bogatyr.ms.mff.cuni.cz
