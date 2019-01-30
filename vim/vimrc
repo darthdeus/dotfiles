@@ -28,7 +28,7 @@ Plug 'lervag/vimtex'
 let g:vimtex_view_method = 'zathura'
 
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
+" Plug 'junegunn/limelight.vim'
 
 Plug 'vim-scripts/a.vim'
 Plug 'benmills/vimux'
