@@ -97,3 +97,4 @@ scdaemon
 exfat-fuse
 exfat-utils
 msmtp
+notmuch-mutt
