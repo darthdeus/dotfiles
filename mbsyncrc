@@ -2,7 +2,7 @@
 # openssl s_client -crlf -connect [IMAP server]:993
 
 
-#####################################################
+###################### iCloud ###########################
 IMAPAccount icloud
 Host p04-imap.mail.me.com
 User jakub.arnold@me.com
@@ -64,7 +64,7 @@ Channel icloud-trash
 
 
 
-#####################################################
+###################### gmail ###########################
 IMAPAccount gmail
 Host imap.gmail.com
 User darthdeus@gmail.com
