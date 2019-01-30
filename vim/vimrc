@@ -282,6 +282,8 @@ set relativenumber
 " Set encoding
 set encoding=utf-8
 set fileencoding=utf-8
+set termencoding=utf-8
+set fileencodings=ucs-bom,utf8,latin2 " ,latin1,default
 
 " TODO: global mark
 
@@ -291,6 +293,8 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
+
+" set kmp=czech-qwerty
 
 set list listchars=tab:\ \ ,trail:.
 
