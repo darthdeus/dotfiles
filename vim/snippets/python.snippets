@@ -37,3 +37,6 @@ snippet init "Class __init__ template"
 snippet global "tf.global_step"
 	global_step = tf.train.get_or_create_global_step()
 
+snippet sslcert "ssl turn off verification"
+	import ssl
+	ssl._create_default_https_context = ssl._create_unverified_context
