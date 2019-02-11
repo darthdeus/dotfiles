@@ -99,7 +99,6 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 #       sed s/^..//) 2> /dev/null'
 
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
-
 [ -f "$HOME/.profile" ] && source "$HOME/.profile"
 
 stty sane
@@ -125,11 +124,6 @@ export PYSPARK_DRIVER_PYTHON="python3"
 # if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate"  ]]; then
 #   source "${VIRTUAL_ENV}/bin/activate"
 # fi
-
-# [ -f ~/.venv/tf-gpu/bin/activate ] && source ~/.venv/tf-gpu/bin/activate
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -167,6 +161,7 @@ function recompdef() {
 
   compdef $@
 }
+
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent

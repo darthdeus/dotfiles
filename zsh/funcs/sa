@@ -1,7 +1,17 @@
 if [ $# -eq 1 ]; then
-  source "$1"/bin/activate
+  if [ -f "$1"/bin/activate ]; then
+    source "$1"/bin/activate
+  elif [ -f "$1"/.venv/bin/activate ]; then
+    echo "Activating $1/.venv/bin/activate"
+    source "$1"/.venv/bin/activate
+  else
+    echo "No virtualenv found in $1 (checked $1 and $1/.venv)"
+    return 1
+  fi
 elif [ -f .venv/bin/activate ]; then
   source .venv/bin/activate
 elif [ -f venv/bin/activate ]; then
   source venv/bin/activate
+else
+  echo "No virtualenv found in `pwd`"
 fi

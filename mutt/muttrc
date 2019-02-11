@@ -50,8 +50,8 @@ source ~/.mutt/colors
 # source ~/.mutt/base16-colors
 source ~/.mutt/sidebar
 source ~/.mutt/notmuch
-source ~/.mutt/accounts/icloud
 source ~/.mutt/accounts/gmail
+source ~/.mutt/accounts/icloud
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html
