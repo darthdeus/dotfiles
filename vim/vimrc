@@ -23,6 +23,7 @@ Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rsi'
 
 Plug 'junegunn/gv.vim'
+Plug 'mgedmin/python-imports.vim'
 
 Plug 'lervag/vimtex'
 let g:vimtex_view_method = 'zathura'
@@ -95,8 +96,12 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 "   Plug 'roxma/nvim-yarp'
 "   Plug 'roxma/vim-hug-neovim-rpc'
 " endif
+"
+
+map <F4> :ImportName<CR>
 
 Plug 'davidhalter/jedi-vim'
+" TODO: check <F4> mapping to MakeDigraph?
 Plug 'chrisbra/unicode.vim'
 
 
@@ -502,6 +507,8 @@ au TermOpen * tnoremap <C-g> <c-\><c-n>
 au FileType fzf tunmap <Esc>
 au FileType fzf tunmap <C-c>
 au FileType fzf tunmap <C-g>
+
+let g:jedi#smart_auto_mappings = 0
 
 aug various_file_types
   autocmd!
