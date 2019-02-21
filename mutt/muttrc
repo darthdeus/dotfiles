@@ -19,7 +19,6 @@ set message_cachedir = ~/.cache/mutt/bodies
 
 set mbox_type        = Maildir
 
-
 set sort         = "reverse-threads"
 set sort_browser = "reverse-date"
 set sort_aux     = "last-date-received"
@@ -81,3 +80,8 @@ bind index G imap-fetch-mail
 macro pager \cb 'urlview' 'Follow links with urlview'
 # macro index,pager \cb ": unset wait_key; set pipe_decode\n|w3m\n: set wait_key; unset pipe_decode\n" "call w3m to extract URLs out of a message"
 
+
+## Abook for contact management
+set query_command= "abook --mutt-query '%s'"
+macro index,pager  a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
+bind editor        <Tab> complete-query
