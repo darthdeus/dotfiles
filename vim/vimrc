@@ -280,8 +280,10 @@ set scrolloff=9
 " TODO: for some reason this breaks
 " set deco
 
-set number
-set relativenumber
+" set number
+" set relativenumber
+set nonumber
+set norelativenumber
 
 " TODO - check if this is still necessary in vim
 " Set encoding
