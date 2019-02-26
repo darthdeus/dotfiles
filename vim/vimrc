@@ -501,9 +501,12 @@ noremap <C-\> :tnext<CR>
 noremap <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
 
 " https://github.com/junegunn/fzf.vim/issues/544
-au TermOpen * tnoremap <Esc> <c-\><c-n>
-au TermOpen * tnoremap <C-c> <c-\><c-n>
-au TermOpen * tnoremap <C-g> <c-\><c-n>
+if has('nvim')
+  au TermOpen * tnoremap <Esc> <c-\><c-n>
+  au TermOpen * tnoremap <C-c> <c-\><c-n>
+  au TermOpen * tnoremap <C-g> <c-\><c-n>
+endif
+
 au FileType fzf tunmap <Esc>
 au FileType fzf tunmap <C-c>
 au FileType fzf tunmap <C-g>
