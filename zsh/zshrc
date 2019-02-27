@@ -57,15 +57,20 @@ select-word-style bash
 
 # color theme
 source "$ZSH"/themes/darth.zsh-theme
+if [ -f "$HOME/.local_env" ]; then
+  source "$HOME/.local_env"
+fi
 
-VIM_VERSION="nvim"
+if [ -z "$VIM_VERSION" ]; then
+  VIM_VERSION="nvim"
+fi
 
 export EDITOR="$VIM_VERSION"
 export VISUAL="$VIM_VERSION"
 
-alias e="$VIM_VERSION"
-alias vi="$VIM_VERSION"
 alias vim="$VIM_VERSION"
+alias vi="vim"
+alias e="vim"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
