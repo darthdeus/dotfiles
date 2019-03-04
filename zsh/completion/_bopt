@@ -1,0 +1,75 @@
+#compdef bopt
+#autoload
+
+
+# local expl
+#
+#
+# _arguments \
+#   '(-h --help)'{-h,--help}'[show help]' \
+#   '*:: :->subcmds' && return 0
+#
+# if (( CURRENT == 1 )); then
+#   _describe -t commands "bopt subcommand" _1st_arguments
+#   return
+#
+# fi
+
+# (( $+functions[_bopt_cmds] )) ||
+local -a _bopt_cmds
+_bopt_cmds() {
+  local -a commands
+  commands=(
+    'init:Initializes a new experiment.'
+    'plot:Generate plots.'
+    'suggest:Suggest the next set of hyperparameters.'
+    'manual-run:Run with given fixed hyperparameters.'
+    'run:Run an experiment for a given number of evaluation.'
+    'run-single:Run a single iteration of an experiment.'
+    'web:Start the web interface.'
+  )
+
+  _describe -t commands 'bopt command' commands "$@"
+}
+
+_play_apps() {
+  # TODO: fuj
+  _wanted application expl 'Play! application directory' _files -/
+}
+
+_bopt_results() {
+  _dirs
+  # _arguments \
+  #   '-g[gogo]' \
+  #   '-x[dogj]'
+}
+
+_bopt() {
+  local ret=1
+
+  _arguments -C \
+    '1: :_bopt_cmds' \
+    '*::arg:->args' \
+  && ret=0
+
+  case $state in
+    (args)
+       case $line[1] in
+         (run-single|run|single-run|manual-run|web|plot)
+           _bopt_results && ret=0
+         ;;
+         (suggest)
+           _arguments \
+             '1:: :_bopt_results' \
+             '(--debug)--debug[Debug mode (even more informations logged than in verbose mode)]' \
+             '(--jpda)--jpda[Listen for JPDA connection. The process will  suspended until a client is plugged to the JPDA port.]' \
+             '(--sync)--sync[Keep lib/ and modules/ directory synced. Delete unknow dependencies.]' \
+             '(--verbose)--verbose[Verbose Mode]' \
+             && ret=0
+         ;;
+       esac
+   esac
+ }
+
+_bopt "$@"
+# vim: ft=zsh
