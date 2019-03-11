@@ -32,6 +32,7 @@ snippet str2bool "string to bool parser for argparse"
 
 snippet init "Class __init__ template"
 	def __init__(self) -> None:
+		super().__init__()
 		$0
 
 snippet global "tf.global_step"
@@ -40,3 +41,9 @@ snippet global "tf.global_step"
 snippet sslcert "ssl turn off verification"
 	import ssl
 	ssl._create_default_https_context = ssl._create_unverified_context
+
+snippet pyqt "basic pyqt imports"
+	from PyQt5.QtGui import QPixmap
+	import PyQt5.QtWidgets as Q
+	from PyQt5.QtWidgets import QApplication, QWidget, QLabel
+	from PyQt5.QtWidgets import QVBoxLayout, QHBoxLayout, QPushButton
