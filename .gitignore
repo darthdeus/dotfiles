@@ -6,4 +6,3 @@ vim/autoload/plug.vim
 test-plugs/
 test.init
 vim/viewdir
-certs/
