@@ -55,7 +55,7 @@ _bopt() {
   case $state in
     (args)
        case $line[1] in
-         (run-single|run|single-run|manual-run|web|plot|exp)
+         (init|run-single|run|single-run|manual-run|web|plot|exp|debug)
            _bopt_results && ret=0
          ;;
          (suggest)
