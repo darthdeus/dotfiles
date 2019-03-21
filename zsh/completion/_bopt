@@ -21,12 +21,15 @@ _bopt_cmds() {
   local -a commands
   commands=(
     'init:Initializes a new experiment.'
-    'plot:Generate plots.'
-    'suggest:Suggest the next set of hyperparameters.'
-    'manual-run:Run with given fixed hyperparameters.'
-    'run:Run an experiment for a given number of evaluation.'
     'run-single:Run a single iteration of an experiment.'
+    'run:Run an experiment for a given number of evaluation.'
+    'manual-run:Run with given fixed hyperparameters.'
     'web:Start the web interface.'
+    'plot:Generate plots.'
+    'exp:Print the status of an experiment.'
+    'debug:Open an experiment with iPDB.'
+    'clean:Remove all samples and kill all jobs.'
+    'suggest:Suggest the next set of hyperparameters.'
   )
 
   _describe -t commands 'bopt command' commands "$@"
@@ -55,7 +58,7 @@ _bopt() {
   case $state in
     (args)
        case $line[1] in
-         (init|run-single|run|single-run|manual-run|web|plot|exp|debug|clean)
+         (init|run-single|run|single-run|manual-run|web|plot|exp|debug|clean|suggest)
            _bopt_results && ret=0
          ;;
          (suggest)
