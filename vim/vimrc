@@ -22,6 +22,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rsi'
 
+Plug 'mileszs/ack.vim'
+
 Plug 'junegunn/gv.vim'
 Plug 'mgedmin/python-imports.vim'
 
