@@ -44,6 +44,8 @@ bindsym $mod+p exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 for_window [class="Zeal"] floating enable
+for_window [class="Godot"] floating enable
+for_window [title=".*Godot Engine*."] floating disable
 
 # change focus
 bindsym $mod+j focus down
