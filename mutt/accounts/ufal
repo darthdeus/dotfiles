@@ -1,0 +1,11 @@
+# vim: filetype=muttrc
+
+set my_name   = "Jakub Arnold"
+set from      = "arnold@ufal.mff.cuni.cz"
+set imap_user = "arnold"
+set imap_pass = `gpg2 -dq $HOME/.passwords/ufal.gpg`
+set folder    = imaps://ufal-mail.mff.cuni.cz:993/
+set spoolfile = +INBOX
+
+set smtp_url = "smtps://$imap_user@ufal-mail.mff.cuni.cz:465"
+set smtp_pass = "$imap_pass"
