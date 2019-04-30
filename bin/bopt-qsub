@@ -1,11 +1,13 @@
 #!/bin/bash
+set -e
 
-name=$1
+name=$(basename $1)
+dir=$(readlink -f $1)
 n_parallel=$2
 n_iter=$3
 
-[ $# -eq 3 ] || { echo "Usage: qsub-bopt NAME N_PARALLEL N_ITER"; exit 1; }
+[ $# -eq 3 ] || { echo "Usage: qsub-bopt META_DIR N_PARALLEL N_ITER"; exit 1; }
 
-qsub -N bopt-$1 -pe smp 8 -l mf=8G,amf=8G,h_vmem=12G -v OMP_NUM_THREADS=8 \
-  -q cpu-troja.q ~arnold/.venvs/bopt/bin/bopt run -C $PWD/$1 --sleep=2 \
+qsub -N bopt-$name -pe smp 8 -l mf=8G,amf=8G,h_vmem=12G -v OMP_NUM_THREADS=8 \
+  -q cpu-troja.q ~arnold/.venvs/bopt/bin/bopt run -C $dir --sleep=15 \
   --n_parallel="$n_parallel" --n_iter="$n_iter"
