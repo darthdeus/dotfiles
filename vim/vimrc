@@ -27,6 +27,8 @@ Plug 'mileszs/ack.vim'
 Plug 'junegunn/gv.vim'
 Plug 'mgedmin/python-imports.vim'
 
+Plug 'calviken/vim-gdscript3'
+
 Plug 'lervag/vimtex'
 let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'
