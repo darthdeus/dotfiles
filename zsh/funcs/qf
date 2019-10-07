@@ -1,1 +1,1 @@
-qstat | tail -n +3 | fzf --preview 'qstat -j {}'
+qstat | tail -n +3 | fzf --preview 'qstat -j {}' --bind 'ctrl-j:execute(qstat -j {} | vim -)'
