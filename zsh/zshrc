@@ -116,13 +116,6 @@ export CUDA_HOME="/usr/local/cuda"
 export PATH="$CUDA_HOME/bin:$HOME/.local/bin:$PATH"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/extras/CUPTI/lib64:$CUDA_HOME/lib64:/usr/local/lib"
 
-[ -f ~/mrk-proxy/mrk-proxy ] && . ~/mrk-proxy/mrk-proxy
-if [ "$(get-ssid)" = "Wireless1" ]; then
-  mpo
-fi
-
-export PRIMER3HOME="$HOME/work/primer3-2.4.0/src"
-
 export PYSPARK_PYTHON="python3"
 export PYSPARK_DRIVER_PYTHON="python3"
 
@@ -180,3 +173,7 @@ zplug load
 if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof
 fi
+
+redshift -O 5500
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

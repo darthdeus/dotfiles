@@ -70,3 +70,9 @@ function dot-deps() {
 }
 
 alias z="yaourt"
+
+[ -f ~/mrk-proxy/mrk-proxy ] && . ~/mrk-proxy/mrk-proxy
+if [ "$(get-ssid)" = "Wireless1" ]; then
+  mpo
+fi
+
