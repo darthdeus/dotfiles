@@ -8,6 +8,7 @@ n_iter=$3
 
 [ $# -eq 3 ] || { echo "Usage: qsub-bopt META_DIR N_PARALLEL N_ITER"; exit 1; }
 
-qsub -N bopt-$name -pe smp 8 -l mf=8G,amf=8G,h_vmem=12G -v OMP_NUM_THREADS=8 \
+# qsub -N bopt-$name -pe smp 8 -l mf=8G,amf=8G,h_vmem=12G -v OMP_NUM_THREADS=8 \
+qsub -N bopt-$name -l mf=4G,amf=4G,h_vmem=4G \
   -q cpu-troja.q ~arnold/.venvs/bopt/bin/bopt run -C $dir --sleep=15 \
   --n_parallel="$n_parallel" --n_iter="$n_iter"
