@@ -81,6 +81,6 @@ host mm-dev
 host geri
   hostname geri.ms.mff.cuni.cz
   user arnold
-Host *
-  ControlMaster auto
-  ControlPath ~/.ssh/cm_socket/%r@%h:%p
+# Host *
+#   ControlMaster auto
+#   ControlPath ~/.ssh/cm_socket/%r@%h:%p
