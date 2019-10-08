@@ -1,5 +1,9 @@
 #!/bin/bash
-set -euxo pipefail
+set -euo pipefail
+
+command -v python2 || { echo "Install 'python2' first" && exit 1; }
+command -v python3 || { echo "Install 'python3' first" && exit 1; }
+command -v virtualenv || { echo "Install 'virtualenv' first" && exit 1; }
 
 VENVS_DIR="$HOME/.venvs"
 
