@@ -87,7 +87,9 @@ Plug 'tell-k/vim-autopep8'
 
 Plug 'sbdchd/neoformat'
 
-Plug 'w0rp/ale'
+Plug 'lilydjwg/colorizer'
+
+" Plug 'w0rp/ale'
 
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'zxqfl/tabnine-vim'
