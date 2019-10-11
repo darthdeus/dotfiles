@@ -184,6 +184,8 @@ alias mpf="mrk-proxy-off"
 alias mmac="source ~/work/mm-backend/.venv/bin/activate"
 alias t2="source ~/.venvs/tf2/bin/activate"
 
+alias more="less"
+
 function zman() {
   PAGER="less -g -s '+/^       "$1"'" man zshall
 }
