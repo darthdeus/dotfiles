@@ -815,6 +815,9 @@ xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
+" nmap <C-i> iimport ipdb; ipdb.set_trace()<C-c>
+" imap <C-i> import ipdb; ipdb.set_trace()<C-c>
+
 " Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
 " nmap <silent> <C-d> <Plug>(coc-range-select)
 " xmap <silent> <C-d> <Plug>(coc-range-select)
