@@ -88,6 +88,8 @@ URxvt.externalBorder: 0px
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
+urxvt.perl-ext-common: default,resize-font
+
 ! URxvt*scrollBar_right:                boolean
 ! URxvt*scrollBar_floating:             boolean
 ! URxvt*scrollBar_align:                mode

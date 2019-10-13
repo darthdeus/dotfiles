@@ -13,6 +13,9 @@ ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc"
 # ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
 # ln -nsf "$DOT/Xmodmap"       "$HOME/.Xmodmap"
 
+mkdir -p "$HOME/.urxvt"
+ln -nsf "$DOT/urxvt-ext/"    "$HOME/.urxvt/ext"
+
 mkdir -p "$HOME/.config/i3"
 ln -nsf "$DOT/i3/config"    "$HOME/.config/i3/config"
 
