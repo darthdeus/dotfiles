@@ -2,6 +2,9 @@ default: link
 
 all: install-dwm install-st symlink malloc_dump
 
+submodules:
+	git submodule update --init --recursive
+
 install-dwm:
 	cd third-party/dwm; make; ln -nsf $(HOME)/.dotfiles/third-party/dwm/dwm $(HOME)/.dotfiles/bin/dwm
 
