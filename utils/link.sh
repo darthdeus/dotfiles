@@ -10,7 +10,7 @@ ln -nsf "$DOT/vim/vimrc"     "$HOME/.vimrc"
 ln -nsf "$DOT/zsh"           "$HOME/.zsh"
 ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc"
 # ln -nsf "$DOT/xmonad"        "$HOME/.xmonad"
-# ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
+ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
 # ln -nsf "$DOT/Xmodmap"       "$HOME/.Xmodmap"
 
 mkdir -p "$HOME/.urxvt"
