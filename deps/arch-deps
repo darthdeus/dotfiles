@@ -1,9 +1,16 @@
 ttf-fantasque-sans-mono
 rxvt-unicode
 
+mypy
+flake8
+autopep8
+python-pylint
+python-black
+
 neovim
 neomutt
-i3-wmi3lock
+i3-wm
+i3lock
 i3status
 i3blocks
 tmux
