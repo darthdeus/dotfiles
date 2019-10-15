@@ -175,6 +175,6 @@ if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
 fi
 
 # TODO: don't dumbly run this all the time
-command -v redshift >/dev/null 2>&1 && redshift -O 5500
+# command -v redshift >/dev/null 2>&1 && redshift -O 5500
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
