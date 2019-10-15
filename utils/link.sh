@@ -60,7 +60,8 @@ mkdir -p "$HOME/.mail/icloud"
 mkdir -p "$HOME/.mail/gmail"
 
 mkdir -p "$HOME/.config/nvim"
-ln -nsf "$DOT/vim/init.vim" "$HOME/.config/nvim/init.vim"
+ln -nsf "$DOT/vim/init.vim"          "$HOME/.config/nvim/init.vim"
+ln -nsf "$DOT/vim/coc-settings.json" "$HOME/.config/nvim/coc-settings.json"
 
 mkdir -p "$HOME/.ssh"
 ln -nsf "$DOT/ssh/config" "$HOME/.ssh/config"

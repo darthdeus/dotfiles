@@ -1,0 +1,26 @@
+{
+  "python.linting.enabled": false,
+
+  "python.linting.pylintEnabled": false,
+  "python.linting.mypyEnabled": true,
+  "python.linting.flake8Enabled": true,
+
+  // "python.jediEnabled": false,
+  "python.formatting.provider": "autopep8",
+  // "python.formatting.blackPath": "~/.pip-apps/bin/black",
+  // "python.formatting.autopep8Path": "~/.pip-apps/bin/autopep8",
+  // "python.linting.flake8Path": "~/.pip-apps/bin/flake8",
+  // "python.linting.mypyPath": "~/.pip-apps/bin/mypy",
+  // "python.linting.pylintPath": "~/.pip-apps/bin/pylint",
+
+  "tsserver.log": "verbose",
+
+  "languageserver": {
+    "clangd": {
+      "command": "clangd",
+      "args": ["--background-index"],
+      "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["c", "cpp", "objc", "objcpp"]
+    }
+  }
+}
