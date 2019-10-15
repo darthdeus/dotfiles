@@ -688,7 +688,8 @@ endfunction
 
 let g:coc_global_extensions = [
       \ 'coc-highlight', 'coc-vimlsp', 'coc-lists',
-      \ 'coc-snippets', 'coc-json', 'coc-python'
+      \ 'coc-snippets', 'coc-json', 'coc-python',
+      \ 'coc-tsserver'
       \ ]
 
 " Better display for messages
