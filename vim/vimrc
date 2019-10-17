@@ -8,7 +8,7 @@ if has('python3')
 endif
 
 let g:python_host_prog = $HOME . '/.venvs/neovim2/bin/python'
-let g:python3_host_prog = $HOME . '/.venvs/neovim3/bin/python'
+" let g:python3_host_prog = $HOME . '/.venvs/neovim3/bin/python'
 
 call plug#begin('~/.vim/bundle')
 

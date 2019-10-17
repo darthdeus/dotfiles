@@ -5,13 +5,13 @@
   "python.linting.mypyEnabled": true,
   "python.linting.flake8Enabled": true,
 
-  // "python.jediEnabled": false,
+  "python.jediEnabled": true,
   "python.formatting.provider": "autopep8",
-  // "python.formatting.blackPath": "~/.pip-apps/bin/black",
-  // "python.formatting.autopep8Path": "~/.pip-apps/bin/autopep8",
-  // "python.linting.flake8Path": "~/.pip-apps/bin/flake8",
-  // "python.linting.mypyPath": "~/.pip-apps/bin/mypy",
-  // "python.linting.pylintPath": "~/.pip-apps/bin/pylint",
+  "python.formatting.blackPath": "/usr/bin/black",
+  "python.formatting.autopep8Path": "/usr/bin/autopep8",
+  "python.linting.flake8Path": "/usr/bin/flake8",
+  "python.linting.mypyPath": "/usr/bin/mypy",
+  "python.linting.pylintPath": "/usr/bin/pylint",
 
   "tsserver.log": "verbose",
 
