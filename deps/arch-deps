@@ -1,5 +1,7 @@
 ttf-fantasque-sans-mono
 rxvt-unicode
+arandr
+usbutils
 
 mypy
 flake8
