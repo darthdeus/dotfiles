@@ -7,6 +7,23 @@ autopep8
 python-pylint
 python-black
 
+python-ipdb
+ipython
+python-pynvim
+python-jedi
+python-pipenv
+python-yaml
+python-pyqt5
+python-tqdm
+python-pillow
+
+man
+man-db
+man-pages
+sudo
+
+python-scikit-learn
+
 neovim
 neomutt
 i3-wm
