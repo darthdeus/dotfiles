@@ -121,12 +121,6 @@ alias gst='git stash'
 alias gstp='git stash pop'
 # alias gup='git smart-pull'
 alias gup="git pull"
-
-gupstation() {
-  gup
-  gf production
-  gf staging
-}
 alias graf='git remote add $argv[1] $argv[2] && gf $argv[1]'
 alias gt='git difftool'
 alias gsu='git submodule update'
