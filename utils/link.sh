@@ -11,7 +11,7 @@ ln -nsf "$DOT/zsh"           "$HOME/.zsh"
 ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc"
 # ln -nsf "$DOT/xmonad"        "$HOME/.xmonad"
 ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
-# ln -nsf "$DOT/Xmodmap"       "$HOME/.Xmodmap"
+ln -nsf "$DOT/Xmodmap"       "$HOME/.Xmodmap"
 
 mkdir -p "$HOME/.urxvt"
 ln -nsf "$DOT/urxvt-ext/"    "$HOME/.urxvt/ext"
