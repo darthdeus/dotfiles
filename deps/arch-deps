@@ -2,6 +2,7 @@ ttf-fantasque-sans-mono
 rxvt-unicode
 arandr
 usbutils
+dstat
 
 mypy
 flake8
@@ -23,6 +24,11 @@ man
 man-db
 man-pages
 sudo
+
+linux
+linux-headers
+linux-lts
+linux-lts-headers
 
 python-scikit-learn
 
