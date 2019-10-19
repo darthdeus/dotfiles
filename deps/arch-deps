@@ -3,6 +3,7 @@ rxvt-unicode
 arandr
 usbutils
 dstat
+numlockx
 
 mypy
 flake8

@@ -47,7 +47,7 @@ fi
 
 # exec xmonad
 
-if command -v /usr/bin/numlockx; then
+if command -v numlockx; then
   numlockx on
 fi
 
