@@ -47,8 +47,8 @@ fi
 
 # exec xmonad
 
-if [ -x /usr/bin/numlockx ]; then
-  /usr/bin/numlockx on
+if command -v /usr/bin/numlockx; then
+  numlockx on
 fi
 
 # sxhkd &
@@ -58,6 +58,11 @@ fi
 # exec awesome
 
 # exec twm
+
+if command -v autocutsel; then
+  autocutsel -fork &
+  autocutsel -selection PRIMARY -fork &
+fi
 
 # exec startxfce4
 exec i3
