@@ -4,6 +4,8 @@ arandr
 usbutils
 dstat
 numlockx
+arch-wiki-docs
+arch-wiki-lite
 
 mypy
 flake8
