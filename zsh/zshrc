@@ -168,6 +168,12 @@ if which gpgconf 2>/dev/null; then
 # gpg-connect-agent updatestartuptty /bye
 fi
 
+# TODO: store these in a subdir per host
+if [[ "$(hostname)" == "pipik" ]]; then
+  export QT_SCALE_FACTOR=2
+  export GDK_SCALE=2
+fi
+
 zplug load
 
 if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
