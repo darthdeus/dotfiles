@@ -6,6 +6,11 @@ dstat
 numlockx
 arch-wiki-docs
 arch-wiki-lite
+net-tools
+isync
+base-devel
+linux-lts
+linux-lts-headers
 
 mypy
 flake8
