@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ "$1" == "pull" ]]; then
+  (cd ~/.todo && git pull)
+  exit 0
+fi
+
+vim ~/.todo/main.txt
+
+read -p "Commit and push? (y/N) " -r
+
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  (cd ~/.todo && git add . && git commit -m "Update $(date)" && git push)
+fi
