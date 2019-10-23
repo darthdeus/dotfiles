@@ -110,8 +110,8 @@ function dot-update() {
 }
 
 alias pw="pkgsearch"
-alias aur="auracle"
-alias aus="auracle search"
+# alias aur="auracle"
+# alias aus="auracle search"
 
 function build-ycm() {
   cd "$HOME/.vim/bundle/YouCompleteMe"
