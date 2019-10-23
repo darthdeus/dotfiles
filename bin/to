@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ "$1" == "pull" ]]; then
+if [[ $1 == "pull" || $1 == "sync" || $1 == "s" || $1 == "p" ]]; then
   (cd ~/.todo && git pull)
   exit 0
 fi
