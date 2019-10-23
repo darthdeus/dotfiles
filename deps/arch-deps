@@ -12,6 +12,7 @@ base-devel
 linux-lts
 linux-lts-headers
 fd
+thunar
 
 mypy
 flake8
