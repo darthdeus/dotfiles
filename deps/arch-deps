@@ -11,6 +11,7 @@ isync
 base-devel
 linux-lts
 linux-lts-headers
+fd
 
 mypy
 flake8
