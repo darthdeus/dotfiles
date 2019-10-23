@@ -1,0 +1,30 @@
+#!/bin/bash
+
+if [[ $1 == "pull" || $1 == "sync" || $1 == "s" || $1 == "p" ]]; then
+  (cd ~/.todo && git pull)
+  exit 0
+fi
+
+try-commit-sync() {
+  local fname="$HOME/.todo/$1.txt"
+  vim "$fname"
+
+  cd ~/.todo
+
+  if ! git diff-index --quiet HEAD --; then
+    read -p "Commit and push? (y/N) " -r
+
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+      cd ~/.todo && git add . && git commit -m "Update $fname at $(date)" && git push
+    fi
+  else
+    echo "No changes were made."
+  fi
+}
+
+if [[ $# -eq 1 ]]; then
+  (try-commit-sync $1)
+else
+  (try-commit-sync main)
+fi

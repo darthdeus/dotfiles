@@ -209,5 +209,3 @@ function aws-env() {
 
   printf "%s\n%s\n%s\n" "$access_key" "$secret_key" "$region"
 }
-
-alias to="vim ~/.todo/main.txt"
