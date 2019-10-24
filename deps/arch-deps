@@ -13,6 +13,9 @@ linux-lts
 linux-lts-headers
 fd
 thunar
+xorg-xinput
+lxinput
+rofi
 
 mypy
 flake8
