@@ -1,4 +1,11 @@
 #!/bin/bash
-[ $# -eq 1 ] || { echo "Usage: codepoint-lookup CODEPOINT"; exit 1; }
+[ $# -eq 1 ] || { echo "Usage: emoji-lookup CODEPOINT"; exit 1; }
+# This uses a somewhat obscure feature of the POSIX printf utility:
+#
+# If the leading character is a single-quote or double-quote, the value shall
+# be the numeric value in the underlying codeset of the character following the
+# single-quote or double-quote.
+#
+# https://unix.stackexchange.com/a/393740/3295
 str=$(printf "%x" \'$1)
 fc-list ":charset=$str"
