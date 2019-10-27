@@ -37,6 +37,7 @@ bindsym $mod+Return exec urxvt -e tmux
 
 # kill focused window
 bindsym $mod+Shift+q kill
+bindsym $mod+grave exec dmenuunicode
 
 # start dmenu (a program launcher)
 bindsym $mod+p exec dmenu_run
