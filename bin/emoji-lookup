@@ -1,0 +1,4 @@
+#!/bin/bash
+[ $# -eq 1 ] || { echo "Usage: codepoint-lookup CODEPOINT"; exit 1; }
+str=$(printf "%x" \'$1)
+fc-list ":charset=$str"
