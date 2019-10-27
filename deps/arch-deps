@@ -16,6 +16,10 @@ thunar
 xorg-xinput
 lxinput
 rofi
+bind-tools
+xorg-xdpyinfo
+obs-studio
+mpv
 
 mypy
 flake8
