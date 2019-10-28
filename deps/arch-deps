@@ -20,6 +20,7 @@ bind-tools
 xorg-xdpyinfo
 obs-studio
 mpv
+fping
 
 mypy
 flake8
