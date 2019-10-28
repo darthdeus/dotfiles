@@ -1,3 +1,4 @@
+# vim :ft=zsh
 function current_branch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo ${ref#refs/heads/}
@@ -89,8 +90,20 @@ local smiley="%(?,%{$fg[green]%}$%{$reset_color%},%{$fg[red]%}$%{$reset_color%})
 
 local current_dir="%~"
 
+# PROMPT='%{$fg['
+# PROMPT=blue
+# PROMPT=']%}[%M] ${current_dir} $fg[red]$(dotfiles_dirty)
+# ${smiley} %{$reset_color%}'
+
+
 # PROMPT='${current_dir}
+
+if [ -f ~/.production ]; then
+PROMPT='%{$fg[red]%}[%M] ${current_dir} $fg[red]$(dotfiles_dirty)
+${smiley} %{$reset_color%}'
+else
 PROMPT='%{$fg[blue]%}[%M] ${current_dir} $fg[red]$(dotfiles_dirty)
 ${smiley} %{$reset_color%}'
+fi
 
 RPROMPT='%{$fg[white]%} %{$fg[blue]%}$(current_branch)$(at_sign)%{$fg[yellow]%}$(current_commit) %{$reset_color%}'
