@@ -1,33 +1,33 @@
 # vim: filetype=muttrc
 
 # imap
-set my_name   = "Jakub Arnold"
-set from      = "jakub.arnold@me.com"
-
-set smtp_url = "smtp://smtp.mail.me.com:587/"
-set folder   = "imaps://imap.mail.me.com:993"
-
-set imap_user = "jakub.arnold"
-set imap_pass = `gpg2 -dq $HOME/.passwords/icloud.gpg`
-set imap_pipeline_depth = 0
-
-set postponed = "+DRAFTS"
-set spoolfile = "+INBOX"
-set record    = "+Sent"
-
-set ssl_force_tls=yes
-
-
-# msmtp
 # set my_name   = "Jakub Arnold"
 # set from      = "jakub.arnold@me.com"
 #
-# set folder    = ~/.mail
-# set spoolfile = +icloud/inbox
-# set postponed = +icloud/drafts
-# set record    = +icloud/sent
-# set trash     = +icloud/trash
+# set smtp_url = "smtp://smtp.mail.me.com:587/"
+# set folder   = "imaps://imap.mail.me.com:993"
 #
-# mailboxes =icloud/inbox =icloud/drafts =icloud/sent =icloud/trash
+# set imap_user = "jakub.arnold"
+# set imap_pass = `gpg2 -dq $HOME/.passwords/icloud.gpg`
+# set imap_pipeline_depth = 0
 #
-# set sendmail = "msmtp -a icloud"
+# set postponed = "+DRAFTS"
+# set spoolfile = "+INBOX"
+# set record    = "+Sent"
+#
+# set ssl_force_tls=yes
+
+
+# msmtp
+set my_name   = "Jakub Arnold"
+set from      = "jakub.arnold@me.com"
+
+set folder    = ~/.mail
+set spoolfile = +icloud/inbox
+set postponed = +icloud/drafts
+set record    = +icloud/sent
+set trash     = +icloud/trash
+
+mailboxes =icloud/inbox =icloud/drafts =icloud/sent =icloud/trash
+
+set sendmail = "msmtp -a icloud"
