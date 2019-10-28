@@ -164,8 +164,8 @@ if which gpgconf 2>/dev/null; then
   export GPG_TTY="$(tty)"
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   gpgconf --launch gpg-agent
-# TODO: when exactly is this needed?
-gpg-connect-agent updatestartuptty /bye
+  # TODO: when exactly is this needed?
+  gpg-connect-agent updatestartuptty /bye
 fi
 
 # TODO: store these in a subdir per host
