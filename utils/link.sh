@@ -19,6 +19,10 @@ ln -nsf "$DOT/urxvt-ext/"    "$HOME/.urxvt/ext"
 mkdir -p "$HOME/.config/i3"
 ln -nsf "$DOT/i3/config"    "$HOME/.config/i3/config"
 
+# TODO: re-enable this when I have a working fontconfig/fonts.conf
+# mkdir -p "$HOME/.config/fontconfig/"
+# ln -nsf "$DOT/fonts.conf" "$HOME/.config/fontconfig/fonts.conf"
+
 ln -nsf "$DOT/Xresources"    "$HOME/.Xresources"
 if [ ! "$(uname)" = "Darwin" ]; then
   xrdb "$HOME/.Xresources"
