@@ -35,6 +35,8 @@ ln -nsf "$DOT/ranger/commands.py" "$HOME/.config/ranger/commands.py"
 ln -nsf "$DOT/ranger/rc.conf"     "$HOME/.config/ranger/rc.conf"
 ln -nsf "$DOT/ranger/scope.sh"    "$HOME/.config/ranger/scope.sh"
 
+ln -nsf "$DOT/polybar"            "$HOME/.config/polybar"
+
 mkdir -p "$HOME/.mail/"{gmail,icloud}/{inbox,drafts}
 
 ln -nsf "$DOT/mutt" "$HOME/.mutt"
