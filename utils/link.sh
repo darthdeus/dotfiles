@@ -25,7 +25,9 @@ ln -nsf "$DOT/i3/config"    "$HOME/.config/i3/config"
 
 ln -nsf "$DOT/Xresources"    "$HOME/.Xresources"
 if [ ! "$(uname)" = "Darwin" ]; then
-  xrdb "$HOME/.Xresources"
+  if command -v xrdb; then
+    xrdb "$HOME/.Xresources"
+  fi
 fi
 
 if [ -d "$HOME/.ipython/profile_default" ]; then
