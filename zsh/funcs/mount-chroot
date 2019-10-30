@@ -1,0 +1,5 @@
+sudo mount --types proc /proc proc
+sudo mount --rbind /sys sys
+sudo mount --rbind /dev dev
+sudo mount --make-rslave sys
+sudo mount --make-rslave dev
