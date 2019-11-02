@@ -13,6 +13,8 @@ if [ -f $sysresources ]; then
 
 fi
 
+# TODO: handle possibly missing xmodmap
+
 if [ -f $sysmodmap ]; then
     xmodmap $sysmodmap
 fi
