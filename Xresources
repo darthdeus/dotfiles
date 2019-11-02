@@ -79,10 +79,10 @@ xclock*background: black
 ! URxvt.font: xft:Monospace:pixelsize=20
 ! URxvt.font: xft:Fantasque Sans Mono:pixelsize=22:antialias=true, xft:Symbola:pixelsize=16:antialias=true, xft:NotoColorEmoji:pixelsize=16:antialias=true
 ! URxvt.font: xft:Fantasque Sans Mono:pixelsize=22:antialias=true, xft:NotoColorEmoji:pixelsize=12, xft:Symbola:pixelsize=16:antialias=true
-URxvt.font: xft:Fantasque Sans Mono:pixelsize=22:antialias=true, xft:Symbola:pixelsize=16:antialias=true
+URxvt.font: xft:Fantasque Sans Mono:pixelsize=20:antialias=true, xft:Symbola:pixelsize=16:antialias=true
 ! URxvt.font: xft:Dejavu Sans:pixelsize=22:antialias=true
 ! URxvt.font: xft:Iosevka Mono:pixelsize=24:antialias=true
-URxvt.letterSpace: -1
+URxvt.letterSpace: -2
 
 ! URxvt*borderLess: true
 URxvt*scrollBar: false
