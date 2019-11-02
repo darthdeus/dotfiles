@@ -362,6 +362,8 @@ let NERDTreeRespectWildIgnore=1
 
 command! W :w
 
+cmap w!! w !sudo tee > /dev/null %
+
 " Status bar
 set winwidth=75
 
