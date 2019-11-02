@@ -176,7 +176,7 @@ if which gpgconf 2>/dev/null; then
 fi
 
 # TODO: store these in a subdir per host
-if [[ "$(hostname)" == "pipik" ]]; then
+if [[ "$HOST" == "pipik" ]]; then
   export QT_SCALE_FACTOR=2
   export GDK_SCALE=2
 fi
