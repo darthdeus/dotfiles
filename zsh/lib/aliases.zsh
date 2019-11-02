@@ -64,9 +64,19 @@ function pgdisc() {
   echo "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname = current_database() AND pid <> pg_backend_pid();" | psql $1
 }
 
-alias pi="sudo pacman -S"
-alias pe="pacman -Ss"
-alias pq="pacman -Ssq"
+osname=$(uname -a)
+if [[ $osname == *gentoo* ]]; then
+  alias pi="sudo emerge -av"
+  alias pq="eix"
+  alias pe="emerge --search"
+fi
+
+if [[ $osname == *arch* ]]; then
+# if uname -a | grep -i arch >/dev/null; then
+  alias pi="sudo pacman -S"
+  alias pe="pacman -Ss"
+  alias pq="pacman -Ssq"
+fi
 
 if ! type open 2>&1 1>/dev/null; then
   alias open="exo-open"
