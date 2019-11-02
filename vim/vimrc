@@ -141,7 +141,7 @@ let g:ycm_show_diagnostics_ui = 1
 if !exists('g:ycm_semantic_triggers')
   let g:ycm_semantic_triggers = {}
 endif
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+" let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 " set completeopt-=preview
 
