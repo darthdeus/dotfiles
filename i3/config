@@ -80,6 +80,9 @@ bindsym $mod+b bar mode toggle
 # bindsym $mod+Shift+h move left
 # bindsym $mod+Shift+l move right
 
+bindsym $mod+F7 exec setxkbmap "cz(qwerty)"
+bindsym $mod+F8 exec setxkbmap us
+
 bindsym $mod+Up focus up
 bindsym $mod+Down focus down
 bindsym $mod+Left focus left
