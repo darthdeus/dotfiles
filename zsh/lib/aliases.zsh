@@ -219,3 +219,8 @@ function aws-env() {
 
   printf "%s\n%s\n%s\n" "$access_key" "$secret_key" "$region"
 }
+
+function port() {
+  local dir=`find /var/db/repos/gentoo -mindepth 2 -maxdepth 2 -type d -print 2> /dev/null | fzf --preview 'repo="{}" && eix $(basename "$(dirname "$repo")")/$(basename "$repo")'`
+  cd "$dir"
+}
