@@ -167,12 +167,12 @@ function recompdef() {
   compdef $@
 }
 
-if which gpgconf 2>/dev/null; then
+if command -v gpgconf >/dev/null; then
   export GPG_TTY="$(tty)"
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   gpgconf --launch gpg-agent
   # TODO: when exactly is this needed?
-  gpg-connect-agent updatestartuptty /bye
+  gpg-connect-agent updatestartuptty /bye >/dev/null
 fi
 
 # TODO: store these in a subdir per host
