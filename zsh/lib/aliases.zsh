@@ -64,6 +64,15 @@ function pgdisc() {
   echo "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname = current_database() AND pid <> pg_backend_pid();" | psql $1
 }
 
+if command -v lsb_release > /dev/null; then
+  rel=$(lsb_release -c)
+  if [[ $rel == *void** ]]; then
+    alias pi="sudo xbps-install -S"
+    alias pq="xbps-query -Rs"
+    alias pe="xbps-query -R"
+  fi
+fi
+
 osname=$(uname -a)
 if [[ $osname == *gentoo* ]]; then
   alias pi="sudo emerge -av"
