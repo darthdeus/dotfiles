@@ -566,9 +566,7 @@ aug various_file_types
   autocmd BufNewFile,BufRead *.markdown inoremap <buffer><C-b> \boldsymbol
   " autocmd BufNewFile,BufRead *.markdown inoremap <buffer><C-m> \mathcal
 
-  " TODO: fix displaying of echon
-  " https://vi.stackexchange.com/questions/21775/how-to-echo-a-message-in-bufwritepost-so-that-it-writes-over-the-foo-xxxl-x
-  autocmd BufWritePost .Xresources silent! execute 'xrdb ~/.Xresources' | echon 'Xresources reloaded'
+  autocmd BufWritePost .Xresources silent! execute 'xrdb ~/.Xresources' | redraw | echo 'Xresources reloaded'
 aug END
 
 " remove unnecessary whitespaces
