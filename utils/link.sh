@@ -18,6 +18,8 @@ ln -nsf "$DOT/urxvt-ext/"    "$HOME/.urxvt/ext"
 
 mkdir -p "$HOME/.config/i3"
 ln -nsf "$DOT/i3/config"    "$HOME/.config/i3/config"
+mkdir -p "$HOME/.config/i3blocks"
+ln -nsf "$DOT/i3/blocks.conf" "$HOME/.config/i3blocks/config"
 
 # TODO: re-enable this when I have a working fontconfig/fonts.conf
 # mkdir -p "$HOME/.config/fontconfig/"
