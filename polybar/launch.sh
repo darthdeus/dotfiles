@@ -17,8 +17,10 @@ echo "---" | tee -a /tmp/polybar.log /tmp/polybar.log
 #   polybar --reload example &
 # fi
 
+
+token=$(pass show github-polybar-notifications)
 for m in $(polybar --list-monitors | cut -d":" -f1); do
-    MONITOR=$m polybar --reload example &
+    GITHUB_TOKEN="$token" MONITOR=$m polybar --reload example 2>&1 >>/tmp/polybar.log &
 done
 
 # polybar example >>/tmp/polybar.log 2>&1 &
