@@ -17,12 +17,12 @@ echo "---" | tee -a /tmp/polybar.log /tmp/polybar.log
 #   polybar --reload example &
 # fi
 
-# jfor m in $(polybar --list-monitors | cut -d":" -f1); do
-# j    MONITOR=$m polybar --reload example &
-# jdone
+for m in $(polybar --list-monitors | cut -d":" -f1); do
+    MONITOR=$m polybar --reload example &
+done
 
 # polybar example >>/tmp/polybar.log 2>&1 &
 
-MONITOR=$(polybar --list-monitors | grep DP | cut -d: -f1) polybar example 2>&1 &
+# MONITOR=$(polybar --list-monitors | grep DP | cut -d: -f1) polybar example 2>&1 &
 
 echo "Bars launched..."
