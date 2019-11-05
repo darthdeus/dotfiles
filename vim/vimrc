@@ -566,7 +566,7 @@ aug various_file_types
   autocmd BufNewFile,BufRead *.markdown inoremap <buffer><C-b> \boldsymbol
   " autocmd BufNewFile,BufRead *.markdown inoremap <buffer><C-m> \mathcal
 
-  autocmd BufWritePost .Xresources silent! execute 'xrdb ~/.Xresources' | redraw | echo 'Xresources reloaded'
+  autocmd BufWritePost .Xresources silent execute '!xrdb ~/.Xresources' | redraw | echom 'Xresources reloaded'
 aug END
 
 " remove unnecessary whitespaces
