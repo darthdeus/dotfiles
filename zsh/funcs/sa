@@ -1,17 +1,57 @@
-if [ $# -eq 1 ]; then
-  if [ -f "$1"/bin/activate ]; then
-    source "$1"/bin/activate
-  elif [ -f "$1"/.venv/bin/activate ]; then
-    echo "Activating $1/.venv/bin/activate"
-    source "$1"/.venv/bin/activate
-  else
-    echo "No virtualenv found in $1 (checked $1 and $1/.venv)"
-    return 1
-  fi
-elif [ -f .venv/bin/activate ]; then
-  source .venv/bin/activate
-elif [ -f venv/bin/activate ]; then
-  source venv/bin/activate
+git_toplevel="$(git rev-parse --show-toplevel 2>/dev/null)"
+
+if [[ $# == 1 ]]; then
+  candidate_dirs=("$1")
+elif [[ $# -gt 1 ]]; then
+  echo "Usage: sa [DIR]" && return 1
 else
-  echo "No virtualenv found in `pwd`"
+  if [[ -z $git_toplevel ]]; then
+    candidate_dirs=(.)
+  else
+    candidate_dirs=(. "$git_toplevel")
+  fi
 fi
+
+# TODO: for collapsing /s you can use (:a)
+
+function find_and_activate_venv() {
+  venv_names=("" venv/ .venv/)
+
+  for v in "${venv_names[@]}"; do
+    activate_path=${${:-"$1/$v/bin/activate"}:a}
+
+    if [ -f "$activate_path" ]; then
+      echo "Activated $activate_path"
+      source "$activate_path"
+      return 0
+    fi
+  done
+  return 1
+  # [ -f "$1/bin/activate" ] && source "$1/bin/activate" || { echo "No venv found in $1"; exit 1; }
+}
+
+# set -o shwordsplit
+for d in "${candidate_dirs[@]}"; do
+  find_and_activate_venv $d && return 0
+  # echo $?
+done
+
+
+
+# if [ $# -eq 1 ]; then
+#   if [ -f "$1"/bin/activate ]; then
+#     source "$1"/bin/activate
+#   elif [ -f "$1"/.venv/bin/activate ]; then
+#     echo "Activating $1/.venv/bin/activate"
+#     source "$1"/.venv/bin/activate
+#   else
+#     echo "No virtualenv found in $1 (checked $1 and $1/.venv)"
+#     return 1
+#   fi
+# elif [ -f .venv/bin/activate ]; then
+#   source .venv/bin/activate
+# elif [ -f venv/bin/activate ]; then
+#   source venv/bin/activate
+# else
+#   echo "No virtualenv found in `pwd`"
+# fi
