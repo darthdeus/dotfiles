@@ -21,7 +21,6 @@ alias sl=ls # often screw this up
 alias afind="ack-grep -il"
 alias grep="grep --color=auto"
 
-
 if [ `uname` = 'Darwin' ]; then
   alias ls='ls -G'
   alias du='du -k -d 1 $argv'
@@ -57,8 +56,6 @@ alias tmux="tmux -2"
 alias t="tmux"
 alias ta="tmux attach"
 alias tn="tmux new-session -s"
-
-alias wisdom="fortune | cowsay | lolcat"
 
 function pgdisc() {
   echo "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname = current_database() AND pid <> pg_backend_pid();" | psql $1
@@ -152,22 +149,6 @@ function run-kernel() {
     -nographic
 }
 
-function yaourt-install() {
-  git clone https://aur.archlinux.org/package-query.git
-  cd package-query
-  makepkg -si
-  cd ..
-  git clone https://aur.archlinux.org/yaourt.git
-  cd yaourt
-  makepkg -si
-  cd ..
-}
-
-function basic-pip() {
-  conda install scikit-learn future matplotlib numpy scipy pandas pydot graphviz PIL bcolz
-  pip install tqdm
-}
-
 alias doc="docker"
 alias dit="docker run -it"
 alias dirt="docker run -it --rm"
@@ -197,12 +178,6 @@ alias de="deactivate"
 alias pm="python manage.py"
 alias pis="pipenv shell"
 
-alias mpo="mrk-proxy-on"
-alias mpf="mrk-proxy-off"
-
-alias mmac="source ~/work/mm-backend/.venv/bin/activate"
-alias t2="source ~/.venvs/tf2/bin/activate"
-
 alias more="less"
 
 function zman() {
@@ -219,14 +194,6 @@ bindkey "^X1" after-first-word
 
 function aws-refresh-keys() {
   (cd ~/work/generate-aws-config; ./generate-aws-config --account lab)
-}
-
-function aws-env() {
-  access_key="export AWS_ACCESS_KEY_ID=\"$(aws configure get default.aws_access_key_id)\""
-  secret_key="export AWS_SECRET_ACCESS_KEY=\"$(aws configure get default.aws_secret_access_key)\""
-  region="export AWS_DEFAULT_REGION=\"$(aws configure get default.region)\""
-
-  printf "%s\n%s\n%s\n" "$access_key" "$secret_key" "$region"
 }
 
 function port() {

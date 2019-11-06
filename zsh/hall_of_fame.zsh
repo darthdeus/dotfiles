@@ -46,6 +46,22 @@ alias cid="cabal install --only-dependencies"
 alias cu="cabal update"
 alias csi="cabal sandbox init"
 
+alias wisdom="fortune | cowsay | lolcat"
+
+alias mpo="mrk-proxy-on"
+alias mpf="mrk-proxy-off"
+
+alias mmac="source ~/work/mm-backend/.venv/bin/activate"
+alias t2="source ~/.venvs/tf2/bin/activate"
+
+function aws-env() {
+  access_key="export AWS_ACCESS_KEY_ID=\"$(aws configure get default.aws_access_key_id)\""
+  secret_key="export AWS_SECRET_ACCESS_KEY=\"$(aws configure get default.aws_secret_access_key)\""
+  region="export AWS_DEFAULT_REGION=\"$(aws configure get default.region)\""
+
+  printf "%s\n%s\n%s\n" "$access_key" "$secret_key" "$region"
+}
+
 alias ct="ctags --extra=+f --language-force=Ruby -R $(bundle show --paths | xargs) app lib"
 
 function switch-gcc-osx() {
@@ -54,6 +70,17 @@ function switch-gcc-osx() {
   export CXX="/usr/local/bin/g++-$VERSION"
   export CPP="/usr/local/bin/cpp-$VERSION"
   export LD="/usr/local/bin/gcc-$VERSION"
+}
+
+function yaourt-install() {
+  git clone https://aur.archlinux.org/package-query.git
+  cd package-query
+  makepkg -si
+  cd ..
+  git clone https://aur.archlinux.org/yaourt.git
+  cd yaourt
+  makepkg -si
+  cd ..
 }
 
 function dot-deps() {
