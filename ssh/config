@@ -85,6 +85,10 @@ host blackbird
   hostname blackbird.ms.mff.cuni.cz
   user arnold
 
+host koblih
+  hostname 192.168.1.99
+  user darth
+
 # Host *
 #   ControlMaster auto
 #   ControlPath ~/.ssh/cm_socket/%r@%h:%p
