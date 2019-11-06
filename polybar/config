@@ -116,7 +116,7 @@ label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/github]
 type = internal/github
-token = ${token:GITHUB_TOKEN:}
+token = ${env:GITHUB_TOKEN:}
 interval = 60
 label = "GH: %notifications%"
 
