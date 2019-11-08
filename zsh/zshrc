@@ -70,7 +70,7 @@ export VISUAL="$VIM_VERSION"
 
 alias vim="$VIM_VERSION"
 alias vi="vim"
-alias e="vim"
+alias e="eix"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
