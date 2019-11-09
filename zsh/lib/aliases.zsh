@@ -75,6 +75,7 @@ if [[ $osname == *gentoo* ]]; then
   alias pi="sudo emerge -av"
   alias pq="eix"
   alias pe="emerge --search"
+  alias eu="equery uses"
 fi
 
 if [[ $osname == *arch* ]]; then
