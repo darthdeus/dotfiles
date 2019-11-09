@@ -40,6 +40,10 @@ fpath=(~/.zsh/completion "${fpath[@]}")
 
 autoload -Uz compinit
 compinit -C
+# TODO: use this instead of custom prompt?
+# autoload -U promptinit
+# promptinit
+# prompt gentoo
 
 # Autoreload all completion commands
 # function au() {
