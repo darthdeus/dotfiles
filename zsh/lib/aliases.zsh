@@ -63,7 +63,7 @@ function pgdisc() {
 
 if command -v lsb_release > /dev/null; then
   rel=$(lsb_release -c)
-  if [[ $rel == *void** ]]; then
+  if [[ $rel == *void* ]]; then
     alias pi="sudo xbps-install -S"
     alias pq="xbps-query -Rs"
     alias pe="xbps-query -R"
