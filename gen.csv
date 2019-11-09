@@ -1,2 +1,5 @@
-e-file,find packages containing a file
+e-file;find packages containing a file
 equery;display dependencies, metadata, and more
+genlop;show emerge times based on /var/log/emerge.log, including for currently running jobs
+quse;find which packages use given USE flags
+ufed;curses based USE flag browser
