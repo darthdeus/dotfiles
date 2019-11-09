@@ -150,6 +150,8 @@ function run-kernel() {
     -nographic
 }
 
+alias gpg="gpg2"
+
 alias doc="docker"
 alias dit="docker run -it"
 alias dirt="docker run -it --rm"
