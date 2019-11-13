@@ -36,33 +36,28 @@ set tilde   # Pad blank lines at the bottom with ~
 
 set edit_headers=yes
 
-color sidebar_new yellow default
-
-bind index '[' sidebar-prev
-bind index ']' sidebar-next
-bind index '#' sidebar-open
-bind pager '[' sidebar-prev
-bind pager ']' sidebar-next
-bind pager '#' sidebar-open
+lists .*@aur.archlinux.org
+subscribe .*@aur.archlinux.org
 
 source ~/.mutt/colors
 # source ~/.mutt/base16-colors
 source ~/.mutt/sidebar
 source ~/.mutt/notmuch
-# source ~/.mutt/accounts/ufal
 source ~/.mutt/accounts/icloud
 source ~/.mutt/accounts/gmail
+# source ~/.mutt/accounts/ufal
+
+mailboxes =gmail
+mailboxes =gmail/inbox =gmail/drafts =gmail/sent =gmail/starred =gmail/trash
+mailboxes =icloud
+mailboxes =icloud/inbox =icloud/drafts =icloud/sent =icloud/trash
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
-# macro index <f2> '<change-folder> ~/.mail/gmail<enter>'
-# macro index <f3> '<change-folder> ~/.mail/icloud<enter>'
-
 macro index <f2> '<enter-command> source ~/.mutt/accounts/gmail<enter><change-folder>!<enter>'
 macro index <f3> '<enter-command> source ~/.mutt/accounts/icloud<enter><change-folder>!<enter>'
 macro index <f4> '<enter-command> source ~/.mutt/accounts/ufal<enter><change-folder>!<enter>'
-
 
 # folder-hook gmail  "source ~/.mutt/gmail.rc"
 # folder-hook icloud "source ~/.mutt/icloud.rc"

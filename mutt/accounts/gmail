@@ -17,7 +17,6 @@ set postponed = +gmail/drafts
 set record    = +gmail/sent
 set trash     = +gmail/trash
 
-mailboxes =gmail/inbox =gmail/drafts =gmail/sent =gmail/starred =gmail/trash
 # set folder    = ~/.mail/gmail
 # set spoolfile = ~/.mail/gmail/inbox
 # set postponed = ~/.mail/gmail/drafts

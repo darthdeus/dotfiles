@@ -9,7 +9,8 @@ User jakub.arnold@me.com
 AuthMechs LOGIN
 SSLType IMAPS
 SSLVersions TLSv1
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.passwords/icloud.gpg"
+# PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.passwords/icloud.gpg"
+PassCmd "pass show misc/icloud"
 PipelineDepth 1
 
 IMAPStore icloud-remote
@@ -69,8 +70,9 @@ Channel icloud-trash
 IMAPAccount gmail
 Host imap.gmail.com
 User darthdeus@gmail.com
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.passwords/gmail.gpg"
-AuthMechs PLAIN
+# PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.passwords/gmail.gpg"
+PassCmd "pass show misc/gmail"
+# AuthMechs PLAIN
 SSLType IMAPS
 CertificateFile ~/.mutt/certs/gmail.crt
 CertificateFile ~/.mutt/certs/google.crt
