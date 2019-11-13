@@ -76,6 +76,7 @@ PassCmd "pass show misc/gmail"
 SSLType IMAPS
 CertificateFile ~/.mutt/certs/gmail.crt
 CertificateFile ~/.mutt/certs/google.crt
+SSLVersions TLSv1.1
 # CertificateFile /usr/local/etc/openssl/certs/Equifax.crt
 
 # THEN WE SPECIFY THE LOCAL AND REMOTE STORAGE
