@@ -36,8 +36,8 @@ set tilde   # Pad blank lines at the bottom with ~
 
 set edit_headers=yes
 
-lists .*@aur.archlinux.org
-subscribe .*@aur.archlinux.org
+# lists .*@aur.archlinux.org .*@lists.gentoo.org
+subscribe .*@aur.archlinux.org arch-announce@archlinux.org gentoo-user@lists.gentoo.org neomutt-users@neomutt.org
 
 source ~/.mutt/colors
 # source ~/.mutt/base16-colors
