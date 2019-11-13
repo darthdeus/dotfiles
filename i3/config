@@ -170,6 +170,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+p exec "xfce4-screenshooter"
 bindsym $mod+Shift+n exec "thunar"
 bindsym $mod+Shift+o exec "~/.todo/paste-url.sh"
+bindsym $mod+Shift+i exec "~/.todo/zenity-todo.sh"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
