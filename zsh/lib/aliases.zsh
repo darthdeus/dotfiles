@@ -89,6 +89,7 @@ if ! type open 2>&1 1>/dev/null; then
   alias open="exo-open"
 fi
 
+alias pass="gopass"
 alias pa="perf annotate"
 alias pr="perf record -g"
 alias pra="perf record -F 99 -a -g"
