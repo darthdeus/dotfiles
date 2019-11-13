@@ -12,6 +12,8 @@ ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc"
 # ln -nsf "$DOT/xmonad"        "$HOME/.xmonad"
 ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
 ln -nsf "$DOT/Xmodmap"       "$HOME/.Xmodmap"
+
+mkdir -p "$HOME/.newsboat"
 ln -nsf "$DOT/newsboat-urls" "$HOME/.newsboat/urls"
 
 mkdir -p "$HOME/.urxvt"
