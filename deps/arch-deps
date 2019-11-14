@@ -21,6 +21,7 @@ xorg-xdpyinfo
 obs-studio
 mpv
 fping
+abook
 
 mypy
 flake8
