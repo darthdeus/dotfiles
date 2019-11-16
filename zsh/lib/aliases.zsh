@@ -29,13 +29,16 @@ else
   alias du='du -k --max-depth=1 $argv'
 fi
 
-alias l='ls'
-alias ll='ls -lh'
-alias la='ls -a'
-alias lal='ls -lah'
+alias l="ls"
+alias ll="ls -lh"
+alias la="ls -a"
+alias lal="ls -lah"
 
-alias s='git status -sb'
-alias d='gd $argv'
+alias s="git status -sb"
+alias d="git diff"
+alias n="nix-env"
+alias nc="nix-channel"
+alias ns="nix-shell"
 
 # IP related stuff
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
