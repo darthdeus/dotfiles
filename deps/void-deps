@@ -1,7 +1,6 @@
  adwaita-icon-theme
  alacritty
  alsa-firmware
- alsa-util
  alsa-utils
  aqemu
  arc-theme
@@ -42,15 +41,13 @@
  openvpn
  pass
  patch
- pavucontrol
  pcsc-ccid
  pcsclite
  polybar
  postgresql
- pulseaudio
- pulseaudio pavucontrol
  python3-virtualenv
- python-neovim python3-neovim
+ python-neovim
+ python3-neovim
  qemu
  ranger
  rofi
@@ -58,25 +55,30 @@
  socklog-void
  sxiv
  tcpdump
- tcpdumpo
- tcpdump wireshark
- tcpdump wireshark termshark
+ wireshark
+ termshark
  texinfo
  the_silver_searcher
  tmux
  urlview
  vim
- vim-dev
  void-repo-nonfree
  w3m-img
  weechat
  wireshark-qt
  xfce4-screenshooter
  xinit
- xinitrc
  xmodmap
- xorg
+ flatpak
+ xdg-desktop-portal
+ xdg-desktop-portal-gtk
+ xdg-user-dirs
+ xdg-user-dirs-gtk
+ xdg-utils
  xorg-minimal
+xorg-fonts
+xf86-input-evdev
+xf86-input-libinput
  xrandr
  xrdb
  xsel
