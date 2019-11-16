@@ -14,7 +14,7 @@ try-commit-sync() {
 
   # if ! git diff-index --quiet HEAD --; then
   if [[ -n $(git status -s) ]]; then
-    read -p "Commit and push? (y/N) " -r
+    read -p "Commit and push? (y/N) " -r -n1
 
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
