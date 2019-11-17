@@ -194,6 +194,10 @@ function zman() {
   PAGER="less -g -s '+/^       "$1"'" man zshall
 }
 
+function ne() {
+  (cd ~/.dotfiles/nixos/; vim configuration.nix)
+}
+
 function no() {
   (cd ~/projects/nixpkgs/nixos; fe)
 }
