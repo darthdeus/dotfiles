@@ -1,7 +1,10 @@
 #!/bin/sh
+monitors=$(xrandr | grep " connected" | cut -d" " -f1)
 
-LEFT=${LEFT:-HDMI-3}
-RIGHT=${RIGHT:-DP-1}
+LEFT=${LEFT:-$(echo -e "$monitors" | grep HDMI)}
+RIGHT=${RIGHT:-$(echo -e "$monitors" | grep DP)}
+
+echo "LEFT=$LEFT\tRIGHT=$RIGHT"
 
 i3-msg '[workspace="1"]' move workspace to output "$RIGHT"
 i3-msg '[workspace="2"]' move workspace to output "$RIGHT"
