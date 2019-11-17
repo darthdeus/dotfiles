@@ -194,6 +194,14 @@ function zman() {
   PAGER="less -g -s '+/^       "$1"'" man zshall
 }
 
+function no() {
+  (cd ~/projects/nixpkgs/nixos; fe)
+}
+
+function np() {
+  (cd ~/projects/nixpkgs/nixpkgs; fe)
+}
+
 # TODO: put this where it belongs
 function after-first-word() {
   zle beginning-of-line
