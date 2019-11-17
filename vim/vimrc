@@ -43,6 +43,8 @@ Plug 'drmikehenry/vim-headerguard'
 Plug 'chrisbra/vim-zsh'
 " Plug 'ludovicchabant/vim-gutentags'
 
+Plug 'LnL7/vim-nix'
+
 " Plug 'rking/ag.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
