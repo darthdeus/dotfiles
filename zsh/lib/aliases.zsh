@@ -81,6 +81,11 @@ if [[ $osname == *gentoo* ]]; then
   alias eu="equery uses"
 fi
 
+if [[ $osname == *NixOS* ]]; then
+  alias pi="nix-env -i"
+  alias pq="nix search"
+fi
+
 if [[ $osname == *arch* ]]; then
 # if uname -a | grep -i arch >/dev/null; then
   alias pi="sudo pacman -S"
