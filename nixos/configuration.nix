@@ -46,7 +46,7 @@
 
     neovim # TODO: python support?
     # TODO: npm?
-    ranger nodejs python2 python3
+    ranger nodejs python2 python3 python37Packages.virtualenv python37Packages.pip
 
     go
 
