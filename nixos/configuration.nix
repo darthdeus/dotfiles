@@ -68,11 +68,14 @@
 
     gnome3.adwaita-icon-theme
     gnome3.gnome_themes_standard
+    gnome3.zenity
     lxappearance awf
-    arandr zenity
+    arandr
 
     # TODO: bpftrace
   ];
+
+  programs.zsh.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -135,9 +138,13 @@
 
   services.xserver.videoDrivers = ["nvidia"];
 
+  # TODO: is there any downside to this?
+  users.mutableUsers = false;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.groups = [ { name = "darth"; } ];
   users.users.darth = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     group = "darth";
     home = "/home/darth";
