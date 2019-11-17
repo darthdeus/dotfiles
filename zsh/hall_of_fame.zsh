@@ -9,6 +9,10 @@
 alias reload_webkit="osascript -e \"tell application 'WebKit' to do JavaScript 'window.location.reload()' in front document\""
 alias tigs='tig status $argv'
 
+# Push and pop directories on directory stack
+alias pu="pushd"
+alias po="popd"
+
 alias b="bundle"
 alias r="bundle exec rails"
 

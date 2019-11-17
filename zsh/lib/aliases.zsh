@@ -1,7 +1,3 @@
-# Push and pop directories on directory stack
-alias pu="pushd"
-alias po="popd"
-
 # Basic directory operations
 alias ...="cd ../.."
 alias -- -="cd -"
@@ -83,7 +79,9 @@ fi
 
 if [[ $osname == *NixOS* ]]; then
   alias pi="nix-env -i"
-  alias pq="nix search"
+  alias pq="cat ~/.nix-pkg-cache | grep"
+  alias pe="nix search"
+  alias pu="nix-env -v -qaP '*' > ~/.nix-pkg-cache"
 fi
 
 if [[ $osname == *arch* ]]; then
