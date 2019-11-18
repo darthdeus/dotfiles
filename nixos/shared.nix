@@ -20,6 +20,8 @@
   programs.ssh.startAgent = false;
 
   services.pcscd.enable = true;
+  # TODO: configure mpd
+  services.mpd.enable = true;
 
   services.udev.packages = [ pkgs.yubikey-personalization ];
   environment.shellInit = ''
@@ -73,12 +75,14 @@
     noto-fonts
     noto-fonts-emoji
     fantasque-sans-mono
+    unifont
+    siji
   ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget vim curl git ag tmux zsh
+    wget vim curl git ag tmux zsh killall
 
     neovim # TODO: python support?
     # TODO: npm?
@@ -94,7 +98,7 @@
 
     htop
     xclip xsel
-    mpv
+    mpv mpc_cli
 
     zathura
 
