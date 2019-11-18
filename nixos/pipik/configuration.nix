@@ -19,7 +19,7 @@
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.wireless.networks = {
     UPC248346737 = {
-      psk = "mamenovybytecek";
+      pskRaw = "176e51f017503f72dbc09d5170ea9cc52749d39e6dfc3569ff7c29c9667ce76e";
     };
   };
 
