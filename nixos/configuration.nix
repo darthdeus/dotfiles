@@ -53,7 +53,7 @@
     rxvt_unicode dmenu polybarFull
 
     firefox google-chrome
-    gopass gnupg yubikey-personalization yubikey-personalization-gui
+    pass gopass gnupg yubikey-personalization yubikey-personalization-gui
     # TODO: keybase gui https://github.com/danielfullmer/nixos-config/blob/master/profiles/yubikey.nix
 
     htop
