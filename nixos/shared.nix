@@ -100,7 +100,7 @@
 
     abook neomutt isync notmuch notmuch-mutt msmtp
 
-    xfce.thunar gthumb
+    xfce.thunar xfce.xfce4-screenshooter gthumb
 
     gnome3.adwaita-icon-theme
     gnome3.gnome_themes_standard
