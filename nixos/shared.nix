@@ -114,11 +114,12 @@
 
   programs.zsh.enable = true;
 
-  # TODO: is there any downside to this?
-  users.mutableUsers = false;
+  # TODO: figure out how to properly set passwords and then turn off
+  # users.mutableUsers = false;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.groups = [ { name = "darth"; } ];
   users.users.darth = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     group = "darth";
     home = "/home/darth";
