@@ -195,7 +195,7 @@ function zman() {
 }
 
 function ne() {
-  (cd ~/.dotfiles/nixos/; vim configuration.nix)
+  (cd ~/.dotfiles/nixos/; vim shared.nix)
 }
 
 function no() {
