@@ -16,6 +16,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-emoji
+    fantasque-sans-mono
+  ];
+
   networking.hostName = "pipik"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.wireless.networks = {
