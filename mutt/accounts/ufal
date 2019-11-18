@@ -6,9 +6,9 @@ set from      = "arnold@ufal.mff.cuni.cz"
 
 set folder    = "imaps://ufal-mail.mff.cuni.cz:993/"
 set imap_user = "arnold"
-set smtp_url = "smtps://arnold@ufal-mail.mff.cuni.cz:465"
-set smtp_pass = `pass show misc/ufal`
-set imap_pass = `pass show misc/ufal`
+set smtp_url  = "smtps://arnold@ufal-mail.mff.cuni.cz:465"
+set smtp_pass = `pass show email-app/ufal`
+set imap_pass = `pass show email-app/ufal`
 
 set spoolfile = +INBOX
 
