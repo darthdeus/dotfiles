@@ -72,6 +72,7 @@
     lxappearance awf
     arandr
 
+    traceroute mtr telnet nmap
     # TODO: bpftrace
   ];
 
