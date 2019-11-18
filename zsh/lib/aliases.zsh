@@ -203,7 +203,7 @@ function no() {
 }
 
 function np() {
-  (cd ~/projects/nixpkgs/nixpkgs; fe)
+  (cd ~/projects/nixpkgs/pkgs; fe)
 }
 
 # TODO: put this where it belongs
