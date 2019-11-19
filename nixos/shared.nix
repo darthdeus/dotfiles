@@ -82,7 +82,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget vim curl git ag tmux zsh killall
+    wget vim curl git ag tmux zsh killall mosh
 
     neovim # TODO: python support?
     # TODO: npm?
@@ -92,7 +92,7 @@
 
     rxvt_unicode dmenu polybarFull
 
-    firefox google-chrome
+    firefox google-chrome discord
     pass gopass gnupg yubikey-personalization yubikey-personalization-gui
     # TODO: keybase gui https://github.com/danielfullmer/nixos-config/blob/master/profiles/yubikey.nix
 
@@ -109,8 +109,7 @@
     gnome3.adwaita-icon-theme
     gnome3.gnome_themes_standard
     gnome3.zenity
-    lxappearance awf
-    arandr
+    lxappearance awf arandr
 
     traceroute mtr telnet nmap
     # TODO: bpftrace
