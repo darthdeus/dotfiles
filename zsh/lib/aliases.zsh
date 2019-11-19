@@ -206,6 +206,12 @@ function np() {
   (cd ~/projects/nixpkgs/pkgs; fe)
 }
 
+# TODO: scope all under one helper?
+function nix-dep() {
+  pkg=$(find /nix/store -mindepth 1 -maxdepth 1 -type d | fzf --preview 'nix why-depends /run/current-system {}' --preview-window=down)
+  nix why-depends /run/current-system "$pkg"
+}
+
 # TODO: put this where it belongs
 function after-first-word() {
   zle beginning-of-line
