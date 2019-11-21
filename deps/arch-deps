@@ -22,6 +22,7 @@ obs-studio
 mpv
 fping
 abook
+gnome-themes-extra
 
 mypy
 flake8
