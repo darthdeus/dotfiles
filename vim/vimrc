@@ -33,6 +33,9 @@ Plug 'lervag/vimtex'
 let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'
 
+" Plug 'fatih/vim-go'
+" let g:go_def_mapping_enabled = 0
+
 Plug 'junegunn/goyo.vim'
 " Plug 'junegunn/limelight.vim'
 
@@ -91,12 +94,13 @@ Plug 'sbdchd/neoformat'
 
 Plug 'lilydjwg/colorizer'
 
+" -------------------------------
 " Plug 'w0rp/ale'
-
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'zxqfl/tabnine-vim'
-"
+" -------------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" -------------------------------
 
 " Plug 'ervandew/supertab'
 " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -692,6 +696,7 @@ endfunction
 
 
 
+" ---------- COC ---------------------------------
 let g:coc_global_extensions = [
       \ 'coc-highlight', 'coc-vimlsp', 'coc-lists',
       \ 'coc-snippets', 'coc-json', 'coc-python',
@@ -873,6 +878,7 @@ let g:coc_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+" ---------- COC ---------------------------------
 
 
 command! -nargs=0 StopProfiling call s:profilestop()
