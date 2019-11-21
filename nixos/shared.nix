@@ -68,6 +68,8 @@
 
   services.xserver.windowManager.i3.enable = true;
 
+  documentation.dev.enable = true;
+
   # services.xserver.desktopManager.default = "none";
   # services.xserver.windowMangaer.default = "i3";
 
@@ -82,13 +84,13 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget vim curl git ag tmux zsh killall mosh
+    wget vim curl git ag tmux zsh killall mosh findutils patchelf manpages unzip file
 
     neovim # TODO: python support?
     # TODO: npm?
     ranger nodejs python2 python3 python37Packages.virtualenv python37Packages.pip
 
-    go
+    go ctags
 
     rxvt_unicode dmenu polybarFull
 
