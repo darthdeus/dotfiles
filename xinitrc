@@ -75,6 +75,8 @@ if [[ "$(hostname)" == "koblih" ]]; then
   fi
 fi
 
+systemctl start --user sxhkd.service
+
 # exec startxfce4
 exec i3
 

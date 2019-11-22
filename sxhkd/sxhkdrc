@@ -2,7 +2,7 @@ super + Return
   urxvt -e tmux
 
 super + p
-  dmenu
+  dmenu_run
 
 super + grave
   dmenuunicode
