@@ -7,6 +7,15 @@ super + p
 super + grave
   dmenuunicode
 
+super + e
+  urxvt -e neomutt
+
+super + n
+  urxvt -e newsboat
+
+super + i
+  urxvt -e htop
+
 super + shift + p
   xfce4-screenshooter
 
