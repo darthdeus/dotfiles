@@ -31,20 +31,8 @@ hide_edge_borders both
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvt -e tmux
-
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym $mod+grave exec dmenuunicode
-
-# start dmenu (a program launcher)
-bindsym $mod+p exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 for_window [class="Zeal"] floating enable
 for_window [class="Godot"] floating enable
@@ -166,11 +154,6 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
-
-bindsym $mod+Shift+p exec "xfce4-screenshooter"
-bindsym $mod+Shift+n exec "thunar"
-bindsym $mod+Shift+o exec "~/.todo/paste-url.sh"
-bindsym $mod+Shift+i exec "~/.todo/zenity-todo.sh"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

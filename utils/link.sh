@@ -26,6 +26,8 @@ ln -nsf "$DOT/i3/config"    "$HOME/.config/i3/config"
 mkdir -p "$HOME/.config/i3blocks"
 ln -nsf "$DOT/i3/blocks.conf" "$HOME/.config/i3blocks/config"
 
+ln -nsf "$DOT/sxhkd"    "$HOME/.config/sxhkd"
+
 # TODO: re-enable this when I have a working fontconfig/fonts.conf
 # mkdir -p "$HOME/.config/fontconfig/"
 # ln -nsf "$DOT/fonts.conf" "$HOME/.config/fontconfig/fonts.conf"

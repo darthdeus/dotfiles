@@ -1,0 +1,20 @@
+super + Return
+  urxvt -e tmux
+
+super + p
+  dmenu
+
+super + grave
+  dmenuunicode
+
+super + shift + p
+  xfce4-screenshooter
+
+super + shift + n
+  thunar
+
+super + shift + o
+  ~/.todo/paste-url.sh
+
+super + shift + i
+  ~/.todo/zenity-todo.sh
