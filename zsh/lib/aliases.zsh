@@ -32,9 +32,7 @@ alias lal="ls -lah"
 
 alias s="git status -sb"
 alias d="git diff"
-alias n="nix-env"
-alias nc="nix-channel"
-alias ns="nix-shell"
+alias n="newsboat"
 
 # IP related stuff
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -82,6 +80,9 @@ if [[ $osname == *NixOS* ]]; then
   alias pq="cat ~/.nix-pkg-cache | grep"
   alias pe="nix search"
   alias pu="nix-env -v -qaP '*' > ~/.nix-pkg-cache"
+  alias n="nix-env"
+  alias nc="nix-channel"
+  alias ns="nix-shell"
 fi
 
 if [[ $osname == *arch* ]]; then
