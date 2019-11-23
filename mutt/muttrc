@@ -59,6 +59,7 @@ alternative_order text/plain text/enriched text/html
 macro index <f2> '<enter-command> source ~/.mutt/accounts/gmail<enter><change-folder>!<enter>'
 macro index <f3> '<enter-command> source ~/.mutt/accounts/icloud<enter><change-folder>!<enter>'
 macro index <f4> '<enter-command> source ~/.mutt/accounts/ufal<enter><change-folder>!<enter>'
+source ~/.mutt/accounts/priv
 
 # folder-hook gmail  "source ~/.mutt/gmail.rc"
 # folder-hook icloud "source ~/.mutt/icloud.rc"

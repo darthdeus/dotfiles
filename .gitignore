@@ -7,3 +7,5 @@ test-plugs/
 test.init
 vim/viewdir
 vim/sessions
+
+mutt/accounts
