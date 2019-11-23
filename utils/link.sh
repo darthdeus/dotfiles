@@ -31,6 +31,8 @@ ln -nsf "$DOT/sxhkd"    "$HOME/.config/sxhkd"
 # TODO: is this the right way to create a user service?
 mkdir -p "$HOME/.config/systemd/user"
 ln -nsf "$DOT/systemd/sxhkd.service" "$HOME/.config/systemd/user/sxhkd.service"
+ln -nsf "$DOT/systemd/mbsync.service" "$HOME/.config/systemd/user/mbsync.service"
+ln -nsf "$DOT/systemd/mbsync.timer" "$HOME/.config/systemd/user/mbsync.timer"
 
 # TODO: re-enable this when I have a working fontconfig/fonts.conf
 # mkdir -p "$HOME/.config/fontconfig/"
