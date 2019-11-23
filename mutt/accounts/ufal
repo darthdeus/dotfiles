@@ -19,3 +19,6 @@ set imap_keepalive = 300
 set mail_check = 120
 
 set record = +Sent
+
+named-mailboxes "---- UFAL" +INBOX
+mailboxes +Sent +Drafts +Trash

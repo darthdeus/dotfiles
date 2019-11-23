@@ -22,11 +22,10 @@
 set my_name   = "Jakub Arnold"
 set from      = "jakub.arnold@me.com"
 
-set folder    = ~/.mail
-set spoolfile = +icloud/inbox
-set postponed = +icloud/drafts
-set record    = +icloud/sent
-set trash     = +icloud/trash
-
+set folder    = ~/.mail/icloud
+set spoolfile = +inbox
+set postponed = +drafts
+set record    = +sent
+set trash     = +trash
 
 set sendmail = "msmtp -a icloud"

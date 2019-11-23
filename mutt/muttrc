@@ -43,13 +43,11 @@ source ~/.mutt/colors
 # source ~/.mutt/base16-colors
 source ~/.mutt/sidebar
 source ~/.mutt/notmuch
-source ~/.mutt/accounts/icloud
-source ~/.mutt/accounts/gmail
 # source ~/.mutt/accounts/ufal
 
-mailboxes =gmail
+named-mailboxes "----gmail" =gmail/inbox
 mailboxes =gmail/inbox =gmail/drafts =gmail/sent =gmail/starred =gmail/trash
-mailboxes =icloud
+named-mailboxes "----iCloud" =icloud/inbox
 mailboxes =icloud/inbox =icloud/drafts =icloud/sent =icloud/trash
 
 auto_view text/html

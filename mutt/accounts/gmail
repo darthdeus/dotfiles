@@ -11,11 +11,11 @@
 
 set my_name   = "Jakub Arnold"
 set from      = "darthdeus@gmail.com"
-set folder    = ~/.mail
-set spoolfile = +gmail/inbox
-set postponed = +gmail/drafts
-set record    = +gmail/sent
-set trash     = +gmail/trash
+set folder    = ~/.mail/gmail
+set spoolfile = +inbox
+set postponed = +drafts
+set record    = +sent
+set trash     = +trash
 
 # set folder    = ~/.mail/gmail
 # set spoolfile = ~/.mail/gmail/inbox
