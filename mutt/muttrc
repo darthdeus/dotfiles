@@ -50,6 +50,9 @@ mailboxes =gmail/inbox =gmail/drafts =gmail/sent =gmail/starred =gmail/trash
 named-mailboxes "----iCloud" =icloud/inbox
 mailboxes =icloud/inbox =icloud/drafts =icloud/sent =icloud/trash
 
+source ~/.mutt/accounts/icloud
+source ~/.mutt/accounts/gmail
+
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
