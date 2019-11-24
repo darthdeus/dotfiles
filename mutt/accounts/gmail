@@ -14,8 +14,9 @@ set from      = "darthdeus@gmail.com"
 set folder    = ~/.mail/gmail
 set spoolfile = +inbox
 set postponed = +drafts
-set record    = +sent
+# set record    = +sent
 set trash     = +trash
+unset record
 
 # set folder    = ~/.mail/gmail
 # set spoolfile = ~/.mail/gmail/inbox
