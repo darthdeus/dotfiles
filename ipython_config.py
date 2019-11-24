@@ -32,7 +32,7 @@
 c.InteractiveShellApp.exec_lines = [
     "%autoreload 2",
     "print('Warning: disable autoreload in ipython_config.py to improve performance')",
-    "import numpy as np"
+    # "import numpy as np"
 ]
 
 ## A list of dotted module names of IPython extensions to load.
