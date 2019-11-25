@@ -36,6 +36,10 @@ set tilde   # Pad blank lines at the bottom with ~
 
 set edit_headers=yes
 
+unset crypt_use_gpgme
+# TODO: check if /usr/share/doc/neomutt/samples/gpg.rc exists and use that instead?
+source ~/.mutt/gpg.rc
+
 # lists .*@aur.archlinux.org .*@lists.gentoo.org
 subscribe .*@aur.archlinux.org arch-announce@archlinux.org gentoo-user@lists.gentoo.org neomutt-users@neomutt.org
 
