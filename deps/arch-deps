@@ -23,6 +23,7 @@ mpv
 fping
 abook
 gnome-themes-extra
+dunst
 
 mypy
 flake8
