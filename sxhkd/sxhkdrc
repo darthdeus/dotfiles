@@ -17,7 +17,7 @@ super + i
   urxvt -e htop
 
 super + shift + p
-  xfce4-screenshooter
+  ~/.dotfiles/bin/maimpick
 
 super + shift + n
   thunar
