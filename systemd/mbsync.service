@@ -3,5 +3,7 @@ Description=Mailbox synchronization service
 
 [Service]
 Type=oneshot
+; TODO: only notify on new email?
+; ExecStartPre=/usr/bin/notify-send "mbsync running"
 ExecStart=/usr/bin/mbsync -Va
 ExecStartPost=/usr/bin/notmuch new
