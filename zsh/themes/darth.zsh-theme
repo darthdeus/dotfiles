@@ -34,10 +34,6 @@ grb_git_prompt() {
     fi
 }
 
-at_sign() {
-  git rev-parse --git-dir > /dev/null 2>&1 && echo "@"
-}
-
 function git_current_branch() {
   local ref
   ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
@@ -65,10 +61,9 @@ function git_commits_behind() {
 }
 
 function dotfiles_dirty() {
-  DOTFILES_DIRTY='!dot!'
   cd "$HOME/.dotfiles"
-  if [[ $(git status --porcelain | wc -l) -ne 0 ]]; then
-    echo "$DOTFILES_DIRTY"
+  if [[ ! -z $(git status --porcelain) ]]; then
+    echo '!dot!'
   fi
 }
 
@@ -86,9 +81,7 @@ function git_prompt_behind() {
   fi
 }
 
-local smiley="%(?,%{$fg[green]%}$%{$reset_color%},%{$fg[red]%}$%{$reset_color%})"
-
-local current_dir="%~"
+# local smiley="%(?,%{$fg[green]%}$%{$reset_color%},%{$fg[red]%}$%{$reset_color%})"
 
 # PROMPT='%{$fg['
 # PROMPT=blue
@@ -98,12 +91,17 @@ local current_dir="%~"
 
 # PROMPT='${current_dir}
 
-if [ -f ~/.production ]; then
-PROMPT='%{$fg[red]%}[%M] ${current_dir} $fg[red]$(dotfiles_dirty)
-${smiley} %{$reset_color%}'
-else
-PROMPT='%{$fg[blue]%}[%M] ${current_dir} $fg[red]$(dotfiles_dirty)
-${smiley} %{$reset_color%}'
-fi
+# if [ -f ~/.production ]; then
+# PROMPT='%{$fg[red]%}[%M] ${current_dir} $fg[red]$(dotfiles_dirty)
+# ${smiley} %{$reset_color%}'
+# else
+# PROMPT='%{$fg[blue]%}[%M] ${current_dir} $fg[red]$(dotfiles_dirty)
+# ${smiley} %{$reset_color%}'
+# fi
 
-RPROMPT='%{$fg[white]%} %{$fg[blue]%}$(current_branch)$(at_sign)%{$fg[yellow]%}$(current_commit) %{$reset_color%}'
+PROMPT='%F{blue}[%M] %~ %F{red}$(dotfiles_dirty)
+%(?,%F{green},%F{white}%K{red})%(!,#,\$)%f%k '
+
+local at_sign=$(git rev-parse --git-dir > /dev/null 2>&1 && echo "@")
+
+RPROMPT='%F{blue}$(current_branch)$at_sign%F{yellow}$(current_commit)%f'
