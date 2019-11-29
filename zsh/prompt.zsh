@@ -60,6 +60,6 @@ function at_sign() {
 # fi
 
 PROMPT='%F{blue}[%M] %~ %F{red}$(dotfiles_dirty) $(grb_git_prompt)
-%(?,%F{green},%F{white}%K{red})%(!,#,\$)%f%k '
+%(?,%F{green},%F{red})%(!,#,\$)%f%k '
 
 RPROMPT='%F{blue}$(current_branch)$(at_sign)%F{yellow}$(current_commit)%f'
