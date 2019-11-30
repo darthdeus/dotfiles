@@ -25,6 +25,7 @@ abook
 gnome-themes-extra
 dunst
 gpa
+mc
 
 mypy
 flake8
