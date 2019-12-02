@@ -25,6 +25,8 @@ else
   alias du='du -k --max-depth=1 $argv'
 fi
 
+alias bc="bc -l"
+
 alias l="ls"
 alias ll="ls -lh"
 alias la="ls -a"
