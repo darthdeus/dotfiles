@@ -1,10 +1,3 @@
-;; Saner emacs defaults
-(setq ring-bell-function 'ignore) ; Disable the visual bell
-(setq inhibit-startup-message t)
-(setq inhibit-splash-screen t)
-(fset 'yes-or-no-p 'y-or-n-p)
-(setq-default indent-tabs-mode nil)
-
 (add-to-list 'default-frame-alist '(font . "Fantasque Sans Mono-12"))
 (set-face-attribute 'default t :font "Fantasque Sans Mono-12")
 ;(set-face-attribute 'default t :font "Fantasque Sans Mono-12")
@@ -24,7 +17,8 @@
 ;; TODO - check what this actually does. how does it change the original apropos search?
 ;(setq apropos-do-all t)
 
-(add-to-list 'load-path "~/.emacs.d/use-package")
+; TODO: install or use from git?
+; (add-to-list 'load-path "~/.emacs.d/use-package")
 
 (setq backup-directory-alist '(("" . "~/.emacs.d/emacs-backup")))
 
@@ -35,22 +29,75 @@
 ;; Compatibility package
 ; (require 'cl)
 
-(package-initialize)
 
 ;; PACKAGE CONFIG
 (require 'package)
-;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+; TODO: does this make sense only together with use-package?
+; https://www.reddit.com/r/emacs/comments/1rdstn/set_packageenableatstartup_to_nil_for_slightly/
+(setq package-enable-at-startup nil)
 
 (setq
- package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                    ("org" . "http://orgmode.org/elpa/")
-                    ("melpa" . "http://melpa.org/packages/")
-                    ("melpa-stable" . "http://stable.melpa.org/packages/"))
+ package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                    ("org" . "https://orgmode.org/elpa/")
+                    ("melpa" . "https://melpa.org/packages/")
+                    ("melpa-stable" . "https://stable.melpa.org/packages/"))
  package-archive-priorities '(("melpa-stable" . 1)))
 
-(when (not package-archive-contents)
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+;; Shows options when only part of a key binding (chord?) is pressed.
+(use-package which-key
+  :ensure t
+  :init (which-key-mode 1))
+
+;; TODO: try https://github.com/owainlewis/emacs-color-themes
+
+;; Is there a higher-contrast variant of base16-ember?
+;; Other themes are at https://github.com/chriskempson/base16.
+(use-package base16-theme
+  :ensure t
+  :config (load-theme 'base16-default-dark t))
+
+; (when (not package-archive-contents)
+;   (package-refresh-contents)
+;   (package-install 'use-package))
+
+
+(defvar my-term-shell "/usr/bin/zsh")
+(defadvice ansi-term (before force-bash)
+  (interactive (list my-term-shell)))
+(ad-activate 'ansi-term)
+
+;; Saner emacs defaults
+; (setq inhibit-startup-message t)
+; (setq inhibit-splash-screen t)
+
+; TODO: is it better to use `defalias` or `fset`?
+(defalias 'yes-or-no-p 'y-or-n-p)
+; (fset 'yes-or-no-p 'y-or-n-p)
+
+(global-set-key (kbd "<s-C-return>") 'ansi-term)
+
+(setq-default indent-tabs-mode nil)
+
+; Disable the visual bell
+(setq ring-bell-function 'ignore)
+; Scroll line by line instead of moving half a screen when
+; the cursor moves off.
+(setq scroll-conservatively 100)
+(global-hl-line-mode t)
+
+
+;; TODO - check how to enable ido for M-x
+(ido-mode 1)
+(ido-everywhere 1) ; TODO: ido-completing-read+
+; TODOODODO
+; (ido-ubiquitous 1)
+; (flx-ido-mode 1)
 
 ;; EVIL MODE
 (require 'evil)
@@ -66,30 +113,39 @@
 ; (define-key evil-normal-state-map (kbd ",f") 'projectile-find-file)
 ; (define-key evil-normal-state-map (kbd ",,") 'evil-buffer)
 ; (define-key evil-normal-state-map (kbd "q") nil)
-;
-; (define-key evil-insert-state-map (kbd "C-e") nil)
-; (define-key evil-insert-state-map (kbd "C-d") nil)
-; (define-key evil-insert-state-map (kbd "C-k") nil)
-;
-; (define-key evil-motion-state-map (kbd "C-e") nil)
-;
 
-; ;; Switching between windows with C-hjkl
-; (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
-; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-; (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-; (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-; (define-key evil-normal-state-map (kbd "C-x h k") 'describe-key)
-;
-; ;; Insert mode as well
-; (define-key evil-insert-state-map (kbd "C-l") 'evil-window-right)
-; (define-key evil-insert-state-map (kbd "C-a") 'move-beginning-of-line)
-; (define-key evil-insert-state-map (kbd "C-h") 'evil-window-left)
-; (define-key evil-insert-state-map (kbd "C-j") 'evil-window-down)
-; (define-key evil-insert-state-map (kbd "C-k") 'evil-window-up)
-; (define-key evil-insert-state-map (kbd "C-x h k") 'describe-key)
-; (define-key evil-insert-state-map (kbd "C-x C-k C-k") 'kill-line)
-;
+;; Make C-e, C-d, C-k behave same as in Emacs when in insert mode.
+(define-key evil-insert-state-map (kbd "C-e") nil)
+(define-key evil-insert-state-map (kbd "C-d") nil)
+(define-key evil-insert-state-map (kbd "C-k") nil)
+
+;; Makes C-e behave same as in Emacs. C-a works out of the box
+(define-key evil-motion-state-map (kbd "C-e") nil)
+
+;; Switching between windows with C-hjkl
+(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+
+(define-key evil-normal-state-map (kbd "C-x h k") 'describe-key)
+(define-key evil-normal-state-map (kbd "C-x h f") 'describe-function)
+(define-key evil-normal-state-map (kbd "C-x h v") 'describe-variable)
+
+(define-key evil-normal-state-map (kbd "C-d") 'scroll-up-command)
+(define-key evil-normal-state-map (kbd "C-u") 'scroll-down-command)
+
+;; Insert mode as well
+(define-key evil-insert-state-map (kbd "C-a") 'move-beginning-of-line)
+
+(define-key evil-insert-state-map (kbd "C-l") 'evil-window-right)
+(define-key evil-insert-state-map (kbd "C-h") 'evil-window-left)
+(define-key evil-insert-state-map (kbd "C-j") 'evil-window-down)
+(define-key evil-insert-state-map (kbd "C-k") 'evil-window-up)
+
+(define-key evil-insert-state-map (kbd "C-x h k") 'describe-key)
+(define-key evil-insert-state-map (kbd "C-x C-k C-k") 'kill-line)
+
 ; (add-to-list 'evil-insert-state-modes 'inferior-haskell-mode)
 
 ; (require 'use-package)
@@ -142,12 +198,6 @@
 ;
 ; (require 'haskell-mode)
 ; (load "haskell-mode-autoloads.el")
-;
-; ;; TODO - check how to enable ido for M-x
-; (ido-mode 1)
-; (ido-everywhere 1)
-; (ido-ubiquitous 1)
-; (flx-ido-mode 1)
 ;
 ; ;; blinking is annoying
 ; (blink-cursor-mode 0)
@@ -399,3 +449,16 @@
 ;  '(shm-use-presentation-mode t)
 ;  '(truncate-lines t)
 ;  '(when (not (facep (aref ansi-term-color-vector 0)))))
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (base16-theme which-key use-package evil))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
