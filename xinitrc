@@ -75,7 +75,10 @@ if [[ "$(hostname)" == "koblih" ]]; then
   fi
 fi
 
-systemctl start --user sxhkd.service
+# systemctl start --user sxhkd.service
+sxhkd &
+
+eval $(ssh-agent)
 
 # exec startxfce4
 exec i3
