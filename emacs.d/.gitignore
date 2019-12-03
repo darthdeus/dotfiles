@@ -13,6 +13,8 @@ auto-save-list/
 menu_log.notes
 request/
 
+config.el
+
 smex-items
 ido.last*
 tramp
