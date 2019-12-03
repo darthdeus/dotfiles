@@ -14,7 +14,7 @@ menu_log.notes
 request/
 
 config.el
-
+amx-items
 smex-items
 ido.last*
 tramp
