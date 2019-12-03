@@ -1,35 +1,3 @@
-(add-to-list 'default-frame-alist '(font . "Fantasque Sans Mono-12"))
-(set-face-attribute 'default t :font "Fantasque Sans Mono-12")
-;(set-face-attribute 'default t :font "Fantasque Sans Mono-12")
-;(set-face-attribute 'default nil :height 120)
-(set-face-attribute 'default nil :height 140)
-; (set-face-attribute 'default nil :height 150)
-;(set-face-attribute 'default nil :height 170)
-;(set-face-attribute 'default nil :height 180)
-
-; TODO - use display-graphic-p instead of window-system
-(when window-system (scroll-bar-mode 0))
-(when window-system (menu-bar-mode 1))
-(when tool-bar-mode (tool-bar-mode 0))
-(when (not (window-system)) (menu-bar-mode 0))
-
-
-;; TODO - check what this actually does. how does it change the original apropos search?
-;(setq apropos-do-all t)
-
-; TODO: install or use from git?
-; (add-to-list 'load-path "~/.emacs.d/use-package")
-
-(setq backup-directory-alist '(("" . "~/.emacs.d/emacs-backup")))
-
-;; Simple helper to interactively set font size
-(defun set-font-size (size) (set-face-attribute 'default nil :height size))
-
-;; TODO: chci to?
-;; Compatibility package
-; (require 'cl)
-
-
 ;; PACKAGE CONFIG
 (require 'package)
 ; TODO: does this make sense only together with use-package?
@@ -37,7 +5,7 @@
 (setq package-enable-at-startup nil)
 
 (setq
- package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+ package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                     ("org" . "https://orgmode.org/elpa/")
                     ("melpa" . "https://melpa.org/packages/")
                     ("melpa-stable" . "https://stable.melpa.org/packages/"))
@@ -48,6 +16,10 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+; We use https://orgmode.org/worg/org-contrib/babel/ to load the code
+; from org-mode.
+(org-babel-load-file (expand-file-name "~/.emacs.d/config.org"))
 
 ;; Shows options when only part of a key binding (chord?) is pressed.
 (use-package which-key
@@ -62,19 +34,18 @@
   :ensure t
   :config (load-theme 'base16-default-dark t))
 
+; (use-package spacemacs-theme
+;   :ensure t
+;   :config (load-theme 'spacemacs-dark t))
+
 ; (when (not package-archive-contents)
 ;   (package-refresh-contents)
 ;   (package-install 'use-package))
 
 
-(defvar my-term-shell "/usr/bin/zsh")
-(defadvice ansi-term (before force-bash)
-  (interactive (list my-term-shell)))
-(ad-activate 'ansi-term)
-
 ;; Saner emacs defaults
-; (setq inhibit-startup-message t)
-; (setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
+(setq inhibit-splash-screen t)
 
 ; TODO: is it better to use `defalias` or `fset`?
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -89,7 +60,19 @@
 ; Scroll line by line instead of moving half a screen when
 ; the cursor moves off.
 (setq scroll-conservatively 100)
-(global-hl-line-mode t)
+; Highlight the current line, but only in GUI mode.
+(when window-system (global-hl-line-mode t))
+; Render some symbols (like lambda) with a unicode symbol.
+(when window-system (global-prettify-symbols-mode t))
+
+; Disable backup? (setq make-backup-file nil)
+(setq backup-directory-alist '(("" . "~/.emacs.d/emacs-backup")))
+(setq auto-save-default nil)
+
+(use-package beacon
+  :ensure t
+  :init (beacon-mode 1))
+
 
 
 ;; TODO - check how to enable ido for M-x
@@ -100,18 +83,21 @@
 ; (flx-ido-mode 1)
 
 ;; EVIL MODE
-(require 'evil)
+(use-package evil
+  :ensure t
+  :init (evil-mode 1))
+
 ; (require 'evil-surround)
-(evil-mode 1)
 
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 (define-key evil-visual-state-map (kbd "C-c") 'evil-normal-state)
 (define-key evil-visual-state-map (kbd "C-c") 'evil-exit-visual-state)
 
+(define-key evil-normal-state-map (kbd ",,") 'evil-buffer)
+
 ; (global-evil-surround-mode 1)
 ;
 ; (define-key evil-normal-state-map (kbd ",f") 'projectile-find-file)
-; (define-key evil-normal-state-map (kbd ",,") 'evil-buffer)
 ; (define-key evil-normal-state-map (kbd "q") nil)
 
 ;; Make C-e, C-d, C-k behave same as in Emacs when in insert mode.
@@ -455,7 +441,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (base16-theme which-key use-package evil))))
+ '(package-selected-packages
+   (quote
+    (org-bullets spacemacs-theme beacon base16-theme which-key use-package evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

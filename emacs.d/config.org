@@ -1,0 +1,50 @@
+* Basic window and font settings
+
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'default-frame-alist '(font . "Fantasque Sans Mono-12"))
+  (set-face-attribute 'default t :font "Fantasque Sans Mono-12")
+  ;(set-face-attribute 'default t :font "Fantasque Sans Mono-12")
+  (set-face-attribute 'default nil :height 120)
+  ;(set-face-attribute 'default nil :height 140)
+  ; (set-face-attribute 'default nil :height 150)
+  ;(set-face-attribute 'default nil :height 170)
+  ;(set-face-attribute 'default nil :height 180)
+
+  ; TODO - use display-graphic-p instead of window-system
+  (when window-system (scroll-bar-mode 0))
+  (when window-system (menu-bar-mode 1))
+  (when tool-bar-mode (tool-bar-mode 0))
+  (when (not (window-system)) (menu-bar-mode 0))
+
+
+  ;; TODO - check what this actually does. how does it change the original apropos search?
+  ;(setq apropos-do-all t)
+
+  ; TODO: install or use from git?
+  ; (add-to-list 'load-path "~/.emacs.d/use-package")
+
+  ;; Simple helper to interactively set font size
+  (defun set-font-size (size) (set-face-attribute 'default nil :height size))
+
+  ;; TODO: chci to?
+  ;; Compatibility package
+  ; (require 'cl)
+#+END_SRC
+
+* Terminal
+
+#+BEGIN_SRC emacs-lisp
+  (defvar my-term-shell "/usr/bin/zsh")
+  (defadvice ansi-term (before force-bash)
+    (interactive (list my-term-shell)))
+  (ad-activate 'ansi-term)
+#+END_SRC
+
+* Org bullets
+
+#+BEGIN_SRC emacs-lisp
+  (use-package org-bullets
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
+#+END_SRC
