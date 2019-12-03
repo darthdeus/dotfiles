@@ -65,6 +65,12 @@ macro index <f3> '<enter-command> source ~/.mutt/accounts/icloud<enter><change-f
 macro index <f4> '<enter-command> source ~/.mutt/accounts/ufal<enter><change-folder>!<enter>'
 source ~/.mutt/accounts/priv
 
+# macro index <f2> '<change-folder>~/.mail/gmail/inbox<enter>'
+# macro index <f3> '<change-folder>~/.mail/icloud/inbox<enter>'
+# folder-hook ~/.mail/gmail source ~/.mutt/accounts/gmail
+# folder-hook ~/.mail/icloud source ~/.mutt/accounts/icloud
+
+
 # folder-hook gmail  "source ~/.mutt/gmail.rc"
 # folder-hook icloud "source ~/.mutt/icloud.rc"
 
