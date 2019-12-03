@@ -48,3 +48,81 @@
     :config
     (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
 #+END_SRC
+
+* IDO
+
+When do we want to use ido-enable-flex-matching?
+#+BEGIN_SRC emacs-lisp
+  (setq ido-enable-flex-matching nil)
+  (setq ido-create-new-buffer 'always)
+  (ido-mode 1)
+  (ido-everywhere 1)
+
+  (use-package ido-completing-read+
+    :ensure t
+    :init (ido-ubiquitous-mode 1))
+
+  (use-package ido-vertical-mode
+    :ensure t
+    :init
+    (ido-vertical-mode 1))
+
+  ; (use-package smex
+  ;   :ensure t
+  ;   :init (smex-initialize)
+  ;   :bind ("M-x" . smex))
+
+  (use-package amx
+    :ensure t
+    :init (amx-mode 1))
+
+  ; switch buffers
+  (global-set-key (kbd "C-x b") 'ido-switch-buffer)
+#+END_SRC
+
+* Buffers
+enable ibuffer
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
+  ; Don't want this yet
+  ; (setq ibuffer-expert t)
+#+END_SRC
+
+* avy
+#+BEGIN_SRC emacs-lisp
+  (use-package avy
+    :ensure t
+    :bind ("M-s" . avy-goto-char))
+#+END_SRC
+
+* config reload
+
+#+BEGIN_SRC emacs-lisp
+  (defun config-visit ()
+    (interactive)
+    (find-file "~/.emacs.d/config.org"))
+
+  (global-set-key (kbd "C-c e") 'config-visit)
+
+  (defun config-reload ()
+    (interactive)
+    (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
+
+  (global-set-key (kbd "C-c r") 'config-reload)
+#+END_SRC
+
+* rainbow
+
+#+BEGIN_SRC emacs-lisp
+  (use-package rainbow-mode
+    :ensure t
+    :init (rainbow-mode 1))
+#+END_SRC
+
+* magit
+
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :ensure t
+    :bind ("M-g" . magit-status))
+#+END_SRC

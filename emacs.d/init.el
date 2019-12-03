@@ -443,7 +443,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-bullets spacemacs-theme beacon base16-theme which-key use-package evil))))
+    (magit rainbow-mode ido-completing-read+ amx avy smex ido-vertical-mode org-bullets spacemacs-theme beacon base16-theme which-key use-package evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
