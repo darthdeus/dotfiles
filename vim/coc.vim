@@ -3,7 +3,7 @@
 let g:coc_global_extensions = [
       \ 'coc-highlight', 'coc-vimlsp', 'coc-lists',
       \ 'coc-snippets', 'coc-json', 'coc-python',
-      \ 'coc-tsserver'
+      \ 'coc-tsserver', 'coc-rls'
       \ ]
 
 " Better display for messages

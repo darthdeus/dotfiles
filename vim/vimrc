@@ -33,9 +33,6 @@ Plug 'lervag/vimtex'
 let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'
 
-" Plug 'fatih/vim-go'
-" let g:go_def_mapping_enabled = 0
-
 Plug 'junegunn/goyo.vim'
 " Plug 'junegunn/limelight.vim'
 
@@ -93,6 +90,8 @@ Plug 'tell-k/vim-autopep8'
 Plug 'sbdchd/neoformat'
 
 Plug 'lilydjwg/colorizer'
+
+Plug 'rust-lang/rust.vim'
 
 " -------------------------------
 " Plug 'w0rp/ale'
