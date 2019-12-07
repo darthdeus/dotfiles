@@ -1,4 +1,4 @@
-export PIPAPP_DIR="${PIPAPP_DIR:=$HOME/.pip-apps}"
+PIPAPP_DIR="${PIPAPP_DIR:=$HOME/.pip-apps}"
 export PATH="$PIPAPP_DIR/bin:$PATH"
 
 pip-app () {
