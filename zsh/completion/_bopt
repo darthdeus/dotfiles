@@ -30,6 +30,7 @@ _bopt_cmds() {
     'debug:Open an experiment with iPDB.'
     'clean:Remove all samples and kill all jobs.'
     'suggest:Suggest the next set of hyperparameters.'
+    'multiweb:Start web interface for multiple experiments'
   )
 
   _describe -t commands 'bopt command' commands "$@"
@@ -58,7 +59,7 @@ _bopt() {
   case $state in
     (args)
        case $line[1] in
-         (init|run-single|run|single-run|manual-run|web|plot|exp|debug|clean|suggest)
+         (init|run-single|run|single-run|manual-run|web|plot|exp|debug|clean|suggest|multiweb)
            _bopt_results && ret=0
          ;;
          (suggest)
