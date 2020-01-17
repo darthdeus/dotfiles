@@ -23,7 +23,7 @@ super + shift + n
   thunar
 
 super + shift + o
-  ~/.todo/paste-url.sh
+  ~/.todo/bin/paste-url
 
 super + shift + i
-  ~/.todo/zenity-todo.sh
+  ~/.todo/bin/zenity-todo
