@@ -31,6 +31,7 @@ _bopt_cmds() {
     'clean:Remove all samples and kill all jobs.'
     'suggest:Suggest the next set of hyperparameters.'
     'multiweb:Start web interface for multiple experiments'
+    'convert-meta:Convert between meta file formats'
   )
 
   _describe -t commands 'bopt command' commands "$@"
@@ -59,7 +60,7 @@ _bopt() {
   case $state in
     (args)
        case $line[1] in
-         (init|run-single|run|single-run|manual-run|web|plot|exp|debug|clean|suggest|multiweb)
+         (init|run-single|run|single-run|manual-run|web|plot|exp|debug|clean|suggest|multiweb|convert-meta)
            _bopt_results && ret=0
          ;;
          (suggest)
