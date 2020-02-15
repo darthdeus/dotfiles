@@ -1,8 +1,8 @@
+default: link
+
 a:
 	xrdb ~/.Xresources
 	urxvt
-
-default: link
 
 all: install-dwm install-st symlink malloc_dump
 
