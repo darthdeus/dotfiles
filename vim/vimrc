@@ -15,12 +15,34 @@ call plug#begin('~/.vim/bundle')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
-" Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'slim-template/vim-slim', { 'for': 'slim' }
+Plug 'skwp/vim-rspec'
+
+
+Plug 'prettier/vim-prettier'
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#autoformat_config_present = 1
+let g:prettier#autoformat_config_files = ['.prettierrc']
+Plug 'jparise/vim-graphql'
+Plug 'pangloss/vim-javascript'
+let g:javascript_plugin_flow = 1
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
+" Plug 'leafgarland/typescript-vim'
+" Plug 'Quramy/tsuquyomi'
+" Plug 'peitalin/vim-jsx-typescript'
+
+Plug 'editorconfig/editorconfig-vim'
 
 Plug 'mileszs/ack.vim'
 
@@ -57,15 +79,9 @@ Plug 'tomtom/tlib_vim'
 
 Plug 'godlygeek/tabular'
 
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-
-" Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
-" Plug 'leafgarland/typescript-vim'
-" Plug 'Quramy/tsuquyomi'
 
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+" Plug 'itchyny/lightline.vim'
 
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTree' }
@@ -175,6 +191,7 @@ let g:ale_linters = {
 set synmaxcol=7000
 
 let g:airline_powerline_fonts = 1
+" let g:airline_theme='simple'
 let g:airline_theme='base16_default'
 
 " TODO: add back yapf when https://github.com/sbdchd/neoformat/issues/126 is fixed
@@ -380,6 +397,7 @@ set t_Co=256
 set background=dark
 
 let base16colorspace=256  " Access colors present in 256 colorspace
+" color base16-material-palenight
 color base16-default
 
 " Directories for swp files
@@ -450,6 +468,20 @@ nnoremap <leader>ge :e ~/.vimrc<CR>
 nnoremap <leader>gn :ALENext<CR>
 nnoremap <leader>gp :ALEPrevious<CR>
 nnoremap <leader>gr :Semshi rename<CR>
+
+" Rails specific keystrokes
+noremap <leader>gr :topleft :split config/routes.rb<CR>
+noremap <leader>gg :topleft 50 :split Gemfile<CR>
+
+noremap <leader>gv :FZF app/views<cr>
+noremap <leader>gc :FZF app/controllers<cr>
+noremap <leader>gm :FZF app/models<cr>
+noremap <leader>gs :FZF app/services<cr>
+noremap <leader>gh :FZF app/helpers<cr>
+noremap <leader>gl :FZF lib<cr>
+noremap <leader>gk :FZF app/assets/stylesheets<cr>
+noremap <leader>gj :FZF app/assets/javascripts<cr>
+
 
 " Expand %% to directory path of current buffer
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
@@ -558,7 +590,7 @@ aug various_file_types
   autocmd BufRead,BufNewFile *.asm set ft=nasm
 
   " add json syntax highlighting
-  autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+  " autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
   autocmd BufNewFile,BufRead *.slime set filetype=slim
 
