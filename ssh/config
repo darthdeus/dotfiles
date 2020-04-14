@@ -91,6 +91,10 @@ host koblih
   hostname 192.168.1.99
   user darth
 
+host journey
+  hostname journeyapp.net
+  user shosanna
+
 # Host *
 #   ControlMaster auto
 #   ControlPath ~/.ssh/cm_socket/%r@%h:%p
