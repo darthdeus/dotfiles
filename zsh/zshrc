@@ -99,6 +99,7 @@ LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 
 export GOPATH="$HOME/projects/go"
 
+export npm_config_prefix="~/.npm"
 PATH="$HOME/.dotfiles/bin:$HOME/.npm/bin:$LOCAL_PATHS:$PATH"
 
 # Base16 Shell
@@ -198,7 +199,10 @@ if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof
 fi
 
+eval "$(rbenv init -)"
+
 # TODO: don't dumbly run this all the time
 # command -v redshift >/dev/null 2>&1 && redshift -O 5500
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="$HOME/.todo/bin:$PATH"
