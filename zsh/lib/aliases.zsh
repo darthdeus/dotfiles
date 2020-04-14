@@ -34,7 +34,14 @@ alias lal="ls -lah"
 
 alias s="git status -sb"
 alias d="git diff"
-alias n="newsboat"
+alias nx="npx"
+alias n="npm"
+alias ns="npm run start"
+alias ni="npm install"
+# alias n="newsboat"
+
+alias b="bundler"
+alias r="rails"
 
 # IP related stuff
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
