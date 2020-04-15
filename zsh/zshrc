@@ -206,3 +206,4 @@ eval "$(rbenv init -)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="$HOME/.todo/bin:$PATH"
+eval "$(direnv hook zsh)"
