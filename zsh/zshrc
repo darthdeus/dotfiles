@@ -99,8 +99,7 @@ LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 
 export GOPATH="$HOME/projects/go"
 
-export npm_config_prefix="~/.npm"
-PATH="$HOME/.dotfiles/bin:$HOME/.npm/bin:$LOCAL_PATHS:$PATH"
+PATH="./node_modules/.bin:$HOME/.dotfiles/bin:$LOCAL_PATHS:$HOME/.yarn/bin:$PATH"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -207,3 +206,13 @@ eval "$(rbenv init -)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="$HOME/.todo/bin:$PATH"
 eval "$(direnv hook zsh)"
+
+unset npm_config_prefix
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+PATH="/home/darth/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/darth/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/darth/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/darth/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/darth/perl5"; export PERL_MM_OPT;

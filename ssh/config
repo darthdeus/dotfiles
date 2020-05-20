@@ -23,7 +23,7 @@ host cam
 host cat
   hostname catsocket.com
   user deploy
-  port 42222
+  # port 42222
   IdentitiesOnly yes
   IdentityFile ~/.ssh/id_rsa_yubikey.pub
 

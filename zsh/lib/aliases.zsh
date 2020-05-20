@@ -38,6 +38,8 @@ alias nx="npx"
 alias n="npm"
 alias ns="npm run start"
 alias ni="npm install"
+alias nv="npm version"
+alias nr="npm run"
 # alias n="newsboat"
 
 alias b="bundler"

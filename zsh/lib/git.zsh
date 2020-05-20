@@ -93,9 +93,8 @@ git-new() {
   git add .gitignore &&
   git commit -m "Initial comit"
 }
-alias glog='git log --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
 alias cl='git clone'
-alias gl='glog --graph'
+alias gl='git log --graph --pretty="format:%C(yellow)%h%C(auto)%d%Creset %s %C(white) %C(cyan)%an, %C(magenta)%ar%Creset"'
 alias gla='gl --all'
 alias glk="git-log-viewer"
 
@@ -109,7 +108,7 @@ alias gmf='git merge --ff-only'
 alias gp='git push'
 alias gpt='gp --tags'
 alias gr='git reset'
-alias grb='git rebase -p'
+alias grb='git rebase -r'
 alias grbc='git rebase --continue'
 alias grbi='git rebase -i'
 alias grh='git reset --hard'
