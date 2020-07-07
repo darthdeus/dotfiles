@@ -111,11 +111,11 @@ Plug 'lilydjwg/colorizer'
 Plug 'rust-lang/rust.vim'
 
 " -------------------------------
-" Plug 'w0rp/ale'
-" Plug 'Valloric/YouCompleteMe'
-" Plug 'zxqfl/tabnine-vim'
+Plug 'w0rp/ale'
+Plug 'Valloric/YouCompleteMe'
+Plug 'zxqfl/tabnine-vim'
 " -------------------------------
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " -------------------------------
 
 " Plug 'ervandew/supertab'
@@ -730,7 +730,7 @@ endfunction
 
 
 
-runtime coc.vim
+" runtime coc.vim
 
 
 

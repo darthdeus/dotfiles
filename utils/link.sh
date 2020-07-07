@@ -13,7 +13,6 @@ ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc"
 ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
 ln -nsf "$DOT/Xmodmap"       "$HOME/.Xmodmap"
 
-ln -nsf "$DOT/nixpkgs"       "$HOME/.config/nixpkgs"
 ln -nsf "$DOT/emacs.d"       "$HOME/.emacs.d"
 
 mkdir -p "$HOME/.newsboat"

@@ -198,7 +198,7 @@ if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof
 fi
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 # TODO: don't dumbly run this all the time
 # command -v redshift >/dev/null 2>&1 && redshift -O 5500
