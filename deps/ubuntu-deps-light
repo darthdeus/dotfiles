@@ -5,6 +5,7 @@ ctags
 curl
 direnv
 git
+git-lfs
 golang
 htop
 mosh
