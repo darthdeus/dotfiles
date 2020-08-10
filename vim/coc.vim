@@ -6,6 +6,9 @@ let g:coc_global_extensions = [
       \ 'coc-tsserver', 'coc-rls'
       \ ]
 
+" let g:coc_status_error_sign = '!'
+" let g:coc_status_warning_sign = '$'
+
 " Better display for messages
 " set cmdheight=2
 

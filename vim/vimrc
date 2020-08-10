@@ -52,9 +52,9 @@ Plug 'mgedmin/python-imports.vim'
 
 Plug 'calviken/vim-gdscript3'
 
-Plug 'lervag/vimtex'
-let g:vimtex_view_method = 'zathura'
-let g:tex_flavor = 'latex'
+" Plug 'lervag/vimtex'
+" let g:vimtex_view_method = 'zathura'
+" let g:tex_flavor = 'latex'
 
 Plug 'junegunn/goyo.vim'
 " Plug 'junegunn/limelight.vim'
@@ -81,8 +81,11 @@ Plug 'tomtom/tlib_vim'
 Plug 'godlygeek/tabular'
 
 
-Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
-" Plug 'itchyny/lightline.vim'
+" Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+
+Plug 'Shougo/echodoc.vim'
+let g:echodoc#enable_at_startup = 1
 
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTree' }
@@ -106,16 +109,17 @@ Plug 'tell-k/vim-autopep8'
 
 Plug 'sbdchd/neoformat'
 
-Plug 'lilydjwg/colorizer'
+" Plug 'lilydjwg/colorizer'
 
 Plug 'rust-lang/rust.vim'
+" Plug 'fatih/vim-go'
 
 " -------------------------------
-Plug 'w0rp/ale'
-Plug 'Valloric/YouCompleteMe'
-Plug 'zxqfl/tabnine-vim'
+" Plug 'w0rp/ale'
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'zxqfl/tabnine-vim'
 " -------------------------------
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " -------------------------------
 
 " Plug 'ervandew/supertab'
@@ -365,7 +369,7 @@ nnoremap <CR> :nohlsearch<CR>/<BS>
 " TODO - how does this differ from "longest,list" only?
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build,logs
+set wildignore+=obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build,logs,tags
 let NERDTreeRespectWildIgnore=1
 
 " TODO - what is the default behavior?
@@ -399,7 +403,8 @@ set background=dark
 
 let base16colorspace=256  " Access colors present in 256 colorspace
 " color base16-material-palenight
-color base16-default
+" color base16-default
+color Tomorrow-Night-Eighties
 
 " Directories for swp files
 set backupdir=~/.vim/backup
@@ -691,35 +696,35 @@ endif
 "}}
 
 
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
+" if !exists('g:airline_symbols')
+"   let g:airline_symbols = {}
+" endif
 
 " unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.maxlinenr = '㏑'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = 'Ɇ'
-let g:airline_symbols.whitespace = 'Ξ'
+" let g:airline_left_sep = '»'
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '«'
+" let g:airline_right_sep = '◀'
+" let g:airline_symbols.crypt = '🔒'
+" let g:airline_symbols.linenr = '☰'
+" let g:airline_symbols.linenr = '␊'
+" let g:airline_symbols.linenr = '␤'
+" let g:airline_symbols.linenr = '¶'
+" let g:airline_symbols.maxlinenr = ''
+" let g:airline_symbols.maxlinenr = '㏑'
+" let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
+" let g:airline_symbols.spell = 'Ꞩ'
+" let g:airline_symbols.notexists = 'Ɇ'
+" let g:airline_symbols.whitespace = 'Ξ'
 
 
 function! s:profilestop()
   profdel func *
   profdel file *
-  qa!
+  " qa!
 endfunction
 
 function! s:profilestart()
@@ -730,12 +735,13 @@ endfunction
 
 
 
-" runtime coc.vim
+runtime coc.vim
 
 
 
 
 
+command! -nargs=0 StartProfiling call s:profilestart()
 command! -nargs=0 StopProfiling call s:profilestop()
 
 set exrc

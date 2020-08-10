@@ -13,7 +13,17 @@
   "python.linting.mypyPath": "/usr/bin/mypy",
   "python.linting.pylintPath": "/usr/bin/pylint",
 
+  "diagnostic.errorSign": "!",
+  "diagnostic.warningSign": "$",
+  "diagnostic.infoSign": ">",
+
+  "suggest.timeout": 15000,
+
   "tsserver.log": "verbose",
+
+  "go.goplsOptions": {
+	  "go.disable.diagnostics": true
+  },
 
   "languageserver": {
     "clangd": {
@@ -25,7 +35,10 @@
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"]
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
     }
   }
 }

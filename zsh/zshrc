@@ -216,3 +216,7 @@ PERL5LIB="/home/darth/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB
 PERL_LOCAL_LIB_ROOT="/home/darth/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/darth/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/darth/perl5"; export PERL_MM_OPT;
+
+export EXCHANGEPATH="$GOPATH/src/github.com/wikifactory/fusion-cache/hoops/exchange/bin/linux64"
+export PATH="$GOPATH/bin:$PATH"
+export GOPRIVATE=github.com/wikifactory
