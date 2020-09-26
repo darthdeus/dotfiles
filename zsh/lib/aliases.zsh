@@ -193,6 +193,10 @@ function man() {
 
 alias p="python3"
 
+if command -v fdfind >/dev/null; then
+  alias fd="fdfind"
+fi
+
 alias jp="jupyter notebook"
 alias vis="python -m visdom.server"
 alias de="deactivate"

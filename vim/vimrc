@@ -12,6 +12,7 @@ endif
 
 call plug#begin('~/.vim/bundle')
 
+Plug 'bounceme/dim-jump'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
@@ -86,6 +87,8 @@ Plug 'itchyny/lightline.vim'
 
 Plug 'Shougo/echodoc.vim'
 let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'virtual'
+" let g:echodoc#type = 'floating'
 
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTree' }
@@ -115,7 +118,7 @@ Plug 'rust-lang/rust.vim'
 " Plug 'fatih/vim-go'
 
 " -------------------------------
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'zxqfl/tabnine-vim'
 " -------------------------------
@@ -189,9 +192,12 @@ let g:ale_python_mypy_options = '--ignore-missing-imports'
 let g:ale_linters = {
       \ 'python': [ 'flake8', 'mypy' ],
       \ 'sh': ['shell', 'shellcheck'],
+      \ 'go': ['gofmt', 'govet', 'revive'],
       \ 'zsh': ['shell']
       \ }
 " \ 'autopep8'
+"
+let g:ale_go_revive_options = '-config=.revive.toml'
 
 set synmaxcol=7000
 
@@ -460,7 +466,8 @@ nnoremap <Down> <C-w>5+
 nnoremap <Left> <C-w>5<
 nnoremap <Right> <C-w>5>
 
-nnoremap - :Switch<cr>
+" nnoremap - :Switch<cr>
+nnoremap - :Neoformat<cr>
 
 nnoremap ; :
 " nnoremap : ;
@@ -592,6 +599,11 @@ endif
 au FileType fzf tunmap <Esc>
 au FileType fzf tunmap <C-c>
 au FileType fzf tunmap <C-g>
+
+" augroup fmt
+"   autocmd!
+"   autocmd BufWritePre *.go undojoin | Neoformat
+" augroup END
 
 let g:jedi#smart_auto_mappings = 0
 

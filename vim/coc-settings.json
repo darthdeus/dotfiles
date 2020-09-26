@@ -21,10 +21,6 @@
 
   "tsserver.log": "verbose",
 
-  "go.goplsOptions": {
-	  "go.disable.diagnostics": true
-  },
-
   "languageserver": {
     "clangd": {
       "command": "clangd",

@@ -220,3 +220,5 @@ PERL_MM_OPT="INSTALL_BASE=/home/darth/perl5"; export PERL_MM_OPT;
 export EXCHANGEPATH="$GOPATH/src/github.com/wikifactory/fusion-cache/hoops/exchange/bin/linux64"
 export PATH="$GOPATH/bin:$PATH"
 export GOPRIVATE=github.com/wikifactory
+
+source "$HOME/projects/emsdk/emsdk_env.sh" 2>&1 >/dev/null
