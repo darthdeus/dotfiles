@@ -48,11 +48,6 @@ man-db
 man-pages
 sudo
 
-linux
-linux-headers
-linux-lts
-linux-lts-headers
-
 python-scikit-learn
 
 neovim
