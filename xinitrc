@@ -67,9 +67,18 @@ if command -v autocutsel; then
   autocutsel -selection PRIMARY -fork &
 fi
 
-if [[ "$(hostname)" == "koblih" ]]; then
+if [[ "$(hostname)" == "pipik" ]]; then
   if command -v xrandr; then
-    xrandr --output HDMI-0 --off --output HDMI-1 --off --output HDMI-2 --mode 1920x1200 --pos 0x240 --rotate normal --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --mode 2560x1440 --pos 1920x0 --rotate normal --output DP-5 --off
+    # xrandr --output HDMI-0 --off \
+    #   --output HDMI-1 --off \
+    #   --output HDMI-2 --mode 1920x1200 --pos 0x240 --rotate normal \
+    #   --output DP-0 --off \
+    #   --output DP-1 --off \
+    #   --output DP-2 --off \
+    #   --output DP-3 --off --output DP-4 --mode 2560x1440 --pos 1920x0 --rotate normal --output DP-5 --off
+
+    xrandr --output DP-2 --mode 2560x1440 --pos 0x0 --rotate normal \
+      --output DP-4 --mode 3440x1440 --pos 2560x0 --rotate normal --primary
   else
     echo "xrandr not installed"
   fi
