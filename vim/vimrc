@@ -12,6 +12,8 @@ endif
 
 call plug#begin('~/.vim/bundle')
 
+Plug 'jdonaldson/vaxe'
+Plug 'habamax/vim-godot'
 Plug 'bounceme/dim-jump'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
