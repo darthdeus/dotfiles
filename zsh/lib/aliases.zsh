@@ -96,7 +96,7 @@ if [[ $osname == *NixOS* ]]; then
   alias ns="nix-shell"
 fi
 
-if [[ $osname == *arch* ]]; then
+if [[ $osname == *pipik* ]]; then
 # if uname -a | grep -i arch >/dev/null; then
   alias pi="sudo pacman -S"
   alias pe="pacman -Ss"
@@ -114,7 +114,7 @@ alias pra="perf record -F 99 -a -g"
 alias pre="perf report -g 'graph,0.5,caller'"
 alias par="perf stat -ad"
 alias relx="xrdb $HOME/.Xresources"
-alias chrome="google-chrome-stable --high-dpi-support=1 --force-device-scale-factor=1"
+alias chrome="google-chrome-stable --high-dpi-support=1 --force-device-scale-factor=1 --force-dark-mode"
 
 function malloc_dump() {
   LD_PRELOAD="$HOME/.dotfiles/malloc_dump.so" $@
