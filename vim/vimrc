@@ -636,7 +636,7 @@ aug END
 noremap <leader>ws :%s/ *$//g<cr><c-o><cr>
 
 set pastetoggle=<F5>
-set mouse=a
+set mouse-=a
 
 nnoremap <F7> :set keymap=czech-qwerty<CR>
 nnoremap <F8> :set keymap=<CR>
