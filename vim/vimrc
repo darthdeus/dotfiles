@@ -131,7 +131,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+" Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
 " if has('nvim')
 "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -482,7 +482,7 @@ nnoremap ; :
 nnoremap <leader>ge :e ~/.vimrc<CR>
 nnoremap <leader>gn :ALENext<CR>
 nnoremap <leader>gp :ALEPrevious<CR>
-nnoremap <leader>gr :Semshi rename<CR>
+" nnoremap <leader>gr :Semshi rename<CR>
 
 " Rails specific keystrokes
 " noremap <leader>gr :topleft :split config/routes.rb<CR>
