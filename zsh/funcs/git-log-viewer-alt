@@ -1,6 +1,6 @@
 # https://gist.github.com/junegunn/f4fca918e937e6bf5bad
 
-git log --graph --color=always \
+git log --all --graph --color=always \
     --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
 fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
     --bind "ctrl-m:execute:
