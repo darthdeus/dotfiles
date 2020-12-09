@@ -272,7 +272,7 @@ let g:ale_python_mypy_options = '--ignore-missing-imports'
 let g:ale_linters = {
       \ 'python': [ 'flake8', 'mypy' ],
       \ 'sh': ['shell', 'shellcheck'],
-      \ 'go': ['gofmt', 'govet', 'revive'],
+      \ 'go': ['gofmt', 'govet', 'revive', 'staticcheck', 'golangci-lint'],
       \ 'zsh': ['shell']
       \ }
 " \ 'autopep8'
