@@ -194,7 +194,6 @@ fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
 
-
 # TODO: store these in a subdir per host
 # if [[ "$HOST" == "pipik" ]]; then
 #   export QT_SCALE_FACTOR=2
@@ -234,4 +233,3 @@ export GOPRIVATE=github.com/wikifactory
 
 export JWT_SECRET_KEY_PATH=~/wikifactory/keys/private.pem
 export JWT_PUBLIC_KEY_PATH=~/wikifactory/keys/public.pem
-
