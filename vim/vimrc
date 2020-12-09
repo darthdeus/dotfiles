@@ -144,6 +144,13 @@ let g:deoplete#enable_at_startup = 1
 Plug 'lighttiger2505/deoplete-vim-lsp'
 " <TAB>: completion for deoplete from https://github.com/Shougo/deoplete.nvim/issues/816
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><s-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+
+if has('win32') || has('win64')
+  Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
+else
+  Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+endif
 
 " " settings for pyls
 " if executable('pyls')
