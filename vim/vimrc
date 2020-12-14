@@ -422,6 +422,7 @@ set scrolloff=9
 " set relativenumber
 set nonumber
 set norelativenumber
+set noshowmode
 
 " TODO - check if this is still necessary in vim
 " Set encoding
@@ -677,9 +678,12 @@ if has('nvim')
   au TermOpen * tnoremap <C-g> <c-\><c-n>
 endif
 
-au FileType fzf tunmap <Esc>
-au FileType fzf tunmap <C-c>
-au FileType fzf tunmap <C-g>
+" TODO m1 ... bug? disabled for now
+" au FileType fzf tunmap <Esc>
+" au FileType fzf tunmap <C-c>
+" au FileType fzf tunmap <C-g>
+" TODO m1 ... bug?
+
 
 " augroup fmt
 "   autocmd!
