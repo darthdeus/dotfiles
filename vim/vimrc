@@ -14,8 +14,17 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 
 call plug#begin('~/.vim/bundle')
 
-Plug 'jdonaldson/vaxe'
-Plug 'habamax/vim-godot'
+
+" Plug 'jdonaldson/vaxe'
+" Plug 'habamax/vim-godot'
+" Plug 'tpope/vim-haml'
+" Plug 'tpope/vim-rails'
+" Plug 'tpope/vim-rake'
+" Plug 'slim-template/vim-slim', { 'for': 'slim' }
+" Plug 'thoughtbot/vim-rspec'
+" " let g:rspec_command = "!bin/rspec {spec}"
+" let g:rspec_command = ":call VimuxRunCommand('bin/rspec {spec}')"
+
 Plug 'bounceme/dim-jump'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
@@ -26,13 +35,6 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rsi'
-Plug 'tpope/vim-haml'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'slim-template/vim-slim', { 'for': 'slim' }
-Plug 'thoughtbot/vim-rspec'
-" let g:rspec_command = "!bin/rspec {spec}"
-let g:rspec_command = ":call VimuxRunCommand('bin/rspec {spec}')"
 
 Plug 'prettier/vim-prettier'
 let g:prettier#autoformat_require_pragma = 0
@@ -76,7 +78,7 @@ Plug 'LnL7/vim-nix'
 " Plug 'rking/ag.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 
@@ -84,7 +86,6 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tomtom/tlib_vim'
 
 Plug 'godlygeek/tabular'
-
 
 " Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'itchyny/lightline.vim'
