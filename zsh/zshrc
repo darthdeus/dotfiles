@@ -233,3 +233,7 @@ export GOPRIVATE=github.com/wikifactory
 
 export JWT_SECRET_KEY_PATH=~/wikifactory/keys/private.pem
 export JWT_PUBLIC_KEY_PATH=~/wikifactory/keys/public.pem
+
+export PATH="$HOME/.cargo/bin:$HOME/projects/homebrew/bin:$PATH"
+
+# TODO: defaults write -g com.apple.mouse.scaling -integer -1
