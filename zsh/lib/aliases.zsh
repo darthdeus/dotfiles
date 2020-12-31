@@ -170,6 +170,7 @@ function run-kernel() {
 }
 
 alias gpg="gpg2"
+alias c="cargo run"
 
 alias doc="docker"
 alias dit="docker run -it"
