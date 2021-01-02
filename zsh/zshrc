@@ -235,5 +235,6 @@ export JWT_SECRET_KEY_PATH=~/wikifactory/keys/private.pem
 export JWT_PUBLIC_KEY_PATH=~/wikifactory/keys/public.pem
 
 export PATH="$HOME/.cargo/bin:$HOME/projects/homebrew/bin:$PATH"
+export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
 
 # TODO: defaults write -g com.apple.mouse.scaling -integer -1
