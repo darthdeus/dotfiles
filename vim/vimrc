@@ -672,7 +672,7 @@ nnoremap <leader><leader> <c-^>
 
 " CTags - TODO - find a good hotkey for this
 " # TODO: ignore from a file?
-noremap <leader>lt :!ctags --extra=+f --exclude=build --exclude=public --exclude=.mypy_cache --exclude=node_modules --exclude=.git -R *<CR>
+noremap <leader>lt :!ctags --extras=+f --exclude=build --exclude=public --exclude=target --exclude=node_modules --exclude=.git -R *<CR>
 noremap <C-\> :tnext<CR>
 
 noremap <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
