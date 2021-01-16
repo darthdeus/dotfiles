@@ -181,7 +181,8 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> <leader>rn <plug>(lsp-rename)
     nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
+    nmap <buffer> K <Plug>(lsp-hover)
+    nmap <buffer> ga <Plug>(lsp-code-action)
 endfunction
 
 augroup lsp_install
