@@ -213,7 +213,6 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="$HOME/.todo/bin:$PATH"
-eval "$(direnv hook zsh)"
 
 unset npm_config_prefix
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -238,3 +237,5 @@ export PATH="$HOME/.cargo/bin:$HOME/projects/homebrew/bin:$PATH"
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
 
 # TODO: defaults write -g com.apple.mouse.scaling -integer -1
+
+eval "$(direnv hook zsh)"
