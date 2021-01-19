@@ -10,7 +10,11 @@ endif
 " let g:python_host_prog = $HOME . '/.venvs/neovim2/bin/python'
 " let g:python3_host_prog = $HOME . '/.venvs/neovim3/bin/python'
 
-let g:python3_host_prog = '/usr/local/bin/python3'
+if has('macunix')
+  let g:python3_host_prog = '/Users/darth/projects/homebrew/bin/python3'
+else
+  let g:python3_host_prog = '/usr/local/bin/python3'
+endif
 
 call plug#begin('~/.vim/bundle')
 
