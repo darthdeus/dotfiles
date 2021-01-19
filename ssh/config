@@ -95,6 +95,11 @@ host journey
   hostname journeyapp.net
   user shosanna
 
+host wikibuntu
+  hostname 192.168.0.82
+  user darth
+  ForwardX11 yes
+
 # Host *
 #   ControlMaster auto
 #   ControlPath ~/.ssh/cm_socket/%r@%h:%p
