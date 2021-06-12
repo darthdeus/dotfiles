@@ -464,7 +464,7 @@ set expandtab
 
 " set kmp=czech-qwerty
 
-set list listchars=tab:\ \ ,trail:.
+set list listchars=tab:--,trail:.
 
 set backupcopy=yes
 
