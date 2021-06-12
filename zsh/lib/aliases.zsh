@@ -42,6 +42,8 @@ alias nv="npm version"
 alias nr="npm run"
 # alias n="newsboat"
 
+alias ag="ag --path-to-ignore ~/.ignore"
+
 alias b="bundler"
 alias r="rails"
 
