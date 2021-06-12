@@ -622,8 +622,8 @@ noremap <leader>F  :FZF %%<CR>
 
 
 nnoremap <leader>gt :Tags<cr>
-nnoremap <leader>ga :Ag<cr>
-nnoremap <leader>gd :Ag <C-r><C-w><cr>
+nnoremap <leader>ga :Rg<cr>
+nnoremap <leader>gd :Rg <C-r><C-w><cr>
 
 
 " noremap <leader>a :TestSuite<cr>
