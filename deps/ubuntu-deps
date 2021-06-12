@@ -21,7 +21,7 @@ lynx
 elinks
 mosh
 unzip
-ctags
+universal-ctags
 lldb
 cloc
 atop

@@ -2,7 +2,7 @@ ack
 bc
 build-essential
 cloc
-ctags
+universal-ctags
 curl
 direnv
 git
