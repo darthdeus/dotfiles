@@ -260,6 +260,11 @@ call plug#end()
 
 set smartindent
 
+call deoplete#custom#option({
+\ 'max_list': 10,
+\ 'min_pattern_length': 3,
+\ })
+
 let g:jedi#show_call_signatures = "1"
 let g:jedi#show_call_signatures_delay = "0"
 " let g:jedi#completions_enabled = 1
