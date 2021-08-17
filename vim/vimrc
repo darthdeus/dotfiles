@@ -154,7 +154,7 @@ let g:deoplete#enable_at_startup = 1
 
 " let g:lsp_settings_filetype_javascript = ['typescript-language-server', 'eslint-language-server']
 " let g:lsp_settings_filetype_javascript = ['eslint-language-server']
-let g:lsp_settings_filetype_javascript = ['rome']
+" let g:lsp_settings_filetype_javascript = ['rome']
 
 Plug 'lighttiger2505/deoplete-vim-lsp'
 " <TAB>: completion for deoplete from https://github.com/Shougo/deoplete.nvim/issues/816
