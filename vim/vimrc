@@ -20,7 +20,7 @@ call plug#begin('~/.vim/bundle')
 
 
 " Plug 'jdonaldson/vaxe'
-" Plug 'habamax/vim-godot'
+Plug 'habamax/vim-godot'
 " Plug 'tpope/vim-haml'
 " Plug 'tpope/vim-rails'
 " Plug 'tpope/vim-rake'
