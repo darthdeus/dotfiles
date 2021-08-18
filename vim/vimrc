@@ -20,7 +20,7 @@ call plug#begin('~/.vim/bundle')
 
 
 " Plug 'jdonaldson/vaxe'
-Plug 'habamax/vim-godot'
+" Plug 'habamax/vim-godot'
 " Plug 'tpope/vim-haml'
 " Plug 'tpope/vim-rails'
 " Plug 'tpope/vim-rake'
@@ -61,7 +61,8 @@ Plug 'mileszs/ack.vim'
 Plug 'junegunn/gv.vim'
 Plug 'mgedmin/python-imports.vim'
 
-Plug 'calviken/vim-gdscript3'
+" Plug 'calviken/vim-gdscript3'
+Plug 'habamax/vim-godot'
 
 " Plug 'lervag/vimtex'
 " let g:vimtex_view_method = 'zathura'
@@ -139,9 +140,15 @@ endif
 " -------------------------------
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " -------------------------------
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-setlocal omnifunc=lsp#complete
+" --- SWITCH TO NVIM-LSP --------
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'mattn/vim-lsp-settings'
+" setlocal omnifunc=lsp#complete
+" Plug 'lighttiger2505/deoplete-vim-lsp'
+" --------------------------------
+Plug 'neovim/nvim-lspconfig'
+"
+"
 " --------------------------------
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -156,7 +163,6 @@ let g:deoplete#enable_at_startup = 1
 " let g:lsp_settings_filetype_javascript = ['eslint-language-server']
 " let g:lsp_settings_filetype_javascript = ['rome']
 
-Plug 'lighttiger2505/deoplete-vim-lsp'
 " <TAB>: completion for deoplete from https://github.com/Shougo/deoplete.nvim/issues/816
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><s-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
@@ -194,6 +200,22 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> ga <Plug>(lsp-code-action)
 endfunction
 
+func! GodotSettings() abort
+    setlocal foldmethod=expr
+    setlocal tabstop=4
+    setlocal noexpandtab
+    setlocal shiftwidth=4
+    setlocal autoindent
+    nnoremap <buffer> <F4> :GodotRunLast<CR>
+    nnoremap <buffer> <F5> :GodotRun<CR>
+    nnoremap <buffer> <F6> :GodotRunCurrent<CR>
+    nnoremap <buffer> <F7> :GodotRunFZF<CR>
+endfunc
+augroup godot | au!
+    au FileType gdscript call GodotSettings()
+augroup end
+
+
 augroup lsp_install
     au!
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
@@ -203,6 +225,12 @@ augroup END
 " whether to enable diagnostics for vim-lsp (we may want to use ALE for other
 " plugins for that.
 let g:lsp_diagnostics_enabled = 1
+
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+
+" for asyncomplete.vim log
+let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
 " " show diagnostic signs
 let g:lsp_diagnostics_signs_enabled = 1
@@ -254,11 +282,31 @@ let g:ycm_python_binary_path = 'python2'
 
 Plug 'cespare/vim-toml'
 
+Plug 'deoplete-plugins/deoplete-lsp'
+
 " Plug 'terryma/vim-multiple-cursors'
 
 call plug#end()
 
 set smartindent
+
+lua << EOF
+require 'lspconfig'.rust_analyzer.setup{}
+
+require 'lspconfig'.gdscript.setup {
+  on_attach = function (client)
+    local _notify = client.notify
+    client.notify = function (method, params)
+      if method == 'textDocument/didClose' then
+          -- Godot doesn't implement didClose yet
+          return
+      end
+      _notify(method, params)
+    end
+	end
+}
+
+EOF
 
 call deoplete#custom#option({
 \ 'max_list': 10,
