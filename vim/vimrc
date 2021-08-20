@@ -429,6 +429,19 @@ local function setup_servers()
       }
     }
   end
+
+  nvim_lsp.gdscript.setup {
+    on_attach = function (client)
+      local _notify = client.notify
+      client.notify = function (method, params)
+        if method == 'textDocument/didClose' then
+            -- Godot doesn't implement didClose yet
+            return
+        end
+        _notify(method, params)
+      end
+    end
+  }
 end
 
 setup_servers()
@@ -439,18 +452,6 @@ require'lspinstall'.post_install_hook = function ()
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
 
--- nvim_lsp.gdscript.setup {
---   on_attach = function (client)
---     local _notify = client.notify
---     client.notify = function (method, params)
---       if method == 'textDocument/didClose' then
---           -- Godot doesn't implement didClose yet
---           return
---       end
---       _notify(method, params)
---     end
---   end
--- }
 
 -- Enable diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
