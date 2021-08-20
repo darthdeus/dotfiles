@@ -1,0 +1,9 @@
+font:
+  normal:
+    family: Fantasque Sans Mono
+    style: Regular
+  offset:
+    x: -1
+    y: -1
+
+  size: 14
