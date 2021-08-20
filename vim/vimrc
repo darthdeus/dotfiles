@@ -127,11 +127,11 @@ Plug 'sbdchd/neoformat'
 Plug 'rust-lang/rust.vim'
 " Plug 'fatih/vim-go'
 
-" if has('win32') || has('win64')
-"   Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
-" else
-"   Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-" endif
+if has('win32') || has('win64')
+  Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
+else
+  Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+endif
 
 " -------------------------------
 " Plug 'w0rp/ale'
