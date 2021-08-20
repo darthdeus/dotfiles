@@ -1,5 +1,5 @@
 super + Return
-  urxvt -e tmux
+  alacritty -e tmux
 
 super + p
   dmenu_run
