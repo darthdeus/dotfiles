@@ -644,11 +644,12 @@ set modelines=10
 
 set t_Co=256
 set background=dark
+" set termguicolors
 
 let base16colorspace=256  " Access colors present in 256 colorspace
 " color base16-material-palenight
-" color base16-default
-color Tomorrow-Night-Eighties
+color base16-default
+" color Tomorrow-Night-Eighties
 
 " Directories for swp files
 set backupdir=~/.vim/backup
