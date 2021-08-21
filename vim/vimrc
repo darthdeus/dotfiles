@@ -739,7 +739,8 @@ noremap <leader>gr :FZF spec/<CR>
 " Expand %% to directory path of current buffer
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
 nnoremap <Leader>e :call VimuxRunCommand("make")<cr>
-nnoremap <leader>r :call VimuxRunCommand("make ". expand("%h"))<cr>
+" nnoremap <leader>r :call VimuxRunCommand("make ". expand("%h"))<cr>
+nnoremap <leader>r :call VimuxRunCommand("make test")<cr>
 nnoremap <leader>c :call VimuxRunCommand("make clean")<cr>
 
 " Inserts the path of the currently edited file in command mode
