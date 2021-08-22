@@ -57,6 +57,7 @@ ln -nsf "$DOT/ranger/rc.conf"     "$HOME/.config/ranger/rc.conf"
 ln -nsf "$DOT/ranger/scope.sh"    "$HOME/.config/ranger/scope.sh"
 
 ln -nsf "$DOT/alacritty"          "$HOME/.config/alacritty"
+ln -nsf "$DOT/kitty"              "$HOME/.config/kitty"
 
 # ln -nsf "$DOT/polybar"            "$HOME/.config/polybar"
 #
