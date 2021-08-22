@@ -367,6 +367,11 @@ let g:airline_powerline_fonts = 1
 " endif
 
 
+" Set updatetime for CursorHold
+" 300ms of no cursor movement to trigger CursorHold
+" set updatetime=300
+" Show diagnostic popup on cursor hold
+" autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
