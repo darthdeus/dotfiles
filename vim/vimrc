@@ -201,8 +201,7 @@ inoremap <expr><s-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 
 func! GodotSettings() abort
     setlocal foldmethod=expr
-    setlocal tabstop=4
-    setlocal noexpandtab
+    setlocal tabstop=4 noexpandtab autoindent shiftwidth=4
     nnoremap <buffer> <F4> :GodotRunLast<CR>
     nnoremap <buffer> <F5> :GodotRun<CR>
     nnoremap <buffer> <F6> :GodotRunCurrent<CR>
@@ -463,7 +462,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = true,
     signs = true,
-    update_in_insert = true,
+    update_in_insert = false,
     severity_sort = true,
   }
 )
