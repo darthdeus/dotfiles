@@ -247,7 +247,3 @@ function port() {
   local dir=`find /var/db/repos/gentoo -mindepth 2 -maxdepth 2 -type d -print 2> /dev/null | fzf --preview 'repo="{}" && eix $(basename "$(dirname "$repo")")/$(basename "$repo")'`
   cd "$dir"
 }
-
-function wf() {
-  cd "$GOPATH/src/github.com/wikifactory"
-}
