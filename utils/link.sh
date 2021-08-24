@@ -59,21 +59,23 @@ ln -nsf "$DOT/ranger/scope.sh"    "$HOME/.config/ranger/scope.sh"
 ln -nsf "$DOT/alacritty"          "$HOME/.config/alacritty"
 ln -nsf "$DOT/kitty"              "$HOME/.config/kitty"
 
+# TODO: ???
 # ln -nsf "$DOT/polybar"            "$HOME/.config/polybar"
+
 #
-# mkdir -p "$HOME/.mail/"{gmail,icloud}/{inbox,drafts}
-#
-# ln -nsf "$DOT/mutt" "$HOME/.mutt"
-# # mkdir -p "$HOME/.mutt"
-# # mkdir -p "$HOME/.mutt/certs/"
-# # ln -nsf "$DOT/mutt/muttrc"   "$HOME/.mutt/muttrc"
-# ln -nsf "$DOT/mutt/mailcap"  "$HOME/.mailcap"
-#
-# # ln -nsf "$DOT/mutt/gmail.rc"  "$HOME/.mutt/gmail.rc"
-# # ln -nsf "$DOT/mutt/icloud.rc" "$HOME/.mutt/icloud.rc"
-#
-# ln -nsf "$DOT/msmtprc"       "$HOME/.msmtprc"
-# ln -nsf "$DOT/mbsyncrc"      "$HOME/.mbsyncrc"
+mkdir -p "$HOME/.mail/"{gmail,icloud}/{inbox,drafts}
+
+ln -nsf "$DOT/mutt" "$HOME/.mutt"
+# mkdir -p "$HOME/.mutt"
+# mkdir -p "$HOME/.mutt/certs/"
+# ln -nsf "$DOT/mutt/muttrc"   "$HOME/.mutt/muttrc"
+ln -nsf "$DOT/mutt/mailcap"  "$HOME/.mailcap"
+
+# ln -nsf "$DOT/mutt/gmail.rc"  "$HOME/.mutt/gmail.rc"
+# ln -nsf "$DOT/mutt/icloud.rc" "$HOME/.mutt/icloud.rc"
+
+ln -nsf "$DOT/msmtprc"       "$HOME/.msmtprc"
+ln -nsf "$DOT/mbsyncrc"      "$HOME/.mbsyncrc"
 #
 # # ln -nsf "$DOT/c_ycm_extra_conf.py" "$HOME/.ycm_extra_conf.py"
 
