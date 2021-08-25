@@ -437,8 +437,15 @@ local function setup_servers()
     }
   end
 
+  -- nvim_lsp.gdscript.setup{
+  --   on_attach = on_attach,
+  --   flags = {
+  --     debounce_text_changes = 150,
+  --   }
+  -- }
+
   nvim_lsp.gdscript.setup {
-    on_attach = function (client)
+    on_attach = function (client, bufnr)
       local _notify = client.notify
       client.notify = function (method, params)
         if method == 'textDocument/didClose' then
@@ -447,7 +454,12 @@ local function setup_servers()
         end
         _notify(method, params)
       end
-    end
+
+      on_attach(client, bufnr)
+    end,
+    flags = {
+      debounce_text_changes = 150,
+    }
   }
 end
 
