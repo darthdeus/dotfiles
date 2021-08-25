@@ -147,6 +147,7 @@ endif
 " Plug 'lighttiger2505/deoplete-vim-lsp'
 " --------------------------------
 Plug 'neovim/nvim-lspconfig'
+Plug 'simrat39/rust-tools.nvim'
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'nvim-lua/lsp_extensions.nvim'
 
@@ -373,6 +374,9 @@ let g:airline_powerline_fonts = 1
 " autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
 lua << EOF
+require('rust-tools').setup({})
+-- TODO: is this duplicate of the inlay hints that already work?
+-- require('rust-tools.inlay_hints').set_inlay_hints()
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -405,7 +409,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
