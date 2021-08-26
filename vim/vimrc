@@ -133,6 +133,9 @@ else
   Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 endif
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
+
 " -------------------------------
 " Plug 'w0rp/ale'
 " Plug 'Valloric/YouCompleteMe'
@@ -482,6 +485,30 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "rust" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { },  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+
+
+-- require('lsp_extensions').inlay_hints{ enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+
+-- -- Get the counts from your curreent workspace:
+-- local ws_errors = require('lsp_extensions.workspace.diagnostic').get_count(0, 'Error')
+-- local ws_hints = require('lsp_extensions.workspace.diagnostic').get_count(0, 'Hint')
+--
+-- -- Set the qflist for the current workspace
+-- --  For more information, see `:help vim.lsp.diagnostic.set_loc_list()`, since this has some of the same configuration.
+-- require('lsp_extensions.workspace.diagnostic').set_qf_list()
 EOF
 
 
