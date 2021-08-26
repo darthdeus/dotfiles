@@ -448,18 +448,7 @@ local function setup_servers()
   -- }
 
   nvim_lsp.gdscript.setup {
-    on_attach = function (client, bufnr)
-      local _notify = client.notify
-      client.notify = function (method, params)
-        if method == 'textDocument/didClose' then
-            -- Godot doesn't implement didClose yet
-            return
-        end
-        _notify(method, params)
-      end
-
-      on_attach(client, bufnr)
-    end,
+    on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
     }
