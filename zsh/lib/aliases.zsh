@@ -172,7 +172,9 @@ function run-kernel() {
 }
 
 alias gpg="gpg2"
-alias c="cargo run"
+# alias c="cargo make --makefile Make.toml"
+alias c="cargo build"
+alias ce="cargo test"
 
 alias doc="docker"
 alias dit="docker run -it"
