@@ -233,3 +233,4 @@ export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
 # defaults write -g com.apple.scrollwheel.scaling -1
 
 eval "$(direnv hook zsh)"
+# export RA_LOG=rust_analyzer=info
