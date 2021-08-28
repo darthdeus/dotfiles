@@ -226,7 +226,7 @@ PERL_MM_OPT="INSTALL_BASE=/home/darth/perl5"; export PERL_MM_OPT;
 
 # export PATH="$GOPATH/bin:$PATH"
 
-export PATH="$HOME/.cargo/bin:$HOME/projects/homebrew/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/projects/homebrew/bin:$HOME/projects/homebrew/sbin:$PATH"
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
 
 # TODO: defaults write -g com.apple.mouse.scaling -integer -1
