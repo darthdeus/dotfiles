@@ -150,9 +150,16 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 " Plug 'lighttiger2505/deoplete-vim-lsp'
 " --------------------------------
 Plug 'neovim/nvim-lspconfig'
-" Plug 'simrat39/rust-tools.nvim'
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'nvim-lua/lsp_extensions.nvim'
+
+Plug 'simrat39/rust-tools.nvim'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'mfussenegger/nvim-dap'
 
 
 " --------------------------------
