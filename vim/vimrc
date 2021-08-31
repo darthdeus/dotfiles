@@ -125,6 +125,17 @@ Plug 'sbdchd/neoformat'
 " Plug 'lilydjwg/colorizer'
 
 Plug 'rust-lang/rust.vim'
+" Plug 'rhysd/rust-doc.vim'
+
+" Plug 'Shougo/unite.vim'
+" if has('nvim')
+"   Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/denite.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+
 " Plug 'fatih/vim-go'
 
 if has('win32') || has('win64')
