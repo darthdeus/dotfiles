@@ -27,3 +27,7 @@ super + shift + o
 
 super + shift + i
   ~/.todo/bin/zenity-todo
+
+super + shift + b
+  ~/.dotfiles/bin/bitgun
+
