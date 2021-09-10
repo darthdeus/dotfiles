@@ -124,8 +124,19 @@ Plug 'sbdchd/neoformat'
 
 " Plug 'lilydjwg/colorizer'
 
+" let g:rust_fold = 1
+
+" Plug 'Konfekt/FastFold'
+"
+" nmap zuz <Plug>(FastFoldUpdate)
+" let g:fastfold_savehook = 1
+" let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+" let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
+
 Plug 'rust-lang/rust.vim'
 " Plug 'rhysd/rust-doc.vim'
+Plug 'ron-rs/ron.vim'
+Plug 'gutenye/json5.vim'
 
 " Plug 'Shougo/unite.vim'
 " if has('nvim')
@@ -138,13 +149,35 @@ Plug 'rust-lang/rust.vim'
 
 " Plug 'fatih/vim-go'
 
+
+" -------- COQ -----------------
+" " main one
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+" " 9000+ Snippets
+" Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+" ---------- DEOPLETE ---------------
+let g:deoplete#enable_at_startup = 1
 if has('win32') || has('win64')
   Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
 else
   Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 endif
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'deoplete-plugins/deoplete-lsp'
+
+" <TAB>: completion for deoplete from https://github.com/Shougo/deoplete.nvim/issues/816
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><s-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+" ------------------------------------
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/playground'
 
 
 " -------------------------------
@@ -172,24 +205,15 @@ Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'mfussenegger/nvim-dap'
 
+Plug 'zhimsel/vim-stay'
+
 
 " --------------------------------
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
 
 " let g:lsp_settings_filetype_javascript = ['typescript-language-server', 'eslint-language-server']
 " let g:lsp_settings_filetype_javascript = ['eslint-language-server']
 " let g:lsp_settings_filetype_javascript = ['rome']
 
-" <TAB>: completion for deoplete from https://github.com/Shougo/deoplete.nvim/issues/816
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><s-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 
 " " settings for pyls
 " if executable('pyls')
@@ -224,10 +248,10 @@ inoremap <expr><s-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 func! GodotSettings() abort
     setlocal foldmethod=expr
     setlocal tabstop=4 noexpandtab autoindent shiftwidth=4
-    nnoremap <buffer> <F4> :GodotRunLast<CR>
-    nnoremap <buffer> <F5> :GodotRun<CR>
-    nnoremap <buffer> <F6> :GodotRunCurrent<CR>
-    nnoremap <buffer> <F7> :GodotRunFZF<CR>
+    " nnoremap <buffer> <F4> :GodotRunLast<CR>
+    " nnoremap <buffer> <F5> :GodotRun<CR>
+    " nnoremap <buffer> <F6> :GodotRunCurrent<CR>
+    " nnoremap <buffer> <F7> :GodotRunFZF<CR>
 endfunc
 augroup godot | au!
     au FileType gdscript call GodotSettings()
@@ -244,11 +268,11 @@ augroup END
 " plugins for that.
 let g:lsp_diagnostics_enabled = 1
 
-let g:lsp_log_verbose = 1
-let g:lsp_log_file = expand('~/vim-lsp.log')
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/vim-lsp.log')
 
 " for asyncomplete.vim log
-let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
 " " show diagnostic signs
 let g:lsp_diagnostics_signs_enabled = 1
@@ -271,7 +295,6 @@ let g:lsp_diagnostics_highlights_enabled = 1
 let g:lsp_diagnostics_highlights_delay = 0
 let g:lsp_preview_max_width = 80
 
-" https://jdhao.github.io/2020/11/04/replace_deoplete_jedi_for_LSP/
 " -------------------------------
 
 " Plug 'ervandew/supertab'
@@ -279,15 +302,6 @@ let g:lsp_preview_max_width = 80
 
 
 " Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
-
-" if has('nvim')
-"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"   Plug 'Shougo/deoplete.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-"
 
 map <F4> :ImportName<CR>
 
@@ -299,8 +313,6 @@ Plug 'chrisbra/unicode.vim'
 let g:ycm_python_binary_path = 'python2'
 
 Plug 'cespare/vim-toml'
-
-Plug 'deoplete-plugins/deoplete-lsp'
 
 " Plug 'terryma/vim-multiple-cursors'
 
@@ -373,6 +385,11 @@ let maplocalleader=','
 let g:VimuxOrientation = 'h'
 let g:airline_powerline_fonts = 1
 
+let g:coq_settings = {
+      \ 'auto_start': v:false,
+      \ 'clients.tabnine.enabled': v:true
+      \ }
+
 " " SuperTab like snippets behavior.
 " " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 " "imap <expr><TAB>
@@ -396,6 +413,7 @@ let g:airline_powerline_fonts = 1
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
+local coq = require('coq')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -420,7 +438,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<C-w>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
@@ -428,20 +446,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
--- local servers = { 'pyright', 'rust_analyzer', 'tsserver' }
--- local servers = { 'rust_analyzer' }
-
--- for _, lsp in ipairs(servers) do
---   nvim_lsp[lsp].setup {
---     on_attach = on_attach,
---     flags = {
---       debounce_text_changes = 150,
---     }
---   }
--- end
 
 
 local opts = {
@@ -523,6 +527,7 @@ local opts = {
     -- all the opts to send to nvim-lspconfig
     -- these override the defaults set by rust-tools.nvim
     -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
+
     server = {
       on_attach = on_attach,
 
@@ -618,6 +623,7 @@ local function setup_servers()
     }
   }
 
+  -- require('rust-tools').setup(opts)
   require('rust-tools').setup(opts)
   require('rust-tools.inlay_hints').set_inlay_hints()
 end
@@ -641,20 +647,85 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "rust" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  ignore_install = { "javascript" }, -- List of parsers to ignore installing
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { },  -- list of language that will be disabled
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
+-- require'nvim-treesitter.configs'.setup {
+--   ensure_installed = { "rust" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+--   ignore_install = { "javascript" }, -- List of parsers to ignore installing
+--   highlight = {
+--     enable = true,              -- false will disable the whole extension
+--     disable = { },  -- list of language that will be disabled
+--     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+--     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+--     -- Using this option may slow down your editor, and you may see some duplicate highlights.
+--     -- Instead of true it can also be a list of languages
+--     additional_vim_regex_highlighting = false,
+--   },
+-- }
 
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {"c", "cpp", "json", "javascript", "go", "python", "rust", "query", "lua"},
+  highlight = {
+    enable = true,
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "rc",
+      node_decremental = "grm",
+    },
+  },
+  textobjects = {
+      select = {
+        enable = true,
+        keymaps = {
+          -- You can use the capture groups defined in textobjects.scm
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+          ["ac"] = "@class.outer",
+          ["ic"] = "@class.inner",
+
+          -- Or you can define your own textobjects like this
+          ["iF"] = {
+            python = "(function_definition) @function",
+            cpp = "(function_definition) @function",
+            c = "(function_definition) @function",
+            java = "(method_declaration) @function",
+          },
+        },
+      },
+  move = {
+      enable = true,
+      goto_next_start = {
+        ["]a"] = "@function.outer",
+        ["]]"] = "@class.outer",
+      },
+      goto_next_end = {
+        ["]A"] = "@function.outer",
+        ["]["] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[a"] = "@function.outer",
+        ["[["] = "@class.outer",
+      },
+      goto_previous_end = {
+        ["[A"] = "@function.outer",
+        ["[]"] = "@class.outer",
+      },
+    },
+
+  swap = {
+      enable = true,
+      swap_next = {
+        ["<leader>a"] = "@parameter.inner",
+      },
+      swap_previous = {
+        ["<leader>A"] = "@parameter.inner",
+      },
+    },
+    },
+}
 
 -- require('lsp_extensions').inlay_hints{ enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 
@@ -665,6 +736,7 @@ require'nvim-treesitter.configs'.setup {
 -- -- Set the qflist for the current workspace
 -- --  For more information, see `:help vim.lsp.diagnostic.set_loc_list()`, since this has some of the same configuration.
 -- require('lsp_extensions.workspace.diagnostic').set_qf_list()
+
 EOF
 
 
@@ -750,16 +822,16 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 " au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
 
 
-set foldlevelstart=200
-let g:haskell_conceal       = 0
-let g:haskell_quasi         = 1
-let g:haskell_interpolation = 0
-let g:haskell_regex         = 0
-let g:haskell_jmacro        = 0
-let g:haskell_shqq          = 0
-let g:haskell_sql           = 0
-let g:haskell_json          = 0
-let g:haskell_xml           = 0
+" set foldlevelstart=200
+" let g:haskell_conceal       = 0
+" let g:haskell_quasi         = 1
+" let g:haskell_interpolation = 0
+" let g:haskell_regex         = 0
+" let g:haskell_jmacro        = 0
+" let g:haskell_shqq          = 0
+" let g:haskell_sql           = 0
+" let g:haskell_json          = 0
+" let g:haskell_xml           = 0
 
 " gist-vim defaults
 if has('mac')
@@ -911,6 +983,7 @@ nnoremap <Right> <C-w>5>
 
 " nnoremap - :Switch<cr>
 nnoremap - :Neoformat<cr>
+" nnoremap - :RustFmt<cr>
 
 nnoremap ; :
 " nnoremap : ;
@@ -943,6 +1016,8 @@ noremap <leader>gr :FZF spec/<CR>
 " Expand %% to directory path of current buffer
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
 nnoremap <Leader>e :call VimuxRunCommand("make")<cr>
+nnoremap <F5> :call VimuxRunCommand("make")<cr>
+nnoremap <F4> :call VimuxRunCommand("make")<cr>
 " nnoremap <leader>r :call VimuxRunCommand("make ". expand("%h"))<cr>
 nnoremap <leader>r :call VimuxRunCommand("make test")<cr>
 nnoremap <leader>c :call VimuxRunCommand("make clean")<cr>
@@ -972,16 +1047,20 @@ nnoremap <leader>gd :Rg <C-r><C-w><cr>
 " " Run only the example under the cursor
 " noremap <leader>T :TestNearest<cr>
 
-map <Leader>tt :call RunCurrentSpecFile()<CR>
-map <Leader>T :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+" map <Leader>tt :call RunCurrentSpecFile()<CR>
+" map <Leader>T :call RunNearestSpec()<CR>
+" map <Leader>l :call RunLastSpec()<CR>
+" map <Leader>a :call RunAllSpecs()<CR>
 
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>B :BTags<cr>
 
 nnoremap <C-a> ^
 nnoremap <C-e> $
+
+" TODO: figure out how to remap these?
+" nunmap ]f
+" nunmap [f
 
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
@@ -1086,7 +1165,7 @@ aug END
 " remove unnecessary whitespaces
 noremap <leader>ws :%s/ *$//g<cr><c-o><cr>
 
-set pastetoggle=<F5>
+set pastetoggle=<F3>
 set mouse-=a
 
 nnoremap <F7> :set keymap=czech-qwerty<CR>
@@ -1115,9 +1194,15 @@ let g:limelight_paragraph_span = 2
 
 " let &viewdir=expand("~/.vim/viewdir")
 " if !isdirectory(expand(&viewdir))|call mkdir(expand(&viewdir), "p", 451)|endif
-"
+
 " " TODO: fix this
 " augroup AutoSaveFolds
+"   autocmd!
+"   autocmd BufWinLeave * mkview
+"   autocmd BufWinEnter * silent! loadview
+" augroup END
+
+" augroup remember_folds
 "   autocmd!
 "   autocmd BufWinLeave * mkview
 "   autocmd BufWinEnter * silent! loadview
@@ -1200,8 +1285,10 @@ endfunction
 
 
 
-" runtime coc.vim
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
 
+" runtime coc.vim
 
 
 

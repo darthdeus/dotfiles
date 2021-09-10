@@ -63,7 +63,7 @@ function gdd() {
 }
 
 alias tmux="tmux -2"
-alias t="tmux"
+# alias t="tmux"
 alias ta="tmux attach"
 alias tn="tmux new-session -s"
 
