@@ -156,11 +156,6 @@ let maplocalleader=','
 let g:VimuxOrientation = 'h'
 let g:airline_powerline_fonts = 1
 
-let g:coq_settings = {
-      \ 'auto_start': v:false,
-      \ 'clients.tabnine.enabled': v:true
-      \ }
-
 
 " Set updatetime for CursorHold
 " 300ms of no cursor movement to trigger CursorHold
@@ -170,7 +165,6 @@ let g:coq_settings = {
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
-local coq = require('coq')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer

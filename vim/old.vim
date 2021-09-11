@@ -33,6 +33,13 @@ Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 " " 9000+ Snippets
 " Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 " ---------- DEOPLETE ---------------
+let g:coq_settings = {
+      \ 'auto_start': v:false,
+      \ 'clients.tabnine.enabled': v:true
+      \ }
+
+" local coq = require('coq')
+
 
 " Plug 'Shougo/unite.vim'
 " if has('nvim')
