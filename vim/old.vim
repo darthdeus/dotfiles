@@ -16,9 +16,34 @@ else
   let g:python3_host_prog = '/usr/bin/python'
 endif
 
+" Plug 'Konfekt/FastFold'
+"
+" nmap zuz <Plug>(FastFoldUpdate)
+" let g:fastfold_savehook = 1
+" let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+" let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
+
 " Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 "
 Plug 'drmikehenry/vim-headerguard'
+
+" -------- COQ -----------------
+" " main one
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+" " 9000+ Snippets
+" Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+" ---------- DEOPLETE ---------------
+
+" Plug 'Shougo/unite.vim'
+" if has('nvim')
+"   Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/denite.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+
+" Plug 'fatih/vim-go'
 
 " Plug 'RRethy/vim-hexokinase'
 " Plug 'lilydjwg/colorizer'

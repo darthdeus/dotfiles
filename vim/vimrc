@@ -44,7 +44,6 @@ Plug 'godlygeek/tabular'
 
 Plug 'itchyny/lightline.vim'
 
-Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTree' }
 
 " Plug 'krisajenkins/vim-projectlocal'
@@ -57,13 +56,6 @@ Plug 'othree/html5.vim'
 Plug 'mattn/emmet-vim'
 
 Plug 'sbdchd/neoformat'
-
-" Plug 'Konfekt/FastFold'
-"
-" nmap zuz <Plug>(FastFoldUpdate)
-" let g:fastfold_savehook = 1
-" let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
-" let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
 
 Plug 'rust-lang/rust.vim'
 " Plug 'rhysd/rust-doc.vim'
@@ -83,12 +75,6 @@ Plug 'cespare/vim-toml'
 
 " Plug 'fatih/vim-go'
 
-
-" -------- COQ -----------------
-" " main one
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-" " 9000+ Snippets
-" Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 " ---------- DEOPLETE ---------------
 let g:deoplete#enable_at_startup = 1
 if has('win32') || has('win64')
@@ -96,7 +82,6 @@ if has('win32') || has('win64')
 else
   Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 endif
-if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
   Plug 'Shougo/deoplete.nvim'
@@ -131,9 +116,10 @@ Plug 'mfussenegger/nvim-dap'
 
 Plug 'zhimsel/vim-stay'
 
-
 " --------------------------------
 
+
+Plug 'chrisbra/unicode.vim'
 
 func! GodotSettings() abort
     setlocal foldmethod=expr
@@ -144,11 +130,7 @@ augroup godot | au!
 augroup end
 
 
-Plug 'chrisbra/unicode.vim'
-
 call plug#end()
-
-set smartindent
 
 call deoplete#custom#option({
 \ 'max_list': 10,
@@ -540,14 +522,11 @@ set nonumber
 set norelativenumber
 set noshowmode
 
-" TODO - check if this is still necessary in vim
 " Set encoding
 set encoding=utf-8
 set fileencoding=utf-8
 set termencoding=utf-8
 set fileencodings=ucs-bom,utf8,latin2 " ,latin1,default
-
-" TODO: global mark
 
 " Whitespace stuff
 set nowrap
@@ -556,7 +535,8 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
-" set kmp=czech-qwerty
+" TODO - does this help things?
+" set smartindent
 
 set list listchars=tab:--,trail:.
 
