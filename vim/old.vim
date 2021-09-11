@@ -205,3 +205,86 @@ noremap <leader>gg :topleft 50 :split Gemfile<CR>
 nnoremap <leader>gn :ALENext<CR>
 nnoremap <leader>gp :ALEPrevious<CR>
 " nnoremap <leader>gr :Semshi rename<CR>
+
+
+" " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" let g:UltiSnipsExpandTrigger='<c-j>'
+" let g:UltiSnipsJumpForwardTrigger='<c-j>'
+" let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+"
+" " If you want :UltiSnipsEdit to split your window.
+" let g:UltiSnipsEditSplit='vertical'
+"
+" " let g:UltiSnipsExpandTrigger       = '<tab>'
+" " let g:UltiSnipsJumpForwardTrigger  = '<tab>'
+" " let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+" " let g:UltiSnipsSnippetDirectories  = ['snips']
+"
+" function! g:UltiSnips_Complete()
+"   call UltiSnips#ExpandSnippet()
+"   if g:ulti_expand_res == 0
+"     if pumvisible()
+"       return "\<C-n>"
+"     else
+"       call UltiSnips#JumpForwards()
+"       if g:ulti_jump_forwards_res == 0
+"         return "\<TAB>"
+"       endif
+"     endif
+"   endif
+"   return ''
+" endfunction
+"
+" aug ultisnips_insert_enter_expand
+"   autocmd!
+"   autocmd InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+" aug END
+
+" Ultisnips YouCompleteMe integration https://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
+" function! g:UltiSnips_Complete()
+"   call UltiSnips#ExpandSnippet()
+"   if g:ulti_expand_res == 0
+"     if pumvisible()
+"       return "\<C-n>"
+"     else
+"       call UltiSnips#JumpForwards()
+"       if g:ulti_jump_forwards_res == 0
+"         return "\<TAB>"
+"       endif
+"     endif
+"   endif
+"   return ""
+" endfunction
+"
+" function! g:UltiSnips_Reverse()
+"   call UltiSnips#JumpBackwards()
+"   if g:ulti_jump_backwards_res == 0
+"     return "\<C-P>"
+"   endif
+"
+"   return ""
+" endfunction
+"
+"
+" if !exists("g:UltiSnipsJumpForwardTrigger")
+"   let g:UltiSnipsJumpForwardTrigger = "<tab>"
+" endif
+"
+" if !exists("g:UltiSnipsJumpBackwardTrigger")
+"   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" endif
+"
+" au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
+" au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
+
+
+" set foldlevelstart=200
+" let g:haskell_conceal       = 0
+" let g:haskell_quasi         = 1
+" let g:haskell_interpolation = 0
+" let g:haskell_regex         = 0
+" let g:haskell_jmacro        = 0
+" let g:haskell_shqq          = 0
+" let g:haskell_sql           = 0
+" let g:haskell_json          = 0
+" let g:haskell_xml           = 0
