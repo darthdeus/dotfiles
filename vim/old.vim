@@ -197,3 +197,11 @@ noremap <leader>gg :topleft 50 :split Gemfile<CR>
 " noremap <leader>gj :FZF app/assets/javascripts<cr>
 " noremap <leader>gr :FZF spec/<CR>
 
+" nnoremap <leader>jd :YcmCompleter GoTo<CR>
+" nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
+" nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
+" nnoremap <leader>gt :YcmCompleter GetType<CR>
+" nnoremap <leader>gq :YcmCompleter GetDoc<CR>
+nnoremap <leader>gn :ALENext<CR>
+nnoremap <leader>gp :ALEPrevious<CR>
+" nnoremap <leader>gr :Semshi rename<CR>

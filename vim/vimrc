@@ -678,11 +678,7 @@ let g:gist_post_private = 1
 " for backgrounded buffers
 set hidden
 set scrolloff=9
-" TODO: for some reason this breaks
-" set deco
 
-" set number
-" set relativenumber
 set nonumber
 set norelativenumber
 set noshowmode
@@ -818,28 +814,7 @@ nnoremap - :Neoformat<cr>
 nnoremap ; :
 " nnoremap : ;
 
-" nnoremap <leader>jd :YcmCompleter GoTo<CR>
-" nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
-" nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
-" nnoremap <leader>gt :YcmCompleter GetType<CR>
-" nnoremap <leader>gq :YcmCompleter GetDoc<CR>
 nnoremap <leader>ge :e ~/.vimrc<CR>
-nnoremap <leader>gn :ALENext<CR>
-nnoremap <leader>gp :ALEPrevious<CR>
-" nnoremap <leader>gr :Semshi rename<CR>
-
-" Rails specific keystrokes
-" noremap <leader>gr :topleft :split config/routes.rb<CR>
-noremap <leader>gg :topleft 50 :split Gemfile<CR>
-" noremap <leader>gv :FZF app/views<cr>
-" noremap <leader>gc :FZF app/controllers<cr>
-" noremap <leader>gm :FZF app/models<cr>
-" noremap <leader>gs :FZF app/services<cr>
-" noremap <leader>gh :FZF app/helpers<cr>
-" noremap <leader>gl :FZF lib<cr>
-" noremap <leader>gk :FZF app/assets/stylesheets<cr>
-" noremap <leader>gj :FZF app/assets/javascripts<cr>
-" noremap <leader>gr :FZF spec/<CR>
 
 
 " Expand %% to directory path of current buffer
