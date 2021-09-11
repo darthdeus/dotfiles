@@ -70,11 +70,6 @@ Plug 'godlygeek/tabular'
 
 Plug 'itchyny/lightline.vim'
 
-" Plug 'Shougo/echodoc.vim'
-" let g:echodoc#enable_at_startup = 1
-" let g:echodoc#type = 'virtual'
-" let g:echodoc#type = 'floating'
-
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTree' }
 
@@ -96,8 +91,6 @@ Plug 'sbdchd/neoformat'
 
 " Plug 'lilydjwg/colorizer'
 
-" let g:rust_fold = 1
-
 " Plug 'Konfekt/FastFold'
 "
 " nmap zuz <Plug>(FastFoldUpdate)
@@ -107,8 +100,10 @@ Plug 'sbdchd/neoformat'
 
 Plug 'rust-lang/rust.vim'
 " Plug 'rhysd/rust-doc.vim'
+
 Plug 'ron-rs/ron.vim'
 Plug 'gutenye/json5.vim'
+Plug 'cespare/vim-toml'
 
 " Plug 'Shougo/unite.vim'
 " if has('nvim')
@@ -184,10 +179,6 @@ augroup end
 
 Plug 'chrisbra/unicode.vim'
 
-let g:ycm_python_binary_path = 'python2'
-
-Plug 'cespare/vim-toml'
-
 call plug#end()
 
 set smartindent
@@ -220,20 +211,6 @@ let g:coq_settings = {
       \ 'auto_start': v:false,
       \ 'clients.tabnine.enabled': v:true
       \ }
-
-" " SuperTab like snippets behavior.
-" " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-" "imap <expr><TAB>
-" " \ pumvisible() ? "\<C-n>" :
-" " \ neosnippet#expandable_or_jumpable() ?
-" " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-" \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-"
-" " For conceal markers.
-" if has('conceal')
-"   set conceallevel=2 concealcursor=niv
-" endif
 
 
 " Set updatetime for CursorHold

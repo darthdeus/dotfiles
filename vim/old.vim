@@ -5,6 +5,11 @@
 "
 Plug 'drmikehenry/vim-headerguard'
 
+" Plug 'Shougo/echodoc.vim'
+" let g:echodoc#enable_at_startup = 1
+" let g:echodoc#type = 'virtual'
+" let g:echodoc#type = 'floating'
+
 Plug 'prettier/vim-prettier'
 let g:prettier#autoformat_require_pragma = 0
 let g:prettier#autoformat_config_present = 1
@@ -14,6 +19,8 @@ Plug 'pangloss/vim-javascript'
 let g:javascript_plugin_flow = 1
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
+let g:ycm_python_binary_path = 'python2'
 
 " Plug 'leafgarland/typescript-vim'
 " Plug 'Quramy/tsuquyomi'
@@ -288,3 +295,18 @@ nnoremap <leader>gp :ALEPrevious<CR>
 " let g:haskell_sql           = 0
 " let g:haskell_json          = 0
 " let g:haskell_xml           = 0
+
+" " SuperTab like snippets behavior.
+" " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+" "imap <expr><TAB>
+" " \ pumvisible() ? "\<C-n>" :
+" " \ neosnippet#expandable_or_jumpable() ?
+" " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+"
+" " For conceal markers.
+" if has('conceal')
+"   set conceallevel=2 concealcursor=niv
+" endif
+
