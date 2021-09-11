@@ -787,10 +787,12 @@ noremap <leader>ws :%s/ *$//g<cr><c-o><cr>
 set pastetoggle=<F3>
 set mouse-=a
 
-nnoremap <F7> :set keymap=czech-qwerty<CR>
-nnoremap <F8> :set keymap=<CR>
-inoremap <F7> <C-o>:set keymap=czech-qwerty<CR>
-inoremap <F8> <C-o>:set keymap=<CR>
+nnoremap <F8> :Neogit<CR>
+
+" nnoremap <F7> :set keymap=czech-qwerty<CR>
+" nnoremap <F8> :set keymap=<CR>
+" inoremap <F7> <C-o>:set keymap=czech-qwerty<CR>
+" inoremap <F8> <C-o>:set keymap=<CR>
 
 nnoremap <F9> :NERDTree<CR>
 nnoremap <F12> :e ++enc=iso-8859-2<CR>
