@@ -1,9 +1,33 @@
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+set shell=/bin/sh
+
 " let g:python_host_prog = $HOME . '/.venvs/neovim2/bin/python'
 " let g:python3_host_prog = $HOME . '/.venvs/neovim3/bin/python'
+
+if has('python3')
+  silent! python3 1
+endif
+
+if has('macunix')
+  let g:python3_host_prog = '/Users/darth/projects/homebrew/bin/python3'
+else
+  let g:python3_host_prog = '/usr/bin/python'
+endif
 
 " Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 "
 Plug 'drmikehenry/vim-headerguard'
+
+" Plug 'rking/ag.vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
+
+" Plug 'lervag/vimtex'
+" let g:vimtex_view_method = 'zathura'
+" let g:tex_flavor = 'latex'
+
+" Plug 'jdonaldson/vaxe'
 
 " Plug 'Shougo/echodoc.vim'
 " let g:echodoc#enable_at_startup = 1

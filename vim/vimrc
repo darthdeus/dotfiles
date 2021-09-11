@@ -1,23 +1,4 @@
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-
-set shell=/bin/sh
-
-if has('python3')
-  silent! python3 1
-endif
-
-if has('macunix')
-  let g:python3_host_prog = '/Users/darth/projects/homebrew/bin/python3'
-else
-  let g:python3_host_prog = '/usr/bin/python'
-endif
-
 call plug#begin('~/.vim/bundle')
-
-
-" Plug 'jdonaldson/vaxe'
-" Plug 'habamax/vim-godot'
 
 Plug 'bounceme/dim-jump'
 Plug 'tpope/vim-sensible'
@@ -41,10 +22,6 @@ Plug 'mgedmin/python-imports.vim'
 " Plug 'calviken/vim-gdscript3'
 Plug 'habamax/vim-godot'
 
-" Plug 'lervag/vimtex'
-" let g:vimtex_view_method = 'zathura'
-" let g:tex_flavor = 'latex'
-
 Plug 'junegunn/goyo.vim'
 " Plug 'junegunn/limelight.vim'
 
@@ -55,9 +32,6 @@ Plug 'chrisbra/vim-zsh'
 " Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'LnL7/vim-nix'
-
-" Plug 'rking/ag.vim'
-Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
