@@ -21,13 +21,6 @@ call plug#begin('~/.vim/bundle')
 
 " Plug 'jdonaldson/vaxe'
 " Plug 'habamax/vim-godot'
-" Plug 'tpope/vim-haml'
-" Plug 'tpope/vim-rails'
-" Plug 'tpope/vim-rake'
-" Plug 'slim-template/vim-slim', { 'for': 'slim' }
-" Plug 'thoughtbot/vim-rspec'
-" " let g:rspec_command = "!bin/rspec {spec}"
-" let g:rspec_command = ":call VimuxRunCommand('bin/rspec {spec}')"
 
 Plug 'bounceme/dim-jump'
 Plug 'tpope/vim-sensible'
@@ -953,10 +946,8 @@ set backspace=indent,eol,start
 " Show (partial) command in the status line
 set showcmd
 
-" Remove scrollbars
-set guioptions-=L
-set guioptions-=r
-set guioptions-=T
+set cursorline
+set nocursorcolumn
 
 if has('gui_running')
   " Automatically resize splits when resizing MacVim window
@@ -966,14 +957,15 @@ if has('gui_running')
   aug END
 
   set visualbell
-  " color Tomorrow-Night
   set lines=40
   set columns=120
+
+  " Remove scrollbars
+  set guioptions-=L
+  set guioptions-=r
+  set guioptions-=T
 endif
 
-" Highlight current line
-set cursorline
-" set cursorcolumn
 
 " Buffer resizing with arrow keys
 nnoremap <Up> <C-w>5-
@@ -1001,16 +993,15 @@ nnoremap <leader>gp :ALEPrevious<CR>
 " Rails specific keystrokes
 " noremap <leader>gr :topleft :split config/routes.rb<CR>
 noremap <leader>gg :topleft 50 :split Gemfile<CR>
-
-noremap <leader>gv :FZF app/views<cr>
-noremap <leader>gc :FZF app/controllers<cr>
-noremap <leader>gm :FZF app/models<cr>
-noremap <leader>gs :FZF app/services<cr>
-noremap <leader>gh :FZF app/helpers<cr>
-noremap <leader>gl :FZF lib<cr>
-noremap <leader>gk :FZF app/assets/stylesheets<cr>
-noremap <leader>gj :FZF app/assets/javascripts<cr>
-noremap <leader>gr :FZF spec/<CR>
+" noremap <leader>gv :FZF app/views<cr>
+" noremap <leader>gc :FZF app/controllers<cr>
+" noremap <leader>gm :FZF app/models<cr>
+" noremap <leader>gs :FZF app/services<cr>
+" noremap <leader>gh :FZF app/helpers<cr>
+" noremap <leader>gl :FZF lib<cr>
+" noremap <leader>gk :FZF app/assets/stylesheets<cr>
+" noremap <leader>gj :FZF app/assets/javascripts<cr>
+" noremap <leader>gr :FZF spec/<CR>
 
 
 " Expand %% to directory path of current buffer
@@ -1287,10 +1278,6 @@ endfunction
 
 " set foldmethod=expr
 " set foldexpr=nvim_treesitter#foldexpr()
-
-" runtime coc.vim
-
-
 
 
 command! -nargs=0 StartProfiling call s:profilestart()
