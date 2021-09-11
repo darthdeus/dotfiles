@@ -11,6 +11,12 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rsi'
 
+Plug 'ggandor/lightspeed.nvim'
+Plug 'kevinhwang91/nvim-bqf'
+Plug 'kevinhwang91/nvim-hlslens'
+Plug 'TimUntersberger/neogit'
+Plug 'lewis6991/gitsigns.nvim'
+
 
 Plug 'editorconfig/editorconfig-vim'
 
@@ -152,6 +158,8 @@ call plug#end()
 set completeopt=menuone,noselect
 
 lua << EOF
+require('gitsigns').setup()
+
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
