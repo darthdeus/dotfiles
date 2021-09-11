@@ -38,6 +38,10 @@ let g:coq_settings = {
       \ 'clients.tabnine.enabled': v:true
       \ }
 
+let g:airline_powerline_fonts = 1
+" let g:airline_theme='simple'
+let g:airline_theme='base16_default'
+
 " local coq = require('coq')
 
 

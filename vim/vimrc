@@ -76,23 +76,23 @@ Plug 'cespare/vim-toml'
 " Plug 'fatih/vim-go'
 
 " ---------- DEOPLETE ---------------
-let g:deoplete#enable_at_startup = 1
-if has('win32') || has('win64')
-  Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
-else
-  Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-endif
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'deoplete-plugins/deoplete-lsp'
+" let g:deoplete#enable_at_startup = 1
+" if has('win32') || has('win64')
+"   Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
+" else
+"   Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+" endif
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" Plug 'deoplete-plugins/deoplete-lsp'
 
 " <TAB>: completion for deoplete from https://github.com/Shougo/deoplete.nvim/issues/816
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><s-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><s-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 " ------------------------------------
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
@@ -132,18 +132,15 @@ augroup end
 
 call plug#end()
 
-call deoplete#custom#option({
-\ 'max_list': 10,
-\ 'min_pattern_length': 3,
-\ })
+" call deoplete#custom#option({
+" \ 'max_list': 10,
+" \ 'min_pattern_length': 3,
+" \ })
+
 
 
 
 set synmaxcol=7000
-
-let g:airline_powerline_fonts = 1
-" let g:airline_theme='simple'
-let g:airline_theme='base16_default'
 
 " TODO: add back yapf when https://github.com/sbdchd/neoformat/issues/126 is fixed
 let g:neoformat_enabled_python = ['autopep8', 'docformatter', 'black']
@@ -154,7 +151,6 @@ let mapleader=','
 let maplocalleader=','
 
 let g:VimuxOrientation = 'h'
-let g:airline_powerline_fonts = 1
 
 
 " Set updatetime for CursorHold
