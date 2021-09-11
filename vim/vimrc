@@ -50,20 +50,13 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTree' }
 " Plug 'krisajenkins/vim-projectlocal'
 Plug 'AndrewRadev/switch.vim'
 Plug 'eshock/vim-matchit'
-Plug 'mattn/gist-vim'
-Plug 'mattn/webapi-vim'
 
 Plug 'sjl/gundo.vim'
+
 Plug 'othree/html5.vim'
-
-Plug 'rhysd/vim-clang-format'
-Plug 'kana/vim-operator-user'
-
 Plug 'mattn/emmet-vim'
 
 Plug 'sbdchd/neoformat'
-
-" Plug 'lilydjwg/colorizer'
 
 " Plug 'Konfekt/FastFold'
 "

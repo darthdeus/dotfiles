@@ -20,6 +20,15 @@ endif
 "
 Plug 'drmikehenry/vim-headerguard'
 
+" Plug 'RRethy/vim-hexokinase'
+" Plug 'lilydjwg/colorizer'
+
+Plug 'rhysd/vim-clang-format'
+Plug 'kana/vim-operator-user'
+
+Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim'
+
 " Plug 'rking/ag.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
