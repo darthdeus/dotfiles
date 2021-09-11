@@ -68,12 +68,11 @@ Plug 'tomtom/tlib_vim'
 
 Plug 'godlygeek/tabular'
 
-" Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'itchyny/lightline.vim'
 
-Plug 'Shougo/echodoc.vim'
-let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'virtual'
+" Plug 'Shougo/echodoc.vim'
+" let g:echodoc#enable_at_startup = 1
+" let g:echodoc#type = 'virtual'
 " let g:echodoc#type = 'floating'
 
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -174,7 +173,6 @@ Plug 'zhimsel/vim-stay'
 " --------------------------------
 
 
-
 func! GodotSettings() abort
     setlocal foldmethod=expr
     setlocal tabstop=4 noexpandtab autoindent shiftwidth=4
@@ -184,14 +182,7 @@ augroup godot | au!
 augroup end
 
 
-augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
-
 Plug 'chrisbra/unicode.vim'
-
 
 let g:ycm_python_binary_path = 'python2'
 
@@ -294,7 +285,7 @@ local opts = {
         autoSetHints = true,
 
         -- Whether to show hover actions inside the hover window
-        -- This overrides the default hover handler 
+        -- This overrides the default hover handler
         hover_with_actions = true,
 
         runnables = {
@@ -867,28 +858,10 @@ cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 noremap <leader>f  :Files ./<CR>
 " Open files, limited to the directory of the current files, with <leader>gf
 noremap <leader>F  :FZF %%<CR>
-" TODO: this or coc-python format?
-" noremap <leader>gf :GFiles ./<CR>
-
-" TODO: find a better hotkey
-" noremap <leader>gd :GFiles?<cr>
-
 
 nnoremap <leader>gt :Tags<cr>
 nnoremap <leader>ga :Rg<cr>
 nnoremap <leader>gd :Rg <C-r><C-w><cr>
-
-
-" noremap <leader>a :TestSuite<cr>
-" " Run this file
-" noremap <leader>t :TestFile<cr>
-" " Run only the example under the cursor
-" noremap <leader>T :TestNearest<cr>
-
-" map <Leader>tt :call RunCurrentSpecFile()<CR>
-" map <Leader>T :call RunNearestSpec()<CR>
-" map <Leader>l :call RunLastSpec()<CR>
-" map <Leader>a :call RunAllSpecs()<CR>
 
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>B :BTags<cr>
@@ -921,7 +894,6 @@ vnoremap <C-Right> <C-w><C-l>
 noremap <F1> <Esc>
 
 inoremap <C-X><C-@> <C-A>
-
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -1014,37 +986,12 @@ inoremap <F8> <C-o>:set keymap=<CR>
 nnoremap <F9> :NERDTree<CR>
 nnoremap <F12> :e ++enc=iso-8859-2<CR>
 
-let g:clang_format#code_style = 'google'
-
 au BufRead,BufNewFile */funcs/* setfiletype zsh
-
-aug cpp_types
-  autocmd!
-  autocmd FileType h,cc,c,cpp nnoremap <buffer><C-e> :<C-u>ClangFormat<CR>
-  autocmd FileType h,cc,c,cpp nnoremap <buffer><leader>ha :HeaderguardAdd<CR>
-  autocmd FileType h,cc,c,cpp vnoremap <buffer><C-e> :ClangFormat<CR>
-aug END
 
 autocmd BufNewFile,BufRead * :normal zz
 
 let g:limelight_paragraph_span = 2
 " autocmd BufRead,BufNewFile * Limelight 0.5
-
-" let &viewdir=expand("~/.vim/viewdir")
-" if !isdirectory(expand(&viewdir))|call mkdir(expand(&viewdir), "p", 451)|endif
-
-" " TODO: fix this
-" augroup AutoSaveFolds
-"   autocmd!
-"   autocmd BufWinLeave * mkview
-"   autocmd BufWinEnter * silent! loadview
-" augroup END
-
-" augroup remember_folds
-"   autocmd!
-"   autocmd BufWinLeave * mkview
-"   autocmd BufWinEnter * silent! loadview
-" augroup END
 
 " Include user's local vim config
 if filereadable(expand('~/.vimrc.local'))
@@ -1082,31 +1029,6 @@ endif
         execute "digraphs vs " . 0x1D65
         execute "digraphs xs " . 0x2093
 "}}
-
-
-" if !exists('g:airline_symbols')
-"   let g:airline_symbols = {}
-" endif
-
-" unicode symbols
-" let g:airline_left_sep = '»'
-" let g:airline_left_sep = '▶'
-" let g:airline_right_sep = '«'
-" let g:airline_right_sep = '◀'
-" let g:airline_symbols.crypt = '🔒'
-" let g:airline_symbols.linenr = '☰'
-" let g:airline_symbols.linenr = '␊'
-" let g:airline_symbols.linenr = '␤'
-" let g:airline_symbols.linenr = '¶'
-" let g:airline_symbols.maxlinenr = ''
-" let g:airline_symbols.maxlinenr = '㏑'
-" let g:airline_symbols.branch = '⎇'
-" let g:airline_symbols.paste = 'ρ'
-" let g:airline_symbols.paste = 'Þ'
-" let g:airline_symbols.paste = '∥'
-" let g:airline_symbols.spell = 'Ꞩ'
-" let g:airline_symbols.notexists = 'Ɇ'
-" let g:airline_symbols.whitespace = 'Ξ'
 
 
 function! s:profilestop()

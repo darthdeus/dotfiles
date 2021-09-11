@@ -1,6 +1,8 @@
 " let g:python_host_prog = $HOME . '/.venvs/neovim2/bin/python'
 " let g:python3_host_prog = $HOME . '/.venvs/neovim3/bin/python'
 
+" Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+"
 Plug 'drmikehenry/vim-headerguard'
 
 Plug 'prettier/vim-prettier'
@@ -148,3 +150,50 @@ let g:ale_linters = {
 " \ 'autopep8'
 "
 let g:ale_go_revive_options = '-config=.revive.toml'
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+let g:clang_format#code_style = 'google'
+
+aug cpp_types
+  autocmd!
+  autocmd FileType h,cc,c,cpp nnoremap <buffer><C-e> :<C-u>ClangFormat<CR>
+  autocmd FileType h,cc,c,cpp nnoremap <buffer><leader>ha :HeaderguardAdd<CR>
+  autocmd FileType h,cc,c,cpp vnoremap <buffer><C-e> :ClangFormat<CR>
+aug END
+
+" noremap <leader>a :TestSuite<cr>
+" " Run this file
+" noremap <leader>t :TestFile<cr>
+" " Run only the example under the cursor
+" noremap <leader>T :TestNearest<cr>
+
+" map <Leader>tt :call RunCurrentSpecFile()<CR>
+" map <Leader>T :call RunNearestSpec()<CR>
+" map <Leader>l :call RunLastSpec()<CR>
+" map <Leader>a :call RunAllSpecs()<CR>
+
+" TODO: this or coc-python format?
+" noremap <leader>gf :GFiles ./<CR>
+
+" TODO: find a better hotkey
+" noremap <leader>gd :GFiles?<cr>
+
+
+" Rails specific keystrokes
+" noremap <leader>gr :topleft :split config/routes.rb<CR>
+noremap <leader>gg :topleft 50 :split Gemfile<CR>
+" noremap <leader>gv :FZF app/views<cr>
+" noremap <leader>gc :FZF app/controllers<cr>
+" noremap <leader>gm :FZF app/models<cr>
+" noremap <leader>gs :FZF app/services<cr>
+" noremap <leader>gh :FZF app/helpers<cr>
+" noremap <leader>gl :FZF lib<cr>
+" noremap <leader>gk :FZF app/assets/stylesheets<cr>
+" noremap <leader>gj :FZF app/assets/javascripts<cr>
+" noremap <leader>gr :FZF spec/<CR>
+
