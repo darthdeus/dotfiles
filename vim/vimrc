@@ -73,26 +73,10 @@ Plug 'cespare/vim-toml'
 "   Plug 'roxma/vim-hug-neovim-rpc'
 " endif
 
-" Plug 'fatih/vim-go'
-
-" ---------- DEOPLETE ---------------
-" let g:deoplete#enable_at_startup = 1
-" if has('win32') || has('win64')
-"   Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
-" else
-"   Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-" endif
-"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"   Plug 'Shougo/deoplete.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-" Plug 'deoplete-plugins/deoplete-lsp'
-
 " <TAB>: completion for deoplete from https://github.com/Shougo/deoplete.nvim/issues/816
 " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " inoremap <expr><s-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+
 " ------------------------------------
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
@@ -103,7 +87,7 @@ Plug 'nvim-treesitter/playground'
 " Plug 'zxqfl/tabnine-vim'
 " -------------------------------
 Plug 'neovim/nvim-lspconfig'
-Plug 'kabouzeid/nvim-lspinstall'
+" Plug 'kabouzeid/nvim-lspinstall'
 Plug 'nvim-lua/lsp_extensions.nvim'
 
 Plug 'simrat39/rust-tools.nvim'
@@ -118,39 +102,27 @@ Plug 'zhimsel/vim-stay'
 
 " --------------------------------
 
-
 Plug 'chrisbra/unicode.vim'
 
-func! GodotSettings() abort
-    setlocal foldmethod=expr
-    setlocal tabstop=4 noexpandtab autoindent shiftwidth=4
-endfunc
-augroup godot | au!
-    au FileType gdscript call GodotSettings()
-augroup end
+Plug 'hrsh7th/nvim-compe'
+
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+
+
+" " Install nvim-cmp
+" Plug 'hrsh7th/nvim-cmp'
+" " Install snippet engine (This example installs [hrsh7th/vim-vsnip](https://github.com/hrsh7th/vim-vsnip))
+" Plug 'hrsh7th/vim-vsnip'
+" " Install the buffer completion source
+" Plug 'hrsh7th/cmp-buffer'
+
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'steelsojka/completion-buffers'
+" Plug 'aca/completion-tabnine', { 'do': './install.sh' }
 
 
 call plug#end()
-
-" call deoplete#custom#option({
-" \ 'max_list': 10,
-" \ 'min_pattern_length': 3,
-" \ })
-
-
-
-
-set synmaxcol=7000
-
-" TODO: add back yapf when https://github.com/sbdchd/neoformat/issues/126 is fixed
-let g:neoformat_enabled_python = ['autopep8', 'docformatter', 'black']
-" let g:neoformat_enabled_python = ['autopep8', 'docformatter']
-let g:neoformat_run_all_formatters = 1
-
-let mapleader=','
-let maplocalleader=','
-
-let g:VimuxOrientation = 'h'
 
 
 " Set updatetime for CursorHold
@@ -159,8 +131,110 @@ let g:VimuxOrientation = 'h'
 " Show diagnostic popup on cursor hold
 " autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
+" let g:completion_chain_complete_list = [
+"     \{'complete_items': ['lsp', 'snippet', 'buffers']},
+"     \{'mode': '<c-p>'},
+"     \{'mode': '<c-n>'}
+" \]
+
+" let g:completion_enable_auto_popup = 0
+" Use <Tab> and <S-Tab> to navigate through popup menu
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Set completeopt to have a better completion experience
+" set completeopt=menuone,noinsert,noselect
+
+
+" Avoid showing message extra message when using completion
+" set shortmess+=c
+"
+set completeopt=menuone,noselect
+
 lua << EOF
-local nvim_lsp = require('lspconfig')
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  resolve_timeout = 800;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = {
+    border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
+    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+    max_width = 120,
+    min_width = 60,
+    max_height = math.floor(vim.o.lines * 0.3),
+    min_height = 1,
+  };
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = false;
+    ultisnips = false;
+    luasnip = false;
+  };
+}
+
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
+
+-- Use (s-)tab to:
+--- move to prev/next item in completion menuone
+--- jump to prev/next snippet's placeholder
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  elseif vim.fn['vsnip#available'](1) == 1 then
+    return t "<Plug>(vsnip-expand-or-jump)"
+  elseif check_back_space() then
+    return t "<Tab>"
+  else
+    return vim.fn['compe#complete']()
+  end
+end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+    return t "<Plug>(vsnip-jump-prev)"
+  else
+    -- If <S-Tab> is not working in your terminal, change it to <C-h>
+    return t "<S-Tab>"
+  end
+end
+
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -194,205 +268,109 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
+local lspconfig = require'lspconfig'
 
-local opts = {
-    tools = { -- rust-tools options
-        -- Automatically set inlay hints (type hints)
-        autoSetHints = true,
-
-        -- Whether to show hover actions inside the hover window
-        -- This overrides the default hover handler
-        hover_with_actions = true,
-
-        runnables = {
-            -- whether to use telescope for selection menu or not
-            use_telescope = true
-
-            -- rest of the opts are forwarded to telescope
-        },
-
-        debuggables = {
-            -- whether to use telescope for selection menu or not
-            use_telescope = true
-
-            -- rest of the opts are forwarded to telescope
-        },
-
-        -- These apply to the default RustSetInlayHints command
-        inlay_hints = {
-
-            -- Only show inlay hints for the current line
-            only_current_line = false,
-
-            -- Event which triggers a refersh of the inlay hints.
-            -- You can make this "CursorMoved" or "CursorMoved,CursorMovedI" but
-            -- not that this may cause  higher CPU usage.
-            -- This option is only respected when only_current_line and
-            -- autoSetHints both are true.
-            only_current_line_autocmd = "CursorHold",
-
-            -- wheter to show parameter hints with the inlay hints or not
-            show_parameter_hints = true,
-
-            -- prefix for parameter hints
-            parameter_hints_prefix = "<- ",
-
-            -- prefix for all the other hints (type, chaining)
-            other_hints_prefix = "=> ",
-
-            -- whether to align to the length of the longest line in the file
-            max_len_align = false,
-
-            -- padding from the left if max_len_align is true
-            max_len_align_padding = 1,
-
-            -- whether to align to the extreme right or not
-            right_align = false,
-
-            -- padding from the right if right_align is true
-            right_align_padding = 7,
-
-            -- The color of the hints
-            highlight = "Comment",
-        },
-
-        hover_actions = {
-            -- the border that is used for the hover window
-            -- see vim.api.nvim_open_win()
-            border = {
-                {"╭", "FloatBorder"}, {"─", "FloatBorder"},
-                {"╮", "FloatBorder"}, {"│", "FloatBorder"},
-                {"╯", "FloatBorder"}, {"─", "FloatBorder"},
-                {"╰", "FloatBorder"}, {"│", "FloatBorder"}
-            },
-
-            -- whether the hover action window gets automatically focused
-            auto_focus = false
-        }
-    },
-
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
-
-    server = {
-      on_attach = on_attach,
-
-      settings = {
-        ["rust-analyzer"] = {
-            assist = {
-                importGranularity = "module",
-                importPrefix = "by_self",
-            },
-            cargo = {
-                loadOutDirsFromCheck = true
-            },
-            procMacro = {
-                enable = true
-            },
-        }
-      }
-    } -- rust-analyer options
-}
-
-
--- TODO: is this duplicate of the inlay hints that already work?
-
-
-local function setup_servers()
-  require'lspinstall'.setup()
-  local servers = require'lspinstall'.installed_servers()
-  -- for _, server in pairs(servers) do
-  --   nvim_lsp[server].setup{
-  --     on_attach = on_attach,
-  --     flags = {
-  --       debounce_text_changes = 150,
-  --     }
-  --   }
-  -- end
-
-    -- nvim_lsp.rust_analyzer.setup{
-    --   on_attach = on_attach,
-    --   settings = {
-    --     ["rust-analyzer"] = {
-    --         diagnostics = {
-    --               enable = true,
-    --               disabled = {"unresolved-proc-macro"},
-    --               enableExperimental = true,
-    --           }
-    --             -- assist = {
-    --             --     importGranularity = "module",
-    --             --     importPrefix = "by_self",
-    --             -- },
-    --             -- cargo = {
-    --             --     loadOutDirsFromCheck = true
-    --             -- },
-    --             -- procMacro = {
-    --             --     enable = true
-    --             -- },
-    --
-    --     }
-    --   },
-    --   flags = {
-    --     debounce_text_changes = 150,
-    --   }
-    -- }
-
-  -- nvim_lsp.gdscript.setup{
-  --   on_attach = on_attach,
-  --   flags = {
-  --     debounce_text_changes = 150,
-  --   }
-  -- }
-
-  -- nvim_lsp.rust_analyzer.setup({
-  --     on_attach=on_attach,
-  --     settings = {
-  --         ["rust-analyzer"] = {
-  --             assist = {
-  --                 importGranularity = "module",
-  --                 importPrefix = "by_self",
-  --             },
-  --             cargo = {
-  --                 loadOutDirsFromCheck = true
-  --             },
-  --             procMacro = {
-  --                 enable = true
-  --             },
-  --         }
-  --     }
-  -- })
-
-  -- nvim_lsp.gdscript.setup {
-  --   on_attach = on_attach,
-  --   flags = {
-  --     debounce_text_changes = 150,
-  --   }
-  -- }
-
-  -- require('rust-tools').setup(opts)
-  require('rust-tools').setup(opts)
-  require('rust-tools.inlay_hints').set_inlay_hints()
-end
-
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
-
-
--- Enable diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = true,
-    signs = true,
-    update_in_insert = false,
-    severity_sort = true,
+require('rust-tools').setup({
+  server = {
+    capabilities = capabilities,
+    on_attach = on_attach
   }
-)
+})
+
+require('rust-tools.inlay_hints').set_inlay_hints()
+
+-- require'lspconfig'.rust_analyzer.setup({
+--   on_attach = on_attach,
+-- })
+
+-- local servers = { 'vim-language-server', 'rust_analyzer' }
+-- for _, lsp in ipairs(servers) do
+--   nvim_lsp[lsp].setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     flags = {
+--       debounce_text_changes = 150,
+--     }
+--   }
+-- end
+
+-- require'lspconfig'.rust_analyzer.setup{on_attach=require'completion'.on_attach}
+
+-- local cmp = require'cmp'
+-- cmp.setup({
+--   snippet = {
+--     expand = function(args)
+--       vim.fn["vsnip#anonymous"](args.body)
+--     end,
+--   },
+--   mapping = {
+--       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+--       ['<C-f>'] = cmp.mapping.scroll_docs(4),
+--       ['<C-Space>'] = cmp.mapping.complete(),
+--       ['<C-e>'] = cmp.mapping.close(),
+--       ['<CR>'] = cmp.mapping.confirm({
+--         behavior = cmp.ConfirmBehavior.Replace,
+--         select = true,
+--       })
+--   },
+--   sources = {
+--   }
+-- })
+
+
+-----------------------------------
+-- -- TODO COMPLETION
+-- local nvim_lsp = require('lspconfig')
+--
+
+
+
+
+-- -- TODO: is this duplicate of the inlay hints that already work?
+--
+--
+-- local function setup_servers()
+--   require'lspinstall'.setup()
+--   local servers = require'lspinstall'.installed_servers()
+--   -- for _, server in pairs(servers) do
+--   --   nvim_lsp[server].setup{
+--   --     on_attach = on_attach,
+--   --     flags = {
+--   --       debounce_text_changes = 150,
+--   --     }
+--   --   }
+--   -- end
+--
+
+-- end
+
+-- setup_servers()
+--
+-- -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+-- require'lspinstall'.post_install_hook = function ()
+--   setup_servers() -- reload installed servers
+--   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+-- end
+--
+--
+-- -- Enable diagnostics
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+--   vim.lsp.diagnostic.on_publish_diagnostics, {
+--     virtual_text = true,
+--     signs = true,
+--     update_in_insert = false,
+--     severity_sort = true,
+--   }
+-- )
+-----------------------------------
+-----------------------------------
+-----------------------------------
+-----------------------------------
+-----------------------------------
+
+
+
+
 
 -- require'nvim-treesitter.configs'.setup {
 --   ensure_installed = { "rust" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -487,21 +465,37 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 
+
+inoremap <silent><expr> <C-Space> compe#complete()
+" inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+" Expand
+imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+
+" Expand or jump
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+
+
 " Enable type inlay hints
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+" autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
+" \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 
+set synmaxcol=7000
 
+" TODO: add back yapf when https://github.com/sbdchd/neoformat/issues/126 is fixed
+let g:neoformat_enabled_python = ['autopep8', 'docformatter', 'black']
+" let g:neoformat_enabled_python = ['autopep8', 'docformatter']
+let g:neoformat_run_all_formatters = 1
 
-" gist-vim defaults
-if has('mac')
-  let g:gist_clip_command = 'pbcopy'
-elseif has('unix')
-  let g:gist_clip_command = 'xclip -selection clipboard'
-endif
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
-let g:gist_post_private = 1
+let mapleader=','
+let maplocalleader=','
+
+let g:VimuxOrientation = 'h'
 
 " Allow backgrounding buffers without writing them, and remember marks/undo
 " for backgrounded buffers
@@ -845,6 +839,14 @@ function! s:profilestart()
   profile file *
 endfunction
 
+
+func! GodotSettings() abort
+    setlocal foldmethod=expr
+    setlocal tabstop=4 noexpandtab autoindent shiftwidth=4
+endfunc
+augroup godot | au!
+    au FileType gdscript call GodotSettings()
+augroup end
 
 
 " set foldmethod=expr
