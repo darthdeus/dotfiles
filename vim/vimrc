@@ -278,6 +278,11 @@ end
 
 local lspconfig = require'lspconfig'
 
+lspconfig.vimls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach
+})
+
 require('rust-tools').setup({
   server = {
     capabilities = capabilities,
