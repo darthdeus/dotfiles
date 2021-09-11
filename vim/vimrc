@@ -616,12 +616,12 @@ local function setup_servers()
   --     }
   -- })
 
-  nvim_lsp.gdscript.setup {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  }
+  -- nvim_lsp.gdscript.setup {
+  --   on_attach = on_attach,
+  --   flags = {
+  --     debounce_text_changes = 150,
+  --   }
+  -- }
 
   -- require('rust-tools').setup(opts)
   require('rust-tools').setup(opts)
