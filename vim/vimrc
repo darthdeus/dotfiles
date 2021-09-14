@@ -53,62 +53,59 @@ let maplocalleader=','
 
 let g:VimuxOrientation = 'h'
 
-" Allow backgrounding buffers without writing them, and remember marks/undo
-" for backgrounded buffers
-" set hidden
-set scrolloff=9
+" set scrolloff=9
 
-set nonumber
-set norelativenumber
-set noshowmode
+" set nonumber
+" set norelativenumber
+" set noshowmode
 
 " Set encoding
-set encoding=utf-8
-set fileencoding=utf-8
-set termencoding=utf-8
-set fileencodings=ucs-bom,utf8,latin2 " ,latin1,default
+" set encoding=utf-8
+" set fileencoding=utf-8
+" set termencoding=utf-8
+" set fileencodings=ucs-bom,utf8,latin2 " ,latin1,default
 
 " Whitespace stuff
-set nowrap
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
+" set nowrap
+" set tabstop=2
+" set shiftwidth=2
+" set softtabstop=2
+" set expandtab
 
 set list listchars=tab:--,trail:.
 
 set backupcopy=yes
 
-set hlsearch
-set incsearch
-
 " Make searches case-sensitive only if they contain upper-case characters
-set ignorecase
-set smartcase
+" set ignorecase
+" set smartcase
+" set hlsearch
+" set incsearch
+
 nnoremap <CR> :nohlsearch<CR>/<BS>
 
 " TODO - how does this differ from "longest,list" only?
 " Tab completion
-set wildmode=list:longest,list:full
-set wildignore+=obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build,logs,tags
+" set wildmode=list:longest,list:full
+" set wildignore+=obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build,logs,tags
 
 " Status bar
-set winwidth=75
+" set winwidth=75
 
 " Use modeline overrides
-set modeline
-set modelines=10
+" set modeline
+" set modelines=10
 
 set t_Co=256
 set background=dark
-" set termguicolors
-
 let base16colorspace=256  " Access colors present in 256 colorspace
 color base16-default
+" set termguicolors
+
 
 " Directories for swp files
-set backupdir=~/.vim/backup
-set directory=~/.vim/backup
+" set backupdir=~/.vim/backup
+" set directory=~/.vim/backup
 
 " Remember last location in file
 aug last_location

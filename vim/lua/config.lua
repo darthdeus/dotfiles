@@ -1,4 +1,39 @@
-vim.g.hidden = true
+-- Make searches case-sensitive only if they contain upper-case characters
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.incsearch = true
+vim.o.hlsearch = true
+
+vim.o.hidden = true
+
+vim.o.scrolloff = 9
+vim.o.number = false
+vim.o.relativenumber = false
+vim.o.showmode = false
+
+-- Whitespace stuff
+vim.o.wrap = false
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
+vim.o.expandtab = true
+
+vim.o.encoding = "utf-8"
+vim.o.fileencoding = "utf-8"
+vim.o.fileencodings = "utcs-bom,utf8,latin2"
+
+-- Use modeline overrides
+vim.o.modeline = true
+vim.o.modelines = 10
+
+vim.o.winwidth = 75
+
+vim.o.wildmode = "list:longest,list:full"
+-- tODO: += ?
+vim.o.wildignore =
+    "obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build,logs,tags"
+
+-- vim.o.history = 5000
 
 -- require'lightspeed'.setup { }
 -- require('gitsigns').setup()
