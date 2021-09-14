@@ -52,7 +52,8 @@ use 'jiangmiao/auto-pairs'
 
 use 'itchyny/lightline.vim'
 
-use 'scrooloose/nerdtree' -- TODO: , { 'on': 'NERDTree' }
+use { 'scrooloose/nerdtree', cmd = 'NERDTree' }
+-- TODO: , { 'on': 'NERDTree' }
 
 -- use 'krisajenkins/vim-projectlocal'
 use 'AndrewRadev/switch.vim'
