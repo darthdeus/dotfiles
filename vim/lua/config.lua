@@ -29,9 +29,19 @@ vim.o.modelines = 10
 vim.o.winwidth = 75
 
 vim.o.wildmode = "list:longest,list:full"
--- tODO: += ?
+-- TODO: += ?
 vim.o.wildignore =
     "obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build,logs,tags"
+
+-- TODO: default is menu,preview?
+vim.o.completeopt = "menuone,preview,noinsert,noselect"
+
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
+
+-- vim.o.showcmd = true
+-- vim.o.cursorline = true
+-- vim.o.cursorcolumn = false
 
 -- vim.o.history = 5000
 

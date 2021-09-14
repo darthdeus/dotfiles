@@ -25,7 +25,7 @@ lua require('config')
 " Avoid showing message extra message when using completion
 " set shortmess+=c
 
-set completeopt=menuone,noselect
+" set completeopt=menuone,noselect
 
 
 inoremap <silent><expr> <C-Space> compe#complete()
@@ -48,8 +48,8 @@ smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l
 
 set synmaxcol=7000
 
-let mapleader=','
-let maplocalleader=','
+" let mapleader=','
+" let maplocalleader=','
 
 let g:VimuxOrientation = 'h'
 
@@ -124,13 +124,12 @@ if has('persistent_undo')
 endif
 
 " allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+" set backspace=indent,eol,start
 
 " Show (partial) command in the status line
-set showcmd
-
-set cursorline
-set nocursorcolumn
+" set showcmd
+" set cursorline
+" set nocursorcolumn
 
 " Buffer resizing with arrow keys
 nnoremap <Up> <C-w>5-
