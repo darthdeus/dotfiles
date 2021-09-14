@@ -5,6 +5,10 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd "packadd packer.nvim"
 end
 
+-- TODO:
+-- - https://github.com/bfredl/nvim-luadev
+-- - https://github.com/tjdevries/nlua.nvim
+
 return require("packer").startup(function()
     use "wbthomason/packer.nvim"
 
