@@ -11,11 +11,11 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rsi'
 
-Plug 'ggandor/lightspeed.nvim'
+" Plug 'ggandor/lightspeed.nvim'
 Plug 'kevinhwang91/nvim-bqf'
 Plug 'kevinhwang91/nvim-hlslens'
 Plug 'TimUntersberger/neogit'
-Plug 'lewis6991/gitsigns.nvim'
+" Plug 'lewis6991/gitsigns.nvim'
 
 
 Plug 'editorconfig/editorconfig-vim'
@@ -154,11 +154,14 @@ call plug#end()
 
 " Avoid showing message extra message when using completion
 " set shortmess+=c
-"
+
 set completeopt=menuone,noselect
 
 lua << EOF
-require('gitsigns').setup()
+-- require'lightspeed'.setup { }
+
+
+-- require('gitsigns').setup()
 
 require'compe'.setup {
   enabled = true;
@@ -188,7 +191,7 @@ require'compe'.setup {
     calc = true;
     nvim_lsp = true;
     nvim_lua = true;
-    vsnip = false;
+    vsnip = true;
     ultisnips = false;
     luasnip = false;
   };
@@ -261,7 +264,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<C-m>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -787,14 +790,13 @@ noremap <leader>ws :%s/ *$//g<cr><c-o><cr>
 set pastetoggle=<F3>
 set mouse-=a
 
-nnoremap <F8> :Neogit<CR>
+nnoremap <F9> :Neogit<CR>
 
 " nnoremap <F7> :set keymap=czech-qwerty<CR>
 " nnoremap <F8> :set keymap=<CR>
 " inoremap <F7> <C-o>:set keymap=czech-qwerty<CR>
 " inoremap <F8> <C-o>:set keymap=<CR>
 
-nnoremap <F9> :NERDTree<CR>
 nnoremap <F12> :e ++enc=iso-8859-2<CR>
 
 au BufRead,BufNewFile */funcs/* setfiletype zsh
