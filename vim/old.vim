@@ -439,6 +439,27 @@ endif
         execute "digraphs xs " . 0x2093
 "}}
 
+" color base16-material-palenight
+" color Tomorrow-Night-Eighties
+
+" TODO - what is the default behavior?
+" Remap the tab key to do autocompletion or indentation depending on the
+" context (from http://www.vim.org/tips/tip.php?tip_id=102)
+" function! InsertTabWrapper()
+"     let col = col('.') - 1
+"     if !col || getline('.')[col - 1] !~ '\k'
+"         return "\<tab>"
+"     else
+"         return "\<c-p>"
+"     endif
+" endfunction
+"
+" inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+" inoremap <s-tab> <c-n>
+
+cmap w!! w !sudo tee > /dev/null %
+command! W :w
+
 " TODO: add back yapf when https://github.com/sbdchd/neoformat/issues/126 is fixed
 let g:neoformat_enabled_python = ['autopep8', 'docformatter', 'black']
 " let g:neoformat_enabled_python = ['autopep8', 'docformatter']
@@ -489,3 +510,23 @@ aug various_file_types
   autocmd BufNewFile,BufRead *.markdown inoremap <buffer><C-b> \boldsymbol
   " autocmd BufNewFile,BufRead *.markdown inoremap <buffer><C-m> \mathcal
 aug END
+
+" TODO: maybe this isn't needed with neovim anymore?
+if has('gui_running')
+  " Automatically resize splits when resizing MacVim window
+  aug vim_gui_resized
+    autocmd!
+    autocmd VimResized * wincmd =
+  aug END
+
+  set visualbell
+  set lines=40
+  set columns=120
+
+  " Remove scrollbars
+  set guioptions-=L
+  set guioptions-=r
+  set guioptions-=T
+endif
+
+" let NERDTreeRespectWildIgnore=1

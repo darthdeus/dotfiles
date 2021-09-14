@@ -91,26 +91,7 @@ nnoremap <CR> :nohlsearch<CR>/<BS>
 " Tab completion
 set wildmode=list:longest,list:full
 set wildignore+=obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build,logs,tags
-let NERDTreeRespectWildIgnore=1
-
-" TODO - what is the default behavior?
-" Remap the tab key to do autocompletion or indentation depending on the
-" context (from http://www.vim.org/tips/tip.php?tip_id=102)
-" function! InsertTabWrapper()
-"     let col = col('.') - 1
-"     if !col || getline('.')[col - 1] !~ '\k'
-"         return "\<tab>"
-"     else
-"         return "\<c-p>"
-"     endif
-" endfunction
-"
-" inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-" inoremap <s-tab> <c-n>
-
-command! W :w
-
-cmap w!! w !sudo tee > /dev/null %
+" let NERDTreeRespectWildIgnore=1
 
 " Status bar
 set winwidth=75
@@ -124,9 +105,7 @@ set background=dark
 " set termguicolors
 
 let base16colorspace=256  " Access colors present in 256 colorspace
-" color base16-material-palenight
 color base16-default
-" color Tomorrow-Night-Eighties
 
 " Directories for swp files
 set backupdir=~/.vim/backup
@@ -156,24 +135,6 @@ set showcmd
 
 set cursorline
 set nocursorcolumn
-
-if has('gui_running')
-  " Automatically resize splits when resizing MacVim window
-  aug vim_gui_resized
-    autocmd!
-    autocmd VimResized * wincmd =
-  aug END
-
-  set visualbell
-  set lines=40
-  set columns=120
-
-  " Remove scrollbars
-  set guioptions-=L
-  set guioptions-=r
-  set guioptions-=T
-endif
-
 
 " Buffer resizing with arrow keys
 nnoremap <Up> <C-w>5-
