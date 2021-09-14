@@ -439,6 +439,11 @@ endif
         execute "digraphs xs " . 0x2093
 "}}
 
+" TODO: add back yapf when https://github.com/sbdchd/neoformat/issues/126 is fixed
+let g:neoformat_enabled_python = ['autopep8', 'docformatter', 'black']
+" let g:neoformat_enabled_python = ['autopep8', 'docformatter']
+let g:neoformat_run_all_formatters = 1
+
 " TODO - does this help things?
 " set smartindent
 "

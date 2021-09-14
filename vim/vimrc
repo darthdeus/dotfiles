@@ -48,11 +48,6 @@ smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l
 
 set synmaxcol=7000
 
-" TODO: add back yapf when https://github.com/sbdchd/neoformat/issues/126 is fixed
-let g:neoformat_enabled_python = ['autopep8', 'docformatter', 'black']
-" let g:neoformat_enabled_python = ['autopep8', 'docformatter']
-let g:neoformat_run_all_formatters = 1
-
 let mapleader=','
 let maplocalleader=','
 
