@@ -47,6 +47,10 @@ vim.g.maplocalleader = ","
 
 -- require'lightspeed'.setup { }
 -- require('gitsigns').setup()
+--
+require("nvim_comment").setup {
+    create_mappings = false,
+}
 
 require("compe").setup {
     enabled = true,
@@ -181,15 +185,25 @@ lspconfig.sumneko_lua.setup {
 }
 lspconfig.vimls.setup(opts)
 
-require("rust-tools").setup {
-    server = opts,
-}
+-- require("rust-tools").setup {
+--     server = opts,
+-- }
+--
+-- require("rust-tools.inlay_hints").set_inlay_hints()
 
-require("rust-tools.inlay_hints").set_inlay_hints()
+require("lspconfig").rust_analyzer.setup(opts)
+require("lspconfig").vimls.setup(opts)
 
--- require'lspconfig'.rust_analyzer.setup({
---   on_attach = on_attach,
--- })
+-- require("lsp_extensions").inlay_hints { enabled = { "TypeHint", "ChainingHint", "ParameterHint" } }
+-- require("lsp_extensions").inlay_hints()
+
+-- -- Get the counts from your curreent workspace:
+-- local ws_errors = require("lsp_extensions.workspace.diagnostic").get_count(0, "Error")
+-- local ws_hints = require("lsp_extensions.workspace.diagnostic").get_count(0, "Hint")
+--
+-- -- Set the qflist for the current workspace
+-- --  For more information, see `:help vim.lsp.diagnostic.set_loc_list()`, since this has some of the same configuration.
+-- require("lsp_extensions.workspace.diagnostic").set_qf_list()
 
 -- local servers = { 'vim-language-server', 'rust_analyzer' }
 -- for _, lsp in ipairs(servers) do
@@ -350,13 +364,3 @@ require("nvim-treesitter.configs").setup {
         },
     },
 }
-
--- require('lsp_extensions').inlay_hints{ enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
-
--- -- Get the counts from your curreent workspace:
--- local ws_errors = require('lsp_extensions.workspace.diagnostic').get_count(0, 'Error')
--- local ws_hints = require('lsp_extensions.workspace.diagnostic').get_count(0, 'Hint')
---
--- -- Set the qflist for the current workspace
--- --  For more information, see `:help vim.lsp.diagnostic.set_loc_list()`, since this has some of the same configuration.
--- require('lsp_extensions.workspace.diagnostic').set_qf_list()

@@ -58,8 +58,9 @@ return require("packer").startup(function()
     use "junegunn/fzf.vim"
     use "junegunn/vim-easy-align"
 
-    use "tomtom/tcomment_vim"
-    use "tomtom/tlib_vim"
+    use "terrortylor/nvim-comment"
+    -- use "tomtom/tcomment_vim"
+    -- use "tomtom/tlib_vim"
 
     use "jiangmiao/auto-pairs"
 
@@ -74,8 +75,8 @@ return require("packer").startup(function()
 
     use "sjl/gundo.vim"
 
-    use "othree/html5.vim"
-    use "mattn/emmet-vim"
+    -- use "othree/html5.vim"
+    -- use "mattn/emmet-vim"
 
     use "sbdchd/neoformat"
 
