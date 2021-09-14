@@ -1,3 +1,5 @@
+vim.g.hidden = true
+
 -- require'lightspeed'.setup { }
 -- require('gitsigns').setup()
 
@@ -119,16 +121,21 @@ end
 
 local lspconfig = require'lspconfig'
 
-lspconfig.vimls.setup({
+
+local opts = {
   capabilities = capabilities,
   on_attach = on_attach
+}
+
+lspconfig.sumneko_lua.setup({
+  cmd = {"sumneko-lua-language-server" },
+  on_attach = on_attach,
+  capabilities = capabilities
 })
+lspconfig.vimls.setup(opts)
 
 require('rust-tools').setup({
-  server = {
-    capabilities = capabilities,
-    on_attach = on_attach
-  }
+  server = opts
 })
 
 require('rust-tools.inlay_hints').set_inlay_hints()

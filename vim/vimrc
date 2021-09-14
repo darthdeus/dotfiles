@@ -55,7 +55,7 @@ let g:VimuxOrientation = 'h'
 
 " Allow backgrounding buffers without writing them, and remember marks/undo
 " for backgrounded buffers
-set hidden
+" set hidden
 set scrolloff=9
 
 set nonumber
@@ -91,7 +91,6 @@ nnoremap <CR> :nohlsearch<CR>/<BS>
 " Tab completion
 set wildmode=list:longest,list:full
 set wildignore+=obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build,logs,tags
-" let NERDTreeRespectWildIgnore=1
 
 " Status bar
 set winwidth=75

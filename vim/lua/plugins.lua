@@ -8,6 +8,8 @@ end
 return require('packer').startup(function()
 use 'wbthomason/packer.nvim'
 
+-- use 'rafcamlet/nvim-luapad'
+
 use 'tpope/vim-fugitive'
 use 'tpope/vim-sensible'
 use 'tpope/vim-eunuch'
@@ -93,12 +95,16 @@ use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 -- TODO: try tjdevries/colorbuddy.nvim ?
 use 'nvim-treesitter/playground'
 
+-- TODO: maybe try these too?
+-- https://github.com/JohnnyMorganz/StyLua
+-- https://github.com/Koihik/LuaFormatter
+-- use_rocks 'luaformatter'
 
 -- -------------------------------
 -- use 'zxqfl/tabnine-vim'
 -- -------------------------------
 use 'neovim/nvim-lspconfig'
--- use 'kabouzeid/nvim-lspinstall'
+use 'kabouzeid/nvim-lspinstall'
 use 'nvim-lua/lsp_extensions.nvim'
 
 use 'simrat39/rust-tools.nvim'
