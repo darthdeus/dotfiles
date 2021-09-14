@@ -71,7 +71,7 @@ return require("packer").startup(function()
 
     -- use 'krisajenkins/vim-projectlocal'
     use "AndrewRadev/switch.vim"
-    use "eshock/vim-matchit"
+    -- use "eshock/vim-matchit"
 
     use "sjl/gundo.vim"
 
