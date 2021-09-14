@@ -1,7 +1,6 @@
 lua require('plugins')
 lua require('config')
 
-
 " Set updatetime for CursorHold
 " 300ms of no cursor movement to trigger CursorHold
 " set updatetime=300
@@ -43,7 +42,6 @@ smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j
 imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 
-
 " Enable type inlay hints
 " autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 " \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
@@ -81,9 +79,6 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
-
-" TODO - does this help things?
-" set smartindent
 
 set list listchars=tab:--,trail:.
 

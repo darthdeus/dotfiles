@@ -438,6 +438,9 @@ endif
         execute "digraphs vs " . 0x1D65
         execute "digraphs xs " . 0x2093
 "}}
+
+" TODO - does this help things?
+" set smartindent
 "
 let g:limelight_paragraph_span = 2
 " autocmd BufRead,BufNewFile * Limelight 0.5
