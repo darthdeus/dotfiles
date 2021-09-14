@@ -8,6 +8,8 @@ end
 -- TODO:
 -- - https://github.com/bfredl/nvim-luadev
 -- - https://github.com/tjdevries/nlua.nvim
+-- - https://github.com/nvim-lua/plenary.nvim
+-- - https://github.com/nvim-lua/popup.nvim
 
 return require("packer").startup(function()
     use "wbthomason/packer.nvim"
