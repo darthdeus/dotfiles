@@ -42,7 +42,6 @@ use 'chrisbra/vim-zsh'
 use 'LnL7/vim-nix'
 
 use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
-  -- TODO: , { 'do': { -> fzf#install() } }
 use 'junegunn/fzf.vim'
 use 'junegunn/vim-easy-align'
 
@@ -87,7 +86,8 @@ use 'cespare/vim-toml'
 -- ------------------------------------
 
 -- We recommend updating the parsers on update
-use 'nvim-treesitter/nvim-treesitter' -- TODO: , {'do': ':TSUpdate'}  
+use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+-- TODO: try tjdevries/colorbuddy.nvim ?
 use 'nvim-treesitter/playground'
 
 
