@@ -16,6 +16,18 @@ else
   let g:python3_host_prog = '/usr/bin/python'
 endif
 
+Plug 'bounceme/dim-jump'
+Plug 'junegunn/gv.vim'
+
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-markdown'
+
+Plug 'mgedmin/python-imports.vim'
+
+Plug 'godlygeek/tabular'
+
+
 " Plug 'Konfekt/FastFold'
 "
 " nmap zuz <Plug>(FastFoldUpdate)

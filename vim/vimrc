@@ -1,14 +1,10 @@
 call plug#begin('~/.vim/bundle')
 
-Plug 'bounceme/dim-jump'
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rsi'
 
 " Plug 'ggandor/lightspeed.nvim'
@@ -17,18 +13,15 @@ Plug 'kevinhwang91/nvim-hlslens'
 Plug 'TimUntersberger/neogit'
 " Plug 'lewis6991/gitsigns.nvim'
 
-
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'mileszs/ack.vim'
 
-Plug 'junegunn/gv.vim'
-Plug 'mgedmin/python-imports.vim'
-
 " Plug 'calviken/vim-gdscript3'
 Plug 'habamax/vim-godot'
 
-Plug 'junegunn/goyo.vim'
+" TODO: maybe try again?
+" Plug 'junegunn/goyo.vim'
 " Plug 'junegunn/limelight.vim'
 
 Plug 'darthdeus/a.vim'
@@ -45,8 +38,6 @@ Plug 'junegunn/vim-easy-align'
 
 Plug 'tomtom/tcomment_vim'
 Plug 'tomtom/tlib_vim'
-
-Plug 'godlygeek/tabular'
 
 Plug 'itchyny/lightline.vim'
 
