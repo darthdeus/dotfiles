@@ -48,6 +48,8 @@ use 'junegunn/vim-easy-align'
 use 'tomtom/tcomment_vim'
 use 'tomtom/tlib_vim'
 
+use 'jiangmiao/auto-pairs'
+
 use 'itchyny/lightline.vim'
 
 use 'scrooloose/nerdtree' -- TODO: , { 'on': 'NERDTree' }
