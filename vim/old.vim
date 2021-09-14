@@ -19,7 +19,6 @@ endif
 Plug 'bounceme/dim-jump'
 Plug 'junegunn/gv.vim'
 
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-markdown'
 
@@ -400,3 +399,85 @@ nnoremap <leader>gp :ALEPrevious<CR>
 "   set conceallevel=2 concealcursor=niv
 " endif
 
+
+" nnoremap <F7> :set keymap=czech-qwerty<CR>
+" nnoremap <F8> :set keymap=<CR>
+" inoremap <F7> <C-o>:set keymap=czech-qwerty<CR>
+" inoremap <F8> <C-o>:set keymap=<CR>
+
+nnoremap <F12> :e ++enc=iso-8859-2<CR>
+
+if has('user_commands')
+  command! -bang -nargs=? -complete=file E e<bang> <args>
+  command! -bang -nargs=? -complete=file W w<bang> <args>
+  command! -bang -nargs=? -complete=file Wq wq<bang> <args>
+  command! -bang -nargs=? -complete=file WQ wq<bang> <args>
+  command! -bang Wa wa<bang>
+  command! -bang WA wa<bang>
+  command! -bang Q q<bang>
+  command! -bang QA qa<bang>
+  command! -bang Qa qa<bang>
+endif
+
+"alphsubs ---------------------- {{{
+        execute "digraphs ks " . 0x2096
+        execute "digraphs as " . 0x2090
+        execute "digraphs es " . 0x2091
+        execute "digraphs hs " . 0x2095
+        execute "digraphs is " . 0x1D62
+        execute "digraphs ks " . 0x2096
+        execute "digraphs ls " . 0x2097
+        execute "digraphs ms " . 0x2098
+        execute "digraphs ns " . 0x2099
+        execute "digraphs os " . 0x2092
+        execute "digraphs ps " . 0x209A
+        execute "digraphs rs " . 0x1D63
+        execute "digraphs ss " . 0x209B
+        execute "digraphs ts " . 0x209C
+        execute "digraphs us " . 0x1D64
+        execute "digraphs vs " . 0x1D65
+        execute "digraphs xs " . 0x2093
+"}}
+"
+let g:limelight_paragraph_span = 2
+" autocmd BufRead,BufNewFile * Limelight 0.5
+
+" https://github.com/junegunn/fzf.vim/issues/544
+" if has('nvim')
+"   au TermOpen * tnoremap <Esc> <c-\><c-n>
+"   au TermOpen * tnoremap <C-c> <c-\><c-n>
+"   au TermOpen * tnoremap <C-g> <c-\><c-n>
+"   au FileType fzf tunmap <Esc>
+" endif
+
+" TODO m1 ... bug? disabled for now
+" au FileType fzf tunmap <Esc>
+" au FileType fzf tunmap <C-c>
+" au FileType fzf tunmap <C-g>
+" TODO m1 ... bug?
+
+" nnoremap - :Switch<cr>
+" nnoremap - :RustFmt<cr>
+
+" nnoremap ; :
+" nnoremap : ;
+
+aug various_file_types
+  autocmd!
+  autocmd BufNewFile,BufRead *.conf set filetype=conf
+
+  " Rakefile, Vagrantfile and Gemfile are Ruby
+  autocmd BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Vagrantfile,config.ru} set ft=ruby
+  autocmd BufRead,BufNewFile *.asm set ft=nasm
+
+  " add json syntax highlighting
+  " autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+
+  autocmd BufNewFile,BufRead *.slime set filetype=slim
+
+  autocmd BufNewFile,BufRead *.md set wrap
+  autocmd BufNewFile,BufRead *.markdown inoremap <buffer>_ \_
+  autocmd BufNewFile,BufRead *.markdown inoremap <buffer>\\ \\\\\\\\
+  autocmd BufNewFile,BufRead *.markdown inoremap <buffer><C-b> \boldsymbol
+  " autocmd BufNewFile,BufRead *.markdown inoremap <buffer><C-m> \mathcal
+aug END

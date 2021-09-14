@@ -191,15 +191,9 @@ nnoremap <Down> <C-w>5+
 nnoremap <Left> <C-w>5<
 nnoremap <Right> <C-w>5>
 
-" nnoremap - :Switch<cr>
 nnoremap - :Neoformat<cr>
-" nnoremap - :RustFmt<cr>
-
-nnoremap ; :
-" nnoremap : ;
 
 nnoremap <leader>ge :e ~/.vimrc<CR>
-
 
 " Expand %% to directory path of current buffer
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
@@ -274,60 +268,19 @@ nmap Q <NOP>
 " Switching between active files in a buffer.
 nnoremap <leader><leader> <c-^>
 
-" CTags - TODO - find a good hotkey for this
-" # TODO: ignore from a file?
 noremap <leader>lt :!ctags --extras=+f --exclude=build --exclude=public --exclude=target --exclude=node_modules --exclude=.git -R *<CR>
 noremap <C-\> :tnext<CR>
 
 noremap <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
-
-" https://github.com/junegunn/fzf.vim/issues/544
-" if has('nvim')
-"   au TermOpen * tnoremap <Esc> <c-\><c-n>
-"   au TermOpen * tnoremap <C-c> <c-\><c-n>
-"   au TermOpen * tnoremap <C-g> <c-\><c-n>
-"   au FileType fzf tunmap <Esc>
-" endif
 
 if has("nvim")
   au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
   au FileType fzf tunmap <buffer> <Esc>
 endif
 
-" TODO m1 ... bug? disabled for now
-" au FileType fzf tunmap <Esc>
-" au FileType fzf tunmap <C-c>
-" au FileType fzf tunmap <C-g>
-" TODO m1 ... bug?
-
-
-" augroup fmt
-"   autocmd!
-"   autocmd BufWritePre *.go undojoin | Neoformat
-" augroup END
-
-let g:jedi#smart_auto_mappings = 0
-
 aug various_file_types
   autocmd!
-  " Rakefile, Vagrantfile and Gemfile are Ruby
-  autocmd BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Vagrantfile,config.ru} set ft=ruby
-  autocmd BufRead,BufNewFile *.asm set ft=nasm
-
-  " add json syntax highlighting
-  " autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
-
-  autocmd BufNewFile,BufRead *.slime set filetype=slim
-
-  autocmd BufNewFile,BufRead *.conf set filetype=conf
   autocmd BufNewFile,BufRead *vimrc set filetype=vim
-
-  autocmd BufNewFile,BufRead *.md set wrap
-  autocmd BufNewFile,BufRead *.markdown inoremap <buffer>_ \_
-  autocmd BufNewFile,BufRead *.markdown inoremap <buffer>\\ \\\\\\\\
-  autocmd BufNewFile,BufRead *.markdown inoremap <buffer><C-b> \boldsymbol
-  " autocmd BufNewFile,BufRead *.markdown inoremap <buffer><C-m> \mathcal
-
   autocmd BufWritePost .Xresources,Xresources silent execute '!xrdb ~/.Xresources' | redraw | echom 'Xresources reloaded'
 aug END
 
@@ -339,56 +292,14 @@ set mouse-=a
 
 nnoremap <F9> :Neogit<CR>
 
-" nnoremap <F7> :set keymap=czech-qwerty<CR>
-" nnoremap <F8> :set keymap=<CR>
-" inoremap <F7> <C-o>:set keymap=czech-qwerty<CR>
-" inoremap <F8> <C-o>:set keymap=<CR>
-
-nnoremap <F12> :e ++enc=iso-8859-2<CR>
-
 au BufRead,BufNewFile */funcs/* setfiletype zsh
 
 autocmd BufNewFile,BufRead * :normal zz
-
-let g:limelight_paragraph_span = 2
-" autocmd BufRead,BufNewFile * Limelight 0.5
 
 " Include user's local vim config
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
-
-if has('user_commands')
-  command! -bang -nargs=? -complete=file E e<bang> <args>
-  command! -bang -nargs=? -complete=file W w<bang> <args>
-  command! -bang -nargs=? -complete=file Wq wq<bang> <args>
-  command! -bang -nargs=? -complete=file WQ wq<bang> <args>
-  command! -bang Wa wa<bang>
-  command! -bang WA wa<bang>
-  command! -bang Q q<bang>
-  command! -bang QA qa<bang>
-  command! -bang Qa qa<bang>
-endif
-
-"alphsubs ---------------------- {{{
-        execute "digraphs ks " . 0x2096
-        execute "digraphs as " . 0x2090
-        execute "digraphs es " . 0x2091
-        execute "digraphs hs " . 0x2095
-        execute "digraphs is " . 0x1D62
-        execute "digraphs ks " . 0x2096
-        execute "digraphs ls " . 0x2097
-        execute "digraphs ms " . 0x2098
-        execute "digraphs ns " . 0x2099
-        execute "digraphs os " . 0x2092
-        execute "digraphs ps " . 0x209A
-        execute "digraphs rs " . 0x1D63
-        execute "digraphs ss " . 0x209B
-        execute "digraphs ts " . 0x209C
-        execute "digraphs us " . 0x1D64
-        execute "digraphs vs " . 0x1D65
-        execute "digraphs xs " . 0x2093
-"}}
 
 
 function! s:profilestop()
