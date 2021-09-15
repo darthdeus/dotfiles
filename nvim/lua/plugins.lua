@@ -10,12 +10,27 @@ end
 -- - https://github.com/tjdevries/nlua.nvim
 -- - https://github.com/nvim-lua/plenary.nvim
 -- - https://github.com/nvim-lua/popup.nvim
+-- - https://github.com/famiu/bufdelete.nvim
 
 return require("packer").startup(function()
     use "wbthomason/packer.nvim"
 
     -- use 'rafcamlet/nvim-luapad'
     use "ray-x/lsp_signature.nvim"
+
+    use "akinsho/toggleterm.nvim"
+
+    use {
+        "rmagatti/goto-preview",
+        config = function()
+            require("goto-preview").setup {}
+        end,
+    }
+    -- TODO: maybe without icons?
+    -- use {
+    --     "kyazdani42/nvim-tree.lua",
+    --     requires = "kyazdani42/nvim-web-devicons",
+    -- }
 
     use "tpope/vim-fugitive"
     use "tpope/vim-sensible"

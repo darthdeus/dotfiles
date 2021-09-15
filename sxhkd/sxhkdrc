@@ -1,6 +1,9 @@
 super + Return
   alacritty -e tmux
 
+super shift + Return
+  alacritty -e zsh -c 'nvim "+:cd ~/.dotfiles" nvim/lua/config.lua'
+
 super + p
   dmenu_run
 
@@ -31,3 +34,5 @@ super + shift + i
 super + shift + b
   ~/.dotfiles/bin/bitgun
 
+super + shift + r
+  pkill -USR1 -x sxhkd

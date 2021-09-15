@@ -64,6 +64,8 @@ end
 -- nunmap ]f
 -- nunmap [f
 
+map("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
+
 map("i", "<silent><expr>", "<C-Space> compe#complete()")
 -- map("n", "<silent><expr>", "<CR>      compe#confirm('<CR>')")
 map("i", "<silent><expr>", "<C-e>     compe#close('<C-e>')")
@@ -99,6 +101,7 @@ map("i", "<C-e>", "<End>")
 map("n", "<C-j>", "<C-w><C-j>")
 map("n", "<C-k>", "<C-w><C-k>")
 map("n", "<C-h>", "<C-w><C-h>")
+map("t", "<C-h>", "<C-\\><C-n><C-w><C-h>")
 map("n", "<C-l>", "<C-w><C-l>")
 
 map("v", "-", ":Neoformat<cr>")
@@ -117,7 +120,16 @@ map("n", "<leader>ge", ":e ~/.config/nvim/lua/config.lua<CR>")
 
 -- Expand %% to directory path of current buffer
 map("c", "%%", "<C-R>=expand('%:h').'/'<CR>")
-map("n", "<Leader>e", ":call VimuxRunCommand('make')<cr>")
+
+map("n", "<Leader>e", ":call VimuxRunCommand('c')<cr>")
+-- map("n", "<Leader>e", ":TermExec cmd='make' direction='vertical' size=80 go_back=0<cr>")
+-- map("n", "<Leader>e", ":TermExec cmd='make' direction='vertical' size=80<cr>")
+-- map("n", "<Leader>e", ":TermExec cmd='make' direction='vertical' open=0 size=80<cr>")
+
+map("n", "<F8>", ":ToggleTerm<cr>")
+map("i", "<F8>", ":ToggleTerm<cr>")
+map("t", "<F8>", "<C-\\><C-n>:ToggleTerm<cr>")
+map("t", "<Esc>", "<C-\\><C-n>:ToggleTerm<cr>")
 map("n", "<F5>", ":call VimuxRunCommand('make')<cr>")
 map("n", "<F4>", ":call VimuxRunCommand('make')<cr>")
 -- map("n", <leader>r :call VimuxRunCommand("make ". expand("%h"))<cr>
@@ -189,11 +201,6 @@ aug last_location
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
 aug END
 
-if has("nvim")
-  au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
-  au FileType fzf tunmap <buffer> <Esc>
-endif
-
 aug various_file_types
   autocmd!
   autocmd BufNewFile,BufRead *vimrc set filetype=vim
@@ -205,6 +212,12 @@ au BufRead,BufNewFile */funcs/* setfiletype zsh
 ]],
     false
 )
+
+-- if has("nvim")
+--   au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
+--   au FileType fzf tunmap <buffer> <Esc>
+-- endif
+
 
 -- vim.o.showcmd = true
 -- vim.o.cursorline = true
@@ -483,10 +496,14 @@ require("nvim-treesitter.configs").setup {
     incremental_selection = {
         enable = true,
         keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
+            -- init_selection = "gnn",
+            -- node_incremental = "grn",
+            -- scope_incremental = "rc",
+            -- node_decremental = "grm",
+            init_selection = "`",
+            node_incremental = "`",
+            node_decremental = "~",
             scope_incremental = "rc",
-            node_decremental = "grm",
         },
     },
     textobjects = {
