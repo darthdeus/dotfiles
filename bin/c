@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ -f .c ]; then
+  source .c
+else
+  make
+fi
