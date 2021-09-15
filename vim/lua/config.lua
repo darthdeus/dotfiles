@@ -50,9 +50,7 @@ vim.g.base16colorspace = 256
 vim.o.termguicolors = false
 vim.cmd "color base16-default"
 
-
 vim.g.VimuxOrientation = "h"
-
 
 -- vim.o.showcmd = true
 -- vim.o.cursorline = true
