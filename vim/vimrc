@@ -127,97 +127,93 @@ vnoremap <C-_><C-_> :CommentToggle<CR>
 " set cursorline
 " set nocursorcolumn
 
-nnoremap <CR> :nohlsearch<CR>/<BS>
+" nnoremap <CR> :nohlsearch<CR>/<BS>
+" 
+" " Buffer resizing with arrow keys
+" nnoremap <Up> <C-w>5-
+" nnoremap <Down> <C-w>5+
+" nnoremap <Left> <C-w>5<
+" nnoremap <Right> <C-w>5>
+" 
+" nnoremap <C-a> ^
+" nnoremap <C-e> $
+" 
+" inoremap <C-a> <Home>
+" inoremap <C-e> <End>
+" 
+" " For easier navigation between windows
+" nnoremap <C-j> <C-w><C-j>
+" nnoremap <C-k> <C-w><C-k>
+" nnoremap <C-h> <C-w><C-h>
+" nnoremap <C-l> <C-w><C-l>
+" 
+" vnoremap - :Neoformat<cr>
+" 
+" " Bubble multiple lines
+" vnoremap <C-Up> <C-w><C-k>
+" vnoremap <C-Down> <C-w><C-j>
+" vnoremap <C-Left> <C-w><C-h>
+" vnoremap <C-Right> <C-w><C-l>
+" 
+" inoremap <C-X><C-@> <C-A>
+" 
+" nnoremap - :Neoformat<cr>
+" 
+" nnoremap <leader>ge :e ~/.vimrc<CR>
 
-" Buffer resizing with arrow keys
-nnoremap <Up> <C-w>5-
-nnoremap <Down> <C-w>5+
-nnoremap <Left> <C-w>5<
-nnoremap <Right> <C-w>5>
-
-nnoremap <C-a> ^
-nnoremap <C-e> $
-
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
-
-" For easier navigation between windows
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
-nnoremap <C-h> <C-w><C-h>
-nnoremap <C-l> <C-w><C-l>
-
-vnoremap - :Neoformat<cr>
-
-" Bubble multiple lines
-vnoremap <C-Up> <C-w><C-k>
-vnoremap <C-Down> <C-w><C-j>
-vnoremap <C-Left> <C-w><C-h>
-vnoremap <C-Right> <C-w><C-l>
-
-inoremap <C-X><C-@> <C-A>
-
-" TODO: figure out how to remap these?
-" nunmap ]f
-" nunmap [f
-
-nnoremap - :Neoformat<cr>
-
-nnoremap <leader>ge :e ~/.vimrc<CR>
-
-" Expand %% to directory path of current buffer
-cnoremap %% <C-R>=expand('%:h').'/'<CR>
-nnoremap <Leader>e :call VimuxRunCommand("make")<cr>
-nnoremap <F5> :call VimuxRunCommand("make")<cr>
-nnoremap <F4> :call VimuxRunCommand("make")<cr>
-" nnoremap <leader>r :call VimuxRunCommand("make ". expand("%h"))<cr>
-nnoremap <leader>r :call VimuxRunCommand("make test")<cr>
-nnoremap <leader>c :call VimuxRunCommand("make clean")<cr>
-
-" Inserts the path of the currently edited file in command mode
-cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-
-" Open files with <leader>f
-noremap <leader>f  :Files ./<CR>
-" Open files, limited to the directory of the current files, with <leader>gf
-noremap <leader>F  :FZF %%<CR>
-
-nnoremap <leader>gt :Tags<cr>
-nnoremap <leader>ga :Rg<cr>
-nnoremap <leader>gd :Rg <C-r><C-w><cr>
-
-nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>B :BTags<cr>
-
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Insert mode completion
-" imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-" imap <c-x><c-l> <plug>(fzf-complete-line)
-
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-" remove unnecessary whitespaces
-noremap <leader>ws :%s/ *$//g<cr><c-o><cr>
-
-" Disable accidental ex mode
-nmap Q <NOP>
-
-" Switching between active files in a buffer.
-nnoremap <leader><leader> <c-^>
-
-noremap <leader>lt :!ctags --extras=+f --exclude=build --exclude=public --exclude=target --exclude=node_modules --exclude=.git -R *<CR>
-noremap <C-\> :tnext<CR>
-
-noremap <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
-
-nnoremap <F9> :Neogit<CR>
+" " Expand %% to directory path of current buffer
+" cnoremap %% <C-R>=expand('%:h').'/'<CR>
+" nnoremap <Leader>e :call VimuxRunCommand("make")<cr>
+" nnoremap <F5> :call VimuxRunCommand("make")<cr>
+" nnoremap <F4> :call VimuxRunCommand("make")<cr>
+" " nnoremap <leader>r :call VimuxRunCommand("make ". expand("%h"))<cr>
+" nnoremap <leader>r :call VimuxRunCommand("make test")<cr>
+" nnoremap <leader>c :call VimuxRunCommand("make clean")<cr>
+" 
+" " Inserts the path of the currently edited file in command mode
+" cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+" 
+" " Open files with <leader>f
+" noremap <leader>f  :Files ./<CR>
+" " Open files, limited to the directory of the current files, with <leader>gf
+" noremap <leader>F  :FZF %%<CR>
+" 
+" nnoremap <leader>gt :Tags<cr>
+" nnoremap <leader>ga :Rg<cr>
+" nnoremap <leader>gd :Rg <C-r><C-w><cr>
+" 
+" nnoremap <leader>b :Buffers<cr>
+" nnoremap <leader>B :BTags<cr>
+" 
+" " Mapping selecting mappings
+" nmap <leader><tab> <plug>(fzf-maps-n)
+" xmap <leader><tab> <plug>(fzf-maps-x)
+" omap <leader><tab> <plug>(fzf-maps-o)
+" 
+" " Insert mode completion
+" " imap <c-x><c-k> <plug>(fzf-complete-word)
+" imap <c-x><c-f> <plug>(fzf-complete-path)
+" imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+" " imap <c-x><c-l> <plug>(fzf-complete-line)
+" 
+" xmap ga <Plug>(EasyAlign)
+" nmap ga <Plug>(EasyAlign)
+" 
+" " remove unnecessary whitespaces
+" noremap <leader>ws :%s/ *$//g<cr><c-o><cr>
+" 
+" " Disable accidental ex mode
+" nmap Q <NOP>
+" 
+" " Switching between active files in a buffer.
+" nnoremap <leader><leader> <c-^>
+" 
+" noremap <leader>lt :!ctags --extras=+f --exclude=build --exclude=public --exclude=target --exclude=node_modules --exclude=.git -R *<CR>
+" noremap <C-\> :tnext<CR>
+" 
+" noremap <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
+" 
+" nnoremap <F9> :Neogit<CR>
 
 " Remember last location in file
 aug last_location

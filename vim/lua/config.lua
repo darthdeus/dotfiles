@@ -64,6 +64,94 @@ end
 -- nunmap ]f
 -- nunmap [f
 
+map("n", "<CR>", ":nohlsearch<CR>/<BS>")
+
+-- Buffer resizing with arrow keys
+map("n", "<Up>", "<C-w>5-")
+map("n", "<Down>", "<C-w>5+")
+map("n", "<Left>", "<C-w>5<")
+map("n", "<Right>", "<C-w>5>")
+
+map("n", "<C-a>", "^")
+map("n", "<C-e>", "$")
+
+map("i", "<C-a>", "<Home>")
+map("i", "<C-e>", "<End>")
+
+-- For easier navigation between windows
+map("n", "<C-j>", "<C-w><C-j>")
+map("n", "<C-k>", "<C-w><C-k>")
+map("n", "<C-h>", "<C-w><C-h>")
+map("n", "<C-l>", "<C-w><C-l>")
+
+map("v", "-", ":Neoformat<cr>")
+
+-- Bubble multiple lines
+map("v", "<C-Up>", "<C-w><C-k>")
+map("v", "<C-Down>", "<C-w><C-j>")
+map("v", "<C-Left>", "<C-w><C-h>")
+map("v", "<C-Right>", "<C-w><C-l>")
+
+map("i", "<C-X><C-@>", "<C-A>")
+
+map("n", "-", ":Neoformat<cr>")
+
+map("n", "<leader>ge", ":e ~/.vimrc<CR>")
+
+-- Expand %% to directory path of current buffer
+map("c", "%%", "<C-R>=expand('%:h').'/'<CR>")
+map("n", "<Leader>e", ":call VimuxRunCommand('make')<cr>")
+map("n", "<F5>", ":call VimuxRunCommand('make')<cr>")
+map("n", "<F4>", ":call VimuxRunCommand('make')<cr>")
+-- map("n", <leader>r :call VimuxRunCommand("make ". expand("%h"))<cr>
+map("n", "<leader>r", ":call VimuxRunCommand('make test')<cr>")
+map("n", "<leader>c", ":call VimuxRunCommand('make clean')<cr>")
+
+-- Inserts the path of the currently edited file in command mode
+map("c", "<C-P>", "<C-R>=expand('%:p:h') . '/' <CR>")
+
+-- Open files with <leader>f
+map("n", "<leader>f", " :Files ./<CR>")
+-- Open files, limited to the directory of the current files, with <leader>gf
+map("n", "<leader>F", " :FZF %%<CR>")
+
+map("n", "<leader>gt", ":Tags<cr>")
+map("n", "<leader>ga", ":Rg<cr>")
+map("n", "<leader>gd", ":Rg <C-r><C-w><cr>")
+
+map("n", "<leader>b", ":Buffers<cr>")
+map("n", "<leader>B", ":BTags<cr>")
+
+-- Mapping selecting mappings
+map("n", "<leader><tab>", "<plug>(fzf-maps-n)")
+map("x", "<leader><tab>", "<plug>(fzf-maps-x)")
+map("o", "<leader><tab>", "<plug>(fzf-maps-o)")
+
+-- Insert mode completion
+-- imap <c-x><c-k> <plug>(fzf-complete-word)
+map("i", "<c-x><c-f>", "<plug>(fzf-complete-path)")
+map("i", "<c-x><c-j>", "<plug>(fzf-complete-file-ag)")
+-- imap <c-x><c-l> <plug>(fzf-complete-line)
+
+map("x", "ga", "<Plug>(EasyAlign)")
+map("n", "ga", "<Plug>(EasyAlign)")
+
+-- remove unnecessary whitespaces
+map("n", "<leader>ws", ":%s/ *$//g<cr><c-o><cr>")
+
+-- Disable accidental ex mode
+map("n", "Q", "<NOP>")
+
+-- Switching between active files in a buffer.
+map("n", "<leader><leader>", "<c-^>")
+
+map("n", "<leader>lt", ":!ctags --extras=+f --exclude=build --exclude=public --exclude=target --exclude=node_modules --exclude=.git -R *<CR>")
+map("n", "<C-\\>", ":tnext<CR>")
+
+map("n", "<silent>", "<leader>y :<C-u>silent '<,'>w !pbcopy<CR>")
+
+map("n", "<F9>", ":Neogit<CR>")
+
 -- vim.o.showcmd = true
 -- vim.o.cursorline = true
 -- vim.o.cursorcolumn = false
