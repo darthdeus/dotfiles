@@ -178,12 +178,14 @@ local opts = {
     on_attach = on_attach,
 }
 
+lspconfig.rust_analyzer.setup(opts)
+lspconfig.vimls.setup(opts)
+
 lspconfig.sumneko_lua.setup {
     cmd = { "sumneko-lua-language-server" },
     on_attach = on_attach,
     capabilities = capabilities,
 }
-lspconfig.vimls.setup(opts)
 
 -- require("rust-tools").setup {
 --     server = opts,
@@ -191,8 +193,6 @@ lspconfig.vimls.setup(opts)
 --
 -- require("rust-tools.inlay_hints").set_inlay_hints()
 
-require("lspconfig").rust_analyzer.setup(opts)
-require("lspconfig").vimls.setup(opts)
 
 -- require("lsp_extensions").inlay_hints { enabled = { "TypeHint", "ChainingHint", "ParameterHint" } }
 -- require("lsp_extensions").inlay_hints()
