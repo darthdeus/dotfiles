@@ -64,6 +64,23 @@ end
 -- nunmap ]f
 -- nunmap [f
 
+map("i", "<silent><expr>", "<C-Space> compe#complete()")
+-- map("n", "<silent><expr>", "<CR>      compe#confirm('<CR>')")
+map("i", "<silent><expr>", "<C-e>     compe#close('<C-e>')")
+map("i", "<silent><expr>", "<C-f>     compe#scroll({ 'delta': +4 })")
+map("i", "<silent><expr>", "<C-d>     compe#scroll({ 'delta': -4 })")
+
+-- Expand
+map("i", "<expr>", "<C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'")
+map("s", "<expr>", "<C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'")
+
+-- Expand or jump
+map("i", "<expr>", "<C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'")
+map("s", "<expr>", "<C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'")
+
+map("n", "<C-_><C-_>", ":CommentToggle<CR>")
+map("v", "<C-_><C-_>", ":CommentToggle<CR>")
+
 map("n", "<CR>", ":nohlsearch<CR>/<BS>")
 
 -- Buffer resizing with arrow keys
@@ -145,12 +162,43 @@ map("n", "Q", "<NOP>")
 -- Switching between active files in a buffer.
 map("n", "<leader><leader>", "<c-^>")
 
-map("n", "<leader>lt", ":!ctags --extras=+f --exclude=build --exclude=public --exclude=target --exclude=node_modules --exclude=.git -R *<CR>")
+map(
+    "n",
+    "<leader>lt",
+    ":!ctags --extras=+f --exclude=build --exclude=public --exclude=target --exclude=node_modules --exclude=.git -R *<CR>"
+)
 map("n", "<C-\\>", ":tnext<CR>")
 
 map("n", "<silent>", "<leader>y :<C-u>silent '<,'>w !pbcopy<CR>")
 
 map("n", "<F9>", ":Neogit<CR>")
+
+vim.api.nvim_exec(
+    [[
+autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+
+" Remember last location in file
+aug last_location
+  au!
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
+aug END
+
+if has("nvim")
+  au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
+  au FileType fzf tunmap <buffer> <Esc>
+endif
+
+aug various_file_types
+  autocmd!
+  autocmd BufNewFile,BufRead *vimrc set filetype=vim
+  autocmd BufWritePost .Xresources,Xresources silent execute '!xrdb ~/.Xresources' | redraw | echom 'Xresources reloaded'
+aug END
+
+
+au BufRead,BufNewFile */funcs/* setfiletype zsh
+]],
+    false
+)
 
 -- vim.o.showcmd = true
 -- vim.o.cursorline = true

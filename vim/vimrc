@@ -28,30 +28,23 @@ lua require('config')
 " set completeopt=menuone,noselect
 
 
-inoremap <silent><expr> <C-Space> compe#complete()
-" inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-
-" Expand
-imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-
-" Expand or jump
-imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-
-" Enable type inlay hints
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-\ lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
-
-" autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs
-" \ lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "NonText", enabled = {"ChainingHint"} }
-
-
-nnoremap <C-_><C-_> :CommentToggle<CR>
-vnoremap <C-_><C-_> :CommentToggle<CR>
+" inoremap <silent><expr> <C-Space> compe#complete()
+" " inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+" inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+" inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+" inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+" 
+" " Expand
+" imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+" smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+" 
+" " Expand or jump
+" imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+" smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+" 
+" 
+" nnoremap <C-_><C-_> :CommentToggle<CR>
+" vnoremap <C-_><C-_> :CommentToggle<CR>
 
 " let mapleader=','
 " let maplocalleader=','
@@ -215,26 +208,34 @@ vnoremap <C-_><C-_> :CommentToggle<CR>
 " 
 " nnoremap <F9> :Neogit<CR>
 
-" Remember last location in file
-aug last_location
-  au!
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal g'\"" | endif
-aug END
+" Enable type inlay hints
 
-if has("nvim")
-  au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
-  au FileType fzf tunmap <buffer> <Esc>
-endif
+" autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs
+" \ lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "NonText", enabled = {"ChainingHint"} }
 
-aug various_file_types
-  autocmd!
-  autocmd BufNewFile,BufRead *vimrc set filetype=vim
-  autocmd BufWritePost .Xresources,Xresources silent execute '!xrdb ~/.Xresources' | redraw | echom 'Xresources reloaded'
-aug END
-
-
-au BufRead,BufNewFile */funcs/* setfiletype zsh
+" autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
+" \ lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+" 
+" " Remember last location in file
+" aug last_location
+"   au!
+"   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+"     \| exe "normal g'\"" | endif
+" aug END
+" 
+" if has("nvim")
+"   au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
+"   au FileType fzf tunmap <buffer> <Esc>
+" endif
+" 
+" aug various_file_types
+"   autocmd!
+"   autocmd BufNewFile,BufRead *vimrc set filetype=vim
+"   autocmd BufWritePost .Xresources,Xresources silent execute '!xrdb ~/.Xresources' | redraw | echom 'Xresources reloaded'
+" aug END
+" 
+" 
+" au BufRead,BufNewFile */funcs/* setfiletype zsh
 
 " set pastetoggle=<F3>
 " set mouse-=a
