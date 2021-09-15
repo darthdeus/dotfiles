@@ -173,6 +173,12 @@ map("n", "<silent>", "<leader>y :<C-u>silent '<,'>w !pbcopy<CR>")
 
 map("n", "<F9>", ":Neogit<CR>")
 
+-- TODO: do this with nvim_utils?
+-- https://github.com/norcalli/nvim_utils
+-- https://www.reddit.com/r/neovim/comments/n80hdb/autocmd_execution_in_neovim_lua_config/
+-- https://github.com/norcalli/nvim_utils/blob/master/lua/nvim_utils.lua#L554-L567
+-- https://github.com/neovim/neovim/pull/14661
+
 vim.api.nvim_exec(
     [[
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
