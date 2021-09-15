@@ -39,6 +39,17 @@ vim.o.completeopt = "menuone,preview,noinsert,noselect"
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
+vim.o.backupcopy = "yes"
+vim.o.list = true
+vim.o.listchars="tab:--,trail:."
+
+vim.g.base16colorspace = 256
+-- TODO: true?
+vim.o.termguicolors = false
+vim.cmd("color base16-default")
+
+vim.o.pastetoggle = "<F3>"
+
 -- vim.o.showcmd = true
 -- vim.o.cursorline = true
 -- vim.o.cursorcolumn = false

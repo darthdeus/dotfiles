@@ -46,7 +46,7 @@ smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 
-" autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs 
+" autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs
 " \ lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "NonText", enabled = {"ChainingHint"} }
 
 
@@ -79,9 +79,9 @@ let g:VimuxOrientation = 'h'
 " set softtabstop=2
 " set expandtab
 
-set list listchars=tab:--,trail:.
-
-set backupcopy=yes
+" set list listchars=tab:--,trail:.
+"
+" set backupcopy=yes
 
 " Make searches case-sensitive only if they contain upper-case characters
 " set ignorecase
@@ -103,10 +103,10 @@ nnoremap <CR> :nohlsearch<CR>/<BS>
 " set modeline
 " set modelines=10
 
-set t_Co=256
-set background=dark
-let base16colorspace=256  " Access colors present in 256 colorspace
-color base16-default
+" set t_Co=256
+" set background=dark
+" let base16colorspace=256  " Access colors present in 256 colorspace
+" color base16-default
 " set termguicolors
 
 
@@ -240,8 +240,8 @@ aug END
 " remove unnecessary whitespaces
 noremap <leader>ws :%s/ *$//g<cr><c-o><cr>
 
-set pastetoggle=<F3>
-set mouse-=a
+" set pastetoggle=<F3>
+" set mouse-=a
 
 nnoremap <F9> :Neogit<CR>
 
