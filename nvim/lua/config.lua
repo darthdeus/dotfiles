@@ -354,6 +354,13 @@ lspconfig.sumneko_lua.setup {
     cmd = { "lua-language-server" },
     on_attach = on_attach,
     capabilities = capabilities,
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = {"vim"}
+        }
+      }
+  }
 }
 
 -- require("rust-tools").setup {
