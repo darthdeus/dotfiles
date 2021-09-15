@@ -42,15 +42,17 @@ vim.g.maplocalleader = ","
 vim.o.backupcopy = "yes"
 vim.o.list = true
 vim.o.listchars = "tab:--,trail:."
+vim.o.pastetoggle = "<F3>"
+vim.o.undofile = true
 
 vim.g.base16colorspace = 256
 -- TODO: true?
 vim.o.termguicolors = false
 vim.cmd "color base16-default"
 
-vim.o.pastetoggle = "<F3>"
 
 vim.g.VimuxOrientation = "h"
+
 
 -- vim.o.showcmd = true
 -- vim.o.cursorline = true
@@ -376,3 +378,6 @@ require("nvim-treesitter.configs").setup {
         },
     },
 }
+
+vim.o.exrc = true
+vim.o.secure = true

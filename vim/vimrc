@@ -87,8 +87,6 @@ vnoremap <C-_><C-_> :CommentToggle<CR>
 " set hlsearch
 " set incsearch
 
-nnoremap <CR> :nohlsearch<CR>/<BS>
-
 " TODO - how does this differ from "longest,list" only?
 " Tab completion
 " set wildmode=list:longest,list:full
@@ -112,21 +110,14 @@ nnoremap <CR> :nohlsearch<CR>/<BS>
 " set backupdir=~/.vim/backup
 " set directory=~/.vim/backup
 
-" Remember last location in file
-aug last_location
-  au!
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal g'\"" | endif
-aug END
-
 " Save undo history
-if has('persistent_undo')
-  set undofile
-  if !isdirectory($HOME . '/.vimundo')
-    silent !mkdir ~/.vimundo > /dev/null 2>&1
-  endif
-  set undodir=~/.vimundo
-endif
+" if has('persistent_undo')
+"   set undofile
+"   if !isdirectory($HOME . '/.vimundo')
+"     silent !mkdir ~/.vimundo > /dev/null 2>&1
+"   endif
+"   set undodir=~/.vimundo
+" endif
 
 " allow backspacing over everything in insert mode
 " set backspace=indent,eol,start
@@ -135,6 +126,8 @@ endif
 " set showcmd
 " set cursorline
 " set nocursorcolumn
+
+nnoremap <CR> :nohlsearch<CR>/<BS>
 
 " Buffer resizing with arrow keys
 nnoremap <Up> <C-w>5-
@@ -213,6 +206,9 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+" remove unnecessary whitespaces
+noremap <leader>ws :%s/ *$//g<cr><c-o><cr>
+
 " Disable accidental ex mode
 nmap Q <NOP>
 
@@ -226,6 +222,13 @@ noremap <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
 
 nnoremap <F9> :Neogit<CR>
 
+" Remember last location in file
+aug last_location
+  au!
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal g'\"" | endif
+aug END
+
 if has("nvim")
   au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
   au FileType fzf tunmap <buffer> <Esc>
@@ -237,50 +240,48 @@ aug various_file_types
   autocmd BufWritePost .Xresources,Xresources silent execute '!xrdb ~/.Xresources' | redraw | echom 'Xresources reloaded'
 aug END
 
-" remove unnecessary whitespaces
-noremap <leader>ws :%s/ *$//g<cr><c-o><cr>
+
+au BufRead,BufNewFile */funcs/* setfiletype zsh
 
 " set pastetoggle=<F3>
 " set mouse-=a
 
-au BufRead,BufNewFile */funcs/* setfiletype zsh
-
-autocmd BufNewFile,BufRead * :normal zz
+" autocmd BufNewFile,BufRead * :normal zz
 
 " Include user's local vim config
-if filereadable(expand('~/.vimrc.local'))
-  source ~/.vimrc.local
-endif
+" if filereadable(expand('~/.vimrc.local'))
+"   source ~/.vimrc.local
+" endif
 
 
-function! s:profilestop()
-  profdel func *
-  profdel file *
-  " qa!
-endfunction
+" function! s:profilestop()
+"   profdel func *
+"   profdel file *
+"   " qa!
+" endfunction
+" 
+" function! s:profilestart()
+"   profile start vim.profile
+"   profile func *
+"   profile file *
+" endfunction
 
-function! s:profilestart()
-  profile start vim.profile
-  profile func *
-  profile file *
-endfunction
 
-
-func! GodotSettings() abort
-    setlocal foldmethod=expr
-    setlocal tabstop=4 noexpandtab autoindent shiftwidth=4
-endfunc
-augroup godot | au!
-    au FileType gdscript call GodotSettings()
-augroup end
+" func! GodotSettings() abort
+"     setlocal foldmethod=expr
+"     setlocal tabstop=4 noexpandtab autoindent shiftwidth=4
+" endfunc
+" augroup godot | au!
+"     au FileType gdscript call GodotSettings()
+" augroup end
 
 
 " set foldmethod=expr
 " set foldexpr=nvim_treesitter#foldexpr()
 
 
-command! -nargs=0 StartProfiling call s:profilestart()
-command! -nargs=0 StopProfiling call s:profilestop()
+" command! -nargs=0 StartProfiling call s:profilestart()
+" command! -nargs=0 StopProfiling call s:profilestop()
 
-set exrc
-set secure
+" set exrc
+" set secure
