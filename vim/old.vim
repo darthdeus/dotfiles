@@ -64,6 +64,9 @@ let g:gist_post_private = 1
 
 " local coq = require('coq')
 
+" fat fingers
+" noremap <F1> <Esc>
+
 
 " Plug 'Shougo/unite.vim'
 " if has('nvim')

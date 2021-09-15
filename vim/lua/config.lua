@@ -52,6 +52,18 @@ vim.cmd "color base16-default"
 
 vim.g.VimuxOrientation = "h"
 
+local function map(mode, lhs, rhs, opts)
+    local options = { noremap = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
+-- TODO: figure out how to remap these?
+-- nunmap ]f
+-- nunmap [f
+
 -- vim.o.showcmd = true
 -- vim.o.cursorline = true
 -- vim.o.cursorcolumn = false

@@ -135,6 +135,32 @@ nnoremap <Down> <C-w>5+
 nnoremap <Left> <C-w>5<
 nnoremap <Right> <C-w>5>
 
+nnoremap <C-a> ^
+nnoremap <C-e> $
+
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+
+" For easier navigation between windows
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-l> <C-w><C-l>
+
+vnoremap - :Neoformat<cr>
+
+" Bubble multiple lines
+vnoremap <C-Up> <C-w><C-k>
+vnoremap <C-Down> <C-w><C-j>
+vnoremap <C-Left> <C-w><C-h>
+vnoremap <C-Right> <C-w><C-l>
+
+inoremap <C-X><C-@> <C-A>
+
+" TODO: figure out how to remap these?
+" nunmap ]f
+" nunmap [f
+
 nnoremap - :Neoformat<cr>
 
 nnoremap <leader>ge :e ~/.vimrc<CR>
@@ -162,35 +188,6 @@ nnoremap <leader>gd :Rg <C-r><C-w><cr>
 
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>B :BTags<cr>
-
-nnoremap <C-a> ^
-nnoremap <C-e> $
-
-" TODO: figure out how to remap these?
-" nunmap ]f
-" nunmap [f
-
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
-
-" For easier navigation between windows
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
-nnoremap <C-h> <C-w><C-h>
-nnoremap <C-l> <C-w><C-l>
-
-vnoremap - :Neoformat<cr>
-
-" Bubble multiple lines
-vnoremap <C-Up> <C-w><C-k>
-vnoremap <C-Down> <C-w><C-j>
-vnoremap <C-Left> <C-w><C-h>
-vnoremap <C-Right> <C-w><C-l>
-
-" fat fingers
-noremap <F1> <Esc>
-
-inoremap <C-X><C-@> <C-A>
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
