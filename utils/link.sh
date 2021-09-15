@@ -5,8 +5,8 @@ git submodule update --init --recursive
 DOT="$HOME/.dotfiles"
 THIRD_PARTY="$DOT/third-party"
 
-ln -nsf "$DOT/vim"           "$HOME/.vim"
-ln -nsf "$DOT/vim/vimrc"     "$HOME/.vimrc"
+# ln -nsf "$DOT/vim"           "$HOME/.vim"
+# ln -nsf "$DOT/vim/vimrc"     "$HOME/.vimrc"
 ln -nsf "$DOT/zsh"           "$HOME/.zsh"
 ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc"
 # ln -nsf "$DOT/xmonad"        "$HOME/.xmonad"
@@ -89,9 +89,10 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 # mkdir -p "$HOME/.mail/icloud"
 # mkdir -p "$HOME/.mail/gmail"
 
-mkdir -p "$HOME/.config/nvim"
-ln -nsf "$DOT/vim/init.vim"          "$HOME/.config/nvim/init.vim"
-ln -nsf "$DOT/vim/coc-settings.json" "$HOME/.config/nvim/coc-settings.json"
+ln -nsf "$DOT/nvim" "$HOME/.config/nvim"
+# mkdir -p "$HOME/.config/nvim"
+# ln -nsf "$DOT/vim/init.vim"          "$HOME/.config/nvim/init.vim"
+# ln -nsf "$DOT/vim/coc-settings.json" "$HOME/.config/nvim/coc-settings.json"
 
 mkdir -p "$HOME/.ssh"
 ln -nsf "$DOT/ssh/config" "$HOME/.ssh/config"

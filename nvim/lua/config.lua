@@ -113,7 +113,7 @@ map("i", "<C-X><C-@>", "<C-A>")
 
 map("n", "-", ":Neoformat<cr>")
 
-map("n", "<leader>ge", ":e ~/.vimrc<CR>")
+map("n", "<leader>ge", ":e ~/.config/nvim/init.lua<CR>")
 
 -- Expand %% to directory path of current buffer
 map("c", "%%", "<C-R>=expand('%:h').'/'<CR>")
@@ -349,7 +349,7 @@ lspconfig.rust_analyzer.setup(opts)
 lspconfig.vimls.setup(opts)
 
 lspconfig.sumneko_lua.setup {
-    cmd = { "sumneko-lua-language-server" },
+    cmd = { "lua-language-server" },
     on_attach = on_attach,
     capabilities = capabilities,
 }

@@ -9,3 +9,5 @@ vim/viewdir
 vim/sessions
 
 mutt/accounts
+
+nvim/plugin
