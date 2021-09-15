@@ -10,7 +10,7 @@ AuthMechs LOGIN
 SSLType IMAPS
 SSLVersions TLSv1
 # PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.passwords/icloud.gpg"
-PassCmd "pass show email-app/icloud"
+PassCmd "gopass show email-app/icloud"
 PipelineDepth 1
 
 IMAPStore icloud-remote
