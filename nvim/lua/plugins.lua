@@ -15,6 +15,7 @@ return require("packer").startup(function()
     use "wbthomason/packer.nvim"
 
     -- use 'rafcamlet/nvim-luapad'
+    use "ray-x/lsp_signature.nvim"
 
     use "tpope/vim-fugitive"
     use "tpope/vim-sensible"
