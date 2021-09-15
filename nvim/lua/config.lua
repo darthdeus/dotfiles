@@ -113,7 +113,7 @@ map("i", "<C-X><C-@>", "<C-A>")
 
 map("n", "-", ":Neoformat<cr>")
 
-map("n", "<leader>ge", ":e ~/.config/nvim/init.lua<CR>")
+map("n", "<leader>ge", ":e ~/.config/nvim/lua/config.lua<CR>")
 
 -- Expand %% to directory path of current buffer
 map("c", "%%", "<C-R>=expand('%:h').'/'<CR>")
