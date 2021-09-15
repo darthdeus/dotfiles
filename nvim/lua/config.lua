@@ -128,9 +128,9 @@ map("n", "<leader>c", ":call VimuxRunCommand('make clean')<cr>")
 map("c", "<C-P>", "<C-R>=expand('%:p:h') . '/' <CR>")
 
 -- Open files with <leader>f
-map("n", "<leader>f", " :Files ./<CR>")
+map("n", "<leader>f", ":Files ./<CR>")
 -- Open files, limited to the directory of the current files, with <leader>gf
-map("n", "<leader>F", " :FZF %%<CR>")
+map("n", "<leader>F", ":FZF %%<CR>")
 
 map("n", "<leader>gt", ":Tags<cr>")
 map("n", "<leader>ga", ":Rg<cr>")
