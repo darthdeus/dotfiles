@@ -50,15 +50,13 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 " \ lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "NonText", enabled = {"ChainingHint"} }
 
 
-set synmaxcol=7000
-
 nnoremap <C-_><C-_> :CommentToggle<CR>
 vnoremap <C-_><C-_> :CommentToggle<CR>
 
 " let mapleader=','
 " let maplocalleader=','
 
-let g:VimuxOrientation = 'h'
+" let g:VimuxOrientation = 'h'
 
 " set scrolloff=9
 
@@ -226,6 +224,8 @@ noremap <C-\> :tnext<CR>
 
 noremap <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
 
+nnoremap <F9> :Neogit<CR>
+
 if has("nvim")
   au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
   au FileType fzf tunmap <buffer> <Esc>
@@ -242,8 +242,6 @@ noremap <leader>ws :%s/ *$//g<cr><c-o><cr>
 
 " set pastetoggle=<F3>
 " set mouse-=a
-
-nnoremap <F9> :Neogit<CR>
 
 au BufRead,BufNewFile */funcs/* setfiletype zsh
 

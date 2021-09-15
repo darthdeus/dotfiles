@@ -41,14 +41,16 @@ vim.g.maplocalleader = ","
 
 vim.o.backupcopy = "yes"
 vim.o.list = true
-vim.o.listchars="tab:--,trail:."
+vim.o.listchars = "tab:--,trail:."
 
 vim.g.base16colorspace = 256
 -- TODO: true?
 vim.o.termguicolors = false
-vim.cmd("color base16-default")
+vim.cmd "color base16-default"
 
 vim.o.pastetoggle = "<F3>"
+
+vim.g.VimuxOrientation = "h"
 
 -- vim.o.showcmd = true
 -- vim.o.cursorline = true
@@ -203,7 +205,6 @@ lspconfig.sumneko_lua.setup {
 -- }
 --
 -- require("rust-tools.inlay_hints").set_inlay_hints()
-
 
 -- require("lsp_extensions").inlay_hints { enabled = { "TypeHint", "ChainingHint", "ParameterHint" } }
 -- require("lsp_extensions").inlay_hints()
