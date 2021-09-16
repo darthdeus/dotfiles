@@ -102,10 +102,10 @@ LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 PATH="./node_modules/.bin:$HOME/.dotfiles/bin:$LOCAL_PATHS:$HOME/.yarn/bin:$PATH"
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-if [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ]; then
-  eval "$("$BASE16_SHELL/profile_helper.sh")"
-fi
+# BASE16_SHELL="$HOME/.config/base16-shell/"
+# if [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ]; then
+#   eval "$("$BASE16_SHELL/profile_helper.sh")"
+# fi
 # base16_default-dark
 
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore "*.png" --ignore "*.jpg" --ignore "*.mp3" --ignore "*.import" --ignore "*.wav" --ignore "*.ogg" --ignore "*.aseprite" --ignore "*.ttf" --ignore "*.gif" --ignore "*.TTF" --ignore "*.afdesign" --ignore "*.afphoto" --ignore "*.tres" -l -g ""'
