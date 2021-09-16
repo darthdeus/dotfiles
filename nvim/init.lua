@@ -28,6 +28,17 @@ require("packer").startup(function()
             require("goto-preview").setup {}
         end,
     }
+
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup {}
+        end,
+    }
+
+    use "whatsthatsmell/codesmell_dark.vim"
+    use 'RRethy/nvim-base16'
+
     -- TODO: maybe without icons?
     -- use {
     --     "kyazdani42/nvim-tree.lua",
@@ -75,6 +86,8 @@ require("packer").startup(function()
     }
     use "junegunn/fzf.vim"
     use "junegunn/vim-easy-align"
+
+    use { "wfxr/minimap.vim", run = "cargo install --locked code-minimap" }
 
     use "terrortylor/nvim-comment"
     -- use "tomtom/tcomment_vim"
@@ -215,10 +228,26 @@ vim.o.listchars = "tab:--,trail:."
 vim.o.pastetoggle = "<F3>"
 vim.o.undofile = true
 
-vim.g.base16colorspace = 256
+-- vim.g.base16colorspace = 256
 -- TODO: true?
-vim.o.termguicolors = false
-vim.cmd "color base16-default"
+-- vim.o.termguicolors = true
+-- vim.o.term = "xterm-256color"
+
+vim.api.nvim_exec(
+    [[
+if exists('+termguicolors')
+  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+]],
+    false
+)
+
+-- vim.cmd "set fillchars+=vert:|"
+vim.cmd "set fillchars+=vert:│"
+-- vim.cmd "colorscheme codesmell_dark"
+vim.cmd "color base16-default-dark"
 
 vim.g.VimuxOrientation = "h"
 
