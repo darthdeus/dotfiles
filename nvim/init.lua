@@ -18,6 +18,7 @@ require("packer").startup(function()
     -- use 'rafcamlet/nvim-luapad'
     use "ray-x/lsp_signature.nvim"
     use "liuchengxu/vista.vim"
+    -- use "glepnir/lspsaga.nvim"
 
     use "akinsho/toggleterm.nvim"
 
@@ -233,9 +234,8 @@ end
 -- nunmap ]f
 -- nunmap [f
 
-
 -- nn <leader>v :Vista!!<cr>
-vim.g.vista_default_executive = 'nvim_lsp'
+vim.g.vista_default_executive = "nvim_lsp"
 
 map("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
 
@@ -391,7 +391,6 @@ au BufRead,BufNewFile */funcs/* setfiletype zsh
 --   au FileType fzf tunmap <buffer> <Esc>
 -- endif
 
-
 -- vim.o.showcmd = true
 -- vim.o.cursorline = true
 -- vim.o.cursorcolumn = false
@@ -401,6 +400,9 @@ au BufRead,BufNewFile */funcs/* setfiletype zsh
 -- require'lightspeed'.setup { }
 -- require('gitsigns').setup()
 --
+
+-- require("lspsaga").init_lsp_saga()
+
 require("nvim_comment").setup {
     create_mappings = false,
 }
@@ -526,7 +528,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
     buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
-    require "lsp_signature".on_attach()
+    require("lsp_signature").on_attach()
 end
 
 local lspconfig = require "lspconfig"
@@ -544,12 +546,12 @@ lspconfig.sumneko_lua.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
-      Lua = {
-        diagnostics = {
-          globals = {"vim", "use", "use_rocks"}
-        }
-      }
-  }
+        Lua = {
+            diagnostics = {
+                globals = { "vim", "use", "use_rocks" },
+            },
+        },
+    },
 }
 
 -- require("rust-tools").setup {
