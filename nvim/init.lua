@@ -1,3 +1,11 @@
+local function map(mode, lhs, rhs, opts)
+    local options = { noremap = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
 local fn = vim.fn
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -279,20 +287,39 @@ require("base16-colorscheme").setup {
 
 vim.g.VimuxOrientation = "h"
 
-local function map(mode, lhs, rhs, opts)
-    local options = { noremap = true }
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
 -- TODO: figure out how to remap these?
 -- nunmap ]f
 -- nunmap [f
 
 -- nn <leader>v :Vista!!<cr>
 vim.g.vista_default_executive = "nvim_lsp"
+
+map("n", "<leader>sd", "<cmd>Telescope help_tags<CR>")
+-- map("n", "<leader>sf", "<cmd>Telescope live_grep<CR>")
+-- map("n", "<leader>h", "<cmd>Telescope help_tags<CR>")
+-- map("n", "<leader>h", "<cmd>Telescope help_tags<CR>")
+
+-- Open files with <leader>f
+-- map("n", "<leader>f", ":Files ./<CR>")
+map("n", "<leader>f", "<cmd>Telescope find_files<CR>")
+map("n", "<leader>F", ":FZF %%<CR>")
+map("n", "<leader>gt", ":Tags<cr>")
+-- map("n", "<leader>gt", "<cmd>Telescope tags<CR>")
+map("n", "<leader>ga", ":Rg<cr>")
+-- map("n", "<leader>ga", ":Telescope live_grep<cr>")
+
+map("n", "<leader>gd", ":Rg <C-r><C-w><cr>")
+-- map("n", "<leader>gd", ":Telescope live_grep <C-r><C-w><cr>")
+-- map("n", "<leader>b", ":Buffers<cr>")
+map("n", "<leader>b", ":Telescope buffers<cr>")
+-- map("n", "<leader>B", ":BTags<cr>")
+map("n", "<leader>B", ":Telescope current_buffer_tags<cr>")
+
+-- Mapping selecting mappings
+map("n", "<leader><tab>", "<plug>(fzf-maps-n)")
+map("x", "<leader><tab>", "<plug>(fzf-maps-x)")
+map("o", "<leader><tab>", "<plug>(fzf-maps-o)")
+
 
 map("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
 
@@ -368,23 +395,6 @@ map("n", "<leader>c", ":call VimuxRunCommand('make clean')<cr>")
 
 -- Inserts the path of the currently edited file in command mode
 map("c", "<C-P>", "<C-R>=expand('%:p:h') . '/' <CR>")
-
--- Open files with <leader>f
-map("n", "<leader>f", ":Files ./<CR>")
--- Open files, limited to the directory of the current files, with <leader>gf
-map("n", "<leader>F", ":FZF %%<CR>")
-
-map("n", "<leader>gt", ":Tags<cr>")
-map("n", "<leader>ga", ":Rg<cr>")
-map("n", "<leader>gd", ":Rg <C-r><C-w><cr>")
-
-map("n", "<leader>b", ":Buffers<cr>")
-map("n", "<leader>B", ":BTags<cr>")
-
--- Mapping selecting mappings
-map("n", "<leader><tab>", "<plug>(fzf-maps-n)")
-map("x", "<leader><tab>", "<plug>(fzf-maps-x)")
-map("o", "<leader><tab>", "<plug>(fzf-maps-o)")
 
 -- Insert mode completion
 -- imap <c-x><c-k> <plug>(fzf-complete-word)
