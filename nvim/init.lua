@@ -29,10 +29,13 @@ require("packer").startup(function()
         end,
     }
 
+    -- TODO: set this up properly with leader?
     use {
         "folke/which-key.nvim",
         config = function()
-            require("which-key").setup {}
+            require("which-key").setup {
+                triggers = { "<leader>" },
+            }
         end,
     }
 
@@ -49,7 +52,7 @@ require("packer").startup(function()
     use "tpope/vim-sensible"
     use "tpope/vim-eunuch"
     use "tpope/vim-surround"
-    use "tpope/vim-scriptease"
+    -- use "tpope/vim-scriptease"
     use "tpope/vim-repeat"
     use "tpope/vim-rsi"
 
@@ -70,7 +73,6 @@ require("packer").startup(function()
     -- use 'junegunn/goyo.vim'
     -- use 'junegunn/limelight.vim'
 
-    use "darthdeus/a.vim"
     use "benmills/vimux"
 
     use "chrisbra/vim-zsh"
@@ -101,7 +103,6 @@ require("packer").startup(function()
     -- TODO: , { 'on': 'NERDTree' }
 
     -- use 'krisajenkins/vim-projectlocal'
-    use "AndrewRadev/switch.vim"
     -- use "eshock/vim-matchit"
 
     use "sjl/gundo.vim"
@@ -194,6 +195,8 @@ vim.o.number = false
 vim.o.relativenumber = false
 vim.o.showmode = false
 
+vim.o.timeoutlen = 500
+
 -- Whitespace stuff
 vim.o.wrap = false
 vim.o.tabstop = 2
@@ -221,6 +224,12 @@ vim.o.completeopt = "menuone,preview,noinsert,noselect"
 
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
+
+-- vim.api.nvim_exec([[
+-- nnoremap <silent> <leader> :<C-u>WhichKey ','<CR>
+-- nnoremap <silent> <localleader> :<C-u>WhichKey ','<CR>
+-- ]], false)
+-- map ("n", "<leader>", ":WhichKey ','<CR>")
 
 vim.o.backupcopy = "yes"
 vim.o.list = true
