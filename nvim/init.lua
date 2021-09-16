@@ -44,7 +44,7 @@ require("packer").startup(function()
 
     -- use 'ggandor/lightspeed.nvim'
     use "kevinhwang91/nvim-bqf"
-    use "kevinhwang91/nvim-hlslens"
+    -- use "kevinhwang91/nvim-hlslens"
     use "TimUntersberger/neogit"
     -- use 'lewis6991/gitsigns.nvim'
 
