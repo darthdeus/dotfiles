@@ -1,11 +1,3 @@
-local function map(mode, lhs, rhs, opts)
-    local options = { noremap = true }
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
 local fn = vim.fn
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -49,6 +41,8 @@ require("packer").startup(function()
 
     use "whatsthatsmell/codesmell_dark.vim"
     use "RRethy/nvim-base16"
+
+    use "b0o/mapx.nvim"
 
     -- TODO: maybe without icons?
     -- use {
@@ -307,136 +301,138 @@ vim.g.VimuxOrientation = "h"
 -- nn <leader>v :Vista!!<cr>
 vim.g.vista_default_executive = "nvim_lsp"
 
-map("n", "<leader>sd", ":Telescope help_tags<CR>")
-map("n", "<leader>sa", ":Telescope commands<CR>")
+require("mapx").setup { global = true }
+
+nnoremap("<leader>sd", ":Telescope help_tags<CR>")
+nnoremap("<leader>sa", ":Telescope commands<CR>")
+
 -- map("n", "<leader>sf", "<cmd>Telescope live_grep<CR>")
 -- map("n", "<leader>h", "<cmd>Telescope help_tags<CR>")
 -- map("n", "<leader>h", "<cmd>Telescope help_tags<CR>")
 
 -- Open files with <leader>f
-map("n", "<leader>f", ":Files ./<CR>")
--- map("n", "<leader>f", "<cmd>Telescope find_files<CR>")
-map("n", "<leader>F", ":FZF %%<CR>")
-map("n", "<leader>gt", ":Tags<cr>")
+nnoremap("<leader>f", ":Files ./<CR>")
+-- nnoremap("<leader>f", "<cmd>Telescope find_files<CR>")
+nnoremap("<leader>F", ":FZF %%<CR>")
+nnoremap("<leader>gt", ":Tags<cr>")
 -- map("n", "<leader>gt", "<cmd>Telescope tags<CR>")
-map("n", "<leader>ga", ":Rg<cr>")
+nnoremap("<leader>ga", ":Rg<cr>")
 -- map("n", "<leader>ga", ":Telescope live_grep<cr>")
 
-map("n", "<leader>gd", ":Rg <C-r><C-w><cr>")
+nnoremap("<leader>gd", ":Rg <C-r><C-w><cr>")
 -- map("n", "<leader>gd", ":Telescope live_grep <C-r><C-w><cr>")
-map("n", "<leader>b", ":Buffers<cr>")
+nnoremap("<leader>b", ":Buffers<cr>")
 -- map("n", "<leader>b", ":Telescope buffers<cr>")
-map("n", "<leader>B", ":BTags<cr>")
+nnoremap("<leader>B", ":BTags<cr>")
 -- map("n", "<leader>B", ":Telescope current_buffer_tags<cr>")
 
 -- Mapping selecting mappings
-map("n", "<leader><tab>", "<plug>(fzf-maps-n)")
-map("x", "<leader><tab>", "<plug>(fzf-maps-x)")
-map("o", "<leader><tab>", "<plug>(fzf-maps-o)")
+nnoremap("<leader><tab>", "<plug>(fzf-maps-n)")
+xnoremap("<leader><tab>", "<plug>(fzf-maps-x)")
+onoremap("<leader><tab>", "<plug>(fzf-maps-o)")
 
-map("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
+nnoremap("gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
 
-map("i", "<silent><expr>", "<C-Space> compe#complete()")
+inoremap("<silent><expr>", "<C-Space> compe#complete()")
 -- map("n", "<silent><expr>", "<CR>      compe#confirm('<CR>')")
-map("i", "<silent><expr>", "<C-e>     compe#close('<C-e>')")
-map("i", "<silent><expr>", "<C-f>     compe#scroll({ 'delta': +4 })")
-map("i", "<silent><expr>", "<C-d>     compe#scroll({ 'delta': -4 })")
+inoremap("<silent><expr>", "<C-e>     compe#close('<C-e>')")
+inoremap("<silent><expr>", "<C-f>     compe#scroll({ 'delta': +4 })")
+inoremap("<silent><expr>", "<C-d>     compe#scroll({ 'delta': -4 })")
 
 -- Expand
-map("i", "<expr>", "<C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'")
-map("s", "<expr>", "<C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'")
+inoremap("<expr>", "<C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'")
+snoremap("<expr>", "<C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'")
 
 -- Expand or jump
-map("i", "<expr>", "<C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'")
-map("s", "<expr>", "<C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'")
+inoremap("<expr>", "<C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'")
+snoremap("<expr>", "<C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'")
 
-map("n", "<C-_><C-_>", ":CommentToggle<CR>")
-map("v", "<C-_><C-_>", ":CommentToggle<CR>")
+nnoremap("<C-_><C-_>", ":CommentToggle<CR>")
+vnoremap("<C-_><C-_>", ":CommentToggle<CR>")
 
-map("n", "<CR>", ":nohlsearch<CR>/<BS>")
+nnoremap("<CR>", ":nohlsearch<CR>/<BS>")
 
 -- Buffer resizing with arrow keys
-map("n", "<Up>", "<C-w>5-")
-map("n", "<Down>", "<C-w>5+")
-map("n", "<Left>", "<C-w>5<")
-map("n", "<Right>", "<C-w>5>")
+nnoremap("<Up>", "<C-w>5-")
+nnoremap("<Down>", "<C-w>5+")
+nnoremap("<Left>", "<C-w>5<")
+nnoremap("<Right>", "<C-w>5>")
 
-map("n", "<C-a>", "^")
-map("n", "<C-e>", "$")
+nnoremap("<C-a>", "^")
+nnoremap("<C-e>", "$")
 
-map("i", "<C-a>", "<Home>")
-map("i", "<C-e>", "<End>")
+inoremap("<C-a>", "<Home>")
+inoremap("<C-e>", "<End>")
 
 -- For easier navigation between windows
-map("n", "<C-j>", "<C-w><C-j>")
-map("n", "<C-k>", "<C-w><C-k>")
-map("n", "<C-h>", "<C-w><C-h>")
-map("t", "<C-h>", "<C-\\><C-n><C-w><C-h>")
-map("n", "<C-l>", "<C-w><C-l>")
+nnoremap("<C-j>", "<C-w><C-j>")
+nnoremap("<C-k>", "<C-w><C-k>")
+nnoremap("<C-h>", "<C-w><C-h>")
+tnoremap("<C-h>", "<C-\\><C-n><C-w><C-h>")
+nnoremap("<C-l>", "<C-w><C-l>")
 
-map("v", "-", ":Neoformat<cr>")
+vnoremap("-", ":Neoformat<cr>")
 
 -- Bubble multiple lines
-map("v", "<C-Up>", "<C-w><C-k>")
-map("v", "<C-Down>", "<C-w><C-j>")
-map("v", "<C-Left>", "<C-w><C-h>")
-map("v", "<C-Right>", "<C-w><C-l>")
+vnoremap("<C-Up>", "<C-w><C-k>")
+vnoremap("<C-Down>", "<C-w><C-j>")
+vnoremap("<C-Left>", "<C-w><C-h>")
+vnoremap("<C-Right>", "<C-w><C-l>")
 
-map("i", "<C-X><C-@>", "<C-A>")
+inoremap("<C-X><C-@>", "<C-A>")
 
-map("n", "-", ":Neoformat<cr>")
+nnoremap("-", ":Neoformat<cr>")
 
-map("n", "<leader>ge", ":vs ~/.config/nvim/init.lua<CR>")
+nnoremap("<leader>ge", ":vs ~/.config/nvim/init.lua<CR>")
 
 -- Expand %% to directory path of current buffer
-map("c", "%%", "<C-R>=expand('%:h').'/'<CR>")
+cnoremap("%%", "<C-R>=expand('%:h').'/'<CR>")
 
-map("n", "<Leader>e", ":call VimuxRunCommand('c')<cr>")
+nnoremap("<Leader>e", ":call VimuxRunCommand('c')<cr>")
 -- map("n", "<Leader>e", ":TermExec cmd='make' direction='vertical' size=80 go_back=0<cr>")
 -- map("n", "<Leader>e", ":TermExec cmd='make' direction='vertical' size=80<cr>")
 -- map("n", "<Leader>e", ":TermExec cmd='make' direction='vertical' open=0 size=80<cr>")
 
-map("n", "<F8>", ":ToggleTerm<cr>")
-map("i", "<F8>", ":ToggleTerm<cr>")
-map("t", "<F8>", "<C-\\><C-n>:ToggleTerm<cr>")
-map("t", "<Esc>", "<C-\\><C-n>:ToggleTerm<cr>")
-map("n", "<F5>", ":call VimuxRunCommand('make')<cr>")
-map("n", "<F4>", ":call VimuxRunCommand('make')<cr>")
+nnoremap("<F8>", ":ToggleTerm<cr>")
+inoremap("<F8>", ":ToggleTerm<cr>")
+tnoremap("<F8>", "<C-\\><C-n>:ToggleTerm<cr>")
+tnoremap("<Esc>", "<C-\\><C-n>:ToggleTerm<cr>")
+nnoremap("<F5>", ":call VimuxRunCommand('make')<cr>")
+nnoremap("<F4>", ":call VimuxRunCommand('make')<cr>")
 -- map("n", <leader>r :call VimuxRunCommand("make ". expand("%h"))<cr>
-map("n", "<leader>r", ":call VimuxRunCommand('make test')<cr>")
-map("n", "<leader>c", ":call VimuxRunCommand('make clean')<cr>")
+nnoremap("<leader>r", ":call VimuxRunCommand('make test')<cr>")
+nnoremap("<leader>c", ":call VimuxRunCommand('make clean')<cr>")
 
 -- Inserts the path of the currently edited file in command mode
-map("c", "<C-P>", "<C-R>=expand('%:p:h') . '/' <CR>")
+cnoremap("<C-P>", "<C-R>=expand('%:p:h') . '/' <CR>")
 
 -- Insert mode completion
 -- imap <c-x><c-k> <plug>(fzf-complete-word)
-map("i", "<c-x><c-f>", "<plug>(fzf-complete-path)")
-map("i", "<c-x><c-j>", "<plug>(fzf-complete-file-ag)")
+inoremap("<c-x><c-f>", "<plug>(fzf-complete-path)")
+inoremap("<c-x><c-j>", "<plug>(fzf-complete-file-ag)")
 -- imap <c-x><c-l> <plug>(fzf-complete-line)
 
-map("x", "ga", "<Plug>(EasyAlign)")
-map("n", "ga", "<Plug>(EasyAlign)")
+xnoremap("ga", "<Plug>(EasyAlign)")
+nnoremap("ga", "<Plug>(EasyAlign)")
 
 -- remove unnecessary whitespaces
-map("n", "<leader>ws", ":%s/ *$//g<cr><c-o><cr>")
+nnoremap("<leader>ws", ":%s/ *$//g<cr><c-o><cr>")
 
 -- Disable accidental ex mode
-map("n", "Q", "<NOP>")
+nnoremap("Q", "<NOP>")
 
 -- Switching between active files in a buffer.
-map("n", "<leader><leader>", "<c-^>")
+nnoremap("<leader><leader>", "<c-^>")
 
-map(
-    "n",
+nnoremap(
     "<leader>lt",
     ":!ctags --extras=+f --exclude=build --exclude=public --exclude=target --exclude=node_modules --exclude=.git -R *<CR>"
 )
-map("n", "<C-\\>", ":tnext<CR>")
+nnoremap("<C-\\>", ":tnext<CR>")
 
-map("n", "<silent>", "<leader>y :<C-u>silent '<,'>w !pbcopy<CR>")
+nnoremap("<silent>", "<leader>y :<C-u>silent '<,'>w !pbcopy<CR>")
 
-map("n", "<F9>", ":Neogit<CR>")
+nnoremap("<F9>", ":Neogit<CR>")
 
 -- TODO: do this with nvim_utils?
 -- https://github.com/norcalli/nvim_utils
@@ -628,7 +624,28 @@ lspconfig.sumneko_lua.setup {
     settings = {
         Lua = {
             diagnostics = {
-                globals = { "vim", "use", "use_rocks" },
+                globals = {
+                    "vim",
+                    "use",
+                    "use_rocks",
+                    "nnoremap",
+                    "nmap",
+                    "inoremap",
+                    "imap",
+                    "map",
+                    "vnoremap",
+                    "vmap",
+                    "tnoremap",
+                    "tmap",
+                    "cnoremap",
+                    "cmap",
+                    "snoremap",
+                    "smap",
+                    "onoremap",
+                    "omap",
+                    "xnoremap",
+                    "xmap"
+                },
             },
         },
     },
