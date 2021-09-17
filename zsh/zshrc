@@ -232,5 +232,7 @@ export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
 # TODO: defaults write -g com.apple.mouse.scaling -integer -1
 # defaults write -g com.apple.scrollwheel.scaling -1
 
+source ~/.env
+
 eval "$(direnv hook zsh)"
 # export RA_LOG=rust_analyzer=info

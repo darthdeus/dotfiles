@@ -83,6 +83,18 @@ require("packer").startup(function()
 
     use "benmills/vimux"
 
+    use {
+        "jameshiew/nvim-magic",
+        config = function()
+            require("nvim-magic").setup()
+        end,
+        tag = "v0.2.2", -- recommended to pin to a tag and update manually as there may be breaking changes
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+        },
+    }
+
     use "chrisbra/vim-zsh"
     -- use 'ludovicchabant/vim-gutentags'
 
@@ -265,25 +277,26 @@ endif
 vim.cmd "set fillchars+=vert:│"
 -- vim.cmd "colorscheme codesmell_dark"
 -- vim.cmd "color base16-default-dark"
+vim.cmd "color b16"
 
-require("base16-colorscheme").setup {
-    base00 = "#141414",
-    base01 = "#282828",
-    base02 = "#383838",
-    base03 = "#585858",
-    base04 = "#b8b8b8",
-    base05 = "#d8d8d8",
-    base06 = "#e8e8e8",
-    base07 = "#f8f8f8",
-    base08 = "#ab4642",
-    base09 = "#dc9656",
-    base0A = "#f7ca88",
-    base0B = "#a1b56c",
-    base0C = "#86c1b9",
-    base0D = "#7cafc2",
-    base0E = "#ba8baf",
-    base0F = "#a16946",
-}
+-- require("base16-colorscheme").setup {
+--     base00 = "#141414",
+--     base01 = "#282828",
+--     base02 = "#383838",
+--     base03 = "#585858",
+--     base04 = "#b8b8b8",
+--     base05 = "#d8d8d8",
+--     base06 = "#e8e8e8",
+--     base07 = "#f8f8f8",
+--     base08 = "#ab4642",
+--     base09 = "#dc9656",
+--     base0A = "#f7ca88",
+--     base0B = "#a1b56c",
+--     base0C = "#86c1b9",
+--     base0D = "#7cafc2",
+--     base0E = "#ba8baf",
+--     base0F = "#a16946",
+-- }
 
 vim.g.VimuxOrientation = "h"
 
@@ -294,14 +307,15 @@ vim.g.VimuxOrientation = "h"
 -- nn <leader>v :Vista!!<cr>
 vim.g.vista_default_executive = "nvim_lsp"
 
-map("n", "<leader>sd", "<cmd>Telescope help_tags<CR>")
+map("n", "<leader>sd", ":Telescope help_tags<CR>")
+map("n", "<leader>sa", ":Telescope commands<CR>")
 -- map("n", "<leader>sf", "<cmd>Telescope live_grep<CR>")
 -- map("n", "<leader>h", "<cmd>Telescope help_tags<CR>")
 -- map("n", "<leader>h", "<cmd>Telescope help_tags<CR>")
 
 -- Open files with <leader>f
--- map("n", "<leader>f", ":Files ./<CR>")
-map("n", "<leader>f", "<cmd>Telescope find_files<CR>")
+map("n", "<leader>f", ":Files ./<CR>")
+-- map("n", "<leader>f", "<cmd>Telescope find_files<CR>")
 map("n", "<leader>F", ":FZF %%<CR>")
 map("n", "<leader>gt", ":Tags<cr>")
 -- map("n", "<leader>gt", "<cmd>Telescope tags<CR>")
@@ -310,16 +324,15 @@ map("n", "<leader>ga", ":Rg<cr>")
 
 map("n", "<leader>gd", ":Rg <C-r><C-w><cr>")
 -- map("n", "<leader>gd", ":Telescope live_grep <C-r><C-w><cr>")
--- map("n", "<leader>b", ":Buffers<cr>")
-map("n", "<leader>b", ":Telescope buffers<cr>")
--- map("n", "<leader>B", ":BTags<cr>")
-map("n", "<leader>B", ":Telescope current_buffer_tags<cr>")
+map("n", "<leader>b", ":Buffers<cr>")
+-- map("n", "<leader>b", ":Telescope buffers<cr>")
+map("n", "<leader>B", ":BTags<cr>")
+-- map("n", "<leader>B", ":Telescope current_buffer_tags<cr>")
 
 -- Mapping selecting mappings
 map("n", "<leader><tab>", "<plug>(fzf-maps-n)")
 map("x", "<leader><tab>", "<plug>(fzf-maps-x)")
 map("o", "<leader><tab>", "<plug>(fzf-maps-o)")
-
 
 map("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
 
