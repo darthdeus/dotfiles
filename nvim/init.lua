@@ -180,6 +180,7 @@ require("packer").startup(function()
     use "chrisbra/unicode.vim"
 
     use "hrsh7th/nvim-compe"
+    use { "tzachar/compe-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-compe" }
 
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/vim-vsnip-integ"
@@ -514,6 +515,7 @@ require("compe").setup {
         vsnip = true,
         ultisnips = false,
         luasnip = false,
+        tabnine = true,
     },
 }
 
