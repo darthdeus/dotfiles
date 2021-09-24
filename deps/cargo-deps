@@ -1,0 +1,9 @@
+cargo-bump
+cargo-deny
+stylua
+cargo-expand
+cargo-bloat
+flamegraph
+loc
+basic-http-server
+cargo-make
