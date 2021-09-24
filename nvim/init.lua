@@ -247,7 +247,7 @@ vim.g.maplocalleader = ","
 -- map ("n", "<leader>", ":WhichKey ','<CR>")
 
 vim.o.backupcopy = "yes"
-vim.o.list = true
+vim.o.list = false
 vim.o.listchars = "tab:--,trail:."
 vim.o.pastetoggle = "<F3>"
 vim.o.undofile = true
