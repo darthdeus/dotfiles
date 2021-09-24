@@ -96,9 +96,11 @@ require("packer").startup(function()
 
     use {
         "junegunn/fzf",
-        run = function()
-            vim.fn["fzf#install"]()
-        end,
+        dir = "~/.fzf",
+        run = "./install --all"
+        -- run = function()
+        --     vim.fn["fzf#install"]()
+        -- end,
     }
     use "junegunn/fzf.vim"
     use "junegunn/vim-easy-align"
