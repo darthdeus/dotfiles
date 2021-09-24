@@ -648,7 +648,7 @@ lspconfig.sumneko_lua.setup {
                     "onoremap",
                     "omap",
                     "xnoremap",
-                    "xmap"
+                    "xmap",
                 },
             },
         },
