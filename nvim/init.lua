@@ -16,8 +16,8 @@ require("packer").startup(function()
     use "wbthomason/packer.nvim"
 
     -- use 'rafcamlet/nvim-luapad'
-    use "ray-x/lsp_signature.nvim"
-    use "liuchengxu/vista.vim"
+    -- use "ray-x/lsp_signature.nvim"
+    -- use "liuchengxu/vista.vim"
     -- use "glepnir/lspsaga.nvim"
 
     use "akinsho/toggleterm.nvim"
@@ -608,7 +608,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
     buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
-    require("lsp_signature").on_attach()
+    -- require("lsp_signature").on_attach()
 end
 
 local lspconfig = require "lspconfig"
