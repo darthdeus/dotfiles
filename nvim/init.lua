@@ -123,8 +123,8 @@ require("packer").startup(function()
 
     use "sjl/gundo.vim"
 
-    -- use "othree/html5.vim"
-    -- use "mattn/emmet-vim"
+    use "othree/html5.vim"
+    use "mattn/emmet-vim"
 
     use "sbdchd/neoformat"
 
