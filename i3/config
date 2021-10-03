@@ -38,7 +38,8 @@ bindsym $mod+Shift+q kill
 for_window [class="Zeal"] floating enable
 for_window [class="Godot"] floating enable
 for_window [title="Godot Engine*."] floating enable
-for_window [title="BITGUN (DEBUG)"] floating enable
+for_window [title=".*BITGUN.*"] floating enable
+for_window [title=".*Macroquad.*"] floating enable
 for_window [title="Fast Image Browser"] floating enable
 
 bindsym $mod+h			  focus left
