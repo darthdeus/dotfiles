@@ -32,3 +32,27 @@ class fzf_select(Command):
                 self.fm.cd(fzf_file)
             else:
                 self.fm.select_file(fzf_file)
+
+class wav_to_ogg(Command):
+    """
+    :wav_to_ogg <file>
+
+    Converts a wav file to ogg
+    """
+    def execute(self):
+        # if self.arg(1):
+        #     file = self.rest(1)
+        # else:
+        #     self.fm.notify("Usage: wav_to_ogg <file>", bad=True)
+        #     return
+
+        file = self.fm.thisfile.path
+        if not file.endswith(".wav"):
+            self.fm.notify("Usage: wav_to_ogg <file> ... must end in .wav", bad=True)
+            return
+
+        command = "ffmpeg -i '" + file + "' '" + file.replace(".wav", ".ogg") + "'"
+
+        self.fm.notify(command)
+
+        self.fm.execute_command(command)
