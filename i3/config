@@ -36,11 +36,13 @@ bindsym $mod+Ctrl+p exec dmenu_run
 bindsym $mod+Shift+q kill
 
 # for_window [class="Zeal"] floating enable
-# for_window [class="Godot"] floating enable
+for_window [class="Godot"] floating enable
 # for_window [title="Godot Engine*."] floating enable
 for_window [title=".*BITGUN \(DEBUG\).*"] floating enable
 for_window [title=".*Macroquad.*"] floating enable
+for_window [title=".*Micro Hell Loop.*"] floating enable
 for_window [title="Fast Image Browser"] floating enable
+for_window [title=".*Magery.*"] floating enable
 
 bindsym $mod+h			  focus left
 bindsym $mod+Shift+h	move left 30
