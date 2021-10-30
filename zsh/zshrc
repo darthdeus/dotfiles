@@ -229,6 +229,8 @@ PERL_MM_OPT="INSTALL_BASE=/home/darth/perl5"; export PERL_MM_OPT;
 export PATH="$HOME/.cargo/bin:$HOME/projects/homebrew/bin:$HOME/projects/homebrew/sbin:$PATH"
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
 
+export QT_STYLE_OVERRIDE=adwaita-dark
+
 # TODO: defaults write -g com.apple.mouse.scaling -integer -1
 # defaults write -g com.apple.scrollwheel.scaling -1
 
