@@ -109,15 +109,12 @@ require("packer").startup(function()
     use { "wfxr/minimap.vim", run = "cargo install --locked code-minimap" }
 
     use "terrortylor/nvim-comment"
-    -- use "tomtom/tcomment_vim"
-    -- use "tomtom/tlib_vim"
 
     use "jiangmiao/auto-pairs"
 
     use "itchyny/lightline.vim"
 
     use { "scrooloose/nerdtree", cmd = "NERDTree" }
-    -- TODO: , { 'on': 'NERDTree' }
 
     -- use 'krisajenkins/vim-projectlocal'
     -- use "eshock/vim-matchit"
@@ -135,19 +132,6 @@ require("packer").startup(function()
     use "ron-rs/ron.vim"
     use "gutenye/json5.vim"
     use "cespare/vim-toml"
-
-    -- use 'Shougo/unite.vim'
-    -- if has('nvim')
-    --   use 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-    -- else
-    --   use 'Shougo/denite.nvim'
-    --   use 'roxma/nvim-yarp'
-    --   use 'roxma/vim-hug-neovim-rpc'
-    -- endif
-
-    -- <TAB>: completion for deoplete from https://github.com/Shougo/deoplete.nvim/issues/816
-    -- inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-    -- inoremap <expr><s-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 
     -- ------------------------------------
 
@@ -465,23 +449,6 @@ au BufRead,BufNewFile */funcs/* setfiletype zsh
 ]],
     false
 )
-
--- if has("nvim")
---   au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
---   au FileType fzf tunmap <buffer> <Esc>
--- endif
-
--- vim.o.showcmd = true
--- vim.o.cursorline = true
--- vim.o.cursorcolumn = false
-
--- vim.o.history = 5000
-
--- require'lightspeed'.setup { }
--- require('gitsigns').setup()
---
-
--- require("lspsaga").init_lsp_saga()
 
 require("nvim_comment").setup {
     create_mappings = false,
