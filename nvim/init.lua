@@ -7,6 +7,7 @@ end
 
 require("packer").startup(function()
     use "wbthomason/packer.nvim"
+    use "b0o/mapx.nvim"
 
     use {
         "rmagatti/goto-preview",
@@ -24,9 +25,12 @@ require("packer").startup(function()
         end,
     }
 
+    use "nvim-lua/plenary.nvim"
+    use "nvim-lua/popup.nvim"
+    use "nvim-telescope/telescope.nvim"
+
     use "whatsthatsmell/codesmell_dark.vim"
     use "RRethy/nvim-base16"
-    use "b0o/mapx.nvim"
 
     use "tpope/vim-fugitive"
     use "tpope/vim-sensible"
@@ -76,7 +80,7 @@ require("packer").startup(function()
     use "sbdchd/neoformat"
 
     use "rust-lang/rust.vim"
-    -- use 'rhysd/rust-doc.vim'
+    --     -- use 'rhysd/rust-doc.vim'
     use "simrat39/rust-tools.nvim"
 
     use "chrisbra/vim-zsh"
@@ -96,15 +100,11 @@ require("packer").startup(function()
     use "kabouzeid/nvim-lspinstall"
     use "nvim-lua/lsp_extensions.nvim"
 
-    use "nvim-lua/plenary.nvim"
-    use "nvim-lua/popup.nvim"
-    use "nvim-telescope/telescope.nvim"
-
     use "ray-x/lsp_signature.nvim"
     use "akinsho/toggleterm.nvim"
 
     use "mfussenegger/nvim-dap"
-    use "zhimsel/vim-stay"
+    -- use "zhimsel/vim-stay"
 
     -- --------------------------------
 
@@ -117,7 +117,6 @@ require("packer").startup(function()
     use "hrsh7th/vim-vsnip-integ"
 end)
 
--- Make searches case-sensitive only if they contain upper-case characters
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.incsearch = true
@@ -132,7 +131,6 @@ vim.o.showmode = false
 
 vim.o.timeoutlen = 500
 
--- Whitespace stuff
 vim.o.wrap = false
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
@@ -150,7 +148,6 @@ vim.o.modelines = 10
 vim.o.winwidth = 75
 
 vim.o.wildmode = "list:longest,list:full"
--- TODO: += ?
 vim.o.wildignore =
     "obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build,logs,tags"
 
@@ -354,7 +351,7 @@ nnoremap("<F9>", ":Neogit<CR>")
 
 vim.api.nvim_exec(
     [[
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+" "autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 
 " Remember last location in file
 aug last_location
