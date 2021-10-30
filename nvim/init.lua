@@ -11,16 +11,46 @@ end
 -- - https://github.com/nvim-lua/plenary.nvim
 -- - https://github.com/nvim-lua/popup.nvim
 -- - https://github.com/famiu/bufdelete.nvim
+-- use 'rafcamlet/nvim-luapad'
+-- use "liuchengxu/vista.vim"
+-- use "glepnir/lspsaga.nvim"
+-- use "tpope/vim-scriptease"
+-- use 'ggandor/lightspeed.nvim'
+-- use "kevinhwang91/nvim-hlslens"
+-- use 'lewis6991/gitsigns.nvim'
+-- use { "wfxr/minimap.vim", run = "cargo install --locked code-minimap" }
+
+-- TODO: maybe without icons?
+-- use {
+--     "kyazdani42/nvim-tree.lua",
+--     requires = "kyazdani42/nvim-web-devicons",
+-- }
+-- TODO: maybe try again?
+-- use 'junegunn/goyo.vim'
+-- use 'junegunn/limelight.vim'
+-- use 'ludovicchabant/vim-gutentags'
+-- use 'krisajenkins/vim-projectlocal'
+-- use "eshock/vim-matchit"
+--
+-- TODO: maybe try these too?
+-- TODO: try tjdevries/colorbuddy.nvim ?
+-- https://github.com/JohnnyMorganz/StyLua
+-- https://github.com/Koihik/LuaFormatter
+-- use_rocks { "luaformatter", server = "https://luarocks.org/dev" }
+--
+-- " Install nvim-cmp
+-- use 'hrsh7th/nvim-cmp'
+-- " Install snippet engine (This example installs [hrsh7th/vim-vsnip](https://github.com/hrsh7th/vim-vsnip))
+-- use 'hrsh7th/vim-vsnip'
+-- " Install the buffer completion source
+-- use 'hrsh7th/cmp-buffer'
+--
+-- use 'nvim-lua/completion-nvim'
+-- use 'steelsojka/completion-buffers'
+-- use 'aca/completion-tabnine', { 'do': './install.sh' }
 
 require("packer").startup(function()
     use "wbthomason/packer.nvim"
-
-    -- use 'rafcamlet/nvim-luapad'
-    use "ray-x/lsp_signature.nvim"
-    -- use "liuchengxu/vista.vim"
-    -- use "glepnir/lspsaga.nvim"
-
-    use "akinsho/toggleterm.nvim"
 
     use {
         "rmagatti/goto-preview",
@@ -28,8 +58,6 @@ require("packer").startup(function()
             require("goto-preview").setup {}
         end,
     }
-
-    use "github/copilot.vim"
 
     use {
         "folke/which-key.nvim",
@@ -42,40 +70,21 @@ require("packer").startup(function()
 
     use "whatsthatsmell/codesmell_dark.vim"
     use "RRethy/nvim-base16"
-
     use "b0o/mapx.nvim"
-
-    -- TODO: maybe without icons?
-    -- use {
-    --     "kyazdani42/nvim-tree.lua",
-    --     requires = "kyazdani42/nvim-web-devicons",
-    -- }
 
     use "tpope/vim-fugitive"
     use "tpope/vim-sensible"
     use "tpope/vim-eunuch"
     use "tpope/vim-surround"
-    -- use "tpope/vim-scriptease"
     use "tpope/vim-repeat"
     use "tpope/vim-rsi"
 
-    -- use 'ggandor/lightspeed.nvim'
     use "kevinhwang91/nvim-bqf"
-    -- use "kevinhwang91/nvim-hlslens"
     use "TimUntersberger/neogit"
-    -- use 'lewis6991/gitsigns.nvim'
 
     use "editorconfig/editorconfig-vim"
 
     use "mileszs/ack.vim"
-
-    -- use 'calviken/vim-gdscript3'
-    use "habamax/vim-godot"
-
-    -- TODO: maybe try again?
-    -- use 'junegunn/goyo.vim'
-    -- use 'junegunn/limelight.vim'
-
     use "benmills/vimux"
 
     use {
@@ -90,23 +99,13 @@ require("packer").startup(function()
         },
     }
 
-    use "chrisbra/vim-zsh"
-    -- use 'ludovicchabant/vim-gutentags'
-
-    use "LnL7/vim-nix"
-
     use {
         "junegunn/fzf",
         dir = "~/.fzf",
-        run = "./install --all"
-        -- run = function()
-        --     vim.fn["fzf#install"]()
-        -- end,
+        run = "./install --all",
     }
     use "junegunn/fzf.vim"
     use "junegunn/vim-easy-align"
-
-    use { "wfxr/minimap.vim", run = "cargo install --locked code-minimap" }
 
     use "terrortylor/nvim-comment"
 
@@ -116,72 +115,51 @@ require("packer").startup(function()
 
     use { "scrooloose/nerdtree", cmd = "NERDTree" }
 
-    -- use 'krisajenkins/vim-projectlocal'
-    -- use "eshock/vim-matchit"
-
     use "sjl/gundo.vim"
-
-    use "othree/html5.vim"
-    use "mattn/emmet-vim"
 
     use "sbdchd/neoformat"
 
     use "rust-lang/rust.vim"
     -- use 'rhysd/rust-doc.vim'
+    use "simrat39/rust-tools.nvim"
 
+    use "chrisbra/vim-zsh"
+    use "habamax/vim-godot"
+    use "LnL7/vim-nix"
     use "ron-rs/ron.vim"
     use "gutenye/json5.vim"
     use "cespare/vim-toml"
+    use "othree/html5.vim"
+    use "mattn/emmet-vim"
 
-    -- ------------------------------------
-
-    -- We recommend updating the parsers on update
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
-    -- TODO: try tjdevries/colorbuddy.nvim ?
     use "nvim-treesitter/playground"
 
-    -- TODO: maybe try these too?
-    -- https://github.com/JohnnyMorganz/StyLua
-    -- https://github.com/Koihik/LuaFormatter
-    use_rocks { "luaformatter", server = "https://luarocks.org/dev" }
-
-    -- -------------------------------
-    -- use 'zxqfl/tabnine-vim'
     -- -------------------------------
     use "neovim/nvim-lspconfig"
     use "kabouzeid/nvim-lspinstall"
     use "nvim-lua/lsp_extensions.nvim"
 
-    use "simrat39/rust-tools.nvim"
-
     use "nvim-lua/plenary.nvim"
     use "nvim-lua/popup.nvim"
     use "nvim-telescope/telescope.nvim"
 
-    use "mfussenegger/nvim-dap"
+    use "ray-x/lsp_signature.nvim"
+    use "akinsho/toggleterm.nvim"
 
+    use "mfussenegger/nvim-dap"
     use "zhimsel/vim-stay"
 
     -- --------------------------------
 
     use "chrisbra/unicode.vim"
 
+    use "github/copilot.vim"
     use "hrsh7th/nvim-compe"
-    use { "tzachar/compe-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-compe" }
-
+    -- use { "tzachar/compe-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-compe" }
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/vim-vsnip-integ"
 
-    -- " Install nvim-cmp
-    -- use 'hrsh7th/nvim-cmp'
-    -- " Install snippet engine (This example installs [hrsh7th/vim-vsnip](https://github.com/hrsh7th/vim-vsnip))
-    -- use 'hrsh7th/vim-vsnip'
-    -- " Install the buffer completion source
-    -- use 'hrsh7th/cmp-buffer'
-
-    -- use 'nvim-lua/completion-nvim'
-    -- use 'steelsojka/completion-buffers'
-    -- use 'aca/completion-tabnine', { 'do': './install.sh' }
 end)
 
 -- Make searches case-sensitive only if they contain upper-case characters
@@ -647,88 +625,87 @@ lspconfig.sumneko_lua.setup {
 --   }
 -- })
 
-
 -----------------------------------
 -----------------------------------
 -----------------------------------
 -----------------------------------
 -----------------------------------
 
-require("nvim-treesitter.configs").setup {
-    ensure_installed = { "c", "cpp", "json", "javascript", "go", "python", "rust", "query", "lua" },
-    highlight = {
-        enable = true,
-    },
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            -- init_selection = "gnn",
-            -- node_incremental = "grn",
-            -- scope_incremental = "rc",
-            -- node_decremental = "grm",
-            init_selection = "`",
-            node_incremental = "`",
-            node_decremental = "~",
-            scope_incremental = "rc",
-        },
-    },
-    textobjects = {
-        select = {
-            enable = true,
-            keymaps = {
-                -- You can use the capture groups defined in textobjects.scm
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
-                ["ic"] = "@class.inner",
+-- require("nvim-treesitter.configs").setup {
+--     ensure_installed = { "c", "cpp", "json", "javascript", "go", "python", "rust", "query", "lua" },
+--     highlight = {
+--         enable = true,
+--     },
+--     incremental_selection = {
+--         enable = true,
+--         keymaps = {
+--             -- init_selection = "gnn",
+--             -- node_incremental = "grn",
+--             -- scope_incremental = "rc",
+--             -- node_decremental = "grm",
+--             init_selection = "`",
+--             node_incremental = "`",
+--             node_decremental = "~",
+--             scope_incremental = "rc",
+--         },
+--     },
+--     textobjects = {
+--         select = {
+--             enable = true,
+--             keymaps = {
+--                 -- You can use the capture groups defined in textobjects.scm
+--                 ["af"] = "@function.outer",
+--                 ["if"] = "@function.inner",
+--                 ["ac"] = "@class.outer",
+--                 ["ic"] = "@class.inner",
+--
+--                 -- Or you can define your own textobjects like this
+--                 ["iF"] = {
+--                     python = "(function_definition) @function",
+--                     cpp = "(function_definition) @function",
+--                     c = "(function_definition) @function",
+--                     java = "(method_declaration) @function",
+--                 },
+--             },
+--         },
+--         move = {
+--             enable = true,
+--             goto_next_start = {
+--                 ["]a"] = "@function.outer",
+--                 ["]]"] = "@class.outer",
+--             },
+--             goto_next_end = {
+--                 ["]A"] = "@function.outer",
+--                 ["]["] = "@class.outer",
+--             },
+--             goto_previous_start = {
+--                 ["[a"] = "@function.outer",
+--                 ["[["] = "@class.outer",
+--             },
+--             goto_previous_end = {
+--                 ["[A"] = "@function.outer",
+--                 ["[]"] = "@class.outer",
+--             },
+--         },
+--
+--         swap = {
+--             enable = true,
+--             swap_next = {
+--                 ["<leader>a"] = "@parameter.inner",
+--             },
+--             swap_previous = {
+--                 ["<leader>A"] = "@parameter.inner",
+--             },
+--         },
+--     },
+-- }
 
-                -- Or you can define your own textobjects like this
-                ["iF"] = {
-                    python = "(function_definition) @function",
-                    cpp = "(function_definition) @function",
-                    c = "(function_definition) @function",
-                    java = "(method_declaration) @function",
-                },
-            },
-        },
-        move = {
-            enable = true,
-            goto_next_start = {
-                ["]a"] = "@function.outer",
-                ["]]"] = "@class.outer",
-            },
-            goto_next_end = {
-                ["]A"] = "@function.outer",
-                ["]["] = "@class.outer",
-            },
-            goto_previous_start = {
-                ["[a"] = "@function.outer",
-                ["[["] = "@class.outer",
-            },
-            goto_previous_end = {
-                ["[A"] = "@function.outer",
-                ["[]"] = "@class.outer",
-            },
-        },
-
-        swap = {
-            enable = true,
-            swap_next = {
-                ["<leader>a"] = "@parameter.inner",
-            },
-            swap_previous = {
-                ["<leader>A"] = "@parameter.inner",
-            },
-        },
-    },
-}
-
-vim.cmd([[
+vim.cmd [[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
-]])
+]]
 
 vim.o.exrc = true
 vim.o.secure = true
