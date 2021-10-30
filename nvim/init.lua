@@ -29,6 +29,8 @@ require("packer").startup(function()
         end,
     }
 
+    use "github/copilot.vim"
+
     -- TODO: set this up properly with leader?
     use {
         "folke/which-key.nvim",
