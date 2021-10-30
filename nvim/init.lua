@@ -31,7 +31,6 @@ require("packer").startup(function()
 
     use "github/copilot.vim"
 
-    -- TODO: set this up properly with leader?
     use {
         "folke/which-key.nvim",
         config = function()
@@ -574,7 +573,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_client, bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
@@ -660,36 +659,6 @@ lspconfig.sumneko_lua.setup {
     },
 }
 
--- require("rust-tools").setup {
---     server = opts,
--- }
---
--- require("rust-tools.inlay_hints").set_inlay_hints()
-
--- require("lsp_extensions").inlay_hints { enabled = { "TypeHint", "ChainingHint", "ParameterHint" } }
--- require("lsp_extensions").inlay_hints()
-
--- -- Get the counts from your curreent workspace:
--- local ws_errors = require("lsp_extensions.workspace.diagnostic").get_count(0, "Error")
--- local ws_hints = require("lsp_extensions.workspace.diagnostic").get_count(0, "Hint")
---
--- -- Set the qflist for the current workspace
--- --  For more information, see `:help vim.lsp.diagnostic.set_loc_list()`, since this has some of the same configuration.
--- require("lsp_extensions.workspace.diagnostic").set_qf_list()
-
--- local servers = { 'vim-language-server', 'rust_analyzer' }
--- for _, lsp in ipairs(servers) do
---   nvim_lsp[lsp].setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---     flags = {
---       debounce_text_changes = 150,
---     }
---   }
--- end
-
--- require'lspconfig'.rust_analyzer.setup{on_attach=require'completion'.on_attach}
-
 -- local cmp = require'cmp'
 -- cmp.setup({
 --   snippet = {
@@ -711,66 +680,12 @@ lspconfig.sumneko_lua.setup {
 --   }
 -- })
 
------------------------------------
--- -- TODO COMPLETION
--- local nvim_lsp = require('lspconfig')
---
 
--- -- TODO: is this duplicate of the inlay hints that already work?
---
---
--- local function setup_servers()
---   require'lspinstall'.setup()
---   local servers = require'lspinstall'.installed_servers()
---   -- for _, server in pairs(servers) do
---   --   nvim_lsp[server].setup{
---   --     on_attach = on_attach,
---   --     flags = {
---   --       debounce_text_changes = 150,
---   --     }
---   --   }
---   -- end
---
-
--- end
-
--- setup_servers()
---
--- -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
--- require'lspinstall'.post_install_hook = function ()
---   setup_servers() -- reload installed servers
---   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
--- end
---
---
--- -- Enable diagnostics
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
---   vim.lsp.diagnostic.on_publish_diagnostics, {
---     virtual_text = true,
---     signs = true,
---     update_in_insert = false,
---     severity_sort = true,
---   }
--- )
 -----------------------------------
 -----------------------------------
 -----------------------------------
 -----------------------------------
 -----------------------------------
-
--- require'nvim-treesitter.configs'.setup {
---   ensure_installed = { "rust" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
---   ignore_install = { "javascript" }, -- List of parsers to ignore installing
---   highlight = {
---     enable = true,              -- false will disable the whole extension
---     disable = { },  -- list of language that will be disabled
---     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
---     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
---     -- Using this option may slow down your editor, and you may see some duplicate highlights.
---     -- Instead of true it can also be a list of languages
---     additional_vim_regex_highlighting = false,
---   },
--- }
 
 require("nvim-treesitter.configs").setup {
     ensure_installed = { "c", "cpp", "json", "javascript", "go", "python", "rust", "query", "lua" },
@@ -840,6 +755,13 @@ require("nvim-treesitter.configs").setup {
         },
     },
 }
+
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
 
 vim.o.exrc = true
 vim.o.secure = true
