@@ -92,8 +92,10 @@ require("packer").startup(function()
     use "othree/html5.vim"
     use "mattn/emmet-vim"
 
-    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
-    use "nvim-treesitter/playground"
+    if vim.fn.has("win32") ~= 1 then
+      use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+      use "nvim-treesitter/playground"
+    end
 
     -- -------------------------------
     use "neovim/nvim-lspconfig"
@@ -148,8 +150,7 @@ vim.o.modelines = 10
 vim.o.winwidth = 75
 
 vim.o.wildmode = "list:longest,list:full"
-vim.o.wildignore =
-    "obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build,logs,tags"
+vim.o.wildignore = "obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build,logs,tags"
 
 -- TODO: default is menu,preview?
 vim.o.completeopt = "menuone,preview,noinsert,noselect"
@@ -301,15 +302,23 @@ inoremap("<C-X><C-@>", "<C-A>")
 
 nnoremap("-", ":Neoformat<cr>")
 
-nnoremap("<leader>ge", ":vs ~/.config/nvim/init.lua<CR>")
+if vim.fn.has("win32") == 1 then
+  nnoremap("<leader>ge", ":vs C:/users/jakub/dotfiles/nvim/init.lua<CR>")
+  nnoremap("<leader>e", ':TermExec cmd="make" direction=vertical size=80 go_back=0<cr>')
+  -- nnoremap("<leader>e", ":TermExec cmd='make' direction='vertical' size=80<cr>")
+  -- nnoremap("<leader>e", ":TermExec cmd='make' direction='vertical' open=0 size=80<cr>")
+  --
+  nnoremap("<leader>ma", ":cd C:/dev/cubes-of-flesh<CR>")
+  nnoremap("<leader>mb", ":cd C:/dev/BITGUN<CR>")
+else
+  nnoremap("<leader>ge", ":vs ~/.config/nvim/init.lua<CR>")
+  nnoremap("<Leader>e", ":call VimuxRunCommand('c')<cr>")
+end
 
 -- Expand %% to directory path of current buffer
 cnoremap("%%", "<C-R>=expand('%:h').'/'<CR>")
 
-nnoremap("<Leader>e", ":call VimuxRunCommand('c')<cr>")
--- map("n", "<Leader>e", ":TermExec cmd='make' direction='vertical' size=80 go_back=0<cr>")
--- map("n", "<Leader>e", ":TermExec cmd='make' direction='vertical' size=80<cr>")
--- map("n", "<Leader>e", ":TermExec cmd='make' direction='vertical' open=0 size=80<cr>")
+
 
 nnoremap("<F8>", ":ToggleTerm<cr>")
 inoremap("<F8>", ":ToggleTerm<cr>")
@@ -553,74 +562,76 @@ lspconfig.sumneko_lua.setup {
 -----------------------------------
 -----------------------------------
 
-require("nvim-treesitter.configs").setup {
-    ensure_installed = { "c", "cpp", "json", "javascript", "go", "python", "rust", "query", "lua" },
-    highlight = {
-        enable = true,
-    },
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            -- init_selection = "gnn",
-            -- node_incremental = "grn",
-            -- scope_incremental = "rc",
-            -- node_decremental = "grm",
-            init_selection = "`",
-            node_incremental = "`",
-            node_decremental = "~",
-            scope_incremental = "rc",
-        },
-    },
-    textobjects = {
-        select = {
-            enable = true,
-            keymaps = {
-                -- You can use the capture groups defined in textobjects.scm
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
-                ["ic"] = "@class.inner",
+if vim.fn.has("win32") ~= 1 then
+  require("nvim-treesitter.configs").setup {
+      ensure_installed = { "c", "cpp", "json", "javascript", "go", "python", "rust", "query", "lua" },
+      highlight = {
+          enable = true,
+      },
+      incremental_selection = {
+          enable = true,
+          keymaps = {
+              -- init_selection = "gnn",
+              -- node_incremental = "grn",
+              -- scope_incremental = "rc",
+              -- node_decremental = "grm",
+              init_selection = "`",
+              node_incremental = "`",
+              node_decremental = "~",
+              scope_incremental = "rc",
+          },
+      },
+      textobjects = {
+          select = {
+              enable = true,
+              keymaps = {
+                  -- You can use the capture groups defined in textobjects.scm
+                  ["af"] = "@function.outer",
+                  ["if"] = "@function.inner",
+                  ["ac"] = "@class.outer",
+                  ["ic"] = "@class.inner",
 
-                -- Or you can define your own textobjects like this
-                ["iF"] = {
-                    python = "(function_definition) @function",
-                    cpp = "(function_definition) @function",
-                    c = "(function_definition) @function",
-                    java = "(method_declaration) @function",
-                },
-            },
-        },
-        move = {
-            enable = true,
-            goto_next_start = {
-                ["]a"] = "@function.outer",
-                ["]]"] = "@class.outer",
-            },
-            goto_next_end = {
-                ["]A"] = "@function.outer",
-                ["]["] = "@class.outer",
-            },
-            goto_previous_start = {
-                ["[a"] = "@function.outer",
-                ["[["] = "@class.outer",
-            },
-            goto_previous_end = {
-                ["[A"] = "@function.outer",
-                ["[]"] = "@class.outer",
-            },
-        },
+                  -- Or you can define your own textobjects like this
+                  ["iF"] = {
+                      python = "(function_definition) @function",
+                      cpp = "(function_definition) @function",
+                      c = "(function_definition) @function",
+                      java = "(method_declaration) @function",
+                  },
+              },
+          },
+          move = {
+              enable = true,
+              goto_next_start = {
+                  ["]a"] = "@function.outer",
+                  ["]]"] = "@class.outer",
+              },
+              goto_next_end = {
+                  ["]A"] = "@function.outer",
+                  ["]["] = "@class.outer",
+              },
+              goto_previous_start = {
+                  ["[a"] = "@function.outer",
+                  ["[["] = "@class.outer",
+              },
+              goto_previous_end = {
+                  ["[A"] = "@function.outer",
+                  ["[]"] = "@class.outer",
+              },
+          },
 
-        swap = {
-            enable = true,
-            swap_next = {
-                ["<leader>a"] = "@parameter.inner",
-            },
-            swap_previous = {
-                ["<leader>A"] = "@parameter.inner",
-            },
-        },
-    },
-}
+          swap = {
+              enable = true,
+              swap_next = {
+                  ["<leader>a"] = "@parameter.inner",
+              },
+              swap_previous = {
+                  ["<leader>A"] = "@parameter.inner",
+              },
+          },
+      },
+  }
+end
 
 vim.cmd [[
   augroup packer_user_config
