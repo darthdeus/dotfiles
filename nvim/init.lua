@@ -135,6 +135,11 @@ require("packer").startup(function()
     -- use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
     use {'tzachar/cmp-tabnine', after = "nvim-cmp", run='powershell ./install.ps1', requires = 'hrsh7th/nvim-cmp'}
 
+
+    -- use "github/copilot.vim"
+    -- use "hrsh7th/nvim-compe"
+    -- use { "tzachar/compe-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-compe" }
+
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/vim-vsnip-integ"
 
