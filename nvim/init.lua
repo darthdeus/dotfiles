@@ -39,6 +39,8 @@ require("packer").startup(function()
     use "tpope/vim-repeat"
     use "tpope/vim-rsi"
 
+    use "tikhomirov/vim-glsl"
+
     use "kevinhwang91/nvim-bqf"
     use "TimUntersberger/neogit"
 
