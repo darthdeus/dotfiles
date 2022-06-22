@@ -106,7 +106,7 @@ require("packer").startup(function()
     use "nvim-lua/lsp_extensions.nvim"
 
     use "ray-x/lsp_signature.nvim"
-    use "akinsho/toggleterm.nvim"
+    -- use "akinsho/toggleterm.nvim"
 
     use "mfussenegger/nvim-dap"
     -- use "zhimsel/vim-stay"
