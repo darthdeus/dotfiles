@@ -461,6 +461,10 @@ vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
 
+require("nvim-lsp-installer").setup {
+    automatic_installation = true
+}
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
@@ -526,7 +530,6 @@ lspconfig.pyright.setup(opts)
 lspconfig.yamlls.setup(opts)
 
 lspconfig.sumneko_lua.setup {
-    cmd = { "lua-language-server" },
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
