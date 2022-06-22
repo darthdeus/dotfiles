@@ -96,6 +96,9 @@ require("packer").startup(function()
       use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
       use "nvim-treesitter/playground"
     end
+    use "chaimleib/vim-renpy"
+
+    use "DingDean/wgsl.vim"
 
     -- -------------------------------
     use "neovim/nvim-lspconfig"
