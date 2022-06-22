@@ -102,7 +102,7 @@ require("packer").startup(function()
 
     -- -------------------------------
     use "neovim/nvim-lspconfig"
-    use "kabouzeid/nvim-lspinstall"
+    use "williamboman/nvim-lsp-installer"
     use "nvim-lua/lsp_extensions.nvim"
 
     use "ray-x/lsp_signature.nvim"
