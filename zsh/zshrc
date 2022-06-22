@@ -102,11 +102,11 @@ LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 PATH="./node_modules/.bin:$HOME/.dotfiles/bin:$LOCAL_PATHS:$HOME/.yarn/bin:$PATH"
 
 # Base16 Shell
-# BASE16_SHELL="$HOME/.config/base16-shell/"
-# if [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ]; then
-#   eval "$("$BASE16_SHELL/profile_helper.sh")"
-# fi
-# base16_default-dark
+BASE16_SHELL="$HOME/.config/base16-shell/"
+if [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ]; then
+  eval "$("$BASE16_SHELL/profile_helper.sh")"
+fi
+base16_default-dark
 
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore "*.png" --ignore "*.jpg" --ignore "*.mp3" --ignore "*.import" --ignore "*.wav" --ignore "*.ogg" --ignore "*.aseprite" --ignore "*.ttf" --ignore "*.gif" --ignore "*.TTF" --ignore "*.afdesign" --ignore "*.afphoto" --ignore "*.tres" -l -g ""'
 # export FZF_DEFAULT_COMMAND='
@@ -125,7 +125,7 @@ export PROJECT_HOME="$HOME/projects"
 
 # TODO: fuj
 export CUDA_HOME="/usr/local/cuda"
-export PATH="$CUDA_HOME/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.mint/bin:$CUDA_HOME/bin:$HOME/.local/bin:$PATH"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/extras/CUPTI/lib64:$CUDA_HOME/lib64:/usr/local/lib"
 
 # TODO: only on SGE
@@ -226,7 +226,9 @@ PERL_MM_OPT="INSTALL_BASE=/home/darth/perl5"; export PERL_MM_OPT;
 
 # export PATH="$GOPATH/bin:$PATH"
 
-export PATH="$HOME/.cargo/bin:$HOME/projects/homebrew/bin:$HOME/projects/homebrew/sbin:$PATH"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# export PATH="$HOME/.cargo/bin:$HOME/projects/homebrew/bin:$HOME/projects/homebrew/sbin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
 
 export QT_STYLE_OVERRIDE=adwaita-dark
@@ -238,3 +240,5 @@ source ~/.env
 
 eval "$(direnv hook zsh)"
 # export RA_LOG=rust_analyzer=info
+#
+export RENPY_PATH="$HOME/projects/renpy-7.4.11-sdk"
