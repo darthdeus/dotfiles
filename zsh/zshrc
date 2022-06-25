@@ -226,7 +226,8 @@ PERL_MM_OPT="INSTALL_BASE=/home/darth/perl5"; export PERL_MM_OPT;
 
 # export PATH="$GOPATH/bin:$PATH"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+[ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # export PATH="$HOME/.cargo/bin:$HOME/projects/homebrew/bin:$HOME/projects/homebrew/sbin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
