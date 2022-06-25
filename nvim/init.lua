@@ -100,13 +100,17 @@ require("packer").startup(function()
 
     use "DingDean/wgsl.vim"
 
+    use "tenxsoydev/size-matters.nvim"
+
     -- -------------------------------
     use "neovim/nvim-lspconfig"
     use "williamboman/nvim-lsp-installer"
     use "nvim-lua/lsp_extensions.nvim"
 
     use "ray-x/lsp_signature.nvim"
-    -- use "akinsho/toggleterm.nvim"
+    use {"akinsho/toggleterm.nvim", config = function()
+      require("toggleterm").setup()
+    end}
 
     use "mfussenegger/nvim-dap"
     -- use "zhimsel/vim-stay"
@@ -115,9 +119,20 @@ require("packer").startup(function()
 
     use "chrisbra/unicode.vim"
 
-    use "github/copilot.vim"
+    -- use "github/copilot.vim"
     -- use "hrsh7th/nvim-compe"
     -- use { "tzachar/compe-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-compe" }
+    --
+
+    -- use "zbirenbaum/copilot.lua"
+    -- use {
+    --     "zbirenbaum/copilot-cmp",
+    --       module = "copilot_cmp",
+    -- }
+
+    -- use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+    use {'tzachar/cmp-tabnine', after = "nvim-cmp", run='powershell ./install.ps1', requires = 'hrsh7th/nvim-cmp'}
+
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/vim-vsnip-integ"
 
@@ -128,8 +143,11 @@ require("packer").startup(function()
     use "hrsh7th/cmp-cmdline"
     use "hrsh7th/nvim-cmp"
     use "hrsh7th/cmp-vsnip"
-    use "hrsh7th/vim-vsnip"
 end)
+
+require('user.reload')
+
+vim.api.nvim_set_keymap("n", "<leader>gr", "<cmd>lua ReloadConfig()<CR>", { noremap = true, silent = false })
 
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -187,16 +205,17 @@ vim.o.undofile = true
 -- vim.o.termguicolors = true
 -- vim.o.term = "xterm-256color"
 
-vim.api.nvim_exec(
-    [[
+-- vim.api.nvim_exec( [[
+-- let g:neovide_cursor_animation_length=0.00
+-- ]], false)
+
+vim.api.nvim_exec([[
 if exists('+termguicolors')
   let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-]],
-    false
-)
+]], false)
 
 -- vim.cmd "set fillchars+=vert:|"
 vim.cmd "set fillchars+=vert:│"
@@ -316,16 +335,20 @@ nnoremap("-", ":Neoformat<cr>")
 
 if vim.fn.has("win32") == 1 then
   nnoremap("<leader>ge", ":vs C:/users/jakub/dotfiles/nvim/init.lua<CR>")
-  nnoremap("<leader>e", ':TermExec cmd="make" direction=vertical size=80 go_back=0<cr>')
+  -- nnoremap("<leader>e", ':TermExec cmd="make" direction=vertical size=80 go_back=0<cr>')
+  nnoremap("<leader>e", ':Cargo run<cr>')
+  -- nnoremap("<leader>e", ':ToggleTerm cmd="cargo run"<cr>')
   -- nnoremap("<leader>e", ":TermExec cmd='make' direction='vertical' size=80<cr>")
   -- nnoremap("<leader>e", ":TermExec cmd='make' direction='vertical' open=0 size=80<cr>")
   --
-  nnoremap("<leader>ma", ":cd C:/dev/cubes-of-flesh<CR>")
+  nnoremap("<leader>ma", ":cd C:/dev/flesh-monster<CR>")
   nnoremap("<leader>mb", ":cd C:/dev/BITGUN<CR>")
 else
   nnoremap("<leader>ge", ":vs ~/.config/nvim/init.lua<CR>")
   nnoremap("<Leader>e", ":call VimuxRunCommand('c')<cr>")
 end
+
+
 
 -- Expand %% to directory path of current buffer
 cnoremap("%%", "<C-R>=expand('%:h').'/'<CR>")
@@ -395,6 +418,23 @@ au BufRead,BufNewFile */funcs/* setfiletype zsh
 require("nvim_comment").setup {
     create_mappings = false,
 }
+
+if vim.g.neovide or vim.g.goneovim or vim.g.nvui or vim.g.gnvim then
+    require("size-matters").setup({
+      default_mappings = true,
+      step_size = 1, -- font resize step size
+      notifications = false, -- default value is true if notify is installed else false
+      reset_font = vim.api.nvim_get_option("guifont"), -- Font loaded when using the reset cmd / shortcut
+    })
+end
+
+-- vim.o.guifont = "Fantasque Sans Mono:8"
+vim.g.neovide_cursor_animation_length=0.00
+
+vim.cmd([[
+    let guifont="Arial:h12"
+]])
+
 
 --COMPE
 -- require("compe").setup {
@@ -472,6 +512,15 @@ require("nvim_comment").setup {
 -- vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
 --COMPE
 
+
+-- require("copilot").setup {
+--   cmp = {
+--     enabled = true,
+--     method = "getCompletionsCycling",
+--   }
+-- }
+
+
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
@@ -497,7 +546,9 @@ cmp.setup({
 		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 	sources = cmp.config.sources({
+    { name = 'tabnine' },
 		{ name = 'nvim_lsp' },
+    -- { name = 'copilot' },
 		{ name = 'vsnip' }, -- For vsnip users.
 		-- { name = 'luasnip' }, -- For luasnip users.
 		-- { name = 'ultisnips' }, -- For ultisnips users.

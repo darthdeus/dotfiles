@@ -1,0 +1,1 @@
+set guifont=Fantasque\ Sans\ Mono:h14
