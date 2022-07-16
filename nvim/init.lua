@@ -122,23 +122,13 @@ require("packer").startup(function()
     use "chrisbra/unicode.vim"
 
     -- use "github/copilot.vim"
-    -- use "hrsh7th/nvim-compe"
-    -- use { "tzachar/compe-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-compe" }
-    --
-
     -- use "zbirenbaum/copilot.lua"
     -- use {
     --     "zbirenbaum/copilot-cmp",
     --       module = "copilot_cmp",
     -- }
-
-    use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
-    -- use {'tzachar/cmp-tabnine', after = "nvim-cmp", run='powershell ./install.ps1', requires = 'hrsh7th/nvim-cmp'}
-
-
-    -- use "github/copilot.vim"
-    -- use "hrsh7th/nvim-compe"
-    -- use { "tzachar/compe-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-compe" }
+    --
+    -- use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
 
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/vim-vsnip-integ"
@@ -527,6 +517,20 @@ vim.cmd([[
 --   }
 -- }
 
+local tabnine = require('cmp_tabnine.config')
+tabnine:setup({
+	max_lines = 1000;
+	max_num_results = 20;
+	sort = true;
+	run_on_every_keystroke = true;
+	snippet_placeholder = '..';
+	ignored_file_types = { -- default is not to ignore
+		-- uncomment to ignore in lua:
+		-- lua = true
+	};
+	show_prediction_strength = false;
+})
+
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
@@ -553,9 +557,9 @@ cmp.setup({
 		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 	sources = cmp.config.sources({
-    { name = 'tabnine' },
-		{ name = 'nvim_lsp' },
+    -- { name = 'tabnine' },
     -- { name = 'copilot' },
+		{ name = 'nvim_lsp' },
 		{ name = 'vsnip' }, -- For vsnip users.
 		-- { name = 'luasnip' }, -- For luasnip users.
 		-- { name = 'ultisnips' }, -- For ultisnips users.
