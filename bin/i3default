@@ -18,7 +18,7 @@ i3-msg '[workspace="9"]' move workspace to output "$RIGHT"
 i3-msg '[workspace="0"]' move workspace to output "$RIGHT"
 
 xrandr --output "$LEFT" --mode 3840x2160 --pos 0x0 --rotate normal \
-  --output "$RIGHT" --mode 3440x1440 --pos 3840x0 --rotate normal
+  --output "$RIGHT" --mode 3440x1440 --pos 3840x0 --rotate normal --rate 100
   # --output HDMI-2 --off \
   # --output HDMI-1 --off \
   # --output DP-3 --off \
