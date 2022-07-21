@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 if [ -f .c ]; then
   source .c
 elif [ -f Makefile ]; then
