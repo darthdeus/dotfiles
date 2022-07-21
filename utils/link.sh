@@ -21,12 +21,12 @@ ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc"
 # mkdir -p "$HOME/.urxvt"
 # ln -nsf "$DOT/urxvt-ext/"    "$HOME/.urxvt/ext"
 
-# mkdir -p "$HOME/.config/i3"
-# ln -nsf "$DOT/i3/config"    "$HOME/.config/i3/config"
+mkdir -p "$HOME/.config/i3"
+ln -nsf "$DOT/i3/config"    "$HOME/.config/i3/config"
 # mkdir -p "$HOME/.config/i3blocks"
 # ln -nsf "$DOT/i3/blocks.conf" "$HOME/.config/i3blocks/config"
 
-# ln -nsf "$DOT/sxhkd"    "$HOME/.config/sxhkd"
+ln -nsf "$DOT/sxhkd"    "$HOME/.config/sxhkd"
 
 # TODO: is this the right way to create a user service?
 # mkdir -p "$HOME/.config/systemd/user"
@@ -61,7 +61,9 @@ ln -nsf "$DOT/kitty"              "$HOME/.config/kitty"
 ln -nsf "$DOT/ctags.d"            "$HOME/.ctags.d"
 
 # TODO: ???
-# ln -nsf "$DOT/polybar"            "$HOME/.config/polybar"
+ln -nsf "$DOT/polybar"            "$HOME/.config/polybar"
+mkdir -p ~/.config/nixpkgs
+ln -nsf "$DOT/nixpkgs/config.nix" "$HOME/.config/nixpkgs/config.nix"
 
 #
 mkdir -p "$HOME/.mail/"{gmail,icloud}/{inbox,drafts}
