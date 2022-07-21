@@ -46,7 +46,7 @@ for_window [title=".*Magery.*"] floating enable
 for_window [title=".*Rapier Crash.*"] floating enable
 for_window [title=".*DAZ Install Manager.*"] floating enable
 for_window [title=".*Flesh Monster.*"] floating enable
-for_window [title=".*Memory Game.*"] floating enable
+for_window [title=".*FLOAT.*"] floating enable
 
 bindsym $mod+h			  focus left
 bindsym $mod+Shift+h	move left 30
