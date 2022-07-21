@@ -743,10 +743,10 @@ local opts = {
 }
 
 lspconfig.rust_analyzer.setup(opts)
-lspconfig.vimls.setup(opts)
-lspconfig.clangd.setup(opts)
-lspconfig.pyright.setup(opts)
-lspconfig.yamlls.setup(opts)
+-- lspconfig.vimls.setup(opts)
+-- lspconfig.clangd.setup(opts)
+-- lspconfig.pyright.setup(opts)
+-- lspconfig.yamlls.setup(opts)
 
 lspconfig.sumneko_lua.setup({
 	on_attach = on_attach,
