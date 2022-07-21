@@ -232,16 +232,20 @@ PERL_MM_OPT="INSTALL_BASE=/home/darth/perl5"; export PERL_MM_OPT;
 
 # export PATH="$HOME/.cargo/bin:$HOME/projects/homebrew/bin:$HOME/projects/homebrew/sbin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
+if type rustc &>/dev/null; then
+  export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
+fi
 
 export QT_STYLE_OVERRIDE=adwaita-dark
 
 # TODO: defaults write -g com.apple.mouse.scaling -integer -1
 # defaults write -g com.apple.scrollwheel.scaling -1
 
-source ~/.env
+[ -f ~/.env ] && source ~/.env
 
-eval "$(direnv hook zsh)"
+if type direnv &>/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
 # export RA_LOG=rust_analyzer=info
 #
 export RENPY_PATH="$HOME/projects/renpy-7.4.11-sdk"
