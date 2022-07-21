@@ -73,6 +73,7 @@
   # services.xserver.desktopManager.default = "none";
   # services.xserver.windowMangaer.default = "i3";
 
+  documentation.dev.enable = true;
   fonts.fonts = with pkgs; [
     noto-fonts
     noto-fonts-emoji
