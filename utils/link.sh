@@ -62,8 +62,7 @@ ln -nsf "$DOT/ctags.d"            "$HOME/.ctags.d"
 
 # TODO: ???
 ln -nsf "$DOT/polybar"            "$HOME/.config/polybar"
-mkdir -p ~/.config/nixpkgs
-ln -nsf "$DOT/nixpkgs/config.nix" "$HOME/.config/nixpkgs/config.nix"
+ln -nsf "$DOT/nixpkgs"           "$HOME/.config/nixpkgs"
 
 #
 mkdir -p "$HOME/.mail/"{gmail,icloud}/{inbox,drafts}
