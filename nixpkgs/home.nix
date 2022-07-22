@@ -6,6 +6,16 @@
   home.username = "darth";
   home.homeDirectory = "/home/darth";
 
+  home.packages = [
+    pkgs.htop
+  ];
+
+  # programs.git = {
+  #   enable = true;
+  #   userName = "Jakub Arnold";
+  #   userEmail = "darthdeus@gmail.com";
+  # };
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
