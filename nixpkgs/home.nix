@@ -8,7 +8,20 @@
 
   home.packages = [
     pkgs.htop
+    pkgs.fortune
   ];
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+
+  # programs.emacs.enable = true;
+  # programs.emacs = {
+  #   enable = true;
+  #   extraPackages = epkgs: [
+  #     epkgs.nix-mode
+  #     epkgs.magit
+  #   ];
+  # };
 
   # programs.git = {
   #   enable = true;
@@ -25,7 +38,4 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "22.05";
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 }
