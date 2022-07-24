@@ -209,3 +209,4 @@ if type direnv &>/dev/null; then
 fi
 # export RA_LOG=rust_analyzer=info
 
+export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
