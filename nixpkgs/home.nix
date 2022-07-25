@@ -1,12 +1,15 @@
 { config, pkgs, ... }:
 
+let
+  homeDirectory = if pkgs.stdenv.isLinux then "/home/darth" else "/Users/darth";
+in
 {
   # TODO: check out https://gist.github.com/mandrean/65108e0898629e20afe1002d8bf4f223
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "darth";
-  home.homeDirectory = if pkgs.stdenv.isLinux then "/home/darth" else "/Users/darth";
+  home.homeDirectory = homeDirectory;
 
 
   home.packages = let 
@@ -55,13 +58,12 @@
     feh
     dmenu
     ffmpeg
+    ncdu
 
     noxMaster
 
     neovim
     tmux
-    # pkgs.nox
-    # polybar
 
     cargo-bloat loc flamegraph wasm-strip simple-http-server
   ];
@@ -143,46 +145,7 @@
 
   services.sxhkd = {
     enable = true;
-    extraConfig = ''
-super + Return
-  alacritty -e tmux
-
-super shift + Return
-  alacritty -e zsh -c 'nvim "+:cd ~/.dotfiles" nvim/lua/config.lua'
-
-super + p
-  dmenu_run
-
-super + grave
-  dmenuunicode
-
-super + e
-  urxvt -e neomutt
-
-super + n
-  urxvt -e newsboat
-
-super + i
-  urxvt -e htop
-
-super + shift + p
-  ~/.dotfiles/bin/maimpick
-
-super + shift + n
-  thunar
-
-super + shift + o
-  ~/.todo/bin/paste-url
-
-super + shift + i
-  ~/.todo/bin/zenity-todo
-
-super + shift + b
-  ~/.dotfiles/bin/bitgun
-
-super + shift + r
-  pkill -USR1 -x sxhkd
-      '';
+    extraConfig = builtins.readFile "${homeDirectory}/.dotfiles/sxhkd/sxhkdrc";
   };
 
   # programs.neovim = {
