@@ -23,7 +23,7 @@ autoload -Uz $(print ~/.dotfiles/zsh/funcs/*(:t))
 
 LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 
-export PATH="$HOME/.todo/bin:$HOME/.dotfiles/bin:$LOCAL_PATHS:$PATH"
+export PATH="$HOME/.todo/bin:$HOME/.emacs.d/bin:$HOME/.dotfiles/bin:$LOCAL_PATHS:$PATH"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
