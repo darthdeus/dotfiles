@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ -f .c ]; then
-  source .c
+  bash .c
 elif [ -f Makefile ]; then
   make
 else
