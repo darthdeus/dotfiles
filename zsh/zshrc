@@ -124,15 +124,6 @@ export PROJECT_HOME="$HOME/projects"
 # wmname LG3D
 
 # TODO: fuj
-export CUDA_HOME="/usr/local/cuda"
-export PATH="$HOME/.mint/bin:$CUDA_HOME/bin:$HOME/.local/bin:$PATH"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/extras/CUPTI/lib64:$CUDA_HOME/lib64:/usr/local/lib"
-
-# TODO: only on SGE
-export PYSPARK_PYTHON="python3"
-export PYSPARK_DRIVER_PYTHON="python3"
-
-# TODO: fuj
 # if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate"  ]]; then
 #   source "${VIRTUAL_ENV}/bin/activate"
 # fi
