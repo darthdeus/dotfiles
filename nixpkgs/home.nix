@@ -25,15 +25,29 @@
     nix
 
     fzf
+    fd
     ripgrep
     jq
     tree
     ranger
+    xfce.thunar
+    rofi
 
+    abook
+    dstat
+    arandr
+    rxvt-unicode
+    mpv
+    
+    neomutt
+    lynx
+    w3m
+    traceroute
+
+    fping
     gnumake
 
     xclip
-    neomutt
     youtube-dl
     feh
     dmenu
@@ -48,6 +62,8 @@
   ];
 
   targets.genericLinux.enable = pkgs.stdenv.isLinux;
+
+  # programs.mbsync.enable = true;
 
   programs.zsh = {
     enable = true;
