@@ -20,7 +20,48 @@
     pkgs.neovim
   ];
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
+
+    initExtra = ''
+    bindkey '^ ' autosuggest-accept
+    unsetopt beep
+    bindkey -e
+
+    autoload -Uz select-word-style
+    select-word-style bash
+
+    source ~/.zsh/prompt.zsh
+
+    autoload -U edit-command-line
+    zle -N edit-command-line
+    bindkey '\C-x\C-e' edit-command-line
+
+    source ~/.zshrc.dot
+    '';
+
+    zplug = {
+      enable = true;
+      plugins= [
+        {
+          name = "ytet5uy4/fzf-widgets";
+        }
+        {
+          name = "changyuheng/fz";
+        }
+        {
+          name = "rupa/z";
+        }
+      ];
+    };
+
+    plugins = with pkgs; [
+
+    ];
+  };
+
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;

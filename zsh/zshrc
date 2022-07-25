@@ -61,9 +61,6 @@ select-word-style bash
 
 # color theme
 source "$ZSH/prompt.zsh"
-if [ -f "$HOME/.local_env" ]; then
-  source "$HOME/.local_env"
-fi
 
 if [ -z "$VIM_VERSION" ]; then
   VIM_VERSION="nvim"
