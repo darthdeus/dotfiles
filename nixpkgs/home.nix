@@ -14,15 +14,30 @@
       patches = [./nox.patch];
     });
   in with pkgs; [
-    htop gnupg zathura bc bat
+    bc
+    bat
+    curl
+    htop
+    gnupg
+    pass
+    zathura
 
     nix
 
-    fzf ripgrep jq tree ranger
+    fzf
+    ripgrep
+    jq
+    tree
+    ranger
 
     gnumake
 
-    xclip neomutt youtube-dl feh dmenu ffmpeg
+    xclip
+    neomutt
+    youtube-dl
+    feh
+    dmenu
+    ffmpeg
 
     noxMaster
 
