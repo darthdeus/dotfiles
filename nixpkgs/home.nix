@@ -59,6 +59,8 @@
     tmux
     # pkgs.nox
     # polybar
+
+    cargo-bloat loc flamegraph wasm-strip simple-http-server
   ];
 
   targets.genericLinux.enable = pkgs.stdenv.isLinux;
