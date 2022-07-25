@@ -114,3 +114,76 @@ function get-ssid() {
     $WIFI_CMD -I | awk '/ SSID/ {print substr($0, index($0, $2))}'
   fi
 }
+
+# add-less-suffix() {
+#   BUFFER="$BUFFER | less"
+#   (( CURSOR += 7 ))
+# }
+# zle -N add-less-suffix
+# bindkey '^I' add-less-suffix
+
+# zstyle :compinstall filename '/Users/darth/.zshrc'
+# TODO: create ~/.zfunc if not exists
+
+# TODO: use this instead of custom prompt?
+# autoload -U promptinit
+# promptinit
+# prompt gentoo
+
+# Autoreload all completion commands
+# function au() {
+#   unfunction -m '_*'
+#   autoload -Uz compinit
+#   compinit
+# }
+
+
+##################################
+# PREVIOUS GPG CONFIG
+osname=$(uname -a)
+# if [[ ! $osname == *NixOS* ]]; then
+#   if command -v gpgconf >/dev/null; then
+#     export GPG_TTY="$(tty)"
+#     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+#     gpgconf --launch gpg-agent
+#     # TODO: when exactly is this needed?
+#     gpg-connect-agent updatestartuptty /bye >/dev/null
+#   fi
+# fi
+
+##################################
+
+[ -f "$NHM" ] && source "$NHM"
+
+if type direnv &>/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+# export RA_LOG=rust_analyzer=info
+
+
+# TODO: defaults write -g com.apple.mouse.scaling -integer -1
+# defaults write -g com.apple.scrollwheel.scaling -1
+
+[ -f ~/.env ] && source ~/.env
+
+# NHM="$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+# export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+
+unset npm_config_prefix
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+[ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
+
+##########################################
+## PROFILING START
+if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
+  zmodload zsh/zprof
+fi
+
+## PROFILING END
+if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
+  zprof
+fi
+##
+##########################################

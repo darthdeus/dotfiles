@@ -2,31 +2,9 @@ if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zmodload zsh/zprof
 fi
 
-export DOT_BASE_DIR="$HOME/.dotfiles"
-export ZPLUG_HOME="$HOME/.dotfiles/third-party/zplug"
-
 fpath=(~/.zsh/funcs "${fpath[@]}")
 
 ZSH=$HOME/.zsh
-
-# history config
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-setopt HIST_IGNORE_SPACE
-
-# disable the annoying beep
-unsetopt beep
-
-# emacs style keybindings
-bindkey -e
-
-source "$ZPLUG_HOME/init.zsh"
-
-zplug "ytet5uy4/fzf-widgets"
-zplug "changyuheng/fz", defer:1
-zplug "rupa/z", use:z.sh
-
 
 # Load all libs under
 for config_file in "$ZSH"/lib/*.zsh; do
@@ -34,30 +12,10 @@ for config_file in "$ZSH"/lib/*.zsh; do
 done
 
 # completion settings
-# zstyle :compinstall filename '/Users/darth/.zshrc'
-# TODO: create ~/.zfunc if not exists
 fpath=(~/.zsh/completion "${fpath[@]}")
 
 autoload -Uz compinit
 compinit -C
-# TODO: use this instead of custom prompt?
-# autoload -U promptinit
-# promptinit
-# prompt gentoo
-
-# Autoreload all completion commands
-# function au() {
-#   unfunction -m '_*'
-#   autoload -Uz compinit
-#   compinit
-# }
-
-# TODO: do I still need this?
-# zstyle ':completion:*:*:docker:*' option-stacking yes
-# zstyle ':completion:*:*:docker-*:*' option-stacking yes
-
-autoload -Uz select-word-style
-select-word-style bash
 
 # color theme
 source "$ZSH/prompt.zsh"
@@ -81,16 +39,9 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
-# add-less-suffix() {
-#   BUFFER="$BUFFER | less"
-#   (( CURSOR += 7 ))
-# }
-# zle -N add-less-suffix
-# bindkey '^I' add-less-suffix
-
 LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 
-PATH="./node_modules/.bin:$HOME/.dotfiles/bin:$LOCAL_PATHS:$PATH"
+PATH="$HOME/.dotfiles/bin:$LOCAL_PATHS:$PATH"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -143,17 +94,6 @@ function recompdef() {
   compdef $@
 }
 
-osname=$(uname -a)
-# if [[ ! $osname == *NixOS* ]]; then
-#   if command -v gpgconf >/dev/null; then
-#     export GPG_TTY="$(tty)"
-#     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-#     gpgconf --launch gpg-agent
-#     # TODO: when exactly is this needed?
-#     gpg-connect-agent updatestartuptty /bye >/dev/null
-#   fi
-# fi
-
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
   eval `ssh-agent`
   ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
@@ -168,21 +108,12 @@ ssh-add -l > /dev/null || ssh-add
 #   export GDK_SCALE=2
 # fi
 
-zplug load
-
 if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof
 fi
 
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="$HOME/.todo/bin:$PATH"
-
-unset npm_config_prefix
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-[ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
 
 [ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -193,20 +124,5 @@ if type rustc &>/dev/null; then
 fi
 
 export QT_STYLE_OVERRIDE=adwaita-dark
-
-# TODO: defaults write -g com.apple.mouse.scaling -integer -1
-# defaults write -g com.apple.scrollwheel.scaling -1
-
-[ -f ~/.env ] && source ~/.env
-
-# NHM="$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-# export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
-
-[ -f "$NHM" ] && source "$NHM"
-
-if type direnv &>/dev/null; then
-  eval "$(direnv hook zsh)"
-fi
-# export RA_LOG=rust_analyzer=info
 
 export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
