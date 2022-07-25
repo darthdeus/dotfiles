@@ -37,6 +37,7 @@
   excludesfile = ~/.gitignore
   autocrlf = false
   quotepath = false
+
 [color]
   ui = auto
 [color "branch"]
@@ -52,15 +53,14 @@
   added = yellow
   changed = green
   untracked = cyan
-[merge]
-  tool = vimdiff
-  defaultToUpstream = true
+
 [branch]
   autosetupmerge = true
 [http]
   sslverify = false
 [mergetool]
   keepBackup = true
+
 [difftool]
   prompt = false
 [push]
@@ -69,3 +69,21 @@
   autoStash = true
 [pull]
   rebase = true
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+[add.interactive]
+    useBuiltin = false # required for git 2.37.0
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default

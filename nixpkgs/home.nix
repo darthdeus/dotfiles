@@ -31,6 +31,7 @@ in
     gnupg
     pass
     zathura
+    delta
 
     nix
 
@@ -144,7 +145,7 @@ in
   programs.home-manager.enable = true;
 
   services.sxhkd = {
-    enable = true;
+    enable = pkgs.stdenv.isLinux;
     extraConfig = builtins.readFile "${homeDirectory}/.dotfiles/sxhkd/sxhkdrc";
   };
 
