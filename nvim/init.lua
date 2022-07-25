@@ -42,7 +42,7 @@ require("packer").startup(function()
 	use("tikhomirov/vim-glsl")
 
 	use("kevinhwang91/nvim-bqf")
-	use("TimUntersberger/neogit")
+	-- use("TimUntersberger/neogit")
 
 	use("editorconfig/editorconfig-vim")
 
@@ -61,11 +61,7 @@ require("packer").startup(function()
 		},
 	})
 
-	use({
-		"junegunn/fzf",
-		dir = "~/.fzf",
-		run = "./install --all",
-	})
+  use("junegunn/fzf")
 	use("junegunn/fzf.vim")
 	use("junegunn/vim-easy-align")
 

@@ -13,6 +13,12 @@
     noxMaster = pkgs.nox.overrideAttrs (finalAttrs: previousAttrs: {
       patches = [./nox.patch];
     });
+    linuxPkgs = if pkgs.stdenv.isLinux then [
+      pkgs.xfce.thunar
+      pkgs.rofi
+      pkgs.dstat
+      pkgs.traceroute
+    ] else [];
   in with pkgs; [
     bc
     bat
@@ -30,11 +36,8 @@
     jq
     tree
     ranger
-    xfce.thunar
-    rofi
 
     abook
-    dstat
     arandr
     rxvt-unicode
     mpv
@@ -42,7 +45,6 @@
     neomutt
     lynx
     w3m
-    traceroute
 
     fping
     gnumake
@@ -55,7 +57,7 @@
 
     noxMaster
 
-    # neovim
+    neovim
     tmux
     # pkgs.nox
     # polybar
