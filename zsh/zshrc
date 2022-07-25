@@ -74,7 +74,6 @@ export VISUAL="$VIM_VERSION"
 
 alias vim="$VIM_VERSION"
 alias vi="vim"
-alias e="eix"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
@@ -94,12 +93,7 @@ bindkey '\C-x\C-e' edit-command-line
 
 LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 
-# CROSS_PATH="$HOME/opt/cross/bin"
-# PERF_TOOLS_PATH="$HOME/.dotfiles/third-party/perf-tools/bin:$HOME/.dotfiles/third-party/FlameGraph"
-
-# export GOPATH="$HOME/projects/go"
-
-PATH="./node_modules/.bin:$HOME/.dotfiles/bin:$LOCAL_PATHS:$HOME/.yarn/bin:$PATH"
+PATH="./node_modules/.bin:$HOME/.dotfiles/bin:$LOCAL_PATHS:$PATH"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
