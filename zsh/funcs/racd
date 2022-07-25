@@ -1,0 +1,7 @@
+tempfile="$(mktemp -t tmp.XXXXXX)"
+ranger --cmd='set show_hidden=true' --choosedir="$tempfile" "${@:-$(pwd)}"
+test -f "$tempfile" &&
+if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+    cd -- "$(cat "$tempfile")"
+fi
+rm -f -- "$tempfile"
