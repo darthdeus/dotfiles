@@ -1,0 +1,23 @@
+From aa938d10484dd6a06aea7a8d286733731ddcaf9f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jan=20Kundr=C3=A1t?= <jkt@kde.org>
+Date: Fri, 11 Feb 2022 17:17:32 +0100
+Subject: [PATCH] Don't die on packages with no `meta`
+
+Fixes #97
+---
+ nox/search.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/nox/search.py b/nox/search.py
+index 636d015..0524cd8 100644
+--- a/nox/search.py
++++ b/nox/search.py
+@@ -49,7 +49,7 @@ def all_packages(force_refresh=False):
+         region.delete(key)
+ 
+     packages_json = region.get_or_create(key, nix_packages_json)
+-    return (Package(attr, v['name'], v['meta'].get('description', ''))
++    return (Package(attr, v['name'], v.get('meta', {}).get('description', ''))
+             for attr, v in packages_json.items())
+ 
+

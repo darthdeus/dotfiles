@@ -8,7 +8,13 @@
   home.username = "darth";
   home.homeDirectory = if pkgs.stdenv.isLinux then "/home/darth" else "/Users/darth";
 
-  home.packages = with pkgs; [
+
+  home.packages = let 
+  noxMaster = pkgs.nox.overrideAttrs (finalAttrs: previousAttrs: {
+    patches = [./nox.patch];
+  });
+
+  nixpkgPackages = with pkgs; [
     htop gnupg zathura bc
 
     bat
@@ -21,10 +27,15 @@
 
     xclip neomutt youtube-dl feh dmenu ffmpeg
 
-    neovim tmux
+    noxMaster
+
+    # neovim
+    tmux
     # pkgs.nox
     # polybar
   ];
+  in
+    [noxMaster] ++ nixpkgPackages;
 
   targets.genericLinux.enable = pkgs.stdenv.isLinux;
 
