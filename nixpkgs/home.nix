@@ -9,10 +9,31 @@
   home.packages = [
     pkgs.htop
     pkgs.fortune
+    pkgs.bat
+    pkgs.fzf
+    pkgs.ripgrep
+    pkgs.jq
+    pkgs.tree
+    pkgs.ranger
+    pkgs.nix
+    pkgs.gnumake
+    pkgs.neovim
   ];
+
+  programs.zsh.enable = true;
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.bat.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # programs.neovim = {
+  #   enable = true;
+  # };
 
   # programs.emacs.enable = true;
   # programs.emacs = {

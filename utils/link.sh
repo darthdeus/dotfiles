@@ -8,7 +8,7 @@ THIRD_PARTY="$DOT/third-party"
 # ln -nsf "$DOT/vim"           "$HOME/.vim"
 # ln -nsf "$DOT/vim/vimrc"     "$HOME/.vimrc"
 ln -nsf "$DOT/zsh"           "$HOME/.zsh"
-ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc"
+ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc.dot"
 # ln -nsf "$DOT/xmonad"        "$HOME/.xmonad"
 # ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
 # ln -nsf "$DOT/Xmodmap"       "$HOME/.Xmodmap"
@@ -62,7 +62,8 @@ ln -nsf "$DOT/ctags.d"            "$HOME/.ctags.d"
 
 # TODO: ???
 ln -nsf "$DOT/polybar"            "$HOME/.config/polybar"
-ln -nsf "$DOT/nixpkgs"           "$HOME/.config/nixpkgs"
+ln -nsf "$DOT/nixpkgs"            "$HOME/.config/nixpkgs"
+ln -nsf "$DOT/nix"                "$HOME/.config/nix"
 
 #
 mkdir -p "$HOME/.mail/"{gmail,icloud}/{inbox,drafts}
