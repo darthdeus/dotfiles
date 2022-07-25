@@ -121,20 +121,6 @@ stty sane
 
 export PROJECT_HOME="$HOME/projects"
 
-# wmname LG3D
-
-# TODO: fuj
-# if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate"  ]]; then
-#   source "${VIRTUAL_ENV}/bin/activate"
-# fi
-
-# TODO: fuj
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# if command -v pyenv 1>/dev/null 2>&1; then
-#   eval "$(pyenv init -)"
-# fi
-
 function source-nix() {
   source ~/.nix-profile/etc/profile.d/nix.sh
 }
@@ -197,10 +183,6 @@ if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof
 fi
 
-# eval "$(rbenv init -)"
-
-# TODO: don't dumbly run this all the time
-# command -v redshift >/dev/null 2>&1 && redshift -O 5500
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="$HOME/.todo/bin:$PATH"
@@ -210,14 +192,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 [ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
-
-PATH="/home/darth/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/darth/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/darth/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/darth/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/darth/perl5"; export PERL_MM_OPT;
-
-# export PATH="$GOPATH/bin:$PATH"
 
 [ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -243,5 +217,4 @@ if type direnv &>/dev/null; then
   eval "$(direnv hook zsh)"
 fi
 # export RA_LOG=rust_analyzer=info
-#
-export RENPY_PATH="$HOME/projects/renpy-7.4.11-sdk"
+
