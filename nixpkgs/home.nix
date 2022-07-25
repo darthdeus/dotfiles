@@ -18,6 +18,7 @@
       pkgs.rofi
       pkgs.dstat
       pkgs.traceroute
+      pkgs.polybar
     ] else [];
   in with pkgs; [
     bc
@@ -139,6 +140,50 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  services.sxhkd = {
+    enable = true;
+    extraConfig = ''
+super + Return
+  alacritty -e tmux
+
+super shift + Return
+  alacritty -e zsh -c 'nvim "+:cd ~/.dotfiles" nvim/lua/config.lua'
+
+super + p
+  dmenu_run
+
+super + grave
+  dmenuunicode
+
+super + e
+  urxvt -e neomutt
+
+super + n
+  urxvt -e newsboat
+
+super + i
+  urxvt -e htop
+
+super + shift + p
+  ~/.dotfiles/bin/maimpick
+
+super + shift + n
+  thunar
+
+super + shift + o
+  ~/.todo/bin/paste-url
+
+super + shift + i
+  ~/.todo/bin/zenity-todo
+
+super + shift + b
+  ~/.dotfiles/bin/bitgun
+
+super + shift + r
+  pkill -USR1 -x sxhkd
+      '';
+  };
 
   # programs.neovim = {
   #   enable = true;

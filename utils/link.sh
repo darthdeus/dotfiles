@@ -26,7 +26,7 @@ ln -nsf "$DOT/i3/config"    "$HOME/.config/i3/config"
 # mkdir -p "$HOME/.config/i3blocks"
 # ln -nsf "$DOT/i3/blocks.conf" "$HOME/.config/i3blocks/config"
 
-ln -nsf "$DOT/sxhkd"    "$HOME/.config/sxhkd"
+# ln -nsf "$DOT/sxhkd"    "$HOME/.config/sxhkd"
 
 # TODO: is this the right way to create a user service?
 # mkdir -p "$HOME/.config/systemd/user"
