@@ -10,18 +10,15 @@
 
 
   home.packages = let 
-  noxMaster = pkgs.nox.overrideAttrs (finalAttrs: previousAttrs: {
-    patches = [./nox.patch];
-  });
-
-  nixpkgPackages = with pkgs; [
-    htop gnupg zathura bc
-
-    bat
-
-    fzf ripgrep jq tree ranger
+    noxMaster = pkgs.nox.overrideAttrs (finalAttrs: previousAttrs: {
+      patches = [./nox.patch];
+    });
+  in with pkgs; [
+    htop gnupg zathura bc bat
 
     nix
+
+    fzf ripgrep jq tree ranger
 
     gnumake
 
@@ -34,8 +31,6 @@
     # pkgs.nox
     # polybar
   ];
-  in
-    [noxMaster] ++ nixpkgPackages;
 
   targets.genericLinux.enable = pkgs.stdenv.isLinux;
 
