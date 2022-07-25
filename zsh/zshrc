@@ -199,8 +199,8 @@ export QT_STYLE_OVERRIDE=adwaita-dark
 
 [ -f ~/.env ] && source ~/.env
 
-NHM="$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+# NHM="$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+# export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
 
 [ -f "$NHM" ] && source "$NHM"
 

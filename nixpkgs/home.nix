@@ -1,24 +1,32 @@
 { config, pkgs, ... }:
 
 {
+  # TODO: check out https://gist.github.com/mandrean/65108e0898629e20afe1002d8bf4f223
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "darth";
-  home.homeDirectory = "/home/darth";
+  home.homeDirectory = if pkgs.stdenv.isLinux then "/home/darth" else "/Users/darth";
 
-  home.packages = [
-    pkgs.htop
-    pkgs.fortune
-    pkgs.bat
-    pkgs.fzf
-    pkgs.ripgrep
-    pkgs.jq
-    pkgs.tree
-    pkgs.ranger
-    pkgs.nix
-    pkgs.gnumake
-    pkgs.neovim
+  home.packages = with pkgs; [
+    htop gnupg zathura bc
+
+    bat
+
+    fzf ripgrep jq tree ranger
+
+    nix
+
+    gnumake
+
+    xclip neomutt youtube-dl feh dmenu ffmpeg
+
+    neovim tmux
+    # pkgs.nox
+    # polybar
   ];
+
+  targets.genericLinux.enable = pkgs.stdenv.isLinux;
 
   programs.zsh = {
     enable = true;
