@@ -194,3 +194,8 @@ fi
 #   export GDK_SCALE=2
 # fi
 
+function source-nix() {
+  source ~/.nix-profile/etc/profile.d/nix.sh
+}
+
+export PROJECT_HOME="$HOME/projects"

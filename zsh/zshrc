@@ -21,10 +21,6 @@ export LC_ALL=en_US.UTF-8
 
 autoload -Uz $(print ~/.dotfiles/zsh/funcs/*(:t))
 
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '\C-x\C-e' edit-command-line
-
 LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 
 export PATH="$HOME/.todo/bin:$HOME/.dotfiles/bin:$LOCAL_PATHS:$PATH"
@@ -35,42 +31,6 @@ if [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ]; then
   eval "$("$BASE16_SHELL/profile_helper.sh")"
 fi
 base16_default-dark
-
-stty sane
-
-export PROJECT_HOME="$HOME/projects"
-
-function source-nix() {
-  source ~/.nix-profile/etc/profile.d/nix.sh
-}
-
-function ranger-cd {
-    tempfile="$(mktemp -t tmp.XXXXXX)"
-    ranger --cmd='set show_hidden=true' --choosedir="$tempfile" "${@:-$(pwd)}"
-    test -f "$tempfile" &&
-    if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
-        cd -- "$(cat "$tempfile")"
-    fi
-    rm -f -- "$tempfile"
-}
-alias racd="ranger-cd"
-bindkey -s '^o' 'ranger-cd^m'
-
-function recompdef() {
-  local line
-
-  unfunction   - $1 2> /dev/null
-  autoload -Uz - $1 || return
-  autoload +X  - $1 || return
-  [[ -n $functions_source[$1] ]] &&
-  line=${${(Af)"$( < $functions_source[$1] )"}[1]}
-
-  [[ $line == '#autoload'* ]] && return 0
-  [[ $line == '#compdef'*  ]] && argv+=( ${${(Az)line}[2,-1]} )
-
-  compdef $@
-}
-
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
   eval `ssh-agent`
   ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock

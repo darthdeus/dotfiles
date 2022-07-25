@@ -58,11 +58,40 @@
       VIM_VERSION="nvim"
     fi
 
+    function recompdef() {
+      local line
+
+      unfunction   - $1 2> /dev/null
+      autoload -Uz - $1 || return
+      autoload +X  - $1 || return
+      [[ -n $functions_source[$1] ]] &&
+      line=${${(Af)"$( < $functions_source[$1] )"}[1]}
+
+      [[ $line == '#autoload'* ]] && return 0
+      [[ $line == '#compdef'*  ]] && argv+=( ${${(Az)line}[2,-1]} )
+
+      compdef $@
+    }
+
+    function ranger-cd {
+        tempfile="$(mktemp -t tmp.XXXXXX)"
+        ranger --cmd='set show_hidden=true' --choosedir="$tempfile" "${@:-$(pwd)}"
+        test -f "$tempfile" &&
+        if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+            cd -- "$(cat "$tempfile")"
+        fi
+        rm -f -- "$tempfile"
+    }
+    alias racd="ranger-cd"
+    bindkey -s '^o' 'ranger-cd^m'
+
     export EDITOR="$VIM_VERSION"
     export VISUAL="$VIM_VERSION"
 
     alias vim="$VIM_VERSION"
     alias vi="vim"
+
+    stty sane
 
     source ~/.zshrc.dot
     '';
