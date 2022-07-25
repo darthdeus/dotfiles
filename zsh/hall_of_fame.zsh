@@ -187,3 +187,10 @@ if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
 fi
 ##
 ##########################################
+
+# TODO: store these in a subdir per host
+# if [[ "$HOST" == "pipik" ]]; then
+#   export QT_SCALE_FACTOR=2
+#   export GDK_SCALE=2
+# fi
+
