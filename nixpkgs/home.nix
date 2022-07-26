@@ -69,7 +69,7 @@ in
 
     emacs
 
-    cargo-bloat loc flamegraph wasm-strip simple-http-server
+    cargo-bloat loc flamegraph simple-http-server
   ];
 
   targets.genericLinux.enable = pkgs.stdenv.isLinux;
