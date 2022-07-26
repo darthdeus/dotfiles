@@ -166,9 +166,6 @@ fi
 
 [ -f ~/.env ] && source ~/.env
 
-# NHM="$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-# export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
-
 unset npm_config_prefix
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
