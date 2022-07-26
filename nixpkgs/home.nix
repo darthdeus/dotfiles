@@ -32,6 +32,7 @@ in
     pass
     zathura
     delta
+    universal-ctags
 
     nix
 
