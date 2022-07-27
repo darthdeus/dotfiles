@@ -13,6 +13,9 @@ ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc.dot"
 # ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
 # ln -nsf "$DOT/Xmodmap"       "$HOME/.Xmodmap"
 
+
+ln -nsf "$DOT/doom.d"           "$HOME/.doom.d"
+
 # ln -nsf "$DOT/emacs.d"       "$HOME/.emacs.d"
 
 # mkdir -p "$HOME/.newsboat"
