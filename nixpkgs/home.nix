@@ -67,6 +67,8 @@ in
     neovim
     tmux
 
+    # TODO libvoikko hspell nuspell hunspell
+
     shellcheck zig nixfmt pandoc
 
     emacs28NativeComp
