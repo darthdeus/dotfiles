@@ -77,20 +77,90 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+
+;; Sets ',' as the <localleader>
+;; https://github.com/hlissner/doom-emacs/issues/4242#issuecomment-724378708
+(setq evil-snipe-override-evil-repeat-keys nil)
+(setq doom-localleader-key ",")
+(setq doom-localleader-alt-key "M-,")
+
+;; Auto-guess fails for cargo workspace projects so we don't want it. This is
+;; the default, but I'll still keep it here in case the default ever changes.
+(setq! lsp-auto-guess-root nil)
+
+;; -- Keybindings --
+
 (map! :localleader
       :map rust-mode-map
+
       :desc "Go to references"
       "g r" (lambda () (interactive)
-              (call-interactively 'lsp-find-references)))
+              (call-interactively 'lsp-find-references))
 
-(map! :localleader
-      :map rust-mode-map
       :desc "Go to definition"
       "g d" (lambda () (interactive)
-              (call-interactively 'lsp-find-definition)))
+              (call-interactively 'lsp-find-definition))
 
-(map! :localleader
-      :map rust-mode-map
       :desc "Go to type definition"
       "g t" (lambda () (interactive)
-              (call-interactively 'lsp-goto-type-definition)))
+              (call-interactively 'lsp-goto-type-definition))
+
+      :desc "Open error list"
+      "e l" (lambda () (interactive) (lsp-treemacs-errors-list))
+
+      :desc "Next error"
+      "e n" (lambda () (interactive) (next-error))
+
+      :desc "Previous error"
+      "e N" (lambda () (interactive) (previous-error))
+
+      :desc "Code actions"
+      "c a" (lambda () (interactive)
+              (call-interactively 'lsp-execute-code-action))
+
+      :desc "Go to references"
+      "g r" (lambda () (interactive)
+              (call-interactively 'lsp-find-references))
+      :desc "Go to definition"
+      "g d" (lambda () (interactive)
+              (call-interactively 'lsp-find-definition))
+
+      :desc "Go to type definition"
+      "g t" (lambda () (interactive)
+              (call-interactively 'lsp-goto-type-definition))
+
+      :desc "Go to implementation"
+      "g i" (lambda () (interactive)
+              (call-interactively 'lsp-goto-implementation))
+
+      :desc "Rename symbol"
+      "r r" (lambda () (interactive)
+              (call-interactively 'lsp-rename))
+
+      :desc "Format buffer"
+      "f b" (lambda () (interactive)
+              (call-interactively 'lsp-format-buffer)))
+
+
+(use-package! lsp
+  :config
+  ;; NOTE: I monkey-patched this function because I don't like the
+  ;; default behavior of auto executing the first suggestion when
+  ;; there's a single one.
+  (defun lsp--select-action (actions)
+    "Select an action to execute from ACTIONS."
+    (cond
+     ((seq-empty-p actions) (signal 'lsp-no-code-actions nil))
+     ;; NOTE: Here's the commented-out code
+     ;;((and (eq (seq-length actions) 1) lsp-auto-execute-action)
+     ;;(lsp-seq-first actions))
+     (t (let ((completion-ignore-case t))
+          (lsp--completing-read "Select code action: "
+                                (seq-into actions 'list)
+                                (-compose (lsp--create-unique-string-fn)
+                                          #'lsp:code-action-title)
+                                nil t))))))
+
+;; Prevents huge minibuffer popup when writing
+(setq! lsp-signature-render-documentation 't)
+(setq! lsp-signature-doc-lines 2)

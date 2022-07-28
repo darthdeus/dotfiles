@@ -50,3 +50,9 @@
 ;(unpin! t)
 
 (package! tldr)
+
+(package! lsp-treemacs)
+
+(package! wgsl-mode
+  :recipe (:host github :repo "acowley/wgsl-mode"
+           :files ("wgsl-mode.el")))
