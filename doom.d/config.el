@@ -141,6 +141,12 @@
       "b f" (lambda () (interactive)
               (call-interactively 'lsp-format-buffer)))
 
+(after! company
+    (setq company-dabbrev-downcase 0)
+    (setq company-idle-delay 0))
+
+(setq display-line-numbers-type nil)
+
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 (define-key evil-visual-state-map (kbd "C-c") 'evil-normal-state)
 (define-key evil-visual-state-map (kbd "C-c") 'evil-exit-visual-state)
