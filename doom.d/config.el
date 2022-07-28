@@ -76,3 +76,21 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(map! :localleader
+      :map rust-mode-map
+      :desc "Go to references"
+      "g r" (lambda () (interactive)
+              (call-interactively 'lsp-find-references)))
+
+(map! :localleader
+      :map rust-mode-map
+      :desc "Go to definition"
+      "g d" (lambda () (interactive)
+              (call-interactively 'lsp-find-definition)))
+
+(map! :localleader
+      :map rust-mode-map
+      :desc "Go to type definition"
+      "g t" (lambda () (interactive)
+              (call-interactively 'lsp-goto-type-definition)))
