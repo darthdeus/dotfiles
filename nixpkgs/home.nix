@@ -117,20 +117,20 @@ in
     source ~/.zshrc.dot
     '';
 
-    zplug = {
-      enable = true;
-      plugins= [
-        {
-          name = "ytet5uy4/fzf-widgets";
-        }
-        {
-          name = "changyuheng/fz";
-        }
-        {
-          name = "rupa/z";
-        }
-      ];
-    };
+    # zplug = {
+    #   enable = true;
+    #   plugins= [
+    #     {
+    #       name = "ytet5uy4/fzf-widgets";
+    #     }
+    #     {
+    #       name = "changyuheng/fz";
+    #     }
+    #     {
+    #       name = "rupa/z";
+    #     }
+    #   ];
+    # };
 
     plugins = with pkgs; [
 
