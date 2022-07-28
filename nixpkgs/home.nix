@@ -67,6 +67,8 @@ in
     neovim
     tmux
 
+    emacs
+
     cargo-bloat loc flamegraph simple-http-server
   ];
 
