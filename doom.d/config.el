@@ -138,28 +138,63 @@
               (call-interactively 'lsp-rename))
 
       :desc "Format buffer"
-      "f b" (lambda () (interactive)
+      "b f" (lambda () (interactive)
               (call-interactively 'lsp-format-buffer)))
 
+(define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+(define-key evil-visual-state-map (kbd "C-c") 'evil-normal-state)
+(define-key evil-visual-state-map (kbd "C-c") 'evil-exit-visual-state)
 
-(use-package! lsp
-  :config
-  ;; NOTE: I monkey-patched this function because I don't like the
-  ;; default behavior of auto executing the first suggestion when
-  ;; there's a single one.
-  (defun lsp--select-action (actions)
-    "Select an action to execute from ACTIONS."
-    (cond
-     ((seq-empty-p actions) (signal 'lsp-no-code-actions nil))
-     ;; NOTE: Here's the commented-out code
-     ;;((and (eq (seq-length actions) 1) lsp-auto-execute-action)
-     ;;(lsp-seq-first actions))
-     (t (let ((completion-ignore-case t))
-          (lsp--completing-read "Select code action: "
-                                (seq-into actions 'list)
-                                (-compose (lsp--create-unique-string-fn)
-                                          #'lsp:code-action-title)
-                                nil t))))))
+(define-key evil-normal-state-map (kbd ",,") 'evil-buffer)
+(define-key evil-normal-state-map (kbd ",f") 'projectile-find-file)
+;; Make C-e, C-d, C-k behave same as in Emacs when in insert mode.
+(define-key evil-insert-state-map (kbd "C-e") nil)
+(define-key evil-insert-state-map (kbd "C-d") nil)
+(define-key evil-insert-state-map (kbd "C-k") nil)
+
+;; Makes C-e behave same as in Emacs. C-a works out of the box
+(define-key evil-motion-state-map (kbd "C-e") nil)
+
+;; Switching between windows with C-hjkl
+(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+
+(define-key evil-normal-state-map (kbd "C-x h k") 'describe-key)
+(define-key evil-normal-state-map (kbd "C-x h f") 'describe-function)
+(define-key evil-normal-state-map (kbd "C-x h v") 'describe-variable)
+
+(define-key evil-normal-state-map (kbd "C-d") 'scroll-up-command)
+(define-key evil-normal-state-map (kbd "C-u") 'scroll-down-command)
+
+;; Insert mode as well
+(define-key evil-insert-state-map (kbd "C-a") 'move-beginning-of-line)
+
+(define-key evil-insert-state-map (kbd "C-l") 'evil-window-right)
+(define-key evil-insert-state-map (kbd "C-h") 'evil-window-left)
+(define-key evil-insert-state-map (kbd "C-j") 'evil-window-down)
+(define-key evil-insert-state-map (kbd "C-k") 'evil-window-up)
+
+
+;; (use-package! lsp
+;;   :config
+;;   ;; NOTE: I monkey-patched this function because I don't like the
+;;   ;; default behavior of auto executing the first suggestion when
+;;   ;; there's a single one.
+;;   (defun lsp--select-action (actions)
+;;     "Select an action to execute from ACTIONS."
+;;     (cond
+;;      ((seq-empty-p actions) (signal 'lsp-no-code-actions nil))
+;;      ;; NOTE: Here's the commented-out code
+;;      ;;((and (eq (seq-length actions) 1) lsp-auto-execute-action)
+;;      ;;(lsp-seq-first actions))
+;;      (t (let ((completion-ignore-case t))
+;;           (lsp--completing-read "Select code action: "
+;;                                 (seq-into actions 'list)
+;;                                 (-compose (lsp--create-unique-string-fn)
+;;                                           #'lsp:code-action-title)
+;;                                 nil t))))))
 
 ;; Prevents huge minibuffer popup when writing
 (setq! lsp-signature-render-documentation 't)
