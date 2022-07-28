@@ -67,6 +67,8 @@ in
     neovim
     tmux
 
+    shellcheck zig
+
     emacs
 
     cargo-bloat loc flamegraph simple-http-server
