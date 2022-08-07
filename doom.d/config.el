@@ -147,12 +147,17 @@
 
 (setq display-line-numbers-type nil)
 
+(setq scroll-margin 5)
+
+(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 (define-key evil-visual-state-map (kbd "C-c") 'evil-normal-state)
 (define-key evil-visual-state-map (kbd "C-c") 'evil-exit-visual-state)
 
 (define-key evil-normal-state-map (kbd ",,") 'evil-buffer)
 (define-key evil-normal-state-map (kbd ",f") 'projectile-find-file)
+
 ;; Make C-e, C-d, C-k behave same as in Emacs when in insert mode.
 (define-key evil-insert-state-map (kbd "C-e") nil)
 (define-key evil-insert-state-map (kbd "C-d") nil)
@@ -160,6 +165,40 @@
 
 ;; Makes C-e behave same as in Emacs. C-a works out of the box
 (define-key evil-motion-state-map (kbd "C-e") nil)
+
+(define-key evil-normal-state-map (kbd "<left>") (lambda () (interactive)
+                                                (call-interactively 'evil-window-decrease-width)
+                                                (call-interactively 'evil-window-decrease-width)
+                                                (call-interactively 'evil-window-decrease-width)
+                                                (call-interactively 'evil-window-decrease-width)
+                                                (call-interactively 'evil-window-decrease-width)
+                                                ))
+
+(define-key evil-normal-state-map (kbd "<right>") (lambda () (interactive)
+                                                (call-interactively 'evil-window-increase-width)
+                                                (call-interactively 'evil-window-increase-width)
+                                                (call-interactively 'evil-window-increase-width)
+                                                (call-interactively 'evil-window-increase-width)
+                                                (call-interactively 'evil-window-increase-width)
+                                                ))
+
+
+(define-key evil-normal-state-map (kbd "<up>") (lambda () (interactive)
+                                                (call-interactively 'evil-window-decrease-height)
+                                                (call-interactively 'evil-window-decrease-height)
+                                                (call-interactively 'evil-window-decrease-height)
+                                                (call-interactively 'evil-window-decrease-height)
+                                                (call-interactively 'evil-window-decrease-height)
+                                                ))
+
+(define-key evil-normal-state-map (kbd "<down>") (lambda () (interactive)
+                                                (call-interactively 'evil-window-increase-height)
+                                                (call-interactively 'evil-window-increase-height)
+                                                (call-interactively 'evil-window-increase-height)
+                                                (call-interactively 'evil-window-increase-height)
+                                                (call-interactively 'evil-window-increase-height)
+                                                ))
+
 
 ;; Switching between windows with C-hjkl
 (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
@@ -182,25 +221,32 @@
 (define-key evil-insert-state-map (kbd "C-j") 'evil-window-down)
 (define-key evil-insert-state-map (kbd "C-k") 'evil-window-up)
 
+;; (defadvice! hy/evil-scroll-advice (fn count)
+;;   :around #'evil-scroll-down
+;;   :around #'evil-scroll-up
+;;   (setq count (/ (window-body-height) 4))
+;;   (funcall fn count))
 
-;; (use-package! lsp
-;;   :config
-;;   ;; NOTE: I monkey-patched this function because I don't like the
-;;   ;; default behavior of auto executing the first suggestion when
-;;   ;; there's a single one.
-;;   (defun lsp--select-action (actions)
-;;     "Select an action to execute from ACTIONS."
-;;     (cond
-;;      ((seq-empty-p actions) (signal 'lsp-no-code-actions nil))
-;;      ;; NOTE: Here's the commented-out code
-;;      ;;((and (eq (seq-length actions) 1) lsp-auto-execute-action)
-;;      ;;(lsp-seq-first actions))
-;;      (t (let ((completion-ignore-case t))
-;;           (lsp--completing-read "Select code action: "
-;;                                 (seq-into actions 'list)
-;;                                 (-compose (lsp--create-unique-string-fn)
-;;                                           #'lsp:code-action-title)
-;;                                 nil t))))))
+(setq which-key-idle-delay 0.1)
+
+(use-package! lsp
+  :config
+  ;; NOTE: I monkey-patched this function because I don't like the
+  ;; default behavior of auto executing the first suggestion when
+  ;; there's a single one.
+  (defun lsp--select-action (actions)
+    "Select an action to execute from ACTIONS."
+    (cond
+     ((seq-empty-p actions) (signal 'lsp-no-code-actions nil))
+     ;; NOTE: Here's the commented-out code
+     ;;((and (eq (seq-length actions) 1) lsp-auto-execute-action)
+     ;;(lsp-seq-first actions))
+     (t (let ((completion-ignore-case t))
+          (lsp--completing-read "Select code action: "
+                                (seq-into actions 'list)
+                                (-compose (lsp--create-unique-string-fn)
+                                          #'lsp:code-action-title)
+                                nil t))))))
 
 ;; Prevents huge minibuffer popup when writing
 (setq! lsp-signature-render-documentation 't)
