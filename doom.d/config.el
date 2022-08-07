@@ -210,8 +210,8 @@
 (define-key evil-normal-state-map (kbd "C-x h f") 'describe-function)
 (define-key evil-normal-state-map (kbd "C-x h v") 'describe-variable)
 
-(define-key evil-normal-state-map (kbd "C-d") 'scroll-up-command)
-(define-key evil-normal-state-map (kbd "C-u") 'scroll-down-command)
+; (define-key evil-normal-state-map (kbd "C-d") 'scroll-up-command)
+; (define-key evil-normal-state-map (kbd "C-u") 'scroll-down-command)
 
 ;; Insert mode as well
 (define-key evil-insert-state-map (kbd "C-a") 'move-beginning-of-line)
@@ -221,13 +221,13 @@
 (define-key evil-insert-state-map (kbd "C-j") 'evil-window-down)
 (define-key evil-insert-state-map (kbd "C-k") 'evil-window-up)
 
-;; (defadvice! hy/evil-scroll-advice (fn count)
-;;   :around #'evil-scroll-down
-;;   :around #'evil-scroll-up
-;;   (setq count (/ (window-body-height) 4))
-;;   (funcall fn count))
+; (defadvice! hy/evil-scroll-advice (fn count)
+;   :around #'evil-scroll-down
+;   :around #'evil-scroll-up
+;   (setq count (/ (window-body-height) 8))
+;   (funcall fn count))
 
-(setq which-key-idle-delay 0.1)
+(setq which-key-idle-delay 0.25)
 
 (use-package! lsp
   :config
