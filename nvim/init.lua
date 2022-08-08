@@ -288,13 +288,39 @@ nnoremap("gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
 -- inoremap("<silent><expr>", "<C-f>     compe#scroll({ 'delta': +4 })")
 -- inoremap("<silent><expr>", "<C-d>     compe#scroll({ 'delta': -4 })")
 
--- Expand
-inoremap("<expr>", "<C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'")
-snoremap("<expr>", "<C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'")
+vim.api.nvim_exec([[
+" Expand
+imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 
--- Expand or jump
-inoremap("<expr>", "<C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'")
-snoremap("<expr>", "<C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'")
+" Expand or jump
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
+" Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
+" See https://github.com/hrsh7th/vim-vsnip/pull/50
+nmap        s   <Plug>(vsnip-select-text)
+xmap        s   <Plug>(vsnip-select-text)
+nmap        S   <Plug>(vsnip-cut-text)
+xmap        S   <Plug>(vsnip-cut-text)
+]], true)
+
+
+-- -- Expand
+-- inoremap("<expr>", "<C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'")
+-- snoremap("<expr>", "<C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'")
+-- -- inoremap("<expr>", "<C-j>   vsnip#available(1) == 1  ? '<Plug>(vsnip-expand-or-jump)'         : '<C-j>'")
+-- -- snoremap("<expr>", "<C-j>   vsnip#available(1) == 1  ? '<Plug>(vsnip-expand-or-jump)'         : '<C-j>'")
+--
+-- -- Expand or jump
+-- inoremap("<expr>", "<C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'")
+-- snoremap("<expr>", "<C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'")
 
 nnoremap("<C-_><C-_>", ":CommentToggle<CR>")
 vnoremap("<C-_><C-_>", ":CommentToggle<CR>")
@@ -526,6 +552,15 @@ vim.cmd([[
 -- 	},
 -- 	show_prediction_strength = false,
 -- })
+--
+local has_words_before = function()
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local feedkey = function(key, mode)
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
 
 -- Setup nvim-cmp.
 local cmp = require("cmp")
@@ -552,21 +587,29 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 
 		["<Tab>"] = cmp.mapping(function(fallback)
-			-- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
 			if cmp.visible() then
-				local entry = cmp.get_selected_entry()
-				if not entry then
-					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-				else
-					cmp.confirm()
-				end
+				cmp.select_next_item()
+			elseif vim.fn["vsnip#available"](1) == 1 then
+				feedkey("<Plug>(vsnip-expand-or-jump)", "")
+			elseif has_words_before() then
+				cmp.complete()
 			else
-				fallback()
+				fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
 			end
 		end, {
 			"i",
 			"s",
-			"c",
+		}),
+
+		["<S-Tab>"] = cmp.mapping(function()
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+				feedkey("<Plug>(vsnip-jump-prev)", "")
+			end
+		end, {
+			"i",
+			"s",
 		}),
 	}),
 
