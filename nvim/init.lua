@@ -432,9 +432,9 @@ au BufRead,BufNewFile */funcs/* setfiletype zsh
 " when you enter a (new) buffer
 augroup set-commentstring-ag
 autocmd!
-autocmd BufEnter *.glsl :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+autocmd BufEnter *.glsl,*.vert,*.frag :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
 " when you've changed the name of a file opened in a buffer, the file type may have changed
-autocmd BufFilePost *.glsl :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+autocmd BufFilePost *.glsl,*.vert,*.frag :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
 augroup END
 ]],
 	false
