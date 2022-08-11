@@ -303,7 +303,7 @@
       :map glsl-mode-map
 
       :desc "Format buffer"
-      "f b" (lambda () (interactive)
+      "-" (lambda () (interactive)
               (call-interactively 'call-clang-format-on-current-buffer)))
 
 ;; Prevents huge minibuffer popup when writing
