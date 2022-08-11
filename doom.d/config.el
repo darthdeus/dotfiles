@@ -151,14 +151,28 @@
 
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
-(define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-(define-key evil-visual-state-map (kbd "C-c") 'evil-normal-state)
-(define-key evil-visual-state-map (kbd "C-c") 'evil-exit-visual-state)
+;; (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+;; (define-key evil-visual-state-map (kbd "C-c") 'evil-normal-state)
+;; (define-key evil-visual-state-map (kbd "C-c") 'evil-exit-visual-state)
 
-(define-key evil-visual-state-map (kbd "C-x C-s") 'evil-write)
+(map! :i "C-c" #'evil-normal-state)
+(map! :v "C-c" #'evil-normal-state)
+(map! :v "C-c" #'evil-normal-state)
 
-(define-key evil-normal-state-map (kbd ",,") 'evil-buffer)
-(define-key evil-normal-state-map (kbd ",f") 'projectile-find-file)
+(map! :n "C-_ C-_" #'comment-line)
+(map! :v "C-_ C-_" #'comment-region)
+
+(map! :i "C-x C-s" #'evil-write)
+(map! :n "C-x C-s" #'evil-write)
+(map! :v "C-x C-s" #'evil-write)
+
+(map! :n ",," #'evil-buffer)
+(map! :n ",f" #'projectile-find-file)
+
+;; (define-key evil-visual-state-map (kbd "C-x C-s") 'evil-write)
+
+;; (define-key evil-normal-state-map (kbd ",,") 'evil-buffer)
+;; (define-key evil-normal-state-map (kbd ",f") 'projectile-find-file)
 
 ;; Make C-e, C-d, C-k behave same as in Emacs when in insert mode.
 (define-key evil-insert-state-map (kbd "C-e") nil)
