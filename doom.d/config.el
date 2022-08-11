@@ -168,6 +168,13 @@
 
 (map! :n ",," #'evil-buffer)
 (map! :n ",f" #'projectile-find-file)
+(map! :n ",b" #'+vertico/switch-workspace-buffer)
+
+(map! :n "[d" #'previous-error)
+(map! :n "]d" #'next-error)
+
+(map! :n "-" #'lsp-format-buffer)
+(map! :v "-" #'lsp-format-region)
 
 ;; (define-key evil-visual-state-map (kbd "C-x C-s") 'evil-write)
 
