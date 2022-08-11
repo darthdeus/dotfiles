@@ -155,6 +155,8 @@
 (define-key evil-visual-state-map (kbd "C-c") 'evil-normal-state)
 (define-key evil-visual-state-map (kbd "C-c") 'evil-exit-visual-state)
 
+(define-key evil-visual-state-map (kbd "C-x C-s") 'evil-write)
+
 (define-key evil-normal-state-map (kbd ",,") 'evil-buffer)
 (define-key evil-normal-state-map (kbd ",f") 'projectile-find-file)
 
@@ -247,6 +249,48 @@
                                 (-compose (lsp--create-unique-string-fn)
                                           #'lsp:code-action-title)
                                 nil t))))))
+
+;;;;;;;;;;;;;;;;;;
+;; Lua settings ;;
+;;;;;;;;;;;;;;;;;;
+
+(defun call-stylua-on-current-buffer ()
+  (interactive)
+  (let ((original-point (point)))
+    (shell-command-on-region
+     (point-min)
+     (point-max)
+     "~/.cargo/bin/stylua --search-parent-directories -"
+     (current-buffer))
+    (set-window-point (selected-window) original-point)))
+
+(map! :localleader
+      :map lua-mode-map
+
+      :desc "Format buffer"
+      "f b" (lambda () (interactive)
+              (call-interactively 'call-stylua-on-current-buffer)))
+
+;;;;;;;;;;;;;;;;;;;
+;; GLSL settings ;;
+;;;;;;;;;;;;;;;;;;;
+
+(defun call-clang-format-on-current-buffer ()
+  (interactive)
+  (let ((original-point (point)))
+    (shell-command-on-region
+     (point-min)
+     (point-max)
+     "clang-format -"
+     (current-buffer))
+    (set-window-point (selected-window) original-point)))
+
+(map! :localleader
+      :map glsl-mode-map
+
+      :desc "Format buffer"
+      "f b" (lambda () (interactive)
+              (call-interactively 'call-clang-format-on-current-buffer)))
 
 ;; Prevents huge minibuffer popup when writing
 (setq! lsp-signature-render-documentation 't)
