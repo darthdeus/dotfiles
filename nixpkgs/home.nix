@@ -71,7 +71,7 @@ in
 
     shellcheck zig nixfmt pandoc
 
-    emacs28NativeComp
+    # emacs28NativeComp libvterm # emacs28Packages.vterm
 
     cargo-bloat loc flamegraph simple-http-server
   ];

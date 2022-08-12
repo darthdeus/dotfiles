@@ -101,9 +101,9 @@
       "g d" (lambda () (interactive)
               (call-interactively 'lsp-find-definition))
 
-      :desc "Go to type definition"
-      "g t" (lambda () (interactive)
-              (call-interactively 'lsp-goto-type-definition))
+      ;; :desc "Go to type definition"
+      ;; "g t" (lambda () (interactive)
+      ;;         (call-interactively 'lsp-goto-type-definition))
 
       :desc "Open error list"
       "e l" (lambda () (interactive) (lsp-treemacs-errors-list))
@@ -125,9 +125,9 @@
       "g d" (lambda () (interactive)
               (call-interactively 'lsp-find-definition))
 
-      :desc "Go to type definition"
-      "g t" (lambda () (interactive)
-              (call-interactively 'lsp-goto-type-definition))
+      ;; :desc "Go to type definition"
+      ;; "g t" (lambda () (interactive)
+      ;;         (call-interactively 'lsp-goto-type-definition))
 
       :desc "Go to implementation"
       "g i" (lambda () (interactive)
@@ -169,6 +169,7 @@
 (map! :n ",," #'evil-buffer)
 (map! :n ",f" #'projectile-find-file)
 (map! :n ",b" #'+vertico/switch-workspace-buffer)
+(map! :n ",gt" #'consult-lsp-symbols)
 
 (map! :n "[d" #'previous-error)
 (map! :n "]d" #'next-error)
