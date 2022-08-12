@@ -93,26 +93,26 @@
 (map! :localleader
       :map rust-mode-map
 
-      :desc "Go to references"
-      "g r" (lambda () (interactive)
-              (call-interactively 'lsp-find-references))
+      ;; :desc "Go to references"
+      ;; "g r" (lambda () (interactive)
+      ;;         (call-interactively 'lsp-find-references))
 
-      :desc "Go to definition"
-      "g d" (lambda () (interactive)
-              (call-interactively 'lsp-find-definition))
+      ;; :desc "Go to definition"
+      ;; "g d" (lambda () (interactive)
+      ;;         (call-interactively 'lsp-find-definition))
 
       ;; :desc "Go to type definition"
       ;; "g t" (lambda () (interactive)
       ;;         (call-interactively 'lsp-goto-type-definition))
 
-      :desc "Open error list"
-      "e l" (lambda () (interactive) (lsp-treemacs-errors-list))
+      ;; :desc "Open error list"
+      ;; "e l" (lambda () (interactive) (lsp-treemacs-errors-list))
 
-      :desc "Next error"
-      "e n" (lambda () (interactive) (next-error))
+      ;; :desc "Next error"
+      ;; "e n" (lambda () (interactive) (next-error))
 
-      :desc "Previous error"
-      "e N" (lambda () (interactive) (previous-error))
+      ;; :desc "Previous error"
+      ;; "e N" (lambda () (interactive) (previous-error))
 
       :desc "Code actions"
       "c a" (lambda () (interactive)
@@ -121,6 +121,7 @@
       :desc "Go to references"
       "g r" (lambda () (interactive)
               (call-interactively 'lsp-find-references))
+
       :desc "Go to definition"
       "g d" (lambda () (interactive)
               (call-interactively 'lsp-find-definition))
@@ -137,9 +138,10 @@
       "r r" (lambda () (interactive)
               (call-interactively 'lsp-rename))
 
-      :desc "Format buffer"
-      "b f" (lambda () (interactive)
-              (call-interactively 'lsp-format-buffer)))
+      ;; :desc "Format buffer"
+      ;; "b f" (lambda () (interactive)
+      ;;         (call-interactively 'lsp-format-buffer))
+      )
 
 (after! company
     (setq company-dabbrev-downcase 0)
@@ -155,27 +157,32 @@
 ;; (define-key evil-visual-state-map (kbd "C-c") 'evil-normal-state)
 ;; (define-key evil-visual-state-map (kbd "C-c") 'evil-exit-visual-state)
 
-(map! :i "C-c" #'evil-normal-state)
-(map! :v "C-c" #'evil-normal-state)
-(map! :v "C-c" #'evil-normal-state)
-
-(map! :n "C-_ C-_" #'comment-line)
-(map! :v "C-_ C-_" #'comment-region)
-
-(map! :i "C-x C-s" #'evil-write)
-(map! :n "C-x C-s" #'evil-write)
-(map! :v "C-x C-s" #'evil-write)
+(map! :nvi "C-c" #'evil-normal-state)
+(map! :nv "C-_ C-_" #'comment-line)
+(map! :nvi "C-x C-s" #'evil-write)
 
 (map! :n ",," #'evil-buffer)
 (map! :n ",f" #'projectile-find-file)
+;; (map! :n :mode 'org-mode ",f" #'projectile-find-file)
+
+(map! :map org-mode-map :n ",f" #'projectile-find-file)
+(map! :map json-mode-map :n ",f" #'projectile-find-file)
+
 (map! :n ",b" #'+vertico/switch-workspace-buffer)
 (map! :n ",gt" #'consult-lsp-symbols)
 
-(map! :n "[d" #'previous-error)
-(map! :n "]d" #'next-error)
+(map! :n "[d" #'flycheck-previous-error)
+(map! :n "]d" #'flycheck-next-error)
 
 (map! :n "-" #'lsp-format-buffer)
 (map! :v "-" #'lsp-format-region)
+
+(map! :n "L" (lambda () (interactive)
+              (call-interactively 'lsp-execute-code-action)))
+
+(map! :n ",e" (lambda () (interactive)
+                (call-interactively 'projectile-run-project "cargo run")))
+
 
 ;; (define-key evil-visual-state-map (kbd "C-x C-s") 'evil-write)
 
@@ -183,28 +190,56 @@
 ;; (define-key evil-normal-state-map (kbd ",f") 'projectile-find-file)
 
 ;; Make C-e, C-d, C-k behave same as in Emacs when in insert mode.
-(define-key evil-insert-state-map (kbd "C-e") nil)
-(define-key evil-insert-state-map (kbd "C-d") nil)
-(define-key evil-insert-state-map (kbd "C-k") nil)
+;; (define-key evil-insert-state-map (kbd "C-e") nil)
+;; (define-key evil-insert-state-map (kbd "C-d") nil)
+;; (define-key evil-insert-state-map (kbd "C-k") nil)
 
+(map! :ni "C-e" 'doom/forward-to-last-non-comment-or-eol)
+(map! :ni "C-d" nil)
+(map! :ni "C-k" nil)
+(map! :ni "C-n" nil)
+(map! :ni "C-p" nil)
+
+;; Switching between windows with C-hjkl
+(map! :ni "C-l" 'evil-window-right)
+(map! :ni "C-h" 'evil-window-left)
+(map! :ni "C-j" 'evil-window-down)
+(map! :ni "C-k" 'evil-window-up)
+
+;; (define-key evil-normal-state-map (kbd "C-x h k") 'describe-key)
+;; (define-key evil-normal-state-map (kbd "C-x h f") 'describe-function)
+;; (define-key evil-normal-state-map (kbd "C-x h v") 'describe-variable)
+
+; (define-key evil-normal-state-map (kbd "C-d") 'scroll-up-command)
+; (define-key evil-normal-state-map (kbd "C-u") 'scroll-down-command)
+
+;; Insert mode as well
 ;; Makes C-e behave same as in Emacs. C-a works out of the box
-(define-key evil-motion-state-map (kbd "C-e") nil)
+;; (define-key evil-motion-state-map (kbd "C-e") nil)
 
-(define-key evil-normal-state-map (kbd "<left>") (lambda () (interactive)
-                                                (call-interactively 'evil-window-decrease-width)
-                                                (call-interactively 'evil-window-decrease-width)
-                                                (call-interactively 'evil-window-decrease-width)
-                                                (call-interactively 'evil-window-decrease-width)
-                                                (call-interactively 'evil-window-decrease-width)
-                                                ))
+(map! :n "<left>" (lambda ()
+                    (interactive)
+                    (call-interactively 'evil-window-decrease-width)
+                    (call-interactively 'evil-window-decrease-width)
+                    (call-interactively 'evil-window-decrease-width)
+                    (call-interactively 'evil-window-decrease-width)
+                    (call-interactively 'evil-window-decrease-width)))
 
-(define-key evil-normal-state-map (kbd "<right>") (lambda () (interactive)
-                                                (call-interactively 'evil-window-increase-width)
-                                                (call-interactively 'evil-window-increase-width)
-                                                (call-interactively 'evil-window-increase-width)
-                                                (call-interactively 'evil-window-increase-width)
-                                                (call-interactively 'evil-window-increase-width)
-                                                ))
+(map! :n "<right>" (lambda ()
+                    (interactive)
+                    (call-interactively 'evil-window-increase-width)
+                    (call-interactively 'evil-window-increase-width)
+                    (call-interactively 'evil-window-increase-width)
+                    (call-interactively 'evil-window-increase-width)
+                    (call-interactively 'evil-window-increase-width)))
+
+;; (define-key evil-normal-state-map (kbd "<right>") (lambda () (interactive)
+;;                                                 (call-interactively 'evil-window-increase-width)
+;;                                                 (call-interactively 'evil-window-increase-width)
+;;                                                 (call-interactively 'evil-window-increase-width)
+;;                                                 (call-interactively 'evil-window-increase-width)
+;;                                                 (call-interactively 'evil-window-increase-width)
+;;                                                 ))
 
 
 (define-key evil-normal-state-map (kbd "<up>") (lambda () (interactive)
@@ -223,27 +258,6 @@
                                                 (call-interactively 'evil-window-increase-height)
                                                 ))
 
-
-;; Switching between windows with C-hjkl
-(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
-(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-
-(define-key evil-normal-state-map (kbd "C-x h k") 'describe-key)
-(define-key evil-normal-state-map (kbd "C-x h f") 'describe-function)
-(define-key evil-normal-state-map (kbd "C-x h v") 'describe-variable)
-
-; (define-key evil-normal-state-map (kbd "C-d") 'scroll-up-command)
-; (define-key evil-normal-state-map (kbd "C-u") 'scroll-down-command)
-
-;; Insert mode as well
-(define-key evil-insert-state-map (kbd "C-a") 'move-beginning-of-line)
-
-(define-key evil-insert-state-map (kbd "C-l") 'evil-window-right)
-(define-key evil-insert-state-map (kbd "C-h") 'evil-window-left)
-(define-key evil-insert-state-map (kbd "C-j") 'evil-window-down)
-(define-key evil-insert-state-map (kbd "C-k") 'evil-window-up)
 
 ; (defadvice! hy/evil-scroll-advice (fn count)
 ;   :around #'evil-scroll-down
