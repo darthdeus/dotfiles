@@ -118,14 +118,6 @@
       "c a" (lambda () (interactive)
               (call-interactively 'lsp-execute-code-action))
 
-      :desc "Go to references"
-      "g r" (lambda () (interactive)
-              (call-interactively 'lsp-find-references))
-
-      :desc "Go to definition"
-      "g d" (lambda () (interactive)
-              (call-interactively 'lsp-find-definition))
-
       ;; :desc "Go to type definition"
       ;; "g t" (lambda () (interactive)
       ;;         (call-interactively 'lsp-goto-type-definition))
@@ -170,6 +162,17 @@
 
 (map! :n ",b" #'+vertico/switch-workspace-buffer)
 (map! :n ",gt" #'consult-lsp-symbols)
+(map! :n ",ga" #'+default/search-project)
+(map! :n ",gd" #'+default/search-project-for-symbol-at-point)
+
+;; (map! :n "gd" #'+default/search-project-for-symbol-at-point)
+;;       :desc "Go to references"
+;;       "g r" (lambda () (interactive)
+;;               (call-interactively 'lsp-find-references))
+
+;;       :desc "Go to definition"
+;;       "g d" (lambda () (interactive)
+;;               (call-interactively 'lsp-find-definition))
 
 (map! :n "[d" #'flycheck-previous-error)
 (map! :n "]d" #'flycheck-next-error)
