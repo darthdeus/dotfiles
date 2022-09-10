@@ -16,9 +16,6 @@ super + e
 super + n
   urxvt -e newsboat
 
-super + i
-  urxvt -e htop
-
 super + shift + p
   ~/.dotfiles/bin/maimpick
 
@@ -36,3 +33,9 @@ super + shift + b
 
 super + shift + r
   pkill -USR1 -x sxhkd
+
+super + i
+  copyq toggle
+
+super + i
+  copyq toggle
