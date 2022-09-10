@@ -157,8 +157,9 @@
 (map! :n ",f" #'projectile-find-file)
 ;; (map! :n :mode 'org-mode ",f" #'projectile-find-file)
 
-(map! :map org-mode-map :n ",f" #'projectile-find-file)
-(map! :map json-mode-map :n ",f" #'projectile-find-file)
+(after! org (map! :map org-mode-map :n ",f" #'projectile-find-file))
+(after! json (map! :map json-mode-map :n ",f" #'projectile-find-file))
+
 
 (map! :n ",b" #'+vertico/switch-workspace-buffer)
 (map! :n ",gt" #'consult-lsp-symbols)
