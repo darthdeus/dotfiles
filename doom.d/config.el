@@ -88,6 +88,39 @@
 ;; the default, but I'll still keep it here in case the default ever changes.
 (setq! lsp-auto-guess-root nil)
 
+;; (def-package! slime
+;;   :defer t ; don't load the package immediately
+;;   :init ; runs this immediately
+;;   (setq inferior-lisp-program "sbcl")
+;;   :config ; runs this when slime loads
+;;   (set-repl-handler! 'lisp-mode #'sly-mrepl)
+;;   (set-eval-handler! 'lisp-mode #'sly-eval-region)
+;;   (set-lookup-handlers! 'lisp-mode
+;;     :definition #'sly-edit-definition
+;;     :documentation #'sly-describe-symbol)
+;;
+;;
+;;   )
+
+(add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'lisp-mode-hook #'evil-paredit-mode)
+
+(add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'emacs-lisp-mode-hook #'evil-paredit-mode)
+
+(add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'clojure-mode-hook #'evil-paredit-mode)
+
+(add-hook 'clojurescript-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'clojurescript-mode-hook #'evil-paredit-mode)
+
+(setq inferior-lisp-program "ros -Q run")
+
+
+;; (use-package! sly
+;;   (evil-lisp))
+;; (use-package! slime)
+
 ;; -- Keybindings --
 
 (map! :localleader

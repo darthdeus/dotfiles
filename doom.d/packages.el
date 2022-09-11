@@ -62,3 +62,10 @@
            :files ("glsl-mode.el")))
 
 (package! base16-theme)
+
+(package! evil-paredit)
+
+;; (package! sly :disable t)
+;; (package! sly-macrostep :disable t)
+;; (package! sly-repl-ansi-color :disable t)
+;; (package! slime)
