@@ -83,3 +83,6 @@ tags
 .c
 
 *.rpyc
+
+.clj-kondo/
+.lsp/.cache/
