@@ -1,0 +1,23 @@
+diff --git a/ldm/dream/server.py b/ldm/dream/server.py
+index f592457..057565e 100644
+--- a/ldm/dream/server.py
++++ b/ldm/dream/server.py
+@@ -13,6 +13,18 @@ class DreamServer(BaseHTTPRequestHandler):
+     model = None
+     canceled = Event()
+ 
++    def do_OPTIONS(self):
++        self.send_response(200, "ok")
++        self.end_headers()
++
++    def end_headers(self):
++        self.send_header('Access-Control-Allow-Origin', '*')
++        self.send_header('Access-Control-Allow-Methods', 'GET, OPTIONS')
++        self.send_header("Access-Control-Allow-Headers", "X-Requested-With")
++        self.send_header("Access-Control-Allow-Headers", "Content-Type")
++        BaseHTTPRequestHandler.end_headers(self)
++
++
+     def do_GET(self):
+         if self.path == "/":
+             self.send_response(200)
