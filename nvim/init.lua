@@ -723,7 +723,7 @@ require("lspconfig")["rust_analyzer"].setup({
 	capabilities = capabilities,
 })
 
--- require("nvim-lsp-installer").setup({
+require("nvim-lsp-installer").setup({})
 -- 	automatic_installation = true,
 -- })
 
@@ -787,6 +787,7 @@ local opts = {
 	on_attach = on_attach,
 }
 
+lspconfig.tsserver.setup(opts)
 lspconfig.rust_analyzer.setup(opts)
 -- lspconfig.vimls.setup(opts)
 -- lspconfig.clangd.setup(opts)
