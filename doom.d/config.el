@@ -102,17 +102,51 @@
 ;;
 ;;   )
 
-(add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'lisp-mode-hook #'evil-paredit-mode)
+;; My custom paredit keybindings
+(defun my-sexp-register-paredit-keybindings ()
+  (progn
+    (local-set-key (kbd "M-w") 'sp-forward-sexp)
+    (local-set-key (kbd "M-b") 'sp-backward-sexp)
+    (local-set-key (kbd "M-r") 'sp-raise-sexp)
+    (local-set-key (kbd "M-\"") 'sp-splice-sexp)
+    (local-set-key (kbd "M-L") 'sp-forward-slurp-sexp)
+    (local-set-key (kbd "M-H") 'sp-backward-slurp-sexp)
+    (local-set-key (kbd "M-J") 'sp-backward-barf-sexp)
+    (local-set-key (kbd "M-K") 'sp-forward-barf-sexp)
+    (local-set-key (kbd "M-(") (lambda () (interactive) (sp-wrap-with-pair "(")))
+    ;; (local-set-key (kbd "M-[") (lambda () (interactive) (sp-wrap-with-pair "[")))
+    ;; (local-set-key (kbd "M-{") (lambda () (interactive) (sp-wrap-with-pair "{")))
 
-(add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'emacs-lisp-mode-hook #'evil-paredit-mode)
+    ;; NOTE: Needed because doom registers this as well.
+    (define-key evil-normal-state-map (kbd "C-<tab>") nil)
+    (local-set-key (kbd "C-<tab>") 'sp-indent-defun)
+    (rainbow-delimiters-mode 1)
+    (evil-paredit-mode 1)))
 
-(add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'clojure-mode-hook #'evil-paredit-mode)
+(add-hook 'lisp-mode-hook 'my-sexp-register-paredit-keybindings)
+(add-hook 'emacs-lisp-mode-hook 'my-sexp-register-paredit-keybindings)
+(add-hook 'clojure-mode-hook 'my-sexp-register-paredit-keybindings)
+(add-hook 'clojurescript-mode-hook 'my-sexp-register-paredit-keybindings)
+(add-hook 'fennel-mode-hook 'my-sexp-register-paredit-keybindings)
+(add-hook 'racket-mode-hook 'my-sexp-register-paredit-keybindings)
 
-(add-hook 'clojurescript-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'clojurescript-mode-hook #'evil-paredit-mode)
+;; (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
+;; (add-hook 'lisp-mode-hook #'evil-paredit-mode)
+
+;; (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
+;; (add-hook 'emacs-lisp-mode-hook #'evil-paredit-mode)
+
+;; (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+;; (add-hook 'clojure-mode-hook #'evil-paredit-mode)
+
+;; (add-hook 'clojurescript-mode-hook #'rainbow-delimiters-mode)
+;; (add-hook 'clojurescript-mode-hook #'evil-paredit-mode)
+
+;; (setq cider-ns-refresh-before-fn "user/stop-system!"
+;;       cider-ns-refresh-after-fn "user/start-system!")
+
+(setq cider-ns-refresh-before-fn "user/stop-system!"
+      cider-ns-refresh-after-fn "user/start-system!")
 
 (setq inferior-lisp-program "ros -Q run")
 
