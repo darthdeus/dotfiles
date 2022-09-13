@@ -245,11 +245,12 @@
 (map! :n "[d" #'flycheck-previous-error)
 (map! :n "]d" #'flycheck-next-error)
 
-(map! :n "-" #'lsp-format-buffer)
-(map! :v "-" #'lsp-format-region)
+(map! :vn "-" #'+format/region-or-buffer)
 
-(map! :n "L" (lambda () (interactive)
-               (call-interactively 'lsp-execute-code-action)))
+;; (map! :n "L" (lambda () (interactive)
+;;                (call-interactively 'lsp-execute-code-action)))
+
+(map! :n "L" #'lsp-execute-code-action)
 
 (map! :n ",e" (lambda () (interactive)
                 (call-interactively 'projectile-run-project "cargo run")))
@@ -306,32 +307,23 @@
         (call-interactively 'evil-window-increase-width)
         (call-interactively 'evil-window-increase-width)))
 
-;; (define-key evil-normal-state-map (kbd "<right>") (lambda () (interactive)
-;;                                                 (call-interactively 'evil-window-increase-width)
-;;                                                 (call-interactively 'evil-window-increase-width)
-;;                                                 (call-interactively 'evil-window-increase-width)
-;;                                                 (call-interactively 'evil-window-increase-width)
-;;                                                 (call-interactively 'evil-window-increase-width)
-;;                                                 ))
+(map! :n "<up>"
+      (lambda ()
+        (interactive)
+        (call-interactively 'evil-window-decrease-height)
+        (call-interactively 'evil-window-decrease-height)
+        (call-interactively 'evil-window-decrease-height)
+        (call-interactively 'evil-window-decrease-height)
+        (call-interactively 'evil-window-decrease-height)))
 
-
-(define-key evil-normal-state-map (kbd "<up>")
-  (lambda () (interactive)
-    (call-interactively 'evil-window-decrease-height)
-    (call-interactively 'evil-window-decrease-height)
-    (call-interactively 'evil-window-decrease-height)
-    (call-interactively 'evil-window-decrease-height)
-    (call-interactively 'evil-window-decrease-height)))
-
-
-(define-key evil-normal-state-map (kbd "<down>")
-  (lambda () (interactive)
-    (call-interactively 'evil-window-increase-height)
-    (call-interactively 'evil-window-increase-height)
-    (call-interactively 'evil-window-increase-height)
-    (call-interactively 'evil-window-increase-height)
-    (call-interactively 'evil-window-increase-height)))
-
+(map! :n "<down>"
+      (lambda ()
+        (interactive)
+        (call-interactively 'evil-window-increase-height)
+        (call-interactively 'evil-window-increase-height)
+        (call-interactively 'evil-window-increase-height)
+        (call-interactively 'evil-window-increase-height)
+        (call-interactively 'evil-window-increase-height)))
 
 
                                         ; (defadvice! hy/evil-scroll-advice (fn count)
