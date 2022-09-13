@@ -65,7 +65,7 @@
 
 (package! evil-paredit)
 
-;; (package! sly :disable t)
-;; (package! sly-macrostep :disable t)
-;; (package! sly-repl-ansi-color :disable t)
-;; (package! slime)
+; (package! sly :disable t)
+; (package! sly-macrostep :disable t)
+; (package! sly-repl-ansi-color :disable t)
+; (package! slime)
