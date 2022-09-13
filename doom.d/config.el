@@ -25,6 +25,7 @@
       doom-variable-pitch-font (font-spec :family "Fantasque Sans Mono" :size 20))
                                         ; (setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
                                         ;       doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -226,7 +227,11 @@
 
 (after! org (map! :map org-mode-map :n ",f" #'projectile-find-file))
 (after! json (map! :map json-mode-map :n ",f" #'projectile-find-file))
+(after! sly-mrepl (map! :map sly-mrepl-mode-map :n "C-k" #'evil-window-up))
+(after! sly-mrepl (map! :map sly-mrepl-mode-map :n "C-j" #'evil-window-down))
 
+;; (map! :ni "C-j" 'evil-window-down)
+;; (map! :ni "C-k" 'evil-window-up)
 
 (map! :n ",b" #'+vertico/switch-workspace-buffer)
 (map! :n ",gt" #'consult-lsp-symbols)
