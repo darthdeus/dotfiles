@@ -93,7 +93,6 @@ git-new() {
   git add .gitignore &&
   git commit -m "Initial comit"
 }
-alias cl='git clone'
 alias gl='git log --graph --pretty="format:%C(yellow)%h%C(auto)%d%Creset %s %C(white) %C(cyan)%an, %C(magenta)%ar%Creset"'
 alias gla='gl --all'
 alias glk="git-log-viewer"

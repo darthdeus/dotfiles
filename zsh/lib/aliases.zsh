@@ -109,6 +109,8 @@ if ! type open 2>&1 1>/dev/null; then
   alias open="exo-open"
 fi
 
+alias cl="rlwrap ros -Q run"
+
 alias pass="gopass"
 alias pa="perf annotate"
 alias pr="perf record -g"
