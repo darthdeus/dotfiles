@@ -82,7 +82,7 @@ in
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    # enableAutosuggestions = true;
     enableCompletion = true;
 
     initExtra = ''
