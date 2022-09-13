@@ -23,8 +23,8 @@
 ;;
 (setq doom-font (font-spec :family "Fantasque Sans Mono" :size 22 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Fantasque Sans Mono" :size 20))
-; (setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-;       doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+                                        ; (setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
+                                        ;       doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -195,16 +195,16 @@
 
       :desc "Rename symbol"
       "r r" (lambda () (interactive)
-              (call-interactively 'lsp-rename))
+              (call-interactively 'lsp-rename)))
 
-      ;; :desc "Format buffer"
-      ;; "b f" (lambda () (interactive)
-      ;;         (call-interactively 'lsp-format-buffer))
-      )
+;; :desc "Format buffer"
+;; "b f" (lambda () (interactive)
+;;         (call-interactively 'lsp-format-buffer))
+
 
 (after! company
-    (setq company-dabbrev-downcase 0)
-    (setq company-idle-delay 0))
+  (setq company-dabbrev-downcase 0)
+  (setq company-idle-delay 0))
 
 (setq display-line-numbers-type nil)
 
@@ -249,7 +249,7 @@
 (map! :v "-" #'lsp-format-region)
 
 (map! :n "L" (lambda () (interactive)
-              (call-interactively 'lsp-execute-code-action)))
+               (call-interactively 'lsp-execute-code-action)))
 
 (map! :n ",e" (lambda () (interactive)
                 (call-interactively 'projectile-run-project "cargo run")))
@@ -281,28 +281,30 @@
 ;; (define-key evil-normal-state-map (kbd "C-x h f") 'describe-function)
 ;; (define-key evil-normal-state-map (kbd "C-x h v") 'describe-variable)
 
-; (define-key evil-normal-state-map (kbd "C-d") 'scroll-up-command)
-; (define-key evil-normal-state-map (kbd "C-u") 'scroll-down-command)
+                                        ; (define-key evil-normal-state-map (kbd "C-d") 'scroll-up-command)
+                                        ; (define-key evil-normal-state-map (kbd "C-u") 'scroll-down-command)
 
 ;; Insert mode as well
 ;; Makes C-e behave same as in Emacs. C-a works out of the box
 ;; (define-key evil-motion-state-map (kbd "C-e") nil)
 
-(map! :n "<left>" (lambda ()
-                    (interactive)
-                    (call-interactively 'evil-window-decrease-width)
-                    (call-interactively 'evil-window-decrease-width)
-                    (call-interactively 'evil-window-decrease-width)
-                    (call-interactively 'evil-window-decrease-width)
-                    (call-interactively 'evil-window-decrease-width)))
+(map! :n "<left>"
+      (lambda ()
+        (interactive)
+        (call-interactively 'evil-window-decrease-width)
+        (call-interactively 'evil-window-decrease-width)
+        (call-interactively 'evil-window-decrease-width)
+        (call-interactively 'evil-window-decrease-width)
+        (call-interactively 'evil-window-decrease-width)))
 
-(map! :n "<right>" (lambda ()
-                    (interactive)
-                    (call-interactively 'evil-window-increase-width)
-                    (call-interactively 'evil-window-increase-width)
-                    (call-interactively 'evil-window-increase-width)
-                    (call-interactively 'evil-window-increase-width)
-                    (call-interactively 'evil-window-increase-width)))
+(map! :n "<right>"
+      (lambda ()
+        (interactive)
+        (call-interactively 'evil-window-increase-width)
+        (call-interactively 'evil-window-increase-width)
+        (call-interactively 'evil-window-increase-width)
+        (call-interactively 'evil-window-increase-width)
+        (call-interactively 'evil-window-increase-width)))
 
 ;; (define-key evil-normal-state-map (kbd "<right>") (lambda () (interactive)
 ;;                                                 (call-interactively 'evil-window-increase-width)
@@ -313,28 +315,30 @@
 ;;                                                 ))
 
 
-(define-key evil-normal-state-map (kbd "<up>") (lambda () (interactive)
-                                                (call-interactively 'evil-window-decrease-height)
-                                                (call-interactively 'evil-window-decrease-height)
-                                                (call-interactively 'evil-window-decrease-height)
-                                                (call-interactively 'evil-window-decrease-height)
-                                                (call-interactively 'evil-window-decrease-height)
-                                                ))
-
-(define-key evil-normal-state-map (kbd "<down>") (lambda () (interactive)
-                                                (call-interactively 'evil-window-increase-height)
-                                                (call-interactively 'evil-window-increase-height)
-                                                (call-interactively 'evil-window-increase-height)
-                                                (call-interactively 'evil-window-increase-height)
-                                                (call-interactively 'evil-window-increase-height)
-                                                ))
+(define-key evil-normal-state-map (kbd "<up>")
+  (lambda () (interactive)
+    (call-interactively 'evil-window-decrease-height)
+    (call-interactively 'evil-window-decrease-height)
+    (call-interactively 'evil-window-decrease-height)
+    (call-interactively 'evil-window-decrease-height)
+    (call-interactively 'evil-window-decrease-height)))
 
 
-; (defadvice! hy/evil-scroll-advice (fn count)
-;   :around #'evil-scroll-down
-;   :around #'evil-scroll-up
-;   (setq count (/ (window-body-height) 8))
-;   (funcall fn count))
+(define-key evil-normal-state-map (kbd "<down>")
+  (lambda () (interactive)
+    (call-interactively 'evil-window-increase-height)
+    (call-interactively 'evil-window-increase-height)
+    (call-interactively 'evil-window-increase-height)
+    (call-interactively 'evil-window-increase-height)
+    (call-interactively 'evil-window-increase-height)))
+
+
+
+                                        ; (defadvice! hy/evil-scroll-advice (fn count)
+                                        ;   :around #'evil-scroll-down
+                                        ;   :around #'evil-scroll-up
+                                        ;   (setq count (/ (window-body-height) 8))
+                                        ;   (funcall fn count))
 
 (setq which-key-idle-delay 0.25)
 
@@ -397,7 +401,7 @@
 
       :desc "Format buffer"
       "-" (lambda () (interactive)
-              (call-interactively 'call-clang-format-on-current-buffer)))
+            (call-interactively 'call-clang-format-on-current-buffer)))
 
 ;; Prevents huge minibuffer popup when writing
 (setq! lsp-signature-render-documentation 't)
