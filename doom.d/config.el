@@ -21,10 +21,14 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "Iosevka" :size 22 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Iosevka" :size 20))
-                                        ; (setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-                                        ;       doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+(setq doom-font (font-spec :family "Fantasque Sans Mono" :size 22 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "Fantasque Sans Mono" :size 20))
+
+;; (setq doom-font (font-spec :family "Iosevka" :size 20 :weight 'semi-light)
+;;       doom-variable-pitch-font (font-spec :family "Iosevka" :size 18))
+
+;; (setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
+;;       doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 
 (setq-default line-spacing 0)
 
@@ -133,6 +137,7 @@
 (add-hook 'fennel-mode-hook 'my-sexp-register-paredit-keybindings)
 (add-hook 'racket-mode-hook 'my-sexp-register-paredit-keybindings)
 
+
 ;; (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
 ;; (add-hook 'lisp-mode-hook #'evil-paredit-mode)
 
@@ -158,8 +163,33 @@
 ;;   (evil-lisp))
 ;; (use-package! slime)
 
-;; -- Keybindings --
+(map! :localleader
+      :map clojure-mode-map
+      :desc "Eval defun at mark"
+      "e f" (lambda () (interactive)
+              (call-interactively 'my-cider-eval-at-mark))
 
+      :desc "Set eval mark"
+      "e m" (lambda () (interactive)
+              (call-interactively 'my-cider-mark-eval-point)))
+
+;; A custom shortcut to mark and eval a region of code
+;; to eval from anywhere on the same file.
+(defvar my-cider-mark-char 248)
+
+(defun my-cider-mark-eval-point ()
+  (interactive)
+  (evil-set-marker my-cider-mark-char))
+
+(defun my-cider-eval-at-mark ()
+  (interactive)
+  (cider-eval-defun-at-point)
+  (save-excursion
+    (evil-goto-mark-line my-cider-mark-char)
+    ;;(cider-eval-last-sexp)
+    (cider-eval-defun-at-point)))
+
+;; -- Keybindings --
 (map! :localleader
       :map rust-mode-map
 
@@ -225,6 +255,11 @@
 
 (map! :n ",," #'evil-buffer)
 (map! :n ",f" #'projectile-find-file)
+
+(map! :i "C-d" #'paredit-forward-delete)
+(map! :i "M-d" #'paredit-forward-kill-word)
+(map! :i "C-<backspace>" #'paredit-backward-kill-word)
+(map! :i "M-<backspace>" #'paredit-backward-kill-word)
 ;; (map! :n :mode 'org-mode ",f" #'projectile-find-file)
 
 (after! org (map! :map org-mode-map :n ",f" #'projectile-find-file))
