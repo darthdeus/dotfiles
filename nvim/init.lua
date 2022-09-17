@@ -31,6 +31,7 @@ require("packer").startup(function()
 
 	use("whatsthatsmell/codesmell_dark.vim")
 	use("RRethy/nvim-base16")
+  use("numirias/semshi")
 
 	use("tpope/vim-fugitive")
 	use("tpope/vim-sensible")
@@ -791,7 +792,7 @@ lspconfig.tsserver.setup(opts)
 lspconfig.rust_analyzer.setup(opts)
 -- lspconfig.vimls.setup(opts)
 -- lspconfig.clangd.setup(opts)
--- lspconfig.pyright.setup(opts)
+lspconfig.pyright.setup(opts)
 -- lspconfig.yamlls.setup(opts)
 
 lspconfig.sumneko_lua.setup({
