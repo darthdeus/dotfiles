@@ -4,5 +4,5 @@
 host="$1"
 
 port=$(expr $RANDOM % 16384 + 49152)
-chromium --user-data-dir=/tmp/chromium-proxy-"$host" --proxy-server=socks://localhost:$port &
+google-chrome-stable --user-data-dir=/tmp/chromium-proxy-"$host" --proxy-server=socks://localhost:$port &
 ssh -ND $port "$host"
