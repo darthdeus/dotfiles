@@ -18,3 +18,8 @@ amx-items
 smex-items
 ido.last*
 tramp
+
+eln-cache/
+straight/
+transient/
+backup/
