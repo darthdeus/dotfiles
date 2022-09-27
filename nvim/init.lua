@@ -454,6 +454,8 @@ if vim.g.neovide or vim.g.goneovim or vim.g.nvui or vim.g.gnvim then
 	})
 end
 
+vim.g.neoformat_try_node_exe = 1
+
 -- vim.o.guifont = "Fantasque Sans Mono:8"
 vim.g.neovide_cursor_animation_length = 0.00
 
