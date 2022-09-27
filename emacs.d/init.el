@@ -17,6 +17,11 @@
 		       (interactive)
 		       (find-file user-init-file)))
 
+(global-set-key [f8] (lambda ()
+		       (interactive)
+		       (magit)))
+
 (straight-use-package 'use-package)
 
 (use-package magit :straight t)
+(use-package evil :straight t)

@@ -22,7 +22,7 @@ keybindings available in both modes. For example while `q` is very
 useful in plain VIM, it becomes unusable in Emacs as many buffers use
 `q` to close them, but other buffers use it to define a macro. I
 couldn't yet figure out what the rule here is, as some buffers appear as
-a *menu-ish* one, but still want to define a macro. For that reason I've
+a _menu-ish_ one, but still want to define a macro. For that reason I've
 disabled `q` completely when in normal mode.
 
 ### Tab completion conflicts between ~AC~ company mode and YASnippet
