@@ -71,3 +71,7 @@
   :straight t
   :config
   (paredit-hooks))
+
+;; (use-package helm :straight t)
+(use-package vertico :straight t :config (vertico-mode 1))
+
