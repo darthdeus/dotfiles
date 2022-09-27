@@ -142,30 +142,12 @@
 (add-hook 'fennel-mode-hook 'my-sexp-register-paredit-keybindings)
 (add-hook 'racket-mode-hook 'my-sexp-register-paredit-keybindings)
 
-
-;; (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
-;; (add-hook 'lisp-mode-hook #'evil-paredit-mode)
-
-;; (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
-;; (add-hook 'emacs-lisp-mode-hook #'evil-paredit-mode)
-
-;; (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
-;; (add-hook 'clojure-mode-hook #'evil-paredit-mode)
-
-;; (add-hook 'clojurescript-mode-hook #'rainbow-delimiters-mode)
-;; (add-hook 'clojurescript-mode-hook #'evil-paredit-mode)
-
-;; (setq cider-ns-refresh-before-fn "user/stop-system!"
-;;       cider-ns-refresh-after-fn "user/start-system!")
-
 (setq cider-ns-refresh-before-fn "user/stop-system!"
       cider-ns-refresh-after-fn "user/start-system!")
 
 (setq inferior-lisp-program "ros -Q run")
 
-
-;; (use-package! sly
-;;   (evil-lisp))
+;; (use-package! sly (evil-lisp))
 ;; (use-package! slime)
 
 (map! :localleader
