@@ -2,6 +2,17 @@
 
 My config files for bash, git, ruby and other useful scripts.
 
+### Company completion bug:
+
+:foo, M-x company-complete
+
+- none: no, yes
+- helm: yes, yes
+- ido: no, yes
+- ivy: no, yes
+- vertico: yes, yes
+
+
 ## TODO
 
 - rofi-emoji, rofi-pass
