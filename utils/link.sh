@@ -24,6 +24,8 @@ ln -nsf "$DOT/doom.d"           "$HOME/.doom.d"
 # mkdir -p "$HOME/.urxvt"
 # ln -nsf "$DOT/urxvt-ext/"    "$HOME/.urxvt/ext"
 
+ln -nsf "$DOT/config/weechat" "$HOME/.config/weechat"
+
 mkdir -p "$HOME/.config/i3"
 ln -nsf "$DOT/i3/config"    "$HOME/.config/i3/config"
 # mkdir -p "$HOME/.config/i3blocks"
