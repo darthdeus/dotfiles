@@ -71,3 +71,5 @@
 ;; (package! slime)
 
 (package! sly-asdf)
+
+(package! aggressive-indent)
