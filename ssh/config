@@ -22,10 +22,10 @@ host cam
 
 host cat
   hostname catsocket.com
-  user deploy
+  user ubuntu
   # port 42222
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh/id_rsa_yubikey.pub
+  # IdentitiesOnly yes
+  # IdentityFile ~/.ssh/id_rsa_yubikey.pub
 
 host bogatyr
   hostname bogatyr.ms.mff.cuni.cz
