@@ -97,6 +97,7 @@ require("packer").startup(function()
 	-- end
 	use("chaimleib/vim-renpy")
 
+  use("ziglang/zig.vim")
 	use("DingDean/wgsl.vim")
 
 	use("tenxsoydev/size-matters.nvim")
@@ -795,6 +796,7 @@ lspconfig.rust_analyzer.setup(opts)
 -- lspconfig.vimls.setup(opts)
 -- lspconfig.clangd.setup(opts)
 lspconfig.pyright.setup(opts)
+lspconfig.zls.setup(opts)
 -- lspconfig.yamlls.setup(opts)
 
 lspconfig.sumneko_lua.setup({
