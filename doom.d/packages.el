@@ -72,4 +72,4 @@
 
 (package! sly-asdf)
 
-(package! aggressive-indent)
+(package! aggressive-indent :recipe (:host github :repo "skangas/aggressive-indent-mode" :branch "important-fix"))
