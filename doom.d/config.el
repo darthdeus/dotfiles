@@ -151,6 +151,13 @@
 ;; (use-package! sly (evil-lisp))
 ;; (use-package! slime)
 
+(map! :localleader
+      :map lisp-mode-map
+      :desc "Start sly and load ASDF system"
+      "q" (lambda () (interactive)
+            (call-interactively 'sly-restart-inferior-lisp)
+            (call-interactively 'sly-asdf-load-system my-asdf-system-name)))
+
 
 (map! :localleader
       :map lisp-mode-map
