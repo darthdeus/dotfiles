@@ -151,6 +151,12 @@
 ;; (use-package! sly (evil-lisp))
 ;; (use-package! slime)
 
+
+(map! :localleader
+      :map lisp-mode-map
+      :desc "Eval buffer"
+      "w" (lambda () (interactive) (call-interactively 'sly-eval-buffer)))
+
 (map! :localleader
       :map clojure-mode-map
       :desc "Eval defun at mark"
