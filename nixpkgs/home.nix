@@ -69,7 +69,7 @@ in
 
     # TODO libvoikko hspell nuspell hunspell
 
-    shellcheck zig nixfmt pandoc
+    shellcheck nixfmt pandoc
 
     # emacs28NativeComp libvterm # emacs28Packages.vterm
 
