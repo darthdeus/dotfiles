@@ -64,7 +64,7 @@ in
 
     noxMaster
 
-    neovim
+    # neovim
     tmux
 
     # TODO libvoikko hspell nuspell hunspell
