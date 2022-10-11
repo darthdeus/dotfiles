@@ -62,10 +62,10 @@ fi
 # exec twm
 
 
-if command -v autocutsel; then
-  autocutsel -fork &
-  autocutsel -selection PRIMARY -fork &
-fi
+# if command -v autocutsel; then
+#   autocutsel -fork &
+#   autocutsel -selection PRIMARY -fork &
+# fi
 
 if [[ "$(hostname)" == "pipik" ]]; then
   if command -v xrandr; then
@@ -85,7 +85,12 @@ if [[ "$(hostname)" == "pipik" ]]; then
 fi
 
 # systemctl start --user sxhkd.service
+if command -v sxhkd; then
 sxhkd &
+fi
+if command -v copyq; then
+  copyq &
+fi
 
 eval $(ssh-agent)
 
