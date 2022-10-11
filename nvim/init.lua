@@ -346,7 +346,8 @@ nnoremap("<C-h>", "<C-w><C-h>")
 tnoremap("<C-h>", "<C-\\><C-n><C-w><C-h>")
 nnoremap("<C-l>", "<C-w><C-l>")
 
-vnoremap("-", ":Neoformat<cr>")
+vnoremap("-", ":lua vim.lsp.buf.format()")
+nnoremap("-", ":lua vim.lsp.buf.format()")
 
 -- Bubble multiple lines
 vnoremap("<C-Up>", "<C-w><C-k>")
@@ -355,8 +356,6 @@ vnoremap("<C-Left>", "<C-w><C-h>")
 vnoremap("<C-Right>", "<C-w><C-l>")
 
 inoremap("<C-X><C-@>", "<C-A>")
-
-nnoremap("-", ":Neoformat<cr>")
 
 if vim.fn.has("win32") == 1 then
 	nnoremap("<leader>ge", ":vs C:/users/jakub/dotfiles/nvim/init.lua<CR>")
