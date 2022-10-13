@@ -31,7 +31,7 @@ require("packer").startup(function()
 
 	use("whatsthatsmell/codesmell_dark.vim")
 	use("RRethy/nvim-base16")
-  use("numirias/semshi")
+  -- use("numirias/semshi")
 
 	use("tpope/vim-fugitive")
 	use("tpope/vim-sensible")
