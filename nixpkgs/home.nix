@@ -28,7 +28,7 @@ in
     bat
     curl
     htop
-    gnupg
+    # gnupg
     pass
     zathura
     delta
