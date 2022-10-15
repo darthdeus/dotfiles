@@ -348,8 +348,8 @@ nnoremap("<C-h>", "<C-w><C-h>")
 tnoremap("<C-h>", "<C-\\><C-n><C-w><C-h>")
 nnoremap("<C-l>", "<C-w><C-l>")
 
-vnoremap("-", ":lua vim.lsp.buf.format()")
-nnoremap("-", ":lua vim.lsp.buf.format()")
+vnoremap("-", ":lua vim.lsp.buf.format()<cr>")
+nnoremap("-", ":lua vim.lsp.buf.format()<cr>")
 
 -- Bubble multiple lines
 vnoremap("<C-Up>", "<C-w><C-k>")
