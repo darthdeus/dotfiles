@@ -33,6 +33,8 @@ require("packer").startup(function()
 	use("RRethy/nvim-base16")
   -- use("numirias/semshi")
 
+  use("Olical/conjure")
+
 	use("tpope/vim-fugitive")
 	use("tpope/vim-sensible")
 	use("tpope/vim-eunuch")
