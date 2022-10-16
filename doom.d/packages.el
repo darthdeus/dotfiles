@@ -65,6 +65,8 @@
 
 (package! evil-paredit)
 
+(package! clj-refactor :disable t)
+
 ;; (package! sly :disable t)
 ;; (package! sly-macrostep :disable t)
 ;; (package! sly-repl-ansi-color :disable t)
