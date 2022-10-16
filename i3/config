@@ -50,6 +50,9 @@ for_window [title=".*FLOAT.*"] floating enable
 for_window [title=".*CopyQ.*"] floating enable
 for_window [title="Membrane"] floating enable
 for_window [title="Easy Diffusion"] floating enable
+for_window [title="Ren'Py Launcher"] floating enable
+for_window [title="GNU Image Manipulation Program"] floating enable
+for_window [title="mpv"] floating enable
 
 bindsym $mod+h			  focus left
 bindsym $mod+Shift+h	move left 30
