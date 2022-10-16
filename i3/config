@@ -147,6 +147,17 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+set $wsa1 "a1"
+set $wsa2 "a2"
+set $wsa3 "a3"
+set $wsa4 "a4"
+set $wsa5 "a5"
+set $wsa6 "a6"
+set $wsa7 "a7"
+set $wsa8 "a8"
+set $wsa9 "a9"
+set $wsa10 "a10"
+
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -158,6 +169,18 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+
+bindsym $mod+minus workspace $wsa1
+bindsym $mod+equal workspace $wsa2
+# bindsym $mod+3 workspace $wsa3
+# bindsym $mod+4 workspace $wsa4
+# bindsym $mod+5 workspace $wsa5
+# bindsym $mod+6 workspace $wsa6
+# bindsym $mod+7 workspace $wsa7
+# bindsym $mod+8 workspace $wsa8
+# bindsym $mod+9 workspace $wsa9
+# bindsym $mod+0 workspace $wsa10
+
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
