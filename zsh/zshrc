@@ -1,7 +1,7 @@
 fpath=(~/.zsh/funcs "${fpath[@]}")
 
 ZSH=$HOME/.zsh
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="$HOME/.npm/bin:/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # Load all libs under
 for config_file in "$ZSH"/lib/*.zsh; do
