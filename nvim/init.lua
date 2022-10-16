@@ -627,6 +627,7 @@ cmp.setup({
 	sources = cmp.config.sources({
 		-- { name = 'tabnine' },
 		-- { name = 'copilot' },
+    { name = "conjure" },
 		{ name = "nvim_lsp" },
 		{ name = "vsnip" }, -- For vsnip users.
 		-- { name = 'luasnip' }, -- For luasnip users.
