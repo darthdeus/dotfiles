@@ -49,17 +49,17 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! tldr)
+; (package! tldr)
 
-(package! lsp-treemacs)
-
-(package! wgsl-mode
-  :recipe (:host github :repo "acowley/wgsl-mode"
-           :files ("wgsl-mode.el")))
-
-(package! glsl-mode
-  :recipe (:host github :repo "jimhourihan/glsl-mode"
-           :files ("glsl-mode.el")))
+; (package! lsp-treemacs)
+;
+; (package! wgsl-mode
+;   :recipe (:host github :repo "acowley/wgsl-mode"
+;            :files ("wgsl-mode.el")))
+;
+; (package! glsl-mode
+;   :recipe (:host github :repo "jimhourihan/glsl-mode"
+;            :files ("glsl-mode.el")))
 
 (package! base16-theme)
 
@@ -74,4 +74,5 @@
 
 (package! sly-asdf)
 
-(package! aggressive-indent :recipe (:host github :repo "skangas/aggressive-indent-mode" :branch "important-fix"))
+; (package! aggressive-indent :recipe (:host github :repo "skangas/aggressive-indent-mode" :branch "important-fix"))
+(package! aggressive-indent)
