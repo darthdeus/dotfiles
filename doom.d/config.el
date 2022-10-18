@@ -295,7 +295,8 @@
 ;; (map! :ni "C-j" 'evil-window-down)
 ;; (map! :ni "C-k" 'evil-window-up)
 
-(map! :n ",b" #'+vertico/switch-workspace-buffer)
+;; (map! :n ",b" #'+vertico/switch-workspace-buffer)
+(map! :n ",b" #'switch-to-buffer)
 (map! :n ",gt" #'consult-lsp-symbols)
 (map! :n ",ga" #'+default/search-project)
 (map! :n ",gd" #'+default/search-project-for-symbol-at-point)
