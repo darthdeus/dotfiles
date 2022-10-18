@@ -340,6 +340,9 @@
 (map! :ni "C-n" nil)
 (map! :ni "C-p" nil)
 
+(after! smartparens
+  (sp-pair "(" nil :unless '(:rem sp-point-before-word-p)))
+
 ;; Switching between windows with C-hjkl
 (map! :ni "C-l" 'evil-window-right)
 (map! :ni "C-h" 'evil-window-left)
