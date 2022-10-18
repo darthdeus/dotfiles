@@ -151,6 +151,30 @@
 ;; (use-package! sly (evil-lisp))
 ;; (use-package! slime)
 
+(defun clerk-show ()
+  (interactive)
+  (when-let
+      ((filename
+        (buffer-file-name)))
+    (save-buffer)
+    (cider-interactive-eval
+     (concat "(nextjournal.clerk/show! \"" filename "\")"))))
+
+; (define-key clojure-mode-map (kbd "<M-RET>") 'clerk-show)
+
+(map! :localleader
+      :map clojure-mode-map
+      :desc "Run clerk-show"
+      "<M-RET>" 'clerk-show)
+
+(map! :localleader
+      :map clojurescript-mode-map
+      "p e" 'sp-unwrap-sexp)
+
+(map! :localleader
+      :map clojurescript-mode-map
+      "p r" 'sp-rewrap-sexp)
+
 (map! :localleader
       :map lisp-mode-map
       :desc "Start sly and load ASDF system"
