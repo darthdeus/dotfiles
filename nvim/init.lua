@@ -33,7 +33,10 @@ require("packer").startup(function()
   use("RRethy/nvim-base16")
   -- use("numirias/semshi")
 
-  use("Olical/conjure")
+  -- use("Olical/conjure")
+  -- use("tpope/vim-dispatch")
+  -- use("clojure-vim/vim-jack-in")
+  -- use("radenling/vim-dispatch-neovim")
 
   use("tpope/vim-fugitive")
   use("tpope/vim-sensible")
@@ -627,7 +630,7 @@ cmp.setup({
   sources = cmp.config.sources({
     -- { name = 'tabnine' },
     -- { name = 'copilot' },
-    { name = "conjure" },
+    -- { name = "conjure" },
     { name = "nvim_lsp" },
     { name = "vsnip" }, -- For vsnip users.
     -- { name = 'luasnip' }, -- For luasnip users.
