@@ -25,8 +25,8 @@
 (if (eq system-type 'darwin)
     (setq doom-font (font-spec :family "Fantasque Sans Mono" :size 18 :weight 'semi-light)
           doom-variable-pitch-font (font-spec :family "Fantasque Sans Mono" :size 16))
-  (setq doom-font (font-spec :family "Fantasque Sans Mono" :size 22 :weight 'semi-light)
-        doom-variable-pitch-font (font-spec :family "Fantasque Sans Mono" :size 20)))
+  (setq doom-font (font-spec :family "Fantasque Sans Mono" :size 24 :weight 'semi-light)
+        doom-variable-pitch-font (font-spec :family "Fantasque Sans Mono" :size 22)))
 
 
 ;; (setq doom-font (font-spec :family "Iosevka" :size 20 :weight 'semi-light)
