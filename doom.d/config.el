@@ -214,6 +214,13 @@
     ;;(cider-eval-last-sexp)
     (cider-eval-defun-at-point)))
 
+(map! :localleader
+      :map clojurescript-mode-map
+
+      :desc "Unwrap sexp"
+      "q u" 'sp-unwrap-sexp)
+
+
 ;; -- Keybindings --
 (map! :localleader
       :map rust-mode-map
