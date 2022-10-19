@@ -63,7 +63,7 @@
 
 (package! base16-theme)
 
-(package! evil-paredit)
+(package! evil-smartparens)
 
 (package! clj-refactor :disable t)
 

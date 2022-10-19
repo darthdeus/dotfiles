@@ -133,7 +133,7 @@
     (define-key evil-normal-state-map (kbd "C-<tab>") nil)
     (local-set-key (kbd "C-<tab>") 'sp-indent-defun)
     (rainbow-delimiters-mode 1)
-    (evil-paredit-mode 1)
+    (evil-smartparens-mode 1)
     (aggressive-indent-mode 1)))
 
 (add-hook 'lisp-mode-hook 'my-sexp-register-paredit-keybindings)
