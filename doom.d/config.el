@@ -288,10 +288,10 @@
 (map! :n ",," #'evil-buffer)
 (map! :n ",f" #'projectile-find-file)
 
-(map! :i "C-d" #'paredit-forward-delete)
-(map! :i "M-d" #'paredit-forward-kill-word)
-(map! :i "C-<backspace>" #'paredit-backward-kill-word)
-(map! :i "M-<backspace>" #'paredit-backward-kill-word)
+(map! :i "C-d" #'sp-forward-delete)
+(map! :i "M-d" #'sp-forward-kill-word)
+(map! :i "C-<backspace>" #'sp-backward-kill-word)
+(map! :i "M-<backspace>" #'sp-backward-kill-word)
 ;; (map! :n :mode 'org-mode ",f" #'projectile-find-file)
 
 (after! org (map! :map org-mode-map :n ",f" #'projectile-find-file))
