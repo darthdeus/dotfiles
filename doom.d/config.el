@@ -217,8 +217,8 @@
 (map! :localleader
       :map clojurescript-mode-map
 
-      :desc "Unwrap sexp"
-      "q u" 'sp-unwrap-sexp)
+      "q u" 'sp-unwrap-sexp
+      "q r" 'sp-raise-sexp)
 
 
 ;; -- Keybindings --
