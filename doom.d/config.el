@@ -162,19 +162,18 @@
     (cider-interactive-eval
      (concat "(nextjournal.clerk/show! \"" filename "\")"))))
 
-; (define-key clojure-mode-map (kbd "<M-RET>") 'clerk-show)
-
 (map! :localleader
       :map clojure-mode-map
       :desc "Run clerk-show"
       "<M-RET>" 'clerk-show)
 
-;; :map elisp-mode-map
-
 (map! :localleader
-      :map (clojure-mode-map clojurescript-mode-map racket-mode-map lisp-mode-map emacs-lisp-mode-map)
-      ;; (clojurescript-mode-map clojure-mode-map elisp-mode-map lisp-mode-map)
-                                        ; :map (lisp-maps)
+      :map (clojure-mode-map
+            clojurescript-mode-map
+            racket-mode-map
+            lisp-mode-map
+            emacs-lisp-mode-map
+            fennel-mode-map)
       "p e" 'sp-unwrap-sexp
       "p w" 'sp-rewrap-sexp
       "p r" 'sp-raise-sexp
@@ -198,12 +197,10 @@
 (map! :localleader
       :map clojure-mode-map
       :desc "Eval defun at mark"
-      "e f" (lambda () (interactive)
-              (call-interactively 'my-cider-eval-at-mark))
+      "e f" (lambda () (interactive) (call-interactively 'my-cider-eval-at-mark))
 
       :desc "Set eval mark"
-      "e m" (lambda () (interactive)
-              (call-interactively 'my-cider-mark-eval-point)))
+      "e m" (lambda () (interactive) (call-interactively 'my-cider-mark-eval-point)))
 
 ;; A custom shortcut to mark and eval a region of code
 ;; to eval from anywhere on the same file.
@@ -248,8 +245,7 @@
       ;; "e N" (lambda () (interactive) (previous-error))
 
       :desc "Code actions"
-      "c a" (lambda () (interactive)
-              (call-interactively 'lsp-execute-code-action))
+      "c a" (lambda () (interactive) (call-interactively 'lsp-execute-code-action))
 
       ;; :desc "Go to type definition"
       ;; "g t" (lambda () (interactive)
