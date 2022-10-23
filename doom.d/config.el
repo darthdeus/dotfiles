@@ -136,6 +136,8 @@
     (evil-smartparens-mode 1)
     (aggressive-indent-mode 1)))
 
+(setq lisp-maps '(clojure-mode-map clojurescript-mode-map elisp-mode-map lisp-mode-map fennel-mode-map))
+
 (add-hook 'lisp-mode-hook 'my-sexp-register-paredit-keybindings)
 (add-hook 'emacs-lisp-mode-hook 'my-sexp-register-paredit-keybindings)
 (add-hook 'clojure-mode-hook 'my-sexp-register-paredit-keybindings)
@@ -167,26 +169,31 @@
       :desc "Run clerk-show"
       "<M-RET>" 'clerk-show)
 
-(map! :localleader
-      :map clojurescript-mode-map
-      "p e" 'sp-unwrap-sexp)
+;; :map elisp-mode-map
 
 (map! :localleader
-      :map clojurescript-mode-map
-      "p r" 'sp-rewrap-sexp)
+      :map (clojure-mode-map clojurescript-mode-map racket-mode-map lisp-mode-map emacs-lisp-mode-map)
+      ;; (clojurescript-mode-map clojure-mode-map elisp-mode-map lisp-mode-map)
+                                        ; :map (lisp-maps)
+      "p e" 'sp-unwrap-sexp
+      "p w" 'sp-rewrap-sexp
+      "p r" 'sp-raise-sexp
+
+      ;; "q u" 'sp-unwrap-sexp
+      ;; "q r" 'sp-raise-sexp
+      )
 
 (map! :localleader
       :map lisp-mode-map
       :desc "Start sly and load ASDF system"
       "q" (lambda () (interactive)
             (call-interactively 'sly-restart-inferior-lisp)
-            (call-interactively 'sly-asdf-load-system my-asdf-system-name)))
+            (call-interactively 'sly-asdf-load-system my-asdf-system-name))
 
-
-(map! :localleader
-      :map lisp-mode-map
       :desc "Eval buffer"
-      "w" (lambda () (interactive) (call-interactively 'sly-eval-buffer)))
+      "w" (lambda () (interactive) (call-interactively 'sly-eval-buffer))
+      )
+
 
 (map! :localleader
       :map clojure-mode-map
@@ -213,12 +220,6 @@
     (evil-goto-mark-line my-cider-mark-char)
     ;;(cider-eval-last-sexp)
     (cider-eval-defun-at-point)))
-
-(map! :localleader
-      :map clojurescript-mode-map
-
-      "q u" 'sp-unwrap-sexp
-      "q r" 'sp-raise-sexp)
 
 
 ;; -- Keybindings --
