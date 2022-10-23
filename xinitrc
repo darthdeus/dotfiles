@@ -86,11 +86,14 @@ fi
 
 # systemctl start --user sxhkd.service
 if command -v sxhkd; then
-sxhkd &
+  sxhkd &
 fi
-if command -v copyq; then
-  copyq &
+if command -v autocutsel; then
+  autocutsel -selection CLIPBOARD -fork &
 fi
+# if command -v copyq; then
+#   copyq &
+# fi
 
 eval $(ssh-agent)
 
