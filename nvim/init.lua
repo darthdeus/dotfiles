@@ -33,7 +33,8 @@ require("packer").startup(function()
   use("RRethy/nvim-base16")
   -- use("numirias/semshi")
 
-  -- use("Olical/conjure")
+  use("Olical/conjure")
+  use("PaterJason/cmp-conjure")
   -- use("tpope/vim-dispatch")
   -- use("clojure-vim/vim-jack-in")
   -- use("radenling/vim-dispatch-neovim")
@@ -95,15 +96,14 @@ require("packer").startup(function()
   use("cespare/vim-toml")
   use("othree/html5.vim")
   use("mattn/emmet-vim")
-
-  -- if vim.fn.has("win32") ~= 1 then
-  -- 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-  -- 	use("nvim-treesitter/playground")
-  -- end
   use("chaimleib/vim-renpy")
-
   use("ziglang/zig.vim")
   use("DingDean/wgsl.vim")
+
+  if vim.fn.has("win32") ~= 1 then
+  	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+  	use("nvim-treesitter/playground")
+  end
 
   use("tenxsoydev/size-matters.nvim")
 
@@ -365,7 +365,7 @@ inoremap("<C-X><C-@>", "<C-A>")
 if vim.fn.has("win32") == 1 then
   nnoremap("<leader>ge", ":vs C:/users/jakub/dotfiles/nvim/init.lua<CR>")
   -- nnoremap("<leader>e", ':TermExec cmd="make" direction=vertical size=80 go_back=0<cr>')
-  nnoremap("<leader>e", ":Cargo run<cr>")
+  nnoremap("<leader>r", ":Cargo run<cr>")
   -- nnoremap("<leader>e", ':ToggleTerm cmd="cargo run"<cr>')
   -- nnoremap("<leader>e", ":TermExec cmd='make' direction='vertical' size=80<cr>")
   -- nnoremap("<leader>e", ":TermExec cmd='make' direction='vertical' open=0 size=80<cr>")
@@ -374,7 +374,7 @@ if vim.fn.has("win32") == 1 then
   nnoremap("<leader>mb", ":cd C:/dev/BITGUN<CR>")
 else
   nnoremap("<leader>ge", ":vs ~/.config/nvim/init.lua<CR>")
-  nnoremap("<Leader>e", ":call VimuxRunCommand('c')<cr>")
+  nnoremap("<Leader>r", ":call VimuxRunCommand('c')<cr>")
 end
 
 -- Expand %% to directory path of current buffer
@@ -387,7 +387,7 @@ tnoremap("<Esc>", "<C-\\><C-n>:ToggleTerm<cr>")
 nnoremap("<F5>", ":call VimuxRunCommand('make')<cr>")
 nnoremap("<F4>", ":call VimuxRunCommand('make')<cr>")
 -- map("n", <leader>r :call VimuxRunCommand("make ". expand("%h"))<cr>
-nnoremap("<leader>r", ":call VimuxRunCommand('make test')<cr>")
+nnoremap("<leader>t", ":call VimuxRunCommand('make test')<cr>")
 nnoremap("<leader>c", ":call VimuxRunCommand('make clean')<cr>")
 
 -- Inserts the path of the currently edited file in command mode
@@ -630,7 +630,7 @@ cmp.setup({
   sources = cmp.config.sources({
     -- { name = 'tabnine' },
     -- { name = 'copilot' },
-    -- { name = "conjure" },
+    { name = "conjure" },
     { name = "nvim_lsp" },
     { name = "vsnip" }, -- For vsnip users.
     -- { name = 'luasnip' }, -- For luasnip users.
@@ -727,13 +727,6 @@ cmp.setup({
 -- vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
 -- vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
 
--- Setup lspconfig.
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require("lspconfig")["rust_analyzer"].setup({
-  capabilities = capabilities,
-})
-
 require("nvim-lsp-installer").setup({})
 -- 	automatic_installation = true,
 -- })
@@ -792,7 +785,9 @@ local on_attach = function(_client, bufnr)
   require("lsp_signature").on_attach()
 end
 
+-- -- Setup lspconfig.
 local lspconfig = require("lspconfig")
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local opts = {
   capabilities = capabilities,
@@ -801,10 +796,10 @@ local opts = {
 
 lspconfig.tsserver.setup(opts)
 lspconfig.rust_analyzer.setup(opts)
+lspconfig.pyright.setup(opts)
 -- lspconfig.vimls.setup(opts)
 -- lspconfig.clangd.setup(opts)
-lspconfig.pyright.setup(opts)
-lspconfig.zls.setup(opts)
+-- lspconfig.zls.setup(opts)
 -- lspconfig.yamlls.setup(opts)
 
 lspconfig.sumneko_lua.setup({
@@ -846,83 +841,83 @@ lspconfig.sumneko_lua.setup({
 -----------------------------------
 -----------------------------------
 
--- if vim.fn.has("win32") ~= 1 then
--- 	require("nvim-treesitter.configs").setup({
--- 		ensure_installed = { "c", "cpp", "json", "javascript", "go", "python", "rust", "query", "lua" },
--- 		highlight = {
--- 			enable = true,
--- 		},
--- 		incremental_selection = {
--- 			enable = true,
--- 			keymaps = {
--- 				-- init_selection = "gnn",
--- 				-- node_incremental = "grn",
--- 				-- scope_incremental = "rc",
--- 				-- node_decremental = "grm",
--- 				init_selection = "`",
--- 				node_incremental = "`",
--- 				node_decremental = "~",
--- 				scope_incremental = "rc",
--- 			},
--- 		},
--- 		textobjects = {
--- 			select = {
--- 				enable = true,
--- 				keymaps = {
--- 					-- You can use the capture groups defined in textobjects.scm
--- 					["af"] = "@function.outer",
--- 					["if"] = "@function.inner",
--- 					["ac"] = "@class.outer",
--- 					["ic"] = "@class.inner",
---
--- 					-- Or you can define your own textobjects like this
--- 					["iF"] = {
--- 						python = "(function_definition) @function",
--- 						cpp = "(function_definition) @function",
--- 						c = "(function_definition) @function",
--- 						java = "(method_declaration) @function",
--- 					},
--- 				},
--- 			},
--- 			move = {
--- 				enable = true,
--- 				goto_next_start = {
--- 					["]a"] = "@function.outer",
--- 					["]]"] = "@class.outer",
--- 				},
--- 				goto_next_end = {
--- 					["]A"] = "@function.outer",
--- 					["]["] = "@class.outer",
--- 				},
--- 				goto_previous_start = {
--- 					["[a"] = "@function.outer",
--- 					["[["] = "@class.outer",
--- 				},
--- 				goto_previous_end = {
--- 					["[A"] = "@function.outer",
--- 					["[]"] = "@class.outer",
--- 				},
--- 			},
---
--- 			swap = {
--- 				enable = true,
--- 				swap_next = {
--- 					["<leader>a"] = "@parameter.inner",
--- 				},
--- 				swap_previous = {
--- 					["<leader>A"] = "@parameter.inner",
--- 				},
--- 			},
--- 		},
--- 	})
--- end
+if vim.fn.has("win32") ~= 1 then
+	require("nvim-treesitter.configs").setup({
+		ensure_installed = { "c", "json", "javascript", "python", "rust", "lua", "wgsl", "nix", "fennel", "commonlisp", "clojure" },
+		highlight = {
+			enable = true,
+		},
+		incremental_selection = {
+			enable = true,
+			keymaps = {
+				-- init_selection = "gnn",
+				-- node_incremental = "grn",
+				-- scope_incremental = "rc",
+				-- node_decremental = "grm",
+				init_selection = "`",
+				node_incremental = "`",
+				node_decremental = "~",
+				scope_incremental = "rc",
+			},
+		},
+		textobjects = {
+			select = {
+				enable = true,
+				keymaps = {
+					-- You can use the capture groups defined in textobjects.scm
+					["af"] = "@function.outer",
+					["if"] = "@function.inner",
+					["ac"] = "@class.outer",
+					["ic"] = "@class.inner",
 
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
+					-- Or you can define your own textobjects like this
+					["iF"] = {
+						python = "(function_definition) @function",
+						cpp = "(function_definition) @function",
+						c = "(function_definition) @function",
+						java = "(method_declaration) @function",
+					},
+				},
+			},
+			move = {
+				enable = true,
+				goto_next_start = {
+					["]a"] = "@function.outer",
+					["]]"] = "@class.outer",
+				},
+				goto_next_end = {
+					["]A"] = "@function.outer",
+					["]["] = "@class.outer",
+				},
+				goto_previous_start = {
+					["[a"] = "@function.outer",
+					["[["] = "@class.outer",
+				},
+				goto_previous_end = {
+					["[A"] = "@function.outer",
+					["[]"] = "@class.outer",
+				},
+			},
+
+			swap = {
+				enable = true,
+				swap_next = {
+					["<leader>a"] = "@parameter.inner",
+				},
+				swap_previous = {
+					["<leader>A"] = "@parameter.inner",
+				},
+			},
+		},
+	})
+end
+
+-- vim.cmd([[
+--   augroup packer_user_config
+--     autocmd!
+--     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+--   augroup end
+-- ]])
 
 vim.o.exrc = true
 vim.o.secure = true
