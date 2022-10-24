@@ -387,8 +387,8 @@ tnoremap("<Esc>", "<C-\\><C-n>:ToggleTerm<cr>")
 nnoremap("<F5>", ":call VimuxRunCommand('make')<cr>")
 nnoremap("<F4>", ":call VimuxRunCommand('make')<cr>")
 -- map("n", <leader>r :call VimuxRunCommand("make ". expand("%h"))<cr>
-nnoremap("<leader>t", ":call VimuxRunCommand('make test')<cr>")
-nnoremap("<leader>c", ":call VimuxRunCommand('make clean')<cr>")
+-- nnoremap("<leader>t", ":call VimuxRunCommand('make test')<cr>")
+-- nnoremap("<leader>c", ":call VimuxRunCommand('make clean')<cr>")
 
 -- Inserts the path of the currently edited file in command mode
 cnoremap("<C-P>", "<C-R>=expand('%:p:h') . '/' <CR>")
