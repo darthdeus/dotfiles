@@ -225,6 +225,10 @@ endif
   false
 )
 
+vim.g["conjure#filetypes"] = {
+  "clojure", "fennel", "janet", "hy", "julia", "racket", "scheme", "lua", "lisp", "python"
+}
+
 -- vim.cmd "set fillchars+=vert:|"
 vim.cmd("set fillchars+=vert:│")
 -- vim.cmd "colorscheme codesmell_dark"
