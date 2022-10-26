@@ -281,7 +281,7 @@ nnoremap("<leader>gt", ":Tags<cr>")
 nnoremap("<leader>ga", ":Rg<cr>")
 -- map("n", "<leader>ga", ":Telescope live_grep<cr>")
 
-nnoremap("<leader>gd", ":Rg <C-r><C-w><cr>")
+nnoremap("<leader>gs", ":Rg <C-r><C-w><cr>")
 -- map("n", "<leader>gd", ":Telescope live_grep <C-r><C-w><cr>")
 nnoremap("<leader>b", ":Buffers<cr>")
 -- map("n", "<leader>b", ":Telescope buffers<cr>")
@@ -407,7 +407,7 @@ nnoremap("Q", "<NOP>")
 nnoremap("<leader><leader>", "<c-^>")
 
 nnoremap(
-  "<leader>lt",
+  "<leader>pt",
   ":!ctags --extras=+f --exclude=build --exclude=public --exclude=target --exclude=node_modules --exclude=.git -R *<CR>"
 )
 nnoremap("<C-\\>", ":tnext<CR>")
