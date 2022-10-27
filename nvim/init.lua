@@ -800,6 +800,7 @@ local opts = {
 
 lspconfig.tsserver.setup(opts)
 lspconfig.rust_analyzer.setup(opts)
+lspconfig.wgsl_analyzer.setup(opts)
 lspconfig.pyright.setup(opts)
 -- lspconfig.vimls.setup(opts)
 -- lspconfig.clangd.setup(opts)
