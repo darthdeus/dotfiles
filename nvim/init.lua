@@ -53,6 +53,8 @@ require("packer").startup(function()
 
   use("editorconfig/editorconfig-vim")
 
+  use("ggandor/leap.nvim")
+
   use("mileszs/ack.vim")
   use("benmills/vimux")
 
@@ -78,7 +80,13 @@ require("packer").startup(function()
 
   use("itchyny/lightline.vim")
 
-  use({ "scrooloose/nerdtree", cmd = "NERDTree" })
+  use {
+    'nvim-tree/nvim-tree.lua',
+    -- requires = {
+    --   'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    -- },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
 
   use("sjl/gundo.vim")
 
@@ -263,6 +271,11 @@ vim.g.VimuxOrientation = "h"
 -- nn <leader>v :Vista!!<cr>
 vim.g.vista_default_executive = "nvim_lsp"
 
+
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 require("mapx").setup({ global = true })
 
 nnoremap("<leader>sd", ":Telescope help_tags<CR>")
@@ -302,6 +315,8 @@ nnoremap("gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
 -- inoremap("<silent><expr>", "<C-d>     compe#scroll({ 'delta': -4 })")
 
 vim.api.nvim_exec([[
+command Nerd NvimTreeToggle
+
 " Expand
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
@@ -451,6 +466,29 @@ augroup END
 ]] ,
   false
 )
+
+require("leap").add_default_mappings()
+
+-- OR setup with some options
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    width = 35,
+    -- adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+      },
+    },
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
+
 
 require("nvim_comment").setup({
   create_mappings = false,
