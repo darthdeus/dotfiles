@@ -1,3 +1,7 @@
+vim.g["conjure#filetypes"] = {
+  "clojure", "fennel", "janet", "hy", "julia", "racket", "scheme", "lua", "lisp", "python"
+}
+
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -33,7 +37,13 @@ require("packer").startup(function()
   use("RRethy/nvim-base16")
   -- use("numirias/semshi")
 
-  use("Olical/conjure")
+  use({ "Olical/conjure",
+    config = function()
+      vim.g["conjure#mapping#def_word"] = "ld"
+      vim.g["conjure#mapping#log_tab"] = "lq"
+    end
+  })
+
   use("PaterJason/cmp-conjure")
   -- use("tpope/vim-dispatch")
   -- use("clojure-vim/vim-jack-in")
@@ -53,7 +63,8 @@ require("packer").startup(function()
 
   use("editorconfig/editorconfig-vim")
 
-  use("ggandor/leap.nvim")
+  -- use("ggandor/leap.nvim")
+  -- require("leap").add_default_mappings()
 
   use("mileszs/ack.vim")
   use("benmills/vimux")
@@ -233,9 +244,6 @@ endif
   false
 )
 
-vim.g["conjure#filetypes"] = {
-  "clojure", "fennel", "janet", "hy", "julia", "racket", "scheme", "lua", "lisp", "python"
-}
 
 -- vim.cmd "set fillchars+=vert:|"
 vim.cmd("set fillchars+=vert:│")
@@ -295,6 +303,7 @@ nnoremap("<leader>ga", ":Rg<cr>")
 -- map("n", "<leader>ga", ":Telescope live_grep<cr>")
 
 nnoremap("<leader>gs", ":Rg <C-r><C-w><cr>")
+nnoremap("<leader>gd", ":Rg <C-r><C-w><cr>")
 -- map("n", "<leader>gd", ":Telescope live_grep <C-r><C-w><cr>")
 nnoremap("<leader>b", ":Buffers<cr>")
 -- map("n", "<leader>b", ":Telescope buffers<cr>")
@@ -422,7 +431,7 @@ nnoremap("Q", "<NOP>")
 nnoremap("<leader><leader>", "<c-^>")
 
 nnoremap(
-  "<leader>pt",
+  "<leader>lt",
   ":!ctags --extras=+f --exclude=build --exclude=public --exclude=target --exclude=node_modules --exclude=.git -R *<CR>"
 )
 nnoremap("<C-\\>", ":tnext<CR>")
@@ -467,13 +476,11 @@ augroup END
   false
 )
 
-require("leap").add_default_mappings()
-
 -- OR setup with some options
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
-    width = 35,
+    width = 28,
     -- adaptive_size = true,
     mappings = {
       list = {
@@ -487,6 +494,13 @@ require("nvim-tree").setup({
   filters = {
     dotfiles = true,
   },
+  actions = {
+    open_file = {
+      window_picker = {
+        enable = false,
+      }
+    }
+  }
 })
 
 
@@ -836,8 +850,9 @@ local opts = {
   on_attach = on_attach,
 }
 
-lspconfig.tsserver.setup(opts)
+-- lspconfig.tsserver.setup(opts)
 lspconfig.rust_analyzer.setup(opts)
+lspconfig.taplo.setup(opts)
 lspconfig.wgsl_analyzer.setup(opts)
 lspconfig.pyright.setup(opts)
 -- lspconfig.vimls.setup(opts)
