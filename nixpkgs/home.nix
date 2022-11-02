@@ -99,7 +99,8 @@ in
     zle -N edit-command-line
     bindkey '\C-x\C-e' edit-command-line
 
-    export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore "*.png" --ignore "*.jpg" --ignore "*.mp3" --ignore "*.import" --ignore "*.wav" --ignore "*.ogg" --ignore "*.aseprite" --ignore "*.ttf" --ignore "*.gif" --ignore "*.TTF" --ignore "*.afdesign" --ignore steam --ignore "*.afphoto" --ignore "*.tres" -l -g ""'
+    export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+    # export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore "*.png" --ignore "*.jpg" --ignore "*.mp3" --ignore "*.import" --ignore "*.wav" --ignore "*.ogg" --ignore "*.aseprite" --ignore "*.ttf" --ignore "*.gif" --ignore "*.TTF" --ignore "*.afdesign" --ignore steam --ignore "*.afphoto" --ignore "*.tres" -l -g ""'
     # export FZF_DEFAULT_COMMAND='
     #   (git ls-tree -r --name-only HEAD ||
     #    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
