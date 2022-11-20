@@ -37,14 +37,14 @@ require("packer").startup(function()
   use("RRethy/nvim-base16")
   -- use("numirias/semshi")
 
-  use({ "Olical/conjure",
-    config = function()
-      vim.g["conjure#mapping#def_word"] = "ld"
-      vim.g["conjure#mapping#log_tab"] = "lq"
-    end
-  })
+  -- use({ "Olical/conjure",
+  --   config = function()
+  --     vim.g["conjure#mapping#def_word"] = "ld"
+  --     vim.g["conjure#mapping#log_tab"] = "lq"
+  --   end
+  -- })
 
-  use("PaterJason/cmp-conjure")
+  -- use("PaterJason/cmp-conjure")
   -- use("tpope/vim-dispatch")
   -- use("clojure-vim/vim-jack-in")
   -- use("radenling/vim-dispatch-neovim")
@@ -120,8 +120,82 @@ require("packer").startup(function()
   use("DingDean/wgsl.vim")
 
   if vim.fn.has("win32") ~= 1 then
-    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use("nvim-treesitter/playground")
+
+    use({
+      "nvim-treesitter/nvim-treesitter",
+      config = function()
+        require("nvim-treesitter.configs").setup({
+          ensure_installed = { "c", "json", "javascript", "python", "rust", "lua", "wgsl", "nix", "fennel", "commonlisp",
+            "clojure" },
+          highlight = {
+            enable = true,
+          },
+          incremental_selection = {
+            enable = true,
+            keymaps = {
+              -- init_selection = "gnn",
+              -- node_incremental = "grn",
+              -- scope_incremental = "rc",
+              -- node_decremental = "grm",
+              init_selection = "`",
+              node_incremental = "`",
+              node_decremental = "~",
+              scope_incremental = "rc",
+            },
+          },
+          textobjects = {
+            select = {
+              enable = true,
+              keymaps = {
+                -- You can use the capture groups defined in textobjects.scm
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+
+                -- Or you can define your own textobjects like this
+                ["iF"] = {
+                  python = "(function_definition) @function",
+                  cpp = "(function_definition) @function",
+                  c = "(function_definition) @function",
+                  java = "(method_declaration) @function",
+                },
+              },
+            },
+            move = {
+              enable = true,
+              goto_next_start = {
+                ["]a"] = "@function.outer",
+                ["]]"] = "@class.outer",
+              },
+              goto_next_end = {
+                ["]A"] = "@function.outer",
+                ["]["] = "@class.outer",
+              },
+              goto_previous_start = {
+                ["[a"] = "@function.outer",
+                ["[["] = "@class.outer",
+              },
+              goto_previous_end = {
+                ["[A"] = "@function.outer",
+                ["[]"] = "@class.outer",
+              },
+            },
+
+            swap = {
+              enable = true,
+              swap_next = {
+                ["<leader>a"] = "@parameter.inner",
+              },
+              swap_previous = {
+                ["<leader>A"] = "@parameter.inner",
+              },
+            },
+          },
+        })
+      end
+    })
   end
 
   use("tenxsoydev/size-matters.nvim")
@@ -686,7 +760,7 @@ cmp.setup({
   sources = cmp.config.sources({
     -- { name = 'tabnine' },
     -- { name = 'copilot' },
-    { name = "conjure" },
+    -- { name = "conjure" },
     { name = "nvim_lsp" },
     { name = "vsnip" }, -- For vsnip users.
     -- { name = 'luasnip' }, -- For luasnip users.
@@ -898,78 +972,6 @@ lspconfig.sumneko_lua.setup({
 -----------------------------------
 -----------------------------------
 -----------------------------------
-
-if vim.fn.has("win32") ~= 1 then
-  require("nvim-treesitter.configs").setup({
-    ensure_installed = { "c", "json", "javascript", "python", "rust", "lua", "wgsl", "nix", "fennel", "commonlisp",
-      "clojure" },
-    highlight = {
-      enable = true,
-    },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        -- init_selection = "gnn",
-        -- node_incremental = "grn",
-        -- scope_incremental = "rc",
-        -- node_decremental = "grm",
-        init_selection = "`",
-        node_incremental = "`",
-        node_decremental = "~",
-        scope_incremental = "rc",
-      },
-    },
-    textobjects = {
-      select = {
-        enable = true,
-        keymaps = {
-          -- You can use the capture groups defined in textobjects.scm
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["ac"] = "@class.outer",
-          ["ic"] = "@class.inner",
-
-          -- Or you can define your own textobjects like this
-          ["iF"] = {
-            python = "(function_definition) @function",
-            cpp = "(function_definition) @function",
-            c = "(function_definition) @function",
-            java = "(method_declaration) @function",
-          },
-        },
-      },
-      move = {
-        enable = true,
-        goto_next_start = {
-          ["]a"] = "@function.outer",
-          ["]]"] = "@class.outer",
-        },
-        goto_next_end = {
-          ["]A"] = "@function.outer",
-          ["]["] = "@class.outer",
-        },
-        goto_previous_start = {
-          ["[a"] = "@function.outer",
-          ["[["] = "@class.outer",
-        },
-        goto_previous_end = {
-          ["[A"] = "@function.outer",
-          ["[]"] = "@class.outer",
-        },
-      },
-
-      swap = {
-        enable = true,
-        swap_next = {
-          ["<leader>a"] = "@parameter.inner",
-        },
-        swap_previous = {
-          ["<leader>A"] = "@parameter.inner",
-        },
-      },
-    },
-  })
-end
 
 -- vim.cmd([[
 --   augroup packer_user_config
