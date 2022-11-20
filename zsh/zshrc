@@ -61,3 +61,5 @@ export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/darth
 source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 
 export CARGO_NET_GIT_FETCH_WITH_CLI=true
+
+export TERM=xterm-256color
