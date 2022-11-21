@@ -932,13 +932,32 @@ local opts = {
   on_attach = on_attach,
 }
 
+local ra_opts = {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    ["rust-analyzer"] = {
+      checkOnSave = {
+        -- command = "clippy",
+        -- overrideCommand = { "killall", "nvim" }
+      },
+      cargo = {
+        extraEnv = { IN_RUST_ANALYZER = "1" },
+      },
+      rustfmt = {
+      }
+    }
+  }
+}
+
 -- lspconfig.tsserver.setup(opts)
-lspconfig.rust_analyzer.setup(opts)
+lspconfig.rust_analyzer.setup(ra_opts)
 lspconfig.taplo.setup(opts)
 lspconfig.wgsl_analyzer.setup(opts)
 lspconfig.pyright.setup(opts)
+lspconfig.tsserver.setup(opts)
 -- lspconfig.vimls.setup(opts)
--- lspconfig.clangd.setup(opts)
+lspconfig.clangd.setup(opts)
 -- lspconfig.zls.setup(opts)
 -- lspconfig.yamlls.setup(opts)
 
