@@ -125,6 +125,15 @@
   :straight t
   :config (which-key-mode 1))
 
+(use-package projectile
+  :straight t
+  :config (projectile-mode +1))
+
+(use-package slime
+  :straight t
+  :config (setq inferior-lisp-program "sbcl"))
+
+
 ; (use-package helm :straight t)
 ; (use-package sly :straight t)
 
