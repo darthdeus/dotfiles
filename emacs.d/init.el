@@ -161,8 +161,10 @@
 
 ; (global-evil-surround-mode 1)
 ;
-; (define-key evil-normal-state-map (kbd ",f") 'projectile-find-file)
+(define-key evil-normal-state-map (kbd ",f") 'projectile-find-file)
 ; (define-key evil-normal-state-map (kbd "q") nil)
+(define-key evil-normal-state-map (kbd "SPC p") 'projectile-command-map)
+
 
 ;; Make C-e, C-d, C-k behave same as in Emacs when in insert mode.
 (define-key evil-insert-state-map (kbd "C-e") nil)
