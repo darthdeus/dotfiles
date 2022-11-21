@@ -152,6 +152,8 @@
 ;;;;;;;;;;;; KEY BINDINGS ;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(add-hook 'git-commit-mode-hook 'evil-insert-state)
+
 
 (global-set-key (kbd "<C-M-return>") 'ansi-term)
 
