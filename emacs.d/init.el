@@ -156,6 +156,8 @@
 
 
 (global-set-key (kbd "<C-M-return>") 'ansi-term)
+(global-set-key (kbd "A-<backspace>") 'backward-kill-word)
+(global-set-key (kbd "C-x C-f") 'find-file)
 
 (global-set-key (kbd "<f5>") (lambda () (interactive)
 			       (find-file "~/.emacs.d/init.el")))
@@ -173,9 +175,10 @@
 (define-key evil-normal-state-map (kbd ",b") 'switch-to-buffer)
 (define-key evil-normal-state-map (kbd "SPC bk") 'kill-buffer)
 (define-key evil-normal-state-map (kbd "SPC gg") 'magit)
+(define-key evil-normal-state-map (kbd "SPC hk") 'describe-key)
 
 ; (global-evil-surround-mode 1)
-;
+
 (define-key evil-normal-state-map (kbd ",f") 'projectile-find-file)
 ; (define-key evil-normal-state-map (kbd "q") nil)
 (define-key evil-normal-state-map (kbd "SPC p") 'projectile-command-map)
