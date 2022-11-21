@@ -113,9 +113,21 @@
   :straight t
   :config (paredit-hooks))
 
-(use-package vertico
+;; (use-package vertico
+;;   :straight t
+;;   :config (vertico-mode 1))
+
+(use-package helm
   :straight t
-  :config (vertico-mode 1))
+  :config (helm-mode 1))
+
+(use-package helm-rg :straight t)
+(use-package helm-describe-modes :straight t)
+(use-package helm-flx :straight t)
+(use-package helm-company :straight t)
+(use-package helm-projectile :straight t)
+
+(use-package undo-fu :straight t)
 
 (use-package base16-theme
   :straight t
@@ -134,7 +146,6 @@
   :config (setq inferior-lisp-program "sbcl"))
 
 
-; (use-package helm :straight t)
 ; (use-package sly :straight t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -146,6 +157,8 @@
 
 (global-set-key (kbd "<f5>") (lambda () (interactive)
 			       (find-file "~/.emacs.d/init.el")))
+
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 (define-key evil-visual-state-map (kbd "C-c") 'evil-normal-state)
