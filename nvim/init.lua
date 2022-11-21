@@ -2,6 +2,9 @@ vim.g["conjure#filetypes"] = {
   "clojure", "fennel", "janet", "hy", "julia", "racket", "scheme", "lua", "lisp", "python"
 }
 
+vim.g["conjure#filetype#fennel"] = "conjure.client.fennel.stdio"
+vim.g["conjure#client#fennel#stdio#command"] = "love ."
+
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
