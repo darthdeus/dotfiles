@@ -84,21 +84,20 @@
 (straight-use-package 'use-package)
 
 (use-package magit :straight t)
-(use-package company :straight t :config (global-company-mode 1))
+
+(use-package company
+  :straight t
+  :config (global-company-mode 1))
+
 (use-package evil
   :straight t
-  :init
-  (setq evil-want-keybinding nil)
+  :init (setq evil-want-keybinding nil)
   :config (evil-mode 1))
 
 (use-package evil-collection
   :after evil
   :straight t
-  :config
-  (evil-collection-init))
-
-
-; (use-package sly :straight t)
+  :config (evil-collection-init))
 
 (defun paredit-hooks ()
   (add-hook 'emacs-lisp-mode-hook 'evil-smartparens-mode)
@@ -106,16 +105,22 @@
 
 (use-package evil-smartparens
   :straight t
-  :config
-  (paredit-hooks))
+  :config (paredit-hooks))
 
-;; (use-package helm :straight t)
-(use-package vertico :straight t :config (vertico-mode 1))
+(use-package vertico
+  :straight t
+  :config (vertico-mode 1))
 
 (use-package base16-theme
   :straight t
-  :config
-  (load-theme 'base16-default-dark t))
+  :config (load-theme 'base16-default-dark t))
+
+(use-package which-key
+  :straight t
+  :config (which-key-mode 1))
+
+; (use-package helm :straight t)
+; (use-package sly :straight t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;; KEY BINDINGS ;;;;;;;;;;;;
