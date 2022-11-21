@@ -60,14 +60,15 @@
 (straight-use-package 'use-package)
 
 (use-package magit :straight t)
-(use-package company :straight t :config (company-mode 1))
+(use-package company :straight t :config (global-company-mode 1))
 (use-package evil :straight t :config (evil-mode 1))
-(use-package sly :straight t)
+; (use-package sly :straight t)
 
-(defun paredit-hooks () (add-hook 'emacs-lisp-mode-hook 'evil-paredit-mode)
-  (add-hook 'lisp-mode-hook 'evil-paredit-mode))
+(defun paredit-hooks ()
+  (add-hook 'emacs-lisp-mode-hook 'evil-smartparens-mode)
+  (add-hook 'lisp-mode-hook 'evil-smartparens-mode))
 
-(use-package evil-paredit
+(use-package evil-smartparens
   :straight t
   :config
   (paredit-hooks))

@@ -16,7 +16,7 @@ ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc.dot"
 
 ln -nsf "$DOT/doom.d"           "$HOME/.doom.d"
 
-# ln -nsf "$DOT/emacs.d"       "$HOME/.emacs.d"
+ln -nsf "$DOT/emacs.d"       "$HOME/.emacs.d"
 
 # mkdir -p "$HOME/.newsboat"
 # ln -nsf "$DOT/newsboat-urls" "$HOME/.newsboat/urls"
