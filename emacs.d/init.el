@@ -65,10 +65,13 @@
 (setq-default indent-tabs-mode nil)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(setq evil-undo-system 'undo-fu)
+
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
+(setq which-key-idle-delay 0.15)
 
 ; Disable the visual bell
 (setq ring-bell-function 'ignore)
