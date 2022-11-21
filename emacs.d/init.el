@@ -53,6 +53,24 @@
 
 (add-hook 'before-save-hook  'force-backup-of-buffer)
 
+(set-face-attribute 'default nil :font "Fantasque Sans Mono" :height 130)
+(set-default 'truncate-lines t)
+(visual-line-mode 0)
+
+(setq inhibit-startup-message t)
+(setq inhibit-splash-screen t)
+(setq-default indent-tabs-mode nil)
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+; Disable the visual bell
+(setq ring-bell-function 'ignore)
+; Scroll line by line instead of moving half a screen when
+; the cursor moves off.
+(setq scroll-conservatively 100)
+; Highlight the current line, but only in GUI mode.
+(when window-system (global-hl-line-mode t))
+; Render some symbols (like lambda) with a unicode symbol.
+(when window-system (global-prettify-symbols-mode t))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;; PACKAGES ;;;;;;;;;;;;;;;;;
