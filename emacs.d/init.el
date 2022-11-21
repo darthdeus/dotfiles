@@ -62,6 +62,11 @@
 (setq-default indent-tabs-mode nil)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+
+
 ; Disable the visual bell
 (setq ring-bell-function 'ignore)
 ; Scroll line by line instead of moving half a screen when
