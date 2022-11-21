@@ -107,6 +107,18 @@
 ;; (use-package helm :straight t)
 (use-package vertico :straight t :config (vertico-mode 1))
 
+(use-package base16-theme
+  :straight t
+  :config
+  (load-theme 'base16-default-dark t))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;; KEY BINDINGS ;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(global-set-key (kbd "<C-M-return>") 'ansi-term)
+
 (global-set-key (kbd "<f5>") (lambda () (interactive)
 			       (find-file "~/.emacs.d/init.el")))
 
@@ -115,6 +127,9 @@
 (define-key evil-visual-state-map (kbd "C-c") 'evil-exit-visual-state)
 
 (define-key evil-normal-state-map (kbd ",,") 'evil-buffer)
+(define-key evil-normal-state-map (kbd ",b") 'switch-to-buffer)
+(define-key evil-normal-state-map (kbd "SPC bk") 'kill-buffer)
+(define-key evil-normal-state-map (kbd "SPC gg") 'magit)
 
 ; (global-evil-surround-mode 1)
 ;
