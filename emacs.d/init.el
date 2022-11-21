@@ -151,6 +151,9 @@
 (define-key evil-visual-state-map (kbd "C-c") 'evil-normal-state)
 (define-key evil-visual-state-map (kbd "C-c") 'evil-exit-visual-state)
 
+(define-key evil-normal-state-map (kbd "C-_ C-_") 'comment-line)
+(define-key evil-visual-state-map (kbd "C-_ C-_") 'comment-line)
+
 (define-key evil-normal-state-map (kbd ",,") 'evil-buffer)
 (define-key evil-normal-state-map (kbd ",b") 'switch-to-buffer)
 (define-key evil-normal-state-map (kbd "SPC bk") 'kill-buffer)
