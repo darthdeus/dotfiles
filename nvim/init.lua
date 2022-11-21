@@ -483,6 +483,8 @@ if vim.fn.has("win32") == 1 then
 else
   nnoremap("<leader>ge", ":vs ~/.config/nvim/init.lua<CR>")
   nnoremap("<Leader>r", ":call VimuxRunCommand('c')<cr>")
+  nnoremap("<Leader>q", ":call VimuxRunCommand('c')<cr>")
+  nnoremap("<Leader>w", ":call VimuxRunCommand('c')<cr>")
 end
 
 -- Expand %% to directory path of current buffer
