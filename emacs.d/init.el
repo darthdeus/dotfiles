@@ -53,7 +53,10 @@
 
 (add-hook 'before-save-hook  'force-backup-of-buffer)
 
-(set-face-attribute 'default nil :font "Fantasque Sans Mono" :height 130)
+(set-face-attribute 'default nil :font "Fantasque Sans Mono" :height 140)
+;; (set-face-attribute 'default nil :font "Iosevka" :height 130)
+(setq-default line-spacing 0)
+
 (set-default 'truncate-lines t)
 (visual-line-mode 0)
 
