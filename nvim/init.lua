@@ -40,6 +40,8 @@ require("packer").startup(function()
   use("RRethy/nvim-base16")
   -- use("numirias/semshi")
 
+  use("rhaiscript/vim-rhai")
+
   -- use({ "Olical/conjure",
   --   config = function()
   --     vim.g["conjure#mapping#def_word"] = "ld"
@@ -123,6 +125,7 @@ require("packer").startup(function()
   use("DingDean/wgsl.vim")
 
   if vim.fn.has("win32") ~= 1 then
+    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use("nvim-treesitter/playground")
 
     use({
@@ -975,6 +978,7 @@ lspconfig.sumneko_lua.setup({
 -----------------------------------
 -----------------------------------
 -----------------------------------
+
 
 -- vim.cmd([[
 --   augroup packer_user_config
