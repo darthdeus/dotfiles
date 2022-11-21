@@ -79,3 +79,45 @@
 (global-set-key (kbd "<f5>") (lambda () (interactive)
 			       (find-file "~/.emacs.d/init.el")))
 
+(define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+(define-key evil-visual-state-map (kbd "C-c") 'evil-normal-state)
+(define-key evil-visual-state-map (kbd "C-c") 'evil-exit-visual-state)
+
+(define-key evil-normal-state-map (kbd ",,") 'evil-buffer)
+
+; (global-evil-surround-mode 1)
+;
+; (define-key evil-normal-state-map (kbd ",f") 'projectile-find-file)
+; (define-key evil-normal-state-map (kbd "q") nil)
+
+;; Make C-e, C-d, C-k behave same as in Emacs when in insert mode.
+(define-key evil-insert-state-map (kbd "C-e") nil)
+(define-key evil-insert-state-map (kbd "C-d") nil)
+(define-key evil-insert-state-map (kbd "C-k") nil)
+
+;; Makes C-e behave same as in Emacs. C-a works out of the box
+(define-key evil-motion-state-map (kbd "C-e") nil)
+
+;; Switching between windows with C-hjkl
+(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+
+(define-key evil-normal-state-map (kbd "C-x h k") 'describe-key)
+(define-key evil-normal-state-map (kbd "C-x h f") 'describe-function)
+(define-key evil-normal-state-map (kbd "C-x h v") 'describe-variable)
+
+(define-key evil-normal-state-map (kbd "C-d") 'evil-scroll-down)
+(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+
+;; Insert mode as well
+(define-key evil-insert-state-map (kbd "C-a") 'move-beginning-of-line)
+
+(define-key evil-insert-state-map (kbd "C-l") 'evil-window-right)
+(define-key evil-insert-state-map (kbd "C-h") 'evil-window-left)
+(define-key evil-insert-state-map (kbd "C-j") 'evil-window-down)
+(define-key evil-insert-state-map (kbd "C-k") 'evil-window-up)
+
+(define-key evil-insert-state-map (kbd "C-x h k") 'describe-key)
+(define-key evil-insert-state-map (kbd "C-x C-k C-k") 'kill-line)
