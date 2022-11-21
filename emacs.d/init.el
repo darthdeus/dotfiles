@@ -74,12 +74,25 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;; PACKAGES ;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (straight-use-package 'use-package)
 
 (use-package magit :straight t)
 (use-package company :straight t :config (global-company-mode 1))
-(use-package evil :straight t :config (evil-mode 1))
+(use-package evil
+  :straight t
+  :init
+  (setq evil-want-keybinding nil)
+  :config (evil-mode 1))
+
+(use-package evil-collection
+  :after evil
+  :straight t
+  :config
+  (evil-collection-init))
+
+
 ; (use-package sly :straight t)
 
 (defun paredit-hooks ()
