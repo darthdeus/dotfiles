@@ -207,8 +207,10 @@ require("packer").startup(function()
   use("tenxsoydev/size-matters.nvim")
 
   -- -------------------------------
+  use("williamboman/mason.nvim")
+  use("williamboman/mason-lspconfig.nvim")
   use("neovim/nvim-lspconfig")
-  use("williamboman/nvim-lsp-installer")
+
   use("nvim-lua/lsp_extensions.nvim")
 
   use("ray-x/lsp_signature.nvim")
@@ -865,7 +867,7 @@ cmp.setup({
 -- vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
 -- vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
 
-require("nvim-lsp-installer").setup({})
+-- require("nvim-lsp-installer").setup({})
 -- 	automatic_installation = true,
 -- })
 
@@ -923,6 +925,14 @@ local on_attach = function(_client, bufnr)
   require("lsp_signature").on_attach()
 end
 
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    "sumneko_lua", "rust_analyzer", "zls",
+    "taplo", "clangd"
+  }
+})
+
 -- -- Setup lspconfig.
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -953,12 +963,12 @@ local ra_opts = {
 -- lspconfig.tsserver.setup(opts)
 lspconfig.rust_analyzer.setup(ra_opts)
 lspconfig.taplo.setup(opts)
-lspconfig.wgsl_analyzer.setup(opts)
-lspconfig.pyright.setup(opts)
-lspconfig.tsserver.setup(opts)
+-- lspconfig.wgsl_analyzer.setup(opts)
+-- lspconfig.pyright.setup(opts)
+-- lspconfig.tsserver.setup(opts)
 -- lspconfig.vimls.setup(opts)
 lspconfig.clangd.setup(opts)
--- lspconfig.zls.setup(opts)
+lspconfig.zls.setup(opts)
 -- lspconfig.yamlls.setup(opts)
 
 lspconfig.sumneko_lua.setup({

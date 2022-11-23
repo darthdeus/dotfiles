@@ -100,18 +100,25 @@
   :init (setq evil-want-keybinding nil)
   :config (evil-mode 1))
 
+(use-package evil-surround
+  :straight t
+  :config (global-evil-surround-mode 1))
 (use-package evil-collection
   :after evil
   :straight t
   :config (evil-collection-init))
 
-(defun paredit-hooks ()
-  (add-hook 'emacs-lisp-mode-hook 'evil-smartparens-mode)
-  (add-hook 'lisp-mode-hook 'evil-smartparens-mode))
-
 (use-package evil-smartparens
-  :straight t
-  :config (paredit-hooks))
+  :straight t)
+
+(defun paredit-hooks ()
+  (interactive)
+  (smartparens-mode 1)
+  (evil-smartparens-mode 1)
+  (rainbow-delimiters-mode 1))
+
+(add-hook 'emacs-lisp-mode-hook 'paredit-hooks)
+(add-hook 'lisp-mode-hook 'paredit-hooks)
 
 ;; (use-package vertico
 ;;   :straight t
@@ -141,10 +148,16 @@
   :straight t
   :config (projectile-mode +1))
 
-(use-package slime
-  :straight t
-  :config (setq inferior-lisp-program "sbcl"))
+;; (use-package slime
+;;   :straight t
+;;   :config (setq inferior-lisp-program "/usr/bin/ros -Q run"))
 
+(use-package sly
+  :straight t
+  :config (setq inferior-lisp-program "/usr/bin/ros -Q run"))
+
+(use-package rainbow-delimiters
+  :straight t)
 
 ; (use-package sly :straight t)
 
@@ -173,10 +186,17 @@
 
 (define-key evil-normal-state-map (kbd ",,") 'evil-buffer)
 (define-key evil-normal-state-map (kbd ",b") 'switch-to-buffer)
+(define-key evil-normal-state-map (kbd ",b") 'switch-to-buffer)
+(define-key evil-normal-state-map (kbd ",ef") 'sly-eval-defun)
+;; (define-key evil-insert-state-map (kbd ",") nil)
+(define-key evil-normal-state-map (kbd ",eb") 'sly-eval-buffer)
+(define-key evil-normal-state-map (kbd ",rr") 'sly-restart-inferior-lisp)
+
 (define-key evil-normal-state-map (kbd "SPC bk") 'kill-buffer)
 (define-key evil-normal-state-map (kbd "SPC gg") 'magit)
 (define-key evil-normal-state-map (kbd "SPC hk") 'describe-key)
 
+(define-key evil-insert-state-map (kbd "M-L") 'sp-forward-slurp-sexp)
 ; (global-evil-surround-mode 1)
 
 (define-key evil-normal-state-map (kbd ",f") 'projectile-find-file)
