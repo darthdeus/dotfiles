@@ -1,3 +1,4 @@
+# vim: set ft=zsh
 fpath=(~/.zsh/funcs "${fpath[@]}")
 
 ZSH=$HOME/.zsh
@@ -27,11 +28,11 @@ LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 export PATH="$HOME/.todo/bin:$HOME/.emacs.d/bin:$HOME/.dotfiles/bin:$LOCAL_PATHS:$PATH"
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-if [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ]; then
-  eval "$("$BASE16_SHELL/profile_helper.sh")"
-fi
-base16_default-dark
+# BASE16_SHELL="$HOME/.config/base16-shell/"
+# if [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ]; then
+#   eval "$("$BASE16_SHELL/profile_helper.sh")"
+# fi
+# base16_default-dark
 
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
   eval `ssh-agent`
@@ -62,4 +63,4 @@ source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 
 export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
-export TERM=xterm-256color
+# export TERM=xterm-256color

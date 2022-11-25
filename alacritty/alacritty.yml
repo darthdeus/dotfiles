@@ -4,6 +4,9 @@
 #     - -c
 #     - "tmux"
 
+env:
+  TERM: xterm-256color
+
 font:
   normal:
     family: "Fantasque Sans Mono"

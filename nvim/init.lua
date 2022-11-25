@@ -60,6 +60,7 @@ require("packer").startup(function()
   use("tpope/vim-surround")
   use("tpope/vim-repeat")
   use("tpope/vim-rsi")
+  use("EdenEast/nightfox.nvim")
 
   use("tikhomirov/vim-glsl")
 
@@ -307,24 +308,23 @@ vim.o.pastetoggle = "<F3>"
 vim.o.undofile = true
 
 -- vim.g.base16colorspace = 256
--- TODO: true?
--- vim.o.termguicolors = true
+vim.o.termguicolors = true
 -- vim.o.term = "xterm-256color"
 
 -- vim.api.nvim_exec( [[
 -- let g:neovide_cursor_animation_length=0.00
 -- ]], false)
 
-vim.api.nvim_exec(
-  [[
-if exists('+termguicolors')
-  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-]] ,
-  false
-)
+-- vim.api.nvim_exec(
+--   [[
+-- if exists('+termguicolors')
+--   let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+--   let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+--   set termguicolors
+-- endif
+-- ]] ,
+--   false
+-- )
 
 
 -- vim.cmd "set fillchars+=vert:|"
