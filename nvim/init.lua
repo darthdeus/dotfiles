@@ -5,6 +5,8 @@ vim.g["conjure#filetypes"] = {
 vim.g["conjure#filetype#fennel"] = "conjure.client.fennel.stdio"
 vim.g["conjure#client#fennel#stdio#command"] = "love ."
 
+vim.g["zig_fmt_autosave"] = 0
+
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -133,8 +135,11 @@ require("packer").startup(function()
       "nvim-treesitter/nvim-treesitter",
       config = function()
         require("nvim-treesitter.configs").setup({
-          ensure_installed = { "c", "json", "javascript", "python", "rust", "lua", "wgsl", "nix", "fennel", "commonlisp",
-            "clojure" },
+          ensure_installed = {
+            "c", "json", "javascript", "python",
+            "rust", "lua", "wgsl", "nix", "fennel",
+            "commonlisp", "zig", "clojure"
+          },
           highlight = {
             enable = true,
           },

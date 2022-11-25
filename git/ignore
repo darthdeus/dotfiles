@@ -86,3 +86,6 @@ tags
 
 .clj-kondo/
 .lsp/.cache/
+
+zig-cache/
+zig-out/

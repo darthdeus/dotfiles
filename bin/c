@@ -3,6 +3,8 @@ if [ -f .c ]; then
   bash .c
 elif [ -f Makefile ]; then
   make
+elif [ -f build.zig ]; then
+  zig build run
 else
   cargo run
 fi
