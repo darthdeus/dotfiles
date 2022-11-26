@@ -113,7 +113,7 @@ require("packer").startup(function()
 
   use("rust-lang/rust.vim")
   --     -- use 'rhysd/rust-doc.vim'
-  -- use("simrat39/rust-tools.nvim")
+  use("simrat39/rust-tools.nvim")
 
   use("chrisbra/vim-zsh")
   use("habamax/vim-godot")
@@ -217,7 +217,7 @@ require("packer").startup(function()
   use("williamboman/mason-lspconfig.nvim")
   use("neovim/nvim-lspconfig")
 
-  use("nvim-lua/lsp_extensions.nvim")
+  -- use("nvim-lua/lsp_extensions.nvim")
 
   use("ray-x/lsp_signature.nvim")
   use({
@@ -537,7 +537,7 @@ nnoremap("<F9>", ":Neogit<CR>")
 
 vim.api.nvim_exec(
   [[
-" "autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+" autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 
 " Remember last location in file
 aug last_location
@@ -712,8 +712,9 @@ vim.cmd([[
 -- 	show_prediction_strength = false,
 -- })
 --
+
 local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
@@ -888,7 +889,7 @@ cmp.setup({
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(_client, bufnr)
+local on_attach = function(_, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
   end
@@ -965,8 +966,23 @@ local ra_opts = {
   }
 }
 
+local rt = require("rust-tools")
+
+rt.setup({
+  server = ra_opts
+  -- server = {
+    -- on_attach = function(_, bufnr)
+    --   -- Hover actions
+    --   vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+    --   -- Code action groups
+    --   vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    -- end,
+  -- },
+})
+
+
 -- lspconfig.tsserver.setup(opts)
-lspconfig.rust_analyzer.setup(ra_opts)
+-- lspconfig.rust_analyzer.setup(ra_opts)
 lspconfig.taplo.setup(opts)
 -- lspconfig.wgsl_analyzer.setup(opts)
 -- lspconfig.pyright.setup(opts)
@@ -1008,6 +1024,9 @@ lspconfig.sumneko_lua.setup({
     },
   },
 })
+
+-- require("rust-tools").inlay_hints.enable()
+
 
 -----------------------------------
 -----------------------------------
