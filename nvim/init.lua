@@ -104,7 +104,50 @@ require("packer").startup(function()
     -- requires = {
     --   'nvim-tree/nvim-web-devicons', -- optional, for file icons
     -- },
-    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    tag = 'nightly', -- optional, updated every week. (see issue #1193)
+    config = function()
+      -- -- OR setup with some options
+      require("nvim-tree").setup({
+        sort_by = "case_sensitive",
+        view = {
+          width = 24,
+          adaptive_size = true,
+          mappings = {
+            list = {
+              { key = "u", action = "dir_up" },
+            },
+          },
+        },
+        renderer = {
+          group_empty = true,
+        },
+        filters = {
+          dotfiles = true,
+        },
+        actions = {
+          open_file = {
+            window_picker = {
+              enable = false,
+            }
+          }
+        }
+      })
+
+    end
+  }
+
+  use {
+    "nvim-neorg/neorg",
+    run = ":Neorg sync-parsers",
+    config = function()
+      require('neorg').setup {
+        load = {
+          ["core.defaults"] = {}
+        }
+        -- ... -- check out setup part...
+      }
+    end,
+    requires = "nvim-lua/plenary.nvim"
   }
 
   use("sjl/gundo.vim")
@@ -412,6 +455,7 @@ nnoremap("gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
 
 vim.api.nvim_exec([[
 command Nerd NvimTreeToggle
+" command Nerd CHADopen
 
 " Expand
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
@@ -564,33 +608,6 @@ augroup END
 ]] ,
   false
 )
-
--- -- OR setup with some options
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  view = {
-    width = 28,
-    -- adaptive_size = true,
-    mappings = {
-      list = {
-        { key = "u", action = "dir_up" },
-      },
-    },
-  },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
-  actions = {
-    open_file = {
-      window_picker = {
-        enable = false,
-      }
-    }
-  }
-})
 
 
 require("nvim_comment").setup({
@@ -971,12 +988,12 @@ local rt = require("rust-tools")
 rt.setup({
   server = ra_opts
   -- server = {
-    -- on_attach = function(_, bufnr)
-    --   -- Hover actions
-    --   vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-    --   -- Code action groups
-    --   vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-    -- end,
+  -- on_attach = function(_, bufnr)
+  --   -- Hover actions
+  --   vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+  --   -- Code action groups
+  --   vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+  -- end,
   -- },
 })
 
