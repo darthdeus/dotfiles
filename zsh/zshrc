@@ -63,4 +63,6 @@ source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 
 export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
-# export TERM=xterm-256color
+if [[ `uname` == "Darwin" ]]; then
+  export TERM=xterm-256color
+fi
