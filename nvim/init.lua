@@ -37,7 +37,7 @@ require("packer").startup(function()
   use("nvim-lua/plenary.nvim")
   use("nvim-lua/popup.nvim")
 
-  -- use "nvim-telescope/telescope.nvim"
+  use "nvim-telescope/telescope.nvim"
 
   use("junegunn/fzf")
   use("junegunn/fzf.vim")
@@ -555,7 +555,7 @@ inoremap("<C-X><C-@>", "<C-A>")
 if vim.fn.has("win32") == 1 then
   nnoremap("<leader>ge", ":vs C:/users/jakub/dotfiles/nvim/init.lua<CR>")
   -- nnoremap("<leader>e", ':TermExec cmd="make" direction=vertical size=80 go_back=0<cr>')
-  nnoremap("<leader>r", ":Cargo run<cr>")
+  -- nnoremap("<leader>r", ":Cargo run<cr>")
   -- nnoremap("<leader>e", ':ToggleTerm cmd="cargo run"<cr>')
   -- nnoremap("<leader>e", ":TermExec cmd='make' direction='vertical' size=80<cr>")
   -- nnoremap("<leader>e", ":TermExec cmd='make' direction='vertical' open=0 size=80<cr>")
@@ -567,16 +567,17 @@ else
   -- nnoremap("<Leader>r", ":call VimuxRunCommand('c')<CR>")
   -- nnoremap("<Leader>q", ":call VimuxRunCommand('c')<CR>")
   -- nnoremap("<Leader>w", ":call VimuxRunCommand('c')<CR>")
-  nnoremap("<Leader>r", "<Cmd>TermExec cmd=c direction=vertical size=60<CR>")
-  nnoremap("<Leader>q", "<Cmd>ToggleTermToggleAll<CR>")
-  nnoremap("<Leader>w", "<Cmd>TermExec cmd=c direction=vertical size=60<CR>")
 end
+
+nnoremap("<Leader>r", "<Cmd>TermExec cmd=c direction=vertical size=60<CR>")
+nnoremap("<Leader>q", "<Cmd>ToggleTermToggleAll<CR>")
+nnoremap("<Leader>w", "<Cmd>ToggleTerm direction=vertical size=60<CR>")
 
 -- Expand %% to directory path of current buffer
 cnoremap("%%", "<C-R>=expand('%:h').'/'<CR>")
 
-nnoremap("<F8>", ":ToggleTerm<cr>")
-inoremap("<F8>", ":ToggleTerm<cr>")
+nnoremap("<F8>", ":ToggleTerm direction=vertical size=60<cr>")
+inoremap("<F8>", ":ToggleTerm direction=vertical size=60<cr>")
 tnoremap("<F8>", "<C-\\><C-n>:ToggleTerm<cr>")
 tnoremap("<Esc>", "<C-\\><C-n>:ToggleTerm<cr>")
 nnoremap("<F5>", ":call VimuxRunCommand('make')<cr>")
