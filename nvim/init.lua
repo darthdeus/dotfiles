@@ -68,6 +68,27 @@ require("packer").startup(function()
   -- use("clojure-vim/vim-jack-in")
   -- use("radenling/vim-dispatch-neovim")
 
+  use({
+    "akinsho/toggleterm.nvim",
+    tag = '*',
+    config = function()
+      require("toggleterm").setup()
+    end
+  })
+
+  use({
+    "numToStr/FTerm.nvim",
+    config = function()
+      require 'FTerm'.setup({
+        border     = 'double',
+        dimensions = {
+          height = 0.9,
+          width = 0.9,
+        },
+      })
+    end
+  })
+
   use("tpope/vim-fugitive")
   use("tpope/vim-sensible")
   use("tpope/vim-eunuch")
@@ -543,9 +564,12 @@ if vim.fn.has("win32") == 1 then
   nnoremap("<leader>mb", ":cd C:/dev/BITGUN<CR>")
 else
   nnoremap("<leader>ge", ":vs ~/.config/nvim/init.lua<CR>")
-  nnoremap("<Leader>r", ":call VimuxRunCommand('c')<cr>")
-  nnoremap("<Leader>q", ":call VimuxRunCommand('c')<cr>")
-  nnoremap("<Leader>w", ":call VimuxRunCommand('c')<cr>")
+  -- nnoremap("<Leader>r", ":call VimuxRunCommand('c')<CR>")
+  -- nnoremap("<Leader>q", ":call VimuxRunCommand('c')<CR>")
+  -- nnoremap("<Leader>w", ":call VimuxRunCommand('c')<CR>")
+  nnoremap("<Leader>r", "<Cmd>TermExec cmd=c direction=vertical size=60<CR>")
+  nnoremap("<Leader>q", "<Cmd>ToggleTermToggleAll<CR>")
+  nnoremap("<Leader>w", "<Cmd>TermExec cmd=c direction=vertical size=60<CR>")
 end
 
 -- Expand %% to directory path of current buffer
@@ -749,6 +773,12 @@ end
 local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
+
+vim.api.nvim_create_user_command('FTermOpen', require('FTerm').open, { bang = true })
+vim.api.nvim_create_user_command('FTermClose', require('FTerm').close, { bang = true })
+vim.api.nvim_create_user_command('FTermExit', require('FTerm').exit, { bang = true })
+vim.api.nvim_create_user_command('FTermToggle', require('FTerm').toggle, { bang = true })
+-- More here: https://neovimcraft.com/plugin/numToStr/FTerm.nvim/index.html
 
 -- Setup nvim-cmp.
 local cmp = require("cmp")
