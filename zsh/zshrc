@@ -1,3 +1,44 @@
+# History options should be set in .zshrc and after oh-my-zsh sourcing.
+# See https://github.com/nix-community/home-manager/issues/177.
+HISTSIZE="10000"
+SAVEHIST="10000"
+
+HISTFILE="$HOME/.zsh_history"
+mkdir -p "$(dirname "$HISTFILE")"
+
+bindkey '^ ' autosuggest-accept
+unsetopt beep
+bindkey -e
+
+autoload -Uz select-word-style
+select-word-style bash
+
+source ~/.zsh/prompt.zsh
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
+
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+# export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore "*.png" --ignore "*.jpg" --ignore "*.mp3" --ignore "*.import" --ignore "*.wav" --ignore "*.ogg" --ignore "*.aseprite" --ignore "*.ttf" --ignore "*.gif" --ignore "*.TTF" --ignore "*.afdesign" --ignore steam --ignore "*.afphoto" --ignore "*.tres" -l -g ""'
+# export FZF_DEFAULT_COMMAND='
+#   (git ls-tree -r --name-only HEAD ||
+#    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
+#       sed s/^..//) 2> /dev/null'
+
+
+if [ -z "$VIM_VERSION" ]; then
+  VIM_VERSION="nvim"
+fi
+
+export EDITOR="$VIM_VERSION"
+export VISUAL="$VIM_VERSION"
+
+alias vim="$VIM_VERSION"
+alias vi="vim"
+
+stty sane
+
 # vim: set ft=zsh
 fpath=(~/.zsh/funcs "${fpath[@]}")
 
