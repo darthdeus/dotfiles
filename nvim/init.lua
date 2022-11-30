@@ -38,6 +38,17 @@ require("packer").startup(function()
   use("nvim-lua/popup.nvim")
   -- use "nvim-telescope/telescope.nvim"
 
+  use("junegunn/fzf")
+  use("junegunn/fzf.vim")
+
+  use {
+    'TimUntersberger/neogit',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      require("neogit").setup({})
+    end
+  }
+
   use("whatsthatsmell/codesmell_dark.vim")
   use("RRethy/nvim-base16")
   -- use("numirias/semshi")
@@ -89,8 +100,6 @@ require("packer").startup(function()
     },
   })
 
-  use("junegunn/fzf")
-  use("junegunn/fzf.vim")
   use("junegunn/vim-easy-align")
 
   use("terrortylor/nvim-comment")
