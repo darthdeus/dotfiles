@@ -36,6 +36,7 @@ require("packer").startup(function()
 
   use("nvim-lua/plenary.nvim")
   use("nvim-lua/popup.nvim")
+
   -- use "nvim-telescope/telescope.nvim"
 
   use("junegunn/fzf")
@@ -433,21 +434,21 @@ nnoremap("<leader>sa", ":Telescope commands<CR>")
 -- map("n", "<leader>h", "<cmd>Telescope help_tags<CR>")
 
 -- Open files with <leader>f
+-- nnoremap("<leader>f", ":Telescope find_files<CR>")
+-- nnoremap("<leader>gt", ":Telescope tags<CR>")
+-- nnoremap("<leader>ga", ":Telescope live_grep<cr>")
+-- nnoremap("<leader>gd", ":Telescope live_grep <C-r><C-w><cr>")
+-- nnoremap("<leader>b", ":Telescope buffers<cr>")
+-- nnoremap("<leader>B", ":Telescope current_buffer_tags<cr>")
+
 nnoremap("<leader>f", ":Files ./<CR>")
--- nnoremap("<leader>f", "<cmd>Telescope find_files<CR>")
 nnoremap("<leader>F", ":FZF %%<CR>")
 nnoremap("<leader>gt", ":Tags<cr>")
--- map("n", "<leader>gt", "<cmd>Telescope tags<CR>")
 nnoremap("<leader>ga", ":Rg<cr>")
--- map("n", "<leader>ga", ":Telescope live_grep<cr>")
-
 nnoremap("<leader>gs", ":Rg <C-r><C-w><cr>")
 nnoremap("<leader>gd", ":Rg <C-r><C-w><cr>")
--- map("n", "<leader>gd", ":Telescope live_grep <C-r><C-w><cr>")
 nnoremap("<leader>b", ":Buffers<cr>")
--- map("n", "<leader>b", ":Telescope buffers<cr>")
 nnoremap("<leader>B", ":BTags<cr>")
--- map("n", "<leader>B", ":Telescope current_buffer_tags<cr>")
 
 -- Mapping selecting mappings
 nnoremap("<leader><tab>", "<plug>(fzf-maps-n)")
