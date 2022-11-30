@@ -8,7 +8,7 @@ THIRD_PARTY="$DOT/third-party"
 # ln -nsf "$DOT/vim"           "$HOME/.vim"
 # ln -nsf "$DOT/vim/vimrc"     "$HOME/.vimrc"
 ln -nsf "$DOT/zsh"           "$HOME/.zsh"
-ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc.dot"
+ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc"
 # ln -nsf "$DOT/xmonad"        "$HOME/.xmonad"
 # ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
 # ln -nsf "$DOT/Xmodmap"       "$HOME/.Xmodmap"
@@ -31,7 +31,7 @@ ln -nsf "$DOT/i3/config"    "$HOME/.config/i3/config"
 # mkdir -p "$HOME/.config/i3blocks"
 # ln -nsf "$DOT/i3/blocks.conf" "$HOME/.config/i3blocks/config"
 
-# ln -nsf "$DOT/sxhkd"    "$HOME/.config/sxhkd"
+ln -nsf "$DOT/sxhkd"    "$HOME/.config/sxhkd"
 
 # TODO: is this the right way to create a user service?
 # mkdir -p "$HOME/.config/systemd/user"
