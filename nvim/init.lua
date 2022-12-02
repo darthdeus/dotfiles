@@ -198,6 +198,8 @@ require("packer").startup(function()
   use("othree/html5.vim")
   use("mattn/emmet-vim")
   use("chaimleib/vim-renpy")
+
+  use("zah/nim.vim")
   use("ziglang/zig.vim")
   use("DingDean/wgsl.vim")
 
@@ -987,7 +989,7 @@ require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
     "sumneko_lua", "rust_analyzer", "zls",
-    "taplo", "clangd"
+    "taplo", "clangd", "nimls"
   }
 })
 
@@ -1042,6 +1044,7 @@ lspconfig.taplo.setup(opts)
 -- lspconfig.vimls.setup(opts)
 lspconfig.clangd.setup(opts)
 lspconfig.zls.setup(opts)
+lspconfig.nimls.setup(opts)
 -- lspconfig.yamlls.setup(opts)
 
 lspconfig.sumneko_lua.setup({
