@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ -f .c ]; then
-  bash .c
+  bash .c $@
 elif [ -f Makefile ]; then
   make
 elif [ -f build.zig ]; then

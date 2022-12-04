@@ -78,6 +78,7 @@ LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 
 export PATH="$HOME/.todo/bin:$HOME/.emacs.d/bin:$HOME/.dotfiles/bin:$LOCAL_PATHS:$PATH"
 export PATH="$HOME/.nimble/bin:$PATH"
+export PATH="$HOME/projects/odin:$PATH"
 
 # Base16 Shell
 # BASE16_SHELL="$HOME/.config/base16-shell/"

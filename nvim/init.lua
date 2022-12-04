@@ -55,6 +55,7 @@ require("packer").startup(function()
   -- use("numirias/semshi")
 
   use("rhaiscript/vim-rhai")
+  use("jansedivy/jai.vim")
 
   -- use({ "Olical/conjure",
   --   config = function()
@@ -202,6 +203,7 @@ require("packer").startup(function()
   use("zah/nim.vim")
   use("ziglang/zig.vim")
   use("DingDean/wgsl.vim")
+  use("Tetralux/odin.vim")
 
   if vim.fn.has("win32") ~= 1 then
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -570,7 +572,7 @@ if vim.fn.has("win32") == 1 then
   nnoremap("<leader>mb", ":cd C:/dev/BITGUN<CR>")
 else
   nnoremap("<leader>ge", ":vs ~/.config/nvim/init.lua<CR>")
-  nnoremap("<Leader>r", "<Cmd>call VimuxRunCommand('c')<CR>")
+  nnoremap("<Leader>r", ":VimuxRunCommand('c <C-R>=expand('%:t')<CR>')<CR>")
   nnoremap("<Leader>q", "<Cmd>call VimuxRunCommand('c')<CR>")
   nnoremap("<Leader>w", "<Cmd>call VimuxRunCommand('c')<CR>")
 end
