@@ -54,7 +54,6 @@ require("packer").startup(function()
   use("RRethy/nvim-base16")
   -- use("numirias/semshi")
 
-  use("rhaiscript/vim-rhai")
   use("jansedivy/jai.vim")
 
   -- use({ "Olical/conjure",
@@ -131,63 +130,48 @@ require("packer").startup(function()
 
   use("itchyny/lightline.vim")
 
-  use {
-    'nvim-tree/nvim-tree.lua',
-    -- requires = {
-    --   'nvim-tree/nvim-web-devicons', -- optional, for file icons
-    -- },
-    tag = 'nightly', -- optional, updated every week. (see issue #1193)
-    config = function()
-      -- -- OR setup with some options
-      require("nvim-tree").setup({
-        sort_by = "case_sensitive",
-        view = {
-          width = 24,
-          adaptive_size = true,
-          mappings = {
-            list = {
-              { key = "u", action = "dir_up" },
-            },
-          },
-        },
-        renderer = {
-          group_empty = true,
-        },
-        filters = {
-          dotfiles = true,
-        },
-        actions = {
-          open_file = {
-            window_picker = {
-              enable = false,
-            }
-          }
-        }
-      })
-
-    end
-  }
-
-  use {
-    "nvim-neorg/neorg",
-    run = ":Neorg sync-parsers",
-    config = function()
-      require('neorg').setup {
-        load = {
-          ["core.defaults"] = {}
-        }
-        -- ... -- check out setup part...
-      }
-    end,
-    requires = "nvim-lua/plenary.nvim"
-  }
+  -- use {
+  --   'nvim-tree/nvim-tree.lua',
+  --   -- requires = {
+  --   --   'nvim-tree/nvim-web-devicons', -- optional, for file icons
+  --   -- },
+  --   tag = 'nightly', -- optional, updated every week. (see issue #1193)
+  --   config = function()
+  --     -- -- OR setup with some options
+  --     require("nvim-tree").setup({
+  --       sort_by = "case_sensitive",
+  --       view = {
+  --         width = 24,
+  --         adaptive_size = true,
+  --         mappings = {
+  --           list = {
+  --             { key = "u", action = "dir_up" },
+  --           },
+  --         },
+  --       },
+  --       renderer = {
+  --         group_empty = true,
+  --       },
+  --       filters = {
+  --         dotfiles = true,
+  --       },
+  --       actions = {
+  --         open_file = {
+  --           window_picker = {
+  --             enable = false,
+  --           }
+  --         }
+  --       }
+  --     })
+  --
+  --   end
+  -- }
 
   use("sjl/gundo.vim")
 
   use("sbdchd/neoformat")
 
   use("rust-lang/rust.vim")
-  --     -- use 'rhysd/rust-doc.vim'
   use("simrat39/rust-tools.nvim")
 
   use("chrisbra/vim-zsh")
@@ -204,6 +188,8 @@ require("packer").startup(function()
   use("ziglang/zig.vim")
   use("DingDean/wgsl.vim")
   use("Tetralux/odin.vim")
+
+  use("preservim/nerdtree")
 
   if vim.fn.has("win32") ~= 1 then
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -298,12 +284,6 @@ require("packer").startup(function()
   -- use("nvim-lua/lsp_extensions.nvim")
 
   use("ray-x/lsp_signature.nvim")
-  use({
-    "akinsho/toggleterm.nvim",
-    config = function()
-      require("toggleterm").setup()
-    end,
-  })
 
   use("mfussenegger/nvim-dap")
   -- use "zhimsel/vim-stay"
@@ -489,7 +469,7 @@ nnoremap("gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
 -- inoremap("<silent><expr>", "<C-d>     compe#scroll({ 'delta': -4 })")
 
 vim.api.nvim_exec([[
-command Nerd NvimTreeToggle
+" command Nerd NvimTreeToggle
 " command Nerd CHADopen
 
 " Expand
@@ -545,8 +525,10 @@ nnoremap("<C-h>", "<C-w><C-h>")
 tnoremap("<C-h>", "<C-\\><C-n><C-w><C-h>")
 nnoremap("<C-l>", "<C-w><C-l>")
 
-vnoremap("-", ":lua vim.lsp.buf.format()<cr>")
-nnoremap("-", ":lua vim.lsp.buf.format()<cr>")
+-- vnoremap("-", ":lua vim.lsp.buf.format()<cr>")
+-- nnoremap("-", ":lua vim.lsp.buf.format()<cr>")
+vnoremap("-", ":Neoformat<cr>")
+nnoremap("-", ":Neoformat<cr>")
 
 -- Bubble multiple lines
 vnoremap("<C-Up>", "<C-w><C-k>")
@@ -664,6 +646,7 @@ if vim.g.neovide or vim.g.goneovim or vim.g.nvui or vim.g.gnvim then
 end
 
 vim.g.neoformat_try_node_exe = 1
+vim.g.neoformat_only_msg_on_error = 1
 
 -- vim.o.guifont = "Fantasque Sans Mono:8"
 vim.g.neovide_cursor_animation_length = 0.00
@@ -991,7 +974,8 @@ require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
     "sumneko_lua", "rust_analyzer", "zls",
-    "taplo", "clangd", "nimls"
+    "taplo", "clangd", "tsserver"
+    -- "nimls"
   }
 })
 
@@ -1042,7 +1026,7 @@ rt.setup({
 lspconfig.taplo.setup(opts)
 -- lspconfig.wgsl_analyzer.setup(opts)
 -- lspconfig.pyright.setup(opts)
--- lspconfig.tsserver.setup(opts)
+lspconfig.tsserver.setup(opts)
 -- lspconfig.vimls.setup(opts)
 lspconfig.clangd.setup(opts)
 lspconfig.zls.setup(opts)
