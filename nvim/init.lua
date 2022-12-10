@@ -180,7 +180,11 @@ require("packer").startup(function()
   use("ron-rs/ron.vim")
   use("gutenye/json5.vim")
   use("cespare/vim-toml")
+
   use("othree/html5.vim")
+  use("pangloss/vim-javascript")
+  use("evanleck/vim-svelte")
+
   use("mattn/emmet-vim")
   use("chaimleib/vim-renpy")
 
