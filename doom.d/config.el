@@ -153,6 +153,8 @@
 ;; (use-package! sly (evil-lisp))
 ;; (use-package! slime)
 
+(setq evil-undo-system 'undo-fu)
+
 (defun clerk-show ()
   (interactive)
   (when-let
