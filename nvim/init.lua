@@ -3,7 +3,7 @@ vim.g["conjure#filetypes"] = {
 }
 
 vim.g["conjure#filetype#fennel"] = "conjure.client.fennel.stdio"
-vim.g["conjure#client#fennel#stdio#command"] = "love ."
+-- vim.g["conjure#client#fennel#stdio#command"] = "love ."
 
 vim.g["zig_fmt_autosave"] = 0
 
@@ -55,18 +55,19 @@ require("packer").startup(function()
   -- use("numirias/semshi")
 
   use("jansedivy/jai.vim")
+  use("jaawerth/fennel.vim")
 
-  -- use({ "Olical/conjure",
-  --   config = function()
-  --     vim.g["conjure#mapping#def_word"] = "ld"
-  --     vim.g["conjure#mapping#log_tab"] = "lq"
-  --   end
-  -- })
+  use({ "Olical/conjure",
+    config = function()
+      vim.g["conjure#mapping#def_word"] = "ld"
+      vim.g["conjure#mapping#log_tab"] = "lq"
+    end
+  })
 
-  -- use("PaterJason/cmp-conjure")
-  -- use("tpope/vim-dispatch")
-  -- use("clojure-vim/vim-jack-in")
-  -- use("radenling/vim-dispatch-neovim")
+  use("PaterJason/cmp-conjure")
+  use("tpope/vim-dispatch")
+  use("clojure-vim/vim-jack-in")
+  use("radenling/vim-dispatch-neovim")
 
   use({
     "akinsho/toggleterm.nvim",
@@ -826,7 +827,7 @@ cmp.setup({
   sources = cmp.config.sources({
     -- { name = 'tabnine' },
     -- { name = 'copilot' },
-    -- { name = "conjure" },
+    { name = "conjure" },
     { name = "nvim_lsp" },
     { name = "vsnip" }, -- For vsnip users.
     -- { name = 'luasnip' }, -- For luasnip users.

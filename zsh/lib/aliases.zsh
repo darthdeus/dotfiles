@@ -31,6 +31,7 @@ alias l="ls"
 alias ll="ls -lh"
 alias la="ls -a"
 alias lal="ls -lah"
+alias tree="tree -F -a --dirsfirst"
 
 alias s="git status -sb"
 alias d="git diff"
