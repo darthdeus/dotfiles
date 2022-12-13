@@ -625,6 +625,7 @@ au BufRead,BufNewFile */funcs/* setfiletype zsh
 augroup set-commentstring-ag
 autocmd!
 autocmd BufEnter .zshrc.dot set ft=zsh
+autocmd BufEnter *.clj,*.cljs :lua vim.api.nvim_buf_set_option(0, "commentstring", ";; %s")
 autocmd BufEnter *.jai,*.wgsl,*.glsl,*.vert,*.frag :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
 autocmd BufFilePost *.jai,*.wgsl,*.glsl,*.vert,*.frag :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
 augroup END
