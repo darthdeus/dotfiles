@@ -375,10 +375,6 @@ vim.o.undofile = true
 vim.o.termguicolors = true
 -- vim.o.term = "xterm-256color"
 
--- vim.api.nvim_exec( [[
--- let g:neovide_cursor_animation_length=0.00
--- ]], false)
-
 -- vim.api.nvim_exec(
 --   [[
 -- if exists('+termguicolors')
@@ -657,103 +653,6 @@ vim.cmd([[
     let guifont="Arial:h12"
 ]])
 
---COMPE
--- require("compe").setup {
---     enabled = true,
---     autocomplete = true,
---     debug = false,
---     min_length = 1,
---     preselect = "enable",
---     throttle_time = 80,
---     source_timeout = 200,
---     resolve_timeout = 800,
---     incomplete_delay = 400,
---     max_abbr_width = 100,
---     max_kind_width = 100,
---     max_menu_width = 100,
---     documentation = {
---         border = { "", "", "", " ", "", "", "", " " }, -- the border option is the same as `|help nvim_open_win|`
---         winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
---         max_width = 120,
---         min_width = 60,
---         max_height = math.floor(vim.o.lines * 0.3),
---         min_height = 1,
---     },
---
---     source = {
---         path = true,
---         buffer = true,
---         calc = true,
---         nvim_lsp = true,
---         nvim_lua = true,
---         vsnip = true,
---         ultisnips = false,
---         luasnip = false,
---         tabnine = true,
---     },
--- }
---
--- local t = function(str)
---     return vim.api.nvim_replace_termcodes(str, true, true, true)
--- end
---
--- local check_back_space = function()
---     local col = vim.fn.col "." - 1
---     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s" ~= nil
--- end
---
--- -- Use (s-)tab to:
--- --- move to prev/next item in completion menuone
--- --- jump to prev/next snippet's placeholder
--- _G.tab_complete = function()
---     if vim.fn.pumvisible() == 1 then
---         return t "<C-n>"
---     elseif vim.fn["vsnip#available"](1) == 1 then
---         return t "<Plug>(vsnip-expand-or-jump)"
---     elseif check_back_space() then
---         return t "<Tab>"
---     else
---         return vim.fn["compe#complete"]()
---     end
--- end
--- _G.s_tab_complete = function()
---     if vim.fn.pumvisible() == 1 then
---         return t "<C-p>"
---     elseif vim.fn["vsnip#jumpable"](-1) == 1 then
---         return t "<Plug>(vsnip-jump-prev)"
---     else
---         -- If <S-Tab> is not working in your terminal, change it to <C-h>
---         return t "<S-Tab>"
---     end
--- end
---
--- vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", { expr = true })
--- vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
--- vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
--- vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
---COMPE
-
--- require("copilot").setup {
---   cmp = {
---     enabled = true,
---     method = "getCompletionsCycling",
---   }
--- }
-
--- local tabnine = require("cmp_tabnine.config")
--- tabnine:setup({
--- 	max_lines = 1000,
--- 	max_num_results = 20,
--- 	sort = true,
--- 	run_on_every_keystroke = true,
--- 	snippet_placeholder = "..",
--- 	ignored_file_types = { -- default is not to ignore
--- 		-- uncomment to ignore in lua:
--- 		-- lua = true
--- 	},
--- 	show_prediction_strength = false,
--- })
---
 
 local has_words_before = function()
   local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
@@ -822,8 +721,6 @@ cmp.setup({
   }),
 
   sources = cmp.config.sources({
-    -- { name = 'tabnine' },
-    -- { name = 'copilot' },
     { name = "conjure" },
     { name = "nvim_lsp" },
     { name = "vsnip" }, -- For vsnip users.
@@ -921,20 +818,6 @@ cmp.setup({
 -- vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
 -- vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
 
--- require("nvim-lsp-installer").setup({})
--- 	automatic_installation = true,
--- })
-
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
--- capabilities.textDocument.completion.completionItem.resolveSupport = {
---     properties = {
---         "documentation",
---         "detail",
---         "additionalTextEdits",
---     },
--- }
-
 -- Mappings.
 local map_opts = { noremap = true, silent = true }
 
@@ -1008,9 +891,7 @@ local ra_opts = {
   }
 }
 
-local rt = require("rust-tools")
-
-rt.setup({
+require("rust-tools").setup({
   server = ra_opts
   -- server = {
   -- on_attach = function(_, bufnr)
@@ -1023,18 +904,12 @@ rt.setup({
 })
 
 
--- lspconfig.tsserver.setup(opts)
--- lspconfig.rust_analyzer.setup(ra_opts)
 lspconfig.taplo.setup(opts)
--- lspconfig.wgsl_analyzer.setup(opts)
--- lspconfig.pyright.setup(opts)
 lspconfig.clojure_lsp.setup(opts)
 lspconfig.tsserver.setup(opts)
--- lspconfig.vimls.setup(opts)
 lspconfig.clangd.setup(opts)
 lspconfig.zls.setup(opts)
 lspconfig.nimls.setup(opts)
--- lspconfig.yamlls.setup(opts)
 
 lspconfig.sumneko_lua.setup({
   on_attach = on_attach,
@@ -1121,35 +996,3 @@ vim.o.secure = true
 -- https://github.com/JohnnyMorganz/StyLua
 -- https://github.com/Koihik/LuaFormatter
 -- use_rocks { "luaformatter", server = "https://luarocks.org/dev" }
---
--- " Install nvim-cmp
--- use 'hrsh7th/nvim-cmp'
--- " Install snippet engine (This example installs [hrsh7th/vim-vsnip](https://github.com/hrsh7th/vim-vsnip))
--- use 'hrsh7th/vim-vsnip'
--- " Install the buffer completion source
--- use 'hrsh7th/cmp-buffer'
---
--- use 'nvim-lua/completion-nvim'
--- use 'steelsojka/completion-buffers'
--- use 'aca/completion-tabnine', { 'do': './install.sh' }
-
--- local cmp = require'cmp'
--- cmp.setup({
---   snippet = {
---     expand = function(args)
---       vim.fn["vsnip#anonymous"](args.body)
---     end,
---   },
---   mapping = {
---       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
---       ['<C-f>'] = cmp.mapping.scroll_docs(4),
---       ['<C-Space>'] = cmp.mapping.complete(),
---       ['<C-e>'] = cmp.mapping.close(),
---       ['<CR>'] = cmp.mapping.confirm({
---         behavior = cmp.ConfirmBehavior.Replace,
---         select = true,
---       })
---   },
---   sources = {
---   }
--- })
