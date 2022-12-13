@@ -976,7 +976,7 @@ require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
     "sumneko_lua", "rust_analyzer", "zls",
-    "taplo", "clangd", "tsserver"
+    "taplo", "clangd", "tsserver", "clojure_lsp"
     -- "nimls"
   }
 })
@@ -1028,6 +1028,7 @@ rt.setup({
 lspconfig.taplo.setup(opts)
 -- lspconfig.wgsl_analyzer.setup(opts)
 -- lspconfig.pyright.setup(opts)
+lspconfig.clojure_lsp.setup(opts)
 lspconfig.tsserver.setup(opts)
 -- lspconfig.vimls.setup(opts)
 lspconfig.clangd.setup(opts)
