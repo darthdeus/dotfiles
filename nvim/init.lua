@@ -69,6 +69,9 @@ require("packer").startup(function()
   use("clojure-vim/vim-jack-in")
   use("radenling/vim-dispatch-neovim")
 
+  use("guns/vim-sexp")
+  use("tpope/vim-sexp-mappings-for-regular-people")
+
   use({
     "akinsho/toggleterm.nvim",
     tag = '*',
