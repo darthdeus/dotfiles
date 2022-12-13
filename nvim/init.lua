@@ -300,14 +300,7 @@ require("packer").startup(function()
 
   use("chrisbra/unicode.vim")
 
-  -- use "github/copilot.vim"
-  -- use "zbirenbaum/copilot.lua"
-  -- use {
-  --     "zbirenbaum/copilot-cmp",
-  --       module = "copilot_cmp",
-  -- }
-  --
-  -- use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+  -- TODO: try https://github.com/L3MON4D3/LuaSnip ?
 
   use("hrsh7th/vim-vsnip")
   use("hrsh7th/vim-vsnip-integ")
