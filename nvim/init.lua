@@ -968,6 +968,7 @@ lspconfig.tsserver.setup(opts)
 lspconfig.clangd.setup(opts)
 lspconfig.zls.setup(opts)
 lspconfig.nimls.setup(opts)
+lspconfig.jai_lsp.setup(opts)
 
 lspconfig.sumneko_lua.setup({
   on_attach = on_attach,
