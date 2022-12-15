@@ -69,6 +69,10 @@ if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; th
   source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
+if [ -f /usr/share/doc/git-extras/git-extras-completion.zsh ]; then
+  source /usr/share/doc/git-extras/git-extras-completion.zsh
+fi
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
 
