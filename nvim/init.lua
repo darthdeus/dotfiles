@@ -50,6 +50,8 @@ require("packer").startup(function()
     end
   }
 
+  use("jose-elias-alvarez/null-ls.nvim")
+
   use("whatsthatsmell/codesmell_dark.vim")
   use("RRethy/nvim-base16")
   -- use("numirias/semshi")
@@ -668,6 +670,59 @@ vim.api.nvim_create_user_command('FTermClose', require('FTerm').close, { bang = 
 vim.api.nvim_create_user_command('FTermExit', require('FTerm').exit, { bang = true })
 vim.api.nvim_create_user_command('FTermToggle', require('FTerm').toggle, { bang = true })
 -- More here: https://neovimcraft.com/plugin/numToStr/FTerm.nvim/index.html
+
+local null_ls = require("null-ls")
+local null_ls_helpers = require("null-ls.helpers")
+
+null_ls.setup()
+
+local jai_compile = {
+  method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+  filetypes = { "jai" },
+  generator = null_ls.generator({
+    command = "make",
+    args = { "compile" },
+    format = "line",
+    from_stderr = true,
+    on_output = null_ls_helpers.diagnostics.from_patterns({
+      {
+        pattern = [[(.+):(%d+),(%d+): Error: (.+)]],
+        groups = { "file", "row", "col", "message" }
+      }
+    })
+  })
+
+}
+
+null_ls.register(jai_compile)
+
+-- local show_it = {
+--   method = null_ls.methods.DIAGNOSTICS,
+--   filetypes = { "jai" },
+--   generator = {
+--     fn = function(params)
+--       local diagnostics = {}
+--
+--       for i, line in ipairs(params.content) do
+--         local col, end_col = line:find("it")
+--         if col and end_col then
+--           table.insert(diagnostics, {
+--             row = i,
+--             col = col,
+--           end_col = end_col + 1,
+--           source = "show-it",
+--           message = "IT IS GOOD",
+--           severity = vim.diagnostic.severity.WARN,
+--           })
+--         end
+--       end
+--
+--       return diagnostics
+--     end
+--   }
+-- }
+--
+-- null_ls.register(show_it)
 
 -- Setup nvim-cmp.
 local cmp = require("cmp")
