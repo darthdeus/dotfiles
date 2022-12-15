@@ -293,6 +293,8 @@ require("packer").startup(function()
 
   -- use("nvim-lua/lsp_extensions.nvim")
 
+  use("delphinus/cmp-ctags")
+
   use("ray-x/lsp_signature.nvim")
 
   use("mfussenegger/nvim-dap")
@@ -778,6 +780,7 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = "conjure" },
     { name = "nvim_lsp" },
+    { name = "ctags" },
     { name = "vsnip" }, -- For vsnip users.
     -- { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
