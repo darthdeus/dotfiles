@@ -199,26 +199,44 @@
 (map! :localleader
       :map clojure-mode-map
       :desc "Eval defun at mark"
-      "e f" (lambda () (interactive) (call-interactively 'my-cider-eval-at-mark))
+      "e f" (lambda ()
+              (interactive)
+              (call-interactively 'my-cider-eval-at-mark
+                                  t (vector my-cider-mark-char)))
+
+      :desc "Eval defun at ALT mark"
+      "e g" (lambda ()
+              (interactive)
+              (call-interactively 'my-cider-eval-at-mark
+                                  t (vector my-cider-mark-char-alt)))
 
       :desc "Set eval mark"
-      "e m" (lambda () (interactive) (call-interactively 'my-cider-mark-eval-point)))
+      "e m" (lambda ()
+              (interactive)
+              (call-interactively 'my-cider-mark-eval-point
+                                  t (vector my-cider-mark-char)))
 
-;; A custom shortcut to mark and eval a region of code
-;; to eval from anywhere on the same file.
+      :desc "Set eval ALT mark"
+      "e n" (lambda ()
+              (interactive)
+              (call-interactively 'my-cider-mark-eval-point
+                                  t (vector my-cider-mark-char-alt))))
+
 (defvar my-cider-mark-char 248)
+(defvar my-cider-mark-char-alt 247)
 
-(defun my-cider-mark-eval-point ()
+(defun my-cider-mark-eval-point (mark)
   (interactive)
-  (evil-set-marker my-cider-mark-char))
+  (evil-set-marker mark))
 
-(defun my-cider-eval-at-mark ()
+(defun my-cider-eval-at-mark (mark)
   (interactive)
   (cider-eval-defun-at-point)
   (save-excursion
-    (evil-goto-mark-line my-cider-mark-char)
-    ;;(cider-eval-last-sexp)
-    (cider-eval-defun-at-point)))
+    (evil-goto-mark-line mark)
+    (cider-eval-last-sexp)
+    ;; (cider-eval-defun-at-point)
+    ))
 
 
 ;; -- Keybindings --
@@ -326,8 +344,8 @@
 
 (map! :n "L" #'lsp-execute-code-action)
 
-(map! :n ",e" (lambda () (interactive)
-                (call-interactively 'projectile-run-project "cargo run")))
+;; (map! :n ",e" (lambda () (interactive)
+;;                 (call-interactively 'projectile-run-project "cargo run")))
 
 
 ;; (define-key evil-visual-state-map (kbd "C-x C-s") 'evil-write)
