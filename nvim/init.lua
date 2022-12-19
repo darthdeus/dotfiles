@@ -74,6 +74,8 @@ require("packer").startup(function()
   use("guns/vim-sexp")
   use("tpope/vim-sexp-mappings-for-regular-people")
 
+  use("RRethy/vim-illuminate")
+
   use({
     "akinsho/toggleterm.nvim",
     tag = '*',
