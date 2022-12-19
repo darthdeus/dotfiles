@@ -5,6 +5,7 @@ fi
 
 export DOT_BASE_DIR="$HOME/.dotfiles"
 export ZPLUG_HOME="$HOME/.dotfiles/third-party/zplug"
+source "$ZPLUG_HOME/init.zsh"
 
 fpath=(~/.zsh/funcs "${fpath[@]}")
 
@@ -61,6 +62,8 @@ fpath=(~/.zsh/completion "${fpath[@]}")
 
 autoload -Uz compinit
 compinit -C
+
+# zplug "zsh-users/zsh-autosuggestions"
 
 # color theme
 source "$ZSH/prompt.zsh"
