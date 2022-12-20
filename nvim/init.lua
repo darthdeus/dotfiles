@@ -465,6 +465,9 @@ onoremap("<leader><tab>", "<plug>(fzf-maps-o)")
 
 nnoremap("gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
 
+inoremap("<M-S-l>", "<C-o><Plug>(sexp_capture_next_element)")
+
+
 -- inoremap("<silent><expr>", "<C-Space> compe#complete()")
 -- unused -- map("n", "<silent><expr>", "<CR>      compe#confirm('<CR>')")
 -- inoremap("<silent><expr>", "<C-e>     compe#close('<C-e>')")
