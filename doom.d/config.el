@@ -198,45 +198,48 @@
 
 (map! :localleader
       :map clojure-mode-map
-      :desc "Eval defun at mark"
+      :desc "Eval s-exp at mark"
       "e f" (lambda ()
               (interactive)
-              (call-interactively 'my-cider-eval-at-mark
-                                  t (vector my-cider-mark-char)))
-
-      :desc "Eval defun at ALT mark"
-      "e g" (lambda ()
-              (interactive)
-              (call-interactively 'my-cider-eval-at-mark
-                                  t (vector my-cider-mark-char-alt)))
+              (eval-at-mark mark-char-primary))
 
       :desc "Set eval mark"
       "e m" (lambda ()
               (interactive)
-              (call-interactively 'my-cider-mark-eval-point
-                                  t (vector my-cider-mark-char)))
+              (set-eval-mark mark-char-primary))
+
+      :desc "Eval s-exp at ALT mark"
+      "e g" (lambda ()
+              (interactive)
+              (eval-at-mark mark-char-secondary))
 
       :desc "Set eval ALT mark"
       "e n" (lambda ()
               (interactive)
-              (call-interactively 'my-cider-mark-eval-point
-                                  t (vector my-cider-mark-char-alt))))
+              (set-eval-mark mark-char-secondary)))
 
-(defvar my-cider-mark-char 248)
-(defvar my-cider-mark-char-alt 247)
+(defvar mark-char-primary 248)
+(defvar mark-char-secondary 247)
 
-(defun my-cider-mark-eval-point (mark)
-  (interactive)
-  (evil-set-marker mark))
+(defun set-eval-mark (char)
+  (evil-set-marker char))
 
-(defun my-cider-eval-at-mark (mark)
-  (interactive)
-  (cider-eval-defun-at-point)
+(defun eval-at-mark (char)
   (save-excursion
-    (evil-goto-mark-line mark)
-    (cider-eval-last-sexp)
-    ;; (cider-eval-defun-at-point)
-    ))
+    (evil-goto-mark-line char)
+    (cider-eval-sexp-at-point)))
+
+
+;; (defun my-cider-eval-at-mark ()
+;;   (interactive)
+;;   ;; (cider-eval-defun-at-point)
+;;   ;; (evil-goto-mark-line my-cider-mark-char)
+;;   ;; (cider-eval-last-sexp)
+;;   (save-excursion
+;;     (evil-goto-mark-line my-cider-mark-char)
+;;     (cider-eval-last-sexp))
+;;   )
+
 
 
 ;; -- Keybindings --
