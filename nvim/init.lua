@@ -1,8 +1,8 @@
-vim.g["conjure#filetypes"] = {
-  "clojure", "fennel", "janet", "hy", "julia", "racket", "scheme", "lua", "lisp", "python"
-}
-
-vim.g["conjure#filetype#fennel"] = "conjure.client.fennel.stdio"
+-- vim.g["conjure#filetypes"] = {
+--   "clojure", "fennel", "janet", "hy", "julia", "racket", "scheme", "lua", "lisp", "python"
+-- }
+--
+-- vim.g["conjure#filetype#fennel"] = "conjure.client.fennel.stdio"
 -- vim.g["conjure#client#fennel#stdio#command"] = "love ."
 
 vim.g["zig_fmt_autosave"] = 0
@@ -59,17 +59,17 @@ require("packer").startup(function()
   use("jansedivy/jai.vim")
   use("jaawerth/fennel.vim")
 
-  use({ "Olical/conjure",
-    config = function()
-      vim.g["conjure#mapping#def_word"] = "ld"
-      vim.g["conjure#mapping#log_tab"] = "lq"
-    end
-  })
-
-  use("PaterJason/cmp-conjure")
-  use("tpope/vim-dispatch")
-  use("clojure-vim/vim-jack-in")
-  use("radenling/vim-dispatch-neovim")
+  -- use({ "Olical/conjure",
+  --   config = function()
+  --     vim.g["conjure#mapping#def_word"] = "ld"
+  --     vim.g["conjure#mapping#log_tab"] = "lq"
+  --   end
+  -- })
+  --
+  -- use("PaterJason/cmp-conjure")
+  -- use("tpope/vim-dispatch")
+  -- use("clojure-vim/vim-jack-in")
+  -- use("radenling/vim-dispatch-neovim")
 
   use("guns/vim-sexp")
   use("tpope/vim-sexp-mappings-for-regular-people")
@@ -783,7 +783,7 @@ cmp.setup({
   }),
 
   sources = cmp.config.sources({
-    { name = "conjure" },
+    -- { name = "conjure" },
     { name = "nvim_lsp" },
     { name = "ctags" },
     { name = "vsnip" }, -- For vsnip users.
