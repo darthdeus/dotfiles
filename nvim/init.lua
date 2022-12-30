@@ -1,12 +1,3 @@
--- vim.g["conjure#filetypes"] = {
---   "clojure", "fennel", "janet", "hy", "julia", "racket", "scheme", "lua", "lisp", "python"
--- }
---
--- vim.g["conjure#filetype#fennel"] = "conjure.client.fennel.stdio"
--- vim.g["conjure#client#fennel#stdio#command"] = "love ."
-
-vim.g["zig_fmt_autosave"] = 0
-
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -54,22 +45,9 @@ require("packer").startup(function()
 
   use("whatsthatsmell/codesmell_dark.vim")
   use("RRethy/nvim-base16")
-  -- use("numirias/semshi")
 
   use("jansedivy/jai.vim")
   use("jaawerth/fennel.vim")
-
-  -- use({ "Olical/conjure",
-  --   config = function()
-  --     vim.g["conjure#mapping#def_word"] = "ld"
-  --     vim.g["conjure#mapping#log_tab"] = "lq"
-  --   end
-  -- })
-  --
-  -- use("PaterJason/cmp-conjure")
-  -- use("tpope/vim-dispatch")
-  -- use("clojure-vim/vim-jack-in")
-  -- use("radenling/vim-dispatch-neovim")
 
   use("guns/vim-sexp")
   use("tpope/vim-sexp-mappings-for-regular-people")
@@ -108,7 +86,6 @@ require("packer").startup(function()
   use("tikhomirov/vim-glsl")
 
   use("kevinhwang91/nvim-bqf")
-  -- use("TimUntersberger/neogit")
 
   use("editorconfig/editorconfig-vim")
 
@@ -138,43 +115,6 @@ require("packer").startup(function()
 
   use("itchyny/lightline.vim")
 
-  -- use {
-  --   'nvim-tree/nvim-tree.lua',
-  --   -- requires = {
-  --   --   'nvim-tree/nvim-web-devicons', -- optional, for file icons
-  --   -- },
-  --   tag = 'nightly', -- optional, updated every week. (see issue #1193)
-  --   config = function()
-  --     -- -- OR setup with some options
-  --     require("nvim-tree").setup({
-  --       sort_by = "case_sensitive",
-  --       view = {
-  --         width = 24,
-  --         adaptive_size = true,
-  --         mappings = {
-  --           list = {
-  --             { key = "u", action = "dir_up" },
-  --           },
-  --         },
-  --       },
-  --       renderer = {
-  --         group_empty = true,
-  --       },
-  --       filters = {
-  --         dotfiles = true,
-  --       },
-  --       actions = {
-  --         open_file = {
-  --           window_picker = {
-  --             enable = false,
-  --           }
-  --         }
-  --       }
-  --     })
-  --
-  --   end
-  -- }
-
   use("sjl/gundo.vim")
 
   use("sbdchd/neoformat")
@@ -184,7 +124,6 @@ require("packer").startup(function()
 
   use("chrisbra/vim-zsh")
   use("habamax/vim-godot")
-  use("LnL7/vim-nix")
   use("ron-rs/ron.vim")
   use("gutenye/json5.vim")
   use("cespare/vim-toml")
@@ -196,10 +135,7 @@ require("packer").startup(function()
   use("mattn/emmet-vim")
   use("chaimleib/vim-renpy")
 
-  use("zah/nim.vim")
-  use("ziglang/zig.vim")
   use("DingDean/wgsl.vim")
-  use("Tetralux/odin.vim")
 
   use("preservim/nerdtree")
 
@@ -213,8 +149,8 @@ require("packer").startup(function()
         require("nvim-treesitter.configs").setup({
           ensure_installed = {
             "c", "json", "javascript", "python",
-            "rust", "lua", "wgsl", "nix", "fennel",
-            "commonlisp", "zig", "clojure"
+            "rust", "lua", "wgsl", "fennel",
+            "commonlisp"
           },
           highlight = {
             enable = true,
@@ -420,10 +356,6 @@ vim.cmd("color b16")
 
 vim.g.VimuxOrientation = "h"
 
--- TODO: figure out how to remap these?
--- nunmap ]f
--- nunmap [f
-
 -- nn <leader>v :Vista!!<cr>
 vim.g.vista_default_executive = "nvim_lsp"
 
@@ -467,7 +399,6 @@ nnoremap("gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
 
 inoremap("<M-S-l>", "<C-o><Plug>(sexp_capture_next_element)")
 
-
 -- inoremap("<silent><expr>", "<C-Space> compe#complete()")
 -- unused -- map("n", "<silent><expr>", "<CR>      compe#confirm('<CR>')")
 -- inoremap("<silent><expr>", "<C-e>     compe#close('<C-e>')")
@@ -475,9 +406,6 @@ inoremap("<M-S-l>", "<C-o><Plug>(sexp_capture_next_element)")
 -- inoremap("<silent><expr>", "<C-d>     compe#scroll({ 'delta': -4 })")
 
 vim.api.nvim_exec([[
-" command Nerd NvimTreeToggle
-" command Nerd CHADopen
-
 " Expand
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
@@ -597,10 +525,6 @@ nnoremap(
 )
 nnoremap("<C-\\>", ":tnext<CR>")
 
-nnoremap("<silent>", "<leader>y :<C-u>silent '<,'>w !pbcopy<CR>")
-
-nnoremap("<F9>", ":Neogit<CR>")
-
 -- TODO: do this with nvim_utils?
 -- https://github.com/norcalli/nvim_utils
 -- https://www.reddit.com/r/neovim/comments/n80hdb/autocmd_execution_in_neovim_lua_config/
@@ -637,7 +561,6 @@ augroup END
 ]] ,
   false
 )
-
 
 require("nvim_comment").setup({
   create_mappings = false,
@@ -702,34 +625,6 @@ local jai_compile = {
 }
 
 null_ls.register(jai_compile)
-
--- local show_it = {
---   method = null_ls.methods.DIAGNOSTICS,
---   filetypes = { "jai" },
---   generator = {
---     fn = function(params)
---       local diagnostics = {}
---
---       for i, line in ipairs(params.content) do
---         local col, end_col = line:find("it")
---         if col and end_col then
---           table.insert(diagnostics, {
---             row = i,
---             col = col,
---           end_col = end_col + 1,
---           source = "show-it",
---           message = "IT IS GOOD",
---           severity = vim.diagnostic.severity.WARN,
---           })
---         end
---       end
---
---       return diagnostics
---     end
---   }
--- }
---
--- null_ls.register(show_it)
 
 -- Setup nvim-cmp.
 local cmp = require("cmp")
