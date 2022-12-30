@@ -33,14 +33,6 @@ require("packer").startup(function()
   use("junegunn/fzf")
   use("junegunn/fzf.vim")
 
-  use {
-    'TimUntersberger/neogit',
-    requires = 'nvim-lua/plenary.nvim',
-    config = function()
-      require("neogit").setup({})
-    end
-  }
-
   use("jose-elias-alvarez/null-ls.nvim")
 
   use("whatsthatsmell/codesmell_dark.vim")
