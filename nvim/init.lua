@@ -95,18 +95,6 @@ require("packer").startup(function()
   use("mileszs/ack.vim")
   use("benmills/vimux")
 
-  use({
-    "jameshiew/nvim-magic",
-    config = function()
-      require("nvim-magic").setup()
-    end,
-    tag = "v0.2.2", -- recommended to pin to a tag and update manually as there may be breaking changes
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-    },
-  })
-
   use("junegunn/vim-easy-align")
 
   use("terrortylor/nvim-comment")
