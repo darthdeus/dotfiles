@@ -13,6 +13,25 @@ My config files for bash, git, ruby and other useful scripts.
 - vertico: yes, yes
 
 
+## Rust-Analyzer LSP config
+
+    local ra_opts = {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        ["rust-analyzer"] = {
+          checkOnSave = {
+          },
+          cargo = {
+            extraEnv = { IN_RUST_ANALYZER = "1" },
+          },
+          rustfmt = {
+          }
+        }
+      }
+    }
+
+
 ## TODO
 
 - rofi-emoji, rofi-pass
