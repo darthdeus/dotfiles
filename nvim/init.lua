@@ -33,16 +33,12 @@ require("packer").startup(function()
   use("junegunn/fzf")
   use("junegunn/fzf.vim")
 
-  use("jose-elias-alvarez/null-ls.nvim")
-
   use("whatsthatsmell/codesmell_dark.vim")
   use("RRethy/nvim-base16")
 
   use("jansedivy/jai.vim")
+  use("jose-elias-alvarez/null-ls.nvim")
   use("jaawerth/fennel.vim")
-
-  use("guns/vim-sexp")
-  use("tpope/vim-sexp-mappings-for-regular-people")
 
   use("RRethy/vim-illuminate")
 
@@ -51,19 +47,6 @@ require("packer").startup(function()
     tag = '*',
     config = function()
       require("toggleterm").setup()
-    end
-  })
-
-  use({
-    "numToStr/FTerm.nvim",
-    config = function()
-      require 'FTerm'.setup({
-        border     = 'double',
-        dimensions = {
-          height = 0.9,
-          width = 0.9,
-        },
-      })
     end
   })
 
@@ -574,12 +557,6 @@ end
 local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
-
-vim.api.nvim_create_user_command('FTermOpen', require('FTerm').open, { bang = true })
-vim.api.nvim_create_user_command('FTermClose', require('FTerm').close, { bang = true })
-vim.api.nvim_create_user_command('FTermExit', require('FTerm').exit, { bang = true })
-vim.api.nvim_create_user_command('FTermToggle', require('FTerm').toggle, { bang = true })
--- More here: https://neovimcraft.com/plugin/numToStr/FTerm.nvim/index.html
 
 local null_ls = require("null-ls")
 local null_ls_helpers = require("null-ls.helpers")
