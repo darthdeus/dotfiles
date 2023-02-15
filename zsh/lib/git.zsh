@@ -63,7 +63,7 @@ git_prompt_status() {
   echo $STATUS
 }
 
-alias g='lazygit'
+# alias g='lazygit'
 alias ga='git add'
 alias gap='ga -p'
 alias gau='git add -u'
