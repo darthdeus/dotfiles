@@ -71,6 +71,8 @@ require("packer").startup(function()
   use("tpope/vim-rsi")
   use("EdenEast/nightfox.nvim")
 
+  use("elihunter173/dirbuf.nvim")
+
   use("tikhomirov/vim-glsl")
 
   use("kevinhwang91/nvim-bqf")
