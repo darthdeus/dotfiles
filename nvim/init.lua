@@ -342,6 +342,8 @@ vim.g.vista_default_executive = "nvim_lsp"
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.g.NERDTreeRespectWildIgnore = 1
+
 require("mapx").setup({ global = true })
 
 nnoremap("<leader>sd", ":Telescope help_tags<CR>")
