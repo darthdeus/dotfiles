@@ -763,7 +763,30 @@ local opts = {
   on_attach = on_attach,
 }
 
-require("rust-tools").setup({ server = opts })
+local ra_opts = {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    ["rust-analyzer"] = {
+      -- checkOnSave = {
+      --   command = "clippy",
+      --   overrideCommand = { "killall", "nvim" }
+      -- },
+      cargo = {
+        -- extraEnv = { IN_RUST_ANALYZER = "1" },
+        extraEnv = { CARGO_TARGET_DIR = "ra_target" },
+      },
+      diagnostics = {
+        -- TODO: check include_dir
+        disabled = { "inactive-code", "unresolved-proc-macro" },
+      },
+      rustfmt = {
+      }
+    }
+  }
+}
+
+require("rust-tools").setup({ server = ra_opts })
 
 lspconfig.taplo.setup(opts)
 lspconfig.clojure_lsp.setup(opts)
