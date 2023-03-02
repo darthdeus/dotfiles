@@ -746,7 +746,7 @@ end
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "sumneko_lua", "rust_analyzer", "zls",
+    "lua_ls", "rust_analyzer", "zls",
     "taplo", "clangd", "tsserver", "clojure_lsp"
     -- "nimls"
   }
@@ -771,7 +771,7 @@ lspconfig.zls.setup(opts)
 lspconfig.nimls.setup(opts)
 -- lspconfig.jai_lsp.setup(opts)
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
