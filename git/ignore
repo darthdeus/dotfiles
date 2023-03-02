@@ -82,6 +82,8 @@ tags
 
 .c
 
+ra_target/
+
 *.rpyc
 
 .clj-kondo/
