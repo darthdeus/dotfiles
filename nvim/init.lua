@@ -271,7 +271,7 @@ vim.o.winwidth = 75
 
 vim.o.wildmode = "list:longest,list:full"
 vim.o.wildignore =
-"obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,ra_target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build,logs,tags,*.rpyc"
+"obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,ra_target,.ra_target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build,logs,tags,*.rpyc"
 
 -- TODO: default is menu,preview?
 vim.o.completeopt = "menuone,preview,noinsert,noselect"
@@ -774,7 +774,7 @@ local ra_opts = {
       -- },
       cargo = {
         -- extraEnv = { IN_RUST_ANALYZER = "1" },
-        extraEnv = { CARGO_TARGET_DIR = "ra_target" },
+        extraEnv = { CARGO_TARGET_DIR = ".ra_target" },
       },
       diagnostics = {
         -- TODO: check include_dir

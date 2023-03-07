@@ -83,6 +83,7 @@ tags
 .c
 
 ra_target/
+.ra_target/
 
 *.rpyc
 
