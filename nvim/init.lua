@@ -378,6 +378,13 @@ onoremap("<leader><tab>", "<plug>(fzf-maps-o)")
 nnoremap("gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
 
 inoremap("<M-S-l>", "<C-o><Plug>(sexp_capture_next_element)")
+-- inoremap("<M-o>", "vec2()<C-o>i")
+-- inoremap("<M-9>", "egui::vec2()<C-o>i")
+inoremap("<M-o>", "vec2()<Esc>i")
+inoremap("<M-9>", "egui::vec2()<Esc>i")
+inoremap("<M-0>", "0.0,")
+nnoremap("<M-0>", "i0.0,")
+-- imap("<C-0>", "0.0,")
 
 -- inoremap("<silent><expr>", "<C-Space> compe#complete()")
 -- unused -- map("n", "<silent><expr>", "<CR>      compe#confirm('<CR>')")
