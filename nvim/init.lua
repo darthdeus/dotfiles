@@ -755,7 +755,7 @@ end
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "lua_ls", "rust_analyzer", "taplo", "clangd",
+    "rust_analyzer", "taplo", "clangd",
     -- "nimls"
   }
 })
@@ -802,38 +802,38 @@ lspconfig.clangd.setup(opts)
 -- lspconfig.nimls.setup(opts)
 -- lspconfig.jai_lsp.setup(opts)
 
-lspconfig.lua_ls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = {
-          "vim",
-          "use",
-          "use_rocks",
-          "nnoremap",
-          "nmap",
-          "inoremap",
-          "imap",
-          "map",
-          "vnoremap",
-          "vmap",
-          "tnoremap",
-          "tmap",
-          "cnoremap",
-          "cmap",
-          "snoremap",
-          "smap",
-          "onoremap",
-          "omap",
-          "xnoremap",
-          "xmap",
-        },
-      },
-    },
-  },
-})
+-- lspconfig.lua_ls.setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     Lua = {
+--       diagnostics = {
+--         globals = {
+--           "vim",
+--           "use",
+--           "use_rocks",
+--           "nnoremap",
+--           "nmap",
+--           "inoremap",
+--           "imap",
+--           "map",
+--           "vnoremap",
+--           "vmap",
+--           "tnoremap",
+--           "tmap",
+--           "cnoremap",
+--           "cmap",
+--           "snoremap",
+--           "smap",
+--           "onoremap",
+--           "omap",
+--           "xnoremap",
+--           "xmap",
+--         },
+--       },
+--     },
+--   },
+-- })
 
 -- require("rust-tools").inlay_hints.enable()
 
