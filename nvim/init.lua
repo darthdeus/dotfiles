@@ -52,6 +52,7 @@ require("packer").startup(function()
   use("jansedivy/jai.vim")
   use("jose-elias-alvarez/null-ls.nvim")
   use("jaawerth/fennel.vim")
+  use("Pocco81/auto-save.nvim")
 
   use("RRethy/vim-illuminate")
 
@@ -222,6 +223,8 @@ require("packer").startup(function()
 
   -- TODO: try https://github.com/L3MON4D3/LuaSnip ?
 
+  use("github/copilot.vim")
+
   use("hrsh7th/vim-vsnip")
   use("hrsh7th/vim-vsnip-integ")
 
@@ -231,6 +234,7 @@ require("packer").startup(function()
   use("hrsh7th/cmp-cmdline")
   use("hrsh7th/nvim-cmp")
   use("hrsh7th/cmp-vsnip")
+  use("hrsh7th/cmp-copilot")
 end)
 
 require("user.reload")
@@ -611,6 +615,9 @@ null_ls.register(jai_compile)
 local cmp = require("cmp")
 
 cmp.setup({
+  experimental = {
+    ghost_text = true,
+  },
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
@@ -621,6 +628,9 @@ cmp.setup({
     end,
   },
   window = {
+    completion = {
+      -- col_offset = 35,
+    },
     -- completion = cmp.config.window.bordered(),
     -- documentation = cmp.config.window.bordered(),
   },
@@ -659,6 +669,7 @@ cmp.setup({
   }),
 
   sources = cmp.config.sources({
+    { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "ctags" },
     { name = "vsnip" },

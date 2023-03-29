@@ -92,3 +92,4 @@ ra_target/
 
 zig-cache/
 zig-out/
+.save.json
