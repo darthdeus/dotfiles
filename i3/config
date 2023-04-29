@@ -36,21 +36,15 @@ bindsym $mod+Ctrl+p exec dmenu_run
 bindsym $mod+Shift+q kill
 
 for_window [class="Zeal"] floating enable
-for_window [class="Godot"] floating enable
 # for_window [title="Godot Engine*."] floating enable
-for_window [title=".*BITGUN \(DEBUG\).*"] floating enable
 for_window [title=".*Meat Party.*"] floating enable
 for_window [title=".*Micro Hell Loop.*"] floating enable
 for_window [title="Fast Image Browser"] floating enable
-for_window [title=".*Magery.*"] floating enable
-for_window [title=".*Rapier Crash.*"] floating enable
 for_window [title=".*DAZ Install Manager.*"] floating enable
-for_window [title=".*Flesh Monster.*"] floating enable
 for_window [title=".*FLOAT.*"] floating enable
 for_window [title=".*Blender Render.*"] floating enable
 for_window [title=".*CopyQ.*"] floating enable
 for_window [title="Membrane"] floating enable
-for_window [title="Easy Diffusion"] floating enable
 for_window [title="Ren'Py Launcher"] floating enable
 for_window [title="GNU Image Manipulation Program"] floating enable
 for_window [title="mpv"] floating enable
