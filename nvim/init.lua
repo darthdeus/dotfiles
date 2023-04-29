@@ -119,11 +119,11 @@ require("packer").startup(function()
   use("preservim/nerdtree")
 
   if vim.fn.has("win32") ~= 1 then
-    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use("nvim-treesitter/playground")
 
     use({
       "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate",
       config = function()
         require("nvim-treesitter.configs").setup({
           ensure_installed = {
