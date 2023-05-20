@@ -7,31 +7,6 @@ local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
-local null_ls = require("null-ls")
-local null_ls_helpers = require("null-ls.helpers")
-
-null_ls.setup()
-
-local jai_compile = {
-  method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
-  filetypes = { "jai" },
-  generator = null_ls.generator({
-    command = "make",
-    args = { "compile" },
-    format = "line",
-    from_stderr = true,
-    on_output = null_ls_helpers.diagnostics.from_patterns({
-      {
-        pattern = [[(.+):(%d+),(%d+): Error: (.+)]],
-        groups = { "file", "row", "col", "message" }
-      }
-    })
-  })
-
-}
-
-null_ls.register(jai_compile)
-
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 
@@ -49,9 +24,6 @@ cmp.setup({
     end,
   },
   window = {
-    completion = {
-      -- col_offset = 35,
-    },
     -- completion = cmp.config.window.bordered(),
     -- documentation = cmp.config.window.bordered(),
   },
@@ -90,8 +62,8 @@ cmp.setup({
   }),
 
   sources = cmp.config.sources({
-    { name = "copilot" },
     { name = "nvim_lsp" },
+    { name = "copilot" },
     { name = "ctags" },
     { name = "vsnip" },
   }, {
