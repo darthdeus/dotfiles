@@ -123,6 +123,7 @@ require("packer").startup(function()
     -- use("nvim-treesitter/playground")
 
     use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate", })
+    use("nvim-treesitter/playground")
   end
 
   use("tenxsoydev/size-matters.nvim")
