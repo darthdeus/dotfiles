@@ -1,171 +1,321 @@
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-  vim.cmd("packadd packer.nvim")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
-
--- local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
--- if not vim.loop.fs_stat(lazypath) then
---   vim.fn.system({
---     "git",
---     "clone",
---     "--filter=blob:none",
---     "--single-branch",
---     "https://github.com/folke/lazy.nvim.git",
---     lazypath,
---   })
--- end
--- vim.opt.runtimepath:prepend(lazypath)
-
-require("packer").startup(function()
-  use("wbthomason/packer.nvim")
-  use("nvim-lua/plenary.nvim")
-
-  use("b0o/mapx.nvim")
-
-  use({
-    "rmagatti/goto-preview",
-    config = function()
-      require("goto-preview").setup({})
-    end,
-  })
-
-  use({
-    "folke/which-key.nvim",
-    config = function()
-      require("which-key").setup({
-        triggers = { "<leader>" },
-      })
-    end,
-  })
+vim.opt.rtp:prepend(lazypath)
 
 
-  use("nvim-lua/popup.nvim")
-  use("nvim-telescope/telescope.nvim")
 
-  use("junegunn/fzf")
-  use("junegunn/fzf.vim")
+require("lazy").setup({
+  -- "wbthomason/packer.nvim",
+  "nvim-lua/plenary.nvim",
 
-  use("whatsthatsmell/codesmell_dark.vim")
-  use("RRethy/nvim-base16")
+  "folke/neodev.nvim",
+  "folke/neoconf.nvim",
 
-  use("jansedivy/jai.vim")
-  use("jose-elias-alvarez/null-ls.nvim")
-  use("Pocco81/auto-save.nvim")
+  "b0o/mapx.nvim",
 
-  use("jaawerth/fennel.vim")
-  use("RRethy/vim-illuminate")
+  "rmagatti/goto-preview",
 
-  use({
-    "akinsho/toggleterm.nvim",
-    tag = '*',
-    config = function()
-      require("toggleterm").setup()
-    end
-  })
+  "folke/which-key.nvim",
 
-  use("tpope/vim-fugitive")
-  use("tpope/vim-sensible")
-  use("tpope/vim-eunuch")
-  use("tpope/vim-surround")
-  use("tpope/vim-repeat")
-  use("tpope/vim-rsi")
-  use("EdenEast/nightfox.nvim")
 
-  use("elihunter173/dirbuf.nvim")
+  "nvim-lua/popup.nvim",
+  "nvim-telescope/telescope.nvim",
 
-  use("tikhomirov/vim-glsl")
+  "junegunn/fzf",
+  "junegunn/fzf.vim",
 
-  use("kevinhwang91/nvim-bqf")
+  "whatsthatsmell/codesmell_dark.vim",
+  "RRethy/nvim-base16",
 
-  use("editorconfig/editorconfig-vim")
+  "jansedivy/jai.vim",
+  "jose-elias-alvarez/null-ls.nvim",
+  "Pocco81/auto-save.nvim",
 
-  -- use("ggandor/leap.nvim")
+  "jaawerth/fennel.vim",
+  "RRethy/vim-illuminate",
+
+  "akinsho/toggleterm.nvim",
+
+  "tpope/vim-fugitive",
+  "tpope/vim-sensible",
+  "tpope/vim-eunuch",
+  "tpope/vim-surround",
+  "tpope/vim-repeat",
+  "tpope/vim-rsi",
+  "EdenEast/nightfox.nvim",
+
+  "elihunter173/dirbuf.nvim",
+
+  "tikhomirov/vim-glsl",
+
+  "kevinhwang91/nvim-bqf",
+
+  "editorconfig/editorconfig-vim",
+
+  -- "ggandor/leap.nvim",
   -- require("leap").add_default_mappings()
 
-  use("mileszs/ack.vim")
-  use("benmills/vimux")
+  "mileszs/ack.vim",
+  "benmills/vimux",
 
-  use("junegunn/vim-easy-align")
+  "junegunn/vim-easy-align",
 
-  use("terrortylor/nvim-comment")
+  "terrortylor/nvim-comment",
 
-  use("jiangmiao/auto-pairs")
+  "jiangmiao/auto-pairs",
 
-  use("itchyny/lightline.vim")
+  "itchyny/lightline.vim",
 
-  use("sjl/gundo.vim")
+  "sjl/gundo.vim",
 
-  use("sbdchd/neoformat")
+  "sbdchd/neoformat",
 
-  use("rust-lang/rust.vim")
-  use("simrat39/rust-tools.nvim")
+  "rust-lang/rust.vim",
+  "simrat39/rust-tools.nvim",
 
-  use("chrisbra/vim-zsh")
-  use("habamax/vim-godot")
-  use("ron-rs/ron.vim")
-  use("gutenye/json5.vim")
-  use("cespare/vim-toml")
+  "chrisbra/vim-zsh",
+  "habamax/vim-godot",
+  "ron-rs/ron.vim",
+  "gutenye/json5.vim",
+  "cespare/vim-toml",
 
-  use("othree/html5.vim")
-  use("pangloss/vim-javascript")
-  use("evanleck/vim-svelte")
+  "othree/html5.vim",
+  "pangloss/vim-javascript",
+  "evanleck/vim-svelte",
 
-  use("mattn/emmet-vim")
-  use("chaimleib/vim-renpy")
+  "mattn/emmet-vim",
+  "chaimleib/vim-renpy",
 
-  use("DingDean/wgsl.vim")
+  "DingDean/wgsl.vim",
 
-  use("preservim/nerdtree")
+  "preservim/nerdtree",
 
-  if vim.fn.has("win32") ~= 1 then
-    -- use("nvim-treesitter/playground")
+  -- if vim.fn.has("win32") ~= 1 then
+  -- use("nvim-treesitter/playground")
 
-    use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate", })
-    use("nvim-treesitter/playground")
-  end
+  -- { "nvim-treesitter/nvim-treesitter", { build = ":TSUpdate", }},
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   version = false, -- last release is way too old and doesn't work on Windows
+  --   build = ":TSUpdate",
+  --   event = { "BufReadPost", "BufNewFile" },
+  -- },
 
-  use("tenxsoydev/size-matters.nvim")
+  {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+
+  "nvim-treesitter/playground",
+  -- end
+
+  "tenxsoydev/size-matters.nvim",
 
   -- -------------------------------
-  use("williamboman/mason.nvim")
-  use("williamboman/mason-lspconfig.nvim")
-  use("neovim/nvim-lspconfig")
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+  "neovim/nvim-lspconfig",
 
-  -- use("nvim-lua/lsp_extensions.nvim")
+  -- "nvim-lua/lsp_extensions.nvim",
 
-  use("delphinus/cmp-ctags")
+  "delphinus/cmp-ctags",
 
-  use("ray-x/lsp_signature.nvim")
+  "ray-x/lsp_signature.nvim",
 
-  use("mfussenegger/nvim-dap")
+  "mfussenegger/nvim-dap",
   -- use "zhimsel/vim-stay"
 
   -- --------------------------------
 
-  use("chrisbra/unicode.vim")
+  "chrisbra/unicode.vim",
 
   -- TODO: try https://github.com/L3MON4D3/LuaSnip ?
 
-  use("github/copilot.vim")
+  "github/copilot.vim",
 
-  use("hrsh7th/vim-vsnip")
-  use("hrsh7th/vim-vsnip-integ")
+  "hrsh7th/vim-vsnip",
+  "hrsh7th/vim-vsnip-integ",
 
-  use("hrsh7th/cmp-nvim-lsp")
-  use("hrsh7th/cmp-buffer")
-  use("hrsh7th/cmp-path")
-  use("hrsh7th/cmp-cmdline")
-  use("hrsh7th/nvim-cmp")
-  use("hrsh7th/cmp-vsnip")
-  use("hrsh7th/cmp-copilot")
-end)
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-cmdline",
+  "hrsh7th/nvim-cmp",
+  "hrsh7th/cmp-vsnip",
+  "hrsh7th/cmp-copilot",
+})
+
+-- ------
+
+-- local fn = vim.fn
+-- local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+-- if fn.empty(fn.glob(install_path)) > 0 then
+--   fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+--   vim.cmd("packadd packer.nvim")
+-- end
+--
+-- require("packer").startup(function()
+--   use("wbthomason/packer.nvim")
+--   use("nvim-lua/plenary.nvim")
+--
+--   -- use("folke/neodev.nvim")
+--   -- use("folke/neoconf.nvim")
+--
+--   use("b0o/mapx.nvim")
+--
+--   use({
+--     "rmagatti/goto-preview",
+--     config = function()
+--       require("goto-preview").setup({})
+--     end,
+--   })
+--
+--   use({
+--     "folke/which-key.nvim",
+--     config = function()
+--       require("which-key").setup({
+--         triggers = { "<leader>" },
+--       })
+--     end,
+--   })
+--
+--
+--   use("nvim-lua/popup.nvim")
+--   use("nvim-telescope/telescope.nvim")
+--
+--   use("junegunn/fzf")
+--   use("junegunn/fzf.vim")
+--
+--   use("whatsthatsmell/codesmell_dark.vim")
+--   use("RRethy/nvim-base16")
+--
+--   use("jansedivy/jai.vim")
+--   use("jose-elias-alvarez/null-ls.nvim")
+--   use("Pocco81/auto-save.nvim")
+--
+--   use("jaawerth/fennel.vim")
+--   use("RRethy/vim-illuminate")
+--
+--   use({
+--     "akinsho/toggleterm.nvim",
+--     tag = '*',
+--     config = function()
+--       require("toggleterm").setup()
+--     end
+--   })
+--
+--   use("tpope/vim-fugitive")
+--   use("tpope/vim-sensible")
+--   use("tpope/vim-eunuch")
+--   use("tpope/vim-surround")
+--   use("tpope/vim-repeat")
+--   use("tpope/vim-rsi")
+--   use("EdenEast/nightfox.nvim")
+--
+--   use("elihunter173/dirbuf.nvim")
+--
+--   use("tikhomirov/vim-glsl")
+--
+--   use("kevinhwang91/nvim-bqf")
+--
+--   use("editorconfig/editorconfig-vim")
+--
+--   -- use("ggandor/leap.nvim")
+--   -- require("leap").add_default_mappings()
+--
+--   use("mileszs/ack.vim")
+--   use("benmills/vimux")
+--
+--   use("junegunn/vim-easy-align")
+--
+--   use("terrortylor/nvim-comment")
+--
+--   use("jiangmiao/auto-pairs")
+--
+--   use("itchyny/lightline.vim")
+--
+--   use("sjl/gundo.vim")
+--
+--   use("sbdchd/neoformat")
+--
+--   use("rust-lang/rust.vim")
+--   use("simrat39/rust-tools.nvim")
+--
+--   use("chrisbra/vim-zsh")
+--   use("habamax/vim-godot")
+--   use("ron-rs/ron.vim")
+--   use("gutenye/json5.vim")
+--   use("cespare/vim-toml")
+--
+--   use("othree/html5.vim")
+--   use("pangloss/vim-javascript")
+--   use("evanleck/vim-svelte")
+--
+--   use("mattn/emmet-vim")
+--   use("chaimleib/vim-renpy")
+--
+--   use("DingDean/wgsl.vim")
+--
+--   use("preservim/nerdtree")
+--
+--   if vim.fn.has("win32") ~= 1 then
+--     -- use("nvim-treesitter/playground")
+--
+--     use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate", })
+--     use("nvim-treesitter/playground")
+--   end
+--
+--   use("tenxsoydev/size-matters.nvim")
+--
+--   -- -------------------------------
+--   use("williamboman/mason.nvim")
+--   use("williamboman/mason-lspconfig.nvim")
+--   use("neovim/nvim-lspconfig")
+--
+--   -- use("nvim-lua/lsp_extensions.nvim")
+--
+--   use("delphinus/cmp-ctags")
+--
+--   use("ray-x/lsp_signature.nvim")
+--
+--   use("mfussenegger/nvim-dap")
+--   -- use "zhimsel/vim-stay"
+--
+--   -- --------------------------------
+--
+--   use("chrisbra/unicode.vim")
+--
+--   -- TODO: try https://github.com/L3MON4D3/LuaSnip ?
+--
+--   use("github/copilot.vim")
+--
+--   use("hrsh7th/vim-vsnip")
+--   use("hrsh7th/vim-vsnip-integ")
+--
+--   use("hrsh7th/cmp-nvim-lsp")
+--   use("hrsh7th/cmp-buffer")
+--   use("hrsh7th/cmp-path")
+--   use("hrsh7th/cmp-cmdline")
+--   use("hrsh7th/nvim-cmp")
+--   use("hrsh7th/cmp-vsnip")
+--   use("hrsh7th/cmp-copilot")
+-- end)
 
 require("user")
 require("user.settings")
 require("user.remap")
 require("user.reload")
+
+require("toggleterm").setup()
+require("which-key").setup({
+  triggers = { "<leader>" },
+})
 
 -- TODO: do this with nvim_utils?
 -- https://github.com/norcalli/nvim_utils

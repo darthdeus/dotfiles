@@ -160,7 +160,7 @@ end
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "rust_analyzer", "taplo", "clangd", "lua_ls"
+    "rust_analyzer", "taplo", "clangd", "lua_ls", "jsonls"
     -- "nimls"
   }
 })
@@ -203,6 +203,7 @@ lspconfig.taplo.setup(opts)
 -- lspconfig.clojure_lsp.setup(opts)
 -- lspconfig.tsserver.setup(opts)
 lspconfig.clangd.setup(opts)
+lspconfig.jsonls.setup(opts)
 lspconfig.lua_ls.setup({
   capabilities = capabilities,
   on_attach = on_attach,
