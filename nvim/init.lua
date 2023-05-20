@@ -20,6 +20,8 @@ end
 
 require("packer").startup(function()
   use("wbthomason/packer.nvim")
+  use("nvim-lua/plenary.nvim")
+
   use("b0o/mapx.nvim")
 
   use({
@@ -38,10 +40,9 @@ require("packer").startup(function()
     end,
   })
 
-  use("nvim-lua/plenary.nvim")
-  use("nvim-lua/popup.nvim")
 
-  use "nvim-telescope/telescope.nvim"
+  use("nvim-lua/popup.nvim")
+  use("nvim-telescope/telescope.nvim")
 
   use("junegunn/fzf")
   use("junegunn/fzf.vim")
@@ -51,9 +52,9 @@ require("packer").startup(function()
 
   use("jansedivy/jai.vim")
   use("jose-elias-alvarez/null-ls.nvim")
-  use("jaawerth/fennel.vim")
   use("Pocco81/auto-save.nvim")
 
+  use("jaawerth/fennel.vim")
   use("RRethy/vim-illuminate")
 
   use({
@@ -121,85 +122,7 @@ require("packer").startup(function()
   if vim.fn.has("win32") ~= 1 then
     -- use("nvim-treesitter/playground")
 
-    use({
-      "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
-      config = function()
-        require("nvim-treesitter.configs").setup({
-          ensure_installed = {
-            "c", "json", "javascript", "python",
-            "rust", "lua", "wgsl", "fennel",
-            "commonlisp"
-          },
-          highlight = {
-            enable = true,
-            -- additional_vim_regex_highlighting = true,
-          },
-          incremental_selection = {
-            enable = true,
-            keymaps = {
-              -- init_selection = "gnn",
-              -- node_incremental = "grn",
-              -- scope_incremental = "rc",
-              -- node_decremental = "grm",
-              init_selection = "`",
-              node_incremental = "`",
-              node_decremental = "~",
-              scope_incremental = "rc",
-            },
-          },
-          textobjects = {
-            select = {
-              enable = true,
-              keymaps = {
-                -- You can use the capture groups defined in textobjects.scm
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
-                ["ic"] = "@class.inner",
-
-                -- Or you can define your own textobjects like this
-                ["iF"] = {
-                  python = "(function_definition) @function",
-                  cpp = "(function_definition) @function",
-                  c = "(function_definition) @function",
-                  java = "(method_declaration) @function",
-                },
-              },
-            },
-            move = {
-              enable = true,
-              goto_next_start = {
-                ["]a"] = "@function.outer",
-                ["]]"] = "@class.outer",
-              },
-              goto_next_end = {
-                ["]A"] = "@function.outer",
-                ["]["] = "@class.outer",
-              },
-              goto_previous_start = {
-                ["[a"] = "@function.outer",
-                ["[["] = "@class.outer",
-              },
-              goto_previous_end = {
-                ["[A"] = "@function.outer",
-                ["[]"] = "@class.outer",
-              },
-            },
-
-            swap = {
-              enable = true,
-              swap_next = {
-                ["<leader>a"] = "@parameter.inner",
-              },
-              swap_previous = {
-                ["<leader>A"] = "@parameter.inner",
-              },
-            },
-          },
-        })
-      end
-    })
+    use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate", })
   end
 
   use("tenxsoydev/size-matters.nvim")
@@ -239,8 +162,6 @@ require("packer").startup(function()
 end)
 
 require("user.reload")
-
-vim.api.nvim_set_keymap("n", "<leader>gr", "<cmd>lua ReloadConfig()<CR>", { noremap = true, silent = false })
 
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -349,7 +270,12 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.g.NERDTreeRespectWildIgnore = 1
 
-require("mapx").setup({ global = true })
+require("mapx").setup({ global = "force" })
+
+vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>lua ReloadConfig()<CR>", { noremap = true, silent = false })
+
+-- vim.api.nvim_set_keymap("n", "<leader>pv", vim.cmd.Ex, {})
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 nnoremap("<leader>sd", ":Telescope help_tags<CR>")
 nnoremap("<leader>sa", ":Telescope commands<CR>")
@@ -550,9 +476,82 @@ autocmd BufEnter *.clj,*.cljs :lua vim.api.nvim_buf_set_option(0, "commentstring
 autocmd BufEnter *.jai,*.wgsl,*.glsl,*.vert,*.frag :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
 autocmd BufFilePost *.jai,*.wgsl,*.glsl,*.vert,*.frag :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
 augroup END
-]] ,
+]],
   false
 )
+
+require("nvim-treesitter.configs").setup({
+  ensure_installed = {
+    "c", "json", "javascript", "python",
+    "rust", "lua", "wgsl", "fennel",
+    "commonlisp"
+  },
+  highlight = {
+    enable = true,
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      -- init_selection = "gnn",
+      -- node_incremental = "grn",
+      -- scope_incremental = "rc",
+      -- node_decremental = "grm",
+      init_selection = "`",
+      node_incremental = "`",
+      node_decremental = "~",
+      scope_incremental = "rc",
+    },
+  },
+  textobjects = {
+    select = {
+      enable = true,
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+
+        -- Or you can define your own textobjects like this
+        ["iF"] = {
+          python = "(function_definition) @function",
+          cpp = "(function_definition) @function",
+          c = "(function_definition) @function",
+          java = "(method_declaration) @function",
+        },
+      },
+    },
+    move = {
+      enable = true,
+      goto_next_start = {
+        ["]a"] = "@function.outer",
+        ["]]"] = "@class.outer",
+      },
+      goto_next_end = {
+        ["]A"] = "@function.outer",
+        ["]["] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[a"] = "@function.outer",
+        ["[["] = "@class.outer",
+      },
+      goto_previous_end = {
+        ["[A"] = "@function.outer",
+        ["[]"] = "@class.outer",
+      },
+    },
+
+    swap = {
+      enable = true,
+      swap_next = {
+        ["<leader>a"] = "@parameter.inner",
+      },
+      swap_previous = {
+        ["<leader>A"] = "@parameter.inner",
+      },
+    },
+  },
+})
 
 require("nvim_comment").setup({
   create_mappings = false,
@@ -561,8 +560,8 @@ require("nvim_comment").setup({
 if vim.g.neovide or vim.g.goneovim or vim.g.nvui or vim.g.gnvim then
   require("size-matters").setup({
     default_mappings = true,
-    step_size = 1, -- font resize step size
-    notifications = false, -- default value is true if notify is installed else false
+    step_size = 1,                                   -- font resize step size
+    notifications = false,                           -- default value is true if notify is installed else false
     reset_font = vim.api.nvim_get_option("guifont"), -- Font loaded when using the reset cmd / shortcut
   })
 end
@@ -768,7 +767,7 @@ end
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "rust_analyzer", "taplo", "clangd",
+    "rust_analyzer", "taplo", "clangd", "lua_ls"
     -- "nimls"
   }
 })
@@ -811,6 +810,7 @@ lspconfig.taplo.setup(opts)
 -- lspconfig.clojure_lsp.setup(opts)
 -- lspconfig.tsserver.setup(opts)
 lspconfig.clangd.setup(opts)
+lspconfig.lua_ls.setup(opts)
 -- lspconfig.zls.setup(opts)
 -- lspconfig.nimls.setup(opts)
 -- lspconfig.jai_lsp.setup(opts)
