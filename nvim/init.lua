@@ -811,7 +811,17 @@ lspconfig.taplo.setup(opts)
 -- lspconfig.clojure_lsp.setup(opts)
 -- lspconfig.tsserver.setup(opts)
 lspconfig.clangd.setup(opts)
-lspconfig.lua_ls.setup(opts)
+lspconfig.lua_ls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim", "use", "nnoremap", "xnoremap", "onoremap", "inoremap", "cnoremap", "tnoremap" }
+      }
+    }
+  }
+})
 -- lspconfig.zls.setup(opts)
 -- lspconfig.nimls.setup(opts)
 -- lspconfig.jai_lsp.setup(opts)
