@@ -119,7 +119,7 @@ require("packer").startup(function()
   use("preservim/nerdtree")
 
   if vim.fn.has("win32") ~= 1 then
-    use("nvim-treesitter/playground")
+    -- use("nvim-treesitter/playground")
 
     use({
       "nvim-treesitter/nvim-treesitter",
@@ -133,6 +133,7 @@ require("packer").startup(function()
           },
           highlight = {
             enable = true,
+            -- additional_vim_regex_highlighting = true,
           },
           incremental_selection = {
             enable = true,
