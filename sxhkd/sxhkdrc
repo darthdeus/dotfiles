@@ -20,7 +20,7 @@ super + shift + p
   ~/.dotfiles/bin/maimpick
 
 super + shift + n
-  thunar
+  thunar /mnt/boo/video/mp4-small/ 
 
 super + shift + o
   ~/.todo/bin/paste-url

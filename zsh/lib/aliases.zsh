@@ -217,12 +217,14 @@ alias pis="pipenv shell"
 
 alias more="less"
 
+alias ma="micromamba"
+
 function zman() {
   PAGER="less -g -s '+/^       "$1"'" man zshall
 }
 
 function source_conda() {
-  eval "$(/home/darth/.miniconda3/bin/conda shell.zsh hook)"
+  eval "$(/home/darth/projects/miniconda3/bin/conda shell.zsh hook)"
 }
 
 function ne() {
