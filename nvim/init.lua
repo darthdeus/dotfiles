@@ -24,8 +24,14 @@ require("lazy").setup({
 
   "rmagatti/goto-preview",
 
-  "folke/which-key.nvim",
-
+  {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup({
+        triggers = { "<leader>" },
+      })
+    end
+  },
 
   "nvim-lua/popup.nvim",
   "nvim-telescope/telescope.nvim",
@@ -39,6 +45,36 @@ require("lazy").setup({
   "jansedivy/jai.vim",
   "jose-elias-alvarez/null-ls.nvim",
   "Pocco81/auto-save.nvim",
+
+  {
+    "folke/noice.nvim",
+    config = function()
+      require("noice").setup({
+        -- add any options here
+      })
+    end,
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    }
+  },
+
+
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  },
 
   "jaawerth/fennel.vim",
   "RRethy/vim-illuminate",
@@ -110,7 +146,7 @@ require("lazy").setup({
   --   event = { "BufReadPost", "BufNewFile" },
   -- },
 
-  {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
   "nvim-treesitter/playground",
   -- end
@@ -313,9 +349,6 @@ require("user.remap")
 require("user.reload")
 
 require("toggleterm").setup()
-require("which-key").setup({
-  triggers = { "<leader>" },
-})
 
 -- TODO: do this with nvim_utils?
 -- https://github.com/norcalli/nvim_utils
