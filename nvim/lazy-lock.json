@@ -52,6 +52,7 @@
   "size-matters.nvim": { "branch": "main", "commit": "0aabfeb5eba72f013ed91bdd388c6ad666f7c78a" },
   "telescope.nvim": { "branch": "master", "commit": "40c31fdde93bcd85aeb3447bb3e2a3208395a868" },
   "toggleterm.nvim": { "branch": "main", "commit": "26f16d3bab1761d0d11117a8e431faba11a1b865" },
+  "tokyonight.nvim": { "branch": "main", "commit": "029dca9a40260788d495929d8cc83a9a8ebb6763" },
   "trouble.nvim": { "branch": "main", "commit": "2173dffe91fc0914b3b833c6a2f6fe1d3fac2e17" },
   "unicode.vim": { "branch": "master", "commit": "c8aa12b1e2e1b6254885b12bdb239ce6c885fdb1" },
   "vim-easy-align": { "branch": "master", "commit": "12dd6316974f71ce333e360c0260b4e1f81169c3" },

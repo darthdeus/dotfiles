@@ -154,6 +154,8 @@ require("lazy").setup({
     end
   },
 
+  "folke/tokyonight.nvim",
+
   "nvim-treesitter/playground",
   -- end
 
