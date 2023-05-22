@@ -84,7 +84,7 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 nnoremap("<C-_><C-_>", ":CommentToggle<CR>")
 vnoremap("<C-_><C-_>", ":CommentToggle<CR>")
 
-nnoremap("<CR>", ":nohlsearch<CR>/<BS>")
+nnoremap("<CR>", ":nohlsearch<CR>")
 
 -- Buffer resizing with arrow keys
 nnoremap("<Up>", "<C-w>5-")
