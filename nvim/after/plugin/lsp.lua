@@ -210,7 +210,7 @@ lspconfig.lua_ls.setup({
   settings = {
     Lua = {
       diagnostics = {
-        globals = { "vim", "use", "nnoremap", "xnoremap", "onoremap", "inoremap", "cnoremap", "tnoremap" }
+        globals = { "vim", "use", "nnoremap", "xnoremap", "vnoremap", "onoremap", "inoremap", "cnoremap", "tnoremap" }
       }
     }
   }
