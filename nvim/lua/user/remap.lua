@@ -5,8 +5,8 @@ vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>lua ReloadConfig()<CR>", { nore
 -- vim.api.nvim_set_keymap("n", "<leader>pv", vim.cmd.Ex, {})
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
-nnoremap("<leader>sd", ":Telescope help_tags<CR>")
-nnoremap("<leader>sa", ":Telescope commands<CR>")
+nnoremap("<leader>sd", "<cmd>Telescope help_tags<CR>")
+nnoremap("<leader>sa", "<cmd>Telescope commands<CR>")
 
 -- map("n", "<leader>sf", "<cmd>Telescope live_grep<CR>")
 -- map("n", "<leader>h", "<cmd>Telescope help_tags<CR>")
@@ -20,14 +20,14 @@ nnoremap("<leader>sa", ":Telescope commands<CR>")
 -- nnoremap("<leader>b", ":Telescope buffers<cr>")
 -- nnoremap("<leader>B", ":Telescope current_buffer_tags<cr>")
 
-nnoremap("<leader>f", ":Files ./<CR>")
-nnoremap("<leader>F", ":FZF %%<CR>")
-nnoremap("<leader>gt", ":Tags<cr>")
-nnoremap("<leader>ga", ":Rg<cr>")
-nnoremap("<leader>gs", ":Rg <C-r><C-w><cr>")
-nnoremap("<leader>gd", ":Rg <C-r><C-w><cr>")
-nnoremap("<leader>b", ":Buffers<cr>")
-nnoremap("<leader>B", ":BTags<cr>")
+nnoremap("<leader>f", "<cmd>Files ./<CR>")
+nnoremap("<leader>F", "<cmd>FZF %%<CR>")
+nnoremap("<leader>gt", "<cmd>Tags<cr>")
+nnoremap("<leader>ga", "<cmd>Rg<cr>")
+nnoremap("<leader>gs", "<cmd>Rg <C-r><C-w><cr>")
+nnoremap("<leader>gd", "<cmd>Rg <C-r><C-w><cr>")
+nnoremap("<leader>b", "<cmd>Buffers<cr>")
+nnoremap("<leader>B", "<cmd>BTags<cr>")
 
 -- Mapping selecting mappings
 nnoremap("<leader><tab>", "<plug>(fzf-maps-n)")
@@ -81,10 +81,10 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 -- inoremap("<expr>", "<C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'")
 -- snoremap("<expr>", "<C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'")
 
-nnoremap("<C-_><C-_>", ":CommentToggle<CR>")
-vnoremap("<C-_><C-_>", ":CommentToggle<CR>")
+nnoremap("<C-_><C-_>", "<cmd>CommentToggle<CR>")
+vnoremap("<C-_><C-_>", "<cmd>CommentToggle<CR>")
 
-nnoremap("<CR>", ":nohlsearch<CR>")
+nnoremap("<CR>", "<cmd>nohlsearch<CR>")
 
 -- Buffer resizing with arrow keys
 nnoremap("<Up>", "<C-w>5-")
@@ -105,8 +105,6 @@ nnoremap("<C-h>", "<C-w><C-h>")
 tnoremap("<C-h>", "<C-\\><C-n><C-w><C-h>")
 nnoremap("<C-l>", "<C-w><C-l>")
 
-vnoremap("-", ":lua vim.lsp.buf.format()<cr>")
-nnoremap("-", ":lua vim.lsp.buf.format()<cr>")
 -- vnoremap("-", ":Neoformat<cr>")
 -- nnoremap("-", ":Neoformat<cr>")
 
@@ -119,7 +117,7 @@ vnoremap("<C-Right>", "<C-w><C-l>")
 inoremap("<C-X><C-@>", "<C-A>")
 
 if vim.fn.has("win32") == 1 then
-  nnoremap("<leader>ge", ":vs C:/users/jakub/dotfiles/nvim/init.lua<CR>")
+  nnoremap("<leader>ge", "<cmd>vs C:/users/jakub/dotfiles/nvim/init.lua<CR>")
   -- nnoremap("<leader>e", ':TermExec cmd="make" direction=vertical size=80 go_back=0<cr>')
   -- nnoremap("<leader>r", ":Cargo run<cr>")
   -- nnoremap("<leader>e", ':ToggleTerm cmd="cargo run"<cr>')
@@ -127,15 +125,15 @@ if vim.fn.has("win32") == 1 then
   -- nnoremap("<leader>e", ":TermExec cmd='make' direction='vertical' open=0 size=80<cr>")
   --
 
-  nnoremap("<Leader>r", "<Cmd>TermExec cmd=c direction=vertical size=60<CR>")
+  nnoremap("<leader>r", "<Cmd>TermExec cmd=c direction=vertical size=60<CR>")
   nnoremap("<Leader>q", "<Cmd>ToggleTermToggleAll<CR>")
   nnoremap("<Leader>w", "<Cmd>ToggleTerm direction=vertical size=60<CR>")
   nnoremap("<leader>ma", ":cd C:/dev/flesh-monster<CR>")
   nnoremap("<leader>mb", ":cd C:/dev/BITGUN<CR>")
 else
-  nnoremap("<leader>ge", ":vs ~/.config/nvim/init.lua<CR>")
-  nnoremap("<Leader>r", ":VimuxRunCommand('c <C-R>=expand('%:t')<CR>')<CR>")
-  nnoremap("<Leader>q", "<Cmd>call VimuxRunCommand('c')<CR>")
+  vim.keymap.set("n", "<leader>ge", "<cmd>vs ~/.config/nvim/init.lua<CR>")
+  vim.keymap.set("n", "<leader>r", "<cmd>VimuxRunCommand('c')<CR>")
+  nnoremap("<Leader>q", "<cmd>call VimuxRunCommand('c')<CR>")
   nnoremap("<Leader>w", "<Cmd>call VimuxRunCommand('c')<CR>")
 end
 
@@ -143,12 +141,12 @@ end
 -- Expand %% to directory path of current buffer
 cnoremap("%%", "<C-R>=expand('%:h').'/'<CR>")
 
-nnoremap("<F8>", ":ToggleTerm direction=vertical size=60<cr>")
-inoremap("<F8>", ":ToggleTerm direction=vertical size=60<cr>")
+nnoremap("<F8>", "<cmd>ToggleTerm direction=vertical size=60<cr>")
+inoremap("<F8>", "<cmd>ToggleTerm direction=vertical size=60<cr>")
 tnoremap("<F8>", "<C-\\><C-n>:ToggleTerm<cr>")
 tnoremap("<Esc>", "<C-\\><C-n>:ToggleTerm<cr>")
-nnoremap("<F5>", ":call VimuxRunCommand('make')<cr>")
-nnoremap("<F4>", ":call VimuxRunCommand('make')<cr>")
+nnoremap("<F5>", "<cmd>VimuxRunCommand('make')<cr>")
+nnoremap("<F4>", "<cmd>VimuxRunCommand('make')<cr>")
 -- map("n", <leader>r :call VimuxRunCommand("make ". expand("%h"))<cr>
 -- nnoremap("<leader>t", ":call VimuxRunCommand('make test')<cr>")
 -- nnoremap("<leader>c", ":call VimuxRunCommand('make clean')<cr>")
@@ -161,9 +159,14 @@ inoremap("<c-x><c-j>", "<plug>(fzf-complete-file-ag)")
 -- imap <c-x><c-l> <plug>(fzf-complete-line)
 xnoremap("ga", "<Plug>(EasyAlign)")
 nnoremap("ga", "<Plug>(EasyAlign)")
-nnoremap("<leader>ws", ":%s/ *$//g<cr><c-o><cr>")
+nnoremap("<leader>ws", "<cmd>%s/ *$//g<cr><c-o><cr>")
 nnoremap("Q", "<NOP>")
 nnoremap("<leader><leader>", "<c-^>")
+
+vim.keymap.set('n', '<leader>ps', function()
+  local builtin = require('telescope.builtin')
+  builtin.grep_string({ search = vim.fn.input("Grep > ") })
+end)
 
 nnoremap(
   "<leader>lt",
