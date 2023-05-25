@@ -24,8 +24,8 @@ nnoremap("<leader>f", "<cmd>Files ./<CR>")
 nnoremap("<leader>F", "<cmd>FZF %%<CR>")
 nnoremap("<leader>gt", "<cmd>Tags<cr>")
 nnoremap("<leader>ga", "<cmd>Rg<cr>")
-nnoremap("<leader>gs", "<cmd>Rg <C-r><C-w><cr>")
-nnoremap("<leader>gd", "<cmd>Rg <C-r><C-w><cr>")
+-- nnoremap("<leader>gs", ":Rg <C-r><C-w><cr>")
+-- nnoremap("<leader>gd", ":Rg <C-r><C-w><cr>")
 nnoremap("<leader>b", "<cmd>Buffers<cr>")
 nnoremap("<leader>B", "<cmd>BTags<cr>")
 
@@ -82,7 +82,7 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 -- snoremap("<expr>", "<C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'")
 
 nnoremap("<C-_><C-_>", "<cmd>CommentToggle<CR>")
-vnoremap("<C-_><C-_>", "<cmd>CommentToggle<CR>")
+vnoremap("<C-_><C-_>", ":'<,'>CommentToggle<CR>")
 
 nnoremap("<CR>", "<cmd>nohlsearch<CR>")
 

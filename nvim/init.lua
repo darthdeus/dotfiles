@@ -11,14 +11,17 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
-
 require("lazy").setup({
   -- "wbthomason/packer.nvim",
   "nvim-lua/plenary.nvim",
 
   "folke/neodev.nvim",
-  "folke/neoconf.nvim",
+  {
+    "folke/neoconf.nvim",
+    config = function()
+      require("neoconf").setup({})
+    end
+  },
 
   "b0o/mapx.nvim",
 
@@ -46,27 +49,27 @@ require("lazy").setup({
   "jose-elias-alvarez/null-ls.nvim",
   "Pocco81/auto-save.nvim",
 
-  {
-    "folke/noice.nvim",
-    config = function()
-      require("noice").setup({
-        -- add any options here
-        lsp = {
-          signature = {
-            enabled = false
-          }
-        }
-      })
-    end,
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      -- "rcarriga/nvim-notify",
-    }
-  },
+  -- {
+  --   "folke/noice.nvim",
+  --   config = function()
+  --     require("noice").setup({
+  --       -- add any options here
+  --       lsp = {
+  --         signature = {
+  --           enabled = false
+  --         }
+  --       }
+  --     })
+  --   end,
+  --   dependencies = {
+  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+  --     "MunifTanjim/nui.nvim",
+  --     -- OPTIONAL:
+  --     --   `nvim-notify` is only needed, if you want to use the notification view.
+  --     --   If not available, we use `mini` as the fallback
+  --     -- "rcarriga/nvim-notify",
+  --   }
+  -- },
 
   {
     "folke/trouble.nvim",
@@ -115,7 +118,8 @@ require("lazy").setup({
 
   "itchyny/lightline.vim",
 
-  "sjl/gundo.vim",
+  -- "sjl/gundo.vim",
+  "mbbill/undotree",
 
   "sbdchd/neoformat",
 
