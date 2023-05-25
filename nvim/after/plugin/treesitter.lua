@@ -2,7 +2,9 @@ require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "c", "json", "javascript", "python",
     "rust", "lua", "wgsl", "fennel",
-    "commonlisp", "jsonc", "bash", "markdown", "markdown_inline", "regex"
+    "commonlisp", "jsonc", "bash",
+    "markdown", "markdown_inline",
+    "regex", "html"
   },
   highlight = {
     enable = true,

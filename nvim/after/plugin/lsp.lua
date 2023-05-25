@@ -205,6 +205,7 @@ lspconfig.taplo.setup(opts)
 -- lspconfig.clojure_lsp.setup(opts)
 -- lspconfig.tsserver.setup(opts)
 lspconfig.clangd.setup(opts)
+lspconfig.html.setup(opts)
 lspconfig.jsonls.setup(opts)
 lspconfig.lua_ls.setup({
   capabilities = capabilities,
