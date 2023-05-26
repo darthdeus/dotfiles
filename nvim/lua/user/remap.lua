@@ -24,8 +24,8 @@ nnoremap("<leader>f", "<cmd>Files ./<CR>")
 nnoremap("<leader>F", "<cmd>FZF %%<CR>")
 nnoremap("<leader>gt", "<cmd>Tags<cr>")
 nnoremap("<leader>ga", "<cmd>Rg<cr>")
--- nnoremap("<leader>gs", ":Rg <C-r><C-w><cr>")
--- nnoremap("<leader>gd", ":Rg <C-r><C-w><cr>")
+nnoremap("<leader>gs", ":Rg <C-r><C-w><cr>")
+nnoremap("<leader>gd", ":Rg <C-r><C-w><cr>")
 nnoremap("<leader>b", "<cmd>Buffers<cr>")
 nnoremap("<leader>B", "<cmd>BTags<cr>")
 
@@ -105,8 +105,8 @@ nnoremap("<C-h>", "<C-w><C-h>")
 tnoremap("<C-h>", "<C-\\><C-n><C-w><C-h>")
 nnoremap("<C-l>", "<C-w><C-l>")
 
--- vnoremap("-", ":Neoformat<cr>")
--- nnoremap("-", ":Neoformat<cr>")
+vnoremap("-", "<cmd>Neoformat<cr>")
+nnoremap("-", "<cmd>Neoformat<cr>")
 
 -- Bubble multiple lines
 vnoremap("<C-Up>", "<C-w><C-k>")

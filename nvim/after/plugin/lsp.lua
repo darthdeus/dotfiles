@@ -122,6 +122,15 @@ cmp.setup({
 -- Mappings.
 local map_opts = { noremap = true, silent = true }
 
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(_, bufnr)
+  --Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+  require("lsp_signature").on_attach()
+end
+
 -- See `:help vim.lsp.*` for documentation on any of the below functions
 vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", map_opts)
 vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", map_opts)
@@ -147,17 +156,8 @@ vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", ma
 vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", map_opts)
 vim.api.nvim_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", map_opts)
 vim.api.nvim_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "-", "<cmd>lua vim.lsp.buf.format()<cr>", map_opts)
-vim.api.nvim_set_keymap("v", "-", "<cmd>lua vim.lsp.buf.format()<cr>", map_opts)
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(_, bufnr)
-  --Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-  require("lsp_signature").on_attach()
-end
+-- vim.api.nvim_set_keymap("n", "-", "<cmd>lua vim.lsp.buf.format()<cr>", map_opts)
+-- vim.api.nvim_set_keymap("v", "-", "<cmd>lua vim.lsp.buf.format()<cr>", map_opts)
 
 require("mason").setup()
 require("mason-lspconfig").setup({
@@ -212,7 +212,14 @@ lspconfig.lua_ls.setup({
   on_attach = on_attach,
   settings = {
     Lua = {
+      format = {
+        enable = false,
+      },
       diagnostics = {
+        groupFileStatus = {
+          global = "None",
+
+        },
         globals = { "vim", "use", "nnoremap", "xnoremap", "vnoremap", "onoremap", "inoremap", "cnoremap", "tnoremap" }
       }
     }
