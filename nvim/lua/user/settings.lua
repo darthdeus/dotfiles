@@ -32,7 +32,7 @@ vim.o.winwidth = 75
 
 vim.o.wildmode = "list:longest,list:full"
 vim.o.wildignore =
-"obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,ra_target,.ra_target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build,logs,tags,*.rpyc"
+    "obj,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tmp,project/target,ra_target,.ra_target,target,tags,CMakeFiles,bower_components,dist,_darcs,vcr,app/assets/images,*.dSYM,*.pyc,_build,rel,*.a,priv/static,*.aux,*.dvi,*.xmpi,*.out,*.lot,*.lof,*.blg,*.bbl,*.toc,__pycache__,build,logs,tags,*.rpyc"
 
 -- TODO: default is menu,preview?
 vim.o.completeopt = "menuone,preview,noinsert,noselect"
@@ -67,12 +67,11 @@ vim.o.termguicolors = true
 --   false
 -- )
 
-
 -- vim.cmd "set fillchars+=vert:|"
-vim.cmd("set fillchars+=vert:│")
+vim.cmd "set fillchars+=vert:│"
 -- vim.cmd "colorscheme codesmell_dark"
 -- vim.cmd "color base16-default-dark"
-vim.cmd("color b16")
+vim.cmd "color b16"
 
 -- require("base16-colorscheme").setup {
 --     base00 = "#141414",
@@ -97,7 +96,6 @@ vim.g.VimuxOrientation = "h"
 
 -- nn <leader>v :Vista!!<cr>
 vim.g.vista_default_executive = "nvim_lsp"
-
 
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
