@@ -239,6 +239,8 @@ require("lazy").setup {
 
     "chrisbra/unicode.vim",
 
+    'ryanoasis/vim-devicons',
+
     -- TODO: try https://github.com/L3MON4D3/LuaSnip ?
 }
 
