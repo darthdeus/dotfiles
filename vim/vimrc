@@ -1,5 +1,5 @@
-lua require('plugins')
-lua require('config')
+" lua require('plugins')
+" lua require('config')
 
 " Set updatetime for CursorHold
 " 300ms of no cursor movement to trigger CursorHold
