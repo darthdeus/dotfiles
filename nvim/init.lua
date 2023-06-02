@@ -169,10 +169,62 @@ require("lazy").setup {
 
     "tenxsoydev/size-matters.nvim",
 
-    -- -------------------------------
+    ------------------------------------------------------
+    ------------------------------------------------------
+    ------------------------------------------------------
+
+    --  {
+    --    'VonHeikemen/lsp-zero.nvim',
+    --    branch = 'v2.x',
+    --    dependencies = {
+    --      -- LSP Support
+    --      {'neovim/nvim-lspconfig'},             -- Required
+    --      {                                      -- Optional
+    --        'williamboman/mason.nvim',
+    --        build = function()
+    --          pcall(vim.cmd, 'MasonUpdate')
+    --        end,
+    --      },
+    --      {'williamboman/mason-lspconfig.nvim'}, -- Optional
+    --
+    --      -- Autocompletion
+    --      {'hrsh7th/nvim-cmp'},     -- Required
+    --      {'hrsh7th/cmp-nvim-lsp'}, -- Required
+    --      {'L3MON4D3/LuaSnip'},     -- Required
+    --    }
+    --  },
+
+    ------------------------------------------------------
+    ------------------------------------------------------
+    ------------------------------------------------------
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
+    -- {
+    --     "L3MON4D3/LuaSnip",
+    --     -- follow latest release.
+    --     -- version = "1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    --     -- install jsregexp (optional!).
+    --     build = "make install_jsregexp",
+    -- },
+
+    "hrsh7th/vim-vsnip",
+    "hrsh7th/vim-vsnip-integ",
+
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/nvim-cmp",
+    ------------------------------------------------------
+    ------------------------------------------------------
+    ------------------------------------------------------
+
+    -- "hrsh7th/cmp-vsnip",
+    "hrsh7th/cmp-copilot",
+    "github/copilot.vim",
+
+    -- -------------------------------
 
     -- "nvim-lua/lsp_extensions.nvim",
 
@@ -188,19 +240,6 @@ require("lazy").setup {
     "chrisbra/unicode.vim",
 
     -- TODO: try https://github.com/L3MON4D3/LuaSnip ?
-
-    "github/copilot.vim",
-
-    "hrsh7th/vim-vsnip",
-    "hrsh7th/vim-vsnip-integ",
-
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-vsnip",
-    "hrsh7th/cmp-copilot",
 }
 
 require "user"
