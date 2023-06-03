@@ -146,3 +146,5 @@ else
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
+#
+export HOMEBREW_NO_INSTALL_CLEANUP=1
