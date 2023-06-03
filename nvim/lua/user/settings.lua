@@ -71,7 +71,7 @@ vim.o.termguicolors = true
 vim.cmd "set fillchars+=vert:│"
 -- vim.cmd "colorscheme codesmell_dark"
 -- vim.cmd "color base16-default-dark"
-vim.cmd "color b16"
+-- vim.cmd "color b16"
 
 -- require("base16-colorscheme").setup {
 --     base00 = "#141414",
