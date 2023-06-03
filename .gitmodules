@@ -31,3 +31,6 @@
 [submodule "config"]
 	path = config
 	url = git@github.com:darthdeus/config.git
+[submodule "third-party/antidote"]
+	path = third-party/antidote
+	url = https://github.com/mattmc3/antidote.git
