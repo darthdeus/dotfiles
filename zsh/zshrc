@@ -4,8 +4,11 @@ if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
 fi
 
 export DOT_BASE_DIR="$HOME/.dotfiles"
-export ZPLUG_HOME="$HOME/.dotfiles/third-party/zplug"
-source "$ZPLUG_HOME/init.zsh"
+# export ZPLUG_HOME="$HOME/.dotfiles/third-party/zplug"
+# source "$ZPLUG_HOME/init.zsh"
+
+source "$DOT_BASE_DIR/third-party/antidote/antidote.zsh"
+antidote load "$DOT_BASE_DIR/zsh/plugins.txt"
 
 fpath=(~/.zsh/funcs "${fpath[@]}")
 
@@ -68,17 +71,17 @@ compinit -C
 # color theme
 source "$ZSH/prompt.zsh"
 
-if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
-
-if [ -f /usr/share/doc/git-extras/git-extras-completion.zsh ]; then
-  source /usr/share/doc/git-extras/git-extras-completion.zsh
-fi
-
-if [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
+# if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+#   source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# fi
+#
+# if [ -f /usr/share/doc/git-extras/git-extras-completion.zsh ]; then
+#   source /usr/share/doc/git-extras/git-extras-completion.zsh
+# fi
+#
+# if [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+#   source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# fi
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
