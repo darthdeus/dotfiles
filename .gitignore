@@ -11,3 +11,5 @@ vim/sessions
 mutt/accounts
 
 nvim/plugin
+
+zsh/plugins.zsh
