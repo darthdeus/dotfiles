@@ -4,7 +4,7 @@ require("nvim-treesitter.configs").setup({
     "rust", "lua", "wgsl", "fennel",
     "commonlisp", "jsonc", "bash",
     "markdown", "markdown_inline",
-    "regex", "html"
+    "regex", "html", "clojure"
   },
   highlight = {
     enable = true,
