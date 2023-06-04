@@ -224,6 +224,8 @@ require("lazy").setup {
     "hrsh7th/cmp-copilot",
     "github/copilot.vim",
 
+    "Olical/conjure",
+    "PaterJason/cmp-conjure",
     -- -------------------------------
 
     -- "nvim-lua/lsp_extensions.nvim",

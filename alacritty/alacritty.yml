@@ -10,6 +10,7 @@ env:
 font:
   normal:
     family: "Fantasque Sans Mono"
+    # family: "M PLUS 1 Code"
     style: Regular
   offset:
     x: -1
