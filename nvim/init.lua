@@ -224,8 +224,8 @@ require("lazy").setup {
     "hrsh7th/cmp-copilot",
     "github/copilot.vim",
 
-    "Olical/conjure",
-    "PaterJason/cmp-conjure",
+    -- "Olical/conjure",
+    -- "PaterJason/cmp-conjure",
     -- -------------------------------
 
     -- "nvim-lua/lsp_extensions.nvim",
@@ -241,7 +241,7 @@ require("lazy").setup {
 
     "chrisbra/unicode.vim",
 
-    'ryanoasis/vim-devicons',
+    -- 'ryanoasis/vim-devicons',
 
     -- TODO: try https://github.com/L3MON4D3/LuaSnip ?
 }
@@ -284,6 +284,7 @@ autocmd!
 autocmd BufEnter .zshrc.dot set ft=zsh
 autocmd BufEnter *.clj,*.cljs :lua vim.api.nvim_buf_set_option(0, "commentstring", ";; %s")
 autocmd BufEnter *.lua setlocal shiftwidth=4
+autocmd BufEnter *.rbl set ft=rbl
 autocmd BufEnter *.jai,*.wgsl,*.glsl,*.vert,*.frag :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
 autocmd BufFilePost *.jai,*.wgsl,*.glsl,*.vert,*.frag :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
 augroup END
