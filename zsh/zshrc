@@ -109,7 +109,7 @@ fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
 
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="./node_modules/.bin:$HOME/.cargo/bin:$PATH"
 
 if type rustc &>/dev/null; then
   export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
@@ -127,21 +127,5 @@ if [[ `uname` == "Darwin" ]]; then
   [ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba init' !!
-export MAMBA_EXE="/home/darth/.local/bin/micromamba";
-export MAMBA_ROOT_PREFIX="/home/darth/micromamba";
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__mamba_setup"
-else
-    if [ -f "/home/darth/micromamba/etc/profile.d/micromamba.sh" ]; then
-        . "/home/darth/micromamba/etc/profile.d/micromamba.sh"
-    else
-        export  PATH="/home/darth/micromamba/bin:$PATH"  # extra space after export prevents interference from conda init
-    fi
-fi
-unset __mamba_setup
-# <<< mamba initialize <<<
-
+export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
