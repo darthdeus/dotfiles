@@ -1,4 +1,4 @@
-local parsers = require("nvim-treesitter.parsers")
+local parsers = require "nvim-treesitter.parsers"
 local parser_config = parsers.get_parser_configs()
 
 parser_config.rebel = {
