@@ -11,6 +11,7 @@ font:
   normal:
     family: "Fantasque Sans Mono"
     # family: "M PLUS 1 Code"
+    # family: "Iosevka"
     style: Regular
   offset:
     x: -1
