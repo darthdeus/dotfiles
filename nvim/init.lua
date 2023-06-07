@@ -1,6 +1,5 @@
-vim.g.conjure = {
-	filetypes = { "clojure", "fennel", "janet", "hy", "julia", "racket", "scheme", "lua", "lisp", "python" },
-}
+vim.g["conjure#filetypes"] =
+	{ "clojure", "fennel", "janet", "hy", "julia", "racket", "scheme", "lua", "lisp", "python" }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -228,9 +227,9 @@ require("lazy").setup({
 	"hrsh7th/cmp-copilot",
 	"github/copilot.vim",
 
-    "Olical/conjure",
-    "PaterJason/cmp-conjure",
-    -- -------------------------------
+	"Olical/conjure",
+	"PaterJason/cmp-conjure",
+	-- -------------------------------
 
 	-- "nvim-lua/lsp_extensions.nvim",
 
@@ -245,7 +244,7 @@ require("lazy").setup({
 
 	"chrisbra/unicode.vim",
 
-    -- 'ryanoasis/vim-devicons',
+	-- 'ryanoasis/vim-devicons',
 
 	-- TODO: try https://github.com/L3MON4D3/LuaSnip ?
 })
@@ -257,6 +256,13 @@ require("user.reload")
 
 require("toggleterm").setup()
 -- require("base16-colorscheme").setup({ })
+
+local dap = require("dap")
+dap.adapters.codelldb = {
+	type = "server",
+	host = "127.0.0.1",
+	port = 13000, -- 💀 Use the port printed out or specified with `--port`
+}
 
 -- vim.cmd('colorscheme base16-gruvbox-dark-soft')
 -- vim.cmd('colorscheme base16-default-dark')
