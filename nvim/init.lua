@@ -1,294 +1,303 @@
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+vim.g.conjure = {
+	filetypes = { "clojure", "fennel", "janet", "hy", "julia", "racket", "scheme", "lua", "lisp", "python" },
+}
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system {
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    }
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup {
-    -- "wbthomason/packer.nvim",
-    "nvim-lua/plenary.nvim",
+require("lazy").setup({
+	-- "wbthomason/packer.nvim",
+	"nvim-lua/plenary.nvim",
 
-    "folke/neodev.nvim",
-    {
-        "folke/neoconf.nvim",
-        config = function()
-            require("neoconf").setup {}
-        end,
-    },
+	"folke/neodev.nvim",
+	{
+		"folke/neoconf.nvim",
+		config = function()
+			require("neoconf").setup({})
+		end,
+	},
 
-    "b0o/mapx.nvim",
+	"b0o/mapx.nvim",
 
-    "rmagatti/goto-preview",
+	"rmagatti/goto-preview",
 
-    {
-        "folke/which-key.nvim",
-        config = function()
-            require("which-key").setup {
-                triggers = { "<leader>" },
-            }
-        end,
-    },
+	{
+		"folke/which-key.nvim",
+		config = function()
+			require("which-key").setup({
+				triggers = { "<leader>" },
+			})
+		end,
+	},
 
-    "nvim-lua/popup.nvim",
-    "nvim-telescope/telescope.nvim",
+	"nvim-lua/popup.nvim",
+	"nvim-telescope/telescope.nvim",
 
-    "junegunn/fzf",
-    "junegunn/fzf.vim",
+	"junegunn/fzf",
+	"junegunn/fzf.vim",
 
-    "whatsthatsmell/codesmell_dark.vim",
-    "RRethy/nvim-base16",
+	"whatsthatsmell/codesmell_dark.vim",
+	"RRethy/nvim-base16",
 
-    "jansedivy/jai.vim",
-    "jose-elias-alvarez/null-ls.nvim",
-    "Pocco81/auto-save.nvim",
+	"jansedivy/jai.vim",
+	"jose-elias-alvarez/null-ls.nvim",
+	"Pocco81/auto-save.nvim",
 
-    -- {
-    --   "folke/noice.nvim",
-    --   config = function()
-    --     require("noice").setup({
-    --       -- add any options here
-    --       lsp = {
-    --         signature = {
-    --           enabled = false
-    --         }
-    --       }
-    --     })
-    --   end,
-    --   dependencies = {
-    --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    --     "MunifTanjim/nui.nvim",
-    --     -- OPTIONAL:
-    --     --   `nvim-notify` is only needed, if you want to use the notification view.
-    --     --   If not available, we use `mini` as the fallback
-    --     -- "rcarriga/nvim-notify",
-    --   }
-    -- },
+	-- {
+	--   "folke/noice.nvim",
+	--   config = function()
+	--     require("noice").setup({
+	--       -- add any options here
+	--       lsp = {
+	--         signature = {
+	--           enabled = false
+	--         }
+	--       }
+	--     })
+	--   end,
+	--   dependencies = {
+	--     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+	--     "MunifTanjim/nui.nvim",
+	--     -- OPTIONAL:
+	--     --   `nvim-notify` is only needed, if you want to use the notification view.
+	--     --   If not available, we use `mini` as the fallback
+	--     -- "rcarriga/nvim-notify",
+	--   }
+	-- },
 
-    {
-        "folke/trouble.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("trouble").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-        end,
-    },
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("trouble").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	},
 
-    "jaawerth/fennel.vim",
-    "RRethy/vim-illuminate",
+	"jaawerth/fennel.vim",
+	"RRethy/vim-illuminate",
 
-    "akinsho/toggleterm.nvim",
+	"akinsho/toggleterm.nvim",
 
-    "tpope/vim-fugitive",
-    "tpope/vim-sensible",
-    "tpope/vim-eunuch",
-    "tpope/vim-surround",
-    "tpope/vim-repeat",
-    "tpope/vim-rsi",
-    "EdenEast/nightfox.nvim",
+	"tpope/vim-fugitive",
+	"tpope/vim-sensible",
+	"tpope/vim-eunuch",
+	"tpope/vim-surround",
+	"tpope/vim-repeat",
+	"tpope/vim-rsi",
+	"EdenEast/nightfox.nvim",
 
-    "elihunter173/dirbuf.nvim",
+	"elihunter173/dirbuf.nvim",
 
-    "tikhomirov/vim-glsl",
+	"tikhomirov/vim-glsl",
 
-    "kevinhwang91/nvim-bqf",
+	"kevinhwang91/nvim-bqf",
 
-    "editorconfig/editorconfig-vim",
+	"editorconfig/editorconfig-vim",
 
-    -- "ggandor/leap.nvim",
-    -- require("leap").add_default_mappings()
+	-- "ggandor/leap.nvim",
+	-- require("leap").add_default_mappings()
 
-    "mileszs/ack.vim",
-    "benmills/vimux",
+	"mileszs/ack.vim",
+	"benmills/vimux",
 
-    "junegunn/vim-easy-align",
+	"junegunn/vim-easy-align",
 
-    "terrortylor/nvim-comment",
+	"terrortylor/nvim-comment",
 
-    "jiangmiao/auto-pairs",
+	"jiangmiao/auto-pairs",
 
-    "itchyny/lightline.vim",
+	"itchyny/lightline.vim",
 
-    -- "sjl/gundo.vim",
-    "mbbill/undotree",
+	-- "sjl/gundo.vim",
+	"mbbill/undotree",
 
-    "sbdchd/neoformat",
+	"sbdchd/neoformat",
 
-    "rust-lang/rust.vim",
-    "simrat39/rust-tools.nvim",
+	"rust-lang/rust.vim",
+	"simrat39/rust-tools.nvim",
 
-    "chrisbra/vim-zsh",
-    "habamax/vim-godot",
-    "ron-rs/ron.vim",
-    "gutenye/json5.vim",
-    "cespare/vim-toml",
+	"chrisbra/vim-zsh",
+	"habamax/vim-godot",
+	"ron-rs/ron.vim",
+	"gutenye/json5.vim",
+	"cespare/vim-toml",
 
-    "othree/html5.vim",
-    "pangloss/vim-javascript",
-    "evanleck/vim-svelte",
+	"othree/html5.vim",
+	"pangloss/vim-javascript",
+	"evanleck/vim-svelte",
 
-    "mattn/emmet-vim",
-    "chaimleib/vim-renpy",
+	"mattn/emmet-vim",
+	"chaimleib/vim-renpy",
 
-    "DingDean/wgsl.vim",
+	"DingDean/wgsl.vim",
 
-    "preservim/nerdtree",
+	"preservim/nerdtree",
 
-    -- if vim.fn.has("win32") ~= 1 then
-    -- use("nvim-treesitter/playground")
+	-- if vim.fn.has("win32") ~= 1 then
+	-- use("nvim-treesitter/playground")
 
-    -- { "nvim-treesitter/nvim-treesitter", { build = ":TSUpdate", }},
-    -- {
-    --   "nvim-treesitter/nvim-treesitter",
-    --   version = false, -- last release is way too old and doesn't work on Windows
-    --   build = ":TSUpdate",
-    --   event = { "BufReadPost", "BufNewFile" },
-    -- },
+	-- { "nvim-treesitter/nvim-treesitter", { build = ":TSUpdate", }},
+	-- {
+	--   "nvim-treesitter/nvim-treesitter",
+	--   version = false, -- last release is way too old and doesn't work on Windows
+	--   build = ":TSUpdate",
+	--   event = { "BufReadPost", "BufNewFile" },
+	-- },
 
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        config = function()
-            require("treesitter-context").setup {}
-        end,
-    },
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		config = function()
+			require("treesitter-context").setup({})
+		end,
+	},
 
-    "folke/tokyonight.nvim",
+	"folke/tokyonight.nvim",
 
-    "nvim-treesitter/playground",
-    -- end
+	"nvim-treesitter/playground",
+	-- end
 
-    "tenxsoydev/size-matters.nvim",
+	"tenxsoydev/size-matters.nvim",
 
-    ------------------------------------------------------
-    ------------------------------------------------------
-    ------------------------------------------------------
+	------------------------------------------------------
+	------------------------------------------------------
+	------------------------------------------------------
 
-    --  {
-    --    'VonHeikemen/lsp-zero.nvim',
-    --    branch = 'v2.x',
-    --    dependencies = {
-    --      -- LSP Support
-    --      {'neovim/nvim-lspconfig'},             -- Required
-    --      {                                      -- Optional
-    --        'williamboman/mason.nvim',
-    --        build = function()
-    --          pcall(vim.cmd, 'MasonUpdate')
-    --        end,
-    --      },
-    --      {'williamboman/mason-lspconfig.nvim'}, -- Optional
-    --
-    --      -- Autocompletion
-    --      {'hrsh7th/nvim-cmp'},     -- Required
-    --      {'hrsh7th/cmp-nvim-lsp'}, -- Required
-    --      {'L3MON4D3/LuaSnip'},     -- Required
-    --    }
-    --  },
+	--  {
+	--    'VonHeikemen/lsp-zero.nvim',
+	--    branch = 'v2.x',
+	--    dependencies = {
+	--      -- LSP Support
+	--      {'neovim/nvim-lspconfig'},             -- Required
+	--      {                                      -- Optional
+	--        'williamboman/mason.nvim',
+	--        build = function()
+	--          pcall(vim.cmd, 'MasonUpdate')
+	--        end,
+	--      },
+	--      {'williamboman/mason-lspconfig.nvim'}, -- Optional
+	--
+	--      -- Autocompletion
+	--      {'hrsh7th/nvim-cmp'},     -- Required
+	--      {'hrsh7th/cmp-nvim-lsp'}, -- Required
+	--      {'L3MON4D3/LuaSnip'},     -- Required
+	--    }
+	--  },
 
-    ------------------------------------------------------
-    ------------------------------------------------------
-    ------------------------------------------------------
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-    {
-        "L3MON4D3/LuaSnip",
-        -- follow latest release.
-        -- version = "1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!).
-        build = "make install_jsregexp",
-    },
+	------------------------------------------------------
+	------------------------------------------------------
+	------------------------------------------------------
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	"neovim/nvim-lspconfig",
+	{
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		-- version = "1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp",
+	},
 
-    -- "hrsh7th/vim-vsnip",
-    -- "hrsh7th/vim-vsnip-integ",
+	-- "hrsh7th/vim-vsnip",
+	-- "hrsh7th/vim-vsnip-integ",
 
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/nvim-cmp",
-    ------------------------------------------------------
-    ------------------------------------------------------
-    ------------------------------------------------------
+	"hrsh7th/cmp-nvim-lsp",
+	"hrsh7th/cmp-buffer",
+	"hrsh7th/cmp-path",
+	"hrsh7th/cmp-cmdline",
+	"hrsh7th/nvim-cmp",
+	------------------------------------------------------
+	------------------------------------------------------
+	------------------------------------------------------
 
-    -- "hrsh7th/cmp-vsnip",
-    "hrsh7th/cmp-copilot",
-    "github/copilot.vim",
+	-- "hrsh7th/cmp-vsnip",
+	"hrsh7th/cmp-copilot",
+	"github/copilot.vim",
 
-    -- "Olical/conjure",
-    -- "PaterJason/cmp-conjure",
+    "Olical/conjure",
+    "PaterJason/cmp-conjure",
     -- -------------------------------
 
-    -- "nvim-lua/lsp_extensions.nvim",
+	-- "nvim-lua/lsp_extensions.nvim",
 
-    "delphinus/cmp-ctags",
+	"delphinus/cmp-ctags",
 
-    "ray-x/lsp_signature.nvim",
+	"ray-x/lsp_signature.nvim",
 
-    "mfussenegger/nvim-dap",
-    -- use "zhimsel/vim-stay"
+	"mfussenegger/nvim-dap",
+	-- use "zhimsel/vim-stay"
 
-    -- --------------------------------
+	-- --------------------------------
 
-    "chrisbra/unicode.vim",
+	"chrisbra/unicode.vim",
 
     -- 'ryanoasis/vim-devicons',
 
-    -- TODO: try https://github.com/L3MON4D3/LuaSnip ?
-}
+	-- TODO: try https://github.com/L3MON4D3/LuaSnip ?
+})
 
-require "user"
-require "user.settings"
-require "user.remap"
-require "user.reload"
+require("user")
+require("user.settings")
+require("user.remap")
+require("user.reload")
 
 require("toggleterm").setup()
+-- require("base16-colorscheme").setup({ })
 
-require("base16-colorscheme").setup {
-    -- base00 = "#16161D",
-    -- base01 = "#2c313c",
-    -- base02 = "#3e4451",
-    -- base03 = "#6c7891",
-    -- base04 = "#565c64",
-    -- base05 = "#abb2bf",
-    -- base06 = "#9a9bb3",
-    -- base07 = "#c5c8e6",
-    -- base08 = "#e06c75",
-    -- base09 = "#d19a66",
-    -- base0A = "#e5c07b",
-    -- base0B = "#98c379",
-    -- base0C = "#56b6c2",
-    -- base0D = "#0184bc",
-    -- base0E = "#c678dd",
-    -- base0F = "#a06949",
+-- vim.cmd('colorscheme base16-gruvbox-dark-soft')
+-- vim.cmd('colorscheme base16-default-dark')
+vim.cmd("colorscheme b16")
 
-    base00 = "#111111",
-    base01 = "#282828",
-    base02 = "#383838",
-    base03 = "#585858",
-    base04 = "#b8b8b8",
-    base05 = "#d8d8d8",
-    base06 = "#e8e8e8",
-    base07 = "#f8f8f8",
-    base08 = "#ab4642",
-    base09 = "#dc9656",
-    base0A = "#f7ca88",
-    -- base0B = "#a1b56c",
-    base0B = "#818cc5",
-    base0C = "#86c1b9",
-    base0D = "#7cafc2",
-    base0E = "#ba8baf",
-    base0F = "#a16946",
-}
+-- require("base16-colorscheme").setup {
+--     base00 = "#16161D",
+--     base01 = "#2c313c",
+--     base02 = "#3e4451",
+--     base03 = "#6c7891",
+--     base04 = "#565c64",
+--     base05 = "#abb2bf",
+--     base06 = "#9a9bb3",
+--     base07 = "#c5c8e6",
+--     base08 = "#e06c75",
+--     base09 = "#d19a66",
+--     base0A = "#e5c07b",
+--     base0B = "#98c379",
+--     base0C = "#56b6c2",
+--     base0D = "#0184bc",
+--     base0E = "#c678dd",
+--     base0F = "#a06949",
+--
+--     -- base00 = "#111111",
+--     -- base01 = "#282828",
+--     -- base02 = "#383838",
+--     -- base03 = "#585858",
+--     -- base04 = "#b8b8b8",
+--     -- base05 = "#d8d8d8",
+--     -- base06 = "#e8e8e8",
+--     -- base07 = "#f8f8f8",
+--     -- base08 = "#ab4642",
+--     -- base09 = "#dc9656",
+--     -- base0A = "#f7ca88",
+--     -- -- base0B = "#a1b56c",
+--     -- base0B = "#818cc5",
+--     -- base0C = "#86c1b9",
+--     -- base0D = "#7cafc2",
+--     -- base0E = "#ba8baf",
+--     -- base0F = "#a16946",
+-- }
 
 -- TODO: do this with nvim_utils?
 -- https://github.com/norcalli/nvim_utils
@@ -297,7 +306,7 @@ require("base16-colorscheme").setup {
 -- https://github.com/neovim/neovim/pull/14661
 
 vim.api.nvim_exec(
-    [[
+	[[
 " autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 
 " Remember last location in file
@@ -326,20 +335,20 @@ autocmd BufEnter *.jai,*.wgsl,*.glsl,*.vert,*.frag :lua vim.api.nvim_buf_set_opt
 autocmd BufFilePost *.jai,*.wgsl,*.glsl,*.vert,*.frag :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
 augroup END
 ]],
-    false
+	false
 )
 
-require("nvim_comment").setup {
-    create_mappings = false,
-}
+require("nvim_comment").setup({
+	create_mappings = false,
+})
 
 if vim.g.neovide or vim.g.goneovim or vim.g.nvui or vim.g.gnvim then
-    require("size-matters").setup {
-        default_mappings = true,
-        step_size = 1, -- font resize step size
-        notifications = false, -- default value is true if notify is installed else false
-        reset_font = vim.api.nvim_get_option "guifont", -- Font loaded when using the reset cmd / shortcut
-    }
+	require("size-matters").setup({
+		default_mappings = true,
+		step_size = 1, -- font resize step size
+		notifications = false, -- default value is true if notify is installed else false
+		reset_font = vim.api.nvim_get_option("guifont"), -- Font loaded when using the reset cmd / shortcut
+	})
 end
 
 vim.g.neoformat_try_node_exe = 1
@@ -348,9 +357,9 @@ vim.g.neoformat_only_msg_on_error = 1
 -- vim.o.guifont = "Fantasque Sans Mono:8"
 vim.g.neovide_cursor_animation_length = 0.00
 
-vim.cmd [[
+vim.cmd([[
     let guifont="Arial:h12"
-]]
+]])
 
 -----------------------------------
 -----------------------------------
