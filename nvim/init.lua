@@ -1,6 +1,3 @@
-vim.g["conjure#filetypes"] =
-	{ "clojure", "fennel", "janet", "hy", "julia", "racket", "scheme", "lua", "lisp", "python" }
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -227,8 +224,8 @@ require("lazy").setup({
 	"hrsh7th/cmp-copilot",
 	"github/copilot.vim",
 
-	"Olical/conjure",
-	"PaterJason/cmp-conjure",
+	-- "Olical/conjure",
+	-- "PaterJason/cmp-conjure",
 	-- -------------------------------
 
 	-- "nvim-lua/lsp_extensions.nvim",
@@ -248,6 +245,9 @@ require("lazy").setup({
 
 	-- TODO: try https://github.com/L3MON4D3/LuaSnip ?
 })
+
+-- vim.g["conjure#filetypes"] =
+-- 	{ "clojure", "fennel", "janet", "hy", "julia", "racket", "scheme", "lua", "lisp", "python" }
 
 require("user")
 require("user.settings")
