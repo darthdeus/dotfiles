@@ -168,40 +168,40 @@ require("lazy").setup({
 	------------------------------------------------------
 	------------------------------------------------------
 
-	--  {
-	--    'VonHeikemen/lsp-zero.nvim',
-	--    branch = 'v2.x',
-	--    dependencies = {
-	--      -- LSP Support
-	--      {'neovim/nvim-lspconfig'},             -- Required
-	--      {                                      -- Optional
-	--        'williamboman/mason.nvim',
-	--        build = function()
-	--          pcall(vim.cmd, 'MasonUpdate')
-	--        end,
-	--      },
-	--      {'williamboman/mason-lspconfig.nvim'}, -- Optional
-	--
-	--      -- Autocompletion
-	--      {'hrsh7th/nvim-cmp'},     -- Required
-	--      {'hrsh7th/cmp-nvim-lsp'}, -- Required
-	--      {'L3MON4D3/LuaSnip'},     -- Required
-	--    }
-	--  },
+	{
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v2.x",
+		dependencies = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" }, -- Required
+			{ -- Optional
+				"williamboman/mason.nvim",
+				build = function()
+					pcall(vim.cmd, "MasonUpdate")
+				end,
+			},
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" }, -- Required
+			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+			{ "L3MON4D3/LuaSnip" }, -- Required
+		},
+	},
 
 	------------------------------------------------------
 	------------------------------------------------------
 	------------------------------------------------------
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
-	"neovim/nvim-lspconfig",
-	{
-		"L3MON4D3/LuaSnip",
-		-- follow latest release.
-		-- version = "1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-		-- install jsregexp (optional!).
-		build = "make install_jsregexp",
-	},
+	-- "williamboman/mason.nvim",
+	-- "williamboman/mason-lspconfig.nvim",
+	-- "neovim/nvim-lspconfig",
+	-- {
+	-- 	"L3MON4D3/LuaSnip",
+	-- 	-- follow latest release.
+	-- 	-- version = "1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+	-- 	-- install jsregexp (optional!).
+	-- 	build = "make install_jsregexp",
+	-- },
 
 	-- "hrsh7th/vim-vsnip",
 	-- "hrsh7th/vim-vsnip-integ",

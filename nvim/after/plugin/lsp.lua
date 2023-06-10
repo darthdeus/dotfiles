@@ -1,3 +1,66 @@
+local lsp = require("lsp-zero").preset {}
+
+lsp.on_attach(function(_, bufnr)
+    lsp.default_keymaps { buffer = bufnr }
+end)
+
+require("mason-lspconfig").setup {
+    ensure_installed = {
+        "rust_analyzer",
+        "taplo",
+        "clangd",
+        "lua_ls",
+        "jsonls",
+    },
+}
+
+local lspconfig = require "lspconfig"
+
+lsp.skip_server_setup { "rust_analyzer" }
+
+lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+
+local opts = {}
+
+lspconfig.taplo.setup(opts)
+lspconfig.clangd.setup(opts)
+lspconfig.html.setup(opts)
+lspconfig.jsonls.setup(opts)
+
+lsp.setup()
+
+local rust_tools = require "rust-tools"
+
+-- local ra_opts = {
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+-- }
+
+rust_tools.setup {
+    server = {
+        on_attach = function(_, bufnr)
+            vim.keymap.set("n", "<leader>ca", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+        end,
+        settings = {
+            ["rust-analyzer"] = {
+                -- checkOnSave = {
+                --   command = "clippy",
+                --   overrideCommand = { "killall", "nvim" }
+                -- },
+                cargo = {
+                    -- extraEnv = { IN_RUST_ANALYZER = "1" },
+                    extraEnv = { CARGO_TARGET_DIR = ".ra_target" },
+                },
+                diagnostics = {
+                    -- TODO: check include_dir
+                    disabled = { "inactive-code", "unresolved-proc-macro" },
+                },
+                rustfmt = {},
+            },
+        },
+    },
+}
+
 local has_words_before = function()
     local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
@@ -48,8 +111,8 @@ cmp.setup {
         ["<S-Tab>"] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.select_prev_item()
-            -- elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-            --     feedkey("<Plug>(vsnip-jump-prev)", "")
+                -- elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+                --     feedkey("<Plug>(vsnip-jump-prev)", "")
             end
         end, {
             "i",
@@ -62,7 +125,7 @@ cmp.setup {
         { name = "copilot" },
         { name = "conjure" },
         { name = "ctags" },
-        { name = "vsnip" },
+        { name = "luasnip" },
     }, {
         { name = "buffer" },
     }),
@@ -115,163 +178,124 @@ cmp.setup {
     },
 }
 
--- Mappings.
-local map_opts = { noremap = true, silent = true }
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(_, bufnr)
-    --Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-    require("lsp_signature").on_attach()
-end
-
--- See `:help vim.lsp.*` for documentation on any of the below functions
-vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "<C-m>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", map_opts)
-vim.api.nvim_set_keymap(
-    "n",
-    "<space>wl",
-    "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
-    map_opts
-)
-vim.api.nvim_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "<f2>", "<cmd>lua vim.lsp.buf.rename()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "L", "<cmd>lua vim.lsp.buf.code_action()<CR>", map_opts)
-vim.api.nvim_set_keymap("v", "<C-w>", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", map_opts)
-vim.api.nvim_set_keymap("v", "L", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", map_opts)
-vim.api.nvim_set_keymap("v", "<C-w>", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "[e", "<cmd>lua vim.diagnostic.goto_prev()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "]e", "<cmd>lua vim.diagnostic.goto_next()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", map_opts)
--- vim.api.nvim_set_keymap("n", "-", "<cmd>lua vim.lsp.buf.format()<cr>", map_opts)
--- vim.api.nvim_set_keymap("v", "-", "<cmd>lua vim.lsp.buf.format()<cr>", map_opts)
-
-require("mason").setup()
-require("mason-lspconfig").setup {
-    ensure_installed = {
-        "rust_analyzer",
-        "taplo",
-        "clangd",
-        "lua_ls",
-        "jsonls",
-    },
-}
-
--- -- Setup lspconfig.
-local lspconfig = require "lspconfig"
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-local opts = {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
-
-local ra_opts = {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    settings = {
-        ["rust-analyzer"] = {
-            -- checkOnSave = {
-            --   command = "clippy",
-            --   overrideCommand = { "killall", "nvim" }
-            -- },
-            cargo = {
-                -- extraEnv = { IN_RUST_ANALYZER = "1" },
-                extraEnv = { CARGO_TARGET_DIR = ".ra_target" },
-            },
-            diagnostics = {
-                -- TODO: check include_dir
-                disabled = { "inactive-code", "unresolved-proc-macro" },
-            },
-            rustfmt = {},
-        },
-    },
-}
-
-require("rust-tools").setup { server = ra_opts }
-
-lspconfig.taplo.setup(opts)
--- lspconfig.clojure_lsp.setup(opts)
--- lspconfig.tsserver.setup(opts)
-lspconfig.clangd.setup(opts)
-lspconfig.html.setup(opts)
-lspconfig.jsonls.setup(opts)
-lspconfig.lua_ls.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    settings = {
-        Lua = {
-            format = {
-                enable = false,
-            },
-            diagnostics = {
-                groupFileStatus = {
-                    global = "None",
-                },
-                globals = {
-                    "vim",
-                    "use",
-                    "nnoremap",
-                    "xnoremap",
-                    "vnoremap",
-                    "onoremap",
-                    "inoremap",
-                    "cnoremap",
-                    "tnoremap",
-                },
-            },
-        },
-    },
-}
-
--- lspconfig.zls.setup(opts)
--- lspconfig.nimls.setup(opts)
--- lspconfig.jai_lsp.setup(opts)
-
--- lspconfig.lua_ls.setup({
---   on_attach = on_attach,
---   capabilities = capabilities,
---   settings = {
---     Lua = {
---       diagnostics = {
---         globals = {
---           "vim",
---           "use",
---           "use_rocks",
---           "nnoremap",
---           "nmap",
---           "inoremap",
---           "imap",
---           "map",
---           "vnoremap",
---           "vmap",
---           "tnoremap",
---           "tmap",
---           "cnoremap",
---           "cmap",
---           "snoremap",
---           "smap",
---           "onoremap",
---           "omap",
---           "xnoremap",
---           "xmap",
---         },
---       },
+-- -- Mappings.
+-- local map_opts = { noremap = true, silent = true }
+--
+-- -- Use an on_attach function to only map the following keys
+-- -- after the language server attaches to the current buffer
+-- local on_attach = function(_, bufnr)
+--     --Enable completion triggered by <c-x><c-o>
+--     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+--
+--     require("lsp_signature").on_attach()
+-- end
+--
+-- -- See `:help vim.lsp.*` for documentation on any of the below functions
+-- vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "<C-m>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", map_opts)
+-- vim.api.nvim_set_keymap(
+--     "n",
+--     "<space>wl",
+--     "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
+--     map_opts
+-- )
+-- vim.api.nvim_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "<f2>", "<cmd>lua vim.lsp.buf.rename()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "L", "<cmd>lua vim.lsp.buf.code_action()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("v", "<C-w>", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("v", "L", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("v", "<C-w>", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "[e", "<cmd>lua vim.diagnostic.goto_prev()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "]e", "<cmd>lua vim.diagnostic.goto_next()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", map_opts)
+-- -- vim.api.nvim_set_keymap("n", "-", "<cmd>lua vim.lsp.buf.format()<cr>", map_opts)
+-- -- vim.api.nvim_set_keymap("v", "-", "<cmd>lua vim.lsp.buf.format()<cr>", map_opts)
+--
+-- require("mason").setup()
+-- require("mason-lspconfig").setup {
+--     ensure_installed = {
+--         "rust_analyzer",
+--         "taplo",
+--         "clangd",
+--         "lua_ls",
+--         "jsonls",
 --     },
---   },
--- })
-
--- require("rust-tools").inlay_hints.enable()
+-- }
+--
+-- -- -- Setup lspconfig.
+-- local lspconfig = require "lspconfig"
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+--
+-- local opts = {
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+-- }
+--
+-- local ra_opts = {
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+--     settings = {
+--         ["rust-analyzer"] = {
+--             -- checkOnSave = {
+--             --   command = "clippy",
+--             --   overrideCommand = { "killall", "nvim" }
+--             -- },
+--             cargo = {
+--                 -- extraEnv = { IN_RUST_ANALYZER = "1" },
+--                 extraEnv = { CARGO_TARGET_DIR = ".ra_target" },
+--             },
+--             diagnostics = {
+--                 -- TODO: check include_dir
+--                 disabled = { "inactive-code", "unresolved-proc-macro" },
+--             },
+--             rustfmt = {},
+--         },
+--     },
+-- }
+--
+-- require("rust-tools").setup { server = ra_opts }
+--
+-- lspconfig.taplo.setup(opts)
+-- lspconfig.clangd.setup(opts)
+-- lspconfig.html.setup(opts)
+-- lspconfig.jsonls.setup(opts)
+-- lspconfig.lua_ls.setup {
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+--     settings = {
+--         Lua = {
+--             format = {
+--                 enable = false,
+--             },
+--             diagnostics = {
+--                 groupFileStatus = {
+--                     global = "None",
+--                 },
+--                 globals = {
+--                     "vim",
+--                     "use",
+--                     "nnoremap",
+--                     "xnoremap",
+--                     "vnoremap",
+--                     "onoremap",
+--                     "inoremap",
+--                     "cnoremap",
+--                     "tnoremap",
+--                 },
+--             },
+--         },
+--     },
+-- }
+--
+-- -- require("rust-tools").inlay_hints.enable()
