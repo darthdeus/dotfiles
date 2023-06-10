@@ -35,12 +35,6 @@ zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-# export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore "*.png" --ignore "*.jpg" --ignore "*.mp3" --ignore "*.import" --ignore "*.wav" --ignore "*.ogg" --ignore "*.aseprite" --ignore "*.ttf" --ignore "*.gif" --ignore "*.TTF" --ignore "*.afdesign" --ignore steam --ignore "*.afphoto" --ignore "*.tres" -l -g ""'
-# export FZF_DEFAULT_COMMAND='
-#   (git ls-tree -r --name-only HEAD ||
-#    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
-#       sed s/^..//) 2> /dev/null'
-
 
 if [ -z "$VIM_VERSION" ]; then
   VIM_VERSION="nvim"
@@ -91,8 +85,6 @@ autoload -Uz $(print ~/.dotfiles/zsh/funcs/*(:t))
 LOCAL_PATHS="/usr/local/bin:/usr/local/sbin"
 
 export PATH="$HOME/.todo/bin:$HOME/.emacs.d/bin:$HOME/.dotfiles/bin:$LOCAL_PATHS:$PATH"
-export PATH="$HOME/.nimble/bin:$PATH"
-export PATH="$HOME/projects/odin:$PATH"
 
 # Base16 Shell
 # BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -129,3 +121,4 @@ fi
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
+export LLVM_SYS_150_PREFIX=$HOME/gen/llvm-bin-release-15.0.7

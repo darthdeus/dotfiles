@@ -12,7 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	-- "wbthomason/packer.nvim",
 	"nvim-lua/plenary.nvim",
 
 	"folke/neodev.nvim",
@@ -75,18 +74,14 @@ require("lazy").setup({
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			require("trouble").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
+			require("trouble").setup({})
 		end,
 	},
 
 	"jaawerth/fennel.vim",
 	"RRethy/vim-illuminate",
 
-	"akinsho/toggleterm.nvim",
+	-- "akinsho/toggleterm.nvim",
 
 	"tpope/vim-fugitive",
 	"tpope/vim-sensible",
@@ -211,11 +206,11 @@ require("lazy").setup({
 	-- "hrsh7th/vim-vsnip",
 	-- "hrsh7th/vim-vsnip-integ",
 
-	"hrsh7th/cmp-nvim-lsp",
+	-- "hrsh7th/nvim-cmp",
+	-- "hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-buffer",
 	"hrsh7th/cmp-path",
 	"hrsh7th/cmp-cmdline",
-	"hrsh7th/nvim-cmp",
 	------------------------------------------------------
 	------------------------------------------------------
 	------------------------------------------------------
@@ -224,8 +219,6 @@ require("lazy").setup({
 	"hrsh7th/cmp-copilot",
 	"github/copilot.vim",
 
-	-- "Olical/conjure",
-	-- "PaterJason/cmp-conjure",
 	-- -------------------------------
 
 	-- "nvim-lua/lsp_extensions.nvim",
@@ -246,15 +239,12 @@ require("lazy").setup({
 	-- TODO: try https://github.com/L3MON4D3/LuaSnip ?
 })
 
--- vim.g["conjure#filetypes"] =
--- 	{ "clojure", "fennel", "janet", "hy", "julia", "racket", "scheme", "lua", "lisp", "python" }
-
 require("user")
 require("user.settings")
 require("user.remap")
 require("user.reload")
 
-require("toggleterm").setup()
+-- require("toggleterm").setup()
 -- require("base16-colorscheme").setup({ })
 
 local dap = require("dap")
@@ -380,8 +370,8 @@ vim.cmd([[
 --   augroup end
 -- ]])
 
-vim.o.exrc = true
-vim.o.secure = true
+-- vim.o.exrc = true
+-- vim.o.secure = true
 
 -- TODO:
 -- - https://github.com/bfredl/nvim-luadev

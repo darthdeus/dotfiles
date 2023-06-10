@@ -145,7 +145,7 @@ cnoremap("%%", "<C-R>=expand('%:h').'/'<CR>")
 nnoremap("<F8>", "<cmd>ToggleTerm direction=vertical size=60<cr>")
 inoremap("<F8>", "<cmd>ToggleTerm direction=vertical size=60<cr>")
 tnoremap("<F8>", "<C-\\><C-n>:ToggleTerm<cr>")
-tnoremap("<Esc>", "<C-\\><C-n>:ToggleTerm<cr>")
+-- tnoremap("<Esc>", "<C-\\><C-n>:ToggleTerm<cr>")
 nnoremap("<F5>", "<cmd>VimuxRunCommand('make')<cr>")
 nnoremap("<F4>", "<cmd>VimuxRunCommand('make')<cr>")
 -- map("n", <leader>r :call VimuxRunCommand("make ". expand("%h"))<cr>
