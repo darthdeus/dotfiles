@@ -233,7 +233,10 @@ require("lazy").setup({
 	-- --------------------------------
 
 	"chrisbra/unicode.vim",
-
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	},
 	-- 'ryanoasis/vim-devicons',
 
 	-- TODO: try https://github.com/L3MON4D3/LuaSnip ?
@@ -244,6 +247,7 @@ require("user.settings")
 require("user.remap")
 require("user.reload")
 
+require('telescope').load_extension('fzf')
 -- require("toggleterm").setup()
 -- require("base16-colorscheme").setup({ })
 
