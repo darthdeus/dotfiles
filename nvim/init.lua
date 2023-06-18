@@ -243,12 +243,11 @@ require("lazy").setup({
 	-- TODO: try https://github.com/L3MON4D3/LuaSnip ?
 })
 
-require("user")
 require("user.settings")
 require("user.remap")
 require("user.reload")
 
-require('telescope').load_extension('fzf')
+require("telescope").load_extension("fzf")
 -- require("toggleterm").setup()
 -- require("base16-colorscheme").setup({ })
 
@@ -258,6 +257,23 @@ dap.adapters.codelldb = {
 	host = "127.0.0.1",
 	port = 13000, -- 💀 Use the port printed out or specified with `--port`
 }
+
+
+-- dap.configurations.rust = {
+-- 	{
+-- 		type = "python",
+-- 		request = "launch",
+-- 		name = "Launch file",
+-- 		program = "${file}",
+-- 		pythonPath = function()
+-- 			return "/usr/bin/python"
+-- 		end,
+-- 	},
+-- }
+
+require("neodev").setup({
+	library = { plugins = { "nvim-dap", "nvim-dap-ui" }, types = true },
+})
 
 -- vim.cmd('colorscheme base16-gruvbox-dark-soft')
 -- vim.cmd('colorscheme base16-default-dark')
