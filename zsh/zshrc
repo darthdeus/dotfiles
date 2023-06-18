@@ -13,7 +13,7 @@ antidote load "$DOT_BASE_DIR/zsh/plugins.txt"
 fpath=(~/.zsh/funcs "${fpath[@]}")
 
 ZSH=$HOME/.zsh
-export PATH="$HOME/.npm/bin:/opt/homebrew/opt/openjdk/bin:$PATH:$HOME/.local/bin"
+export PATH="$HOME/.bun/bin:$HOME/.npm/bin:/opt/homebrew/opt/openjdk/bin:$PATH:$HOME/.local/bin"
 
 HISTSIZE=10000
 SAVEHIST=10000
