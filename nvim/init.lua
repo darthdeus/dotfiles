@@ -228,6 +228,7 @@ require("lazy").setup({
 	"ray-x/lsp_signature.nvim",
 
 	"mfussenegger/nvim-dap",
+	"rcarriga/nvim-dap-ui",
 	-- use "zhimsel/vim-stay"
 
 	-- --------------------------------
