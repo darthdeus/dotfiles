@@ -110,6 +110,8 @@ nnoremap("<C-l>", "<C-w><C-l>")
 vnoremap("-", "<cmd>Neoformat<cr>")
 nnoremap("-", "<cmd>Neoformat<cr>")
 
+-- nnoremap("-", "<cmd>lua vim.lsp.buf.format()<CR>")
+
 -- Bubble multiple lines
 vnoremap("<C-Up>", "<C-w><C-k>")
 vnoremap("<C-Down>", "<C-w><C-j>")

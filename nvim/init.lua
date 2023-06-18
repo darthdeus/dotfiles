@@ -258,7 +258,6 @@ dap.adapters.codelldb = {
 	port = 13000, -- 💀 Use the port printed out or specified with `--port`
 }
 
-
 -- dap.configurations.rust = {
 -- 	{
 -- 		type = "python",
