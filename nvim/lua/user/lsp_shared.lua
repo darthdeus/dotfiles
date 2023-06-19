@@ -134,6 +134,13 @@ end
 function M.setup_cmp()
 	local cmp = require("cmp")
 
+	local has_words_before = function()
+		local cursor = vim.api.nvim_win_get_cursor(0)
+		return (vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1], true)[1] or "")
+			:sub(cursor[2], cursor[2])
+			:match("%s")
+	end
+
 	cmp.setup({
 		experimental = {
 			ghost_text = true,
@@ -150,7 +157,7 @@ function M.setup_cmp()
 			["<C-e>"] = cmp.mapping.abort(),
 			-- Accept currently selected item. Set `select` to `false` to only
 			-- confirm explicitly selected items.
-			["<CR>"] = cmp.mapping.confirm({ select = false }),
+			["<CR>"] = cmp.mapping.confirm({ select = true }),
 			["<C-l>"] = cmp.mapping.confirm({ select = true }),
 
 			["<Tab>"] = cmp.mapping(function(fallback)
