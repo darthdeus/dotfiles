@@ -274,6 +274,8 @@ require("neodev").setup({
 	library = { plugins = { "nvim-dap", "nvim-dap-ui" }, types = true },
 })
 
+require("dapui").setup()
+
 -- vim.cmd('colorscheme base16-gruvbox-dark-soft')
 -- vim.cmd('colorscheme base16-default-dark')
 vim.cmd("colorscheme b16")
