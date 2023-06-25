@@ -44,6 +44,8 @@ require("lazy").setup({
 	"whatsthatsmell/codesmell_dark.vim",
 	"RRethy/nvim-base16",
 
+	{ "rose-pine/neovim", name = "rose-pine" },
+
 	"jansedivy/jai.vim",
 	"jose-elias-alvarez/null-ls.nvim",
 	"Pocco81/auto-save.nvim",
@@ -279,6 +281,7 @@ require("dapui").setup()
 -- vim.cmd('colorscheme base16-gruvbox-dark-soft')
 -- vim.cmd('colorscheme base16-default-dark')
 vim.cmd("colorscheme b16")
+-- vim.cmd('colorscheme rose-pine')
 
 -- require("base16-colorscheme").setup {
 --     base00 = "#16161D",
