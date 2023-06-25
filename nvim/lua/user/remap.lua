@@ -84,7 +84,7 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 -- snoremap("<expr>", "<C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'")
 
 nnoremap("<C-_><C-_>", "<cmd>CommentToggle<CR>")
-vnoremap("<C-_><C-_>", ":'<,'>CommentToggle<CR>")
+vnoremap("<C-_><C-_>", "<cmd>'<,'>CommentToggle<CR>")
 
 nnoremap("<CR>", "<cmd>nohlsearch<CR>")
 
