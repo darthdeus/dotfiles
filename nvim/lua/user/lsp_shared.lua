@@ -147,6 +147,21 @@ function M.setup_cmp()
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
 			["<C-l>"] = cmp.mapping.confirm({ select = true }),
 
+			["<C-p>"] = cmp.mapping(function()
+				if cmp.visible() then
+					cmp.select_prev_item(cmp_select_opts)
+				else
+					cmp.complete()
+				end
+			end),
+			["<C-n>"] = cmp.mapping(function()
+				if cmp.visible() then
+					cmp.select_next_item(cmp_select_opts)
+				else
+					cmp.complete()
+				end
+			end),
+
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
