@@ -1,18 +1,5 @@
 local M = {}
 
-function M.setup_mason()
-	require("mason").setup()
-	require("mason-lspconfig").setup({
-		ensure_installed = {
-			"rust_analyzer",
-			"taplo",
-			"clangd",
-			"lua_ls",
-			"jsonls",
-		},
-	})
-end
-
 function M.setup_keymaps() -- See `:help vim.lsp.*` for documentation on any of the below functions
 	-- Mappings.
 	local map_opts = { noremap = true, silent = true }

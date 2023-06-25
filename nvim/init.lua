@@ -387,9 +387,19 @@ vim.cmd([[
 ---------- LSP --------------------
 -----------------------------------
 
+require("mason").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"rust_analyzer",
+		"taplo",
+		"clangd",
+		"lua_ls",
+		"jsonls",
+	},
+})
+
 local my_lsp = require("user.lsp_shared")
 
-my_lsp.setup_mason()
 my_lsp.setup_keymaps()
 my_lsp.setup_cmp()
 my_lsp.setup_lsp_servers()
