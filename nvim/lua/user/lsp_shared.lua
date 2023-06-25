@@ -117,6 +117,51 @@ function M.setup_lsp_servers()
 	require("rust-tools").inlay_hints.enable()
 end
 
+local function get_cmp()
+  local ok_cmp, cmp = pcall(require, 'cmp')
+  return ok_cmp and cmp or {}
+end
+
+local function get_luasnip()
+  local ok_luasnip, luasnip = pcall(require, 'luasnip')
+  return ok_luasnip and luasnip or {}
+end
+
+function M.luasnip_supertab(select_opts)
+  local cmp = get_cmp()
+  local luasnip = get_luasnip()
+
+  return cmp.mapping(function(fallback)
+    local col = vim.fn.col('.') - 1
+
+    if cmp.visible() then
+      cmp.select_next_item(select_opts)
+    elseif luasnip.expand_or_jumpable() then
+      luasnip.expand_or_jump()
+    elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+      fallback()
+    else
+      cmp.complete()
+    end
+  end, {'i', 's'})
+end
+
+function M.luasnip_shift_supertab(select_opts)
+  local cmp = get_cmp()
+  local luasnip = get_luasnip()
+
+  return cmp.mapping(function(fallback)
+    if cmp.visible() then
+      cmp.select_prev_item(select_opts)
+    elseif luasnip.jumpable(-1) then
+      luasnip.jump(-1)
+    else
+      fallback()
+    end
+  end, {'i', 's'})
+end
+
+
 -- Setup nvim-cmp.
 function M.setup_cmp()
 	local cmp = require("cmp")
@@ -145,6 +190,7 @@ function M.setup_cmp()
 			-- Accept currently selected item. Set `select` to `false` to only
 			-- confirm explicitly selected items.
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
+			["<C-j>"] = cmp.mapping.confirm({ select = true }),
 			["<C-l>"] = cmp.mapping.confirm({ select = true }),
 
 			["<C-p>"] = cmp.mapping(function()
@@ -162,27 +208,51 @@ function M.setup_cmp()
 				end
 			end),
 
-			["<Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_next_item()
-				elseif has_words_before() then
-					cmp.complete()
-				else
-					fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-				end
-			end, {
-				"i",
-				"s",
-			}),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable() 
+      -- they way you will only jump inside the snippet region
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
 
-			["<S-Tab>"] = cmp.mapping(function()
-				if cmp.visible() then
-					cmp.select_prev_item()
-				end
-			end, {
-				"i",
-				"s",
-			}),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+			-- ["<Tab>"] = cmp.mapping(function(fallback)
+			-- 	if cmp.visible() then
+			-- 		cmp.select_next_item()
+			-- 	elseif has_words_before() then
+			-- 		cmp.complete()
+			-- 	else
+			-- 		fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+			-- 	end
+			-- end, {
+			-- 	"i",
+			-- 	"s",
+			-- }),
+			--
+			-- ["<S-Tab>"] = cmp.mapping(function()
+			-- 	if cmp.visible() then
+			-- 		cmp.select_prev_item()
+			-- 	end
+			-- end, {
+			-- 	"i",
+			-- 	"s",
+			-- }),
 		}),
 
 		sources = cmp.config.sources({
@@ -222,28 +292,6 @@ function M.setup_cmp()
 			{ name = "cmdline" },
 		}),
 	})
-end
-
-function M.setup_cmp_tab()
-	-- cmp.setup({
-	-- 	mapping = {
-	-- 		["<Tab>"] = function(fallback)
-	-- 			if cmp.visible() then
-	-- 				cmp.select_next_item()
-	-- 			else
-	-- 				fallback()
-	-- 			end
-	-- 		end,
-	--
-	-- 		["<S-Tab>"] = function(fallback)
-	-- 			if cmp.visible() then
-	-- 				cmp.select_prev_item()
-	-- 			else
-	-- 				fallback()
-	-- 			end
-	-- 		end,
-	-- 	},
-	-- })
 end
 
 return M
