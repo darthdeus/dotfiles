@@ -122,6 +122,8 @@ if [[ `uname` == "Darwin" ]]; then
 else
   # export LLVM_SYS_150_PREFIX=$HOME/gen/llvm-bin-release-15.0.7
   export LLVM_SYS_150_PREFIX=$HOME/gen/llvm-bin-15.0.7
+  export LLVM_SYS_160_DEBUG_PREFIX=$HOME/gen/llvm-bin-16.0.6
+  export LLVM_SYS_160_RELEASE_PREFIX=$HOME/gen/llvm-release-bin-16.0.6
 fi
 
 export HOMEBREW_NO_AUTO_UPDATE=1
