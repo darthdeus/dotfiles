@@ -255,15 +255,26 @@ function M.setup_cmp()
 			-- }),
 		}),
 
-		sources = cmp.config.sources({
-			{ name = "nvim_lsp" },
+   	sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "nvim_lsp_signature_help" },
+        { name = "nvim_lua" },
 			{ name = "copilot" },
+        { name = "luasnip" },
+        { name = "path" },
+      }, {
+        { name = "buffer", keyword_length = 3 },
+      }),
 
-			{ name = "ctags" },
-			{ name = "luasnip" },
-		}, {
-			{ name = "buffer" },
-		}),
+
+--		sources = cmp.config.sources({
+--			{ name = "nvim_lsp" },
+--
+--			{ name = "ctags" },
+--			{ name = "luasnip" },
+--		}, {
+--			{ name = "buffer" },
+--		}),
 	})
 
 	-- Set configuration for specific filetype.
