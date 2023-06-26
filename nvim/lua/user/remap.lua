@@ -62,7 +62,7 @@ nnoremap("<M-0>", "i0.0,")
 -- snoremap("<expr>", "<C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'")
 
 nnoremap("<C-_><C-_>", "<cmd>CommentToggle<CR>")
-vnoremap("<C-_><C-_>", "<cmd>'<,'>CommentToggle<CR>")
+vnoremap("<C-_><C-_>", ":'<,'>CommentToggle<CR>")
 
 nnoremap("<CR>", "<cmd>nohlsearch<CR>")
 
