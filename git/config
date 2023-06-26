@@ -59,7 +59,8 @@
 [http]
   sslverify = false
 [mergetool]
-  keepBackup = true
+  keepBackup = false
+  prompt = false
 
 [difftool]
   prompt = false
@@ -71,19 +72,28 @@
   rebase = true
 
 [core]
-    pager = delta
+  pager = delta
 
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
+
 [add.interactive]
-    useBuiltin = false # required for git 2.37.0
+  useBuiltin = false # required for git 2.37.0
 
 [delta]
-    navigate = true    # use n and N to move between diff sections
-    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+  navigate = true    # use n and N to move between diff sections
+  light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 
 [merge]
-    conflictstyle = diff3
+  conflictstyle = diff3
+  tool = vimdiff3
 
 [diff]
-    colorMoved = default
+  colorMoved = default
+  tool = vimdiff3
+[init]
+  defaultBranch = master
+[difftool "vimdiff3"]
+  path = nvim
+[mergetool "vimdiff3"]
+  path = nvim
