@@ -143,7 +143,10 @@ function M.luasnip_supertab(select_opts)
 		else
 			cmp.complete()
 		end
-	end, { "i", "s" })
+	end, {
+		"i",
+		"s",
+	})
 end
 
 function M.luasnip_shift_supertab(select_opts)
@@ -158,8 +161,13 @@ function M.luasnip_shift_supertab(select_opts)
 		else
 			fallback()
 		end
-	end, { "i", "s" })
+	end, {
+		"i",
+		"s",
+	})
 end
+
+local luasnip = get_luasnip()
 
 -- Setup nvim-cmp.
 function M.setup_cmp()
@@ -210,8 +218,8 @@ function M.setup_cmp()
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
-				-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-				-- they way you will only jump inside the snippet region
+					-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+					-- they way you will only jump inside the snippet region
 				elseif luasnip.expand_or_jumpable() then
 					luasnip.expand_or_jump()
 				elseif has_words_before() then
@@ -219,7 +227,10 @@ function M.setup_cmp()
 				else
 					fallback()
 				end
-			end, { "i", "s" }),
+			end, {
+				"i",
+				"s",
+			}),
 
 			["<S-Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
@@ -229,7 +240,10 @@ function M.setup_cmp()
 				else
 					fallback()
 				end
-			end, { "i", "s" }),
+			end, {
+				"i",
+				"s",
+			}),
 		}),
 
 		sources = cmp.config.sources({
