@@ -61,10 +61,10 @@ function M.setup_lsp_servers()
 
 		settings = {
 			["rust-analyzer"] = {
-				-- checkOnSave = {
-				--   command = "clippy",
-				--   overrideCommand = { "killall", "nvim" }
-				-- },
+				checkOnSave = {
+				  command = "clippy",
+				  -- overrideCommand = { "killall", "nvim" }
+				},
 				cargo = {
 					extraEnv = { CARGO_TARGET_DIR = ".ra_target" },
 				},
