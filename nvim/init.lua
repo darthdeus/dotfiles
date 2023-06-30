@@ -26,14 +26,14 @@ require("lazy").setup({
 
 	"rmagatti/goto-preview",
 
-	{
-		"folke/which-key.nvim",
-		config = function()
-			require("which-key").setup({
-				triggers = { "<leader>" },
-			})
-		end,
-	},
+	-- {
+	-- 	"folke/which-key.nvim",
+	-- 	config = function()
+	-- 		require("which-key").setup({
+	-- 			triggers = { "<leader>" },
+	-- 		})
+	-- 	end,
+	-- },
 
 	"nvim-lua/popup.nvim",
 	"nvim-telescope/telescope.nvim",
