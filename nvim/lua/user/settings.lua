@@ -19,8 +19,8 @@ vim.o.softtabstop = 2
 vim.o.expandtab = true
 
 vim.o.encoding = "utf-8"
-vim.o.fileencoding = "utf-8"
-vim.o.fileencodings = "utcs-bom,utf8,latin2"
+-- vim.o.fileencoding = "utf-8"
+-- vim.o.fileencodings = "utcs-bom,utf8,latin2"
 
 -- Use modeline overrides
 vim.o.modeline = true
