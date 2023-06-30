@@ -45,6 +45,8 @@ require("lazy").setup({
 	-- "RRethy/nvim-base16",
 
 	{ "rose-pine/neovim", name = "rose-pine" },
+  -- { "gbprod/yanky.nvim" },
+  { "j-hui/fidget.nvim", tag = "legacy" },
 
 	"jansedivy/jai.vim",
 	"jose-elias-alvarez/null-ls.nvim",
