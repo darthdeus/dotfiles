@@ -108,14 +108,14 @@ if vim.fn.has("win32") == 1 then
 
 	nnoremap("<leader>r", "<Cmd>TermExec cmd=c direction=vertical size=60<CR>")
 	nnoremap("<Leader>q", "<Cmd>ToggleTermToggleAll<CR>")
-	nnoremap("<Leader>w", "<Cmd>ToggleTerm direction=vertical size=60<CR>")
+	-- nnoremap("<Leader>w", "<Cmd>ToggleTerm direction=vertical size=60<CR>")
 	nnoremap("<leader>ma", ":cd C:/dev/flesh-monster<CR>")
 	nnoremap("<leader>mb", ":cd C:/dev/BITGUN<CR>")
 else
 	vim.keymap.set("n", "<leader>ge", "<cmd>vs ~/.config/nvim/init.lua<CR>")
 	vim.keymap.set("n", "<leader>r", "<cmd>VimuxRunCommand('c')<CR>")
 	nnoremap("<Leader>q", "<cmd>call VimuxRunCommand('c')<CR>")
-	nnoremap("<Leader>w", "<Cmd>call VimuxRunCommand('c')<CR>")
+	-- nnoremap("<Leader>w", "<Cmd>call VimuxRunCommand('c')<CR>")
 end
 
 -- Expand %% to directory path of current buffer

@@ -45,8 +45,8 @@ require("lazy").setup({
 	-- "RRethy/nvim-base16",
 
 	{ "rose-pine/neovim", name = "rose-pine" },
-  -- { "gbprod/yanky.nvim" },
-  { "j-hui/fidget.nvim", tag = "legacy" },
+	-- { "gbprod/yanky.nvim" },
+	{ "j-hui/fidget.nvim", tag = "legacy" },
 
 	"jansedivy/jai.vim",
 	"jose-elias-alvarez/null-ls.nvim",
@@ -87,7 +87,7 @@ require("lazy").setup({
 
 	-- "akinsho/toggleterm.nvim",
 
-	"tpope/vim-fugitive",
+	-- "tpope/vim-fugitive",
 	"tpope/vim-sensible",
 	"tpope/vim-eunuch",
 	"tpope/vim-surround",
@@ -267,6 +267,7 @@ require("user.reload")
 
 require("telescope").load_extension("fzf")
 -- require("toggleterm").setup()
+require("fidget").setup()
 
 local dap = require("dap")
 dap.adapters.codelldb = {
@@ -335,9 +336,10 @@ vim.cmd("colorscheme b16")
 --     base0F = "#a16946",
 -- }
 
-require("lualine").setup()
+require("lualine").setup({ options = {
+	theme = "default",
+} })
 require("auto-session").setup()
-
 
 -- TODO: do this with nvim_utils?
 -- https://github.com/norcalli/nvim_utils
