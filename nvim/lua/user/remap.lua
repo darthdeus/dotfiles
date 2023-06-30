@@ -85,7 +85,7 @@ nnoremap("<C-h>", "<C-w><C-h>")
 tnoremap("<C-h>", "<C-\\><C-n><C-w><C-h>")
 nnoremap("<C-l>", "<C-w><C-l>")
 
-vnoremap("-", "<cmd>Neoformat<cr>")
+vnoremap("-", ":Neoformat<cr>")
 nnoremap("-", "<cmd>Neoformat<cr>")
 -- nnoremap("-", "<cmd>lua vim.lsp.buf.format()<CR>")
 

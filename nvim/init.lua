@@ -26,14 +26,14 @@ require("lazy").setup({
 
 	"rmagatti/goto-preview",
 
-	-- {
-	-- 	"folke/which-key.nvim",
-	-- 	config = function()
-	-- 		require("which-key").setup({
-	-- 			triggers = { "<leader>" },
-	-- 		})
-	-- 	end,
-	-- },
+	{
+		"folke/which-key.nvim",
+		config = function()
+			require("which-key").setup({
+				triggers = { "<leader>" },
+			})
+		end,
+	},
 
 	"nvim-lua/popup.nvim",
 	"nvim-telescope/telescope.nvim",
@@ -46,7 +46,13 @@ require("lazy").setup({
 
 	{ "rose-pine/neovim", name = "rose-pine" },
 	-- { "gbprod/yanky.nvim" },
-	{ "j-hui/fidget.nvim", tag = "legacy" },
+	{
+		"j-hui/fidget.nvim",
+		tag = "legacy",
+		config = function()
+			require("fidget").setup()
+		end,
+	},
 
 	"jansedivy/jai.vim",
 	"jose-elias-alvarez/null-ls.nvim",
@@ -111,13 +117,25 @@ require("lazy").setup({
 
 	"junegunn/vim-easy-align",
 
-	"terrortylor/nvim-comment",
+	{
+		"terrortylor/nvim-comment",
+		config = function()
+			require("nvim_comment").setup({
+				create_mappings = false,
+			})
+		end,
+	},
 
 	"jiangmiao/auto-pairs",
 
 	-- "itchyny/lightline.vim",
 	{
 		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("lualine").setup({ options = {
+				theme = "default",
+			} })
+		end,
 		-- requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 	},
 
@@ -169,7 +187,19 @@ require("lazy").setup({
 	"nvim-treesitter/playground",
 	-- end
 
-	"tenxsoydev/size-matters.nvim",
+	{
+		"tenxsoydev/size-matters.nvim",
+		config = function()
+			if vim.g.neovide or vim.g.goneovim or vim.g.nvui or vim.g.gnvim then
+				require("size-matters").setup({
+					default_mappings = true,
+					step_size = 1, -- font resize step size
+					notifications = false, -- default value is true if notify is installed else false
+					reset_font = vim.api.nvim_get_option("guifont"), -- Font loaded when using the reset cmd / shortcut
+				})
+			end
+		end,
+	},
 
 	------------------------------------------------------
 	------------------------------------------------------
@@ -218,7 +248,12 @@ require("lazy").setup({
 	},
 	{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
-	"rmagatti/auto-session",
+	{
+		"rmagatti/auto-session",
+		config = function()
+			require("auto-session").setup()
+		end,
+	},
 
 	{
 		"ibhagwan/fzf-lua",
@@ -267,7 +302,6 @@ require("user.reload")
 
 require("telescope").load_extension("fzf")
 -- require("toggleterm").setup()
-require("fidget").setup()
 
 local dap = require("dap")
 dap.adapters.codelldb = {
@@ -336,11 +370,6 @@ vim.cmd("colorscheme b16")
 --     base0F = "#a16946",
 -- }
 
-require("lualine").setup({ options = {
-	theme = "default",
-} })
-require("auto-session").setup()
-
 -- TODO: do this with nvim_utils?
 -- https://github.com/norcalli/nvim_utils
 -- https://www.reddit.com/r/neovim/comments/n80hdb/autocmd_execution_in_neovim_lua_config/
@@ -379,19 +408,6 @@ augroup END
 ]],
 	false
 )
-
-require("nvim_comment").setup({
-	create_mappings = false,
-})
-
-if vim.g.neovide or vim.g.goneovim or vim.g.nvui or vim.g.gnvim then
-	require("size-matters").setup({
-		default_mappings = true,
-		step_size = 1, -- font resize step size
-		notifications = false, -- default value is true if notify is installed else false
-		reset_font = vim.api.nvim_get_option("guifont"), -- Font loaded when using the reset cmd / shortcut
-	})
-end
 
 vim.g.neoformat_try_node_exe = 1
 vim.g.neoformat_only_msg_on_error = 1
