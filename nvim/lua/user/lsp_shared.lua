@@ -62,8 +62,8 @@ function M.setup_lsp_servers()
 		settings = {
 			["rust-analyzer"] = {
 				checkOnSave = {
-				  command = "clippy",
-				  -- overrideCommand = { "killall", "nvim" }
+					command = "clippy",
+					-- overrideCommand = { "killall", "nvim" }
 				},
 				cargo = {
 					extraEnv = { CARGO_TARGET_DIR = ".ra_target" },
@@ -196,7 +196,14 @@ function M.setup_cmp()
 			["<C-e>"] = cmp.mapping.abort(),
 			-- Accept currently selected item. Set `select` to `false` to only
 			-- confirm explicitly selected items.
-			["<CR>"] = cmp.mapping.confirm({ select = false }),
+			["<CR>"] = cmp.mapping(function(fallback)
+				if cmp.visible() then
+					cmp.complete()
+				else
+					fallback()
+					-- cmp.mapping.confirm({ select = false }),
+				end
+			end),
 			["<C-j>"] = cmp.mapping.confirm({ select = true }),
 			["<C-l>"] = cmp.mapping.confirm({ select = true }),
 
