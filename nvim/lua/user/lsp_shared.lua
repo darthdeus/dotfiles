@@ -196,14 +196,16 @@ function M.setup_cmp()
 			["<C-e>"] = cmp.mapping.abort(),
 			-- Accept currently selected item. Set `select` to `false` to only
 			-- confirm explicitly selected items.
-			["<CR>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.complete()
-				else
-					fallback()
-					-- cmp.mapping.confirm({ select = false }),
-				end
-			end),
+
+			["<CR>"] = cmp.mapping.confirm({ select = false }),
+			-- ["<CR>"] = cmp.mapping(function(fallback)
+			-- 	if cmp.visible() then
+			-- 		cmp.complete()
+			-- 	else
+			-- 		fallback()
+			-- 	end
+			-- end),
+
 			["<C-j>"] = cmp.mapping.confirm({ select = true }),
 			["<C-l>"] = cmp.mapping.confirm({ select = true }),
 

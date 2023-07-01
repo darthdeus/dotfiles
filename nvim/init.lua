@@ -1,3 +1,10 @@
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -45,7 +52,7 @@ require("lazy").setup({
 	-- "RRethy/nvim-base16",
 
 	{ "rose-pine/neovim", name = "rose-pine" },
-  -- TODO: ???
+	-- TODO: ???
 	-- { "gbprod/yanky.nvim" },
 
 	{
@@ -83,7 +90,6 @@ require("lazy").setup({
 		end,
 	},
 
-
 	"jose-elias-alvarez/null-ls.nvim",
 	"jansedivy/jai.vim",
 
@@ -114,7 +120,7 @@ require("lazy").setup({
 
 	-- "akinsho/toggleterm.nvim",
 
-  "tpope/vim-rhubarb",
+	"tpope/vim-rhubarb",
 	"tpope/vim-fugitive",
 	"tpope/vim-sensible",
 	"tpope/vim-eunuch",
@@ -174,6 +180,12 @@ require("lazy").setup({
 	"DingDean/wgsl.vim",
 
 	"preservim/nerdtree",
+	{
+		"nvim-tree/nvim-tree.lua",
+		config = function()
+			require("nvim-tree").setup()
+		end,
+	},
 
 	-- if vim.fn.has("win32") ~= 1 then
 	-- use("nvim-treesitter/playground")
