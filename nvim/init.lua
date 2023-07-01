@@ -129,11 +129,11 @@ require("lazy").setup({
 					enabled = true,
 				},
 
-				-- highlight = {
-				-- 	on_put = true,
-				-- 	on_yank = true,
-				-- 	timer = 500,
-				-- },
+				highlight = {
+					on_put = false,
+					on_yank = false,
+					timer = 0,
+				},
 			})
 		end,
 	},
