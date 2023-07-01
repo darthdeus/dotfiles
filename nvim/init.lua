@@ -441,7 +441,7 @@ vim.cmd("colorscheme b16")
 -- https://github.com/norcalli/nvim_utils/blob/master/lua/nvim_utils.lua#L554-L567
 -- https://github.com/neovim/neovim/pull/14661
 
-vim.api.nvim_exec(
+vim.api.nvim_exec2(
 	[[
 " autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 
@@ -471,7 +471,7 @@ autocmd BufEnter *.jai,*.wgsl,*.glsl,*.vert,*.frag :lua vim.api.nvim_buf_set_opt
 autocmd BufFilePost *.jai,*.wgsl,*.glsl,*.vert,*.frag :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
 augroup END
 ]],
-	false
+	{}
 )
 
 vim.g.neoformat_try_node_exe = 1
