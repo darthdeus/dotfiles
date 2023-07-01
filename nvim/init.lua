@@ -179,7 +179,20 @@ require("lazy").setup({
 
 	"DingDean/wgsl.vim",
 
-	"preservim/nerdtree",
+	{
+		"saecki/crates.nvim",
+		dependencies = { "jose-elias-alvarez/null-ls.nvim" },
+		config = function()
+			require("crates").setup({
+				null_ls = {
+					enabled = true,
+					name = "crates.nvim",
+				},
+			})
+		end,
+	},
+
+	-- "preservim/nerdtree",
 	{
 		"nvim-tree/nvim-tree.lua",
 		config = function()

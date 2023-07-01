@@ -14,6 +14,7 @@
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "codesmell_dark.vim": { "branch": "main", "commit": "60c5ea57a3700ab360a72661ddd988bdc66ea5ee" },
   "copilot.vim": { "branch": "release", "commit": "98c293994f1bbebd5bade5d5840ead3b2feb5074" },
+  "crates.nvim": { "branch": "main", "commit": "258961973c2cbef5717d4a726c68a0730fb0f94b" },
   "dirbuf.nvim": { "branch": "main", "commit": "ac7ad3c8e61630d15af1f6266441984f54f54fd2" },
   "editorconfig-vim": { "branch": "master", "commit": "7f4e4dfc58c480d154116614e616d90aac77204d" },
   "emmet-vim": { "branch": "master", "commit": "def5d57a1ae5afb1b96ebe83c4652d1c03640f4d" },

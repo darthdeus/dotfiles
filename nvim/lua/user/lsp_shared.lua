@@ -262,6 +262,7 @@ function M.setup_cmp()
 			{ name = "copilot" },
 			{ name = "luasnip" },
 			{ name = "path" },
+			{ name = "crates" },
 		}, {
 			{ name = "buffer", keyword_length = 3 },
 		}),
