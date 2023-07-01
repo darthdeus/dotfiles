@@ -98,7 +98,7 @@ vim.g.VimuxOrientation = "h"
 vim.g.vista_default_executive = "nvim_lsp"
 
 -- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 vim.g.NERDTreeRespectWildIgnore = 1

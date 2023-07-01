@@ -45,7 +45,18 @@ require("lazy").setup({
 	-- "RRethy/nvim-base16",
 
 	{ "rose-pine/neovim", name = "rose-pine" },
+  -- TODO: ???
 	-- { "gbprod/yanky.nvim" },
+
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("trouble").setup({})
+		end,
+	},
+
+	"Pocco81/auto-save.nvim",
 	{
 		"j-hui/fidget.nvim",
 		tag = "legacy",
@@ -54,9 +65,27 @@ require("lazy").setup({
 		end,
 	},
 
-	"jansedivy/jai.vim",
+	-- "itchyny/lightline.vim",
+	{
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("lualine").setup({ options = {
+				theme = "default",
+			} })
+		end,
+		-- requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+	},
+
+	{
+		"rmagatti/auto-session",
+		config = function()
+			require("auto-session").setup()
+		end,
+	},
+
+
 	"jose-elias-alvarez/null-ls.nvim",
-	"Pocco81/auto-save.nvim",
+	"jansedivy/jai.vim",
 
 	-- {
 	--   "folke/noice.nvim",
@@ -80,20 +109,13 @@ require("lazy").setup({
 	--   }
 	-- },
 
-	{
-		"folke/trouble.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("trouble").setup({})
-		end,
-	},
-
 	"jaawerth/fennel.vim",
 	"RRethy/vim-illuminate",
 
 	-- "akinsho/toggleterm.nvim",
 
-	-- "tpope/vim-fugitive",
+  "tpope/vim-rhubarb",
+	"tpope/vim-fugitive",
 	"tpope/vim-sensible",
 	"tpope/vim-eunuch",
 	"tpope/vim-surround",
@@ -127,17 +149,6 @@ require("lazy").setup({
 	},
 
 	"jiangmiao/auto-pairs",
-
-	-- "itchyny/lightline.vim",
-	{
-		"nvim-lualine/lualine.nvim",
-		config = function()
-			require("lualine").setup({ options = {
-				theme = "default",
-			} })
-		end,
-		-- requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-	},
 
 	-- "sjl/gundo.vim",
 	"mbbill/undotree",
@@ -247,13 +258,6 @@ require("lazy").setup({
 		"williamboman/mason.nvim",
 	},
 	{ "williamboman/mason-lspconfig.nvim" }, -- Optional
-
-	{
-		"rmagatti/auto-session",
-		config = function()
-			require("auto-session").setup()
-		end,
-	},
 
 	{
 		"ibhagwan/fzf-lua",
