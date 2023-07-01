@@ -81,5 +81,6 @@
   "vim-zsh": { "branch": "master", "commit": "7dd09f8a27183b6fb2d417c4390e0b960260e8be" },
   "vimux": { "branch": "master", "commit": "616fcb4799674a7a809b14ca2dc155bb6ba25788" },
   "wgsl.vim": { "branch": "main", "commit": "fdf91e11243266dfe923fc08c2fc9749429bc5aa" },
-  "which-key.nvim": { "branch": "main", "commit": "d871f2b664afd5aed3dc1d1573bef2fb24ce0484" }
+  "which-key.nvim": { "branch": "main", "commit": "d871f2b664afd5aed3dc1d1573bef2fb24ce0484" },
+  "yanky.nvim": { "branch": "main", "commit": "b12561386a25645adb7504e0e6a8c5dc8b31e6da" }
 }

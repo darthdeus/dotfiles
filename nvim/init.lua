@@ -52,8 +52,6 @@ require("lazy").setup({
 	-- "RRethy/nvim-base16",
 
 	{ "rose-pine/neovim", name = "rose-pine" },
-	-- TODO: ???
-	-- { "gbprod/yanky.nvim" },
 
 	{
 		"folke/trouble.nvim",
@@ -90,7 +88,6 @@ require("lazy").setup({
 		end,
 	},
 
-	"jose-elias-alvarez/null-ls.nvim",
 	"jansedivy/jai.vim",
 
 	-- {
@@ -119,11 +116,30 @@ require("lazy").setup({
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-        require("todo-comments").setup({
-            signs = false,
-        })
+			require("todo-comments").setup({
+				signs = false,
+			})
 		end,
 	},
+
+	{
+		"gbprod/yanky.nvim",
+		config = function()
+			require("yanky").setup({
+				preserve_cursor_position = {
+					enabled = true,
+				},
+
+				-- highlight = {
+				-- 	on_put = true,
+				-- 	on_yank = true,
+				-- 	timer = 500,
+				-- },
+			})
+		end,
+	},
+
+	"jose-elias-alvarez/null-ls.nvim",
 
 	"jaawerth/fennel.vim",
 	"RRethy/vim-illuminate",
@@ -339,7 +355,10 @@ require("user.settings")
 require("user.remap")
 require("user.reload")
 
-require("telescope").load_extension("fzf")
+local telescope = require("telescope")
+telescope.load_extension("fzf")
+telescope.load_extension("yank_history")
+
 -- require("toggleterm").setup()
 
 local dap = require("dap")
