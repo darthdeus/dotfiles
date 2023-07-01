@@ -70,7 +70,6 @@ require("lazy").setup({
 		end,
 	},
 
-	-- "itchyny/lightline.vim",
 	{
 		"nvim-lualine/lualine.nvim",
 		config = function()
