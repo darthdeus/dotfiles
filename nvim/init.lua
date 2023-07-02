@@ -506,6 +506,10 @@ my_lsp.setup_keymaps()
 my_lsp.setup_cmp()
 my_lsp.setup_lsp_servers()
 
+vim.api.nvim_exec2([[
+command! Ner :NvimTreeToggle
+]], {})
+
 -----------------------------------
 -----------------------------------
 ---------- TREESITTEr--------------
