@@ -25,8 +25,8 @@ vim.o.encoding = "utf-8"
 -- Use modeline overrides
 vim.o.modeline = true
 vim.o.modelines = 10
--- vim.o.laststatus = 0
--- vim.o.cmdheight = 0
+vim.o.laststatus = 0
+vim.o.cmdheight = 0
 
 vim.o.winwidth = 75
 
