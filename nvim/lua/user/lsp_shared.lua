@@ -197,7 +197,8 @@ function M.setup_cmp()
 			-- Accept currently selected item. Set `select` to `false` to only
 			-- confirm explicitly selected items.
 
-			["<CR>"] = cmp.mapping.confirm({ select = false }),
+			["<CR>"] = cmp.mapping.confirm({ select = true }),
+			-- ["<CR>"] = cmp.mapping.confirm({ select = false }),
 			-- ["<CR>"] = cmp.mapping(function(fallback)
 			-- 	if cmp.visible() then
 			-- 		cmp.complete()
@@ -259,12 +260,14 @@ function M.setup_cmp()
 			{ name = "nvim_lsp" },
 			{ name = "nvim_lsp_signature_help" },
 			{ name = "nvim_lua" },
-			{ name = "copilot" },
 			{ name = "luasnip" },
 			{ name = "path" },
 			{ name = "crates" },
+		-- }, {
+		-- 	{ name = "copilot" },
 		}, {
-			{ name = "buffer", keyword_length = 3 },
+			-- { name = "buffer", keyword_length = 3 },
+			{ name = "buffer" },
 		}),
 
 		--		sources = cmp.config.sources({
