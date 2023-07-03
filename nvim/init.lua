@@ -221,7 +221,15 @@ require("lazy").setup({
 	{
 		"nvim-tree/nvim-tree.lua",
 		config = function()
-			require("nvim-tree").setup()
+			require("nvim-tree").setup({
+				actions = {
+					open_file = {
+						window_picker = {
+							enable = false,
+						},
+					},
+				},
+			})
 		end,
 	},
 
@@ -506,9 +514,12 @@ my_lsp.setup_keymaps()
 my_lsp.setup_cmp()
 my_lsp.setup_lsp_servers()
 
-vim.api.nvim_exec2([[
+vim.api.nvim_exec2(
+	[[
 command! Ner :NvimTreeToggle
-]], {})
+]],
+	{}
+)
 
 -----------------------------------
 -----------------------------------
