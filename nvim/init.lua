@@ -1,4 +1,3 @@
--- disable netrw at the very start of your init.lua
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
 
@@ -81,11 +80,25 @@ require("lazy").setup({
 	},
 
 	{
-		"rmagatti/auto-session",
+		"nvim-tree/nvim-tree.lua",
 		config = function()
-			require("auto-session").setup()
+			require("nvim-tree").setup({
+				view = {
+					width = "10%",
+				},
+				actions = {
+					open_file = {
+						window_picker = {
+							enable = false,
+						},
+					},
+				},
+			})
 		end,
 	},
+
+	"rmagatti/auto-session",
+	"zwhitchcox/auto-session-nvim-tree",
 
 	"jansedivy/jai.vim",
 
@@ -218,20 +231,6 @@ require("lazy").setup({
 	},
 
 	-- "preservim/nerdtree",
-	{
-		"nvim-tree/nvim-tree.lua",
-		config = function()
-			require("nvim-tree").setup({
-				actions = {
-					open_file = {
-						window_picker = {
-							enable = false,
-						},
-					},
-				},
-			})
-		end,
-	},
 
 	-- if vim.fn.has("win32") ~= 1 then
 	-- use("nvim-treesitter/playground")
@@ -331,7 +330,7 @@ require("lazy").setup({
 	------------------------------------------------------
 	------------------------------------------------------
 
---	"hrsh7th/cmp-copilot",
+	--	"hrsh7th/cmp-copilot",
 	--"github/copilot.vim",
 
 	-- -------------------------------
@@ -361,6 +360,18 @@ require("lazy").setup({
 require("user.settings")
 require("user.remap")
 require("user.reload")
+
+local auto_session = require("auto-session")
+local auto_session_nvim_tree = require("auto-session-nvim-tree")
+
+auto_session.setup({
+	log_level = "error",
+	cwd_change_handling = {
+		restore_upcoming_session = true, -- This is necessary!!
+	},
+})
+
+auto_session_nvim_tree.setup(auto_session)
 
 local telescope = require("telescope")
 telescope.load_extension("fzf")
@@ -658,11 +669,6 @@ require("nvim-treesitter.configs").setup({
 -- use 'lewis6991/gitsigns.nvim'
 -- use { "wfxr/minimap.vim", run = "cargo install --locked code-minimap" }
 
--- TODO: maybe without icons?
--- use {
---     "kyazdani42/nvim-tree.lua",
---     requires = "kyazdani42/nvim-web-devicons",
--- }
 -- TODO: maybe try again?
 -- use 'junegunn/goyo.vim'
 -- use 'junegunn/limelight.vim'
