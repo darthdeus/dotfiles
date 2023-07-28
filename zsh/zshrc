@@ -119,6 +119,7 @@ if [[ `uname` == "Darwin" ]]; then
   [ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
   export LLVM_SYS_150_PREFIX=$HOME/projects/llvm-15-bin/
+  export LLVM_SYS_160_PREFIX=$HOME/builds/llvm/prefix_release/
 else
   # export LLVM_SYS_150_PREFIX=$HOME/gen/llvm-bin-release-15.0.7
   export LLVM_SYS_150_PREFIX=$HOME/gen/llvm-bin-15.0.7
