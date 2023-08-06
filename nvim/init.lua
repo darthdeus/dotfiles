@@ -374,7 +374,8 @@ auto_session.setup({
 auto_session_nvim_tree.setup(auto_session)
 
 local telescope = require("telescope")
-telescope.load_extension("fzf")
+-- TODO:
+-- telescope.load_extension("fzf")
 telescope.load_extension("yank_history")
 
 -- require("toggleterm").setup()
