@@ -362,7 +362,7 @@ require("user.remap")
 require("user.reload")
 
 local auto_session = require("auto-session")
-local auto_session_nvim_tree = require("auto-session-nvim-tree")
+-- local auto_session_nvim_tree = require("auto-session-nvim-tree")
 
 auto_session.setup({
 	log_level = "error",
@@ -371,7 +371,7 @@ auto_session.setup({
 	},
 })
 
-auto_session_nvim_tree.setup(auto_session)
+-- auto_session_nvim_tree.setup(auto_session)
 
 local telescope = require("telescope")
 -- TODO:
