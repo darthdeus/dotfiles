@@ -517,6 +517,7 @@ require("mason-lspconfig").setup({
 		"clangd",
 		"lua_ls",
 		"jsonls",
+    "python-lsp-server",
 	},
 })
 
