@@ -48,7 +48,7 @@ require("lazy").setup({
 	"junegunn/fzf.vim",
 
 	"whatsthatsmell/codesmell_dark.vim",
-	-- "RRethy/nvim-base16",
+	"RRethy/nvim-base16",
 
 	{ "rose-pine/neovim", name = "rose-pine" },
 
@@ -73,7 +73,7 @@ require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		config = function()
 			require("lualine").setup({ options = {
-				theme = "default",
+				theme = "auto",
 			} })
 		end,
 		-- requires = { 'nvim-tree/nvim-web-devicons', opt = true }
