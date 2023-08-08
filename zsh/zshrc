@@ -129,3 +129,10 @@ fi
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f ~/.local-aliases.zsh ] && source ~/.local-aliases.zsh
+
+export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+export LIBRARY_PATH="/opt/homebrew/lib:$LIBRARY_PATH"
