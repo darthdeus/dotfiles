@@ -71,12 +71,8 @@ require("lazy").setup({
 
 	{
 		"nvim-lualine/lualine.nvim",
-		config = function()
-			require("lualine").setup({ options = {
-				theme = "auto",
-			} })
-		end,
-		-- requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+		-- requires = { "nvim-tree/nvim-web-devicons", opt = true },
+		requires = { "RRethy/nvim-base16" },
 	},
 
 	{
@@ -98,7 +94,7 @@ require("lazy").setup({
 	},
 
 	"rmagatti/auto-session",
-	"zwhitchcox/auto-session-nvim-tree",
+	-- "zwhitchcox/auto-session-nvim-tree",
 
 	"jansedivy/jai.vim",
 
@@ -418,6 +414,11 @@ end, { desc = "Previous todo comment" })
 vim.cmd("colorscheme b16")
 -- vim.cmd('colorscheme rose-pine')
 
+require("lualine").setup({ options = {
+	theme = "auto",
+} })
+
+
 -- require("base16-colorscheme").setup {
 --     -- base00 = "#16161D",
 --     -- base01 = "#2c313c",
@@ -517,7 +518,7 @@ require("mason-lspconfig").setup({
 		"clangd",
 		"lua_ls",
 		"jsonls",
-    "python-lsp-server",
+		"python-lsp-server",
 	},
 })
 
