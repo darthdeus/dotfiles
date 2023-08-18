@@ -374,6 +374,7 @@ local telescope = require("telescope")
 -- telescope.load_extension("fzf")
 telescope.load_extension("yank_history")
 
+
 -- require("toggleterm").setup()
 
 local dap = require("dap")
@@ -414,9 +415,7 @@ end, { desc = "Previous todo comment" })
 vim.cmd("colorscheme b16")
 -- vim.cmd('colorscheme rose-pine')
 
-require("lualine").setup({ options = {
-	theme = "auto",
-} })
+require("lualine").setup({})
 
 
 -- require("base16-colorscheme").setup {
