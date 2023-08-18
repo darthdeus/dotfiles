@@ -85,7 +85,7 @@ function M.setup_lsp_servers()
 	lspconfig.clangd.setup(opts)
 	lspconfig.html.setup(opts)
 	lspconfig.jsonls.setup(opts)
-	lspconfig.pylsp.setup(opts)
+	lspconfig.pyright.setup(opts)
 
 	lspconfig.lua_ls.setup({
 		capabilities = capabilities,
