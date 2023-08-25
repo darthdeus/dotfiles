@@ -509,9 +509,9 @@ autocmd!
 autocmd BufEnter .zshrc.dot set ft=zsh
 autocmd BufEnter *.clj,*.cljs :lua vim.api.nvim_buf_set_option(0, "commentstring", ";; %s")
 autocmd BufEnter *.lua setlocal shiftwidth=4
-autocmd BufEnter *.rbl set ft=rbl
-autocmd BufEnter *.jai,*.wgsl,*.glsl,*.vert,*.frag :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
-autocmd BufFilePost *.jai,*.wgsl,*.glsl,*.vert,*.frag :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+autocmd BufEnter *.rbl set ft=rbl shiftwidth=4 tabstop=4 softtabstop=4
+autocmd BufEnter *.jai,*.wgsl,*.glsl,*.vert,*.frag,*.rbl :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+autocmd BufFilePost *.jai,*.wgsl,*.glsl,*.vert,*.frag,*.rbl :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
 augroup END
 
 let g:fzf_action = {
