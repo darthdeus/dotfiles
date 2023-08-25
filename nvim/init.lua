@@ -80,7 +80,7 @@ require("lazy").setup({
 		config = function()
 			require("nvim-tree").setup({
 				view = {
-					width = "10%",
+					width = "15%",
 				},
 				actions = {
 					open_file = {
