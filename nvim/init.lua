@@ -98,7 +98,7 @@ require("lazy").setup({
 	},
 
 	"rmagatti/auto-session",
-	-- "zwhitchcox/auto-session-nvim-tree",
+	"zwhitchcox/auto-session-nvim-tree",
 
 	"jansedivy/jai.vim",
 
@@ -362,7 +362,6 @@ require("user.remap")
 require("user.reload")
 
 local auto_session = require("auto-session")
--- local auto_session_nvim_tree = require("auto-session-nvim-tree")
 
 auto_session.setup({
 	log_level = "error",
@@ -371,13 +370,32 @@ auto_session.setup({
 	},
 })
 
+-- local auto_session_nvim_tree = require("auto-session-nvim-tree")
 -- auto_session_nvim_tree.setup(auto_session)
+
+-- local function close_nvim_tree()
+--   require('nvim-tree.view').close()
+-- end
+--
+-- local function open_nvim_tree()
+--   require('nvim-tree.view').open()
+-- end
+-- auto_session.setup {
+--   log_level = "error",
+--
+--   pre_save_cmds = {close_nvim_tree},
+--   post_save_cmds = {open_nvim_tree},
+--   post_open_cmds = {open_nvim_tree},
+--   post_restore_cmds = {open_nvim_tree},
+--   cwd_change_handling = {
+--     restore_upcoming_session = true, -- <-- THE DOCS LIE!! This is necessary!!
+--   },
+-- }
 
 local telescope = require("telescope")
 -- TODO:
 -- telescope.load_extension("fzf")
 telescope.load_extension("yank_history")
-
 
 -- require("toggleterm").setup()
 
