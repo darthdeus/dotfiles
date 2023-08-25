@@ -82,11 +82,15 @@ require("lazy").setup({
 				view = {
 					width = "15%",
 				},
+				sync_root_with_cwd = true,
 				actions = {
 					open_file = {
 						window_picker = {
 							enable = false,
 						},
+					},
+					change_dir = {
+						global = true,
 					},
 				},
 			})
