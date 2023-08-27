@@ -102,9 +102,9 @@ ssh-add -l > /dev/null || ssh-add
 
 export PATH="./node_modules/.bin:$HOME/.cargo/bin:$PATH"
 
-if type rustc &>/dev/null; then
-  export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
-fi
+# if type rustc &>/dev/null; then
+#   export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
+# fi
 
 export QT_STYLE_OVERRIDE=adwaita-dark
 export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
