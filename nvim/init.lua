@@ -457,10 +457,11 @@ end, { desc = "Previous todo comment" })
 vim.keymap.set("n", ",e", "<cmd>silent !touch .reload/now<cr>", { silent = true })
 
 -- vim.cmd('colorscheme base16-gruvbox-dark-soft')
--- vim.cmd('colorscheme base16-default-dark')
+vim.cmd("colorscheme base16-default-dark")
 vim.cmd("colorscheme b16")
 -- vim.cmd('colorscheme rose-pine')
 
+-- require('base16-colorscheme').setup({})
 require("lualine").setup({})
 
 -- require("base16-colorscheme").setup {
