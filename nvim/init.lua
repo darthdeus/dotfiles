@@ -47,6 +47,17 @@ require("lazy").setup({
 	"junegunn/fzf",
 	"junegunn/fzf.vim",
 
+	{
+		"ibhagwan/fzf-lua",
+		-- optional for icon support
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		build = "./install --bin",
+		config = function()
+			-- calling `setup` is optional for customization
+			require("fzf-lua").setup({})
+		end,
+	},
+
 	"whatsthatsmell/codesmell_dark.vim",
 	"RRethy/nvim-base16",
 
@@ -315,16 +326,6 @@ require("lazy").setup({
 		"williamboman/mason.nvim",
 	},
 	{ "williamboman/mason-lspconfig.nvim" }, -- Optional
-
-	{
-		"ibhagwan/fzf-lua",
-		-- optional for icon support
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			-- calling `setup` is optional for customization
-			require("fzf-lua").setup({})
-		end,
-	},
 
 	------------------------------------------------------
 	------------------------------------------------------
