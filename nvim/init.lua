@@ -582,6 +582,7 @@ my_lsp.setup_lsp_servers()
 vim.api.nvim_exec2(
 	[[
 command! Ner :NvimTreeToggle
+command! Rerebuild :TSInstallSync! rebel
 ]],
 	{}
 )
