@@ -144,6 +144,8 @@ end
 -- Expand %% to directory path of current buffer
 cnoremap("%%", "<C-R>=expand('%:h').'/'<CR>")
 
+nnoremap("<F6>", "<cmd>Rerebuild<cr>")
+nnoremap("<F7>", "<cmd>TSPlaygroundToggle<cr>")
 nnoremap("<F8>", "<cmd>ToggleTerm direction=vertical size=60<cr>")
 inoremap("<F8>", "<cmd>ToggleTerm direction=vertical size=60<cr>")
 tnoremap("<F8>", "<C-\\><C-n>:ToggleTerm<cr>")
