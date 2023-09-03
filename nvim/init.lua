@@ -1,7 +1,7 @@
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
 
-_G.copilot_enabled = true
+_G.copilot_enabled = false
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
@@ -372,8 +372,8 @@ require("lazy").setup {
   ------------------------------------------------------
   ------------------------------------------------------
 
-  "hrsh7th/cmp-copilot",
-  "github/copilot.vim",
+  { "hrsh7th/cmp-copilot", enabled = _G.copilot_enabled },
+  { "github/copilot.vim", enabled = _G.copilot_enabled },
 
   -- -------------------------------
 
