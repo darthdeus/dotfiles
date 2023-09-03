@@ -1,4 +1,4 @@
-require("mapx").setup({ global = "force" })
+require("mapx").setup { global = "force" }
 
 vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>lua ReloadConfig()<CR>", { noremap = true, silent = false })
 
@@ -120,25 +120,25 @@ vnoremap("<C-Right>", "<C-w><C-l>")
 
 inoremap("<C-X><C-@>", "<C-A>")
 
-if vim.fn.has("win32") == 1 then
-	nnoremap("<leader>ge", "<cmd>vs C:/users/jakub/dotfiles/nvim/init.lua<CR>")
-	-- nnoremap("<leader>e", ':TermExec cmd="make" direction=vertical size=80 go_back=0<cr>')
-	-- nnoremap("<leader>r", ":Cargo run<cr>")
-	-- nnoremap("<leader>e", ':ToggleTerm cmd="cargo run"<cr>')
-	-- nnoremap("<leader>e", ":TermExec cmd='make' direction='vertical' size=80<cr>")
-	-- nnoremap("<leader>e", ":TermExec cmd='make' direction='vertical' open=0 size=80<cr>")
-	--
+if vim.fn.has "win32" == 1 then
+  nnoremap("<leader>ge", "<cmd>vs C:/users/jakub/dotfiles/nvim/init.lua<CR>")
+  -- nnoremap("<leader>e", ':TermExec cmd="make" direction=vertical size=80 go_back=0<cr>')
+  -- nnoremap("<leader>r", ":Cargo run<cr>")
+  -- nnoremap("<leader>e", ':ToggleTerm cmd="cargo run"<cr>')
+  -- nnoremap("<leader>e", ":TermExec cmd='make' direction='vertical' size=80<cr>")
+  -- nnoremap("<leader>e", ":TermExec cmd='make' direction='vertical' open=0 size=80<cr>")
+  --
 
-	nnoremap("<leader>r", "<Cmd>TermExec cmd=c direction=vertical size=60<CR>")
-	nnoremap("<Leader>q", "<Cmd>ToggleTermToggleAll<CR>")
-	-- nnoremap("<Leader>w", "<Cmd>ToggleTerm direction=vertical size=60<CR>")
-	nnoremap("<leader>ma", ":cd C:/dev/flesh-monster<CR>")
-	nnoremap("<leader>mb", ":cd C:/dev/BITGUN<CR>")
+  nnoremap("<leader>r", "<Cmd>TermExec cmd=c direction=vertical size=60<CR>")
+  nnoremap("<Leader>q", "<Cmd>ToggleTermToggleAll<CR>")
+  -- nnoremap("<Leader>w", "<Cmd>ToggleTerm direction=vertical size=60<CR>")
+  nnoremap("<leader>ma", ":cd C:/dev/flesh-monster<CR>")
+  nnoremap("<leader>mb", ":cd C:/dev/BITGUN<CR>")
 else
-	vim.keymap.set("n", "<leader>ge", "<cmd>vs ~/.config/nvim/init.lua<CR>")
-	vim.keymap.set("n", "<leader>r", "<cmd>VimuxRunCommand('c')<CR>")
-	nnoremap("<Leader>q", "<cmd>call VimuxRunCommand('c')<CR>")
-	-- nnoremap("<Leader>w", "<Cmd>call VimuxRunCommand('c')<CR>")
+  vim.keymap.set("n", "<leader>ge", "<cmd>vs ~/.config/nvim/init.lua<CR>")
+  vim.keymap.set("n", "<leader>r", "<cmd>VimuxRunCommand('c')<CR>")
+  nnoremap("<Leader>q", "<cmd>call VimuxRunCommand('c')<CR>")
+  -- nnoremap("<Leader>w", "<Cmd>call VimuxRunCommand('c')<CR>")
 end
 
 -- Expand %% to directory path of current buffer
@@ -169,67 +169,67 @@ nnoremap("Q", "<NOP>")
 nnoremap("<leader><leader>", "<c-^>")
 
 vim.keymap.set("n", "<leader>ps", function()
-	local builtin = require("telescope.builtin")
-	builtin.grep_string({ search = vim.fn.input("Grep > ") })
+  local builtin = require "telescope.builtin"
+  builtin.grep_string { search = vim.fn.input "Grep > " }
 end)
 
 nnoremap(
-	"<leader>lt",
-	":!ctags --extras=+f --exclude=build --exclude=public --exclude=target --exclude=node_modules --exclude=.git -R *<CR>"
+  "<leader>lt",
+  ":!ctags --extras=+f --exclude=build --exclude=public --exclude=target --exclude=node_modules --exclude=.git -R *<CR>"
 )
 nnoremap("<C-\\>", ":tnext<CR>")
 
-local dap = require("dap")
-local dap_w = require("dap.ui.widgets")
+local dap = require "dap"
+local dap_w = require "dap.ui.widgets"
 
-local dapui = require("dapui")
+local dapui = require "dapui"
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
-	dapui.open()
+  dapui.open()
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
-	dapui.close()
+  dapui.close()
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
-	dapui.close()
+  dapui.close()
 end
 
 vim.keymap.set("n", "<F5>", function()
-	dap.continue()
+  dap.continue()
 end)
 vim.keymap.set("n", "<F10>", function()
-	dap.step_over()
+  dap.step_over()
 end)
 vim.keymap.set("n", "<F11>", function()
-	dap.step_into()
+  dap.step_into()
 end)
 vim.keymap.set("n", "<F12>", function()
-	dap.step_out()
+  dap.step_out()
 end)
 -- vim.keymap.set("n", "<Leader>b", function()
 --     dap.toggle_breakpoint()
 -- end)
 vim.keymap.set("n", "<Leader>B", function()
-	dap.toggle_breakpoint()
+  dap.toggle_breakpoint()
 end)
 vim.keymap.set("n", "<Leader>lp", function()
-	dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+  dap.set_breakpoint(nil, nil, vim.fn.input "Log point message: ")
 end)
 vim.keymap.set("n", "<Leader>dr", function()
-	dap.repl.open()
+  dap.repl.open()
 end)
 vim.keymap.set("n", "<Leader>dl", function()
-	dap.run_last()
+  dap.run_last()
 end)
 vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
-	dap_w.hover()
+  dap_w.hover()
 end)
 vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
-	dap_w.preview()
+  dap_w.preview()
 end)
 vim.keymap.set("n", "<Leader>df", function()
-	dap_w.centered_float(dap_w.frames)
+  dap_w.centered_float(dap_w.frames)
 end)
 vim.keymap.set("n", "<Leader>ds", function()
-	dap_w.centered_float(dap_w.scopes)
+  dap_w.centered_float(dap_w.scopes)
 end)
