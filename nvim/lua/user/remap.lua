@@ -175,7 +175,7 @@ end)
 
 nnoremap(
   "<leader>lt",
-  ":!ctags --extras=+f --exclude=build --exclude=public --exclude=target --exclude=node_modules --exclude=.git -R *<CR>"
+  ":!ctags --extras=+f --exclude=build --exclude=public --exclude=target --exclude=node_modules --exclude=.git --exclude='*.css' --exclude='*.json' --exclude='*.js' --exclude='*.svg' --exclude=venv --exclude='*.html' -R *<CR>"
 )
 nnoremap("<C-\\>", ":tnext<CR>")
 
