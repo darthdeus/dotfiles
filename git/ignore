@@ -96,3 +96,6 @@ zig-out/
 
 .env
 .envrc
+
+*.mm_profdata
+*.mono_items.md
