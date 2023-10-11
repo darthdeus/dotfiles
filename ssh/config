@@ -105,6 +105,10 @@ host muflon
   hostname 130.61.21.46
   ForwardAgent yes
 
+host pi
+  user darth
+  hostname 192.168.0.233
+
 # Host *
 #   ControlMaster auto
 #   ControlPath ~/.ssh/cm_socket/%r@%h:%p
