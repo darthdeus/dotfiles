@@ -67,6 +67,8 @@ function M.setup_lsp_servers()
         },
         cargo = {
           extraEnv = { CARGO_TARGET_DIR = ".ra_target" },
+          features = { "dev", "comfy/quick-exit", "comfy/tracy" }
+          -- rust-analyzer.cargo.features
         },
         diagnostics = {
           -- TODO: check include_dir
@@ -81,6 +83,7 @@ function M.setup_lsp_servers()
 
   local lspconfig = require "lspconfig"
 
+  lspconfig.bashls.setup(opts)
   lspconfig.taplo.setup(opts)
   lspconfig.clangd.setup(opts)
   lspconfig.html.setup(opts)
