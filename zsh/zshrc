@@ -4,15 +4,16 @@ if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
 fi
 
 export DOT_BASE_DIR="$HOME/.dotfiles"
+ZSH="$DOT_BASE_DIR/zsh"
+
 # export ZPLUG_HOME="$HOME/.dotfiles/third-party/zplug"
 # source "$ZPLUG_HOME/init.zsh"
 
 source "$DOT_BASE_DIR/third-party/antidote/antidote.zsh"
-antidote load "$DOT_BASE_DIR/zsh/plugins.txt"
+antidote load "$ZSH/plugins.txt"
 
-fpath=(~/.zsh/funcs "${fpath[@]}")
+fpath=("$ZSH/funcs" "${fpath[@]}")
 
-ZSH=$HOME/.zsh
 export PATH="$HOME/.bun/bin:$HOME/.npm/bin:/opt/homebrew/opt/openjdk/bin:$PATH:$HOME/.local/bin"
 
 HISTSIZE=10000
@@ -28,7 +29,7 @@ bindkey -e
 autoload -Uz select-word-style
 select-word-style bash
 
-source ~/.zsh/prompt.zsh
+source "$ZSH/prompt.zsh"
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -54,7 +55,7 @@ for config_file in "$ZSH"/lib/*.zsh; do
 done
 
 # completion settings
-fpath=(~/.zsh/completion "${fpath[@]}")
+fpath=("$ZSH/completion" "${fpath[@]}")
 
 autoload -Uz compinit
 compinit -C
