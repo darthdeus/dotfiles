@@ -3,10 +3,9 @@
   home.homeDirectory = "/home/darth";
 
   home.packages = with pkgs; [
+    direnv
     nixpkgs-fmt
     git
-    neovim
-    zsh
     ranger
     ctags
     htop
@@ -16,11 +15,36 @@
     gthumb
     xfce.thunar xfce.xfce4-screenshooter
     curl
-    tmux
     mosh
     unzip
     wget
   ];
+
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    initExtra = ''
+      source ~/.dotfiles/zsh/zshrc
+    '';
+  };
+
+  programs.tmux = {
+    enable = true;
+    extraConfig = ''
+      source-file /home/darth/.dotfiles/tmux.conf
+    '';
+  };
+
+  programs.alacritty.enable = true;
+  programs.kitty.enable = true;
+
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+  };
 
   home.stateVersion = "23.05";
   programs.home-manager.enable = true;

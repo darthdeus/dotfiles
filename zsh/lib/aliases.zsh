@@ -227,8 +227,22 @@ function source_conda() {
   eval "$(/home/darth/projects/miniconda3/bin/conda shell.zsh hook)"
 }
 
+# function ne() {
+#   (cd ~/.dotfiles/nixos/; vim shared.nix)
+# }
+
 function ne() {
-  (cd ~/.dotfiles/nixos/; vim shared.nix)
+  (cd ~/.dotfiles/nix; vim home.nix)
+}
+
+alias hmcd="cd ~/.dotfiles/nix"
+
+function hr() {
+  home-manager switch --flake $HOME/.dotfiles/nix --impure
+}
+
+function update-nixos() {
+  hmcd && sudo nixos-rebuild switch
 }
 
 function no() {
