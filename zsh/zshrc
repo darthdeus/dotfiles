@@ -144,10 +144,17 @@ fi
 # source /usr/share/fzf/key-bindings.zsh
 # source /usr/share/fzf/completion.zsh
 
-eval "$(direnv hook zsh)"
-export DIRENV_LOG_FORMAT=""
+# eval "$(direnv hook zsh)"
+# export DIRENV_LOG_FORMAT=""
 
 export TOPIARY_LANGUAGE_DIR="$HOME/projects/topiary/languages"
+
+# export LD_LIBRARY_PATH="$(nix eval --raw 'nixpkgs#alsaLib.outPath')/lib:$LD_LIBRARY_PATH"
+# export LD_LIBRARY_PATH="$(nix eval --raw 'nixpkgs#xorg.libX11.outPath')/lib:$LD_LIBRARY_PATH"
+# export LD_LIBRARY_PATH="$(nix eval --raw 'nixpkgs#xorg.libXcursor.outPath')/lib:$LD_LIBRARY_PATH"
+# export LD_LIBRARY_PATH="$(nix eval --raw 'nixpkgs#xorg.libXrandr.outPath')/lib:$LD_LIBRARY_PATH"
+# export LD_LIBRARY_PATH="$(nix eval --raw 'nixpkgs#xorg.libXi.outPath')/lib:$LD_LIBRARY_PATH"
+# export PKG_CONFIG_PATH="$(nix eval --raw 'nixpkgs#alsaLib.dev.outPath')/lib/pkgconfig"
 
 if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof

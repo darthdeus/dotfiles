@@ -34,7 +34,7 @@
 [apply]
   whitespace = nowarn
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = ~/.dotfiles/git/ignore
   autocrlf = false
   quotepath = false
 
