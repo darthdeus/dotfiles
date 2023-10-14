@@ -19,6 +19,8 @@
     unzip
     wget
 
+    delta
+
     nodejs
 
     gnumake
