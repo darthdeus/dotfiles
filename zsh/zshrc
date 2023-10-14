@@ -145,7 +145,7 @@ fi
 # source /usr/share/fzf/completion.zsh
 
 # eval "$(direnv hook zsh)"
-# export DIRENV_LOG_FORMAT=""
+export DIRENV_LOG_FORMAT=""
 
 export TOPIARY_LANGUAGE_DIR="$HOME/projects/topiary/languages"
 
