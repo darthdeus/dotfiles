@@ -45,18 +45,7 @@
     rustup
     # rust-analyzer
     # cargo
-
-    # alsaLib.dev
-    # libxkbcommon
   ];
-
-  # LD_LIBRARY_PATH = with pkgs;
-  #   lib.makeLibraryPath [
-  #     libxkbcommon # keyboard
-  #     wayland
-  #     libGL # OpenGL I think
-  #     alsaLib # sound
-  #   ];
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
