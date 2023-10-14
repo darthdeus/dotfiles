@@ -6,7 +6,7 @@
     nixpkgs-fmt
     git
     ranger
-    ctags
+    universal-ctags
     htop
     xclip
     xsel
@@ -28,15 +28,24 @@
     ripgrep
     jq
 
+    # busybox
+
     tracy
 
     clang
     mold
     pkg-config
-    # rustup
 
-    alsaLib.dev
-    libxkbcommon
+    nix-index
+    # nixos-search
+    nixos-option
+
+    rustup
+    # rust-analyzer
+    # cargo
+
+    # alsaLib.dev
+    # libxkbcommon
   ];
 
   # LD_LIBRARY_PATH = with pkgs;
@@ -49,6 +58,31 @@
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
+
+  services.sxhkd = {
+    enable = true;
+    extraConfig = ''
+      ${builtins.readFile ~/.dotfiles/sxhkd/sxhkdrc}
+    '';
+  };
+
+  services.mpd = {
+    enable = true;
+    musicDirectory = "~/music";
+  };
+
+  services.polybar = {
+    enable = true;
+
+    script = "~/.dotfiles/polybar/launch.sh";
+
+    package = pkgs.polybar.override {
+      i3Support = true;
+      pulseSupport = true;
+      mpdSupport = true;
+      alsaSupport = true;
+    };
+  };
 
   programs.zsh = {
     enable = true;
