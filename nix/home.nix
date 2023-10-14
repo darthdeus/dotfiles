@@ -18,6 +18,15 @@
     mosh
     unzip
     wget
+
+    nodejs
+
+    gnumake
+    gcc
+    zig
+    fzf
+    fd
+    ripgrep
   ];
 
   programs.zsh = {
