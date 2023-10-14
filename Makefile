@@ -1,4 +1,7 @@
-default: link
+# default: link
+
+nothing:
+	echo ":("
 
 a:
 	xrdb ~/.Xresources
