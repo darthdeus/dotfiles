@@ -99,3 +99,5 @@ zig-out/
 
 *.mm_profdata
 *.mono_items.md
+
+.direnv
