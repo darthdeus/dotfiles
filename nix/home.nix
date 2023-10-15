@@ -52,6 +52,13 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
+#   environment.extraSetup = ''
+# xrandr --output DP-2 --mode "2560x1440" --pos 0x0 --rotate normal \         
+#     --output DP-1 --mode "3440x1440" --pos 2560x0 --rotate normal --primary
+#
+# ~/.config/polybar/launch.sh
+#   '';
+
   services.sxhkd = {
     enable = true;
     extraConfig = ''
