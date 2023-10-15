@@ -253,6 +253,12 @@ function np() {
   (cd ~/projects/nixpkgs/pkgs; fe)
 }
 
+function newflake() {
+  cp ~/projects/comfy/{flake.nix,flake.lock,.envrc} .
+  git add .
+  direnv allow
+}
+
 # TODO: scope all under one helper?
 function nix-dep() {
   pkg=$(find /nix/store -mindepth 1 -maxdepth 1 -type d | fzf --preview 'nix why-depends /run/current-system {}' --preview-window=down)
