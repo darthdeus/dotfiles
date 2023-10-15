@@ -20,6 +20,7 @@
     wget
 
     maim
+    neofetch
 
     delta
 
