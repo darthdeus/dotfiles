@@ -19,6 +19,8 @@
     unzip
     wget
 
+    maim
+
     delta
 
     nodejs
