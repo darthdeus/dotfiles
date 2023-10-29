@@ -1,7 +1,7 @@
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
 
-_G.copilot_enabled = true
+_G.copilot_enabled = false
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
@@ -23,12 +23,7 @@ require("lazy").setup {
   "nvim-lua/plenary.nvim",
 
   "folke/neodev.nvim",
-  {
-    "folke/neoconf.nvim",
-    config = function()
-      require("neoconf").setup {}
-    end,
-  },
+  "folke/neoconf.nvim",
 
   "b0o/mapx.nvim",
 
@@ -329,28 +324,11 @@ require("lazy").setup {
   ------------------------------------------------------
   ------------------------------------------------------
 
-  -- {
-  --   "VonHeikemen/lsp-zero.nvim",
-  --   branch = "v3.x",
-  --   dependencies = { "neovim/nvim-lspconfig", "hrsh7th/cmp-nvim-lsp", "hrsh7th/nvim-cmp" },
-  --   config = function()
-  --     local lsp_zero = require "lsp-zero"
-  --
-  --     lsp_zero.on_attach(function(client, bufnr)
-  --       lsp_zero.default_keymaps { buffer = bufnr }
-  --     end)
-  --
-  --     require("lspconfig").rust_analyzer.setup {
-  --       settings = {
-  --         ["rust-analyzer"] = {
-  --           cargo = {
-  --             extraEnv = { CARGO_TARGET_DIR = ".ra_target" },
-  --           },
-  --         },
-  --       },
-  --     }
-  --   end,
-  -- },
+  {
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v3.x",
+    dependencies = { "neovim/nvim-lspconfig", "hrsh7th/cmp-nvim-lsp", "hrsh7th/nvim-cmp" },
+  },
 
   ------------------------------------------------------
   ------------------------------------------------------
@@ -364,27 +342,26 @@ require("lazy").setup {
   { "hrsh7th/nvim-cmp" }, -- Required
   { "hrsh7th/cmp-nvim-lsp" }, -- Required
   { "L3MON4D3/LuaSnip" }, -- Required
-  -- LSP Support
+  -- -- LSP Support
   { "neovim/nvim-lspconfig" }, -- Required
-  { -- Optional
-    "williamboman/mason.nvim",
-  },
+
+  "williamboman/mason.nvim",
   { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
   "delphinus/cmp-ctags",
 
   "ray-x/lsp_signature.nvim",
 
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+
   "mfussenegger/nvim-dap",
   "rcarriga/nvim-dap-ui",
   -- use "zhimsel/vim-stay"
-
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
 
   { "hrsh7th/cmp-copilot", enabled = _G.copilot_enabled },
   { "github/copilot.vim", enabled = _G.copilot_enabled },
@@ -395,6 +372,8 @@ require("lazy").setup {
     build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
   },
 }
+
+require("neoconf").setup {}
 
 require "user.settings"
 require "user.remap"
@@ -600,11 +579,33 @@ require("mason-lspconfig").setup {
   },
 }
 
+-----------------------------------
+
 local my_lsp = require "user.lsp_shared"
 
 my_lsp.setup_keymaps()
 my_lsp.setup_cmp()
 my_lsp.setup_lsp_servers()
+
+-----------------------------------
+
+-- local lsp_zero = require "lsp-zero"
+--
+-- lsp_zero.on_attach(function(client, bufnr)
+--   lsp_zero.default_keymaps { buffer = bufnr }
+-- end)
+--
+-- require("lspconfig").rust_analyzer.setup {
+--   settings = {
+--     ["rust-analyzer"] = {
+--       cargo = {
+--         extraEnv = { CARGO_TARGET_DIR = ".ra_target" },
+--       },
+--     },
+--   },
+-- }
+
+-----------------------------------
 
 vim.api.nvim_exec2(
   [[
