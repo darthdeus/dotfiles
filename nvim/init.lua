@@ -1,7 +1,7 @@
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
 
-_G.copilot_enabled = false
+_G.copilot_enabled = true
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
@@ -297,18 +297,16 @@ require("lazy").setup {
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
   {
-  	"nvim-treesitter/nvim-treesitter-context",
-  	config = function()
-        require("treesitter-context").setup({
-            enable = false
-        })
-  	end,
+    "nvim-treesitter/nvim-treesitter-context",
+    config = function()
+      require("treesitter-context").setup {
+        enable = false,
+      }
+    end,
   },
 
   "folke/tokyonight.nvim",
-
   "nvim-treesitter/playground",
-  -- end
 
   {
     "tenxsoydev/size-matters.nvim",
@@ -327,35 +325,37 @@ require("lazy").setup {
   ------------------------------------------------------
   ------------------------------------------------------
   ------------------------------------------------------
-
-  {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v2.x",
-    dependencies = {
-
-      -- Autocompletion
-    },
-  },
-
   ------------------------------------------------------
   ------------------------------------------------------
   ------------------------------------------------------
-  -- "williamboman/mason.nvim",
-  -- "williamboman/mason-lspconfig.nvim",
-  -- "neovim/nvim-lspconfig",
+
   -- {
-  -- 	"L3MON4D3/LuaSnip",
-  -- 	-- follow latest release.
-  -- 	-- version = "1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-  -- 	-- install jsregexp (optional!).
-  -- 	build = "make install_jsregexp",
+  --   "VonHeikemen/lsp-zero.nvim",
+  --   branch = "v3.x",
+  --   dependencies = { "neovim/nvim-lspconfig", "hrsh7th/cmp-nvim-lsp", "hrsh7th/nvim-cmp" },
+  --   config = function()
+  --     local lsp_zero = require "lsp-zero"
+  --
+  --     lsp_zero.on_attach(function(client, bufnr)
+  --       lsp_zero.default_keymaps { buffer = bufnr }
+  --     end)
+  --
+  --     require("lspconfig").rust_analyzer.setup {
+  --       settings = {
+  --         ["rust-analyzer"] = {
+  --           cargo = {
+  --             extraEnv = { CARGO_TARGET_DIR = ".ra_target" },
+  --           },
+  --         },
+  --       },
+  --     }
+  --   end,
   -- },
 
-  -- "hrsh7th/vim-vsnip",
-  -- "hrsh7th/vim-vsnip-integ",
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
 
-  -- "hrsh7th/nvim-cmp",
-  -- "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-path",
   "hrsh7th/cmp-cmdline",
@@ -371,17 +371,6 @@ require("lazy").setup {
   },
   { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-
-  { "hrsh7th/cmp-copilot", enabled = _G.copilot_enabled },
-  { "github/copilot.vim", enabled = _G.copilot_enabled },
-
-  -- -------------------------------
-
-  -- "nvim-lua/lsp_extensions.nvim",
-
   "delphinus/cmp-ctags",
 
   "ray-x/lsp_signature.nvim",
@@ -390,16 +379,21 @@ require("lazy").setup {
   "rcarriga/nvim-dap-ui",
   -- use "zhimsel/vim-stay"
 
-  -- --------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+
+  { "hrsh7th/cmp-copilot", enabled = _G.copilot_enabled },
+  { "github/copilot.vim", enabled = _G.copilot_enabled },
 
   "chrisbra/unicode.vim",
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
   },
-  -- 'ryanoasis/vim-devicons',
-
-  -- TODO: try https://github.com/L3MON4D3/LuaSnip ?
 }
 
 require "user.settings"
@@ -582,6 +576,10 @@ vim.cmd [[
     let guifont="Arial:h12"
 ]]
 
+------------------------------------------------------
+------------------------------------------------------
+------------------------------------------------------
+------------------------------------------------------
 -----------------------------------
 -----------------------------------
 ---------- LSP --------------------
@@ -616,6 +614,10 @@ command! Rerebuild :TSInstallSync! rebel
   {}
 )
 
+------------------------------------------------------
+------------------------------------------------------
+------------------------------------------------------
+------------------------------------------------------
 -----------------------------------
 -----------------------------------
 ---------- TREESITTER -------------
