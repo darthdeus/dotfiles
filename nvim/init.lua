@@ -587,6 +587,8 @@ my_lsp.setup_keymaps()
 my_lsp.setup_cmp()
 my_lsp.setup_lsp_servers()
 
+vim.opt.signcolumn = 'auto'
+
 -----------------------------------
 
 -- local lsp_zero = require "lsp-zero"

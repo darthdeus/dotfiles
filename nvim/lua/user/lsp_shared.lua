@@ -67,7 +67,7 @@ function M.setup_lsp_servers()
         },
         cargo = {
           extraEnv = { CARGO_TARGET_DIR = ".ra_target" },
-          features = { "dev", "comfy/quick-exit", "comfy/tracy" }
+          features = { "dev", "comfy/quick-exit", "comfy/tracy" },
           -- rust-analyzer.cargo.features
         },
         diagnostics = {
@@ -76,6 +76,19 @@ function M.setup_lsp_servers()
         },
         rustfmt = {},
       },
+    },
+
+    handlers = {
+      ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+        -- Disable signs in gutter
+        signs = false,
+        -- Ensure virtual text (inline diagnostics) is enabled
+        virtual_text = true,
+        -- Enable underlining
+        underline = true,
+        -- You can also disable the update in the statusline if you wish with
+        -- update_in_insert = false,
+      }),
     },
   }
 
@@ -171,16 +184,16 @@ function M.luasnip_shift_supertab(select_opts)
   })
 end
 
-local luasnip = get_luasnip()
+-- local luasnip = get_luasnip()
 
 -- Setup nvim-cmp.
 function M.setup_cmp()
   local cmp = require "cmp"
 
-  local has_words_before = function()
-    local cursor = vim.api.nvim_win_get_cursor(0)
-    return (vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1], true)[1] or ""):sub(cursor[2], cursor[2]):match "%s"
-  end
+  -- local has_words_before = function()
+  --   local cursor = vim.api.nvim_win_get_cursor(0)
+  --   return (vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1], true)[1] or ""):sub(cursor[2], cursor[2]):match "%s"
+  -- end
 
   local shared_sources = {
     { name = "nvim_lsp" },
