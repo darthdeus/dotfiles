@@ -567,6 +567,7 @@ autocmd BufEnter *.cpp,*.h,*.cs :lua vim.api.nvim_buf_set_option(0, "commentstri
 autocmd BufFilePost *.cpp,*.h,*.cs :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
 
 autocmd BufEnter *.ldtk set ft=json
+autocmd BufEnter *.ini :lua vim.api.nvim_buf_set_option(0, "commentstring", "# %s")
 autocmd BufEnter *.lua setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd BufEnter *.rbl set ft=rbl shiftwidth=4 tabstop=4 softtabstop=4
 autocmd BufEnter test/corpus/*.txt set ft=lisp shiftwidth=2 tabstop=2 softtabstop=2
