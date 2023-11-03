@@ -5,7 +5,7 @@ vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>lua ReloadConfig()<CR>", { nore
 -- vim.api.nvim_set_keymap("n", "<leader>pv", vim.cmd.Ex, {})
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
-vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
+-- vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
 
 vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
 vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
