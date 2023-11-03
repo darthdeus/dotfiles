@@ -131,6 +131,9 @@ if [[ `uname` == "Darwin" ]]; then
   export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
   export PKG_CONFIG_PATH="/opt/homebrew/Cellar/icu4c/73.2/lib/pkgconfig"
+
+  # This is somehow necessary for Xcode to work since it uses a different libclang
+  export LIBCLANG_PATH=/Library/Developer/CommandLineTools/usr/lib/libclang.dylib
 else
   # export LLVM_SYS_150_PREFIX=$HOME/gen/llvm-bin-release-15.0.7
   export LLVM_SYS_160_PREFIX=$HOME/builds/llvm/prefix_release/
