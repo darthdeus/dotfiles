@@ -171,15 +171,15 @@ require("lazy").setup {
   --   }
   -- },
 
-  {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("todo-comments").setup {
-        signs = false,
-      }
-    end,
-  },
+  -- {
+  --   "folke/todo-comments.nvim",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   config = function()
+  --     require("todo-comments").setup {
+  --       signs = false,
+  --     }
+  --   end,
+  -- },
 
   {
     "gbprod/yanky.nvim",
