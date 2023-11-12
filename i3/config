@@ -54,6 +54,7 @@ for_window [title="GNU Image Manipulation Program"] floating enable
 for_window [title="mpv"] floating enable
 for_window [title="Lock Screen.*1Password"] floating enable
 for_window [title="^GlslViewer$"] floating enable
+for_window [title="yakui demo"] floating enable
 
 bindsym $mod+h			  focus left
 bindsym $mod+Shift+h	move left 30
