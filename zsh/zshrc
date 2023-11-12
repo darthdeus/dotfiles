@@ -144,8 +144,8 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.local-aliases.zsh ] && source ~/.local-aliases.zsh
 #
-# source /usr/share/fzf/key-bindings.zsh
-# source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 # eval "$(direnv hook zsh)"
 export DIRENV_LOG_FORMAT=""
