@@ -348,6 +348,8 @@ require("lazy").setup {
   "williamboman/mason.nvim",
   { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
+  "onsails/lspkind.nvim",
+
   "delphinus/cmp-ctags",
 
   "ray-x/lsp_signature.nvim",
@@ -363,8 +365,30 @@ require("lazy").setup {
   "rcarriga/nvim-dap-ui",
   -- use "zhimsel/vim-stay"
 
-  { "hrsh7th/cmp-copilot", enabled = _G.copilot_enabled },
-  { "github/copilot.vim", enabled = _G.copilot_enabled },
+  -- { "hrsh7th/cmp-copilot", enabled = _G.copilot_enabled },
+  -- { "github/copilot.vim", enabled = _G.copilot_enabled },
+
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+    dependencies = { "zbirenbaum/copilot.lua" },
+    enabled = _G.copilot_enabled,
+  },
+
+  {
+    "zbirenbaum/copilot.lua",
+    config = function()
+      require("copilot").setup {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      }
+    end,
+    enabled = _G.copilot_enabled,
+  },
+
+  ------------------------
 
   "chrisbra/unicode.vim",
   {
@@ -587,7 +611,7 @@ my_lsp.setup_keymaps()
 my_lsp.setup_cmp()
 my_lsp.setup_lsp_servers()
 
-vim.opt.signcolumn = 'auto'
+vim.opt.signcolumn = "auto"
 
 -----------------------------------
 
