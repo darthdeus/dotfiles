@@ -167,6 +167,9 @@ if [ -e $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then
   source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 fi
 
+export UNREALROOTPATH="$HOME/gen/UE5"
+export GAMEPROJECTFILE="$HOME/gen/dreamthorn_svn/Auto_LANDSCAPE_test1.uproject"
+
 if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof
 fi
