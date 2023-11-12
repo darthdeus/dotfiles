@@ -102,12 +102,12 @@ if [[ $osname == *NixOS* ]]; then
   alias ns="nix-shell"
 fi
 
-if [[ $osname == *pipik* ]]; then
+# if [[ $osname == *pipik* ]]; then
 # if uname -a | grep -i arch >/dev/null; then
   alias pi="sudo pacman -S"
   alias pe="pacman -Ss"
   alias pq="pacman -Ssq"
-fi
+# fi
 
 if ! type open 2>&1 1>/dev/null; then
   alias open="exo-open"
