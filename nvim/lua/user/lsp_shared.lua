@@ -79,16 +79,16 @@ function M.setup_lsp_servers()
     },
 
     handlers = {
-      ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        -- Disable signs in gutter
-        signs = false,
-        -- Ensure virtual text (inline diagnostics) is enabled
-        virtual_text = true,
-        -- Enable underlining
-        underline = true,
-        -- You can also disable the update in the statusline if you wish with
-        -- update_in_insert = false,
-      }),
+      -- ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      --   -- Disable signs in gutter
+      --   signs = false,
+      --   -- Ensure virtual text (inline diagnostics) is enabled
+      --   virtual_text = true,
+      --   -- Enable underlining
+      --   underline = true,
+      --   -- You can also disable the update in the statusline if you wish with
+      --   -- update_in_insert = false,
+      -- }),
     },
   }
 
