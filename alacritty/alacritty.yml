@@ -17,7 +17,7 @@ font:
     x: -1
     y: -2
 
-  size: 16
+  size: 19
 
 # Base16 Default Dark 256 - alacritty color config
 # Chris Kempson (http://chriskempson.com)
