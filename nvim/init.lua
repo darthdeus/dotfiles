@@ -1,7 +1,7 @@
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
 
-_G.copilot_enabled = false
+_G.copilot_enabled = true
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
