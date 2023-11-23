@@ -145,9 +145,9 @@ require("lazy").setup {
   },
 
   "rmagatti/auto-session",
-  "zwhitchcox/auto-session-nvim-tree",
+  -- "zwhitchcox/auto-session-nvim-tree",
 
-  "jansedivy/jai.vim",
+  -- "jansedivy/jai.vim",
 
   -- {
   --   "folke/noice.nvim",
@@ -333,6 +333,10 @@ require("lazy").setup {
   ------------------------------------------------------
   ------------------------------------------------------
   ------------------------------------------------------
+  -------------- CMP COMPLETION ------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
 
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-path",
@@ -354,20 +358,6 @@ require("lazy").setup {
 
   "ray-x/lsp_signature.nvim",
 
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-
-  "mfussenegger/nvim-dap",
-  "rcarriga/nvim-dap-ui",
-  -- use "zhimsel/vim-stay"
-
-  -- { "hrsh7th/cmp-copilot", enabled = _G.copilot_enabled },
-  -- { "github/copilot.vim", enabled = _G.copilot_enabled },
-
   {
     "zbirenbaum/copilot-cmp",
     config = function()
@@ -376,6 +366,22 @@ require("lazy").setup {
     dependencies = { "zbirenbaum/copilot.lua" },
     enabled = _G.copilot_enabled,
   },
+
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+
+  -- { "neoclide/coc.nvim", branch = "release" },
+
+  "mfussenegger/nvim-dap",
+  "rcarriga/nvim-dap-ui",
+  -- use "zhimsel/vim-stay"
+
+  -- { "hrsh7th/cmp-copilot", enabled = _G.copilot_enabled },
+  -- { "github/copilot.vim", enabled = _G.copilot_enabled },
 
   {
     "zbirenbaum/copilot.lua",
@@ -588,28 +594,36 @@ vim.cmd [[
 ---------- LSP --------------------
 -----------------------------------
 
-require("mason").setup()
-require("mason-lspconfig").setup {
-  ensure_installed = {
-    "rust_analyzer",
-    "bashls",
-    "jsonls",
-    -- "shellcheck",
-    "taplo",
-    "clangd",
-    "lua_ls",
-    "jsonls",
-    "pylsp",
-  },
-}
 
------------------------------------
+local use_cmp = true
 
-local my_lsp = require "user.lsp_shared"
+if use_cmp then
+  require("mason").setup()
+  require("mason-lspconfig").setup {
+    ensure_installed = {
+      "rust_analyzer",
+      "bash-language-server",
+      "jsonls",
+      -- "shellcheck",
+      "taplo",
+      "clangd",
+      "lua_ls",
+      "jsonls",
+      -- "pylsp",
+    },
+  }
 
-my_lsp.setup_keymaps()
-my_lsp.setup_cmp()
-my_lsp.setup_lsp_servers()
+  -----------------------------------
+
+  local my_lsp = require "user.lsp_shared"
+
+  my_lsp.setup_keymaps()
+  my_lsp.setup_cmp()
+  my_lsp.setup_lsp_servers()
+else
+  local coc_lsp = require "user.coc-setup"
+  coc_lsp.setup_keymaps()
+end
 
 vim.opt.signcolumn = "auto"
 
