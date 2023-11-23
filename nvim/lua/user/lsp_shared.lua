@@ -66,7 +66,7 @@ function M.setup_lsp_servers()
           -- overrideCommand = { "killall", "nvim" }
         },
         cargo = {
-          extraEnv = { CARGO_TARGET_DIR = ".ra_target" },
+          -- extraEnv = { CARGO_TARGET_DIR = ".ra_target" },
           features = { "dev", "comfy/quick-exit", "comfy/tracy" },
           -- rust-analyzer.cargo.features
         },
