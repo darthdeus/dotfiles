@@ -104,14 +104,22 @@ fi
 if command -v sxhkd; then
   sxhkd &
 fi
+
 if command -v autocutsel; then
   autocutsel -selection CLIPBOARD -fork &
 fi
+
 # if command -v copyq; then
 #   copyq &
 # fi
 
-eval $(ssh-agent)
+if command ssh-agent; then
+  eval $(ssh-agent)
+fi
+
+# if command -v picom; then
+#   picom -D0 -o1 -i1 --vsync &
+# fi
 
 # exec startxfce4
 exec i3
