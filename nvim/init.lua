@@ -235,6 +235,8 @@ require("lazy").setup {
     config = function()
       require("nvim_comment").setup {
         create_mappings = false,
+        comment_empty = true,
+        comment_empty_trim_whitespace = true,
       }
     end,
   },
@@ -593,7 +595,6 @@ vim.cmd [[
 -----------------------------------
 ---------- LSP --------------------
 -----------------------------------
-
 
 local use_cmp = true
 
