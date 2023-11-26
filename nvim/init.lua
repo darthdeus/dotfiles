@@ -241,6 +241,8 @@ require("lazy").setup {
     end,
   },
 
+  -- "chrisbra/csv.vim",
+
   "jiangmiao/auto-pairs",
 
   -- "sjl/gundo.vim",
@@ -603,13 +605,14 @@ if use_cmp then
   require("mason-lspconfig").setup {
     ensure_installed = {
       "rust_analyzer",
-      "bash-language-server",
+      "bashls",
       "jsonls",
       -- "shellcheck",
       "taplo",
       "clangd",
       "lua_ls",
       "jsonls",
+      "pyright",
       -- "pylsp",
     },
   }
