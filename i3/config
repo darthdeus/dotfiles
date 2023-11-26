@@ -57,7 +57,8 @@ for_window [title="^GlslViewer$"] floating enable
 for_window [title="yakui demo"] floating enable
 
 # for_window [class="Alacritty-OBS"] floating enable, resize set 1920 1080, move position center, border none
-for_window [class="Alacritty-OBS"] floating enable, resize set 1920 1100, move position center
+# for_window [class="Alacritty-OBS"] floating enable, resize set 1920 1100, move position center
+for_window [class="Alacritty-OBS"] floating enable, resize set 2560 1460, move position center
 
 bindsym $mod+h			  focus left
 bindsym $mod+Shift+h	move left 30
