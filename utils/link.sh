@@ -10,8 +10,8 @@ THIRD_PARTY="$DOT/third-party"
 ln -nsf "$DOT/zsh"           "$HOME/.zsh"
 ln -nsf "$DOT/zsh/zshrc"     "$HOME/.zshrc"
 # ln -nsf "$DOT/xmonad"        "$HOME/.xmonad"
-# ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
-# ln -nsf "$DOT/Xmodmap"       "$HOME/.Xmodmap"
+ln -nsf "$DOT/xinitrc"       "$HOME/.xinitrc"
+ln -nsf "$DOT/Xmodmap"       "$HOME/.Xmodmap"
 
 
 ln -nsf "$DOT/doom.d"           "$HOME/.doom.d"
