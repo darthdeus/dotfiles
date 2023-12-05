@@ -98,7 +98,7 @@ function M.setup_lsp_servers()
 
   lspconfig.bashls.setup(opts)
   lspconfig.taplo.setup(opts)
-  lspconfig.clangd.setup(opts)
+  -- lspconfig.clangd.setup(opts)
   lspconfig.html.setup(opts)
   lspconfig.jsonls.setup(opts)
   lspconfig.pyright.setup(opts)
