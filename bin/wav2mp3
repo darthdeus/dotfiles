@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Check if an argument is provided
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <file.wav>"
+    exit 1
+fi
+
+# Extract the filename without the extension
+filename=$(basename -- "$1")
+extension="${filename##*.}"
+filename="${filename%.*}"
+
+# Check if the input file is a WAV file
+if [ "$extension" != "wav" ]; then
+    echo "The input file must be a WAV file."
+    exit 1
+fi
+
+# Path of the input file
+input_path=$1
+
+# Construct the output file path with the same name but with .mp3 extension
+output_path="${input_path%.*}.mp3"
+
+# Use ffmpeg to convert the file
+ffmpeg -i "$input_path" -vn -ar 44100 -ac 2 -b:a 192k "$output_path"
