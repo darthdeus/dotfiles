@@ -1,2 +1,3 @@
 #!/bin/sh
-alacritty --title Alacritty-OBS --class Alacritty-OBS -e tmux
+# alacritty --title Alacritty-OBS --class Alacritty-OBS -e tmux
+alacritty --title Alacritty-OBS --class Alacritty-OBS
