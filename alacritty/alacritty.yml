@@ -10,14 +10,15 @@ env:
 font:
   normal:
     family: "Fantasque Sans Mono"
+    # family: "Fantasque Sans Nerd"
     # family: "M PLUS 1 Code"
     # family: "Iosevka"
     style: Regular
   offset:
-    x: -1
+    x: -2
     y: -2
 
-  size: 19
+  size: 20
 
 # Base16 Default Dark 256 - alacritty color config
 # Chris Kempson (http://chriskempson.com)
