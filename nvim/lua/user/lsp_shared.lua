@@ -98,10 +98,11 @@ function M.setup_lsp_servers()
 
   lspconfig.bashls.setup(opts)
   lspconfig.taplo.setup(opts)
-  -- lspconfig.clangd.setup(opts)
+  lspconfig.clangd.setup(opts)
   lspconfig.html.setup(opts)
   lspconfig.jsonls.setup(opts)
   lspconfig.pyright.setup(opts)
+  lspconfig.csharp_ls.setup(opts)
 
   lspconfig.lua_ls.setup {
     capabilities = capabilities,

@@ -613,6 +613,8 @@ if use_cmp then
       "lua_ls",
       "jsonls",
       "pyright",
+      "csharp_ls",
+      "csharpier",
       -- "pylsp",
     },
   }

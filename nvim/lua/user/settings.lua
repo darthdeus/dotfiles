@@ -56,7 +56,7 @@ vim.g.maplocalleader = ","
 vim.o.backupcopy = "yes"
 vim.o.list = true
 vim.o.listchars = "tab:--,trail:."
-vim.o.pastetoggle = "<F3>"
+-- vim.o.pastetoggle = "<F3>"
 vim.o.undofile = true
 
 -- vim.g.base16colorspace = 256
