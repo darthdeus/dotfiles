@@ -92,9 +92,16 @@ if [[ "$(hostname)" == "pipik" ]]; then
     #   --output DisplayPort-1 --mode 5120x2160 --pos 0x0 --rotate normal --primary \
     #   --output HDMI-A-0 --mode 3840x2160 --pos -3840x0 --rotate normal
 
-    xrandr \
-      --output DP-0 --mode 5120x2160 --pos 0x0 --rotate normal --primary \
-      --output HDMI-0 --mode 3840x2160 --pos -3840x0 --rotate normal
+    # xrandr \
+    #   --output DP-0 --mode 5120x2160 --pos 0x0 --rotate normal --primary \
+    #   --output HDMI-0 --mode 3840x2160 --pos -3840x0 --rotate normal
+
+    # xrandr \
+    #   --output HDMI-0 --mode 3840x2160 --pos -3840x0 --rotate normal \
+    #   --output DP-2 --mode 3840x2160 --pos 0x0 --rotate normal --primary \
+    #   --output DP-0 --mode 3840x2160 --pos 3840x0 --rotate normal
+    #
+    echo ":( resolution lol"
   else
     echo "xrandr not installed"
   fi
