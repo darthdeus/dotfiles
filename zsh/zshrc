@@ -15,6 +15,9 @@ antidote load "$ZSH/plugins.txt"
 fpath=("$ZSH/funcs" "${fpath[@]}")
 
 export PATH="$HOME/.bun/bin:$HOME/.npm/bin:/opt/homebrew/opt/openjdk/bin:$PATH:$HOME/.local/bin"
+export PATH="$PATH:/opt/cuda/bin"
+
+export LD_LIBRARY_PATH="/opt/cuda/lib64:$LD_LIBRARY_PATH"
 
 HISTSIZE=10000
 SAVEHIST=10000
