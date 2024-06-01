@@ -128,6 +128,8 @@ fi
 #   picom -D0 -o1 -i1 --vsync &
 # fi
 
+pactl set-default-sink 190
+
 # exec startxfce4
 exec i3
 
