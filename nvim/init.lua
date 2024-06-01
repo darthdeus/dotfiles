@@ -562,6 +562,10 @@ autocmd!
 autocmd BufEnter .zshrc.dot set ft=zsh
 autocmd BufEnter *.clj,*.cljs :lua vim.api.nvim_buf_set_option(0, "commentstring", ";; %s")
 autocmd BufEnter *.nix :lua vim.api.nvim_buf_set_option(0, "commentstring", "# %s")
+
+autocmd BufEnter *.cpp,*.h,*.cs :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+autocmd BufFilePost *.cpp,*.h,*.cs :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+
 autocmd BufEnter *.ldtk set ft=json
 autocmd BufEnter *.lua setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd BufEnter *.rbl set ft=rbl shiftwidth=4 tabstop=4 softtabstop=4
