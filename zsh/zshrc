@@ -173,6 +173,8 @@ fi
 export UNREALROOTPATH="$HOME/gen/UE5"
 export GAMEPROJECTFILE="$HOME/gen/dreamthorn_svn/Auto_LANDSCAPE_test1.uproject"
 
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof
 fi
