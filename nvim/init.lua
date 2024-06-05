@@ -1,7 +1,7 @@
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
 
-_G.copilot_enabled = true
+_G.copilot_enabled = false
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
@@ -83,26 +83,26 @@ require("lazy").setup {
     requires = { "RRethy/nvim-base16" },
   },
 
-  {
-    "nvim-neorg/neorg",
-    build = ":Neorg sync-parsers",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("neorg").setup {
-        load = {
-          ["core.defaults"] = {}, -- Loads default behaviour
-          ["core.concealer"] = {}, -- Adds pretty icons to your documents
-          ["core.dirman"] = { -- Manages Neorg workspaces
-            config = {
-              workspaces = {
-                notes = "~/notes",
-              },
-            },
-          },
-        },
-      }
-    end,
-  },
+  -- {
+  --   "nvim-neorg/neorg",
+  --   build = ":Neorg sync-parsers",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   config = function()
+  --     require("neorg").setup {
+  --       load = {
+  --         ["core.defaults"] = {}, -- Loads default behaviour
+  --         ["core.concealer"] = {}, -- Adds pretty icons to your documents
+  --         ["core.dirman"] = { -- Manages Neorg workspaces
+  --           config = {
+  --             workspaces = {
+  --               notes = "~/notes",
+  --             },
+  --           },
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- },
 
   {
     "nvim-tree/nvim-tree.lua",
@@ -380,8 +380,8 @@ require("lazy").setup {
 
   -- { "neoclide/coc.nvim", branch = "release" },
 
-  "mfussenegger/nvim-dap",
-  "rcarriga/nvim-dap-ui",
+  -- "mfussenegger/nvim-dap",
+  -- "rcarriga/nvim-dap-ui",
   -- use "zhimsel/vim-stay"
 
   -- { "hrsh7th/cmp-copilot", enabled = _G.copilot_enabled },
@@ -451,12 +451,12 @@ telescope.load_extension "yank_history"
 
 -- require("toggleterm").setup()
 
-local dap = require "dap"
-dap.adapters.codelldb = {
-  type = "server",
-  host = "127.0.0.1",
-  port = 13000, -- 💀 Use the port printed out or specified with `--port`
-}
+-- local dap = require "dap"
+-- dap.adapters.codelldb = {
+--   type = "server",
+--   host = "127.0.0.1",
+--   port = 13000, -- 💀 Use the port printed out or specified with `--port`
+-- }
 
 -- dap.configurations.rust = {
 -- 	{
@@ -470,11 +470,11 @@ dap.adapters.codelldb = {
 -- 	},
 -- }
 
-require("neodev").setup {
-  library = { plugins = { "nvim-dap", "nvim-dap-ui" }, types = true },
-}
+-- require("neodev").setup {
+--   library = { plugins = { "nvim-dap", "nvim-dap-ui" }, types = true },
+-- }
 
-require("dapui").setup()
+-- require("dapui").setup()
 
 vim.keymap.set("n", "]t", function()
   require("todo-comments").jump_next()
