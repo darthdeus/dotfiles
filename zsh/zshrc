@@ -170,8 +170,7 @@ if [ -e $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then
   source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 fi
 
-export UNREALROOTPATH="$HOME/gen/UE5"
-export GAMEPROJECTFILE="$HOME/gen/dreamthorn_svn/Auto_LANDSCAPE_test1.uproject"
+export npm_config_prefix="$HOME/.local"
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
