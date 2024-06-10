@@ -58,6 +58,8 @@ function M.setup_lsp_servers()
     cmd = { "clangd", "--offset-encoding=utf-8" },
   }
 
+  -- opts.capabilities.offsetEncoding = "utf-8"
+
   local ra_opts = {
     -- on_attach = function(_, bufnr)
     -- 	vim.keymap.set("n", "<leader>ca", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
