@@ -108,9 +108,7 @@ require("lazy").setup {
     "nvim-tree/nvim-tree.lua",
     config = function()
       require("nvim-tree").setup {
-        view = {
-          width = "15%",
-        },
+        view = { adaptive_size = true },
         sync_root_with_cwd = true,
         actions = {
           open_file = {
@@ -147,7 +145,7 @@ require("lazy").setup {
   "rmagatti/auto-session",
   -- "zwhitchcox/auto-session-nvim-tree",
 
-  -- "jansedivy/jai.vim",
+  "jansedivy/jai.vim",
 
   -- {
   --   "folke/noice.nvim",
@@ -198,7 +196,7 @@ require("lazy").setup {
     end,
   },
 
-  "jose-elias-alvarez/null-ls.nvim",
+  -- "jose-elias-alvarez/null-ls.nvim",
 
   "jaawerth/fennel.vim",
   "RRethy/vim-illuminate",
@@ -268,18 +266,18 @@ require("lazy").setup {
 
   "DingDean/wgsl.vim",
 
-  {
-    "saecki/crates.nvim",
-    dependencies = { "jose-elias-alvarez/null-ls.nvim" },
-    config = function()
-      require("crates").setup {
-        null_ls = {
-          enabled = true,
-          name = "crates.nvim",
-        },
-      }
-    end,
-  },
+  -- {
+  --   "saecki/crates.nvim",
+  --   dependencies = { "jose-elias-alvarez/null-ls.nvim" },
+  --   config = function()
+  --     require("crates").setup {
+  --       null_ls = {
+  --         enabled = true,
+  --         name = "crates.nvim",
+  --       },
+  --     }
+  --   end,
+  -- },
 
   -- "preservim/nerdtree",
 
@@ -408,6 +406,7 @@ require("lazy").setup {
 }
 
 require("neoconf").setup {}
+vim.lsp.set_log_level "info"
 
 require "user.settings"
 require "user.remap"
@@ -619,7 +618,6 @@ if use_cmp then
       "jsonls",
       "pyright",
       "csharp_ls",
-      "csharpier",
       -- "pylsp",
     },
   }
@@ -781,6 +779,10 @@ require("nvim-treesitter.configs").setup {
 -----------------------------------
 -----------------------------------
 -----------------------------------
+-- vim.lsp.start({
+--   cmd = { "jails" },
+--   root_dir = vim.fn.getcwd(), -- Use PWD as project root dir.
+-- })
 
 -- vim.cmd([[
 --   augroup packer_user_config

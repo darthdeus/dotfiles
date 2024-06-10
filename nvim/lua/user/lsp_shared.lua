@@ -96,6 +96,37 @@ function M.setup_lsp_servers()
 
   local lspconfig = require "lspconfig"
 
+  -- lspconfig.jails = {
+  --   default_config = {
+  --     cmd = { "/home/darth/.dotfiles/bin/jails" },
+  --     filetypes = { "jai" },
+  --     root_dir = function(_)
+  --         return  vim.fn.getcwd()
+  --       -- return util.find_git_ancestor(fname) or vim.loop.os_homedir()
+  --     end,
+  --     settings = {},
+  --   },
+  -- }
+  -- lspconfig.jails.setup(opts)
+
+  local configs = require "lspconfig.configs"
+  local util = require "lspconfig.util"
+
+  configs.jails = {
+    default_config = {
+      cmd = { "/home/darth/projects/Jails/bin/jails" },
+      filetypes = { "jai" },
+      root_dir = util.path.dirname,
+    },
+  }
+
+  require("lspconfig").jails.setup {
+    root_dir = function(fname)
+      return vim.fn.getcwd()
+    end,
+  }
+
+  -- lspconfig.jai.setup(opts)
   lspconfig.bashls.setup(opts)
   lspconfig.taplo.setup(opts)
   lspconfig.clangd.setup(opts)
@@ -286,6 +317,14 @@ function M.setup_cmp()
       -- 		fallback()
       -- 	end
       -- end),
+
+      [","] = cmp.mapping(function(fallback)
+        fallback()
+      end),
+
+      ["{"] = cmp.mapping(function(fallback)
+        fallback()
+      end),
 
       ["<C-j>"] = cmp.mapping.confirm { select = true },
       ["<C-l>"] = cmp.mapping.confirm { select = true },
