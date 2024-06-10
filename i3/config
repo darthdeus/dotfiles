@@ -180,8 +180,8 @@ bindsym $mod+0 workspace $ws10
 
 bindsym $mod+minus workspace $wsa1
 bindsym $mod+equal workspace $wsa2
-# bindsym $mod+3 workspace $wsa3
-# bindsym $mod+4 workspace $wsa4
+bindsym $mod+bracketleft workspace $wsa3
+bindsym $mod+bracketright workspace $wsa4
 # bindsym $mod+5 workspace $wsa5
 # bindsym $mod+6 workspace $wsa6
 # bindsym $mod+7 workspace $wsa7
@@ -203,6 +203,8 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+minus move container to workspace $wsa1
 bindsym $mod+Shift+equal move container to workspace $wsa2
+bindsym $mod+Shift+bracketleft move container to workspace $wsa3
+bindsym $mod+Shift+bracketright move container to workspace $wsa4
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
