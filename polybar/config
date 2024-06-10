@@ -146,7 +146,7 @@ label = "GH: %notifications%"
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
-index-sort = true
+index-sort = false
 wrapping-scroll = false
 
 pin-workspaces = true
