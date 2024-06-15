@@ -104,7 +104,7 @@ fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
 
-export PATH="./node_modules/.bin:$HOME/.cargo/bin:$PATH"
+export PATH="./node_modules/.bin:$HOME/.cargo/bin:$PATH:$HOME/projects/jai/bin"
 
 # if type rustc &>/dev/null; then
 #   export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/
