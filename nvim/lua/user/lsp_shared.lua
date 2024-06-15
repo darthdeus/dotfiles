@@ -114,7 +114,7 @@ function M.setup_lsp_servers()
 
   configs.jails = {
     default_config = {
-      cmd = { "/home/darth/projects/Jails/bin/jails" },
+      cmd = { "/home/darth/projects/jails/bin/jails" },
       filetypes = { "jai" },
       root_dir = util.path.dirname,
     },
@@ -133,7 +133,7 @@ function M.setup_lsp_servers()
   lspconfig.html.setup(opts)
   lspconfig.jsonls.setup(opts)
   lspconfig.pyright.setup(opts)
-  lspconfig.csharp_ls.setup(opts)
+  -- lspconfig.csharp_ls.setup(opts)
 
   lspconfig.lua_ls.setup {
     capabilities = capabilities,
