@@ -150,6 +150,8 @@ fi
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 
+[ -f /opt/asdf-vm/asdf.sh ] && source /opt/asdf-vm/asdf.sh
+
 # eval "$(direnv hook zsh)"
 export DIRENV_LOG_FORMAT=""
 
