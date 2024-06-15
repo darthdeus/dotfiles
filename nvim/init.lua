@@ -690,6 +690,7 @@ parser_config.rebel = {
 require("nvim-treesitter.configs").setup {
   ensure_installed = {
     "c",
+    "cpp",
     "json",
     "javascript",
     "python",
