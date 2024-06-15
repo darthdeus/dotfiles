@@ -27,6 +27,9 @@ fi
 
 alias bc="bc -l"
 
+alias re="watchexec"
+alias r="watchexec"
+
 alias l="ls"
 alias ll="ls -lh"
 alias la="ls -a"
