@@ -562,8 +562,8 @@ autocmd BufEnter .zshrc.dot set ft=zsh
 autocmd BufEnter *.clj,*.cljs :lua vim.api.nvim_buf_set_option(0, "commentstring", ";; %s")
 autocmd BufEnter *.nix :lua vim.api.nvim_buf_set_option(0, "commentstring", "# %s")
 
-autocmd BufEnter *.cpp,*.h,*.cs :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
-autocmd BufFilePost *.cpp,*.h,*.cs :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+autocmd BufEnter *.hpp,*.cpp,*.h,*.cs :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+autocmd BufFilePost *.hpp,*.cpp,*.h,*.cs :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
 
 autocmd BufEnter *.ldtk set ft=json
 autocmd BufEnter *.ini :lua vim.api.nvim_buf_set_option(0, "commentstring", "# %s")
