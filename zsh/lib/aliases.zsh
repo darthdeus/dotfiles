@@ -50,7 +50,7 @@ alias ag="ag --path-to-ignore ~/.ignore"
 
 alias v="glslViewer"
 
-alias a="pnpm"
+# alias a="pnpm"
 alias b="bundler"
 alias r="rails"
 
