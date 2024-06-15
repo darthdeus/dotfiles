@@ -55,6 +55,8 @@ for_window [title="mpv"] floating enable
 for_window [title="Lock Screen.*1Password"] floating enable
 for_window [title="^GlslViewer$"] floating enable
 for_window [title="BITGUN Survivors"] floating enable
+# for_window [title="cppgun"] no_focus
+no_focus [title="cppgun"]
 
 # for_window [class="Alacritty-OBS"] floating enable, resize set 1920 1080, move position center, border none
 # for_window [class="Alacritty-OBS"] floating enable, resize set 1920 1100, move position center
