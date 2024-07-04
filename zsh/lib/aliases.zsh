@@ -118,6 +118,8 @@ fi
 
 alias cl="rlwrap ros -Q run"
 
+alias a="make cmake"
+
 alias pass="gopass"
 alias pa="perf annotate"
 alias pr="perf record -g"
