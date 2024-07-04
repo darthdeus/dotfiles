@@ -52,6 +52,12 @@ function M.setup_lsp_servers()
     on_attach = on_attach,
   }
 
+  local clangd_opts = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = { "clangd", "--offset-encoding=utf-8" },
+  }
+
   local ra_opts = {
     -- on_attach = function(_, bufnr)
     -- 	vim.keymap.set("n", "<leader>ca", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
@@ -129,7 +135,7 @@ function M.setup_lsp_servers()
   -- lspconfig.jai.setup(opts)
   lspconfig.bashls.setup(opts)
   lspconfig.taplo.setup(opts)
-  lspconfig.clangd.setup(opts)
+  lspconfig.clangd.setup(clangd_opts)
   lspconfig.html.setup(opts)
   lspconfig.jsonls.setup(opts)
   lspconfig.pyright.setup(opts)
