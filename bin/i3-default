@@ -1,0 +1,17 @@
+#!/bin/bash
+left=(6)
+center=(1 2 3 4 5 8 9 10 a1 a2 a3 a4)
+right=(7)
+
+for i in ${left[@]}; do
+    i3-msg "workspace number $i; move workspace to output $MONITOR_LEFT"
+done
+
+for i in ${center[@]}; do
+    i3-msg "workspace number $i; move workspace to output $MONITOR_CENTER"
+done
+
+for i in ${right[@]}; do
+    i3-msg "workspace number $i; move workspace to output $MONITOR_RIGHT"
+done
+```
