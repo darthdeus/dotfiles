@@ -46,16 +46,20 @@ function M.setup_lsp_servers()
   --
   -- -- Setup lspconfig.
   local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+  -- capabilities.offsetEncoding = { "utf-8" }
 
   local opts = {
     capabilities = capabilities,
     on_attach = on_attach,
   }
 
+  -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+  -- require("lspconfig").clangd.setup { capabilities = capabilities }
+
   local clangd_opts = {
     on_attach = on_attach,
     capabilities = capabilities,
-    cmd = { "clangd", "--offset-encoding=utf-8" },
+    cmd = { "clangd", "--offset-encoding=utf-16" },
   }
 
   -- opts.capabilities.offsetEncoding = "utf-8"
@@ -129,7 +133,7 @@ function M.setup_lsp_servers()
   }
 
   require("lspconfig").jails.setup {
-    root_dir = function(fname)
+    root_dir = function(_)
       return vim.fn.getcwd()
     end,
   }
