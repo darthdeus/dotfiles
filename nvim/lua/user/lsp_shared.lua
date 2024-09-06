@@ -144,7 +144,28 @@ function M.setup_lsp_servers()
   lspconfig.clangd.setup(clangd_opts)
   lspconfig.html.setup(opts)
   lspconfig.jsonls.setup(opts)
-  lspconfig.pyright.setup(opts)
+  lspconfig.basedpyright.setup(opts)
+
+  -- lspconfig.pylsp.setup(opts)
+  --
+  -- lspconfig.pylsp.setup {
+  --   settings = {
+  --     rope = {
+  --       autoimport = {
+  --         enabled = true,
+  --       },
+  --     },
+  --
+  --     -- pylsp = {
+  --     --   plugins = {
+  --     --     rope_autoimport = {
+  --     --       enabled = true, -- Enable the Rope Autoimport plugin
+  --     --     },
+  --     --   },
+  --     -- },
+  --   },
+  -- }
+
   -- lspconfig.csharp_ls.setup(opts)
 
   lspconfig.lua_ls.setup {
