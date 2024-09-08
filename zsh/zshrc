@@ -149,6 +149,7 @@ fi
 #
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+[ -f /usr/share/doc/git-extras/git-extras-completion.zsh ] && source /usr/share/doc/git-extras/git-extras-completion.zsh
 
 [ -f /opt/asdf-vm/asdf.sh ] && source /opt/asdf-vm/asdf.sh
 
@@ -171,6 +172,10 @@ fi
 if [ -e $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then
   source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 fi
+
+export MONITOR_LEFT="DP-2"
+export MONITOR_CENTER="DP-4"
+export MONITOR_RIGHT="DP-0"
 
 export npm_config_prefix="$HOME/.local"
 

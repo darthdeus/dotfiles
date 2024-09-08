@@ -14,4 +14,5 @@ done
 for i in ${right[@]}; do
     i3-msg "workspace number $i; move workspace to output $MONITOR_RIGHT"
 done
-```
+
+i3-msg "workspace number 1"

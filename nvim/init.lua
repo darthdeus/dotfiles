@@ -48,7 +48,6 @@ require("lazy").setup {
     "ibhagwan/fzf-lua",
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    build = "./install --bin",
     config = function()
       -- calling `setup` is optional for customization
       require("fzf-lua").setup {}
@@ -198,7 +197,7 @@ require("lazy").setup {
 
   -- "jose-elias-alvarez/null-ls.nvim",
 
-  "jaawerth/fennel.vim",
+  -- "jaawerth/fennel.vim",
   "RRethy/vim-illuminate",
 
   -- "akinsho/toggleterm.nvim",
