@@ -568,9 +568,10 @@ autocmd BufEnter *.ldtk set ft=json
 autocmd BufEnter *.ini :lua vim.api.nvim_buf_set_option(0, "commentstring", "# %s")
 autocmd BufEnter *.lua setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd BufEnter *.rbl set ft=rbl shiftwidth=4 tabstop=4 softtabstop=4
+autocmd BufEnter *.rock set ft=rock shiftwidth=4 tabstop=4 softtabstop=4
 autocmd BufEnter test/corpus/*.txt set ft=lisp shiftwidth=2 tabstop=2 softtabstop=2
-autocmd BufEnter *.jai,*.wgsl,*.glsl,*.vert,*.frag,*.rbl :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
-autocmd BufFilePost *.jai,*.wgsl,*.glsl,*.vert,*.frag,*.rbl :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+autocmd BufEnter *.jai,*.wgsl,*.glsl,*.vert,*.frag,*.rbl,*.rock :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+autocmd BufFilePost *.jai,*.wgsl,*.glsl,*.vert,*.frag,*.rbl,*.rock :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
 augroup END
 
 let g:fzf_action = {
@@ -657,10 +658,12 @@ vim.opt.signcolumn = "auto"
 vim.api.nvim_exec2(
   [[
 command! Ner :NvimTreeToggle
-command! Rerebuild :TSInstallSync! rebel
+command! Rerebuild :TSInstallSync! rock
 ]],
   {}
 )
+
+-- command! Rerebuild :TSInstallSync! rebel
 
 ------------------------------------------------------
 ------------------------------------------------------
@@ -673,6 +676,18 @@ command! Rerebuild :TSInstallSync! rebel
 
 local parsers = require "nvim-treesitter.parsers"
 local parser_config = parsers.get_parser_configs()
+
+parser_config.rock = {
+  install_info = {
+    url = "~/projects/rock/tree-sitter-rock",
+    files = { "src/parser.c" }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+    -- optional entries:
+    branch = "master", -- default branch in case of git repo if different from master
+    generate_requires_npm = true, -- if stand-alone parser without npm dependencies
+    requires_generate_from_grammar = true, -- if folder contains pre-generated src/parser.c
+  },
+  filetype = "rock", -- if filetype does not match the parser name
+}
 
 parser_config.rebel = {
   install_info = {
@@ -705,9 +720,11 @@ require("nvim-treesitter.configs").setup {
     "regex",
     "html",
     "clojure",
+    "rock",
   },
   highlight = {
     enable = true,
+    additional_vim_regex_highlighting = true,
   },
   incremental_selection = {
     enable = true,
