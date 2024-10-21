@@ -132,7 +132,21 @@ function M.setup_lsp_servers()
     },
   }
 
-  require("lspconfig").jails.setup {
+  configs.rock = {
+      default_config = {
+          cmd = { "/home/darth/projects/rock/rerock.sh" },
+          filetypes = { "rock" },
+          root_dir = util.path.dirname
+      }
+  }
+
+  lspconfig.jails.setup {
+    root_dir = function(_)
+      return vim.fn.getcwd()
+    end,
+  }
+
+  lspconfig.rock.setup {
     root_dir = function(_)
       return vim.fn.getcwd()
     end,
