@@ -661,8 +661,8 @@ vim.opt.signcolumn = "auto"
 
 vim.api.nvim_exec2(
   [[
-command! Ner :NvimTreeToggle
-command! Rerebuild :TSInstallSync! rock
+    command! Ner :NvimTreeToggle
+    command! Rerebuild :TSInstallSync! rock
 ]],
   {}
 )
