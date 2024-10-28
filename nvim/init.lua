@@ -3,6 +3,10 @@
 
 _G.copilot_enabled = true
 
+vim.api.nvim_exec2([[
+    let g:AutoPairsMultilineClose = 0
+]], {})
+
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
