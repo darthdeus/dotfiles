@@ -488,6 +488,8 @@ end, { desc = "Previous todo comment" })
 
 vim.keymap.set("n", ",e", "<cmd>silent !touch .reload/now<cr>", { silent = true })
 
+-- vim.keymap.set('i', '<C-m>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
 -- vim.cmd('colorscheme base16-gruvbox-dark-soft')
 vim.cmd "colorscheme base16-default-dark"
 vim.cmd "colorscheme b16"
