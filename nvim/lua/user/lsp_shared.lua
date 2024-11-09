@@ -126,18 +126,18 @@ function M.setup_lsp_servers()
 
   configs.jails = {
     default_config = {
-      cmd = { "/home/darth/projects/jails/bin/jails" },
+      cmd = { os.getenv "HOME" .. "/projects/jails/bin/jails" },
       filetypes = { "jai" },
       root_dir = util.path.dirname,
     },
   }
 
   configs.rock = {
-      default_config = {
-          cmd = { "/home/darth/projects/rock/rerock.sh" },
-          filetypes = { "rock" },
-          root_dir = util.path.dirname
-      }
+    default_config = {
+      cmd = { os.getenv "HOME" .. "/projects/rock/rerock.sh" },
+      filetypes = { "rock" },
+      root_dir = util.path.dirname,
+    },
   }
 
   lspconfig.jails.setup {
