@@ -111,14 +111,14 @@ fk() {
   fi
 }
 
-sd() {
-  pid=$(fzf_select_pid)
-
-  if [ "x$pid" != "x" ];
-  then
-    sudo strace -f -p $pid
-  fi
-}
+# sd() {
+#   pid=$(fzf_select_pid)
+#
+#   if [ "x$pid" != "x" ];
+#   then
+#     sudo strace -f -p $pid
+#   fi
+# }
 
 # fbr - checkout git branch (including remote branches)
 fbr() {
