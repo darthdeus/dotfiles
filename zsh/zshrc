@@ -111,8 +111,11 @@ export PATH="./node_modules/.bin:$HOME/.cargo/bin:$PATH:$HOME/projects/jai/bin"
 # fi
 
 export QT_STYLE_OVERRIDE=adwaita-dark
+# export QT_STYLE_OVERRIDE=Adwaita-Dark
 export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 export CARGO_NET_GIT_FETCH_WITH_CLI=true
+export GTK_THEME=Adwaita:dark
+export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 
 if [[ `uname` == "Darwin" ]]; then
   export TERM=xterm-256color
