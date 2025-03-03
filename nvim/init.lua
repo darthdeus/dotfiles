@@ -86,6 +86,27 @@ require("lazy").setup {
     requires = { "RRethy/nvim-base16" },
   },
 
+  {
+      "nvim-neorg/neorg",
+      lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+      version = "*", -- Pin Neorg to the latest stable release
+      config = function()
+        require("neorg").setup({
+            load = {
+                ["core.defaults"] = {},
+                ["core.concealer"] = {}, -- We added this line!
+                ["core.dirman"] = { -- Manages Neorg workspaces
+                  config = {
+                    workspaces = {
+                      notes = "~/notes",
+                    },
+                  },
+                },
+            }
+        })
+      end,
+  },
+
   -- {
   --   "nvim-neorg/neorg",
   --   build = ":Neorg sync-parsers",
@@ -423,6 +444,8 @@ auto_session.setup {
     restore_upcoming_session = true, -- This is necessary!!
   },
 }
+
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- local auto_session_nvim_tree = require("auto-session-nvim-tree")
 -- auto_session_nvim_tree.setup(auto_session)
