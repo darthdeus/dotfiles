@@ -184,6 +184,8 @@ export npm_config_prefix="$HOME/.local"
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
+export GPG_TTY=$(tty)
+
 if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof
 fi
