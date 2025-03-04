@@ -86,6 +86,8 @@ require("lazy").setup {
     requires = { "RRethy/nvim-base16" },
   },
 
+  "jamessan/vim-gnupg",
+
   {
       "nvim-neorg/neorg",
       lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
@@ -617,6 +619,10 @@ vim.g.neoformat_only_msg_on_error = 1
 
 -- vim.o.guifont = "Fantasque Sans Mono:8"
 vim.g.neovide_cursor_animation_length = 0.00
+
+vim.g.GPGPreferSymmetric = 1
+vim.g.GPGExec = "/usr/bin/gpg2"  -- Adjust this path if necessary
+vim.g.GPGOptions = "--cipher-algo AES256"
 
 vim.cmd [[
     let guifont="Arial:h12"
