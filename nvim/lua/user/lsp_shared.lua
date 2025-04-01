@@ -104,7 +104,7 @@ function M.setup_lsp_servers()
     },
   }
 
-  require("rust-tools").setup { server = ra_opts }
+  -- require("rust-tools").setup { server = ra_opts }
 
   local lspconfig = require "lspconfig"
 
@@ -124,13 +124,13 @@ function M.setup_lsp_servers()
   local configs = require "lspconfig.configs"
   local util = require "lspconfig.util"
 
-  configs.jails = {
-    default_config = {
-      cmd = { os.getenv "HOME" .. "/projects/jails/bin/jails" },
-      filetypes = { "jai" },
-      root_dir = util.path.dirname,
-    },
-  }
+  -- configs.jails = {
+  --   default_config = {
+  --     cmd = { os.getenv "HOME" .. "/projects/jails/bin/jails" },
+  --     filetypes = { "jai" },
+  --     root_dir = util.path.dirname,
+  --   },
+  -- }
 
   configs.rock = {
     default_config = {
@@ -140,11 +140,11 @@ function M.setup_lsp_servers()
     },
   }
 
-  lspconfig.jails.setup {
-    root_dir = function(_)
-      return vim.fn.getcwd()
-    end,
-  }
+  -- lspconfig.jails.setup {
+  --   root_dir = function(_)
+  --     return vim.fn.getcwd()
+  --   end,
+  -- }
 
   lspconfig.rock.setup {
     root_dir = function(_)
@@ -159,6 +159,8 @@ function M.setup_lsp_servers()
   lspconfig.html.setup(opts)
   lspconfig.jsonls.setup(opts)
   lspconfig.basedpyright.setup(opts)
+
+  -- lspconfig.rust_analyzer.setup(ra_opts)
 
   -- lspconfig.pylsp.setup(opts)
   --
@@ -210,7 +212,7 @@ function M.setup_lsp_servers()
     },
   }
 
-  require("rust-tools").inlay_hints.enable()
+  -- require("rust-tools").inlay_hints.enable()
 end
 
 local function get_cmp()

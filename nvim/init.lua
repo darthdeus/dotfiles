@@ -275,7 +275,19 @@ require("lazy").setup {
   "sbdchd/neoformat",
 
   "rust-lang/rust.vim",
-  "simrat39/rust-tools.nvim",
+  -- "simrat39/rust-tools.nvim",
+
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^5", -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
+
+  -- {
+  --   "chrisgrieser/nvim-lsp-endhints",
+  --   event = "LspAttach",
+  --   opts = {}, -- required, even if empty
+  -- },
 
   "chrisbra/vim-zsh",
   "habamax/vim-godot",
@@ -437,6 +449,28 @@ vim.lsp.set_log_level "info"
 require "user.settings"
 require "user.remap"
 require "user.reload"
+
+vim.lsp.inlay_hint.enable(true)
+
+-- default settings
+-- require("lsp-endhints").setup {
+-- 	icons = {
+-- 		type = "=> ",
+-- 		parameter = "󰏪 ",
+-- 		offspec = " ", -- hint kind not defined in official LSP spec
+-- 		unknown = " ", -- hint kind is nil
+-- 	},
+-- 	label = {
+-- 		truncateAtChars = 20,
+-- 		padding = 1,
+-- 		marginLeft = 0,
+-- 		sameKindSeparator = ", ",
+-- 	},
+-- 	extmark = {
+-- 		priority = 50,
+-- 	},
+-- 	autoEnableHints = true,
+-- }
 
 local auto_session = require "auto-session"
 
