@@ -1,11 +1,14 @@
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
 
-_G.copilot_enabled = false
+_G.copilot_enabled = true
 
-vim.api.nvim_exec2([[
+vim.api.nvim_exec2(
+  [[
     let g:AutoPairsMultilineClose = 0
-]], {})
+]],
+  {}
+)
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
@@ -89,24 +92,24 @@ require("lazy").setup {
   "jamessan/vim-gnupg",
 
   {
-      "nvim-neorg/neorg",
-      lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
-      version = "*", -- Pin Neorg to the latest stable release
-      config = function()
-        require("neorg").setup({
-            load = {
-                ["core.defaults"] = {},
-                ["core.concealer"] = {}, -- We added this line!
-                ["core.dirman"] = { -- Manages Neorg workspaces
-                  config = {
-                    workspaces = {
-                      notes = "~/notes",
-                    },
-                  },
-                },
-            }
-        })
-      end,
+    "nvim-neorg/neorg",
+    lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+    version = "*", -- Pin Neorg to the latest stable release
+    config = function()
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {},
+          ["core.concealer"] = {}, -- We added this line!
+          ["core.dirman"] = { -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                notes = "~/notes",
+              },
+            },
+          },
+        },
+      }
+    end,
   },
 
   -- {
@@ -360,24 +363,12 @@ require("lazy").setup {
   ------------------------------------------------------
   ------------------------------------------------------
   ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-
-  {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v3.x",
-    dependencies = { "neovim/nvim-lspconfig", "hrsh7th/cmp-nvim-lsp", "hrsh7th/nvim-cmp" },
-  },
-
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
   -------------- CMP COMPLETION ------------------------
   ------------------------------------------------------
   ------------------------------------------------------
   ------------------------------------------------------
 
+  -- LSP & completion
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-path",
   "hrsh7th/cmp-cmdline",
@@ -386,17 +377,8 @@ require("lazy").setup {
   { "hrsh7th/nvim-cmp" }, -- Required
   { "hrsh7th/cmp-nvim-lsp" }, -- Required
   { "L3MON4D3/LuaSnip" }, -- Required
-  -- -- LSP Support
-  { "neovim/nvim-lspconfig" }, -- Required
-
-  "williamboman/mason.nvim",
-  { "williamboman/mason-lspconfig.nvim" }, -- Optional
-
-  "onsails/lspkind.nvim",
 
   "delphinus/cmp-ctags",
-
-  "ray-x/lsp_signature.nvim",
 
   {
     "zbirenbaum/copilot-cmp",
@@ -406,6 +388,61 @@ require("lazy").setup {
     dependencies = { "zbirenbaum/copilot.lua" },
     enabled = _G.copilot_enabled,
   },
+  { "neovim/nvim-lspconfig" }, -- Required
+
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+  -------------- COQ COMPLETION ------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+
+  -- {
+  --   "neovim/nvim-lspconfig", -- REQUIRED: for native Neovim LSP integration
+  --   lazy = false, -- REQUIRED: tell lazy.nvim to start this plugin at startup
+  --   dependencies = {
+  --     -- main one
+  --     { "ms-jpq/coq_nvim", branch = "coq" },
+  --
+  --     -- 9000+ Snippets
+  --     { "ms-jpq/coq.artifacts", branch = "artifacts" },
+  --
+  --     -- lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
+  --     -- Need to **configure separately**
+  --     { "ms-jpq/coq.thirdparty", branch = "3p" },
+  --     -- - shell repl
+  --     -- - nvim lua api
+  --     -- - scientific calculator
+  --     -- - comment banner
+  --     -- - etc
+  --   },
+  --
+  --   init = function()
+  --     vim.g.coq_settings = {
+  --       auto_start = true, -- if you want to start COQ at startup
+  --       -- Your COQ settings here
+  --     }
+  --   end,
+  --   config = function()
+  --     -- Your LSP settings here
+  --   end,
+  -- },
+
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+  -------------- ^^^ COQ COMPLETION ------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+  ------------------------------------------------------
+
+  "williamboman/mason.nvim",
+  { "williamboman/mason-lspconfig.nvim" }, -- Optional
+
+  "onsails/lspkind.nvim",
+
+  "ray-x/lsp_signature.nvim",
 
   ------------------------------------------------------
   ------------------------------------------------------
@@ -451,25 +488,25 @@ require "user.remap"
 require "user.reload"
 
 vim.lsp.inlay_hint.enable(true)
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config { virtual_text = true }
 
 require("lsp-endhints").setup {
-	icons = {
-		type = "=> ",
-		parameter = "󰏪 ",
-		offspec = " ", -- hint kind not defined in official LSP spec
-		unknown = " ", -- hint kind is nil
-	},
-	label = {
-		truncateAtChars = 20,
-		padding = 1,
-		marginLeft = 0,
-		sameKindSeparator = ", ",
-	},
-	extmark = {
-		priority = 50,
-	},
-	autoEnableHints = true,
+  icons = {
+    type = "=> ",
+    parameter = "󰏪 ",
+    offspec = " ", -- hint kind not defined in official LSP spec
+    unknown = " ", -- hint kind is nil
+  },
+  label = {
+    truncateAtChars = 20,
+    padding = 1,
+    marginLeft = 0,
+    sameKindSeparator = ", ",
+  },
+  extmark = {
+    priority = 50,
+  },
+  autoEnableHints = true,
 }
 
 local auto_session = require "auto-session"
@@ -481,7 +518,7 @@ auto_session.setup {
   },
 }
 
-vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- local auto_session_nvim_tree = require("auto-session-nvim-tree")
 -- auto_session_nvim_tree.setup(auto_session)
@@ -551,7 +588,8 @@ vim.keymap.set("n", ",e", "<cmd>silent !touch .reload/now<cr>", { silent = true 
 
 -- vim.cmd('colorscheme base16-gruvbox-dark-soft')
 vim.cmd "colorscheme base16-default-dark"
-vim.cmd "colorscheme b16"
+-- vim.cmd "colorscheme b16"
+
 -- vim.cmd('colorscheme rose-pine')
 
 -- require('base16-colorscheme').setup({})
@@ -655,7 +693,7 @@ vim.g.neoformat_only_msg_on_error = 1
 vim.g.neovide_cursor_animation_length = 0.00
 
 vim.g.GPGPreferSymmetric = 1
-vim.g.GPGExec = "/usr/bin/gpg2"  -- Adjust this path if necessary
+vim.g.GPGExec = "/usr/bin/gpg2" -- Adjust this path if necessary
 vim.g.GPGOptions = "--cipher-algo AES256"
 
 vim.cmd [[
@@ -673,23 +711,23 @@ vim.cmd [[
 
 local use_cmp = true
 
-if use_cmp then
-  require("mason").setup()
-  require("mason-lspconfig").setup {
-    ensure_installed = {
-      "rust_analyzer",
-      "bashls",
-      "jsonls",
-      -- "shellcheck",
-      "taplo",
-      "clangd",
-      "lua_ls",
-      "jsonls",
-      "pyright",
-      -- "pylsp",
-    },
-  }
+require("mason").setup()
+require("mason-lspconfig").setup {
+  ensure_installed = {
+    "rust_analyzer",
+    "bashls",
+    "jsonls",
+    -- "shellcheck",
+    "taplo",
+    "clangd",
+    "lua_ls",
+    "jsonls",
+    "pyright",
+    -- "pylsp",
+  },
+}
 
+if use_cmp then
   -----------------------------------
 
   local my_lsp = require "user.lsp_shared"
@@ -703,24 +741,6 @@ else
 end
 
 vim.opt.signcolumn = "auto"
-
------------------------------------
-
--- local lsp_zero = require "lsp-zero"
---
--- lsp_zero.on_attach(function(client, bufnr)
---   lsp_zero.default_keymaps { buffer = bufnr }
--- end)
---
--- require("lspconfig").rust_analyzer.setup {
---   settings = {
---     ["rust-analyzer"] = {
---       cargo = {
---         extraEnv = { CARGO_TARGET_DIR = ".ra_target" },
---       },
---     },
---   },
--- }
 
 -----------------------------------
 
