@@ -1,7 +1,7 @@
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
 
-_G.copilot_enabled = true
+_G.copilot_enabled = false
 
 vim.api.nvim_exec2([[
     let g:AutoPairsMultilineClose = 0
