@@ -20,6 +20,9 @@ function M.setup_keymaps() -- See `:help vim.lsp.*` for documentation on any of 
   vim.api.nvim_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", map_opts)
   vim.api.nvim_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", map_opts)
   vim.api.nvim_set_keymap("n", "<f2>", "<cmd>lua vim.lsp.buf.rename()<CR>", map_opts)
+  vim.api.nvim_set_keymap("n", "<tab>", "<cmd>LspRestart rock<CR>", map_opts)
+  vim.api.nvim_set_keymap("n", "<f3>", "<cmd>LspRestart rock<CR>", map_opts)
+
   vim.api.nvim_set_keymap("n", "L", "<cmd>lua vim.lsp.buf.code_action()<CR>", map_opts)
   vim.api.nvim_set_keymap("v", "<C-w>", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", map_opts)
   vim.api.nvim_set_keymap("v", "L", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", map_opts)
