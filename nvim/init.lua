@@ -455,7 +455,7 @@ vim.lsp.inlay_hint.enable(true)
 require("lsp-endhints").setup {
 	icons = {
 		type = "=> ",
-		parameter = "󰏪 ",
+		parameter = ": ",
 		offspec = " ", -- hint kind not defined in official LSP spec
 		unknown = " ", -- hint kind is nil
 	},
