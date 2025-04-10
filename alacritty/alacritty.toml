@@ -54,7 +54,7 @@ foreground = "0xd8d8d8"
 TERM = "xterm-256color"
 
 [font]
-size = 20
+size = 18
 
 [font.normal]
 family = "Fantasque Sans Mono"
