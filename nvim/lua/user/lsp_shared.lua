@@ -20,6 +20,9 @@ function M.setup_keymaps() -- See `:help vim.lsp.*` for documentation on any of 
   vim.api.nvim_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", map_opts)
   vim.api.nvim_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", map_opts)
   vim.api.nvim_set_keymap("n", "<f2>", "<cmd>lua vim.lsp.buf.rename()<CR>", map_opts)
+  vim.api.nvim_set_keymap("n", "<tab>", "<cmd>LspRestart rock<CR>", map_opts)
+  vim.api.nvim_set_keymap("n", "<f3>", "<cmd>LspRestart rock<CR>", map_opts)
+
   vim.api.nvim_set_keymap("n", "L", "<cmd>lua vim.lsp.buf.code_action()<CR>", map_opts)
   vim.api.nvim_set_keymap("v", "<C-w>", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", map_opts)
   vim.api.nvim_set_keymap("v", "L", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", map_opts)
@@ -46,11 +49,42 @@ function M.setup_lsp_servers()
   --
   -- -- Setup lspconfig.
   local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+  -- local capabilities = coq.lsp_ensure_capabilities(vim.lsp.protocol.make_client_capabilities())
+
   -- capabilities.offsetEncoding = { "utf-8" }
+
+  vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
+  vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+
+  local border = {
+    { "🭽", "FloatBorder" },
+    { "▔", "FloatBorder" },
+    { "🭾", "FloatBorder" },
+    { "▕", "FloatBorder" },
+    { "🭿", "FloatBorder" },
+    { "▁", "FloatBorder" },
+    { "🭼", "FloatBorder" },
+    { "▏", "FloatBorder" },
+  }
+
+  -- LSP settings (for overriding per client)
+  -- local handlers = {
+  --   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+  --   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+  -- }
+
+  -- To instead override globally
+  local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+  function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or border
+    return orig_util_open_floating_preview(contents, syntax, opts, ...)
+  end
 
   local opts = {
     capabilities = capabilities,
     on_attach = on_attach,
+    -- handlers = handlers,
   }
 
   -- local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -64,6 +98,7 @@ function M.setup_lsp_servers()
 
   -- opts.capabilities.offsetEncoding = "utf-8"
 
+  -- TODO: use this with rustaceanvim
   local ra_opts = {
     -- on_attach = function(_, bufnr)
     -- 	vim.keymap.set("n", "<leader>ca", rust_tools.hover_actions.hover_actions, { buffer = bufnr })

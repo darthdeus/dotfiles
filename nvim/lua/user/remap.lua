@@ -141,7 +141,7 @@ else
   -- nnoremap("<Leader>w", "<Cmd>call VimuxRunCommand('c')<CR>")
 end
 
-vim.api.nvim_set_keymap('n', '<leader>q', ':silent !touch game/setup.rock<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>q", ":silent !touch game/setup.rock<CR>", { noremap = true, silent = true })
 
 -- Expand %% to directory path of current buffer
 cnoremap("%%", "<C-R>=expand('%:h').'/'<CR>")

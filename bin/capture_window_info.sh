@@ -5,7 +5,7 @@ set -e
 i3-msg -t command "debuglog on; shmlog on"
 
 # Run the program and capture its window ID once it appears
-$1 &
+$@ &
 APP_PID=$!
 
 # Short delay to let the window appear
