@@ -590,29 +590,41 @@ vim.keymap.set("n", ",e", "<cmd>silent !touch .reload/now<cr>", { silent = true 
 vim.cmd "colorscheme base16-default-dark"
 -- vim.cmd "colorscheme b16"
 
--- vim.cmd('colorscheme rose-pine')
+vim.cmd('colorscheme rose-pine')
+
+-- require("base16-colorscheme").setup "base16-default-dark"
+-- require('base16-colorscheme').setup({
+--     base00 = '#16161D', base01 = '#2c313c', base02 = '#3e4451', base03 = '#6c7891',
+--     base04 = '#565c64', base05 = '#abb2bf', base06 = '#9a9bb3', base07 = '#c5c8e6',
+--     base08 = '#e06c75', base09 = '#d19a66', base0A = '#e5c07b', base0B = '#98c379',
+--     base0C = '#56b6c2', base0D = '#0184bc', base0E = '#c678dd', base0F = '#a06949',
+-- })
+
+require("base16-colorscheme").setup {
+  base00 = "#181818",
+  base01 = "#282828",
+  base02 = "#383838",
+  base03 = "#585858",
+  base04 = "#b8b8b8",
+  base05 = "#d8d8d8",
+  base06 = "#e8e8e8",
+  base07 = "#f8f8f8",
+  base08 = "#ab4642",
+  base09 = "#dc9656",
+  base0A = "#f7ca88",
+  base0B = "#a1b56c",
+  base0C = "#86c1b9",
+  base0D = "#7cafc2",
+  base0E = "#ba8baf",
+  base0F = "#a16946",
+}
 
 -- require('base16-colorscheme').setup({})
 require("lualine").setup {}
 
+vim.api.nvim_set_hl(0, "@field", { link = "Identifier" })
+
 -- require("base16-colorscheme").setup {
---     -- base00 = "#16161D",
---     -- base01 = "#2c313c",
---     -- base02 = "#3e4451",
---     -- base03 = "#6c7891",
---     -- base04 = "#565c64",
---     -- base05 = "#abb2bf",
---     -- base06 = "#9a9bb3",
---     -- base07 = "#c5c8e6",
---     -- base08 = "#e06c75",
---     -- base09 = "#d19a66",
---     -- base0A = "#e5c07b",
---     -- base0B = "#98c379",
---     -- base0C = "#56b6c2",
---     -- base0D = "#0184bc",
---     -- base0E = "#c678dd",
---     -- base0F = "#a06949",
---
 --     base00 = "#111111",
 --     base01 = "#282828",
 --     base02 = "#383838",

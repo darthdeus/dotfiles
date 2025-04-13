@@ -52,6 +52,57 @@ nnoremap("<leader>gd", ":Rg <C-r><C-w><cr>")
 nnoremap("<leader>b", "<cmd>Buffers<cr>")
 nnoremap("<leader>B", "<cmd>BTags<cr>")
 
+-- vim.api.nvim_set_keymap(
+--   "n",
+--   "<leader>a",
+--   ":lua loadstring(vim.api.nvim_get_current_line())()<CR>",
+--   { noremap = true, silent = true }
+-- )
+
+-- Eval Lua expression under cursor (including multiline)
+function _G.eval_lua_expr()
+  local ts_utils = require "nvim-treesitter.ts_utils"
+  local node = ts_utils.get_node_at_cursor()
+
+  while node do
+    if node:type() == "function_call" or node:type() == "function_definition" or node:type() == "table_constructor" then
+      break
+    end
+    node = node:parent()
+  end
+
+  if not node then
+    print "No suitable Lua expression found"
+    return
+  end
+
+  local start_row, start_col, end_row, end_col = node:range()
+  local lines = vim.api.nvim_buf_get_lines(0, start_row, end_row + 1, false)
+  lines[1] = lines[1]:sub(start_col + 1)
+  lines[#lines] = lines[#lines]:sub(1, end_col)
+
+  local code = table.concat(lines, "\n")
+
+  local chunk, err = loadstring(code)
+  if err then
+    print("Error compiling Lua:", err)
+    return
+  end
+
+  local ok, result = pcall(chunk)
+  if not ok then
+    print("Error executing Lua:", result)
+  else
+    print("Result:", vim.inspect(result))
+  end
+end
+
+-- Bind to a key
+vim.api.nvim_set_keymap("n", "<leader>a", ":lua eval_lua_expr()<CR>", { noremap = true, silent = true })
+
+-- Eval Lua line under cursor
+vim.api.nvim_set_keymap('n', '<leader>a', ':lua loadstring(vim.api.nvim_get_current_line())()<CR>', { noremap = true, silent = true })
+
 -- Mapping selecting mappings
 nnoremap("<leader><tab>", "<plug>(fzf-maps-n)")
 xnoremap("<leader><tab>", "<plug>(fzf-maps-x)")
