@@ -101,12 +101,21 @@ end
 vim.api.nvim_set_keymap("n", "<leader>a", ":lua eval_lua_expr()<CR>", { noremap = true, silent = true })
 
 -- Eval Lua line under cursor
-vim.api.nvim_set_keymap('n', '<leader>a', ':lua loadstring(vim.api.nvim_get_current_line())()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>a",
+  ":lua loadstring(vim.api.nvim_get_current_line())()<CR>",
+  { noremap = true, silent = true }
+)
 
 -- Mapping selecting mappings
 nnoremap("<leader><tab>", "<plug>(fzf-maps-n)")
 xnoremap("<leader><tab>", "<plug>(fzf-maps-x)")
 onoremap("<leader><tab>", "<plug>(fzf-maps-o)")
+
+vim.keymap.set("i", "<C-Space>", function()
+  require("copilot.suggestion").next()
+end, { silent = true })
 
 nnoremap("gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
 

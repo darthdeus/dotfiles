@@ -324,13 +324,13 @@ function M.setup_cmp()
     { name = "buffer" },
   })
 
-  if _G.copilot_enabled then
-    sources = cmp.config.sources(shared_sources, {
-      { name = "copilot" },
-    }, {
-      { name = "buffer" },
-    })
-  end
+  -- if _G.copilot_enabled then
+  --   sources = cmp.config.sources(shared_sources, {
+  --     { name = "copilot" },
+  --   }, {
+  --     { name = "buffer" },
+  --   })
+  -- end
 
   --		sources = cmp.config.sources({
   --			{ name = "nvim_lsp" },
@@ -342,6 +342,7 @@ function M.setup_cmp()
   --		}),
   --
   local lspkind = require "lspkind"
+  local copilot = require "copilot.suggestion"
 
   cmp.setup {
     completion = {
@@ -387,12 +388,13 @@ function M.setup_cmp()
     mapping = cmp.mapping.preset.insert {
       ["<C-b>"] = cmp.mapping.scroll_docs(-4),
       -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
-      ["<C-Space>"] = cmp.mapping.complete(),
+
+      -- ["<C-Space>"] = cmp.mapping.complete(),
+
       ["<C-e>"] = cmp.mapping.abort(),
       -- Accept currently selected item. Set `select` to `false` to only
       -- confirm explicitly selected items.
 
-      ["<CR>"] = cmp.mapping.confirm { select = true },
       -- ["<CR>"] = cmp.mapping.confirm({ select = false }),
       -- ["<CR>"] = cmp.mapping(function(fallback)
       -- 	if cmp.visible() then
@@ -437,14 +439,23 @@ function M.setup_cmp()
       end),
 
       ["<Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
+        if copilot.is_visible() then
+          copilot.accept()
+        elseif cmp.visible() then
           cmp.select_next_item()
-          -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-          -- they way you will only jump inside the snippet region
-          -- elseif luasnip.expand_or_jumpable() then
-          -- 	luasnip.expand_or_jump()
-          -- elseif has_words_before() then
-          -- 	cmp.complete()
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+      }),
+
+      ["<CR>"] = cmp.mapping(function(fallback)
+        if copilot.is_visible() then
+          copilot.accept()
+        elseif cmp.visible() then
+          cmp.select_next_item()
         else
           fallback()
         end

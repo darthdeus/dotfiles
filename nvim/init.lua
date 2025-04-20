@@ -464,7 +464,7 @@ require("lazy").setup {
     "zbirenbaum/copilot.lua",
     config = function()
       require("copilot").setup {
-        suggestion = { enabled = false },
+        suggestion = { enabled = true, auto_trigger = false, },
         panel = { enabled = false },
       }
     end,
@@ -590,7 +590,7 @@ vim.keymap.set("n", ",e", "<cmd>silent !touch .reload/now<cr>", { silent = true 
 vim.cmd "colorscheme base16-default-dark"
 -- vim.cmd "colorscheme b16"
 
-vim.cmd('colorscheme rose-pine')
+vim.cmd "colorscheme rose-pine"
 
 -- require("base16-colorscheme").setup "base16-default-dark"
 -- require('base16-colorscheme').setup({
