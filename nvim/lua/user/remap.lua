@@ -113,9 +113,9 @@ nnoremap("<leader><tab>", "<plug>(fzf-maps-n)")
 xnoremap("<leader><tab>", "<plug>(fzf-maps-x)")
 onoremap("<leader><tab>", "<plug>(fzf-maps-o)")
 
-vim.keymap.set("i", "<C-Space>", function()
-  require("copilot.suggestion").next()
-end, { silent = true })
+-- vim.keymap.set("i", "<C-Space>", function()
+--   require("copilot.suggestion").next()
+-- end, { silent = true })
 
 nnoremap("gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
 

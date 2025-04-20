@@ -320,17 +320,18 @@ function M.setup_cmp()
     { name = "crates" },
   }
 
-  local sources = cmp.config.sources(shared_sources, {
-    { name = "buffer" },
-  })
+  -- local sources = cmp.config.sources(shared_sources, {
+  --   { name = "buffer" },
+  -- })
 
-  -- if _G.copilot_enabled then
-  --   sources = cmp.config.sources(shared_sources, {
-  --     { name = "copilot" },
-  --   }, {
-  --     { name = "buffer" },
-  --   })
-  -- end
+  if _G.copilot_enabled then
+    sources = cmp.config.sources(shared_sources, {
+      { name = "copilot" },
+      { name = "buffer" },
+    }, {
+      { name = "buffer" },
+    })
+  end
 
   --		sources = cmp.config.sources({
   --			{ name = "nvim_lsp" },
@@ -389,13 +390,12 @@ function M.setup_cmp()
       ["<C-b>"] = cmp.mapping.scroll_docs(-4),
       -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
 
-      -- ["<C-Space>"] = cmp.mapping.complete(),
+      ["<C-Space>"] = cmp.mapping.complete(),
 
       ["<C-e>"] = cmp.mapping.abort(),
       -- Accept currently selected item. Set `select` to `false` to only
       -- confirm explicitly selected items.
 
-      -- ["<CR>"] = cmp.mapping.confirm({ select = false }),
       -- ["<CR>"] = cmp.mapping(function(fallback)
       -- 	if cmp.visible() then
       -- 		cmp.complete()
@@ -439,9 +439,11 @@ function M.setup_cmp()
       end),
 
       ["<Tab>"] = cmp.mapping(function(fallback)
-        if copilot.is_visible() then
-          copilot.accept()
-        elseif cmp.visible() then
+        -- if copilot.is_visible() then
+        --   copilot.accept()
+        -- elseif cmp.visible() then
+
+        if cmp.visible() then
           cmp.select_next_item()
         else
           fallback()
@@ -451,18 +453,21 @@ function M.setup_cmp()
         "s",
       }),
 
-      ["<CR>"] = cmp.mapping(function(fallback)
-        if copilot.is_visible() then
-          copilot.accept()
-        elseif cmp.visible() then
-          cmp.select_next_item()
-        else
-          fallback()
-        end
-      end, {
-        "i",
-        "s",
-      }),
+      ["<CR>"] = cmp.mapping.confirm { select = true },
+
+      -- ["<CR>"] = cmp.mapping(function(fallback)
+      --   -- if copilot.is_visible() then
+      --   --   copilot.accept()
+      --   -- elseif cmp.visible() then
+      --   if cmp.visible() then
+      --     cmp.select_next_item()
+      --   else
+      --     fallback()
+      --   end
+      -- end, {
+      --   "i",
+      --   "s",
+      -- }),
 
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
