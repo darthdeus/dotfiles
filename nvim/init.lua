@@ -174,8 +174,6 @@ require("lazy").setup {
   "rmagatti/auto-session",
   -- "zwhitchcox/auto-session-nvim-tree",
 
-  "jansedivy/jai.vim",
-
   -- {
   --   "folke/noice.nvim",
   --   config = function()
@@ -198,15 +196,26 @@ require("lazy").setup {
   --   }
   -- },
 
-  -- {
-  --   "folke/todo-comments.nvim",
-  --   dependencies = { "nvim-lua/plenary.nvim" },
-  --   config = function()
-  --     require("todo-comments").setup {
-  --       signs = false,
-  --     }
-  --   end,
-  -- },
+  {
+    "rcarriga/nvim-notify",
+    config = function()
+      require("notify").setup {
+        stages = "static",
+        timeout = 5000,
+        background_colour = "#000000",
+      }
+    end,
+  },
+
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("todo-comments").setup {
+        signs = false,
+      }
+    end,
+  },
 
   {
     "gbprod/yanky.nvim",
@@ -790,18 +799,6 @@ parser_config.rock = {
   filetype = "rock", -- if filetype does not match the parser name
 }
 
-parser_config.rebel = {
-  install_info = {
-    url = "~/projects/tree-sitter-rebel", -- local path or git repo
-    files = { "src/parser.c" }, -- note that some parsers also require src/scanner.c or src/scanner.cc
-    -- optional entries:
-    branch = "master", -- default branch in case of git repo if different from master
-    generate_requires_npm = true, -- if stand-alone parser without npm dependencies
-    requires_generate_from_grammar = true, -- if folder contains pre-generated src/parser.c
-  },
-  filetype = "rbl", -- if filetype does not match the parser name
-}
-
 require("nvim-treesitter.configs").setup {
   ensure_installed = {
     "c",
@@ -896,17 +893,6 @@ require("nvim-treesitter.configs").setup {
 -----------------------------------
 -----------------------------------
 -----------------------------------
--- vim.lsp.start({
---   cmd = { "jails" },
---   root_dir = vim.fn.getcwd(), -- Use PWD as project root dir.
--- })
-
--- vim.cmd([[
---   augroup packer_user_config
---     autocmd!
---     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
---   augroup end
--- ]])
 
 -- vim.o.exrc = true
 -- vim.o.secure = true

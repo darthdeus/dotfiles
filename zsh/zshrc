@@ -41,7 +41,7 @@ bindkey '\C-x\C-e' edit-command-line
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git --ignore-file .ignore'
 
 if [ -z "$VIM_VERSION" ]; then
-  VIM_VERSION="nvim"
+  VIM_VERSION="$HOME/.dotfiles/bin/v"
 fi
 
 export EDITOR="$VIM_VERSION"
@@ -182,10 +182,7 @@ export MONITOR_RIGHT="DP-0"
 
 export npm_config_prefix="$HOME/.local"
 
-# Where to put your sockets
 export NVIM_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp}/nvim"
-
-# ensure the directory exists
 mkdir -p "$NVIM_RUNTIME_DIR"
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1

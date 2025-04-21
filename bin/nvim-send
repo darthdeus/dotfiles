@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# nvim-send: send any key‑sequence or command string to
+# all live Neovim instances in $SOCKDIR.
+
+# everything after opts is the message to send
+MSG="$*"
+if [[ -z "$MSG" ]]; then
+  echo "Usage: nvim-send '<keys or commands>'" >&2
+  exit 1
+fi
+
+SOCKDIR="${XDG_RUNTIME_DIR:-/tmp}/nvim"
+for sock in "$SOCKDIR"/nvim-*.sock; do
+  # skip stale sockets
+  [ -e "$sock" ] || continue
+
+  nvim --server "$sock" \
+       --remote-send "$MSG"
+done
+

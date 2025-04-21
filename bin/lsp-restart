@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# lsp-restart: restart LSP in every live Neovim
+nvim-send '<cmd>echo "⚙️ Restarting LSP…"<CR><cmd>LspRestart<CR>'
