@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# lsp-restart: restart LSP in every live Neovim
+# nvim-send '<cmd>echo "⚙️ Restarting LSP…"<CR><cmd>LspRestart<CR>'
+nvim-send '<Cmd>LspRestart<CR><Cmd>lua require("notify")("LSP build finished, restarting LSP", "info", { title = "LSP restart", timeout = 2000 })<CR>'
+

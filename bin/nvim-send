@@ -15,7 +15,7 @@ for sock in "$SOCKDIR"/nvim-*.sock; do
   # skip stale sockets
   [ -e "$sock" ] || continue
 
-  nvim --server "$sock" \
+  nvim --headless --server "$sock" \
        --remote-send "$MSG"
 done
 
