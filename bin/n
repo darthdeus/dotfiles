@@ -1,0 +1,2 @@
+#!/bin/bash
+export NVIM_LISTEN_ADDRESS="$NVIM_RUNTIME_DIR/nvim-$$.sock"
