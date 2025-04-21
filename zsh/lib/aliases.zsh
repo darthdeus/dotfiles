@@ -140,7 +140,7 @@ alias tc="tmux-cssh -cs"
 
 alias dh="du -h | sort -h"
 
-alias dot="cd ~/.dotfiles"
+alias dot="cd ~/.dotfiles/nvim"
 
 alias ft="ftrace"
 
