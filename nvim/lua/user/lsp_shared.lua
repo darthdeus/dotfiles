@@ -343,7 +343,10 @@ function M.setup_cmp()
   --		}),
   --
   local lspkind = require "lspkind"
-  local copilot = require "copilot.suggestion"
+  -- local copilot = require "copilot.suggestion"
+
+  -- local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+  -- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
   cmp.setup {
     completion = {
@@ -453,7 +456,15 @@ function M.setup_cmp()
         "s",
       }),
 
-      ["<CR>"] = cmp.mapping.confirm { select = true },
+      -- ["<CR>"] = cmp.mapping.confirm { select = true },
+
+      ["<CR>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.confirm({ select = true })
+        else
+          fallback()
+        end
+      end),
 
       -- ["<CR>"] = cmp.mapping(function(fallback)
       --   -- if copilot.is_visible() then

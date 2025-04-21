@@ -3,13 +3,6 @@
 
 _G.copilot_enabled = true
 
-vim.api.nvim_exec2(
-  [[
-    let g:AutoPairsMultilineClose = 0
-]],
-  {}
-)
-
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
@@ -280,6 +273,40 @@ require("lazy").setup {
   -- "chrisbra/csv.vim",
 
   "jiangmiao/auto-pairs",
+
+  -- "windwp/nvim-autopairs",
+  -- {
+  --   "windwp/nvim-autopairs",
+  --   config = function()
+  --     -- local npairs = require "nvim-autopairs"
+  --     -- npairs.setup {
+  --     --   check_ts = true, -- don’t pair in comments/strings
+  --     --   disable_filetype = { "TelescopePrompt", "neo-tree", "lir" },
+  --     -- }
+  --
+  --     -- npairs.remove_rule "{"
+  --     -- -- then also attach this extra step to remove a duplicated '}'
+  --     -- cmp.event:on("confirm_done", function()
+  --     --   -- get cursor position (row=1‑based, col=0‑based)
+  --     --   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  --     --   local line = vim.api.nvim_get_current_line()
+  --     --
+  --     --   -- `prev` is the char just left of the cursor
+  --     --   -- `next` is the char just under the cursor
+  --     --   local prev = line:sub(col, col)
+  --     --   local next = line:sub(col + 1, col + 1)
+  --     --
+  --     --   -- if we're sitting between a { and a } (i.e. autopairs made "{}")
+  --     --   -- and the completion itself also inserted a "}", drop the extra one:
+  --     --   if prev == "{" and next == "}" then
+  --     --     local new = line:sub(1, col) .. line:sub(col + 2)
+  --     --     vim.api.nvim_set_current_line(new)
+  --     --     -- restore cursor inside the braces
+  --     --     vim.api.nvim_win_set_cursor(0, { row, col })
+  --     --   end
+  --     -- end)
+  --   end,
+  -- },
 
   -- "sjl/gundo.vim",
   "mbbill/undotree",
