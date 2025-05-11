@@ -29,7 +29,7 @@ def get_rust_files(directory, include_tests=False):
     for root, _, files in os.walk(directory):
         for file in files:
             # if file.endswith(".rs") or file.endswith("prelude.lua"):
-            if file.endswith(".rs"):
+            if file.endswith(".rs") or file.endswith(".rock") or file.endswith(".lua"):
                 filepath = os.path.join(root, file)
                 if is_ignored(filepath, ignored_patterns):
                     continue
