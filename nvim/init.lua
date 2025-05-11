@@ -67,6 +67,47 @@ require("lazy").setup {
     end,
   },
 
+  -- {
+  --   "folke/trouble.nvim",
+  --   opts = {}, -- for default options, refer to the configuration section for custom setup.
+  --   cmd = "Trouble",
+  --   config = function()
+  --     require("trouble").setup {}
+  --   end,
+  --   keys = {
+  --     {
+  --       "<leader>xx",
+  --       "<cmd>Trouble diagnostics toggle<cr>",
+  --       desc = "Diagnostics (Trouble)",
+  --     },
+  --     {
+  --       "<leader>xX",
+  --       "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+  --       desc = "Buffer Diagnostics (Trouble)",
+  --     },
+  --     {
+  --       "<leader>cs",
+  --       "<cmd>Trouble symbols toggle focus=false<cr>",
+  --       desc = "Symbols (Trouble)",
+  --     },
+  --     {
+  --       "<leader>cl",
+  --       "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+  --       desc = "LSP Definitions / references / ... (Trouble)",
+  --     },
+  --     {
+  --       "<leader>xl",
+  --       "<cmd>Trouble loclist toggle<cr>",
+  --       desc = "Location List (Trouble)",
+  --     },
+  --     {
+  --       "<leader>xq",
+  --       "<cmd>Trouble qflist toggle<cr>",
+  --       desc = "Quickfix List (Trouble)",
+  --     },
+  --   },
+  -- },
+
   "Pocco81/auto-save.nvim",
   {
     "j-hui/fidget.nvim",
@@ -523,6 +564,11 @@ require "user.settings"
 require "user.remap"
 require "user.reload"
 
+local config = require "fzf-lua.config"
+local actions = require("trouble.sources.fzf").actions
+config.defaults.actions.files["ctrl-t"] = actions.open
+config.defaults.actions.files["ctrl-q"] = actions.open
+
 vim.lsp.inlay_hint.enable(true)
 vim.diagnostic.config { virtual_text = true }
 
@@ -725,11 +771,6 @@ autocmd BufEnter *.jai,*.wgsl,*.glsl,*.vert,*.frag,*.rbl,*.rock :lua vim.api.nvi
 autocmd BufFilePost *.jai,*.wgsl,*.glsl,*.vert,*.frag,*.rbl,*.rock :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
 augroup END
 
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit',
-  \ 'ctrl-q': 'fill_quickfix'}
 ]],
   {}
 )

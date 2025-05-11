@@ -43,6 +43,8 @@ nnoremap("<leader>sa", "<cmd>Telescope commands<CR>")
 -- nnoremap("<leader>b", ":Telescope buffers<cr>")
 -- nnoremap("<leader>B", ":Telescope current_buffer_tags<cr>")
 
+
+--- fzf.nvim
 nnoremap("<leader>f", "<cmd>Files ./<CR>")
 nnoremap("<leader>F", "<cmd>FZF %%<CR>")
 nnoremap("<leader>gt", "<cmd>Tags<cr>")
@@ -51,6 +53,20 @@ nnoremap("<leader>gs", ":Rg <C-r><C-w><cr>")
 nnoremap("<leader>gd", ":Rg <C-r><C-w><cr>")
 nnoremap("<leader>b", "<cmd>Buffers<cr>")
 nnoremap("<leader>B", "<cmd>BTags<cr>")
+
+--- fzf.lua
+-- nnoremap("<leader>f", "<cmd>FzfLua files ./<CR>")
+-- -- nnoremap("<leader>F", "<cmd>FZF %%<CR>")
+-- nnoremap("<leader>gt", "<cmd>FzfLua tags<cr>")
+-- nnoremap("<leader>ga", "<cmd>FzfLua live_grep <cr>")
+-- nnoremap("<leader>gs", "<cmd>FzfLua live_grep <C-r><C-w><cr>")
+-- nnoremap("<leader>gd", "<cmd>FzfLua grep_cword<cr>")
+-- nnoremap("<leader>b", "<cmd>FzfLua buffers<cr>")
+-- nnoremap("<leader>B", "<cmd>FzfLua<cr>")
+
+
+
+--- end fzf-lua
 
 -- vim.api.nvim_set_keymap(
 --   "n",
