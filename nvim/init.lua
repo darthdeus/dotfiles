@@ -836,7 +836,6 @@ vim.opt.signcolumn = "auto"
 vim.api.nvim_exec2(
   [[
     command! Ner :NvimTreeToggle
-    command! Rerebuild :TSInstallSync! rock
 ]],
   {}
 )
@@ -852,20 +851,6 @@ vim.api.nvim_exec2(
 ---------- TREESITTER -------------
 -----------------------------------
 
-local parsers = require "nvim-treesitter.parsers"
-local parser_config = parsers.get_parser_configs()
-
-parser_config.rock = {
-  install_info = {
-    url = "~/projects/rock/tree-sitter-rock",
-    files = { "src/parser.c" }, -- note that some parsers also require src/scanner.c or src/scanner.cc
-    -- optional entries:
-    branch = "master", -- default branch in case of git repo if different from master
-    generate_requires_npm = true, -- if stand-alone parser without npm dependencies
-    requires_generate_from_grammar = true, -- if folder contains pre-generated src/parser.c
-  },
-  filetype = "rock", -- if filetype does not match the parser name
-}
 
 require("nvim-treesitter.configs").setup {
   ensure_installed = {
@@ -886,7 +871,6 @@ require("nvim-treesitter.configs").setup {
     "regex",
     "html",
     "clojure",
-    "rock",
   },
   highlight = {
     enable = true,
