@@ -53,6 +53,10 @@ vim.g.maplocalleader = ","
 --       foo = foo + 1
 -- end
 
+vim.o.backup = false
+vim.o.writebackup = false
+vim.opt.updatetime = 300
+
 vim.o.backupcopy = "yes"
 vim.o.list = true
 vim.o.listchars = "tab:--,trail:."
