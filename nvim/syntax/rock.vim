@@ -27,7 +27,7 @@ syn keyword rockKeyword type any
 " ----------------------
 " Builtin Types (like Rust types)
 " ----------------------
-syn keyword rockType num bool string any void
+syn keyword rockType int float bool string any void
 syn match rockType /\<[A-Z][a-zA-Z0-9_]*\>/
 
 " ----------------------
