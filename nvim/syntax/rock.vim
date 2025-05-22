@@ -20,7 +20,7 @@ syn match rockPreAttr     "@[a-zA-Z_]\w*" contains=rockAttribute
 " ----------------------
 " Keywords
 " ----------------------
-syn keyword rockKeyword fn let return global struct extern if else for in while match loop break continue
+syn keyword rockKeyword fn let return global interface struct extern if else for in while match loop break continue
 syn keyword rockKeyword true false null
 syn keyword rockKeyword type any
 
