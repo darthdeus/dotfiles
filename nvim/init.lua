@@ -6,6 +6,21 @@ _G.copilot_enabled = true
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
+vim.g.rustaceanvim = {
+  server = {
+    default_settings = {
+      ["rust-analyzer"] = {
+        cargo = {
+          extraEnv = { CARGO_TARGET_DIR = ".ra_target" },
+        },
+        diagnostics = {
+          disabled = { "inactive-code", "unresolved-proc-macro" },
+        },
+      },
+    },
+  },
+}
+
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -850,7 +865,6 @@ vim.api.nvim_exec2(
 -----------------------------------
 ---------- TREESITTER -------------
 -----------------------------------
-
 
 require("nvim-treesitter.configs").setup {
   ensure_installed = {
