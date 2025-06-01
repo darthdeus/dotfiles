@@ -5,6 +5,8 @@ if exists("b:current_syntax")
   finish
 endif
 
+syntax sync fromstart
+
 " ----------------------
 " Comments (FIRST!)
 " ----------------------
@@ -39,9 +41,19 @@ syn match rockFuncCall /\<[a-zA-Z_][a-zA-Z0-9_]*\s*(/me=e-1
 " ----------------------
 " Strings and Numbers
 " ----------------------
+" Sync region for triple-quoted heredocs
+syn sync region rockHeredoc start=+"""+ end=+"""+ keepend transparent contains=rockEscape
+
+" Triple-quoted (heredoc) strings
+syn region rockString start=+"""+ end=+"""+ keepend contains=rockEscape
+
+" Single-line double-quoted strings
 syn region rockString start=+"+ skip=+\\"+ end=+"+ contains=rockEscape
+
+" Escape sequences inside strings
 syn match rockEscape /\\./ contained
 
+" Numbers and booleans
 syn match rockNumber /\<\d\+\(\.\d\+\)\=\([eE][-+]\=\d\+\)\=\>/
 syn match rockBoolean /\<\(true\|false\)\>/
 
