@@ -452,14 +452,6 @@ require("lazy").setup {
     end,
   },
 
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  -------------- CMP COMPLETION ------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-
   -- LSP & completion
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-path",
@@ -482,53 +474,6 @@ require("lazy").setup {
   },
   { "neovim/nvim-lspconfig" }, -- Required
 
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  -------------- COQ COMPLETION ------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-
-  -- {
-  --   "neovim/nvim-lspconfig", -- REQUIRED: for native Neovim LSP integration
-  --   lazy = false, -- REQUIRED: tell lazy.nvim to start this plugin at startup
-  --   dependencies = {
-  --     -- main one
-  --     { "ms-jpq/coq_nvim", branch = "coq" },
-  --
-  --     -- 9000+ Snippets
-  --     { "ms-jpq/coq.artifacts", branch = "artifacts" },
-  --
-  --     -- lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
-  --     -- Need to **configure separately**
-  --     { "ms-jpq/coq.thirdparty", branch = "3p" },
-  --     -- - shell repl
-  --     -- - nvim lua api
-  --     -- - scientific calculator
-  --     -- - comment banner
-  --     -- - etc
-  --   },
-  --
-  --   init = function()
-  --     vim.g.coq_settings = {
-  --       auto_start = true, -- if you want to start COQ at startup
-  --       -- Your COQ settings here
-  --     }
-  --   end,
-  --   config = function()
-  --     -- Your LSP settings here
-  --   end,
-  -- },
-
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  -------------- ^^^ COQ COMPLETION ------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-
   "williamboman/mason.nvim",
   { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
@@ -537,15 +482,6 @@ require("lazy").setup {
   "ray-x/lsp_signature.nvim",
 
   ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-  ------------------------------------------------------
-
-  -- { "neoclide/coc.nvim", branch = "release" },
-
-  -- "mfussenegger/nvim-dap",
   -- "rcarriga/nvim-dap-ui",
   -- use "zhimsel/vim-stay"
 
@@ -813,8 +749,6 @@ vim.cmd [[
 ---------- LSP --------------------
 -----------------------------------
 
-local use_cmp = true
-
 require("mason").setup()
 require("mason-lspconfig").setup {
   ensure_installed = {
@@ -831,18 +765,13 @@ require("mason-lspconfig").setup {
   },
 }
 
-if use_cmp then
-  -----------------------------------
+-----------------------------------
 
-  local my_lsp = require "user.lsp_shared"
+local my_lsp = require "user.lsp_shared"
 
-  my_lsp.setup_keymaps()
-  my_lsp.setup_cmp()
-  my_lsp.setup_lsp_servers()
-else
-  local coc_lsp = require "user.coc-setup"
-  coc_lsp.setup_keymaps()
-end
+my_lsp.setup_keymaps()
+my_lsp.setup_cmp()
+my_lsp.setup_lsp_servers()
 
 vim.opt.signcolumn = "auto"
 

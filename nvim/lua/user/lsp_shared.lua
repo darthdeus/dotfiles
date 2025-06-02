@@ -250,59 +250,6 @@ function M.setup_lsp_servers()
   -- require("rust-tools").inlay_hints.enable()
 end
 
-local function get_cmp()
-  local ok_cmp, cmp = pcall(require, "cmp")
-  return ok_cmp and cmp or {}
-end
-
-local function get_luasnip()
-  local ok_luasnip, luasnip = pcall(require, "luasnip")
-  return ok_luasnip and luasnip or {}
-end
-
-function M.luasnip_supertab(select_opts)
-  local cmp = get_cmp()
-  local luasnip = get_luasnip()
-
-  return cmp.mapping(function(fallback)
-    local col = vim.fn.col "." - 1
-
-    if cmp.visible() then
-      cmp.select_next_item(select_opts)
-    elseif luasnip.expand_or_jumpable() then
-      luasnip.expand_or_jump()
-    elseif col == 0 or vim.fn.getline("."):sub(col, col):match "%s" then
-      fallback()
-    else
-      cmp.complete()
-    end
-  end, {
-    "i",
-    "s",
-  })
-end
-
-function M.luasnip_shift_supertab(select_opts)
-  local cmp = get_cmp()
-  local luasnip = get_luasnip()
-
-  return cmp.mapping(function(fallback)
-    if cmp.visible() then
-      cmp.select_prev_item(select_opts)
-    elseif luasnip.jumpable(-1) then
-      luasnip.jump(-1)
-    else
-      fallback()
-    end
-  end, {
-    "i",
-    "s",
-  })
-end
-
--- local luasnip = get_luasnip()
-
--- Setup nvim-cmp.
 function M.setup_cmp()
   local cmp = require "cmp"
 
@@ -320,10 +267,7 @@ function M.setup_cmp()
     { name = "crates" },
   }
 
-  -- local sources = cmp.config.sources(shared_sources, {
-  --   { name = "buffer" },
-  -- })
-
+  local sources
   if _G.copilot_enabled then
     sources = cmp.config.sources(shared_sources, {
       { name = "copilot" },
@@ -331,22 +275,15 @@ function M.setup_cmp()
     }, {
       { name = "buffer" },
     })
+  else
+    sources = cmp.config.sources(shared_sources, {
+      { name = "buffer" },
+    })
   end
 
-  --		sources = cmp.config.sources({
-  --			{ name = "nvim_lsp" },
-  --
-  --			{ name = "ctags" },
-  --			{ name = "luasnip" },
-  --		}, {
-  --			{ name = "buffer" },
-  --		}),
-  --
   local lspkind = require "lspkind"
-  -- local copilot = require "copilot.suggestion"
 
-  -- local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-  -- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+  local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
 
   cmp.setup {
     completion = {
@@ -391,21 +328,10 @@ function M.setup_cmp()
 
     mapping = cmp.mapping.preset.insert {
       ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-      -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
 
       ["<C-Space>"] = cmp.mapping.complete(),
 
       ["<C-e>"] = cmp.mapping.abort(),
-      -- Accept currently selected item. Set `select` to `false` to only
-      -- confirm explicitly selected items.
-
-      -- ["<CR>"] = cmp.mapping(function(fallback)
-      -- 	if cmp.visible() then
-      -- 		cmp.complete()
-      -- 	else
-      -- 		fallback()
-      -- 	end
-      -- end),
 
       ["<C-f>"] = cmp.mapping.complete {
         config = {
@@ -414,14 +340,6 @@ function M.setup_cmp()
           },
         },
       },
-
-      [","] = cmp.mapping(function(fallback)
-        fallback()
-      end),
-
-      ["{"] = cmp.mapping(function(fallback)
-        fallback()
-      end),
 
       ["<C-j>"] = cmp.mapping.confirm { select = true },
       ["<C-l>"] = cmp.mapping.confirm { select = true },
@@ -442,10 +360,6 @@ function M.setup_cmp()
       end),
 
       ["<Tab>"] = cmp.mapping(function(fallback)
-        -- if copilot.is_visible() then
-        --   copilot.accept()
-        -- elseif cmp.visible() then
-
         if cmp.visible() then
           cmp.select_next_item()
         else
@@ -456,8 +370,6 @@ function M.setup_cmp()
         "s",
       }),
 
-      -- ["<CR>"] = cmp.mapping.confirm { select = true },
-
       ["<CR>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.confirm { select = true }
@@ -466,25 +378,9 @@ function M.setup_cmp()
         end
       end),
 
-      -- ["<CR>"] = cmp.mapping(function(fallback)
-      --   -- if copilot.is_visible() then
-      --   --   copilot.accept()
-      --   -- elseif cmp.visible() then
-      --   if cmp.visible() then
-      --     cmp.select_next_item()
-      --   else
-      --     fallback()
-      --   end
-      -- end, {
-      --   "i",
-      --   "s",
-      -- }),
-
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
-          -- elseif luasnip.jumpable(-1) then
-          -- 	luasnip.jump(-1)
         else
           fallback()
         end
