@@ -192,3 +192,8 @@ export GPG_TTY=$(tty)
 if [[ "$PROFILE_ZSH_STARTUP" == true ]]; then
   zprof
 fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/darth/.lmstudio/bin"
+# End of LM Studio CLI section
+
