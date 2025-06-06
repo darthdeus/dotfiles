@@ -543,7 +543,6 @@ require("lazy").setup {
   ------------------------------------------------------
   ------------------------------------------------------
 
-  -- { "neoclide/coc.nvim", branch = "release" },
 
   -- "mfussenegger/nvim-dap",
   -- "rcarriga/nvim-dap-ui",
@@ -813,8 +812,6 @@ vim.cmd [[
 ---------- LSP --------------------
 -----------------------------------
 
-local use_cmp = true
-
 require("mason").setup()
 require("mason-lspconfig").setup {
   ensure_installed = {
@@ -831,18 +828,11 @@ require("mason-lspconfig").setup {
   },
 }
 
-if use_cmp then
-  -----------------------------------
+local my_lsp = require "user.lsp_shared"
 
-  local my_lsp = require "user.lsp_shared"
-
-  my_lsp.setup_keymaps()
-  my_lsp.setup_cmp()
-  my_lsp.setup_lsp_servers()
-else
-  local coc_lsp = require "user.coc-setup"
-  coc_lsp.setup_keymaps()
-end
+my_lsp.setup_keymaps()
+my_lsp.setup_cmp()
+my_lsp.setup_lsp_servers()
 
 vim.opt.signcolumn = "auto"
 
